@@ -1,0 +1,2 @@
+name: ebook-ai-side-hustles
+price: 799

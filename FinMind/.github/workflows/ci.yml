@@ -1,0 +1,88 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install deps
+        working-directory: packages/backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install black==24.8.0 flake8==7.0.0 bandit==1.7.9 pytest==8.2.2
+      - name: Lint (black, flake8)
+        working-directory: packages/backend
+        run: |
+          black --check .
+          flake8 .
+      - name: Tests (pytest)
+        env:
+          REDIS_URL: redis://localhost:6379/0
+        working-directory: packages/backend
+        run: python -m pytest -q
+
+      - name: Security Scan (Bandit)
+        working-directory: packages/backend
+        run: bandit -r app -ll
+
+  docker_scan:
+    runs-on: ubuntu-latest
+    needs: backend
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build backend image
+        run: docker build -t finmind-backend:ci ./packages/backend
+      - name: Trivy scan
+        uses: aquasecurity/trivy-action@0.24.0
+        with:
+          image-ref: finmind-backend:ci
+          format: table
+          exit-code: 1
+          ignore-unfixed: true
+          vuln-type: os,library
+          severity: CRITICAL
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Install
+        working-directory: app
+        run: npm ci --no-audit --no-fund
+      - name: Lint
+        working-directory: app
+        run: npm run lint
+      - name: Test
+        working-directory: app
+        run: npm run test -- --ci
+      - name: Build
+        working-directory: app
+        run: npm run build

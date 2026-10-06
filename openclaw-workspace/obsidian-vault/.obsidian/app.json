@@ -1,0 +1,9 @@
+{
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "memory",
+  "attachmentFolderPath": "assets",
+  "promptDelete": false,
+  "showUnsupportedFiles": false,
+  "defaultViewMode": "source"
+}

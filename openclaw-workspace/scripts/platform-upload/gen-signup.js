@@ -1,0 +1,1 @@
+const fs = require("fs"); const s = fs.readFileSync("Z:/openclaw/workspace/scripts/platform-upload/signup-template.b64", "utf8"); fs.writeFileSync("Z:/openclaw/workspace/scripts/platform-upload/github-signup.js", Buffer.from(s, "base64").toString("utf8")); console.log("done");

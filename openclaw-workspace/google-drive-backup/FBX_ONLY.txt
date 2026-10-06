@@ -1,0 +1,790 @@
+D:\Nyghtshade_Assets_Vault\ArtStore3D\Insurgent Lite(LITE)\Model\Insurgent_LiteLite.fbx
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\CeilingPillar.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\Door.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\Floord.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\FloorT.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntCeiling01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntCeilingPillarBend.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntWall01a.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntWall01b.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntWall01door.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntWall01pillar1.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntWall01pillar2.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntWall02a.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntWall02b.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntWall02door.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntWall02window01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntWoodFence01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntWoodFence01b.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntWoodFence01pillar.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntWoodFence02b.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\IntWoodFloor01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\StoneFloor01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\VerticalPillar.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\WoodDoor01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Architecture\WoodStairs.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\Board.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\Chair01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\Chair02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\Drawer01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\Drawer02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\Drawer03.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\Stove1.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\Table.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\table03.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\Table04.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\TableSink.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\WoodCupboard01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\WoodCupboard02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\WoodCupboard03.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\WoodDrawer01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\WoodShelf01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\WoodStool.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\WoodTableSink.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\WoodTableSquare01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\WoodTableSquare01b.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Furniture\Workbench.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Books\Book01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Books\Book02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Books\Book03.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Books\Book04.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Bottle01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Bottle01b.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Bottle02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Bottle02b.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Bottle03.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Bottle03b.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Bottle04.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Bottle04b.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Flask01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Flask02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Flask03.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Flask04.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Flask05.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Flask06.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Flask07.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Bottles\Jar.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Dishes\ClutterBowl01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Dishes\ClutterBowl02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Dishes\ClutterBowl03.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Dishes\ClutterGlass01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Dishes\ClutterGlass02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Dishes\ClutterPichet01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Dishes\ClutterPichet02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Dishes\ClutterPichet03.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Dishes\ClutterPlate01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Dishes\ClutterTanker01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Ingredients\Ingredient01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Ingredients\Ingredient02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Ingredients\Ingredient03.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Ingredients\Ingredient04.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Ingredients\Ingredient05.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Ingredients\Ingredient06.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Ingredients\Ingredient07.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Lab\Alembic01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Lab\Alembic02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Lab\Bulb.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Lab\Caldron.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Lab\LabSetup01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Lab\LabSetup02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Lab\LabSetup03.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Lab\liquid.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Lights\Candle01a.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Lights\Candle01b.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Lights\Oillamp01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Misc\Basket01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Misc\Basket02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Misc\Basket03.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Misc\Globe.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Misc\Log01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Misc\Log02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Misc\Log03.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Misc\painting02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Misc\painting03.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Misc\painting04.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Misc\Trunk01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Organic\Apple.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Organic\Baby01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Organic\Baby02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Organic\Baby03.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Organic\Brain.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Organic\Bulb01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Organic\DragonSkull.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Organic\Skull01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Organic\Skull02.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Weapons\Arrow01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Weapons\Axe01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Weapons\Bow01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Weapons\Dagger01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Weapons\Staff01.FBX
+D:\Nyghtshade_Assets_Vault\BK_AlchemistHouse\Models\Items\Weapons\Sword01.FBX
+D:\Nyghtshade_Assets_Vault\Cozy Mountain Cabin\Models\cozy_cabin.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\candleLow.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\candleNew.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\candleTrayCircle.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\candleTrayRect.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\candleUsed.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\candleWallDiamond.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\candleWallRect.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\candleWallRound.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\candleWallSolo.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\lampBulb.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\lampClassicCeiling.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\lampClassicFloor.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\lampClassicTable.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\lampClassicWall.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\lampCylCeiling.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\lampCylFloor.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\lampCylTable.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\lampCylWall.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\lampRoundCeiling.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\lampRoundFloor.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\lampRoundTable.fbx
+D:\Nyghtshade_Assets_Vault\Customizable Lights and Candles\Models\lampRoundWall.fbx
+D:\Nyghtshade_Assets_Vault\Decrepit Dungeon LITE\Meshes\Arches.fbx
+D:\Nyghtshade_Assets_Vault\Decrepit Dungeon LITE\Meshes\Decals.fbx
+D:\Nyghtshade_Assets_Vault\Decrepit Dungeon LITE\Meshes\Doors.fbx
+D:\Nyghtshade_Assets_Vault\Decrepit Dungeon LITE\Meshes\Doorways.fbx
+D:\Nyghtshade_Assets_Vault\Decrepit Dungeon LITE\Meshes\Floors.fbx
+D:\Nyghtshade_Assets_Vault\Decrepit Dungeon LITE\Meshes\Object Colliders.fbx
+D:\Nyghtshade_Assets_Vault\Decrepit Dungeon LITE\Meshes\Pillars.fbx
+D:\Nyghtshade_Assets_Vault\Decrepit Dungeon LITE\Meshes\Props.fbx
+D:\Nyghtshade_Assets_Vault\Decrepit Dungeon LITE\Meshes\Stairs.fbx
+D:\Nyghtshade_Assets_Vault\Decrepit Dungeon LITE\Meshes\Walls.fbx
+D:\Nyghtshade_Assets_Vault\DesksCollection-Mavi3D\Models\Desk01.fbx
+D:\Nyghtshade_Assets_Vault\DesksCollection-Mavi3D\Models\Desk02.fbx
+D:\Nyghtshade_Assets_Vault\DesksCollection-Mavi3D\Models\Desk03.fbx
+D:\Nyghtshade_Assets_Vault\DesksCollection-Mavi3D\Models\Desk04.fbx
+D:\Nyghtshade_Assets_Vault\DesksCollection-Mavi3D\Models\Desk05.fbx
+D:\Nyghtshade_Assets_Vault\DesksCollection-Mavi3D\Models\Desk06.fbx
+D:\Nyghtshade_Assets_Vault\DesksCollection-Mavi3D\Models\Desk07.fbx
+D:\Nyghtshade_Assets_Vault\DesksCollection-Mavi3D\Models\Desk08.fbx
+D:\Nyghtshade_Assets_Vault\DesksCollection-Mavi3D\Models\Desk09.fbx
+D:\Nyghtshade_Assets_Vault\DesksCollection-Mavi3D\Models\Desk10.fbx
+D:\Nyghtshade_Assets_Vault\Exterior_swimming_pool\Meshes\exterior_swimming_pool.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Air Conditioner Ext.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Air Conditioner.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Audio.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Backpack.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Bed.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Bookcase Parts.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Bookcase.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Bookshelf.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Ceilling Light.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Clock.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Computer Case.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Computer.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Cup.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Curtain.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Door.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Floor.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Hook.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Kettle.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Keyboard.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Office Chair.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Paper Bag.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Paper Bottle.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Pen Container.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Phone.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Power Strip.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Remote.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Room.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Small Chair.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Suitcase.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Table 1.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Table 2.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Table 3.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Table Lamp.fbx
+D:\Nyghtshade_Assets_Vault\Fries and Seagull\Interior 01\Models\Wall Bracket.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Basket.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\BathroomSink.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Bed.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\BedroomSofa.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\BedsideTable.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Building.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\BuildingModular.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Carpet.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\ChestOfDraws.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Closet.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\CoffeeTable.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Curtain.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\CurtainSmall.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\DiningChair.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\DiningTable.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\DoorDouble.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\DoorSingle.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Fireplace.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\FreestandMirror.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Fridge.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\KitchenBench.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Lamp.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\LightCover.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Lightswitch.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\OvenExhaustFan.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Pantry.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Shower.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Sofa.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\SofaSmall.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Sphere.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Stove.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Toilet.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Towel.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\TV.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\TVStand.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\BathroomSink_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\Bed_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\Building_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\Curtain_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\CurtainSmall_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\DiningTable_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\Fireplace_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\FreestandMirror_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\Fridge_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\Lamp_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\OvenExhaustFan_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\Shower_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\Sofa_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\SofaSmall_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\Stove_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\Toilet_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\Towel_COL.fbx
+D:\Nyghtshade_Assets_Vault\FurnishedCabin\Meshes\Collision\TV_COL.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\Aircon.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BarrelOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BarrelThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BarrelTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomBench.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomFloorTileFive.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomFloorTileFour.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomFloorTileOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomFloorTileSetFour.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomFloorTileSetOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomFloorTileSetThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomFloorTileSetTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomFloorTileThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomFloorTileTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomInsideWalHalf.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomInsideWallDoorWay.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomInsideWallOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomInsideWallTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomInsideWallTwoDouble.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomOutsideWallOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomOutsideWallOneDouble.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomOutsideWallThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomOutsideWallTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomOutsideWallTwoDouble.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomSink.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomWaterPipeEight.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomWaterPipeFive.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomWaterPipeFour.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomWaterPipeOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomWaterPipeSeven.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomWaterPipeSix.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomWaterPipeThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BathRoomWaterPipeTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BedThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\BedTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\Bell.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\Bin.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\CanteenChair.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\CanteenTable.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\CanteenTableSet.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\CellBed.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\CellBedSet.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\CellGate.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\CellLight.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\CellShelf.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\CellToilet.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\CellWallOutside.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\ChairOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\ChairTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\ClipBoard.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\Clock.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecaEntrance.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalA.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalB.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalBlock.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalC.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalCautionOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalD.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalDangerOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalDangerTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalDash.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalDontDrop.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalE.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalExit.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalExtinguisher.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalF.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalFireHose.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalFirstAid.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalHeliPad.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalHeliSign.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalNoEntry.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalNoGuns.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalNoPhones.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalNoSmoking.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalNoTrespassing.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalNumberEight.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalNumberFive.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalNumberFour.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalNumberNine.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalNumberOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalNumberSeven.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalNumberSix.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalNumberThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalNumberTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalNumberZero.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DecalShower.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DeskLamp.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DeskOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DeskThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DeskTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\Divider.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\DoorWay.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\FireExtinguisher.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\FirstAidBox.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\FloorLamp.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\FrontDoor.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\FrontDoorTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\HospitalLamp.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\InfirmaryScreen.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\IntersectionWall.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\IntersectionWallDouble.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenCabinetOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenCabinetThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenCabinetTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenFloorTileFour.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenFloorTileOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenFloorTileSetEight.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenFloorTileSetFive.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenFloorTileSetFour.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenFloorTileSetOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenFloorTileSetSeven.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenFloorTileSetSix.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenFloorTileSetThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenFloorTileSetTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenFloorTileThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenFloorTileTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\KitchenSink.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\MetalDetector.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\NoteBook.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\OutsideFloorTileFive.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\OutsideFloorTileFour.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\OutsideFloorTileOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\OutsideFloorTileSix.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\OutsideFloorTileThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\OutsideFloorTileTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\Phone.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonBathRoomPiller.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonCellDoorWay.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonElectricalPanel.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFence.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFenceHighDetail.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFenceSet.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFenceSetDetail.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFireHose.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileCellSet.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileCellSetFive.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileCellSetFour.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileCellSetOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileCellSetSeven.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileCellSetSix.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileCellSetThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileCellSetTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileEight.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileFive.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileFour.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileNine.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileSeven.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileSix.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileTen.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonFloorTileTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonGateDouble.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonGateSingle.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonInsideArch.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonInsideArchTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonInsideFiller.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonInsidePiller.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonInsideWallDoorWay.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonInsideWallOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonInsideWallOneDouble.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonInsideWallTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonInsideWallTwoDouble.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonLightFour.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonLightOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonLightThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonLightTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonOutsidePiller.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonOutsidePillerCorner.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonOutsidePillerCornerTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonOutsidePillerRoofOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonOutsidePillerRoofThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonOutsidePillerRoofTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonOutsideWallFive.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonOutsideWallFour.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonOutsideWallOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonOutsideWallOneDouble.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonOutsideWallSeven.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonOutsideWallSix.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonOutsideWallThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonOutsideWallTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonOutsideWallTwoDouble.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonPlatformOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonPlatformTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonRailsFive.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonRailsFour.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonRailsOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonRailsThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonRailsTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonRoofTile.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonRoofTileCover.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonRoofTileCoverSet.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonRoofTileCoverTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonRoofTileSetFour.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonRoofTileSetOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonRoofTileSetThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonRoofTileSetTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonRoofTileTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonSpotLight.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonStairCase.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonStairs.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonSwitchOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonVentOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonWallTrimOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonWindowWall.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\PrisonWindowWallDouble.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\Refrigerator.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\Stove.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\StreetLight.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\TableOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\TableThree.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\TableTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\TowerBack.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\TowerBase.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\TowerFloorOne.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\TowerFloorTwo.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\TowerFront.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\TowerSide.fbx
+D:\Nyghtshade_Assets_Vault\Grim\LockDown Prison\Models\TrayRack.fbx
+D:\Nyghtshade_Assets_Vault\HousePack\Models\House1\House1.FBX
+D:\Nyghtshade_Assets_Vault\HousePack\Models\House10\House10.FBX
+D:\Nyghtshade_Assets_Vault\HousePack\Models\House2\House2.FBX
+D:\Nyghtshade_Assets_Vault\HousePack\Models\House3\House3.FBX
+D:\Nyghtshade_Assets_Vault\HousePack\Models\House4\House4.FBX
+D:\Nyghtshade_Assets_Vault\HousePack\Models\House5\House5.FBX
+D:\Nyghtshade_Assets_Vault\HousePack\Models\House6\House6.FBX
+D:\Nyghtshade_Assets_Vault\HousePack\Models\House7\House7.FBX
+D:\Nyghtshade_Assets_Vault\HousePack\Models\House8\House8.FBX
+D:\Nyghtshade_Assets_Vault\HousePack\Models\House9\House9.FBX
+D:\Nyghtshade_Assets_Vault\Houses_Pack\Models\House_1.FBX
+D:\Nyghtshade_Assets_Vault\Houses_Pack\Models\House_2.FBX
+D:\Nyghtshade_Assets_Vault\Houses_Pack\Models\House_3.FBX
+D:\Nyghtshade_Assets_Vault\Houses_Pack\Models\House_4.FBX
+D:\Nyghtshade_Assets_Vault\HQ Hangar Free\Models\Hangar_part_01.fbx
+D:\Nyghtshade_Assets_Vault\HQ Hangar Free\Models\Hangar_part_02.fbx
+D:\Nyghtshade_Assets_Vault\HQ Hangar Free\Models\Hangar_part_03.fbx
+D:\Nyghtshade_Assets_Vault\HQ Hangar Free\Models\Hangar_part_04.fbx
+D:\Nyghtshade_Assets_Vault\HQ Hangar Free\Models\Hangar_part_05.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\Demo\Models\LOGO.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\Demo\Models\PayGround.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\AdenoChaeta\ADCflowerLow.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\AdenoChaeta\AdenoChaetaflower2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\AdenoChaeta\AdenoChaetaLeaf.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\AdenoChaeta\AdenoChaetaLeaf2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\AdenoChaeta\AdenoChaetaLeaf3.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\1short.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\1short2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\1short3.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\45Branch.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\45Branch1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\4leaves.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\DownBranch1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\DownBranch2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\DwBranch3.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\Horizon0.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\Horizon1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\Horizon2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\Horizon3.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\Up1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\Up2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\Up3.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\Up4.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\BothSides\UpBrnchyoung.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\Flower\FloriBlue.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\Flower\pongFlower.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\hedra\hedraleave1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\hedra\hedraleave2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\hedra\hedraleave3.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\hedra\hedraleave4.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\hedra\hedraleave5.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\IvyA\A1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\IvyA\A2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\IvyA\A3.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\IvyEndings\end1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\IvyEndings\end2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\IvyLow\LeaveLow0.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\IvyLow\LeaveLow1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\IvyLow\LowPoly3.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\IvyLow\LowPoly4.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\Lights\simpleQuadfbx.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\LowPoly\QuadBend.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\PhotoIvy\Ivyleave1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\PhotoIvy\Ivyleave2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\rose\minirose1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\rose\minirose2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\rose\rosaleave1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\rose\rosaleaveScanned1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\rose\rosaleaveScanned2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\rose\roseleave2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\rose\RoseStemSmooth.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\rose\ScannedRose.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\RoundLeaves\Round1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\RoundLeaves\Round2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\RoundLeaves\Round3.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\RoundLeaves\Round4.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\RoundLeaves\Round5.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\SimpleStems\stem2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\SimpleStems\stemsegment2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\SymLeaves\sym1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\SymLeaves\sym2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\SymLeaves\sym3.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\SymLeaves\sym4.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\Wisteria\falldown1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\Wisteria\hojaexport1 1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\Wisteria\hojaexport2.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\Wisteria\wisteriaFlower1.fbx
+D:\Nyghtshade_Assets_Vault\IvyLiteMain\IvyLite\IvyLiteData\Assets\Meshes\Wisteria\wisteriaFlower2.fbx
+D:\Nyghtshade_Assets_Vault\LineKotsi\LN3D_Modular_CatWalk\Free_Part\LN3D_Modular_CatWalk.fbx
+D:\Nyghtshade_Assets_Vault\LoafbrrAssets\Interiors_A\fbx\Interiors_A.fbx
+D:\Nyghtshade_Assets_Vault\LoafbrrAssets\MInesAndCaveSet\fbx\MinesSet.fbx
+D:\Nyghtshade_Assets_Vault\LoafbrrAssets\ModularBrickhouses\fbx\ModularBrickHouses.fbx
+D:\Nyghtshade_Assets_Vault\NatureStarterKit2\Standard Assets\Effects\TessellationShaders\Models\LowPolySphere.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_casual_set_00.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_csl_00_character_01f.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_csl_00_character_01m.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_csl_00_character_02f.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_csl_00_character_02m.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_csl_pants_00f.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_csl_pants_00m.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_csl_shirtopenrolled_00f.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_csl_shirtopenrolled_00m.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_csl_shoe_01.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_csl_shoe_02.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_csl_shoe_03.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_csl_shoe_04.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_csl_tshirt_00f.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_csl_tshirt_00m.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_haircut_a_01.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_haircut_a_02.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_haircut_a_03.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_haircut_c_01.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_haircut_c_02.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_haircut_c_03.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_haircut_d_01.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_haircut_e_01.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_hairfacial_a_01.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_hairfacial_b_01.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_hairfacial_c_01.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_hairfacial_d_01.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_hmn_01f.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\npc_hmn_01m.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_csl_shirtopenrolled_00f_parts.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_csl_shirtopenrolled_00f_sleeves.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_csl_shirtopenrolled_00f_torso.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_csl_shirtopenrolled_00m_parts.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_csl_shirtopenrolled_00m_sleeves.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_csl_shirtopenrolled_00m_torso.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_csl_tshirt_00f_frontal.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_csl_tshirt_00f_parts.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_csl_tshirt_00f_sleeves.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_csl_tshirt_00f_torso.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_csl_tshirt_00m_frontal.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_csl_tshirt_00m_parts.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_csl_tshirt_00m_sleeves.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_csl_tshirt_00m_torso.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_arms1.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_arms2.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_arms3.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_arms4.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_arms5.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_arms6.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_fingers1.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_fingers2.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_head1.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_head2.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_head3.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_lowerbody1.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_lowerbody2.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_lowerbody3.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_lowerbody4.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_lowerbody5.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_lowerbody6.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_parts.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_torso1.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_torso2.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_torso3.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_torso4.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_torso5.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_upperbody1.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_upperbody2.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_upperbody3.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_upperbody4.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_upperbody5.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01f_upperbody6.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_arms1.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_arms2.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_arms3.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_arms4.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_arms5.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_arms6.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_fingers1.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_fingers2.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_head1.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_head2.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_head3.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_lowerbody1.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_lowerbody2.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_lowerbody3.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_lowerbody4.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_lowerbody5.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_lowerbody6.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_parts.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_torso1.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_torso2.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_torso3.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_torso4.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_torso5.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_upperbody1.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_upperbody2.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_upperbody3.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_upperbody4.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_upperbody5.fbx
+D:\Nyghtshade_Assets_Vault\npc_casual_set_00\Mesh\Mesh_Parts\npc_hmn_01m_upperbody6.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Props\ChainMount.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Props\ChainRing.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Props\ChainShackle.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Props\Door.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Props\Lattice.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Props\Mug.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Props\Table.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Props\Torch.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Walls\Column.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Walls\ColumnRound.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Walls\Doorway.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Walls\Foundation.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Walls\FoundationCorner.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Walls\WallDoorway.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Walls\WallRound.fbx
+D:\Nyghtshade_Assets_Vault\Prison cell\Models\Walls\WallRoundCorner.fbx
+D:\Nyghtshade_Assets_Vault\Sat Productions\G-01\Street Lights Pack 01\Mesh\Street_Light_A_01.fbx
+D:\Nyghtshade_Assets_Vault\Sat Productions\G-01\Street Lights Pack 01\Mesh\Street_Light_A_02.fbx
+D:\Nyghtshade_Assets_Vault\Sat Productions\G-01\Street Lights Pack 01\Mesh\Street_Light_A_03.fbx
+D:\Nyghtshade_Assets_Vault\Sat Productions\G-01\Street Lights Pack 01\Mesh\Street_Light_A_04.fbx
+D:\Nyghtshade_Assets_Vault\Sat Productions\G-01\Street Lights Pack 01\Mesh\Street_Light_A_05.fbx
+D:\Nyghtshade_Assets_Vault\Sat Productions\G-01\Street Lights Pack 01\Mesh\Street_Light_A_06.fbx
+D:\Nyghtshade_Assets_Vault\Sat Productions\G-01\Street Lights Pack 01\Mesh\Street_Light_A_07.fbx
+D:\Nyghtshade_Assets_Vault\Sat Productions\G-01\Street Lights Pack 01\Mesh\Street_Light_A_08.fbx
+D:\Nyghtshade_Assets_Vault\Sat Productions\G-01\Street Lights Pack 01\Mesh\Street_Light_A_09.fbx
+D:\Nyghtshade_Assets_Vault\Sat Productions\G-01\Street Lights Pack 01\Mesh\Street_Light_A_10.fbx
+D:\Nyghtshade_Assets_Vault\Sat Productions\G-01\Street Lights Pack 01\Scenes\Demo\Stand.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\Basemesh\SK_Military_Survivalist.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\Environment\Art\Models\Box_350x250x200_Mesh.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\Environment\Art\Models\Box_350x250x300_Mesh.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\Environment\Art\Models\Ground_Mesh.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\Environment\Art\Models\Ramp_100x100x200_Mesh.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\Environment\Art\Models\Ramp_Mesh.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\Environment\Art\Models\Stairs_200x100x200_Mesh.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\Environment\Art\Models\Stairs_650_400_300_Mesh.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\Environment\Art\Models\Structure_Mesh.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\Environment\Art\Models\Tunnel_Mesh.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\Environment\Art\Models\Wall_Mesh.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\ThirdPersonController\Character\Animations\Jump--InAir.anim.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\ThirdPersonController\Character\Animations\Jump--Jump.anim.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\ThirdPersonController\Character\Animations\Locomotion--Run_N_Land.anim.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\ThirdPersonController\Character\Animations\Locomotion--Run_N.anim.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\ThirdPersonController\Character\Animations\Locomotion--Run_S.anim.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\ThirdPersonController\Character\Animations\Locomotion--Walk_N_Land.anim.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\ThirdPersonController\Character\Animations\Locomotion--Walk_N.anim.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\ThirdPersonController\Character\Animations\Stand--Idle.anim.fbx
+D:\Nyghtshade_Assets_Vault\Survivalist\StarterAssets\ThirdPersonController\Character\Models\Armature.fbx
+D:\Nyghtshade_Assets_Vault\UMA\Content\Contrib\OldElfEars\Female__SwapElvenEars3.fbx
+D:\Nyghtshade_Assets_Vault\UMA\Content\Contrib\OldElfEars\Male_SwapElvenEars2.fbx
+D:\Nyghtshade_Assets_Vault\UMA\Content\Core\HumanFemale\FBX\Female_Unified.fbx
+D:\Nyghtshade_Assets_Vault\UMA\Content\Core\HumanMale\FBX\Male_Unified.fbx
+D:\Nyghtshade_Assets_Vault\UMA\Content\Example\Animators\Idles.fbx
+D:\Nyghtshade_Assets_Vault\UMA\Content\Example\Animators\Runs.fbx
+D:\Nyghtshade_Assets_Vault\UMA\Content\Hair\LongHairFront.fbx
+D:\Nyghtshade_Assets_Vault\UMA\Content\Hair\LongHairFrontScrunchi.fbx
+D:\Nyghtshade_Assets_Vault\UMA\Content\Hair\ShortHairCards.fbx
+D:\Nyghtshade_Assets_Vault\UMA\Examples\DynamicCharacterSystem Examples\Assets\DynamicDNA\FBX\UMA_HumanFemaleToToon-Blender-269Export.fbx
+D:\Nyghtshade_Assets_Vault\UMA\Examples\DynamicCharacterSystem Examples\Assets\GUI\OldGUIPrefabs\background.fbx
+D:\Nyghtshade_Assets_Vault\UMA\Examples\DynamicCharacterSystem Examples\Assets\SkyCar\skycar.FBX
+D:\Nyghtshade_Assets_Vault\UMA\Examples\Legacy Examples\Assets\Animation\Dude.fbx
+D:\Nyghtshade_Assets_Vault\UMA\Examples\Physics Examples\Assets\ClothRobe.FBX
+D:\Nyghtshade_Assets_Vault\UMA\Getting Started\Arrow.fbx
+D:\Nyghtshade_Assets_Vault\UMA\InternalDataStore\InGame\Resources\PlaceholderAssets\bonemesh.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Animations\CoverSet\Mannequin\RootMotion\A_CoverHi_Walk_L_Loop.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Animations\DBNOSet\Mannequin\RootMotion\02\A_DBNO_02_Fwd_Loop.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Animations\FemaleLocomotionSet\Mannequin\RootMotion\A_JogFwd_Loop.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Animations\ItemPickupSet\Mannequin\A_ItemPickup_fromIdle_RH_100cm.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Animations\LadderSet\Mannequin\RootMotion\A_Ladder_Up_Loop.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Animations\LiftSet\Mannequin\InPlace\Lightweight\02\R\A_Lift_Light_PickUp_0cm_02_R.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Animations\MaleLocomotionSet\Mannequin\RootMotion\A_RunFwd_Loop.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Animations\NarrowPassageSet\Mannequin\RootMotion\01\A\A_NarrowPassage_01_a_Loop_R.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Animations\PushSet\RootMotion\Heavy\01\A_Push_Heavy_01_Loop.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Animations\ResourceGatheringSet\Mannequin\Mining\PickAxe\2H\A_Mining_PickAxe_2H_01_Loop_01.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Animations\RollDodgeDashSet\Mannequin\RootMotion\Roll\A_Roll_IdleFwd.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Animations\StairsSet\Mannequin\RootMotion\Walk\A_Stairs_WalkFwd_Up_Loop.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Animations\StorageUnitsSet\Mannequin\LockerSingleKnob\Idle\RightHand\100cm\A_LockerSingleKnob_100cm_Open_R.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Animations\SurvivalSet\Mannequin\Flashlight\Idle\RightHand\Type01\A_Flashlight_Idle_01_R.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Meshes\Robot Kyle.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Meshes\SkeletonSettings.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Meshes\LadderSet\SM_Ladder_Base.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Meshes\LadderSet\SM_Ladder_Module.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Meshes\LadderSet\SM_Ladder_Top_Round.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Meshes\StorageUnitsSet\LockerSingleKnob\100cm\Animations\RightHand\LockeKnob_100cm_Close_R.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Meshes\StorageUnitsSet\LockerSingleKnob\100cm\Animations\RightHand\LockerKnob_100cm_Open_R.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Meshes\StorageUnitsSet\LockerSingleKnob\100cm\Mesh\SKM_LockerSingleKnob_100cm.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Meshes\StorageUnitsSet\SchoolLockerFullSize\Animations\RightHand\A_Schoo_01_Open_R.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Meshes\StorageUnitsSet\SchoolLockerFullSize\Animations\RightHand\A_SchoolLockerFullSize_01_Close_R.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Meshes\StorageUnitsSet\SchoolLockerFullSize\Mesh\SKM_SchoolLockerFullSize_R.fbx
+D:\Nyghtshade_Assets_Vault\VanillaLoopStudio\FreeSampleAnimationSet\Art\Meshes\SurvivalSet\SK_Flashlight.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Antlers_2.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Antlers.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Axe.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Bed.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_BeerCan.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Carpet.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Chair.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Chest.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Fridge.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Front_Door_Frame.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Front_Door.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Furnance.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Gas_Can.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Generator.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Gun.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_KitchenShelf.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Light.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_MirrorShelf.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Painting.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Shower.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Sink.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_smallTable.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Sofa.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Suspension.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Table.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_TableTelevision.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Tap.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Television.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Toilet.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Towels_LowPoly.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Wardrobe.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Washing_Machine.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wast_Wood.fbx
+D:\Nyghtshade_Assets_Vault\Wasteland Cabin\Models\Wasteland_Cabin_Walls.fbx
+D:\Nyghtshade_Assets_Vault\_SVK\Packs\Stone_Graves\Grave_a.fbx
+D:\Nyghtshade_Assets_Vault\_SVK\Packs\Stone_Graves\Grave_b.fbx
+D:\Nyghtshade_Assets_Vault\_SVK\Packs\Stone_Graves\Grave_c.fbx

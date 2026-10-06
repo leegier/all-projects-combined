@@ -1,0 +1,1341 @@
+
+============================================================
+  MAX MODEL ROUTER — port 11435
+  OpenAI: http://127.0.0.1:11435/v1/chat/completions
+  Ollama: http://127.0.0.1:11435/api/chat
+  Status: http://127.0.0.1:11435/status
+============================================================
+
+[Health] Monitor started — checking every 60s
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Health] Cycle 1: ✓ ollama:llama31-agent, openrouter:liquid-lfm | ✗ ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✓ ollama:mistral-nemo (22013ms)
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter returned empty content
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter returned empty content
+[Health] Cycle 2: ✓ ollama:mistral-nemo | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Health] Cycle 3: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Health] Cycle 4: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter returned empty content
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter returned empty content
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Health] Cycle 6: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Health] Cycle 6: ✓ ollama:llama31-agent | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Health] Cycle 7: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 400: {"error":{"message":"Provider returned error","code":400,"metadata":{"raw":"{\"details\":{\"_errors\":[],\"messages\":{\"12\":{\"_errors\":[],\"role\":{\"_errors\":[\"Invalid literal value, expected \\\"user\\\"\",\"Invalid literal value, expected \\\"assistant\\\"\",\"Invalid literal value, expected \\\"system\\\"\",\"Invalid literal value, expected \\\"developer\\\"\"]},\"tool_call_id\":{\"_errors\":[\"Required\"]}},\"14\":{\"_errors\":[],\"role\":{\"_errors\":[\"Invalid literal value, expected \\\"user\\\"\",\"Invalid literal value, expected \\\"assistant\\\"\",\"Invalid literal value, expected \\\"system\\\"\",\"Invalid literal value, expected \\\"developer\\\"\"]},\"tool_call_id\":{\"_errors\":[\"Required\"]}},\"16\":{\"_errors\":[],\"role\":{\"_errors\":[\"Invalid literal value, expected \\\"user\\\"\",\"Invalid literal value, expected \\\"assistant\\\"\",\"Invalid literal value, expected \\\"system\\\"\",\"Invalid literal value, expected \\\"developer\\\"\"]},\"tool_call_id\":{\"_errors\":[\"Required\"]}},\"_errors\":[]}},\"issues\":[{\"code\":\"invalid_union\",\"unionErrors\":[{\"issues\":[{\"received\":\"tool\",\"code\":\"invalid_literal\",\"expected\":\"user\",\"path\":[\"messages\",12,\"role\"],\"message\":\"Invalid literal value, expected \\\"user\\\"\"}],\"name\":\"ZodError\"},{\"issues\":[{\"received\":\"tool\",\"code\":\"invalid_literal\",\"expected\":\"assistant\",\"path\":[\"messages\",12,\"role\"],\"message\":\"Invalid literal value, expected \\\"assistant\\\"\"}],\"name\":\"ZodError\"},{\"issues\":[{\"code\":\"invalid_type\",\"expected\":\"string\",\"received\":\"undefined\",\"path\":[\"messages\",12,\"tool_call_id\"],\"message\":\"Required\"}],\"name\":\"ZodError\"},{\"issues\":[{\"received\":\"tool\",\"code\":\"invalid_literal\",\"expected\":\"system\",\"path\":[\"messages\",12,\"role\"],\"message\":\"Invalid literal value, expected \\\"system\\\"\"}],\"name\":\"ZodError\"},{\"issues\":[{\"received\":\"tool\",\"code\":\"invalid_literal\",\"expected\":\"developer\",\"path\":[\"messages\",12,\"role\"],\"message\":\"Invalid literal value, expected \\\"developer\\\"\"}],\"name\":\"ZodError\"}],\"path\":[\"messages\",12],\"message\":\"Invalid input\"},{\"code\":\"invalid_union\",\"unionErrors\":[{\"issues\":[{\"received\":\"tool\",\"code\":\"invalid_literal\",\"expected\":\"user\",\"path\":[\"messages\",14,\"role\"],\"message\":\"Invalid literal value, expected \\\"user\\\"\"}],\"name\":\"ZodError\"},{\"issues\":[{\"received\":\"tool\",\"code\":\"invalid_literal\",\"expected\":\"assistant\",\"path\":[\"messages\",14,\"role\"],\"message\":\"Invalid literal value, expected \\\"assistant\\\"\"}],\"name\":\"ZodError\"},{\"issues\":[{\"code\":\"invalid_type\",\"expected\":\"string\",\"received\":\"undefined\",\"path\":[\"messages\",14,\"tool_call_id\"],\"message\":\"Required\"}],\"name\":\"ZodError\"},{\"issues\":[{\"received\":\"tool\",\"code\":\"invalid_literal\",\"expected\":\"system\",\"path\":[\"messages\",14,\"role\"]...","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 400: {"error":{"message":"Provider returned error","code":400,"metadata":{"raw":"{\"details\":{\"_errors\":[],\"messages\":{\"12\":{\"_errors\":[],\"role\":{\"_errors\":[\"Invalid literal value, expected \\\"user\\\"\",\"Invalid literal value, expected \\\"assistant\\\"\",\"Invalid literal value, expected \\\"system\\\"\",\"Invalid literal value, expected \\\"developer\\\"\"]},\"tool_call_id\":{\"_errors\":[\"Required\"]}},\"14\":{\"_errors\":[],\"role\":{\"_errors\":[\"Invalid literal value, expected \\\"user\\\"\",\"Invalid literal value, expected \\\"assistant\\\"\",\"Invalid literal value, expected \\\"system\\\"\",\"Invalid literal value, expected \\\"developer\\\"\"]},\"tool_call_id\":{\"_errors\":[\"Required\"]}},\"16\":{\"_errors\":[],\"role\":{\"_errors\":[\"Invalid literal value, expected \\\"user\\\"\",\"Invalid literal value, expected \\\"assistant\\\"\",\"Invalid literal value, expected \\\"system\\\"\",\"Invalid literal value, expected \\\"developer\\\"\"]},\"tool_call_id\":{\"_errors\":[\"Required\"]}},\"_errors\":[]}},\"issues\":[{\"code\":\"invalid_union\",\"unionErrors\":[{\"issues\":[{\"received\":\"tool\",\"code\":\"invalid_literal\",\"expected\":\"user\",\"path\":[\"messages\",12,\"role\"],\"message\":\"Invalid literal value, expected \\\"user\\\"\"}],\"name\":\"ZodError\"},{\"issues\":[{\"received\":\"tool\",\"code\":\"invalid_literal\",\"expected\":\"assistant\",\"path\":[\"messages\",12,\"role\"],\"message\":\"Invalid literal value, expected \\\"assistant\\\"\"}],\"name\":\"ZodError\"},{\"issues\":[{\"code\":\"invalid_type\",\"expected\":\"string\",\"received\":\"undefined\",\"path\":[\"messages\",12,\"tool_call_id\"],\"message\":\"Required\"}],\"name\":\"ZodError\"},{\"issues\":[{\"received\":\"tool\",\"code\":\"invalid_literal\",\"expected\":\"system\",\"path\":[\"messages\",12,\"role\"],\"message\":\"Invalid literal value, expected \\\"system\\\"\"}],\"name\":\"ZodError\"},{\"issues\":[{\"received\":\"tool\",\"code\":\"invalid_literal\",\"expected\":\"developer\",\"path\":[\"messages\",12,\"role\"],\"message\":\"Invalid literal value, expected \\\"developer\\\"\"}],\"name\":\"ZodError\"}],\"path\":[\"messages\",12],\"message\":\"Invalid input\"},{\"code\":\"invalid_union\",\"unionErrors\":[{\"issues\":[{\"received\":\"tool\",\"code\":\"invalid_literal\",\"expected\":\"user\",\"path\":[\"messages\",14,\"role\"],\"message\":\"Invalid literal value, expected \\\"user\\\"\"}],\"name\":\"ZodError\"},{\"issues\":[{\"received\":\"tool\",\"code\":\"invalid_literal\",\"expected\":\"assistant\",\"path\":[\"messages\",14,\"role\"],\"message\":\"Invalid literal value, expected \\\"assistant\\\"\"}],\"name\":\"ZodError\"},{\"issues\":[{\"code\":\"invalid_type\",\"expected\":\"string\",\"received\":\"undefined\",\"path\":[\"messages\",14,\"tool_call_id\"],\"message\":\"Required\"}],\"name\":\"ZodError\"},{\"issues\":[{\"received\":\"tool\",\"code\":\"invalid_literal\",\"expected\":\"system\",\"path\":[\"messages\",14,\"role\"]...","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Health] Cycle 8: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter returned empty content
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter returned empty content
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Health] Cycle 9: ✓ openrouter:liquid-lfm | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter returned empty content
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter returned empty content
+[Health] Cycle 11: ✓ ollama:llama31-agent | ✗ ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Health] Cycle 11: ✓ openrouter:llama-70b | ✗ ollama:mistral-nemo, ollama:gemma3-27b
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Health] Cycle 12: ✓  | ✗ ollama:mistral-nemo, ollama:gemma3-27b
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Health] Cycle 13: ✓  | ✗ ollama:mistral-nemo, ollama:gemma3-27b
+[Health] Cycle 14: ✓ ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 16: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 16: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 17: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 18: All checked models healthy
+[Health] Cycle 19: All checked models healthy
+[Health] Cycle 21: All checked models healthy
+[Health] Cycle 21: ✓ ollama:llama31-agent | ✗ ollama:mistral-nemo, ollama:gemma3-27b
+[Health] Cycle 22: All checked models healthy
+[Health] Cycle 23: All checked models healthy
+[Health] Cycle 24: All checked models healthy
+[Health] Cycle 26: All checked models healthy
+[Health] Cycle 26: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 27: All checked models healthy
+[Health] Cycle 28: All checked models healthy
+[Health] Cycle 29: All checked models healthy
+[Health] Cycle 31: All checked models healthy
+[Health] Cycle 31: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 32: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 33: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 34: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 36: All checked models healthy
+[Health] Cycle 36: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 37: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 38: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 39: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 41: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 41: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 42: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 43: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 44: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 46: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 46: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 47: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 48: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 49: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 51: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 51: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 52: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 53: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 54: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 56: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 56: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 57: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 58: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 59: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 61: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 61: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 62: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Health] Cycle 63: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✓ openrouter:liquid-lfm (1843ms)
+[Health] Cycle 64: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 66: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 66: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 67: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 68: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 69: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 71: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 71: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 72: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 73: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 74: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 76: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 76: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 77: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 78: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 79: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter returned empty content
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter returned empty content
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Health] Cycle 81: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Health] Cycle 81: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 50312 tokens (48264 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 50312 tokens (48264 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Health] Cycle 82: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter returned empty content
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter returned empty content
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Health] Cycle 83: ✓ openrouter:liquid-lfm | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 50384 tokens (48336 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 50384 tokens (48336 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Health] Cycle 84: ✓ ollama:llama31-agent | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Health] Cycle 86: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Health] Cycle 86: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✓ openrouter:liquid-lfm (1489ms)
+[Router] ✓ openrouter:liquid-lfm (1117ms)
+[Router] ✓ openrouter:liquid-lfm (1476ms)
+[Health] Cycle 87: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 88: All checked models healthy
+[Health] Cycle 89: All checked models healthy
+[Health] Cycle 91: All checked models healthy
+[Health] Cycle 91: ✓ ollama:llama31-agent | ✗ ollama:mistral-nemo, ollama:gemma3-27b
+[Router] ✓ openrouter:liquid-lfm (1645ms)
+[Health] Cycle 92: All checked models healthy
+[Health] Cycle 93: All checked models healthy
+[Health] Cycle 94: All checked models healthy
+[Router] ✓ openrouter:liquid-lfm (1507ms)
+[Health] Cycle 96: All checked models healthy
+[Health] Cycle 96: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Router] ✓ openrouter:liquid-lfm (1294ms)
+[Health] Cycle 97: All checked models healthy
+[Health] Cycle 98: All checked models healthy
+[Health] Cycle 99: All checked models healthy
+[Health] Cycle 101: All checked models healthy
+[Health] Cycle 101: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 102: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 103: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 104: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 106: All checked models healthy
+[Health] Cycle 106: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 107: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 108: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 109: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 111: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 111: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 112: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 113: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 114: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 116: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 116: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 117: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 118: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 119: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 121: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 121: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 122: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 123: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 124: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 126: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 126: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 127: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 128: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 129: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 131: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 131: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 132: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 133: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 134: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 136: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 136: ✓  | ✗ ollama:gemma3-27b
+[Router] ✓ openrouter:liquid-lfm (1923ms)
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 47253 tokens (45205 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 47253 tokens (45205 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Health] Cycle 137: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Health] Cycle 138: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 36293 tokens (34245 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 36293 tokens (34245 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Health] Cycle 139: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 2: Ollama 500: {"error":"unexpected server status: llm server loading model"}
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 47566 tokens (45518 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 47566 tokens (45518 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ ollama:gemma3-27b attempt 1: Ollama 500: {"error":"unexpected server status: llm server loading model"}
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 45360 tokens (43312 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 45360 tokens (43312 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Health] Cycle 141: ✓ ollama:llama31-agent, openrouter:liquid-lfm | ✗ ollama:mistral-nemo, ollama:gemma3-27b
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Health] Cycle 141: ✓ ollama:mistral-nemo | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 47757 tokens (45709 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 47757 tokens (45709 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Health] Cycle 142: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✓ openrouter:liquid-lfm (1084ms)
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 45858 tokens (43810 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 45858 tokens (43810 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Health] Cycle 143: ✓ openrouter:llama-70b | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 50632 tokens (48584 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 50632 tokens (48584 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Health] Cycle 145: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Health] Cycle 146: ✓ ollama:mistral-nemo | ✗ ollama:llama31-agent, ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Health] Cycle 146: ✓  | ✗ ollama:llama31-agent, ollama:gemma3-27b
+[Health] Cycle 147: All checked models healthy
+[Health] Cycle 148: All checked models healthy
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 47954 tokens (45906 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 47954 tokens (45906 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 50921 tokens (48873 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 50921 tokens (48873 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 2: Ollama 500: {"error":"unexpected server status: llm server loading model"}
+[Health] Cycle 149: All checked models healthy
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Health] Cycle 150: ✓ ollama:llama31-agent, ollama:mistral-nemo, openrouter:liquid-lfm | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✓ ollama:llama31-agent (16126ms)
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 50898 tokens (48850 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 50898 tokens (48850 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Health] Cycle 151: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Health] Cycle 152: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 48641 tokens (46593 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 48641 tokens (46593 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Health] Cycle 153: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Health] Cycle 154: All checked models healthy
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Health] Cycle 156: ✓ ollama:llama31-agent | ✗ ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 49270 tokens (47222 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 49270 tokens (47222 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Health] Cycle 156: ✓ ollama:gemma3-27b, openrouter:liquid-lfm | ✗ ollama:mistral-nemo, openrouter:llama-70b
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Health] Cycle 157: ✓ ollama:mistral-nemo | ✗ openrouter:llama-70b
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Health] Cycle 158: ✓  | ✗ openrouter:llama-70b
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✓ openrouter:llama-70b (14924ms)
+[Router] ✓ openrouter:liquid-lfm (1290ms)
+[Health] Cycle 159: All checked models healthy
+[Health] Cycle 161: All checked models healthy
+[Health] Cycle 161: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 162: All checked models healthy
+[Health] Cycle 163: All checked models healthy
+[Health] Cycle 164: All checked models healthy
+[Health] Cycle 166: All checked models healthy
+[Health] Cycle 166: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 167: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 168: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 169: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 171: All checked models healthy
+[Health] Cycle 171: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 172: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 173: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 174: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 176: ✓ ollama:llama31-agent | ✗ ollama:mistral-nemo, ollama:gemma3-27b
+[Health] Cycle 176: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 177: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 178: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 179: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 181: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 181: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 182: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 183: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 184: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 186: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 186: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 187: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 188: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 189: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 191: ✓ ollama:llama31-agent | ✗ ollama:mistral-nemo, ollama:gemma3-27b
+[Health] Cycle 191: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 192: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 193: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 194: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 196: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 196: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 197: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 198: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 199: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 201: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 201: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 202: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 203: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 204: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 206: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 206: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 207: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 208: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 209: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 211: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 211: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 212: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 213: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 214: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 216: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 216: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 217: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 218: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✓ openrouter:liquid-lfm (1158ms)
+[Health] Cycle 219: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 221: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 221: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 222: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 223: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 224: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 226: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 226: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 227: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 228: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 229: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 231: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 231: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 232: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 233: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 234: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 236: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 236: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 237: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 238: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 239: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 241: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 241: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 242: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 243: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 244: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 246: ✓ ollama:llama31-agent | ✗ ollama:mistral-nemo, ollama:gemma3-27b
+[Health] Cycle 246: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 247: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 248: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 249: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Health] Cycle 251: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 51190 tokens (49142 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 51190 tokens (49142 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Health] Cycle 251: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Health] Cycle 252: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Health] Cycle 253: ✓  | ✗ ollama:gemma3-27b
+[Router] ✓ ollama:llama31-agent (21190ms)
+[Health] Cycle 254: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 256: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 256: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 257: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 258: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 259: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 261: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 261: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 262: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 263: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 264: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 266: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 266: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 267: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 268: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 269: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 271: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 271: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 272: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 273: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 274: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 276: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 276: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 277: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 278: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✓ ollama:llama31-agent (18157ms)
+[Health] Cycle 279: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 281: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 281: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 282: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 283: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 284: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 286: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 286: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 287: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 288: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 289: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 291: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b
+[Health] Cycle 291: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 292: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 293: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Health] Cycle 294: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 2: The operation was aborted.
+[Router] ✓ ollama:llama31-agent (19500ms)
+[Router] ✗ ollama:mistral-nemo attempt 1: The operation was aborted.
+[Router] ✗ ollama:mistral-nemo attempt 2: The operation was aborted.
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 51471 tokens (49423 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 51471 tokens (49423 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ ollama:gemma3-27b attempt 1: The operation was aborted.
+[Health] Cycle 296: ✓ ollama:llama31-agent | ✗ ollama:mistral-nemo, ollama:gemma3-27b
+[Health] Cycle 296: ✓  | ✗ ollama:gemma3-27b
+[Router] ✗ ollama:gemma3-27b attempt 2: The operation was aborted.
+[Router] ✗ ollama:llama31-agent attempt 1: The operation was aborted.
+[Router] ✓ ollama:llama31-agent (12957ms)
+[Health] Cycle 297: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 298: ✓  | ✗ ollama:gemma3-27b
+[Health] Cycle 299: All checked models healthy
+[Health] Cycle 301: ✓ ollama:llama31-agent | ✗ ollama:mistral-nemo, ollama:gemma3-27b
+[Health] Cycle 301: ✓  | ✗ ollama:mistral-nemo
+[Health] Cycle 302: All checked models healthy
+[Health] Cycle 303: All checked models healthy
+[Health] Cycle 304: All checked models healthy
+[Health] Cycle 305: ✓ ollama:llama31-agent, ollama:mistral-nemo, openrouter:liquid-lfm | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 306: ✓  | ✗ openrouter:llama-70b
+[Health] Cycle 307: ✓  | ✗ openrouter:llama-70b
+[Health] Cycle 308: ✓  | ✗ openrouter:llama-70b
+[Health] Cycle 309: ✓  | ✗ openrouter:llama-70b
+[Health] Cycle 311: ✓  | ✗ openrouter:llama-70b
+[Health] Cycle 311: ✓ ollama:llama31-agent | ✗ ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 312: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 313: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 314: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 316: ✓  | ✗ openrouter:llama-70b
+[Health] Cycle 316: ✓ ollama:llama31-agent | ✗ ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 317: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 318: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 319: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 321: ✓ ollama:llama31-agent | ✗ ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 321: ✓  | ✗ ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 322: ✓  | ✗ ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 323: ✓  | ✗ ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 324: ✓ ollama:mistral-nemo | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 326: ✓ ollama:llama31-agent | ✗ ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 326: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 327: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 328: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 329: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 331: ✓ ollama:llama31-agent, ollama:mistral-nemo | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 331: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 332: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 333: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 334: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 335: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 336: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 337: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 338: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 339: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 340: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 341: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 342: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 343: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 344: ✓  | ✗ ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 345: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 346: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 347: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 348: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 349: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 350: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 52528 tokens (50480 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 52528 tokens (50480 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ ollama:llama31-agent attempt 1: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:llama31-agent attempt 2: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:mistral-nemo attempt 1: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:mistral-nemo attempt 2: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:gemma3-27b attempt 1: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:gemma3-27b attempt 2: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 53050 tokens (51002 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 53050 tokens (51002 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ ollama:llama31-agent attempt 1: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:llama31-agent attempt 2: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:mistral-nemo attempt 1: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:mistral-nemo attempt 2: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:gemma3-27b attempt 1: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:gemma3-27b attempt 2: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 53341 tokens (51293 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 53341 tokens (51293 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ ollama:llama31-agent attempt 1: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:llama31-agent attempt 2: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:mistral-nemo attempt 1: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:mistral-nemo attempt 2: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:gemma3-27b attempt 1: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:gemma3-27b attempt 2: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:liquid-lfm attempt 1: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 53751 tokens (51703 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Health] Cycle 351: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Router] ✗ openrouter:liquid-lfm attempt 2: OpenRouter 400: {"error":{"message":"This endpoint's maximum context length is 32768 tokens. However, you requested about 53751 tokens (51703 of text input, 2048 in the output). Please reduce the length of either one, or use the context-compression plugin to compress your prompt automatically.","code":400,"metadata":{"provider_name":null}}}
+[Router] ✗ ollama:llama31-agent attempt 1: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:llama31-agent attempt 2: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:mistral-nemo attempt 1: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:mistral-nemo attempt 2: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:gemma3-27b attempt 1: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ ollama:gemma3-27b attempt 2: request to http://127.0.0.1:11434/api/chat failed, reason: connect ECONNREFUSED 127.0.0.1:11434
+[Router] ✗ openrouter:llama-70b attempt 1: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Router] ✗ openrouter:llama-70b attempt 2: OpenRouter 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false}},"user_id":"user_3AXlPU2luMidTs35jkfcW5LNo3u"}
+[Health] Cycle 352: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 353: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 354: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 355: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 356: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 357: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 358: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 359: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 360: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 361: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 362: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 363: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 364: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 365: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 366: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 367: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 368: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 369: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 370: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 371: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 372: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 373: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 374: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 375: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 376: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 377: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 378: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 379: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 380: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 381: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 382: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 383: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 384: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 385: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 386: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 387: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 388: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 389: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 390: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 391: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 392: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 393: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 394: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 395: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 396: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 397: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 398: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 399: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 400: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 401: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 402: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 403: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 404: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 405: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 406: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 407: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 408: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 409: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 410: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 411: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 412: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 413: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 414: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 415: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 416: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 417: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 418: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 419: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 420: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 421: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 422: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 423: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 424: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 425: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 426: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 427: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 428: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 429: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 430: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 431: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 432: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 433: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 434: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 435: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 436: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 437: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 438: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 439: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 440: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 441: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 442: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 443: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 444: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 445: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 446: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 447: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 448: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 449: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 450: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 451: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 452: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 453: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 454: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 455: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 456: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 457: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 458: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 459: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 460: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 461: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 462: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 463: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 464: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 465: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 466: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 467: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 468: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 469: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 470: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 471: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 472: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 473: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 474: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 475: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 476: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 477: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 478: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 479: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 480: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 481: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 482: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 483: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 484: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 485: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 486: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 487: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 488: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 489: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 490: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 491: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 492: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 493: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 494: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 495: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 496: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 497: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 498: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 499: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 500: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 501: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 502: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 503: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 504: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 505: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 506: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 507: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 508: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 509: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 510: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 511: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 512: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 513: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 514: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 515: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 516: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 517: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 518: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 519: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 520: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 521: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 522: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 523: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 524: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 525: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 526: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 527: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 528: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 529: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 530: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 531: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 532: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 533: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 534: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 535: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 536: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 537: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 538: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 539: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 540: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 541: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 542: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 543: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 544: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 545: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 546: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 547: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 548: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 549: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 550: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 551: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 552: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 553: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 554: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 555: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 556: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 557: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 558: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 559: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 560: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 561: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 562: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 563: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 564: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 565: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 566: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 567: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 568: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 569: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 570: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 571: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 572: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 573: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 574: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 575: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 576: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 577: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 578: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 579: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 580: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 581: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 582: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 583: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 584: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 585: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 586: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 587: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 588: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 589: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 590: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 591: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 592: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 593: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 594: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 595: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 596: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 597: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 598: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 599: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 600: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 601: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 602: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 603: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 604: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 605: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 606: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 607: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 608: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 609: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 610: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 611: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 612: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 613: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 614: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 615: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 616: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 617: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 618: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 619: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 620: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 621: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 622: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 623: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 624: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 625: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 626: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 627: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 628: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 629: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 630: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 631: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 632: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 633: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 634: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 635: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 636: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 637: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 638: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 639: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 640: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 641: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 642: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 643: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 644: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 645: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 646: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 647: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 648: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 649: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 650: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 651: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 652: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 653: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 654: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 655: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 656: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 657: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 658: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 659: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 660: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 661: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 662: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 663: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 664: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 665: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 666: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 667: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 668: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 669: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 670: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 671: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 672: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 673: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 674: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 675: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 676: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 677: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 678: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 679: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 680: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 681: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 682: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 683: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 684: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 685: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 686: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 687: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 688: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 689: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 690: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 691: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 692: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 693: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 694: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 695: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 696: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 697: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 698: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 699: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 700: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 701: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 702: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 703: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 704: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 705: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 706: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 707: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 708: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 709: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 710: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 711: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 712: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 713: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 714: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 715: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 716: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 717: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 718: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 719: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 720: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 721: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 722: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 723: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 724: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 725: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 726: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 727: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 728: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 729: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 730: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 731: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 732: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 733: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 734: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 735: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 736: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 737: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 738: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 739: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 740: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 741: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 742: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 743: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 744: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 745: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 746: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 747: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 748: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 749: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 750: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 751: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 752: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 753: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 754: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 755: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 756: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 757: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 758: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 759: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 760: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 761: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 762: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 763: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 764: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 765: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 766: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 767: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 768: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 769: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 770: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 771: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 772: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 773: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 774: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 775: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 776: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 777: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 778: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 779: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 780: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 781: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 782: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 783: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 784: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 785: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 786: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 787: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 788: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 789: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 790: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 791: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 792: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 793: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 794: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 795: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 796: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 797: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 798: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 799: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 800: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 801: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 802: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 803: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 804: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 805: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 806: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 807: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 808: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 809: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 810: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 811: ✓ openrouter:liquid-lfm | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 812: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 813: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 814: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 815: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 816: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 817: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 818: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 819: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 820: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 821: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 822: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 823: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 824: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b
+[Health] Cycle 825: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 826: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 827: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 828: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 829: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 830: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 831: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 832: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 833: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 834: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 835: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 836: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 837: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 838: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 839: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 840: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 841: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 842: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 843: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 844: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 845: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 846: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 847: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 848: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 849: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 850: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 851: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 852: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 853: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 854: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 855: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 856: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 857: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 858: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 859: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 860: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 861: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 862: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 863: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 864: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 865: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 866: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 867: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 868: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 869: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 870: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 871: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 872: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 873: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 874: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 875: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 876: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 877: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 878: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 879: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 880: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 881: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 882: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 883: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 884: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 885: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 886: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 887: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 888: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 889: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 890: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 891: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 892: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 893: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 894: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 895: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 896: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 897: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 898: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 899: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 900: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 901: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 902: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 903: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 904: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 905: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 906: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 907: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 908: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 909: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 910: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 911: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 912: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 913: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 914: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 915: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 916: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 917: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 918: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 919: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 920: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 921: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 922: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 923: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 924: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 925: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 926: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 927: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 928: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 929: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 930: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 931: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 932: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 933: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 934: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 935: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 936: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 937: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 938: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 939: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 940: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 941: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 942: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 943: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 944: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 945: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 946: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 947: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 948: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 949: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 950: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 951: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 952: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 953: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 954: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 955: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 956: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 957: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 958: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 959: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 960: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 961: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 962: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 963: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 964: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 965: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 966: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 967: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 968: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 969: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 970: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 971: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 972: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 973: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 974: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 975: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 976: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 977: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 978: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 979: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 980: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 981: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 982: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 983: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 984: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 985: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 986: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 987: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 988: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 989: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 990: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 991: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 992: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 993: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 994: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 995: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 996: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 997: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 998: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 999: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1000: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1001: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1002: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1003: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1004: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1005: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1006: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1007: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1008: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1009: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1010: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1011: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1012: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1013: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1014: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1015: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1016: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1017: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1018: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1019: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1020: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1021: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1022: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1023: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1024: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1025: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1026: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1027: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1028: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1029: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1030: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1031: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1032: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1033: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1034: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1035: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1036: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1037: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1038: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1039: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1040: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1041: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1042: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1043: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1044: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm
+[Health] Cycle 1045: ✓  | ✗ ollama:llama31-agent, ollama:mistral-nemo, ollama:gemma3-27b, openrouter:llama-70b, openrouter:liquid-lfm

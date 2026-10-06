@@ -1,0 +1,1 @@
+[PR] pbs-common/terraform-aws-lambda-lb-module#133: Bump dependabot/fetch-metadata from 2 to 3

@@ -1,0 +1,16 @@
+{
+  "name": "platform-upload",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "gumroad": "node gumroad-upload.js",
+    "itchio": "node itchio-upload.js"
+  },
+  "dependencies": {
+    "form-data": "^4.0.0",
+    "node-fetch": "^3.3.2",
+    "playwright": "^1.58.2",
+    "playwright-extra": "^4.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}

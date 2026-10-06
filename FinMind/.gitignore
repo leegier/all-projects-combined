@@ -1,0 +1,47 @@
+# Dependencies and build artifacts
+node_modules/
+dist/
+.build/
+.cache/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.venv/
+
+# Env and secrets
+.env
+.env.local
+.env.*.local
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Tests caches
+.pytest_cache/
+.mypy_cache/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+plan.md
+checklist.md
+continuation_prompt.md
+deployment.md
+SESSION_SUMMARY.md
+
+docker-compose.prod.yml
+
+FEATURES.md
+
+create_issues.ps1
+bounty_issues.ps1

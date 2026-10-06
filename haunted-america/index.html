@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>👻 Haunted America — Paranormal Investigation Platform</title>
+<meta name="description" content="Discover haunted locations, run live paranormal investigations, capture EVP evidence, and connect with ghost hunters across America."/>
+<meta property="og:title" content="👻 Haunted America"/>
+<meta property="og:description" content="The #1 paranormal investigation platform. Every haunted location in America."/>
+<meta property="og:image" content="https://leegier.github.io/haunted-america/og.png"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👻</text></svg>"/>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a28;
+    --border: #2a2a40;
+    --accent: #7c3aed;
+    --accent2: #a855f7;
+    --green: #22c55e;
+    --red: #ef4444;
+    --yellow: #f59e0b;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --glow: 0 0 20px rgba(124,58,237,0.4);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; }
+
+  /* NAV */
+  nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+  .logo { font-size: 1.2rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .logo span { color: var(--accent2); }
+  .nav-badge { background: var(--accent); color: white; font-size: 0.65rem; padding: 2px 7px; border-radius: 20px; font-weight: 700; text-transform: uppercase; }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+  .btn { padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: all 0.2s; }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); }
+  .btn-primary { background: var(--accent); color: white; box-shadow: var(--glow); }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  /* TABS */
+  .tabs { display: flex; background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 20px; overflow-x: auto; gap: 4px; }
+  .tab { padding: 14px 18px; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--muted); border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--accent2); border-bottom-color: var(--accent2); }
+  .tab-live { animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+  /* PANELS */
+  .panel { display: none; padding: 20px; max-width: 1200px; margin: 0 auto; }
+  .panel.active { display: block; }
+
+  /* HERO */
+  .hero { text-align: center; padding: 60px 20px 40px; background: radial-gradient(ellipse at center top, rgba(124,58,237,0.15) 0%, transparent 70%); }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 12px; }
+  .hero h1 .ghost { animation: float 3s ease-in-out infinite; display: inline-block; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 500px; margin: 0 auto 24px; }
+  .hero-stats { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--accent2); }
+  .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* LOCATION GRID */
+  .filter-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; align-items: center; }
+  .filter-bar input { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 10px 14px; border-radius: 8px; font-size: 0.9rem; flex: 1; min-width: 200px; }
+  .filter-bar input:focus { outline: none; border-color: var(--accent2); }
+  .filter-bar select { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 10px 14px; border-radius: 8px; font-size: 0.9rem; cursor: pointer; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.2s; }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--glow); }
+  .card-img { height: 160px; background: var(--surface2); display: flex; align-items: center; justify-content: center; font-size: 4rem; position: relative; overflow: hidden; }
+  .card-img::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.8)); }
+  .card-badges { position: absolute; bottom: 8px; left: 8px; display: flex; gap: 6px; }
+  .badge { font-size: 0.65rem; padding: 2px 7px; border-radius: 20px; font-weight: 700; text-transform: uppercase; }
+  .badge-hot { background: rgba(239,68,68,0.8); color: white; }
+  .badge-active { background: rgba(34,197,94,0.8); color: white; }
+  .badge-verified { background: rgba(124,58,237,0.8); color: white; }
+  .card-body { padding: 14px; }
+  .card-title { font-weight: 700; margin-bottom: 4px; font-size: 1rem; }
+  .card-loc { color: var(--muted); font-size: 0.8rem; margin-bottom: 8px; display: flex; align-items: center; gap: 4px; }
+  .card-meta { display: flex; justify-content: space-between; align-items: center; }
+  .rating { color: var(--yellow); font-size: 0.85rem; }
+  .activity { font-size: 0.75rem; color: var(--muted); }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; width: 100%; max-width: 640px; max-height: 90vh; overflow-y: auto; }
+  .modal-head { padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start; }
+  .modal-head h2 { font-size: 1.3rem; font-weight: 700; }
+  .close-btn { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1.5rem; line-height: 1; padding: 4px; }
+  .close-btn:hover { color: var(--text); }
+  .modal-body { padding: 20px; }
+  .modal-emoji { font-size: 5rem; text-align: center; margin-bottom: 16px; display: block; }
+  .findings { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+  .finding { background: var(--surface2); border-radius: 8px; padding: 12px; border-left: 3px solid var(--accent); }
+  .finding-src { font-size: 0.7rem; color: var(--accent2); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+  .finding-text { font-size: 0.9rem; color: var(--text); }
+  .finding-date { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+
+  /* TOOLS */
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .tool-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .tool-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .tool-icon { font-size: 1.8rem; }
+  .tool-title { font-weight: 700; font-size: 1rem; }
+  .tool-sub { font-size: 0.75rem; color: var(--muted); }
+  .meter { height: 8px; background: var(--surface2); border-radius: 4px; overflow: hidden; margin: 8px 0; }
+  .meter-fill { height: 100%; border-radius: 4px; transition: width 0.3s; background: linear-gradient(90deg, var(--green), var(--yellow), var(--red)); }
+  .meter-val { font-size: 0.8rem; color: var(--muted); }
+  .tool-readout { font-size: 2rem; font-weight: 800; color: var(--accent2); margin: 8px 0; font-variant-numeric: tabular-nums; }
+  .tool-btn { width: 100%; margin-top: 12px; padding: 10px; border-radius: 8px; border: 1px solid var(--accent); background: transparent; color: var(--accent2); font-weight: 700; cursor: pointer; transition: all 0.2s; }
+  .tool-btn:hover { background: var(--accent); color: white; }
+  .tool-btn.recording { background: var(--red); border-color: var(--red); color: white; animation: recordPulse 1s infinite; }
+  @keyframes recordPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
+  .waveform { height: 40px; background: var(--surface2); border-radius: 6px; margin: 8px 0; display: flex; align-items: center; gap: 2px; padding: 4px 8px; overflow: hidden; }
+  .wave-bar { width: 3px; border-radius: 2px; background: var(--accent2); transition: height 0.1s; }
+  .anomaly { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); border-radius: 6px; padding: 8px 12px; font-size: 0.8rem; color: #fca5a5; margin-top: 8px; display: none; }
+  .anomaly.show { display: block; }
+  .spirit-display { background: var(--surface2); border-radius: 8px; padding: 12px; margin: 8px 0; min-height: 60px; font-size: 0.85rem; color: var(--accent2); font-style: italic; text-align: center; }
+
+  /* LIVE */
+  .live-header { background: linear-gradient(135deg, rgba(239,68,68,0.2), rgba(124,58,237,0.2)); border: 1px solid rgba(239,68,68,0.3); border-radius: 12px; padding: 20px; margin-bottom: 20px; text-align: center; }
+  .live-count { font-size: 2.5rem; font-weight: 800; color: var(--red); }
+  .live-streams { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .stream-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .stream-thumb { height: 140px; background: var(--surface2); display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; }
+  .stream-live-badge { position: absolute; top: 8px; left: 8px; background: var(--red); color: white; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; }
+  .stream-viewers { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.7); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; }
+  .stream-body { padding: 12px; }
+  .stream-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+  .stream-meta { font-size: 0.75rem; color: var(--muted); }
+
+  /* CHAT */
+  .chat-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; display: flex; flex-direction: column; height: calc(100vh - 200px); max-height: 600px; }
+  .chat-head { padding: 14px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .chat-online { width: 8px; height: 8px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+  .chat-msgs { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .msg { display: flex; gap: 10px; }
+  .msg-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+  .msg-content { flex: 1; }
+  .msg-name { font-size: 0.75rem; font-weight: 700; color: var(--accent2); margin-bottom: 2px; }
+  .msg-text { font-size: 0.9rem; background: var(--surface2); padding: 8px 12px; border-radius: 0 8px 8px 8px; display: inline-block; max-width: 100%; }
+  .chat-input { padding: 12px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
+  .chat-input input { flex: 1; background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 10px 14px; border-radius: 8px; font-size: 0.9rem; }
+  .chat-input input:focus { outline: none; border-color: var(--accent2); }
+
+  /* MAP */
+  .map-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; min-height: 400px; position: relative; overflow: hidden; }
+  .map-bg { position: absolute; inset: 0; opacity: 0.05; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'%3E%3Cpath d='M10 30 Q20 10 35 25 Q45 35 55 20 Q65 10 75 30 Q85 45 90 35' stroke='%237c3aed' fill='none' stroke-width='0.5'/%3E%3C/svg%3E") center/cover; }
+  .map-pins { position: relative; display: grid; grid-template-columns: repeat(10, 1fr); grid-template-rows: repeat(6, 60px); gap: 4px; }
+  .pin { display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; transition: transform 0.2s; position: relative; }
+  .pin:hover { transform: scale(1.5); z-index: 10; }
+  .pin-tooltip { display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; font-size: 0.7rem; white-space: nowrap; z-index: 20; }
+  .pin:hover .pin-tooltip { display: block; }
+
+  /* PREMIUM */
+  .premium-banner { background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.15)); border: 1px solid rgba(124,58,237,0.5); border-radius: 12px; padding: 24px; text-align: center; margin-bottom: 24px; }
+  .premium-banner h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+  .price { font-size: 2.5rem; font-weight: 800; color: var(--accent2); }
+  .price sup { font-size: 1rem; vertical-align: super; }
+  .price sub { font-size: 0.9rem; color: var(--muted); }
+  .features { list-style: none; text-align: left; display: inline-block; margin: 16px auto; }
+  .features li { padding: 4px 0; font-size: 0.9rem; }
+  .features li::before { content: '✓ '; color: var(--green); font-weight: 700; }
+
+  /* PROFILE */
+  .profile-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; margin-bottom: 20px; }
+  .avatar-big { font-size: 4rem; margin-bottom: 12px; }
+  .level-badge { background: var(--accent); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin: 8px 0; }
+  .xp-bar { height: 8px; background: var(--surface2); border-radius: 4px; overflow: hidden; margin: 8px 0; }
+  .xp-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 4px; width: 65%; }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .hero { padding: 40px 16px 24px; }
+    .panel { padding: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">👻 <span>Haunted</span> America</div>
+  <div class="nav-right">
+    <span class="nav-badge">🔴 2,847 LIVE</span>
+    <button class="btn btn-ghost" onclick="showPremium()">✨ Go Pro</button>
+    <button class="btn btn-primary" onclick="showLogin()">Sign In</button>
+  </div>
+</nav>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('explore')">🗺️ Explore</div>
+  <div class="tab" onclick="switchTab('map')">📍 Map</div>
+  <div class="tab" onclick="switchTab('tools')">🔮 Tools</div>
+  <div class="tab" onclick="switchTab('live')"><span class="tab-live">🔴</span> Live</div>
+  <div class="tab" onclick="switchTab('chat')">💬 Community</div>
+  <div class="tab" onclick="switchTab('profile')">👤 Profile</div>
+</div>
+
+<!-- EXPLORE -->
+<div id="tab-explore" class="panel active">
+  <div class="hero">
+    <h1><span class="ghost">👻</span> Haunted America</h1>
+    <p>Every haunted location. Real evidence. Live investigations. Your paranormal HQ.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">12,847</div><div class="stat-label">Locations</div></div>
+      <div class="stat"><div class="stat-num">2,847</div><div class="stat-label">Live Now</div></div>
+      <div class="stat"><div class="stat-num">891K</div><div class="stat-label">Investigators</div></div>
+      <div class="stat"><div class="stat-num">50</div><div class="stat-label">States</div></div>
+    </div>
+  </div>
+  <div class="filter-bar">
+    <input type="text" id="search" placeholder="🔍 Search locations..." oninput="filterLocations()"/>
+    <select id="stateFilter" onchange="filterLocations()">
+      <option value="">All States</option>
+      <option>Missouri</option><option>Louisiana</option><option>Virginia</option>
+      <option>California</option><option>New York</option><option>Ohio</option>
+      <option>Illinois</option><option>Texas</option><option>Georgia</option>
+      <option>Kentucky</option><option>Arkansas</option><option>Massachusetts</option>
+    </select>
+    <select id="typeFilter" onchange="filterLocations()">
+      <option value="">All Types</option>
+      <option>Asylum</option><option>Cemetery</option><option>Mansion</option>
+      <option>Prison</option><option>Hotel</option><option>Battlefield</option>
+      <option>Hospital</option><option>Theater</option>
+    </select>
+  </div>
+  <div class="grid" id="locationGrid"></div>
+</div>
+
+<!-- MAP -->
+<div id="tab-map" class="panel">
+  <h2 style="margin-bottom:16px">📍 Paranormal Activity Map</h2>
+  <div class="map-wrap">
+    <div class="map-bg"></div>
+    <div class="map-pins" id="mapPins"></div>
+  </div>
+  <p style="text-align:center;color:var(--muted);margin-top:12px;font-size:0.85rem">Hover pins to see location names · 👻 = active investigation</p>
+</div>
+
+<!-- TOOLS -->
+<div id="tab-tools" class="panel">
+  <h2 style="margin-bottom:16px">🔮 Investigation Tools</h2>
+  <div class="tools-grid">
+
+    <!-- EMF -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">📡</div>
+        <div><div class="tool-title">EMF Detector</div><div class="tool-sub">Electromagnetic field monitor</div></div>
+      </div>
+      <div class="tool-readout" id="emfVal">0.0 mG</div>
+      <div class="meter"><div class="meter-fill" id="emfBar" style="width:0%"></div></div>
+      <div class="meter-val" id="emfLabel">No Activity</div>
+      <div class="anomaly" id="emfAlert">⚠️ ANOMALY DETECTED — Unusual EM field spike!</div>
+      <button class="tool-btn" id="emfBtn" onclick="toggleEMF()">▶ Start Monitoring</button>
+    </div>
+
+    <!-- EVP -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">🎙️</div>
+        <div><div class="tool-title">EVP Recorder</div><div class="tool-sub">Electronic voice phenomena</div></div>
+      </div>
+      <div class="waveform" id="waveform">
+        <div class="wave-bar" style="height:4px"></div><div class="wave-bar" style="height:4px"></div>
+        <div class="wave-bar" style="height:4px"></div><div class="wave-bar" style="height:4px"></div>
+        <div class="wave-bar" style="height:4px"></div><div class="wave-bar" style="height:4px"></div>
+        <div class="wave-bar" style="height:4px"></div><div class="wave-bar" style="height:4px"></div>
+        <div class="wave-bar" style="height:4px"></div><div class="wave-bar" style="height:4px"></div>
+        <div class="wave-bar" style="height:4px"></div><div class="wave-bar" style="height:4px"></div>
+      </div>
+      <div class="meter-val" id="evpStatus">Ready to record</div>
+      <div class="anomaly" id="evpAlert">👻 EVP Captured! Frequency anomaly at 18-22 Hz range detected.</div>
+      <button class="tool-btn" id="evpBtn" onclick="toggleEVP()">🔴 Start Recording</button>
+    </div>
+
+    <!-- Spirit Box -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">📻</div>
+        <div><div class="tool-title">Spirit Box</div><div class="tool-sub">Real-time ITC communication</div></div>
+      </div>
+      <div class="spirit-display" id="spiritDisplay">Press start to begin scanning...</div>
+      <div class="meter-val" id="spiritFreq">Freq: ---</div>
+      <button class="tool-btn" id="spiritBtn" onclick="toggleSpirit()">▶ Start Scan</button>
+    </div>
+
+    <!-- Thermal -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">🌡️</div>
+        <div><div class="tool-title">Thermal Sensor</div><div class="tool-sub">Cold spot & heat signature detection</div></div>
+      </div>
+      <div class="tool-readout" id="tempVal">--°F</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin:8px 0" id="thermalGrid"></div>
+      <div class="anomaly" id="tempAlert">❄️ COLD SPOT — Temperature drop of 18°F detected!</div>
+      <button class="tool-btn" id="tempBtn" onclick="toggleThermal()">▶ Scan Area</button>
+    </div>
+
+    <!-- Motion -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">👁️</div>
+        <div><div class="tool-title">Motion Detector</div><div class="tool-sub">Paranormal movement tracker</div></div>
+      </div>
+      <div class="tool-readout" id="motionVal">CLEAR</div>
+      <div class="meter"><div class="meter-fill" id="motionBar" style="width:0%"></div></div>
+      <div class="meter-val">Sensitivity: <input type="range" min="1" max="10" value="5" style="vertical-align:middle;accent-color:var(--accent2)" id="motionSens"/></div>
+      <div class="anomaly" id="motionAlert">🚨 MOTION DETECTED — Unexplained movement in your zone!</div>
+      <button class="tool-btn" id="motionBtn" onclick="toggleMotion()">▶ Arm Detector</button>
+    </div>
+
+    <!-- K2 -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">💡</div>
+        <div><div class="tool-title">K2 Meter</div><div class="tool-sub">5-LED EMF burst detection</div></div>
+      </div>
+      <div style="display:flex;gap:8px;margin:12px 0;justify-content:center">
+        <div class="k2-led" id="k1" style="width:28px;height:28px;border-radius:50%;background:#1a1a1a;border:2px solid #333;transition:all 0.1s"></div>
+        <div class="k2-led" id="k2" style="width:28px;height:28px;border-radius:50%;background:#1a1a1a;border:2px solid #333;transition:all 0.1s"></div>
+        <div class="k2-led" id="k3" style="width:28px;height:28px;border-radius:50%;background:#1a1a1a;border:2px solid #333;transition:all 0.1s"></div>
+        <div class="k2-led" id="k4" style="width:28px;height:28px;border-radius:50%;background:#1a1a1a;border:2px solid #333;transition:all 0.1s"></div>
+        <div class="k2-led" id="k5" style="width:28px;height:28px;border-radius:50%;background:#1a1a1a;border:2px solid #333;transition:all 0.1s"></div>
+      </div>
+      <div class="meter-val" id="k2Status">Inactive</div>
+      <button class="tool-btn" id="k2Btn" onclick="toggleK2()">▶ Activate K2</button>
+    </div>
+  </div>
+</div>
+
+<!-- LIVE -->
+<div id="tab-live" class="panel">
+  <div class="live-header">
+    <div class="live-count" id="liveCount">2,847</div>
+    <div style="color:var(--muted);font-size:0.9rem">investigators active right now</div>
+  </div>
+  <h3 style="margin-bottom:16px">🎥 Active Broadcasts</h3>
+  <div class="live-streams" id="liveStreams"></div>
+</div>
+
+<!-- CHAT -->
+<div id="tab-chat" class="panel">
+  <h2 style="margin-bottom:16px">💬 Community Chat</h2>
+  <div class="chat-wrap">
+    <div class="chat-head">
+      <div class="chat-online"></div>
+      <div>
+        <div style="font-weight:700;font-size:0.95rem">#general-investigation</div>
+        <div style="font-size:0.75rem;color:var(--muted)">2,847 online</div>
+      </div>
+    </div>
+    <div class="chat-msgs" id="chatMsgs"></div>
+    <div class="chat-input">
+      <input type="text" id="chatIn" placeholder="Share your experience..." onkeydown="if(event.key==='Enter')sendChat()"/>
+      <button class="btn btn-primary" onclick="sendChat()">Send</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROFILE -->
+<div id="tab-profile" class="panel">
+  <div class="profile-card">
+    <div class="avatar-big">👤</div>
+    <h2 style="font-size:1.3rem;font-weight:700">Ghost Hunter</h2>
+    <div class="level-badge">⚡ Level 12 — Paranormal Investigator</div>
+    <div class="xp-bar"><div class="xp-fill"></div></div>
+    <div style="font-size:0.8rem;color:var(--muted);margin-bottom:16px">6,500 / 10,000 XP</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px">
+      <div class="stat"><div class="stat-num">34</div><div class="stat-label">Locations</div></div>
+      <div class="stat"><div class="stat-num">127</div><div class="stat-label">EVP Captures</div></div>
+      <div class="stat"><div class="stat-num">1.2K</div><div class="stat-label">Followers</div></div>
+    </div>
+  </div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px">
+    <h3 style="margin-bottom:12px">🏆 Badges Earned</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <span style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:0.85rem">👻 First Sighting</span>
+      <span style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:0.85rem">🎙️ EVP Pioneer</span>
+      <span style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:0.85rem">📡 EMF Expert</span>
+      <span style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:0.85rem">🗺️ Explorer</span>
+      <span style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:0.85rem">🔴 First Broadcast</span>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,rgba(124,58,237,0.3),rgba(168,85,247,0.1));border:1px solid rgba(124,58,237,0.5);border-radius:12px;padding:20px;margin-top:16px;text-align:center">
+    <div style="font-size:1.3rem;font-weight:800;margin-bottom:8px">✨ Upgrade to Pro</div>
+    <div class="price"><sup>$</sup>4<sup>.99</sup><sub>/mo</sub></div>
+    <ul class="features">
+      <li>Unlimited EVP recordings saved to cloud</li>
+      <li>AI-powered anomaly analysis</li>
+      <li>Live broadcast HD quality</li>
+      <li>Access to private investigation groups</li>
+      <li>Priority alert for new hauntings in your area</li>
+      <li>Exclusive Pro badge + profile frame</li>
+    </ul>
+    <button class="btn btn-primary" style="width:100%;padding:14px;font-size:1rem" onclick="showPremium()">Unlock Pro — $4.99/mo</button>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <div class="modal-title" id="modalTitle" style="font-size:1.3rem;font-weight:700"></div>
+        <div id="modalSub" style="font-size:0.8rem;color:var(--muted);margin-top:2px"></div>
+      </div>
+      <button class="close-btn" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+const LOCATIONS = [
+  {name:"Lemp Mansion",state:"Missouri",type:"Mansion",emoji:"🏚️",rating:4.8,reports:2341,hot:true,active:true,verified:true,desc:"Site of multiple Lemp family suicides. Guests report full-body apparitions, disembodied voices, and cold spots throughout the historic mansion.",findings:[{src:"YouTube",text:"Multiple shadow figures caught on night vision in the basement. EVP captured 'get out' in a child's voice.",date:"Mar 2026"},{src:"Reddit",text:"Stayed the night as part of their ghost tour. K2 meter went crazy near the Charles Lemp portrait. Got scratched by something invisible.",date:"Feb 2026"},{src:"TikTok",text:"LIVE investigation caught a full glass flying off the bar with no one near it. 50k viewers watched it happen.",date:"Jan 2026"}]},
+  {name:"Missouri State Penitentiary",state:"Missouri",type:"Prison",emoji:"⛓️",rating:4.9,reports:5621,hot:true,active:true,verified:true,desc:"Once called 'the bloodiest 47 acres in America.' Housing over 4,000 inmates at peak, violent deaths echo through its halls.",findings:[{src:"History Channel",text:"Featured on Ghost Adventures. EVP captured screaming in the gas chamber. Multiple investigators experienced physical attacks.",date:"Dec 2025"},{src:"Reddit",text:"Took a night tour. In cell block 5, my phone died instantly and the temperature dropped 30 degrees. Not exaggerating.",date:"Mar 2026"},{src:"YouTube",text:"Thermal camera picked up a clear human silhouette standing in the shower room — nobody was there.",date:"Feb 2026"}]},
+  {name:"Waverly Hills Sanatorium",state:"Kentucky",type:"Hospital",emoji:"🏥",rating:4.9,reports:8902,hot:true,active:true,verified:true,desc:"63,000 tuberculosis patients died here. The body chute tunnels and nurse stations are hotbeds of paranormal activity.",findings:[{src:"Ghost Adventures",text:"Zak Bagans captured a full apparition on the fourth floor. The infamous Room 502 shows a nurse who hanged herself.",date:"Nov 2025"},{src:"TikTok",text:"Ball rolled back to us on its own on the 3rd floor. Happened 4 times. We have it all on video.",date:"Mar 2026"},{src:"News",text:"Local paranormal group documents 47 anomalies in single investigation, making it their most active location ever.",date:"Jan 2026"}]},
+  {name:"Winchester Mystery House",state:"California",type:"Mansion",emoji:"🔫",rating:4.7,reports:12004,hot:false,active:true,verified:true,desc:"Sarah Winchester built this house continuously for 38 years to confuse the spirits. Staircases to nowhere, doors to walls, windows into floors.",findings:[{src:"YouTube",text:"Security cameras captured movement in sealed-off wing. Doors opening and closing at 3 AM with no explanation.",date:"Feb 2026"},{src:"Reddit",text:"Took the unguided tour. Heard footsteps following us for 20 minutes in the Hall of Fires. Nobody else was on that floor.",date:"Mar 2026"},{src:"Facebook",text:"My grandmother worked here in the 70s. She quit after seeing a woman in Victorian dress walk through a sealed door.",date:"Dec 2025"}]},
+  {name:"Gettysburg Battlefield",state:"Virginia",type:"Battlefield",emoji:"⚔️",rating:4.8,reports:15234,hot:false,active:true,verified:true,desc:"51,000 casualties over three days. The most documented paranormal location in the US. Soldiers still roam these fields.",findings:[{src:"Military History",text:"Photographs taken at Devil's Den consistently show a mysterious soldier figure in period clothing that doesn't appear in person.",date:"Jan 2026"},{src:"YouTube",text:"Night vision footage captured an entire regiment of soldiers marching through the wheat field at 2 AM.",date:"Mar 2026"},{src:"TikTok",text:"EVP session caught a man saying 'hold the line' near the stone wall. Clear as a real voice.",date:"Feb 2026"}]},
+  {name:"The Stanley Hotel",state:"Colorado",type:"Hotel",emoji:"🏨",rating:4.6,reports:3421,hot:false,active:false,verified:true,desc:"Inspiration for Stephen King's The Shining. Room 217 and the ballroom are epicenters of activity.",findings:[{src:"Travel Channel",text:"Guests in Room 217 consistently report piano music playing, luggage moving, and children laughing in empty hallways.",date:"Feb 2026"},{src:"Reddit",text:"I'm a skeptic. I stayed here to debunk it. Left after night 1 after watching my suitcase slide across the floor.",date:"Mar 2026"},{src:"YouTube",text:"Long-term guest captured 47 EVP sessions in one week stay. Multiple intelligent responses to direct questions.",date:"Jan 2026"}]},
+  {name:"Eastern State Penitentiary",state:"Pennsylvania",type:"Prison",emoji:"🔒",rating:4.7,reports:7823,hot:true,active:true,verified:true,desc:"Al Capone's cell is reportedly still haunted by his victims. Cell block 12 is the most active.",findings:[{src:"Ghost Hunters",text:"TAPS team captured a shadow person running along the wall in Cell Block 12. Equipment malfunctioned throughout.",date:"Nov 2025"},{src:"Reddit",text:"During the Halloween haunted house event, a real ghost ran through our group. We all felt it. Staff confirmed the area.",date:"Oct 2025"},{src:"YouTube",text:"Cell 21 — Al Capone's cell — has documented EVP every single session. Always the same scratchy voice.",date:"Mar 2026"}]},
+  {name:"The Myrtles Plantation",state:"Louisiana",type:"Mansion",emoji:"🌿",rating:4.8,reports:4521,hot:false,active:true,verified:true,desc:"Built over a Tunica burial ground. Chloe, the enslaved woman who poisoned the family, still roams the halls.",findings:[{src:"National Geographic",text:"The infamous mirror that trapped the souls of the murdered family still shows handprints that cannot be cleaned off.",date:"Jan 2026"},{src:"Reddit",text:"I saw Chloe standing by the window. Clear as day. Green turban and everything. She looked right at me.",date:"Feb 2026"},{src:"TikTok",text:"Verified: guests in the William Drew Plantation Room hear children crying every night between 1-3 AM.",date:"Mar 2026"}]},
+  {name:"Trans-Allegheny Lunatic Asylum",state:"West Virginia",type:"Asylum",emoji:"🏥",rating:4.9,reports:6234,hot:true,active:false,verified:true,desc:"Housed over 2,400 patients in a building designed for 250. Horrors documented here are some of the worst in US history.",findings:[{src:"Ghost Adventures",text:"A child named Lily makes her presence known to investigators. Her ball has been captured rolling toward people on its own.",date:"Dec 2025"},{src:"YouTube",text:"Ward R — the violent ward — had every single piece of our equipment go off simultaneously for 3 minutes straight.",date:"Feb 2026"},{src:"Reddit",text:"Captured 23 Class A EVPs in a single night. The spirits here clearly want to communicate.",date:"Mar 2026"}]},
+  {name:"Bachelor's Grove Cemetery",state:"Illinois",type:"Cemetery",emoji:"⚰️",rating:4.6,reports:3892,hot:false,active:true,verified:true,desc:"One of the most haunted cemeteries in the US. The phantom house, the white lady, and glowing orbs are documented here.",findings:[{src:"TAPS",text:"The famous photograph of the transparent woman sitting on a tombstone remains unexplained after 30 years of analysis.",date:"1991"},{src:"Reddit",text:"Went with 4 friends. We all independently saw the same glowing ball float between the graves. No explanation.",date:"Mar 2026"},{src:"YouTube",text:"Phantom farmhouse appeared for 6 minutes on our night vision. Three witnesses. It simply faded away.",date:"Jan 2026"}]},
+  {name:"Lizzie Borden House",state:"Massachusetts",type:"Mansion",emoji:"🪓",rating:4.5,reports:2134,hot:false,active:false,verified:true,desc:"The site of the 1892 axe murders. Lizzie Borden's parents were killed here. Now a B&B where guests regularly encounter them.",findings:[{src:"Buzzfeed Unsolved",text:"Ryan and Shane captured an EVP that said 'I didn't do it' in the room where Andrew Borden was murdered.",date:"2019"},{src:"Reddit",text:"I slept in Lizzie's room. Woke up at 3:17 AM to something pressing down on my chest. Couldn't breathe or move.",date:"Feb 2026"},{src:"YouTube",text:"K2 meter spiked to red in answer to yes/no questions about the murders. 14 consecutive accurate responses.",date:"Mar 2026"}]},
+  {name:"The Crescent Hotel",state:"Arkansas",type:"Hotel",emoji:"🏨",rating:4.7,reports:3456,hot:false,active:true,verified:true,desc:"Once a fraudulent cancer hospital. Norman Baker's cancer cure patients died here. Their spirits remain.",findings:[{src:"Travel Channel",text:"Guest room 218 — the former operating room — has documented apparitions of patients strapped to gurneys.",date:"Dec 2025"},{src:"Reddit",text:"The morgue tour is free but nobody warns you that the spirits actually interact. Got my hair pulled twice.",date:"Mar 2026"},{src:"TikTok",text:"Norman Baker's ghost was captured on camera in the lobby. Distinctive purple shirt and all.",date:"Feb 2026"}]},
+];
+
+const CHAT_MSGS = [
+  {user:"GhostHunterMike",avatar:"👻",text:"Just picked up an EVP at the old asylum on Route 9. Clear as day said 'help me'. Anyone else been there?"},
+  {user:"ParanormalPat",avatar:"🔮",text:"Waverly Hills tonight! Come join my broadcast, going into the body chute at midnight 😱"},
+  {user:"SpiritSeeker99",avatar:"🌙",text:"My K2 meter went absolutely crazy at Bachelor's Grove last night. 7 red LED spikes in 10 minutes"},
+  {user:"GhostGirlTx",avatar:"⭐",text:"Lemp Mansion confirmed again — the child spirit in the basement responded to 6 questions in a row"},
+  {user:"EVPExpert",avatar:"🎙️",text:"Pro tip: use 40-90Hz sweep rate on your spirit box for clearest responses. Lower is better for class A EVP"},
+  {user:"CemeteryChaser",avatar:"⚰️",text:"Bachelor's Grove tonight if anyone wants to carpool from Chicago, got 2 spots"},
+  {user:"NightInvestigator",avatar:"🌑",text:"Has anyone tried the new full spectrum camera at Eastern State? Worth the upgrade?"},
+  {user:"HauntedHistorian",avatar:"📚",text:"Just documented 3 new locations in rural Virginia that have ZERO prior documentation. Will post write-ups tomorrow"},
+];
+
+const STREAMS = [
+  {emoji:"🏚️",title:"Live at Lemp Mansion — Basement Vigil",location:"St. Louis, MO",viewers:847,user:"@GhostHunterPro"},
+  {emoji:"⛓️",title:"Missouri State Pen — Death Row Wing",location:"Jefferson City, MO",viewers:2341,user:"@ParanormalTV"},
+  {emoji:"🏥",title:"Waverly Hills — Body Chute Midnight Run",location:"Louisville, KY",viewers:1203,user:"@KentuckyGhosts"},
+  {emoji:"⚔️",title:"Gettysburg Night Patrol — Devil's Den",location:"Gettysburg, PA",viewers:512,user:"@BattlefieldSpirits"},
+  {emoji:"🌿",title:"Myrtles Plantation — Chloe Hunt",location:"St. Francisville, LA",viewers:389,user:"@SouthernHaunts"},
+  {emoji:"⚰️",title:"Bachelor's Grove — Full Investigation",location:"Midlothian, IL",viewers:234,user:"@ChicagoGhosts"},
+];
+
+const MAP_DATA = [
+  {col:2,row:1,emoji:"⚔️",name:"Gettysburg"},
+  {col:3,row:2,emoji:"🏚️",name:"Eastern State Pen"},
+  {col:4,row:1,emoji:"🪓",name:"Lizzie Borden"},
+  {col:5,row:2,emoji:"🏥",name:"Trans-Allegheny"},
+  {col:6,row:2,emoji:"⛓️",name:"Missouri State Pen"},
+  {col:6,row:3,emoji:"🏚️",name:"Lemp Mansion"},
+  {col:7,row:3,emoji:"ⰰ️",name:"Bachelor's Grove"},
+  {col:3,row:4,emoji:"🌿",name:"Myrtles Plantation"},
+  {col:5,row:4,emoji:"🏨",name:"Crescent Hotel"},
+  {col:7,row:2,emoji:"🏥",name:"Waverly Hills"},
+  {col:9,row:3,emoji:"🏨",name:"Stanley Hotel"},
+  {col:1,row:3,emoji:"🔫",name:"Winchester House"},
+];
+
+// Render locations
+function renderLocations(locs) {
+  const grid = document.getElementById('locationGrid');
+  grid.innerHTML = locs.map((l,i) => `
+    <div class="card" onclick="openLocation(${i})">
+      <div class="card-img">
+        ${l.emoji}
+        <div class="card-badges">
+          ${l.hot?'<span class="badge badge-hot">🔥 Hot</span>':''}
+          ${l.active?'<span class="badge badge-active">● Active</span>':''}
+          ${l.verified?'<span class="badge badge-verified">✓ Verified</span>':''}
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">${l.name}</div>
+        <div class="card-loc">📍 ${l.state} · ${l.type}</div>
+        <div class="card-meta">
+          <div class="rating">⭐ ${l.rating} <span style="color:var(--muted)">(${l.reports.toLocaleString()} reports)</span></div>
+          ${l.active?'<div class="activity" style="color:var(--green)">● Live Now</div>':''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterLocations() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const st = document.getElementById('stateFilter').value;
+  const ty = document.getElementById('typeFilter').value;
+  renderLocations(LOCATIONS.filter(l =>
+    (!q || l.name.toLowerCase().includes(q) || l.state.toLowerCase().includes(q)) &&
+    (!st || l.state === st) &&
+    (!ty || l.type === ty)
+  ));
+}
+
+function openLocation(i) {
+  const l = LOCATIONS[i];
+  document.getElementById('modalTitle').textContent = l.emoji + ' ' + l.name;
+  document.getElementById('modalSub').textContent = '📍 ' + l.state + ' · ' + l.type + ' · ⭐ ' + l.rating;
+  document.getElementById('modalBody').innerHTML = `
+    <p style="color:var(--muted);font-size:0.9rem;margin-bottom:16px">${l.desc}</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+      <button class="btn btn-primary" onclick="alert('Sign in to start your live broadcast from this location!')">🔴 Go Live Here</button>
+      <button class="btn btn-ghost" onclick="alert('Navigation opening...')">🗺️ Get Directions</button>
+      <button class="btn btn-ghost" onclick="switchTab('tools');closeModal()">🔮 Open Tools</button>
+    </div>
+    <h3 style="margin-bottom:10px;font-size:1rem">📋 Documented Evidence</h3>
+    <div class="findings">
+      ${l.findings.map(f=>`
+        <div class="finding">
+          <div class="finding-src">${f.src}</div>
+          <div class="finding-text">${f.text}</div>
+          <div class="finding-date">${f.date}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+
+// Tabs
+function switchTab(t) {
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+t).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// EMF
+let emfInterval=null, emfActive=false;
+function toggleEMF() {
+  emfActive=!emfActive;
+  const btn=document.getElementById('emfBtn');
+  if(emfActive) { btn.textContent='⏹ Stop'; emfInterval=setInterval(updateEMF,300); }
+  else { btn.textContent='▶ Start Monitoring'; clearInterval(emfInterval); document.getElementById('emfAlert').classList.remove('show'); document.getElementById('emfVal').textContent='0.0 mG'; document.getElementById('emfBar').style.width='0%'; document.getElementById('emfLabel').textContent='No Activity'; }
+}
+function updateEMF() {
+  const v = Math.random()*20 + (Math.random()>0.9?60:0);
+  const pct = Math.min(100,v/80*100);
+  document.getElementById('emfVal').textContent = v.toFixed(1)+' mG';
+  document.getElementById('emfBar').style.width = pct+'%';
+  document.getElementById('emfLabel').textContent = v<5?'No Activity':v<15?'Low Activity':v<35?'Moderate — Possible Entity':v<60?'HIGH — Entity Present!':'EXTREME ANOMALY!';
+  document.getElementById('emfAlert').classList.toggle('show', v>50);
+}
+
+// EVP
+let evpInterval=null, evpActive=false;
+const evpPhrases=['help me','get out','leave now','its cold','find me','who are you','i see you','stay away','come closer','dont go'];
+function toggleEVP() {
+  evpActive=!evpActive;
+  const btn=document.getElementById('evpBtn');
+  if(evpActive) { btn.textContent='⏹ Stop Recording'; btn.classList.add('recording'); evpInterval=setInterval(updateEVP,200); document.getElementById('evpStatus').textContent='● Recording...'; }
+  else { btn.textContent='🔴 Start Recording'; btn.classList.remove('recording'); clearInterval(evpInterval); document.getElementById('evpStatus').textContent='Ready to record'; document.getElementById('evpAlert').classList.remove('show'); document.querySelectorAll('.wave-bar').forEach(b=>b.style.height='4px'); }
+}
+function updateEVP() {
+  document.querySelectorAll('.wave-bar').forEach(b=>{ b.style.height=(Math.random()*30+2)+'px'; });
+  if(Math.random()>0.985) { document.getElementById('evpAlert').classList.add('show'); document.getElementById('evpAlert').textContent='👻 EVP Captured! "'+evpPhrases[Math.floor(Math.random()*evpPhrases.length)]+'" — analyzing...'; setTimeout(()=>document.getElementById('evpAlert').classList.remove('show'),4000); }
+}
+
+// Spirit Box
+let spiritActive=false, spiritInterval=null;
+const spiritWords=['yes','no','here','cold','help','run','dark','light','stay','leave','name','soon','watch','listen','pain','free'];
+function toggleSpirit() {
+  spiritActive=!spiritActive;
+  const btn=document.getElementById('spiritBtn');
+  if(spiritActive) { btn.textContent='⏹ Stop'; spiritInterval=setInterval(updateSpirit,400); }
+  else { btn.textContent='▶ Start Scan'; clearInterval(spiritInterval); document.getElementById('spiritDisplay').textContent='Press start to begin scanning...'; document.getElementById('spiritFreq').textContent='Freq: ---'; }
+}
+function updateSpirit() {
+  const freq = (Math.random()*100+700).toFixed(1);
+  document.getElementById('spiritFreq').textContent='Freq: '+freq+' kHz';
+  const disp=document.getElementById('spiritDisplay');
+  if(Math.random()>0.85) { disp.textContent='"'+spiritWords[Math.floor(Math.random()*spiritWords.length)]+'"'; disp.style.color='#f59e0b'; setTimeout(()=>{disp.style.color='var(--accent2)'; if(spiritActive)disp.textContent='scanning...';},800); }
+  else if(disp.textContent!=='"'+spiritWords.find(w=>disp.textContent.includes(w))+'"') { disp.textContent='scanning...'; }
+}
+
+// Thermal
+let thermalActive=false, thermalInterval=null;
+function toggleThermal() {
+  thermalActive=!thermalActive;
+  const btn=document.getElementById('tempBtn');
+  const grid=document.getElementById('thermalGrid');
+  if(thermalActive) { btn.textContent='⏹ Stop Scan'; thermalInterval=setInterval(updateThermal,500); grid.innerHTML=Array(25).fill(0).map(()=>'<div style="height:20px;border-radius:3px;background:#1a1a1a;transition:background 0.4s"></div>').join(''); }
+  else { btn.textContent='▶ Scan Area'; clearInterval(thermalInterval); document.getElementById('tempAlert').classList.remove('show'); document.getElementById('tempVal').textContent='--°F'; grid.innerHTML=''; }
+}
+function updateThermal() {
+  const base=65+Math.random()*10;
+  const coldSpot=Math.random()>0.9;
+  document.getElementById('tempVal').textContent=(coldSpot?base-18:base).toFixed(1)+'°F';
+  document.getElementById('tempAlert').classList.toggle('show',coldSpot);
+  document.querySelectorAll('#thermalGrid div').forEach(c=>{
+    const t=Math.random()*80+40;
+    const h=Math.round(t*0.8);
+    c.style.background=`hsl(${h},80%,${coldSpot&&Math.random()>0.7?20:50}%)`;
+  });
+}
+
+// Motion
+let motionActive=false, motionInterval=null;
+function toggleMotion() {
+  motionActive=!motionActive;
+  const btn=document.getElementById('motionBtn');
+  if(motionActive) { btn.textContent='⏹ Disarm'; motionInterval=setInterval(updateMotion,400); }
+  else { btn.textContent='▶ Arm Detector'; clearInterval(motionInterval); document.getElementById('motionAlert').classList.remove('show'); document.getElementById('motionVal').textContent='CLEAR'; document.getElementById('motionBar').style.width='0%'; }
+}
+function updateMotion() {
+  const sens=document.getElementById('motionSens').value;
+  const triggered=Math.random()>(1-sens*0.04);
+  const v=triggered?Math.random()*100:Math.random()*20;
+  document.getElementById('motionBar').style.width=v+'%';
+  document.getElementById('motionVal').textContent=v>70?'⚠️ MOTION!':v>30?'LOW MOTION':'CLEAR';
+  document.getElementById('motionAlert').classList.toggle('show',v>70);
+}
+
+// K2
+let k2Active=false, k2Interval=null;
+const k2Colors=['#22c55e','#84cc16','#f59e0b','#ef4444','#dc2626'];
+function toggleK2() {
+  k2Active=!k2Active;
+  const btn=document.getElementById('k2Btn');
+  if(k2Active) { btn.textContent='⏹ Deactivate'; k2Interval=setInterval(updateK2,300); }
+  else { btn.textContent='▶ Activate K2'; clearInterval(k2Interval); for(let i=1;i<=5;i++){document.getElementById('k'+i).style.background='#1a1a1a';document.getElementById('k'+i).style.boxShadow='none';} document.getElementById('k2Status').textContent='Inactive'; }
+}
+function updateK2() {
+  const level=Math.random()>0.8?Math.floor(Math.random()*5)+1:Math.floor(Math.random()*2);
+  for(let i=1;i<=5;i++){
+    const on=i<=level;
+    document.getElementById('k'+i).style.background=on?k2Colors[i-1]:'#1a1a1a';
+    document.getElementById('k'+i).style.boxShadow=on?`0 0 10px ${k2Colors[i-1]}`:'none';
+  }
+  document.getElementById('k2Status').textContent=level===0?'No Activity':level<=2?'Low EMF':level<=4?'High EMF — Possible Entity':'⚠️ EXTREME BURST!';
+}
+
+// Live streams
+document.getElementById('liveStreams').innerHTML = STREAMS.map(s=>`
+  <div class="stream-card">
+    <div class="stream-thumb">
+      ${s.emoji}
+      <div class="stream-live-badge">● LIVE</div>
+      <div class="stream-viewers">👁 ${s.viewers.toLocaleString()}</div>
+    </div>
+    <div class="stream-body">
+      <div class="stream-title">${s.title}</div>
+      <div class="stream-meta">📍 ${s.location} · ${s.user}</div>
+      <button class="btn btn-primary" style="width:100%;margin-top:10px;padding:8px" onclick="alert('Sign in to join this live investigation!')">▶ Watch Live</button>
+    </div>
+  </div>
+`).join('');
+
+// Animate live count
+setInterval(()=>{
+  const el=document.getElementById('liveCount');
+  const curr=parseInt(el.textContent.replace(/,/g,''));
+  const delta=Math.floor(Math.random()*10)-4;
+  el.textContent=(curr+delta).toLocaleString();
+},3000);
+
+// Chat
+CHAT_MSGS.forEach(m=>{
+  addChatMsg(m.user,m.avatar,m.text);
+});
+function addChatMsg(user,avatar,text) {
+  const msgs=document.getElementById('chatMsgs');
+  const div=document.createElement('div');
+  div.className='msg';
+  div.innerHTML=`<div class="msg-avatar">${avatar}</div><div class="msg-content"><div class="msg-name">${user}</div><div class="msg-text">${text}</div></div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function sendChat() {
+  const inp=document.getElementById('chatIn');
+  if(!inp.value.trim())return;
+  addChatMsg('You','👤',inp.value);
+  inp.value='';
+  setTimeout(()=>{
+    const responses=['Amazing! You should check out the EVP tool while you\'re here!','Welcome to the community! Have you tried the spirit box yet?','That\'s wild! Same thing happened to me at Waverly Hills last month!'];
+    const bots=[{u:'GhostHunterMike',a:'👻'},{u:'ParanormalPat',a:'🔮'},{u:'SpiritSeeker99',a:'🌙'}];
+    const b=bots[Math.floor(Math.random()*bots.length)];
+    addChatMsg(b.u,b.a,responses[Math.floor(Math.random()*responses.length)]);
+  },1200);
+}
+
+// Map
+const mapGrid=document.getElementById('mapPins');
+const mapCells=Array(60).fill(null);
+MAP_DATA.forEach(p=>{ mapCells[(p.row-1)*10+(p.col-1)]={emoji:p.emoji,name:p.name}; });
+mapGrid.innerHTML=mapCells.map(c=>c?`<div class="pin" title="${c.name}">${c.emoji}<span class="pin-tooltip">${c.name}</span></div>`:'<div></div>').join('');
+
+// Premium modal
+function showPremium() {
+  document.getElementById('modalTitle').textContent='✨ Haunted America Pro';
+  document.getElementById('modalSub').textContent='Unlock the full paranormal investigation experience';
+  document.getElementById('modalBody').innerHTML=`
+    <div style="text-align:center;margin-bottom:20px">
+      <div class="price"><sup>$</sup>4<sup>.99</sup><sub>/month</sub></div>
+      <div style="color:var(--muted);font-size:0.85rem;margin-top:4px">or $39.99/year — save 33%</div>
+    </div>
+    <ul class="features" style="width:100%">
+      <li>Unlimited EVP recordings saved to cloud</li>
+      <li>AI analysis of all captured anomalies</li>
+      <li>HD live broadcasting (free = SD only)</li>
+      <li>Private investigation groups</li>
+      <li>Priority new haunting alerts in your area</li>
+      <li>Exclusive Pro badge + animated profile frame</li>
+      <li>Download & export all your investigation data</li>
+      <li>Early access to new tools & features</li>
+    </ul>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">
+      <button class="btn btn-primary" style="padding:14px;font-size:1rem" onclick="alert('Redirecting to payment... (coming soon!)')">🚀 Start Pro — $4.99/mo</button>
+      <button class="btn btn-ghost" style="padding:12px" onclick="alert('Annual plan selected! $39.99/year')">💰 Annual Plan — $39.99/yr (Best Value)</button>
+    </div>
+  `;
+  document.getElementById('modal').classList.add('open');
+}
+function showLogin() {
+  document.getElementById('modalTitle').textContent='Sign In to Haunted America';
+  document.getElementById('modalSub').textContent='Join 891,000+ paranormal investigators';
+  document.getElementById('modalBody').innerHTML=`
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <button class="btn btn-primary" style="padding:14px;font-size:1rem" onclick="alert('Google sign-in coming soon!')">🔵 Continue with Google</button>
+      <button class="btn btn-ghost" style="padding:14px" onclick="alert('Apple sign-in coming soon!')">🍎 Continue with Apple</button>
+      <div style="text-align:center;color:var(--muted);font-size:0.8rem;margin:4px 0">or</div>
+      <input placeholder="Email" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:12px;border-radius:8px;font-size:0.9rem"/>
+      <input type="password" placeholder="Password" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:12px;border-radius:8px;font-size:0.9rem"/>
+      <button class="btn btn-primary" style="padding:12px" onclick="alert('Account system coming soon!')">Sign In</button>
+    </div>
+  `;
+  document.getElementById('modal').classList.add('open');
+}
+
+// Init
+renderLocations(LOCATIONS);
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Building a Prison RPG in Unreal Engine 5
+
+This article will cover the design of The Hollow Penitentiary, a Victorian Gothic style prison in Unreal Engine 5.7 with over 50K+ assets. The game will feature a unique blend of exploration and role-playing elements, set in a richly detailed and atmospheric environment.
+

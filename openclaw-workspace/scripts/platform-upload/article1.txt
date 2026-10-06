@@ -1,0 +1,47 @@
+I never planned on building a prison escape game. It started as a weekend project to mess around with Unity's NavMesh — but one week later I had a full stealth-survival alpha with reactive guard AI, a noise system, and an inventory. Here's how it happened.
+
+## The Idea
+
+CLAWED puts you in the role of a prisoner trying to escape a maximum-security facility. Simple concept. But the moment I asked "what makes guards *feel* smart?", everything got complicated.
+
+## Building the Guard AI
+
+The core of the game is a 4-state finite state machine for each guard:
+
+- **Patrol** — follows a waypoint path, checks line-of-sight every 0.3s
+- **Suspicious** — heard a noise or caught movement; turns toward source, plays alert animation
+- **Chase** — full sprint using NavMeshAgent, broadcasts alert to nearby guards via event
+- **Attack** — triggers caught sequence if player is in range
+
+The hardest part wasn't the state transitions — it was making the AI *feel* believable. Guards would teleport-turn to face you. The fix: lerping rotation toward suspicion source over 0.8 seconds. That single change made them feel alive.
+
+```csharp
+void UpdateSuspicion(Vector3 target) {
+    suspicionTarget = target;
+    Quaternion lookRot = Quaternion.LookRotation(target - transform.position);
+    transform.rotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * 2f);
+}
+```
+
+## Noise + Visibility System
+
+Two detection channels:
+
+1. **Visibility** — raycast from guard eyes, player visibility scaled by distance + light level
+2. **Noise** — physics overlap sphere triggered by player actions (running = radius 8, crouch-walk = radius 1, crawl = 0)
+
+Each guard has a suspicion meter (0-100). Visibility adds ~30/sec at close range, noise adds a flat spike based on radius overlap. Hit 100 = Chase.
+
+## Inventory System
+
+Kept it lean: 6 slots, item pickup via trigger zone, equip/unequip toggle. No drag-and-drop — keyboard slots only. Fast to build, fast to play.
+
+## Where It's At
+
+CLAWED is in alpha right now — playable, rough around the edges, but the core loop works. You sneak, you get spotted, you run, you hide. There's a tension to it that surprised me.
+
+If you want to try it (or tear apart my code), grab the alpha here:
+
+**[Play CLAWED on itch.io — $10 alpha access](https://the-forge-ide-gamedev.itch.io/clawed)**
+
+Week 2 plan: patrol routes editor, camera system, level 2. Following along if you want to see how it breaks.

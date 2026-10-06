@@ -1,0 +1,44 @@
+{
+  "claude-opus-4-6": {
+    "status": "no_key",
+    "error": "API key not set",
+    "latencyMs": null,
+    "lastChecked": "2026-04-01T00:35:14.084Z"
+  },
+  "claude-sonnet-4": {
+    "status": "no_key",
+    "error": "API key not set",
+    "latencyMs": null,
+    "lastChecked": "2026-04-01T00:35:14.085Z"
+  },
+  "gemma3-27b": {
+    "status": "failed",
+    "error": "OLLAMA_TIMEOUT: Model took too long (120s)",
+    "latencyMs": 120030,
+    "lastChecked": "2026-04-01T00:37:14.116Z"
+  },
+  "llama3.1-8b": {
+    "status": "failed",
+    "error": "OLLAMA_TIMEOUT: Model took too long (120s)",
+    "latencyMs": 120017,
+    "lastChecked": "2026-04-01T00:39:14.133Z"
+  },
+  "glm-4.7-flash": {
+    "status": "failed",
+    "error": "OLLAMA_TIMEOUT: Model took too long (120s)",
+    "latencyMs": 120016,
+    "lastChecked": "2026-04-01T00:41:14.150Z"
+  },
+  "mistral-7b": {
+    "status": "failed",
+    "error": "OLLAMA_TIMEOUT: Model took too long (120s)",
+    "latencyMs": 120014,
+    "lastChecked": "2026-04-01T00:43:14.165Z"
+  },
+  "llama3.2-3b": {
+    "status": "failed",
+    "error": "OLLAMA_TIMEOUT: Model took too long (120s)",
+    "latencyMs": 120005,
+    "lastChecked": "2026-04-01T00:45:14.170Z"
+  }
+}

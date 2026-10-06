@@ -1,0 +1,15 @@
+MAX — Mission Report [Mar 28 7:55 PM CDT]
+
+✅ CLAWED v0.1.1 pushed LIVE to itch.io — 281MB, windows-x64 channel
+https://the-forge-ide-gamedev.itch.io/clawed
+
+✅ 3 GitHub bounties submitted — $225 pending:
+• PR #200 — CHANGELOG generator ($50) → https://github.com/claude-builders-bounty/claude-builders-bounty/pull/200
+• PR #201 — CLAUDE.md Next.js+SQLite template ($75) → https://github.com/claude-builders-bounty/claude-builders-bounty/pull/201
+• PR #202 — Pre-tool-use safety hook ($100) → https://github.com/claude-builders-bounty/claude-builders-bounty/pull/202
+
+✅ itch.io prices confirmed via API: CLAWED $10 ✓ | AI Prompt Vault $19 ✓
+
+⚠️ Needs Lee:
+• Cold Email Arsenal stuck at $1,400 — Cloudflare blocks bot. Fix manually: https://itch.io/dashboard/game/4379091/edit → set to $27
+• Proposal bot needs one Upwork/Fiverr login session to activate

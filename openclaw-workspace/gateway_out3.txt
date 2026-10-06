@@ -1,0 +1,52 @@
+[90m2026-03-25T18:54:49.720-05:00[39m [35m[canvas][39m [36mhost mounted at http://127.0.0.1:18789/__openclaw__/canvas/ (root C:\Users\Gierl\.openclaw\canvas)[39m
+[90m2026-03-25T18:54:50.408-05:00[39m [36m[heartbeat][39m [36mstarted[39m
+[90m2026-03-25T18:54:50.411-05:00[39m [32m[health-monitor][39m [36mstarted (interval: 300s, startup-grace: 60s, channel-connect-grace: 120s)[39m
+[90m2026-03-25T18:54:50.416-05:00[39m [36m[gateway][39m [36magent model: max-router/router:auto[39m
+[90m2026-03-25T18:54:50.418-05:00[39m [36m[gateway][39m [36mlistening on ws://127.0.0.1:18789, ws://[::1]:18789 (PID 7464)[39m
+[90m2026-03-25T18:54:50.421-05:00[39m [36m[gateway][39m [36mlog file: C:\Users\Gierl\AppData\Local\Temp\openclaw\openclaw-2026-03-25.log[39m
+[90m2026-03-25T18:54:50.426-05:00[39m [34m[telegram][39m [36mautoSelectFamily=true (default-node22)[39m
+[90m2026-03-25T18:54:50.428-05:00[39m [34m[telegram][39m [36mdnsResultOrder=ipv4first (default-node22)[39m
+[90m2026-03-25T18:54:50.464-05:00[39m [36m[browser/server][39m [36mBrowser control listening on http://127.0.0.1:18791/ (auth=token)[39m
+[90m2026-03-25T18:54:50.785-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: boot-md -> gateway:startup[39m
+[90m2026-03-25T18:54:50.851-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: bootstrap-extra-files -> agent:bootstrap[39m
+[90m2026-03-25T18:54:50.854-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: command-logger -> command[39m
+[90m2026-03-25T18:54:50.860-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: session-memory -> command:new, command:reset[39m
+[90m2026-03-25T18:54:50.864-05:00[39m [33m[hooks][39m [36mloaded 4 internal hook handlers[39m
+2026-03-25T18:54:50.871-05:00 [34m[telegram][39m [36mautoSelectFamily=true (default-node22)[39m
+2026-03-25T18:54:50.877-05:00 [34m[telegram][39m [36mdnsResultOrder=ipv4first (default-node22)[39m
+2026-03-25T18:54:51.219-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T18:54:51.246-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-25T18:54:51.431-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-25T18:54:51.433-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+2026-03-25T18:54:51.459-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-25T18:54:51.484-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=boot-2026-03-25_23-54-51-146-5f2c7e39 isError=true model=router:auto provider=max-router error=404 <!DOCTYPE html>[39m
+[33m<html lang="en">[39m
+[33m<head>[39m
+[33m<meta charset="utf-8">[39m
+[33m<title>Error</title>[39m
+[33m</head>[39m
+[33m<body>[39m
+[33m<pre>Cannot POST /chat/completions</pre>[39m
+[33m</body>[39m
+[33m</html>[39m
+2026-03-25T18:54:51.489-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+[90m2026-03-25T18:54:51.657-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-25T18:54:51.659-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 225ms gateway=missing[39m
+[90m2026-03-25T18:54:51.887-05:00[39m [34m[telegram][39m [36m[default] starting provider (@MAX_MAX_MAX_BOT_BOT)[39m
+2026-03-25T18:54:51.892-05:00 [34m[telegram][39m [36mautoSelectFamily=true (default-node22)[39m
+2026-03-25T18:54:51.896-05:00 [34m[telegram][39m [36mdnsResultOrder=ipv4first (default-node22)[39m
+2026-03-25T18:54:52.003-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T18:54:52.462-05:00[39m [34m[telegram][39m [36mlimits bots to 100 commands. 179 configured; registering first 100. Use channels.telegram.commands.native: false to disable, or reduce plugin/skill/custom commands.[39m
+[90m2026-03-25T18:54:52.471-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 1036ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-25T18:54:52.510-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T18:54:53.107-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-25T18:54:53.112-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1678ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T18:54:53.114-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1680ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-25T18:54:53.490-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 2055ms path=/applications/1485367231427903579/commands requestMs=375[39m
+[90m2026-03-25T18:54:53.492-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 2058ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T18:54:53.493-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 2059ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T18:54:53.498-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 2064ms WebSocket connection opened[39m
+[90m2026-03-25T18:54:53.606-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 2172ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T18:54:53.626-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-25T18:55:28.028-05:00[39m [34m[reload][39m [36mconfig change detected; evaluating reload (models.providers.max-router.api, models.providers.max-router.models, agents.defaults.compaction.mode, agents.defaults.contextPruning, agents.defaults.heartbeat, talk)[39m
+[90m2026-03-25T18:55:28.034-05:00[39m [34m[reload][39m [36mconfig hot reload applied (models.providers.max-router.api, models.providers.max-router.models, agents.defaults.heartbeat)[39m

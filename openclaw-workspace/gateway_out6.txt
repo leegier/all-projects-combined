@@ -1,0 +1,123 @@
+│
+◇  Config warnings ────────────────────────────────────────────────────────╮
+│                                                                          │
+│  - plugins.entries.qwen-portal-auth: plugin not found: qwen-portal-auth  │
+│    (stale config entry ignored; remove it from plugins config)           │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────╯
+2026-03-29T12:11:09.746-05:00 Config warnings:\n- plugins.entries.qwen-portal-auth: plugin not found: qwen-portal-auth (stale config entry ignored; remove it from plugins config)
+[90m2026-03-29T12:11:09.787-05:00[39m [36m[gateway][39m [36mforce: no listeners on port 18789[39m
+[90m2026-03-29T12:11:10.425-05:00[39m [35m[canvas][39m [36mhost mounted at http://127.0.0.1:18789/__openclaw__/canvas/ (root C:\Users\Gierl\.openclaw\canvas)[39m
+[90m2026-03-29T12:11:18.379-05:00[39m [36m[heartbeat][39m [36mstarted[39m
+[90m2026-03-29T12:11:18.381-05:00[39m [32m[health-monitor][39m [36mstarted (interval: 300s, startup-grace: 60s, channel-connect-grace: 120s)[39m
+[90m2026-03-29T12:11:18.395-05:00[39m [36m[gateway][39m [36magent model: anthropic/claude-sonnet-4-6[39m
+[90m2026-03-29T12:11:18.396-05:00[39m [36m[gateway][39m [36mlistening on ws://127.0.0.1:18789, ws://[::1]:18789 (PID 15812)[39m
+[90m2026-03-29T12:11:18.397-05:00[39m [36m[gateway][39m [36mlog file: \tmp\openclaw\openclaw-2026-03-29.log[39m
+[90m2026-03-29T12:11:18.426-05:00[39m [31m[bonjour][39m [33mwatchdog detected non-announced service; attempting re-advertise (gateway fqdn=DESKTOP-EJ1NQF3 (OpenClaw)._openclaw-gw._tcp.local. host=openclaw.local. port=18789 state=unannounced)[39m
+[90m2026-03-29T12:11:18.598-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: boot-md -> gateway:startup[39m
+[90m2026-03-29T12:11:18.602-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: bootstrap-extra-files -> agent:bootstrap[39m
+[90m2026-03-29T12:11:18.612-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: command-logger -> command[39m
+[90m2026-03-29T12:11:18.620-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: session-memory -> command:new, command:reset[39m
+[90m2026-03-29T12:11:18.621-05:00[39m [33m[hooks][39m [36mloaded 4 internal hook handlers[39m
+[90m2026-03-29T12:11:20.668-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:11:24.914-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:11:25.867-05:00[39m [34m[telegram][39m [36m[default] starting provider[39m
+[90m2026-03-29T12:11:25.873-05:00[39m [36m[discord][39m [36m[default] starting provider[39m
+[90m2026-03-29T12:11:26.054-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-29T12:11:26.620-05:00[39m [34m[telegram][39m [36mlimits bots to 100 commands. 172 configured; registering first 100. Use channels.telegram.commands.native: false to disable, or reduce plugin/skill/custom commands.[39m
+[90m2026-03-29T12:11:29.167-05:00[39m [31m[bonjour][39m [33mrestarting advertiser (service stuck in unannounced for 10741ms (gateway fqdn=DESKTOP-EJ1NQF3 (OpenClaw)._openclaw-gw._tcp.local. host=openclaw.local. port=18789 state=unannounced))[39m
+[90m2026-03-29T12:11:29.357-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:11:30.656-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-29T12:11:30.761-05:00[39m [34m[telegram][39m [36mrejected 100 commands (BOT_COMMANDS_TOO_MUCH); retrying with 80.[39m
+[90m2026-03-29T12:11:31.078-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-29T12:11:37.878-05:00[39m [36m[discord][39m [36m175 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-29T12:11:37.885-05:00[39m [36m[discord][39m [36mnative commands using Carbon reconcile path[39m
+[90m2026-03-29T12:11:37.890-05:00[39m [34m[telegram][39m [36mrejected 80 commands (BOT_COMMANDS_TOO_MUCH); retrying with 64.[39m
+[90m2026-03-29T12:11:38.098-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-29T12:11:38.287-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-29T12:11:38.567-05:00[39m [36m[discord][39m [36mclient initialized as 1485367231427903579 (MAX); awaiting gateway readiness[39m
+[90m2026-03-29T12:11:38.679-05:00[39m [34m[telegram][39m [36maccepted 64 commands after BOT_COMMANDS_TOO_MUCH (started with 100; omitted 36). Reduce plugin/skill/custom commands to expose more menu entries.[39m
+[90m2026-03-29T12:11:49.599-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:13:12.121-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-29T12:13:12.920-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:13:20.642-05:00[39m [36m[ws][39m [36m⇄ res ✓ channels.status 1332ms conn=1945226d…9bb1 id=cf966391…63e8[39m
+[90m2026-03-29T12:13:21.560-05:00[39m [31m[memory][39m [33membeddings rate limited; retrying in 556ms[39m
+[90m2026-03-29T12:13:22.342-05:00[39m [31m[memory][39m [33membeddings rate limited; retrying in 1082ms[39m
+[90m2026-03-29T12:13:24.120-05:00[39m [31m[memory][39m [33membeddings rate limited; retrying in 2172ms[39m
+[90m2026-03-29T12:13:26.276-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-29T12:13:27.069-05:00[39m [36m[ws][39m [36m⇄ res ✓ doctor.memory.status 6405ms conn=baa7b6d0…87c4 id=e737aa1e…baf8[39m
+[90m2026-03-29T12:13:27.361-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:13:28.478-05:00[39m [34m[reload][39m [36mconfig change detected; evaluating reload (meta.lastTouchedVersion, meta.lastTouchedAt, wizard.lastRunAt, wizard.lastRunVersion, wizard.lastRunCommand, plugins.entries.qwen-portal-auth)[39m
+[90m2026-03-29T12:13:28.568-05:00[39m [34m[reload][39m [33mconfig change requires gateway restart (plugins.entries.qwen-portal-auth) — deferring until 2 operation(s), 1 reply(ies), 1 embedded run(s) complete[39m
+[90m2026-03-29T12:13:34.667-05:00[39m [34m[reload][39m [36mall operations and replies completed; restarting gateway now[39m
+[90m2026-03-29T12:13:34.669-05:00[39m [36m[gateway][39m [36msignal SIGUSR1 received[39m
+[90m2026-03-29T12:13:34.670-05:00[39m [36m[gateway][39m [36mreceived SIGUSR1; restarting[39m
+[90m2026-03-29T12:13:34.743-05:00[39m [34m[gmail-watcher][39m [36mgmail watcher stopped[39m
+[90m2026-03-29T12:13:34.747-05:00[39m [36m[gateway][39m [36mrestart mode: in-process restart (win32: detached respawn unsupported without Scheduled Task markers)[39m
+[90m2026-03-29T12:13:34.976-05:00[39m [35m[canvas][39m [36mhost mounted at http://127.0.0.1:18789/__openclaw__/canvas/ (root C:\Users\Gierl\.openclaw\canvas)[39m
+[90m2026-03-29T12:13:34.989-05:00[39m [36m[heartbeat][39m [36mstarted[39m
+[90m2026-03-29T12:13:34.990-05:00[39m [32m[health-monitor][39m [36mstarted (interval: 300s, startup-grace: 60s, channel-connect-grace: 120s)[39m
+[90m2026-03-29T12:13:34.996-05:00[39m [36m[gateway][39m [36magent model: anthropic/claude-sonnet-4-6[39m
+[90m2026-03-29T12:13:34.998-05:00[39m [36m[gateway][39m [36mlistening on ws://127.0.0.1:18789, ws://[::1]:18789 (PID 15812)[39m
+[90m2026-03-29T12:13:34.999-05:00[39m [36m[gateway][39m [36mlog file: \tmp\openclaw\openclaw-2026-03-29.log[39m
+[90m2026-03-29T12:13:35.086-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: boot-md -> gateway:startup[39m
+[90m2026-03-29T12:13:35.088-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: bootstrap-extra-files -> agent:bootstrap[39m
+[90m2026-03-29T12:13:35.090-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: command-logger -> command[39m
+[90m2026-03-29T12:13:35.091-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: session-memory -> command:new, command:reset[39m
+[90m2026-03-29T12:13:35.092-05:00[39m [33m[hooks][39m [36mloaded 4 internal hook handlers[39m
+[90m2026-03-29T12:13:36.405-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:13:39.407-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:13:40.227-05:00[39m [34m[telegram][39m [36m[default] starting provider[39m
+[90m2026-03-29T12:13:40.231-05:00[39m [31m[bonjour][39m [33mwatchdog detected non-announced service; attempting re-advertise (gateway fqdn=DESKTOP-EJ1NQF3 (OpenClaw)._openclaw-gw._tcp.local. host=openclaw.local. port=18789 state=probing)[39m
+[90m2026-03-29T12:13:40.236-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-29T12:13:40.237-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-29T12:13:40.326-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-29T12:13:40.439-05:00[39m [34m[telegram][39m [36mlimits bots to 100 commands. 175 configured; registering first 100. Use channels.telegram.commands.native: false to disable, or reduce plugin/skill/custom commands.[39m
+[90m2026-03-29T12:13:40.445-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-29T12:13:40.666-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-29T12:13:46.964-05:00[39m [36m[discord][39m [36m175 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-29T12:13:46.969-05:00[39m [36m[discord][39m [36mnative commands using Carbon reconcile path[39m
+[90m2026-03-29T12:13:47.690-05:00[39m [36m[discord][39m [36mclient initialized as 1485367231427903579 (MAX); awaiting gateway readiness[39m
+[90m2026-03-29T12:14:20.954-05:00[39m [36m[ws][39m [36m⇄ res ✓ channels.status 1114ms conn=d065954e…2872 id=0b2b26a7…d303[39m
+[90m2026-03-29T12:14:21.304-05:00[39m [31m[memory][39m [33membeddings rate limited; retrying in 548ms[39m
+[90m2026-03-29T12:14:22.025-05:00[39m [31m[memory][39m [33membeddings rate limited; retrying in 1050ms[39m
+[90m2026-03-29T12:14:23.289-05:00[39m [31m[memory][39m [33membeddings rate limited; retrying in 2175ms[39m
+[90m2026-03-29T12:14:25.677-05:00[39m [36m[ws][39m [36m⇄ res ✓ doctor.memory.status 4711ms conn=085de366…3413 id=214d104b…2b4c[39m
+[90m2026-03-29T12:15:14.131-05:00[39m [36m[ws][39m [36m⇄ res ✓ channels.status 1020ms conn=186d7f5d…94a4 id=b1e7adaa…9224[39m
+[90m2026-03-29T12:15:14.377-05:00[39m [34m[reload][39m [36mconfig change detected; evaluating reload (messages.tts.provider)[39m
+[90m2026-03-29T12:15:14.468-05:00[39m [34m[reload][39m [36mconfig change applied (dynamic reads: messages.tts.provider)[39m
+[90m2026-03-29T12:15:14.862-05:00[39m [31m[memory][39m [33membeddings rate limited; retrying in 586ms[39m
+[90m2026-03-29T12:15:16.101-05:00[39m [31m[memory][39m [33membeddings rate limited; retrying in 1093ms[39m
+[90m2026-03-29T12:15:17.412-05:00[39m [31m[memory][39m [33membeddings rate limited; retrying in 2056ms[39m
+[90m2026-03-29T12:15:19.709-05:00[39m [36m[ws][39m [36m⇄ res ✓ doctor.memory.status 5565ms conn=1f45dd74…edf8 id=4e1738bc…875a[39m
+[90m2026-03-29T12:20:26.940-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-29T12:20:28.957-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:20:43.031-05:00[39m [33m[agent/embedded][39m [33mread tool called without path: toolCallId=toolu_01J9og4Yx5dtM6ZFkBYinMqE argsType=object[39m
+[90m2026-03-29T12:21:19.581-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:21:27.671-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:23:47.188-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:23:54.871-05:00[39m [33m[agent/embedded][39m [33mread tool called without path: toolCallId=toolu_01KfhqrTZ16suz9YieUmEFDj argsType=object[39m
+2026-03-29T12:24:24.259-05:00 [tools] image failed: Unsupported media type: audio
+[90m2026-03-29T12:25:24.069-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-29T12:25:24.677-05:00[39m [34m[telegram][39m [36msendMessage ok chat=7615833146 message=1292[39m
+[90m2026-03-29T12:25:25.925-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:25:47.248-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-29T12:25:48.113-05:00[39m [34m[telegram][39m [36msendMessage ok chat=7615833146 message=1294[39m
+[90m2026-03-29T12:25:49.358-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:26:32.903-05:00[39m [34m[reload][39m [36mconfig change detected; evaluating reload (bindings)[39m
+[90m2026-03-29T12:26:33.011-05:00[39m [34m[reload][39m [36mconfig change applied (dynamic reads: bindings)[39m
+[90m2026-03-29T12:26:43.629-05:00[39m [34m[reload][39m [36mconfig change detected; evaluating reload (channels.telegram.accounts)[39m
+[90m2026-03-29T12:26:43.742-05:00[39m [31m[gateway/channels][39m [36mrestarting telegram channel[39m
+[90m2026-03-29T12:26:46.790-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-29T12:26:49.184-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-29T12:26:52.789-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-29T12:26:55.188-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-29T12:26:58.294-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-29T12:27:01.184-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-29T12:27:04.323-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-29T12:27:07.191-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-29T12:27:10.330-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-29T12:27:13.220-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-29T12:27:16.340-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-29T12:27:19.226-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-29T12:27:22.365-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m

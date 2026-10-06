@@ -1,0 +1,23 @@
+node_modules/
+build/
+dist/
+coverage/
+.env
+*.log
+*.tmp
+*.swp
+.DS_Store
+
+# Unity
+Library/
+Temp/
+Obj/
+Build/
+Logs/
+
+# Unreal Engine
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+.vs/

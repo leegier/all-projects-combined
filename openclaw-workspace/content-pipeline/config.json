@@ -1,0 +1,50 @@
+{
+  "pipeline": {
+    "name": "max-content-machine",
+    "version": "1.0.0",
+    "base_dir": "E:/openclaw/workspace/content-pipeline"
+  },
+  "sites": [
+    {
+      "id": "tech-gear",
+      "name": "Tech Gear Reviews",
+      "domain": null,
+      "niches": ["home-office", "ai-tools", "gaming", "gamedev"],
+      "amazon_affiliate_tag": "NEEDS_CONFIG",
+      "cloudflare_zone_id": null,
+      "author_name": "Lee Gierl",
+      "author_bio": "Tech enthusiast, software developer, and independent reviewer with hands-on experience building AI systems, game engines, and home office setups."
+    },
+    {
+      "id": "trucking",
+      "name": "Trucker Tech Guide",
+      "domain": null,
+      "niches": ["trucking"],
+      "amazon_affiliate_tag": "NEEDS_CONFIG",
+      "cloudflare_zone_id": null,
+      "author_name": "Lee Gierl",
+      "author_bio": "Former OTR truck driver and current local CDL driver with real-world experience on the road. Reviews gear that actually works in a semi cab."
+    }
+  ],
+  "quality_gate": {
+    "min_word_count": 2500,
+    "min_images": 4,
+    "min_internal_links": 5,
+    "min_score_to_pass": 16,
+    "max_meta_description_length": 155
+  },
+  "schedule": {
+    "articles_per_day": 2,
+    "cron": "0 3 * * *",
+    "timezone": "America/Chicago"
+  },
+  "api": {
+    "anthropic_model": "claude-sonnet-4-20250514",
+    "note": "Uses ANTHROPIC_API_KEY from environment"
+  },
+  "deployment": {
+    "method": "cloudflare_workers",
+    "status": "NOT_CONFIGURED",
+    "note": "Set CLOUDFLARE_API_TOKEN env var and fill in zone IDs above to enable auto-deploy"
+  }
+}

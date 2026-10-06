@@ -1,0 +1,11 @@
+=== DEV.TO POSTS ===
+[500] I Spent One Week Building a Stealth Survival Game with Unity AI — Here's What Happened
+  URL: ERROR (500): {"status":500,"error":"Internal Server Error"}
+
+[201] 50 Claude & ChatGPT Prompts That Actually Work in Production (Free Sample + Full Pack)
+  URL: https://dev.to/member_b03d2604/50-claude-chatgpt-prompts-that-actually-work-in-production-free-sample-full-pack-6be
+
+[201] I Launched My SaaS Product to 22 Different Audiences at Once Using HTML Templates
+  URL: https://dev.to/member_b03d2604/i-launched-my-saas-product-to-22-different-audiences-at-once-using-html-templates-3cl5
+
+Posted: 2026-03-27T16:28:12.860Z

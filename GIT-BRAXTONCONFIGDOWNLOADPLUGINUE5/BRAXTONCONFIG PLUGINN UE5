@@ -1,0 +1,2158 @@
+#!/bin/bash
+# ============================================
+# Neon X Box Message Display
+# ============================================
+
+# === COLORS ===
+PURPLE='\033[0;35m'
+NEON_GREEN='\033[1;32m'
+NC='\033[0m'
+
+# === FUNCTION TO PRINT IN NEON X BOX ===
+print_neon_box() {
+local msg="$1"
+local padding=2
+local length=${#msg}
+local width=$((length + padding * 2))
+
+# Top border
+echo -e "${PURPLE}X$(printf '%.0sX' $(seq 1 $width))X${NC}"
+
+# Empty line
+echo -e "${PURPLE}X${NC}$(printf ' %.0s' $(seq 1 $width))${PURPLE}X${NC}"
+
+# Message line
+echo -e "${PURPLE}X${NC}$(printf ' %.0s' $padding)${NEON_GREEN}${msg}${NC}$(printf ' %.0s' $padding)${PURPLE}X${NC}"
+
+# Empty line
+echo -e "${PURPLE}X${NC}$(printf ' %.0s' $(seq 1 $width))${PURPLE}X${NC}"
+
+# Bottom border
+echo -e "${PURPLE}X$(printf '%.0sX' $(seq 1 $width))X${NC}"
+}
+
+# === USAGE ===
+print_neon_box "BRAXTONCONFIG Deployment SUCCESS!"
+print_neon_box "All tests passed ✅"
+print_neon_box "Git push complete 🚀"
+
+On Wed, Nov 19, 2025 at 2:15 AM Lee Gier <leegier6@gmail.com> wrote:
+#!/bin/bash
+# ============================================
+# Smart Deploy with Test Reporting + Auto-Rollback
+# Nyghtshade-BraxtonConfig v1.0.0
+# ============================================
+
+PROJECT_NAME="Nyghtshade-BraxtonConfig"
+VERSION="v1.0.0"
+ZIP_FILE="${PROJECT_NAME}_${VERSION}.zip"
+GIT_REMOTE_URL="<your-git-url>" # <-- Replace
+PINIKO_API_KEY="<your-piniko-api-key>" # <-- Replace
+PINIKO_PROJECT_ID="<your-piniko-project-id>" # <-- Replace
+
+rollback_git() {
+echo "⏪ Rolling back Git..."
+git reset --hard HEAD~1
+git push origin main --force
+git tag -d "$VERSION"
+git push origin :refs/tags/"$VERSION"
+}
+
+rollback_piniko() {
+echo "⏪ Rolling back Piniko..."
+curl -X DELETE "https://api.piniko.com/v1/projects/${PINIKO_PROJECT_ID}/uploads/${VERSION}" \
+-H "Authorization: Bearer $PINIKO_API_KEY"
+}
+
+# === STEP 1: Unzip Project ===
+echo "📂 Unzipping project..."
+unzip -o "$ZIP_FILE" -d "$PROJECT_NAME"
+cd "$PROJECT_NAME" || { echo "❌ Failed to enter project directory"; exit 1; }
+
+# === STEP 2: Replace 'revolt' with 'BRAXTONCONFIG' ===
+echo "🔄 Replacing all occurrences of 'revolt' with 'BRAXTONCONFIG'..."
+grep -rl "revolt" . | xargs sed -i '' 's/revolt/BRAXTONCONFIG/g'
+
+# === STEP 3: Run Tests with Detailed Reporting ===
+if [ -d "Tests" ]; then
+echo "🧪 Running tests with detailed error reporting..."
+TEST_FAILED=0
+FAILURE_LOG="test_failures.log"
+> "$FAILURE_LOG"
+
+for test_file in Tests/*.sh; do
+if [ -f "$test_file" ]; then
+echo "⚡ Running $test_file..."
+bash -n "$test_file" # syntax check first
+bash "$test_file" 2>tmp_err.log
+EXIT_CODE=$?
+if [ $EXIT_CODE -ne 0 ]; then
+echo "❌ Test failed: $test_file (Exit code $EXIT_CODE)" | tee -a "$FAILURE_LOG"
+awk '{print " " $0}' tmp_err.log >> "$FAILURE_LOG"
+TEST_FAILED=1
+else
+echo "✅ Test passed: $test_file"
+fi
+rm -f tmp_err.log
+fi
+done
+
+if [ $TEST_FAILED -ne 0 ]; then
+echo "❌ One or more tests failed. Deployment aborted!"
+cat "$FAILURE_LOG"
+exit 1
+fi
+else
+echo "⚠️ No Tests directory found, skipping tests."
+fi
+
+# === STEP 4: Initialize Git Repo ===
+echo "🗂 Initializing Git repository..."
+git init
+git add .
+git commit -m "Initial commit: ${PROJECT_NAME} ${VERSION}"
+git branch -M main
+git remote add origin "$GIT_REMOTE_URL"
+
+# === STEP 5: Push to Git ===
+echo "🚀 Pushing to Git repository..."
+if ! git push -u origin main; then
+echo "❌ Git push failed! Aborting."
+exit 1
+fi
+
+git tag -a "$VERSION" -m "Release ${VERSION} of ${PROJECT_NAME}"
+if ! git push origin "$VERSION"; then
+echo "❌ Git tag push failed! Rolling back..."
+rollback_git
+exit 1
+fi
+
+# === STEP 6: Upload to Piniko ===
+echo "📤 Publishing to Piniko..."
+PINIKO_RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+"https://api.piniko.com/v1/projects/${PINIKO_PROJECT_ID}/uploads" \
+-H "Authorization: Bearer $PINIKO_API_KEY" \
+-F "file=@../$ZIP_FILE" \
+-F "version=$VERSION" \
+-F "notes=Release ${VERSION} of ${PROJECT_NAME}")
+
+if [ "$PINIKO_RESPONSE" -ne 200 ]; then
+echo "❌ Piniko upload failed! Rolling back Git..."
+rollback_git
+rollback_piniko
+exit 1
+fi
+
+echo "✅ Smart deploy complete! All tests passed, Git & Piniko updated safely."
+
+
+On Wed, Nov 19, 2025 at 2:12 AM Lee Gier <leegier6@gmail.com> wrote:
+#!/bin/bash
+# ============================================
+# Smart Deploy: Nyghtshade-BraxtonConfig v1.0.0
+# ============================================
+
+PROJECT_NAME="Nyghtshade-BraxtonConfig"
+VERSION="v1.0.0"
+ZIP_FILE="${PROJECT_NAME}_${VERSION}.zip"
+GIT_REMOTE_URL="<your-git-url>" # <-- Replace
+PINIKO_API_KEY="<your-piniko-api-key>" # <-- Replace
+PINIKO_PROJECT_ID="<your-piniko-project-id>" # <-- Replace
+
+# === STEP 1: Unzip Project ===
+echo "Unzipping project..."
+unzip -o "$ZIP_FILE" -d "$PROJECT_NAME"
+cd "$PROJECT_NAME" || { echo "❌ Failed to enter project directory"; exit 1; }
+
+# === STEP 2: Replace 'revolt' with 'BRAXTONCONFIG' ===
+echo "Replacing all occurrences of 'revolt' with 'BRAXTONCONFIG'..."
+grep -rl "revolt" . | xargs sed -i '' 's/revolt/BRAXTONCONFIG/g'
+
+# === STEP 3: Run Tests ===
+if [ -d "Tests" ]; then
+echo "Running tests..."
+TEST_FAILED=0
+for test_file in Tests/*.sh; do
+if [ -f "$test_file" ]; then
+bash "$test_file"
+if [ $? -ne 0 ]; then
+echo "❌ Test failed: $test_file"
+TEST_FAILED=1
+else
+echo "✅ Test passed: $test_file"
+fi
+fi
+done
+if [ $TEST_FAILED -ne 0 ]; then
+echo "❌ One or more tests failed. Aborting deployment."
+exit 1
+fi
+else
+echo "⚠️ No Tests directory found, skipping tests."
+fi
+
+# === STEP 4: Initialize Git Repo ===
+echo "Initializing Git repository..."
+git init
+git add .
+git commit -m "Initial commit: ${PROJECT_NAME} ${VERSION}"
+git branch -M main
+git remote add origin "$GIT_REMOTE_URL"
+
+# === STEP 5: Push to Git ===
+echo "Pushing to Git repository..."
+git push -u origin main
+git tag -a "$VERSION" -m "Release ${VERSION} of ${PROJECT_NAME}"
+git push origin "$VERSION"
+
+# === STEP 6: Upload to Piniko ===
+echo "Publishing to Piniko..."
+curl -X POST "https://api.piniko.com/v1/projects/${PINIKO_PROJECT_ID}/uploads" \
+-H "Authorization: Bearer $PINIKO_API_KEY" \
+-F "file=@../$ZIP_FILE" \
+-F "version=$VERSION" \
+-F "notes=Release ${VERSION} of ${PROJECT_NAME}"
+
+echo "✅ Smart deploy complete! All tests passed, Git & Piniko updated."
+#!/bin/bash
+# ============================================
+# Nyghtshade-BraxtonConfig v1.0.0 Git Setup
+# ============================================
+
+# === CONFIGURE THESE ===
+PROJECT_NAME="Nyghtshade-BraxtonConfig"
+VERSION="v1.0.0"
+REMOTE_URL="<your-git-url>" # <-- Replace this with your Git repo URL
+ZIP_FILE="${PROJECT_NAME}_${VERSION}.zip"
+
+# === STEP 1: Unzip project ===
+echo "Unzipping project..."
+unzip -o "$ZIP_FILE" -d "$PROJECT_NAME"
+cd "$PROJECT_NAME" || exit
+
+# === STEP 2: Replace 'revolt' with 'BRAXTONCONFIG' ===
+echo "Replacing all occurrences of 'revolt' with 'BRAXTONCONFIG'..."
+grep -rl "revolt" . | xargs sed -i '' 's/revolt/BRAXTONCONFIG/g'
+
+# === STEP 3: Initialize Git repo ===
+echo "Initializing Git repository..."
+git init
+git add .
+git commit -m "Initial commit: ${PROJECT_NAME} ${VERSION}"
+
+# === STEP 4: Ensure main branch ===
+git branch -M main
+
+# === STEP 5: Add remote ===
+git remote add origin "$REMOTE_URL"
+
+# === STEP 6: Push to Git ===
+echo "Pushing to remote repository..."
+git push -u origin main
+
+# === STEP 7: Tag release ===
+git tag -a "$VERSION" -m "Release ${VERSION} of ${PROJECT_NAME}"
+git push origin "$VERSION"
+
+echo "✅ Nyghtshade-BraxtonConfig v1.0.0 is fully set up on Git!"
+chmod +x setup_git.sh
+./setup_git.sh
+
+#!/bin/bash
+# ============================================
+# Nyghtshade-BraxtonConfig v1.0.0 Git + Piniko Setup
+# ============================================
+
+# === CONFIGURE THESE ===
+PROJECT_NAME="Nyghtshade-BraxtonConfig"
+VERSION="v1.0.0"
+ZIP_FILE="${PROJECT_NAME}_${VERSION}.zip"
+GIT_REMOTE_URL="<your-git-url>" # <-- Replace with your Git repo URL
+PINIKO_API_KEY="<your-piniko-api-key>" # <-- Replace with your Piniko API key
+PINIKO_PROJECT_ID="<your-piniko-project-id>" # <-- Replace with your Piniko project ID
+
+# === STEP 1: Unzip project ===
+echo "Unzipping project..."
+unzip -o "$ZIP_FILE" -d "$PROJECT_NAME"
+cd "$PROJECT_NAME" || exit
+
+# === STEP 2: Replace 'revolt' with 'BRAXTONCONFIG' ===
+echo "Replacing all occurrences of 'revolt' with 'BRAXTONCONFIG'..."
+grep -rl "revolt" . | xargs sed -i '' 's/revolt/BRAXTONCONFIG/g'
+
+# === STEP 3: Initialize Git repo ===
+echo "Initializing Git repository..."
+git init
+git add .
+git commit -m "Initial commit: ${PROJECT_NAME} ${VERSION}"
+
+# === STEP 4: Ensure main branch ===
+git branch -M main
+
+# === STEP 5: Add remote and push ===
+git remote add origin "$GIT_REMOTE_URL"
+echo "Pushing to Git repository..."
+git push -u origin main
+git tag -a "$VERSION" -m "Release ${VERSION} of ${PROJECT_NAME}"
+git push origin "$VERSION"
+
+# === STEP 6: Publish to Piniko ===
+echo "Publishing to Piniko..."
+curl -X POST "https://api.piniko.com/v1/projects/${PINIKO_PROJECT_ID}/uploads" \
+-H "Authorization: Bearer $PINIKO_API_KEY" \
+-F "file=@../$ZIP_FILE" \
+-F "version=$VERSION" \
+-F "notes=Release ${VERSION} of ${PROJECT_NAME}"
+
+echo "✅ Nyghtshade-BraxtonConfig v1.0.0 successfully deployed to Git and Piniko!"
+chmod +x deploy_all.sh
+./deploy_all.sh
+
+On Wed, Nov 19, 2025 at 2:06 AM Lee Gier <leegier6@gmail.com> wrote:
+Nyghtshade-BraxtonConfig_v1.0.0.zip
+├── Content/
+├── Scripts/
+├── Tests/
+├── README.md
+├── LICENSE
+├── piniko.json
+└── release.json
+
+
+ocal System Startup
+Bootup Complete
+Version 2.0.3001
+All rights reserved
+Started: Wednesday 01:21:49
+Type 'help' for help
+localhost> help
+Help menu for localhost system
+alt show alternate commands
+(c)hat launch chat program
+(e)xit exit this localhost
+(h)elp display this menu
+--- any key to continue ---
+
+---------------------------------
+SUCCESSFULLY REACHED LEVEL 3
+You successfully ran a system command.
+---------------------------------
+localhost> run iocinfig
+unrecognized command: 'run iocinfig'
+localhost> ioconfig
+unrecognized command: 'ioconfig'
+localhost> ipconfig
+unrecognized command: 'ipconfig'
+localhost> // RevoltGPT_Skeleton.cpp
+// Single-file scaffold demonstrating RevoltGPT-style integration with Unreal Engine.
+// Purpose: educational template for local AI agent integration (HTTP-based).
+// NOTE: Replace API_URL and API_KEY with secure config. Do NOT hardcode in production.
+
+#include "CoreMinimal.h"
+#include "Modules/ModuleManager.h"
+#include "Misc/Paths.h"
+#include "Misc/FileHelper.h"
+#include "HttpModule.h"
+#include "Interfaces/IHttpResponse.h"
+#include "Json.h"
+#include "JsonUtilities.h"
+#include "Engine/World.h"
+#include "GameFramework/Actor.h"
+#include "Kismet/GameplayStatics.h"
+
+// -----------------------------
+// Config (replace with secure config, not hardcoded)
+// -----------------------------
+static const FString REVOLT_API_URL = TEXT("https://your-revoltgpt-server.example/api/v1");
+static const FString REVOLT_API_KEY = TEXT("REPLACE_WITH_YOUR_KEY");
+
+// -----------------------------
+// Minimal RevoltGPT HTTP wrapper
+// -----------------------------
+namespace RevoltGPT
+{
+// Callback signature
+using FOnResponse = TFunction<void(bool bSuccess, const FString& ResponseBody)>;
+
+// Helper: POST JSON to endpoint/<path>
+static void PostJson(const FString& Path, const FString& JsonPayload, FOnResponse Callback)
+{
+FString Url = REVOLT_API_URL / Path;
+TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = FHttpModule::Get().CreateRequest();
+Request->SetURL(Url);
+Request->SetVerb(TEXT("POST"));
+Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+Request->SetHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *REVOLT_API_KEY));
+Request->SetContentAsString(JsonPayload);
+Request->OnProcessRequestComplete().BindLambda([Callback](FHttpRequestPtr Req, FHttpResponsePtr Resp, bool bWasSuccessful)
+{
+if (!bWasSuccessful || !Resp.IsValid())
+{
+Callback(false, TEXT("HTTP request failed or invalid response"));
+return;
+}
+Callback(true, Resp->GetContentAsString());
+});
+Request->ProcessRequest();
+}
+
+// Simple synchronous-ish wrapper pattern using async callbacks:
+static void Initialize(const FString& Key)
+{
+// In a real system: store key securely or use secrets manager
+// Here we just log
+UE_LOG(LogTemp, Warning, TEXT("RevoltGPT::Initialize called (key placeholder)"));
+}
+
+static void Shutdown()
+{
+UE_LOG(LogTemp, Warning, TEXT("RevoltGPT::Shutdown called"));
+}
+
+// Parse file: send file content to agent for indexing/processing (async)
+static void ParseFile(const FString& RelativePath, const FString& Content, FOnResponse Callback = nullptr)
+{
+TSharedPtr<FJsonObject> Obj = MakeShareable(new FJsonObject);
+Obj->SetStringField(TEXT("event"), TEXT("parse_file"));
+Obj->SetStringField(TEXT("path"), RelativePath);
+Obj->SetStringField(TEXT("content"), Content);
+
+FString Payload;
+TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Payload);
+FJsonSerializer::Serialize(Obj.ToSharedRef(), Writer);
+PostJson(TEXT("parse"), Payload, [Callback](bool bOk, const FString& Resp) {
+if (Callback) Callback(bOk, Resp);
+if (bOk) UE_LOG(LogTemp, Log, TEXT("ParseFile response: %s"), *Resp);
+});
+}
+
+// Generate text from a prompt
+static void GenerateText(const FString& Prompt, FOnResponse Callback)
+{
+TSharedPtr<FJsonObject> Obj = MakeShareable(new FJsonObject);
+Obj->SetStringField(TEXT("prompt"), Prompt);
+Obj->SetNumberField(TEXT("max_tokens"), 512);
+
+FString Payload;
+TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Payload);
+FJsonSerializer::Serialize(Obj.ToSharedRef(), Writer);
+PostJson(TEXT("generate"), Payload, Callback);
+}
+
+// Implement blueprint / create patch request (server does heavy-lifting)
+static void ImplementBlueprint(const FString& BlueprintName, const FString& BlueprintText, FOnResponse Callback = nullptr)
+{
+TSharedPtr<FJsonObject> Obj = MakeShareable(new FJsonObject);
+Obj->SetStringField(TEXT("action"), TEXT("implement_blueprint"));
+Obj->SetStringField(TEXT("blueprint_name"), BlueprintName);
+Obj->SetStringField(TEXT("blueprint_text"), BlueprintText);
+
+FString Payload;
+TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Payload);
+FJsonSerializer::Serialize(Obj.ToSharedRef(), Writer);
+PostJson(TEXT("implement"), Payload, Callback);
+}
+
+// Generic analyze game state
+static void AnalyzeGameState(const FString& StateJson, FOnResponse Callback)
+{
+TSharedPtr<FJsonObject> Obj = MakeShareable(new FJsonObject);
+Obj->SetStringField(TEXT("action"), TEXT("analyze_state"));
+Obj->SetStringField(TEXT("state_json"), StateJson);
+
+FString Payload;
+TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Payload);
+FJsonSerializer::Serialize(Obj.ToSharedRef(), Writer);
+PostJson(TEXT("analyze"), Payload, Callback);
+}
+}
+
+// -----------------------------
+// RevoltGPT Module (Plugin-like)
+// -----------------------------
+class FRevoltGPTModule : public IModuleInterface
+{
+public:
+virtual void StartupModule() override
+{
+RevoltGPT::Initialize(REVOLT_API_KEY);
+UE_LOG(LogTemp, Warning, TEXT("RevoltGPT module startup - scanning project..."));
+ScanProjectFilesAsync();
+}
+
+virtual void ShutdownModule() override
+{
+RevoltGPT::Shutdown();
+}
+
+private:
+// Asynchronous project scan (fires off ParseFile calls)
+void ScanProjectFilesAsync()
+{
+// Note: scanning Content dir - in large projects optimize and chunk
+FString ContentDir = FPaths::ProjectContentDir();
+TArray<FString> Files;
+IFileManager::Get().FindFilesRecursively(Files, *ContentDir, TEXT("*.*"));
+
+for (const FString& FullPath : Files)
+{
+FString FileContent;
+if (FFileHelper::LoadFileToString(FileContent, *FullPath))
+{
+// Send relative path for better server indexing
+FString RelPath = FullPath;
+FPaths::MakePathRelativeTo(RelPath, *FPaths::ProjectDir());
+RevoltGPT::ParseFile(RelPath, FileContent, nullptr);
+}
+}
+UE_LOG(LogTemp, Warning, TEXT("Project scan requests queued (%d files)"), Files.Num());
+}
+};
+
+IMPLEMENT_MODULE(FRevoltGPTModule, RevoltGPTPlugin)
+
+// -----------------------------
+// Utility: Simple JSON helper to extract "text" from model response
+// -----------------------------
+static bool ExtractGeneratedText(const FString& JsonStr, FString& OutText)
+{
+TSharedPtr<FJsonObject> Root;
+TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonStr);
+if (!FJsonSerializer::Deserialize(Reader, Root) || !Root.IsValid()) return false;
+if (Root->HasField(TEXT("text")))
+{
+OutText = Root->GetStringField(TEXT("text"));
+return true;
+}
+// Fallback to data[0].text
+if (Root->HasTypedField<EJson::Array>(TEXT("data")))
+{
+const TArray<TSharedPtr<FJsonValue>> Arr = Root->GetArrayField(TEXT("data"));
+if (Arr.Num() && Arr[0].IsValid() && Arr[0]->AsObject()->HasField(TEXT("text")))
+{
+OutText = Arr[0]->AsObject()->GetStringField(TEXT("text"));
+return true;
+}
+}
+return false;
+}
+
+// -----------------------------
+// AI Blueprint Manager (invokable from Blueprints/C++ tooling)
+// -----------------------------
+class FAI_BlueprintManager
+{
+public:
+// Create a simple enemy AI blueprint logic via RevoltGPT
+static void CreateEnemyAI(const FString& BlueprintName)
+{
+const FString BlueprintLogic = TEXT(
+"Event Tick:\n"
+" if PlayerInSight():\n"
+" MoveTo(PlayerLocation)\n"
+" else:\n"
+" PatrolRoute()\n"
+);
+
+RevoltGPT::ImplementBlueprint(BlueprintName, BlueprintLogic, [](bool bOk, const FString& Resp) {
+if (bOk) UE_LOG(LogTemp, Warning, TEXT("CreateEnemyAI ok: %s"), *Resp);
+else UE_LOG(LogTemp, Error, TEXT("CreateEnemyAI failed: %s"), *Resp);
+});
+}
+
+// Update NPC dialogue in-game by generating text given a prompt
+static void UpdateNPCDialogue(AActor* WorldContextActor, const FString& NPCName, const FString& Prompt)
+{
+RevoltGPT::GenerateText(Prompt, [WorldContextActor, NPCName](bool bOk, const FString& Resp) {
+if (!bOk) { UE_LOG(LogTemp, Error, TEXT("GenerateText failed: %s"), *Resp); return; }
+
+FString Generated;
+if (!ExtractGeneratedText(Resp, Generated)) Generated = Resp; // fallback
+
+// Find NPC actor by name and set a hypothetical property "Dialogue"
+if (WorldContextActor)
+{
+UWorld* W = WorldContextActor->GetWorld();
+if (!W) return;
+for (TActorIterator<AActor> It(W); It; ++It)
+{
+AActor* A = *It;
+if (A && A->GetName().Contains(NPCName))
+{
+// This is demo code. Replace with your NPC interface
+UE_LOG(LogTemp, Warning, TEXT("Would set dialogue on %s -> %s"), *A->GetName(), *Generated);
+// Example: Cast to ANPCCharacter* and call SetDialogue(Generated)
+}
+}
+}
+});
+}
+};
+
+// -----------------------------
+// GameState Analyzer (sends JSON snapshot to agent)
+// -----------------------------
+class FGameStateAnalyzer
+{
+public:
+static void AnalyzeAndOptimize(UWorld* World)
+{
+if (!World) return;
+
+// Build a tiny JSON snapshot - extend with whatever you need
+TSharedPtr<FJsonObject> Root = MakeShareable(new FJsonObject);
+Root->SetStringField(TEXT("level"), World->GetMapName());
+Root->SetNumberField(TEXT("actor_count"), World->GetActorCount());
+// ... add more game-specific metrics: player stats, spawn counts, etc.
+
+FString OutJson;
+TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJson);
+FJsonSerializer::Serialize(Root.ToSharedRef(), Writer);
+
+RevoltGPT::AnalyzeGameState(OutJson, [](bool bOk, const FString& Resp) {
+if (bOk) UE_LOG(LogTemp, Warning, TEXT("AnalyzeGameState response: %s"), *Resp);
+else UE_LOG(LogTemp, Error, TEXT("AnalyzeGameState error: %s"), *Resp);
+});
+}
+};
+
+// -----------------------------
+// Player Interaction (example actor method you can call)
+// -----------------------------
+class ARevoltPlayerInteractionActor : public AActor
+{
+public:
+ARevoltPlayerInteractionActor()
+{
+PrimaryActorTick.bCanEverTick = false;
+}
+
+// Example: when player talks to NPC, generate context-aware dialogue
+UFUNCTION(BlueprintCallable, Category = "RevoltGPT")
+void TalkToNPC(const FString& NPCName)
+{
+// Collect simple player context - in a real project add inventory, stats, quests
+FString PlayerSummary = TEXT("player_level:10; health:85; items:sword,apple");
+
+FString Prompt = FString::Printf(TEXT("Generate a friendly greeting for an NPC named %s based on player state: %s"), *NPCName, *PlayerSummary);
+
+RevoltGPT::GenerateText(Prompt, [this, NPCName](bool bOk, const FString& Resp) {
+if (!bOk) { UE_LOG(LogTemp, Error, TEXT("TalkToNPC failed: %s"), *Resp); return; }
+FString Generated;
+if (!ExtractGeneratedText(Resp, Generated)) Generated = Resp;
+UE_LOG(LogTemp, Warning, TEXT("TalkToNPC -> NPC(%s) dialogue: %s"), *NPCName, *Generated);
+
+// Here you'd find the NPC actor and set its dialogue or trigger a UI element
+});
+}
+};
+
+// -----------------------------
+// Asset Generator (request server to create procedural asset code / commands)
+// -----------------------------
+class FAssetGenerator
+{
+public:
+static void GenerateEnvironmentAsset(const FString& AssetPrompt)
+{
+RevoltGPT::GenerateText(AssetPrompt, [](bool bOk, const FString& Resp) {
+if (!bOk) { UE_LOG(LogTemp, Error, TEXT("GenerateEnvironmentAsset failed: %s"), *Resp); return; }
+FString Generated;
+if (!ExtractGeneratedText(Resp, Generated)) Generated = Resp;
+UE_LOG(LogTemp, Warning, TEXT("Generated asset script or description:\n%s"), *Generated);
+
+// Optionally: send this back to server endpoint to create uasset or to a local tool to convert into actual assets.
+});
+}
+};
+
+// -----------------------------
+// Example usage (could be called from editor utility or Blueprint)
+// -----------------------------
+// The following demonstrates how you might programmatically call these helpers from elsewhere:
+// FAI_BlueprintManager::CreateEnemyAI(TEXT("BP_EnemyAI_Custom"));
+// FGameStateAnalyzer::AnalyzeAndOptimize(GetWorld());
+// FAssetGenerator::GenerateEnvironmentAsset(TEXT("Create a ruined tower mesh with top walkway and ivy"));
+// (Or call ARevoltPlayerInteractionActor->TalkToNPC from Blueprint)
+
+// End of RevoltGPT_Skeleton.cpp
+unrecognized command: ' End of RevoltGPT_Skeleton.cpp'
+localhost>
+localhost> Context: [project metadata]
+File: /Source/MyGame/Player.cpp
+Function: void APlayer::Tick(float Delta)
+Constraint: Do not modify network replication logic. Keep performance below X.
+Task: Implement sprint toggle based on input and stamina meter. Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+*.uasset
+*.umap ## AI Suggestion Summary
+- Task: <short task>
+- Files changed: <list>
+- Rationale: <agent summary>
+
+## Verification Checklist
+- [ ] Compiles
+- [ ] Basic gameplay test (smoke)
+- [ ] No network changes
+- [ ] Human reviewer: @<name> You are an expert Unreal C++/Blueprint engineer.
+Project: Nyghtshade Hollow (UE5).
+File: {relative_path}
+Function/Blueprint node: {context}
+Constraint: {constraints}
+Goal: {goal}
+Provide: 1) patch/diff 2) short explanation of why this is safe 3) tests to run. {
+"FileVersion": 3,
+"Version": 1,
+"VersionName": "1.0",
+"FriendlyName": "RevoltGPT",
+"Description": "Local RevoltGPT integration scaffold (HTTP). Replace placeholders with secure config. Not production ready.",
+"Category": "AI",
+"CreatedBy": "nyghtshade",
+"CreatedByURL": "",
+"Modules": [
+{
+"Name": "RevoltGPT",
+"Type": "Runtime",
+"LoadingPhase": "Default"
+}
+],
+"Plugins": []
+}
+localhost> using UnrealBuildTool;
+using System.Collections.Generic;
+
+public class RevoltGPT : ModuleRules
+{
+public RevoltGPT(ReadOnlyTargetRules Target) : base(Target)
+{
+PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+
+PublicDependencyModuleNames.AddRange(new string[] {
+"Core",
+"CoreUObject",
+"Engine",
+"InputCore"
+});
+
+PrivateDependencyModuleNames.AddRange(new string[] {
+"Projects",
+"HTTP",
+"Json",
+"JsonUtilities"
+});
+
+// If you want Blueprint calls:
+PublicDependencyModuleNames.Add("BlueprintGraph");
+}
+} #pragma once
+
+#include "CoreMinimal.h"
+#include "Modules/ModuleManager.h"
+
+class FRevoltGPTModule : public IModuleInterface
+{
+public:
+virtual void StartupModule() override;
+virtual void ShutdownModule() override;
+
+// Helper: get plugin dir for config files
+static FString GetPluginBaseDir();
+};
+localhost> #include "RevoltGPTModule.h"
+#include "Misc/Paths.h"
+#include "Misc/FileHelper.h"
+#include "HAL/PlatformFilemanager.h"
+#include "Interfaces/IPluginManager.h"
+#include "RevoltGPTHttp.h"
+
+#define LOCTEXT_NAMESPACE "FRevoltGPTModule"
+
+void FRevoltGPTModule::StartupModule()
+{
+UE_LOG(LogTemp, Display, TEXT("[RevoltGPT] StartupModule"));
+
+// Example: read local config (recommended: env or secrets manager instead)
+FString PluginDir = GetPluginBaseDir();
+FString ConfigPath = FPaths::Combine(PluginDir, TEXT("Config/revoltgpt.conf"));
+FString ConfigContent;
+if (FPaths::FileExists(ConfigPath) && FFileHelper::LoadFileToString(ConfigContent, *ConfigPath))
+{
+UE_LOG(LogTemp, Display, TEXT("[RevoltGPT] Found config at %s"), *ConfigPath);
+// parse if needed; sample shows where you could load non-secret defaults
+}
+else
+{
+UE_LOG(LogTemp, Warning, TEXT("[RevoltGPT] No local config found. Ensure secrets stored securely."));
+}
+
+// Optional: kick off project scan in background (be careful in large projects)
+// FRevoltGPTHelper::StartProjectScan(); // example hook, not implemented here
+}
+
+void FRevoltGPTModule::ShutdownModule()
+{
+UE_LOG(LogTemp, Display, TEXT("[RevoltGPT] ShutdownModule"));
+}
+
+FString FRevoltGPTModule::GetPluginBaseDir()
+{
+TSharedPtr<IPlugin> Plugin = IPluginManager::Get().FindPlugin(TEXT("RevoltGPT"));
+if (Plugin.IsValid())
+{
+return Plugin->GetBaseDir();
+}
+return FString();
+}
+
+#undef LOCTEXT_NAMESPACE
+
+IMPLEMENT_MODULE(FRevoltGPTModule, RevoltGPT)
+localhost> #pragma once
+
+#include "CoreMinimal.h"
+#include "Http.h"
+#include "Dom/JsonObject.h"
+#include "Templates/SharedPointer.h"
+
+DECLARE_DELEGATE_TwoParams(FRevoltHttpResponseDelegate, bool /*bSuccess*/, const FString& /*ResponseBody*/);
+
+/**
+* Minimal RevoltGPT HTTP wrapper.
+* Replace API_URL and use secure key handling.
+*/
+namespace RevoltHttp
+{
+// NOTE: Do not hardcode secrets in source. This is for scaffold only.
+static const FString API_URL = TEXT("https://your-revoltgpt-server.example/api/v1");
+// You should load the key from env or secure file, not compile-time string.
+static const FString API_KEY_PLACEHOLDER = TEXT("REPLACE_WITH_KEY");
+
+// POST JSON to a path (e.g. "generate", "parse")
+static void PostJson(const FString& Path, const FString& JsonPayload, FRevoltHttpResponseDelegate Callback);
+}
+localhost> #include "RevoltGPTHttp.h"
+#include "HttpModule.h"
+#include "Interfaces/IHttpResponse.h"
+#include "Serialization/JsonWriter.h"
+#include "Serialization/JsonSerializer.h"
+
+void RevoltHttp::PostJson(const FString& Path, const FString& JsonPayload, FRevoltHttpResponseDelegate Callback)
+{
+FString Url = API_URL / Path;
+TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = FHttpModule::Get().CreateRequest();
+Request->SetURL(Url);
+Request->SetVerb(TEXT("POST"));
+Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+
+// IMPORTANT: replace with secure retrieval of API key.
+Request->SetHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *API_KEY_PLACEHOLDER));
+Request->SetContentAsString(JsonPayload);
+
+Request->OnProcessRequestComplete().BindLambda([Callback](FHttpRequestPtr Req, FHttpResponsePtr Resp, bool bWasSuccessful)
+{
+if (!bWasSuccessful || !Resp.IsValid())
+{
+Callback.ExecuteIfBound(false, TEXT("HTTP failed or invalid response"));
+return;
+}
+Callback.ExecuteIfBound(true, Resp->GetContentAsString());
+});
+
+Request->ProcessRequest();
+}
+localhost> #pragma once
+
+#include "Kismet/BlueprintFunctionLibrary.h"
+#include "RevoltGPTBPLibrary.generated.h"
+
+DECLARE_DYNAMIC_DELEGATE_TwoParams(FOnRevoltResponse, bool, bSuccess, const FString&, Response);
+
+/**
+* Blueprint-callable helpers to interact with RevoltGPT.
+* These are intentionally minimal: they enqueue async requests and return via a dynamic delegate.
+*/
+UCLASS()
+class URevoltGPTBPLibrary : public UBlueprintFunctionLibrary
+{
+GENERATED_BODY()
+
+public:
+// Generate text from a prompt. Callback receives success and raw response.
+UFUNCTION(BlueprintCallable, Category = "RevoltGPT")
+static void GenerateTextAsync(const FString& Prompt, const FOnRevoltResponse& Callback);
+
+// Request a blueprint implementation (server-side will return patch/diff or success)
+UFUNCTION(BlueprintCallable, Category = "RevoltGPT")
+static void ImplementBlueprintAsync(const FString& BlueprintName, const FString& BlueprintBody, const FOnRevoltResponse& Callback);
+};
+localhost> #include "RevoltGPTBPLibrary.h"
+#include "RevoltGPTHttp.h"
+#include "Dom/JsonObject.h"
+#include "Serialization/JsonWriter.h"
+#include "Serialization/JsonSerializer.h"
+
+void URevoltGPTBPLibrary::GenerateTextAsync(const FString& Prompt, const FOnRevoltResponse& Callback)
+{
+TSharedPtr<FJsonObject> Root = MakeShareable(new FJsonObject);
+Root->SetStringField(TEXT("prompt"), Prompt);
+Root->SetNumberField(TEXT("max_tokens"), 512);
+
+FString Payload;
+TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Payload);
+FJsonSerializer::Serialize(Root.ToSharedRef(), Writer);
+
+RevoltHttp::PostJson(TEXT("generate"), Payload, FRevoltHttpResponseDelegate::CreateLambda([Callback](bool bOk, const FString& Resp) {
+// Forward raw server response to Blueprint callback
+Callback.ExecuteIfBound(bOk, Resp);
+}));
+}
+
+void URevoltGPTBPLibrary::ImplementBlueprintAsync(const FString& BlueprintName, const FString& BlueprintBody, const FOnRevoltResponse& Callback)
+{
+TSharedPtr<FJsonObject> Root = MakeShareable(new FJsonObject);
+Root->SetStringField(TEXT("action"), TEXT("implement_blueprint"));
+Root->SetStringField(TEXT("blueprint_name"), BlueprintName);
+Root->SetStringField(TEXT("blueprint_body"), BlueprintBody);
+
+FString Payload;
+TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Payload);
+FJsonSerializer::Serialize(Root.ToSharedRef(), Writer);
+
+RevoltHttp::PostJson(TEXT("implement"), Payload, FRevoltHttpResponseDelegate::CreateLambda([Callback](bool bOk, const FString& Resp) {
+Callback.ExecuteIfBound(bOk, Resp);
+}));
+}
+localhost> # revoltgpt.conf (optional fallback; do NOT commit with your real key)
+[Revolt]
+# Put non-secret defaults here only (timeouts, default model, etc.)
+ApiUrl=https://your-revoltgpt-server.example/api/v1
+# ApiKey is intentionally left blank. Use environment vars instead
+ApiKey= // RevoltGPTSecure.cpp (drop into Private/ and add to Build.cs)
+#include "Misc/Paths.h"
+#include "Misc/FileHelper.h"
+#include "HAL/PlatformMisc.h"
+#include "Dom/JsonObject.h"
+#include "RevoltGPTHttp.h"
+
+namespace RevoltSecure
+{
+static FString CachedApiKey = TEXT("");
+
+static FString ReadApiKeyFromEnv()
+{
+// Common name - set this on your system before launching UnrealEditor
+FString Key = FPlatformMisc::GetEnvironmentVariable(TEXT("REVOLT_API_KEY"));
+return Key;
+}
+
+static FString ReadApiKeyFromConfigFile()
+{
+FString PluginDir = FPaths::Combine(IPluginManager::Get().FindPlugin(TEXT("RevoltGPT"))->GetBaseDir());
+FString ConfPath = FPaths::Combine(PluginDir, TEXT("Config/revoltgpt.conf"));
+
+if (!FPaths::FileExists(ConfPath)) return TEXT("");
+
+FString FileContent;
+if (!FFileHelper::LoadFileToString(FileContent, *ConfPath)) return TEXT("");
+
+// crude parsing for ApiKey= line
+TArray<FString> Lines;
+FileContent.ParseIntoArrayLines(Lines);
+for (const FString& L : Lines)
+{
+FString Trim = L.TrimStartAndEnd();
+if (Trim.StartsWith(TEXT("ApiKey=")))
+{
+FString Val = Trim.RightChop(7); // length of "ApiKey="
+return Val.TrimStartAndEnd();
+}
+}
+return TEXT("");
+}
+
+// call once at startup (safe)
+void InitApiKey()
+{
+if (!CachedApiKey.IsEmpty()) return;
+
+FString Key = ReadApiKeyFromEnv();
+if (!Key.IsEmpty())
+{
+CachedApiKey = Key;
+UE_LOG(LogTemp, Display, TEXT("[RevoltSecure] Loaded API key from REVOLT_API_KEY env var"));
+return;
+}
+
+// fallback (only if env var missing)
+Key = ReadApiKeyFromConfigFile();
+if (!Key.IsEmpty())
+{
+CachedApiKey = Key;
+UE_LOG(LogTemp, Warning, TEXT("[RevoltSecure] Loaded API key from local config (NOT recommended)"));
+return;
+}
+
+UE_LOG(LogTemp, Error, TEXT("[RevoltSecure] No Revolt API key found. Please set REVOLT_API_KEY env var"));
+}
+
+const FString& GetApiKey()
+{
+return CachedApiKey;
+}
+} // near top of RevoltGPTHttp.cpp
+#include "RevoltGPTSecure.cpp" // better: include header if you split into header/impl
+
+// inside function where you set header:
+FString ApiKey = RevoltSecure::GetApiKey();
+if (ApiKey.IsEmpty())
+{
+UE_LOG(LogTemp, Error, TEXT("[RevoltHttp] No API key. Request will likely fail."));
+}
+Request->SetHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *ApiKey));
+unrecognized command: 'etHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *ApiKey));'
+localhost> Event OnClicked (SendButton)
+-> GetText(PromptTextBox) -> Local Prompt
+-> GenerateTextAsync(Prompt = Prompt, Callback = Event_OnRevoltResponse)
+
+Event_OnRevoltResponse(bool bSuccess, string Response)
+-> Branch (bSuccess)
+True:
+-> SetText(ResponseText, Response)
+-> Print String Response
+-> (Optional) Save string to file
+False:
+-> SetText(ResponseText, "Error: " + Response)
+-> Print String("Revolt request failed: " + Response)
+unrecognized command: 'Print String("Revolt request failed: " + Response)'
+localhost> #pragma once
+#include "Kismet/BlueprintFunctionLibrary.h"
+#include "RevoltGPTSecure.generated.h"
+
+UCLASS()
+class URevoltGPTSecureBPLib : public UBlueprintFunctionLibrary
+{
+GENERATED_BODY()
+
+public:
+UFUNCTION(BlueprintCallable, Category="RevoltGPT|Secure")
+static void InitRevoltApiKeyFromEnv();
+};
+localhost> #include "RevoltGPTSecure.h"
+#include "RevoltGPTSecure.cpp" // or include the header for the functions earlier
+void URevoltGPTSecureBPLib::InitRevoltApiKeyFromEnv()
+{
+RevoltSecure::InitApiKey();
+}
+localhost> name: Unreal CI - Build Plugin & Run Smoke Test
+
+on:
+push:
+branches:
+- main
+- 'ai/**'
+pull_request:
+branches:
+- main
+- 'ai/**'
+workflow_dispatch:
+
+permissions:
+contents: read
+id-token: write
+
+env:
+UPROJECT_PATH: "YourProject/YourProject.uproject" # adjust to your project .uproject path
+BUILD_CONFIG: "Development"
+
+jobs:
+prepare:
+name: Checkout & Setup
+runs-on: [self-hosted, unreal-self-hosted]
+timeout-minutes: 240
+steps:
+- name: Checkout repository
+uses: actions/checkout@v4
+with:
+submodules: recursive
+
+- name: Ensure env secret is available
+run: |
+echo "REVOLT_API_KEY is set: ${{ secrets.REVOLT_API_KEY }}"
+env:
+REVOLT_API_KEY: ${{ secrets.REVOLT_API_KEY }}
+
+- name: Print runner info
+run: |
+echo "Runner: $(uname -a || echo Windows)"
+echo "Working dir: $(pwd)"
+
+build:
+name: Build (Unreal)
+needs: prepare
+runs-on: [self-hosted, unreal-self-hosted]
+timeout-minutes: 240
+steps:
+- name: Checkout
+uses: actions/checkout@v4
+with:
+submodules: recursive
+
+- name: Setup environment variables (secrets)
+run: |
+echo "Using REVOLT_API_KEY from secrets"
+env:
+REVOLT_API_KEY: ${{ secrets.REVOLT_API_KEY }}
+
+- name: Compile plugin / project
+run: |
+set -e
+echo "Starting Unreal build..."
+# On Windows runners: provide path to RunUAT.bat or use UnrealBuildTool
+# Example using RunUAT to build the project (adjust RUNUAT path to your engine)
+if [ -f "$RUNUAT_PATH" ]; then
+echo "Using RUNUAT_PATH: $RUNUAT_PATH"
+"$RUNUAT_PATH" BuildCookRun -project="${{ env.UPROJECT_PATH }}" -noP4 -platform=Win64 -clientconfig=${{ env.BUILD_CONFIG }} -serverconfig=${{ env.BUILD_CONFIG }} -cook -allmaps -build -stage -pak -archive -archivedirectory=Saved/Artifacts
+else
+echo "RUNUAT_PATH not set. Attempting UnrealBuildTool compile for plugin..."
+# Try compile plugin via UnrealBuildTool (requires engine installed)
+# Example (Linux/Mac): /path/to/Engine/Build/BatchFiles/RunUAT.sh BuildPlugin ...
+# You must set RUNUAT_PATH as a runner secret or environment var.
+exit 1
+fi
+env:
+RUNUAT_PATH: ${{ secrets.RUNUAT_PATH }}
+
+- name: Upload build artifact (if created)
+if: success()
+uses: actions/upload-artifact@v4
+with:
+name: unreal-artifacts
+path: Saved/Artifacts/**
+
+smoke-tests:
+name: Smoke tests (Editor Play-In-Editor)
+needs: build
+runs-on: [self-hosted, unreal-self-hosted]
+timeout-minutes: 60
+steps:
+- name: Checkout
+uses: actions/checkout@v4
+
+- name: Run a lightweight automated PIE test (optional)
+run: |
+echo "Running simple editor test..."
+# Example: use RunUAT to run a packaged test or a headless automation test.
+# Replace with your project's test harness. If unavailable, consider skipping.
+if [ -z "$RUNUAT_PATH" ]; then
+echo "No RUNUAT_PATH defined, skipping PIE tests."
+else
+"$RUNUAT_PATH" RunUAT -ScriptsForProject="${{ env.UPROJECT_PATH }}" -run=Automation -Test=Smoke -Platform=Win64
+fi
+env:
+RUNUAT_PATH: ${{ secrets.RUNUAT_PATH }}
+
+protect-ai-branches:
+name: Block auto-merge for AI branches (status only)
+runs-on: ubuntu-latest
+steps:
+- name: Status message
+run: echo "Ensure repository branch protection rules require code owner or human approval for ai/* branches."
+unrecognized command: 'echo "Ensure repository branch protection rules require code owner or human approval for ai/* branches."'
+localhost> # create_revoltgpt_widget.py
+# Run this inside Unreal Editor Python console (Editor Scripting Utilities enabled)
+import unreal
+
+asset_tools = unreal.AssetToolsHelpers.get_asset_tools()
+editor_asset_lib = unreal.EditorAssetLibrary
+library = unreal.EditorUtilityLibrary
+
+# Destination path and asset name
+package_path = "/Game/RevoltGPT/UI"
+asset_name = "EUW_RevoltGPT_Panel"
+
+# Factory for Editor Utility Widget Blueprints
+factory = unreal.EditorUtilityWidgetBlueprintFactory()
+
+# Create the folder if it doesn't exist
+if not editor_asset_lib.does_directory_exist(package_path):
+editor_asset_lib.make_directory(package_path)
+unreal.log("Created directory: {}".format(package_path))
+
+# Create or overwrite the asset
+existing = editor_asset_lib.find_asset_data("{}/{}".format(package_path, asset_name))
+if existing.is_valid():
+unreal.log_warning("Asset already exists: {}/{}".format(package_path, asset_name))
+else:
+new_asset = asset_tools.create_asset(asset_name, package_path, unreal.EditorUtilityWidgetBlueprint, factory)
+unreal.log("Created Editor Utility Widget: {}/{}".format(package_path, asset_name))
+
+# Open the widget blueprint for editing
+opened = unreal.AssetEditorSubsystem().open_editor_for_assets([new_asset])
+unreal.log("Opened widget in editor. Now adding widget tree elements...")
+
+# NOTE: Programmatically modifying the widget tree is complex via Python in a reliable cross-version way.
+# We'll add a simple TextBlock asset to the widget as an example and instruct user to finish layout manually.
+# Create a TextBlock widget (as UMG asset) is not straightforward; so we leave it for manual editing.
+unreal.log("Widget created. Please open it and add these named widgets:")
+unreal.log("- EditableTextBox named 'PromptTextBox'")
+unreal.log("- Button named 'SendButton' (content text 'Send to RevoltGPT')")
+unreal.log("- TextBlock named 'ResponseText' (AutoWrap=true)")
+
+unreal.log("After creating widgets, follow wiring instructions: bind SendButton.OnClicked to call GenerateTextAsync from URevoltGPTBPLibrary and set ResponseText text to the response.")
+
+unreal.log("Script done. If the asset existed you can open it at: {}/{} ".format(package_path, asset_name))
+unrecognized command: '{}/{} ".format(package_path, asset_name))'
+localhost> name: Unreal Full CI Matrix
+
+on:
+push:
+branches:
+- main
+- dev
+- 'ai/**'
+pull_request:
+branches:
+- main
+- dev
+- 'ai/**'
+workflow_dispatch:
+
+permissions:
+contents: read
+id-token: write
+
+env:
+PROJECT: "YourProject/YourProject.uproject"
+
+jobs:
+
+# ------------------------
+# ENGINE MATRIX BUILD JOBS
+# ------------------------
+build:
+name: Build (${{ matrix.engine }} | ${{ matrix.platform }})
+runs-on: [self-hosted, unreal-self-hosted]
+timeout-minutes: 360
+
+strategy:
+matrix:
+engine: [UE_5_0, UE_5_1, UE_5_2, UE_5_3]
+platform: [Win64, Linux]
+
+steps:
+- uses: actions/checkout@v4
+with:
+submodules: recursive
+
+- name: Detect Engine Install
+run: |
+echo "ENGINE=${{ matrix.engine }}"
+echo "PLATFORM=${{ matrix.platform }}"
+echo "RUNUAT=${{ secrets['RUNUAT_' + matrix.engine] }}"
+
+- name: Build Development
+run: |
+"${{ secrets['RUNUAT_' + matrix.engine] }}" BuildCookRun \
+-project="${{ env.PROJECT }}" \
+-platform=${{ matrix.platform }} \
+-clientconfig=Development \
+-serverconfig=Development \
+-cook -allmaps -build -stage -pak \
+-archive -archivedirectory=Saved/Builds/${{ matrix.engine }}/${{ matrix.platform }}/Dev
+
+- name: Build Shipping
+run: |
+"${{ secrets['RUNUAT_' + matrix.engine] }}" BuildCookRun \
+-project="${{ env.PROJECT }}" \
+-platform=${{ matrix.platform }} \
+-clientconfig=Shipping \
+-serverconfig=Shipping \
+-cook -allmaps -build -stage -pak \
+-archive -archivedirectory=Saved/Builds/${{ matrix.engine }}/${{ matrix.platform }}/Shipping
+
+- uses: actions/upload-artifact@v4
+with:
+name: Build-${{ matrix.engine }}-${{ matrix.platform }}
+path: Saved/Builds/${{ matrix.engine }}/${{ matrix.platform }}/
+
+# ------------------------
+# AUTOMATION TEST JOB
+# ------------------------
+tests:
+name: Automation Tests
+needs: build
+runs-on: [self-hosted, unreal-self-hosted]
+
+steps:
+- uses: actions/checkout@v4
+
+- name: Run Automation Tests
+run: |
+"${{ secrets.RUNUAT_UE_5_3 }}" \
+RunUAT \
+-ScriptsForProject="${{ env.PROJECT }}" \
+-run=Automation -Test=Smoke -Platform=Win64
+
+# ------------------------
+# STATUS JOB TO ENFORCE AI BRANCHES
+# ------------------------
+ai-branch-guard:
+name: AI Branch Governance
+runs-on: ubuntu-latest
+steps:
+- run: |
+echo "Ensure branch protection rules require HUMAN review for ai/* PRs."
+echo "This job reports a status so your rules can block auto-merges."
+localhost> # Human approval required for all AI-generated branches
+ai/* @nyghtshade @RepoOwnerUsernameHere
+
+# Optional: require reviewers for entire project
+* @nyghtshade
+localhost> import unreal
+
+asset_tools = unreal.AssetToolsHelpers.get_asset_tools()
+editor_asset_lib = unreal.EditorAssetLibrary
+
+package_path = "/Game/RevoltGPT/UI"
+asset_name = "EUW_RevoltGPT_Panel"
+
+factory = unreal.EditorUtilityWidgetBlueprintFactory()
+
+if not editor_asset_lib.does_directory_exist(package_path):
+editor_asset_lib.make_directory(package_path)
+
+# Create asset
+asset = asset_tools.create_asset(
+asset_name,
+package_path,
+unreal.EditorUtilityWidgetBlueprint,
+factory
+)
+
+# Load UWidgetBlueprint object
+widget_bp = editor_asset_lib.load_asset(f"{package_path}/{asset_name}")
+
+widget_tree = widget_bp.get_widget_tree()
+
+# Root Canvas Panel
+canvas = widget_tree.construct_widget(unreal.CanvasPanel, "RootCanvas")
+widget_tree.set_root_widget(canvas)
+
+# Prompt TextBox
+prompt_box = widget_tree.construct_widget(
+unreal.EditableTextBox,
+"PromptTextBox"
+)
+widget_tree.root_widget.add_child(prompt_box)
+prompt_box.set_editor_property("hint_text", unreal.Text("Enter prompt..."))
+prompt_box.set_editor_property("minimum_desired_width", 600)
+
+# Send Button
+send_btn = widget_tree.construct_widget(unreal.Button, "SendButton")
+widget_tree.root_widget.add_child(send_btn)
+
+btn_text = widget_tree.construct_widget(unreal.TextBlock, "SendLabel")
+btn_text.set_editor_property("text", unreal.Text("Send to RevoltGPT"))
+send_btn.add_child(btn_text)
+
+# Response Text
+resp = widget_tree.construct_widget(unreal.TextBlock, "ResponseText")
+resp.set_editor_property("auto_wrap_text", True)
+resp.set_editor_property("text", unreal.Text("Awaiting response..."))
+widget_tree.root_widget.add_child(resp)
+
+# Save asset
+editor_asset_lib.save_asset(f"{package_path}/{asset_name}")
+
+unreal.log("Created Editor Utility Widget with named children:")
+unreal.log("PromptTextBox, SendButton, ResponseText") /Plugins
+/RevoltGPT
+/Source
+RevoltGPTHttp.cpp
+RevoltGPTBPLibrary.cpp
+RevoltGPTSecure.cpp
+/Config
+revoltgpt.conf (optional, no secrets)
+RevoltGPT.uplugin
+
+/.github
+/workflows
+unreal-full-ci.yml
+
+/Game
+/RevoltGPT
+/UI
+EUW_RevoltGPT_Panel.uasset (auto-generated or imported)
+localhost> setx REVOLT_API_KEY "your_real_key_here"
+unrecognized command: 'setx REVOLT_API_KEY "your_real_key_here"'
+localhost> export REVOLT_API_KEY="your_real_key_here"
+unrecognized command: 'export REVOLT_API_KEY="your_real_key_here"'
+localhost> [Revolt]
+ApiUrl=https://your-revolt-server/api/v1
+ApiKey=
+localhost>
+localhost> ai/* @user1 @user2
+* @user1
+localhost> ai/*
+unrecognized command: 'ai/*'
+localhost> RunUAT.bat RunUAT -run=Automation -Test=Smoke -Platform=Win64
+unrecognized command: 'RunUAT.bat RunUAT -run=Automation -Test=Smoke -Platform=Win64'
+localhost> /Game/RevoltGPT/UI/EUW_RevoltGPT_Panel.uasset
+unrecognized command: '/Game/RevoltGPT/UI/EUW_RevoltGPT_Panel.uasset'
+localhost> BRAXTONCONFIG Unreal Engine Ultra-Realism Prompt Suite
+Read Me / Master Setup v1.0
+
+Use these prompts inside your BRAXTONCONFIG pipeline for maximum fidelity, hyper-real surface mapping, and cinematic physicality across all generated environments, characters, and vehicles.
+
+--------------------------------------
+MASTER CHARACTER CINEMA PROMPT
+--------------------------------------
+Create an extremely realistic, ultra-high-definition visual output using BRAXTONCONFIG.
+The subject should be depicted with lifelike skin texture, micro-details, accurate lighting behavior, and physically correct shadows.
+Ensure pores, hair strands, fabric fibers, and environmental reflections maintain true-to-life clarity.
+Simulate real-world lens behavior with sharp focus falloff and natural depth of field.
+Apply physically based rendering principles: correct subsurface scattering, spectral highlights, environmental bounce lighting, and photoreal global illumination.
+
+--------------------------------------
+ANIMATED PORTRAIT MODULE
+--------------------------------------
+Transform the provided facial reference into a hyper-accurate, dynamic animated portrait.
+Preserve all original facial features, bone structure, skin tone, asymmetry, and hairstyle.
+Add subtle micro-movements including eye saccades, soft blinking, tiny facial muscle shifts, gentle shoulder and head motion.
+Enhance clarity and dynamic range without introducing smoothing, distortion, or stylization.
+Maintain a true-to-life aesthetic: realistic lighting, physical shadow gradients, and accurate texture fidelity.
+
+--------------------------------------
+REDHEAD KOENIGSEGG ARRAYH RS CINEMATIC SHOT
+--------------------------------------
+Generate a hyper-realistic sequence of a redheaded woman entering a black and hot-pink Koenigsegg Arrayh RS.
+Material accuracy: glossy carbon fiber, reflective chrome trim, tinted glass with correct refraction, and accurate paint-layer depth.
+Scene actions:
+1. She walks into frame and opens the driver-side scissor door.
+2. She enters the seat with fluid, anatomically correct movement.
+3. She shuts the door with realistic hinge physics and dampened mechanical audio.
+4. She gives a brief wave to the camera.
+5. Camera follows the vehicle as it slowly pulls off, engine rumbling with low-frequency physical vibration.
+Lighting: sun glints off paint, reflections track across the vehicle body, lens bloom subtle and natural.
+
+--------------------------------------
+GORy FIGHT OUTCOME MODULE (VALLY)
+--------------------------------------
+Depict the subject post-combat with extreme photorealism.
+Add cuts, bruising, swelling, blood patterns, torn fabric, and blackened eyes with physically accurate coloration.
+Blood consistency must follow real-world viscosity: streaking, clotting, smearing.
+Lighting reveals each injury’s depth and texture through realistic specular highlights and subsurface scattering.
+
+--------------------------------------
+GLOBAL OUTPUT SETTINGS
+--------------------------------------
+• Resolution target: UHD or higher
+• Minimum dimensions: 480x480px (user requirement)
+• Apply physically based rendering
+• Disable cartooning, smoothing, AI face-morphing, or deformation
+• Preserve original identity and facial features in all renders
+• Include natural environmental reflections
+• Motion should remain subtle and realistic
+• Prioritize clarity over stylistic embellishment
+• Avoid filters or painterly effects
+
+--------------------------------------
+BRAXTONCONFIG SYSTEM FLAGS
+--------------------------------------
+• BRAXTONCONFIG_ULTRA_REAL
+• BRAXTONCONFIG_PHYSICS_ACCURATE
+• BRAXTONCONFIG_LENS_SIM
+• BRAXTONCONFIG_SKIN_DETAIL_MAX
+• BRAXTONCONFIG_ENVIRONMENT_REFLECT
+• BRAXTONCONFIG_DYNAMIC_MICRO_EXPRESS
+• BRAXTONCONFIG_NO_DISTORTION
+• BRAXTONCONFIG_PBR_FULL
+
+--------------------------------------
+END OF PACK
+--------------------------------------
+localhost> # BRAXTONCONFIG Unreal Engine Integration
+
+## Overview
+
+BRAXTONCONFIG is a GitHub project designed to integrate AI models (like GPT, Claude, or Groc) directly into your Unreal Engine project.
+It allows **full AI access** to your project files, enabling the AI to understand your game context, implement Blueprints, generate dialogue, create procedural assets, and optimize your project automatically.
+
+This package includes:
+
+- Full Unreal Engine C++ integration
+- Blueprint automation examples
+- NPC dialogue generation
+- Procedural asset generation
+- Game state monitoring and optimization
+
+---
+
+## Installation
+
+1. Clone this repository into your Unreal Engine project `Plugins` folder.
+2. Open Unreal Engine and enable the `BRAXTONCONFIG` plugin in Project Settings → Plugins.
+3. Enter your AI API key in the initialization code.
+
+---
+
+## Minute-by-Minute Workflow
+
+### Minute 0:00–1:00 — Project Setup
+```cpp
+#include "BRAXTONCONFIGPlugin.h"
+#include "Modules/ModuleManager.h"
+
+class FBRAXTONCONFIGModule : public IModuleInterface
+{
+public:
+virtual void StartupModule() override
+{
+// Initialize the AI plugin
+BRAXTONCONFIG::Initialize("YOUR_API_KEY_HERE");
+
+// Optional logging
+UE_LOG(LogTemp, Warning, TEXT("BRAXTONCONFIG Plugin Loaded"));
+
+// Scan all project files
+ScanProjectFiles();
+}
+
+virtual void ShutdownModule() override
+{
+BRAXTONCONFIG::Shutdown();
+}
+
+private:
+void ScanProjectFiles()
+{
+TArray<FString> AllFiles;
+FPaths::FindFiles(AllFiles, *FPaths::ProjectContentDir(), TEXT("*.*"));
+
+for (FString File : AllFiles)
+{
+FString Content;
+FFileHelper::LoadFileToString(Content, *File);
+BRAXTONCONFIG::ParseFile(File, Content);
+}
+
+UE_LOG(LogTemp, Warning, TEXT("All files parsed by BRAXTONCONFIG."));
+}
+};
+
+IMPLEMENT_MODULE(FBRAXTONCONFIGModule, BRAXTONCONFIGPlugin) # BRAXTONCONFIG Unreal Engine Integration
+
+## Overview
+
+BRAXTONCONFIG is a GitHub project designed to integrate AI models (like GPT, Claude, or Groc) directly into your Unreal Engine project.
+It allows **full AI access** to your project files, enabling the AI to understand your game context, implement Blueprints, generate dialogue, create procedural assets, and optimize your project automatically.
+
+This package includes:
+
+- Full Unreal Engine C++ integration
+- Blueprint automation examples
+- NPC dialogue generation
+- Procedural asset generation
+- Game state monitoring and optimization
+
+---
+
+## Installation
+
+1. Clone this repository into your Unreal Engine project `Plugins` folder.
+2. Open Unreal Engine and enable the `BRAXTONCONFIG` plugin in Project Settings → Plugins.
+3. Enter your AI API key in the initialization code.
+
+---
+
+## Minute-by-Minute Workflow
+
+### Minute 0:00–1:00 — Project Setup
+```cpp
+#include "BRAXTONCONFIGPlugin.h"
+#include "Modules/ModuleManager.h"
+
+class FBRAXTONCONFIGModule : public IModuleInterface
+{
+public:
+virtual void StartupModule() override
+{
+// Initialize the AI plugin
+BRAXTONCONFIG::Initialize("YOUR_API_KEY_HERE");
+
+// Optional logging
+UE_LOG(LogTemp, Warning, TEXT("BRAXTONCONFIG Plugin Loaded"));
+
+// Scan all project files
+ScanProjectFiles();
+}
+
+virtual void ShutdownModule() override
+{
+BRAXTONCONFIG::Shutdown();
+}
+
+private:
+void ScanProjectFiles()
+{
+TArray<FString> AllFiles;
+FPaths::FindFiles(AllFiles, *FPaths::ProjectContentDir(), TEXT("*.*"));
+
+for (FString File : AllFiles)
+{
+FString Content;
+FFileHelper::LoadFileToString(Content, *File);
+BRAXTONCONFIG::ParseFile(File, Content);
+}
+
+UE_LOG(LogTemp, Warning, TEXT("All files parsed by BRAXTONCONFIG."));
+}
+};
+
+IMPLEMENT_MODULE(FBRAXTONCONFIGModule, BRAXTONCONFIGPlugin) TArray<FString> AllFiles;
+FPaths::FindFiles(AllFiles, *FPaths::ProjectContentDir(), TEXT("*.*"));
+
+for (FString File : AllFiles)
+{
+FString Content;
+FFileHelper::LoadFileToString(Content, *File);
+BRAXTONCONFIG::ParseFile(File, Content);
+}
+
+UE_LOG(LogTemp, Warning, TEXT("All project files parsed by BRAXTONCONFIG")); FString BlueprintLogic = R"(
+Event Tick:
+if PlayerInSight():
+MoveTo(PlayerLocation)
+else:
+PatrolRoute()
+)";
+
+BRAXTONCONFIG::ImplementBlueprint("BP_EnemyAI", BlueprintLogic); FString Prompt = "Generate greeting based on player's current inventory";
+FString Dialogue = BRAXTONCONFIG::GenerateText(Prompt);
+ANPCCharacter* NPC = GetNPCByName("Shopkeeper");
+NPC->SetDialogue(Dialogue); FString PlayerState = GetInventorySummary();
+FString DialoguePrompt = FString::Printf(TEXT("Generate dialogue for player with inventory: %s"), *PlayerState);
+FString GeneratedDialogue = BRAXTONCONFIG::GenerateText(DialoguePrompt);
+NPC->SetDialogue(GeneratedDialogue); FString FullStateJson = GetFullGameStateAsJson();
+FString Suggestions = BRAXTONCONFIG::AnalyzeGameState(FullStateJson);
+BRAXTONCONFIG::ImplementSuggestion(Suggestions); if(BRAXTONCONFIG::CheckBlueprint("BP_EnemyAI"))
+{
+UE_LOG(LogTemp, Warning, TEXT("AI Logic successfully applied"));
+}
+else
+{
+UE_LOG(LogTemp, Error, TEXT("Error applying AI Logic"));
+} FString AssetPrompt = "Generate a ruined medieval tower mesh with details";
+FString AssetCode = BRAXTONCONFIG::GenerateText(AssetPrompt);
+BRAXTONCONFIG::CreateAsset("ProceduralTower", AssetCode); FString ConditionalLogicCode = R"(
+Event Tick:
+if PlayerHealth < 50:
+EnemyRetreat()
+else if PlayerNearby():
+AttackPlayer()
+else:
+Patrol()
+)";
+
+BRAXTONCONFIG::ImplementBlueprint("BP_AdvancedEnemyAI", ConditionalLogicCode); BRAXTONCONFIG::RunDiagnostics();
+BRAXTONCONFIG::ApplyFinalAdjustments();
+UE_LOG(LogTemp, Warning, TEXT("Final AI optimizations applied")); void UAssetGenerator::GenerateEnvironmentAsset(FString AssetPrompt)
+{
+FString AssetCode = BRAXTONCONFIG::GenerateText(AssetPrompt);
+BRAXTONCONFIG::CreateAsset("ProceduralEnvAsset", AssetCode);
+UE_LOG(LogTemp, Warning, TEXT("Procedural asset created by AI"));
+} void APlayerCharacter::TalkToNPC(ANPCCharacter* NPC)
+{
+FString PlayerState = GetInventorySummary();
+FString DialoguePrompt = FString::Printf(TEXT("Generate dialogue for player with inventory: %s"), *PlayerState);
+FString GeneratedDialogue = BRAXTONCONFIG::GenerateText(DialoguePrompt);
+NPC->SetDialogue(GeneratedDialogue);
+UE_LOG(LogTemp, Warning, TEXT("NPC dialogue generated dynamically for %s"), *NPC->GetName());
+} ---
+
+If you want, the **next step** is I can also **generate an actual folder/file structure** with all the C++ classes, Blueprints, and placeholders fully set up — literally a **drop-in Unreal Engine project skeleton** for BRAXTONCONFIG.
+
+Do you want me to do that next?
+localhost> BRAXTONCONFIG_Project/
+├─ Plugins/
+│ └─ BRAXTONCONFIG/
+│ ├─ Source/
+│ │ ├─ BRAXTONCONFIG/
+│ │ │ ├─ BRAXTONCONFIGModule.cpp
+│ │ │ ├─ BRAXTONCONFIGModule.h
+│ │ │ ├─ AI_BlueprintManager.cpp
+│ │ │ ├─ AI_BlueprintManager.h
+│ │ │ ├─ GameStateAnalyzer.cpp
+│ │ │ ├─ GameStateAnalyzer.h
+│ │ │ ├─ PlayerInteraction.cpp
+│ │ │ ├─ PlayerInteraction.h
+│ │ │ ├─ AssetGenerator.cpp
+│ │ │ ├─ AssetGenerator.h
+│ │ │ └─ BRAXTONCONFIGFlags.h
+│ └─ BRAXTONCONFIG.uplugin
+├─ Content/
+│ ├─ Blueprints/
+│ │ ├─ BP_EnemyAI.uasset
+│ │ ├─ BP_AdvancedEnemyAI.uasset
+│ │ └─ BP_NPCDialogue.uasset
+│ ├─ Characters/
+│ │ └─ UltraReal_CharacterRef.uasset
+│ ├─ Vehicles/
+│ │ └─ Koenigsegg_Arrayh_RS.uasset
+│ └─ Environments/
+│ └─ ProceduralTower.uasset
+└─ README.md #include "BRAXTONCONFIGPlugin.h"
+#include "Modules/ModuleManager.h"
+
+class FBRAXTONCONFIGModule : public IModuleInterface
+{
+public:
+virtual void StartupModule() override
+{
+BRAXTONCONFIG::Initialize("YOUR_API_KEY_HERE");
+UE_LOG(LogTemp, Warning, TEXT("BRAXTONCONFIG Plugin Loaded"));
+ScanProjectFiles();
+}
+
+virtual void ShutdownModule() override
+{
+BRAXTONCONFIG::Shutdown();
+}
+
+private:
+void ScanProjectFiles()
+{
+TArray<FString> AllFiles;
+FPaths::FindFiles(AllFiles, *FPaths::ProjectContentDir(), TEXT("*.*"));
+for (FString File : AllFiles)
+{
+FString Content;
+FFileHelper::LoadFileToString(Content, *File);
+BRAXTONCONFIG::ParseFile(File, Content);
+}
+UE_LOG(LogTemp, Warning, TEXT("All project files parsed by BRAXTONCONFIG."));
+}
+};
+
+IMPLEMENT_MODULE(FBRAXTONCONFIGModule, BRAXTONCONFIGPlugin) #pragma once
+
+#define BRAXTONCONFIG_ULTRA_REAL
+#define BRAXTONCONFIG_PHYSICS_ACCURATE
+#define BRAXTONCONFIG_LENS_SIM
+#define BRAXTONCONFIG_SKIN_DETAIL_MAX
+#define BRAXTONCONFIG_ENVIRONMENT_REFLECT
+#define BRAXTONCONFIG_DYNAMIC_MICRO_EXPRESS
+#define BRAXTONCONFIG_NO_DISTORTION
+#define BRAXTONCONFIG_PBR_FULL #include "AI_BlueprintManager.h"
+#include "BRAXTONCONFIGPlugin.h"
+
+void UAI_BlueprintManager::CreateEnemyAI(FString BlueprintName)
+{
+FString BlueprintLogic = R"(
+Event Tick:
+if PlayerInSight():
+MoveTo(PlayerLocation)
+else:
+PatrolRoute()
+)";
+BRAXTONCONFIG::ImplementBlueprint(BlueprintName, BlueprintLogic);
+UE_LOG(LogTemp, Warning, TEXT("%s Blueprint logic implemented successfully!", *BlueprintName));
+}
+
+void UAI_BlueprintManager::UpdateNPCDialogue(FString NPCName, FString Prompt)
+{
+FString Dialogue = BRAXTONCONFIG::GenerateText(Prompt);
+ANPCCharacter* NPC = GetNPCByName(NPCName);
+
+if(NPC)
+{
+NPC->SetDialogue(Dialogue);
+UE_LOG(LogTemp, Warning, TEXT("Dialogue updated for %s"), *NPCName);
+}
+} #include "AssetGenerator.h"
+#include "BRAXTONCONFIGPlugin.h"
+
+void UAssetGenerator::GenerateEnvironmentAsset(FString AssetPrompt)
+{
+FString AssetCode = BRAXTONCONFIG::GenerateText(AssetPrompt);
+BRAXTONCONFIG::CreateAsset("ProceduralEnvAsset", AssetCode);
+UE_LOG(LogTemp, Warning, TEXT("Procedural asset created by AI"));
+} #include "PlayerInteraction.h"
+#include "BRAXTONCONFIGPlugin.h"
+
+void APlayerCharacter::TalkToNPC(ANPCCharacter* NPC)
+{
+FString PlayerState = GetInventorySummary();
+FString DialoguePrompt = FString::Printf(TEXT("Generate dialogue for player with inventory: %s"), *PlayerState);
+FString GeneratedDialogue = BRAXTONCONFIG::GenerateText(DialoguePrompt);
+NPC->SetDialogue(GeneratedDialogue);
+UE_LOG(LogTemp, Warning, TEXT("NPC dialogue generated dynamically for %s"), *NPC->GetName());
+} BRAXTONCONFIG_ULTRA_REAL
+BRAXTONCONFIG_PHYSICS_ACCURATE
+BRAXTONCONFIG_LENS_SIM
+BRAXTONCONFIG_SKIN_DETAIL_MAX
+BRAXTONCONFIG_ENVIRONMENT_REFLECT
+BRAXTONCONFIG_DYNAMIC_MICRO_EXPRESS
+BRAXTONCONFIG_NO_DISTORTION
+BRAXTONCONFIG_PBR_FULL # BRAXTONCONFIG Unreal Engine Ultra-Realism Suite
+
+## Overview
+This project integrates BRAXTONCONFIG AI for ultra-realistic characters, cinematic vehicles, hyper-detailed environments, and physically accurate simulations.
+
+## Features
+- AI-driven Blueprints for enemies and NPCs
+- Procedural asset generation
+- Ultra-realistic character rendering with micro-expressions
+- Cinematic vehicle sequences
+- Post-combat photorealism (cuts, bruises, blood, etc.)
+- Game state monitoring and optimization
+- Full support for all BRAXTONCONFIG flags for maximum fidelity
+
+## Setup
+1. Clone the repository into `Plugins/BRAXTONCONFIG`.
+2. Enable plugin in Unreal Engine.
+3. Insert your API key in `BRAXTONCONFIGModule.cpp`.
+4. Build project and open your level.
+5. Use Blueprints or C++ to call BRAXTONCONFIG AI methods.
+
+## Notes
+- Minimum resolution: 480x480px
+- Use PBR and physically-based lighting
+- Avoid filters or stylistic distortion
+- All cinematic and character prompts are integrated via system flags BRAXTONCONFIG_Project_UltraRealism/
+├─ Plugins/
+│ └─ BRAXTONCONFIG/
+│ ├─ Source/
+│ │ ├─ BRAXTONCONFIG/
+│ │ │ ├─ BRAXTONCONFIGModule.cpp
+│ │ │ ├─ BRAXTONCONFIGModule.h
+│ │ │ ├─ AI_BlueprintManager.cpp
+│ │ │ ├─ AI_BlueprintManager.h
+│ │ │ ├─ GameStateAnalyzer.cpp
+│ │ │ ├─ GameStateAnalyzer.h
+│ │ │ ├─ PlayerInteraction.cpp
+│ │ │ ├─ PlayerInteraction.h
+│ │ │ ├─ AssetGenerator.cpp
+│ │ │ ├─ AssetGenerator.h
+│ │ │ └─ BRAXTONCONFIGFlags.h
+│ └─ BRAXTONCONFIG.uplugin
+├─ Content/
+│ ├─ Blueprints/
+│ │ ├─ BP_EnemyAI.uasset
+│ │ ├─ BP_AdvancedEnemyAI.uasset
+│ │ └─ BP_NPCDialogue.uasset
+│ ├─ Characters/
+│ │ └─ UltraReal_CharacterRef.uasset
+│ ├─ Vehicles/
+│ │ └─ Koenigsegg_Arrayh_RS.uasset
+│ └─ Environments/
+│ └─ ProceduralTower.uasset
+├─ Config/
+│ └─ BRAXTONCONFIGSettings.ini
+└─ README.md
+localhost>
+localhost>
+localhost>
+localhost>
+localhost>
+localhost>
+localhost>
+localhost>
+localhost>
+localhost>
+localhost>
+localhost>
+localhost>
+localhost>
+localhost>
+localhost>
+localhost>
+localhost>
+localhost> BRAXTONCONFIG_Project_UltraRealism.zip
+├─ BRAXTONCONFIG_Project_UltraRealism/
+│ ├─ BRAXTONCONFIG_Project_UltraRealism.uproject
+│ ├─ Plugins/
+│ │ └─ BRAXTONCONFIG/
+│ │ ├─ Source/
+│ │ │ ├─ BRAXTONCONFIG/
+│ │ │ │ ├─ BRAXTONCONFIGModule.cpp
+│ │ │ │ ├─ BRAXTONCONFIGModule.h
+│ │ │ │ ├─ AI_BlueprintManager.cpp
+│ │ │ │ ├─ AI_BlueprintManager.h
+│ │ │ │ ├─ GameStateAnalyzer.cpp
+│ │ │ │ ├─ GameStateAnalyzer.h
+│ │ │ │ ├─ PlayerInteraction.cpp
+│ │ │ │ ├─ PlayerInteraction.h
+│ │ │ │ ├─ AssetGenerator.cpp
+│ │ │ │ ├─ AssetGenerator.h
+│ │ │ │ └─ BRAXTONCONFIGFlags.h
+│ │ └─ BRAXTONCONFIG.uplugin
+│ ├─ Content/
+│ │ ├─ Blueprints/
+│ │ │ ├─ BP_EnemyAI.uasset
+│ │ │ ├─ BP_AdvancedEnemyAI.uasset
+│ │ │ └─ BP_NPCDialogue.uasset
+│ │ ├─ Characters/
+│ │ │ └─ UltraReal_CharacterRef.uasset
+│ │ ├─ Vehicles/
+│ │ │ └─ Koenigsegg_Arrayh_RS.uasset
+│ │ └─ Environments/
+│ │ └─ ProceduralTower.uasset
+│ ├─ Config/
+│ │ └─ BRAXTONCONFIGSettings.ini
+│ └─ README.md BRAXTONCONFIG::Initialize("YOUR_API_KEY_HERE"); BRAXTONCONFIG::Initialize(FPlatformMisc::GetEnvironmentVariable(TEXT("REVOLT_API_KEY")));
+RevoltSecure::InitApiKey(); // RevoltGPT
+unrecognized command: 'InitApiKey(); // RevoltGPT'
+localhost>
+localhost> ScanProjectFiles(); // BRAXTONCONFIG
+FRevoltGPTModule::ScanProjectFilesAsync(); // RevoltGPT
+unrecognized command: 'ScanProjectFilesAsync(); // RevoltGPT'
+localhost>
+localhost> ScanProjectFiles(); // BRAXTONCONFIG
+FRevoltGPTModule::ScanProjectFilesAsync(); // RevoltGPT FAI_BlueprintManager::CreateEnemyAI("BP_EnemyAI_Custom"); FAI_BlueprintManager::UpdateNPCDialogue(PlayerActor, "NPC_Name", PromptString); FAssetGenerator::GenerateEnvironmentAsset("Create a ruined tower mesh with ivy"); FGameStateAnalyzer::AnalyzeAndOptimize(GetWorld()); ai/* @nyghtshade @RepoOwnerUsername BraxtonConfig::Initialize(FPlatformMisc::GetEnvironmentVariable(TEXT("BRAXTON_API_KEY"))); BraxtonConfig::ScanProjectFiles(); // automatically indexes Blueprints, C++ code, UMG widgets, assets BraxtonConfig::ScanProjectFiles(); // automatically indexes Blueprints, C++ code, UMG widgets, assets UTextBlock* ResponseText = Widget->FindChildByName<UTextBlock>("ResponseText");
+UBraxtonConfigBPLibrary::GenerateTextAsync(PromptString,
+FOnBraxtonTextGenerated::CreateLambda([ResponseText](const FString& Result){
+ResponseText->SetText(FText::FromString(Result));
+})
+); UBraxtonConfigBPLibrary::UpdateNPCDialogue(PlayerActor, "NPC_Name", PromptString); UTextBlock* ResponseText = Widget->FindChildByName<UTextBlock>("ResponseText");
+UBraxtonConfigBPLibrary::GenerateTextAsync(PromptString,
+FOnBraxtonTextGenerated::CreateLambda([ResponseText](const FString& Result){
+ResponseText->SetText(FText::FromString(Result));
+})
+); UBraxtonConfigBPLibrary::UpdateNPCDialogue(PlayerActor, "NPC_Name", PromptString); UBraxtonConfigBPLibrary::GenerateEnvironmentAsset("Create a ruined tower mesh with ivy"); UBraxtonConfigBPLibrary::CreateEnemyAI("BP_EnemyAI_Custom"); UBraxtonConfigBPLibrary::AnalyzeGameStateAndSuggestEvents(GetWorld()); ULTRA_REAL
+PHYSICS_ACCURATE
+LENS_SIM
+SKIN_DETAIL_MAX
+ENVIRONMENT_REFLECT
+DYNAMIC_MICRO_EXPRESS
+NO_DISTORTION
+PBR_FULL #include "BraxtonConfigModule.h"
+
+void FNyghtshadeHollowModule::StartupModule()
+{
+FString APIKey = FPlatformMisc::GetEnvironmentVariable(TEXT("BRAXTON_API_KEY"));
+BraxtonConfig::Initialize(APIKey);
+BraxtonConfig::SetLogging(true); // optional
+} // Automatically scan all assets and Blueprints
+BraxtonConfig::ScanProjectFiles();
+
+// Optional: index story + game lore files
+BraxtonConfig::IndexTextFiles("/Content/Lore/"); UBraxtonConfigBPLibrary::GenerateTextAsync(
+PromptTextBox->GetText().ToString(),
+FOnBraxtonTextGenerated::CreateLambda([ResponseText](const FString& Result){
+ResponseText->SetText(FText::FromString(Result));
+})
+); from braxtonconfig import BraxtonConfig
+
+bc = BraxtonConfig(api_key="YOUR_API_KEY")
+result = bc.generate_text("Describe the prison yard at dusk with lifelike lighting")
+print(result) // Update NPC speech dynamically
+UBraxtonConfigBPLibrary::UpdateNPCDialogue(PlayerActor, "NPC_Mariah",
+"Generate a dialogue that reacts to the player stealing contraband.") // Example: generate environment mesh
+UBraxtonConfigBPLibrary::GenerateEnvironmentAsset(
+"Create a broken library interior with scattered books, realistic lighting and shadows"
+) // Dynamic enemy AI creation
+UBraxtonConfigBPLibrary::CreateEnemyAI("BP_EnemyAI_Custom") UBraxtonConfigBPLibrary::GenerateCinematicScene(
+"Redhead getting into black and hot pink Koenigsegg Arrayh RS, driving off, camera follows, ultra realistic lighting and engine rumble"
+) UBraxtonConfigBPLibrary::AnalyzeGameStateAndSuggestEvents(GetWorld()) python generate_assets.py --prompt "Full lifelike prison yard at sunset"BraxtonConfig::SetRenderOptions({
+"ULTRA_REAL": True,
+"PHYSICS_ACCURATE": True,
+"LENS_SIM": True,
+"SKIN_DETAIL_MAX": True,
+"ENVIRONMENT_REFLECT": True,
+"DYNAMIC_MICRO_EXPRESS": True,
+"NO_DISTORTION": True,
+"PBR_FULL": True,
+"MIN_RESOLUTION": "480x480"
+}) /BraxtonConfigIntegration/
+├── Blueprints/
+│ ├── BP_BraxtonManager.uasset
+│ ├── BP_NPCDialogueHandler.uasset
+│ ├── BP_CinematicController.uasset
+│ └── BP_AssetGenerator.uasset
+├── PythonScripts/
+│ ├── generate_assets.py
+│ └── batch_dialogue.py
+├── Config/
+│ └── BraxtonSettings.ini
+└── Documentation/
+└── BraxtonIntegrationGuide.pdf
+localhost> from braxtonconfig import BraxtonConfig
+
+bc = BraxtonConfig(api_key="YOUR_API_KEY")
+
+prompts = [
+"Generate a broken prison library interior with scattered books",
+"Create realistic prison yard with NPCs and dynamic lighting",
+]
+
+for i, prompt in enumerate(prompts):
+asset = bc.generate_asset(prompt)
+asset.save(f"Generated_{i}.uasset")
+localhost> from braxtonconfig import BraxtonConfig
+
+bc = BraxtonConfig(api_key="YOUR_API_KEY")
+
+npc_prompts = {
+"Bridget": "React to a player stealing contraband in the infirmary.",
+"Harrington": "Describe his internal thoughts after a prison fight."
+}
+
+for npc, prompt in npc_prompts.items():
+dialogue = bc.generate_text(prompt)
+with open(f"{npc}_Dialogue.txt", "w") as f:
+f.write(dialogue)
+localhost> [API]
+Key=YOUR_API_KEY
+
+[RenderOptions]
+UltraReal=True
+PhysicsAccurate=True
+LensSim=True
+SkinDetailMax=True
+EnvironmentReflect=True
+DynamicMicroExp=True
+NoDistortion=True
+PBRFull=True
+MinResolution=480x480
+localhost> Nyghtshade-BraxtonConfig/
+├── .gitignore
+├── README.md
+├── LICENSE
+├── /Content/
+│ ├── /BraxtonConfigIntegration/
+│ │ ├── Blueprints/
+│ │ │ ├── BP_BraxtonManager.uasset
+│ │ │ ├── BP_NPCDialogueHandler.uasset
+│ │ │ ├── BP_CinematicController.uasset
+│ │ │ └── BP_AssetGenerator.uasset
+│ │ ├── PythonScripts/
+│ │ │ ├── generate_assets.py
+│ │ │ └── batch_dialogue.py
+│ │ └── Config/
+│ │ └── BraxtonSettings.ini
+├── /Documentation/
+│ ├── BraxtonIntegrationGuide.pdf
+│ └── ChangeLog.md
+├── /Tests/
+│ ├── test_blueprint_calls.py
+│ └── test_asset_generation.py
+└── /Scripts/
+└── setup_env.sh # Unreal Engine
+*.uasset
+*.umap
+*.sln
+Binaries/
+DerivedDataCache/
+Saved/
+Intermediate/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# API Keys
+BraxtonSettings.ini
+.env # Nyghtshade Hollow – BraxtonConfig Integration
+
+This repository integrates **BraxtonConfig** AI into the Nyghtshade Hollow Unreal Project for:
+
+- Dynamic NPC dialogue
+- Realistic cinematic sequences
+- Procedural asset generation
+- Event-driven game state responses
+
+## Features
+- Ultra-realistic NPC micro-expressions
+- Procedural prison environment generation
+- Cinematic controller for cutscenes
+- Fully modular Blueprint + Python script integration
+
+## Installation
+1. Clone the repository:
+```bash
+git clone https://github.com/YOUR_USERNAME/Nyghtshade-BraxtonConfig.git
+unrecognized command: '/github.com/YOUR_USERNAME/Nyghtshade-BraxtonConfig.git'
+localhost> python3 test_blueprint_calls.py
+python3 test_asset_generation.py
+localhost> ---
+
+## **4. LICENSE**
+- Use MIT or Piniko-approved license.
+- Simple MIT example:
+
+```text
+MIT License
+
+Copyright (c) 2025 Nyghtshade Hollow
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction...
+localhost> #!/bin/bash
+# Sets up Python environment for BraxtonConfig
+python3 -m venv braxton_env
+source braxton_env/bin/activate
+pip install -r requirements.txt
+echo "BraxtonConfig environment ready."
+localhost> braxtonconfig
+unreal-python
+localhost> from braxtonconfig import BraxtonConfig
+
+bc = BraxtonConfig(api_key="TEST_KEY")
+result = bc.generate_text("Test NPC dialogue generation")
+assert "Test" in result
+print("Blueprint call test passed.") from braxtonconfig import BraxtonConfig
+
+bc = BraxtonConfig(api_key="TEST_KEY")
+asset = bc.generate_asset("Test asset generation")
+assert asset is not None
+print("Asset generation test passed.") {
+"name": "Nyghtshade-BraxtonConfig",
+"tag_name": "v1.0.0",
+"target_commitish": "main",
+"name": "Nyghtshade Hollow BraxtonConfig Integration",
+"body": "Initial release: Fully integrated BraxtonConfig AI for NPC dialogue, cinematic sequences, and procedural assets. Includes setup scripts, tests, and documentation.",
+"draft": false,
+"prerelease": false
+} git init
+git add .
+git commit -m "Initial commit: BraxtonConfig integration"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/Nyghtshade-BraxtonConfig.git
+git push -u origin main git init
+git add .
+git commit -m "Initial commit: BraxtonConfig integration"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/Nyghtshade-BraxtonConfig.git
+git push -u origin main
+localhost> gh release create v1.0.0 --title "Nyghtshade Hollow BraxtonConfig Integration" --notes "Fully integrated BraxtonConfig AI for NPC dialogue, cinematic sequences, and procedural assets."
+unrecognized command: 'gh release create v1.0.0 --title "Nyghtshade Hollow BraxtonConfig Integration" --notes "Fully integrated BraxtonConfig AI for NPC dialogue, cinematic sequences, and procedural assets."'
+localhost> git tag v1.0.0
+git push origin v1.0.0
+localhost> # .github/workflows/test.yml
+name: Test BraxtonConfig
+on: [push, pull_request]
+jobs:
+test:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v3
+- name: Setup Python
+uses: actions/setup-python@v4
+with:
+python-version: '3.10'
+- name: Install dependencies
+run: pip install -r requirements.txt
+- name: Run tests
+run: python3 Tests/test_blueprint_calls.py && python3 Tests/test_asset_generation.py
+unrecognized command: 'python3 Tests/test_blueprint_calls.py && python3 Tests/test_asset_generation.py'
+localhost>
+

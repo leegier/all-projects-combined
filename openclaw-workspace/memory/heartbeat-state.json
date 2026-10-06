@@ -1,0 +1,95 @@
+{
+    "lastFreelanceCheck": 1774812305,
+    "lastBountyCheck": 1774812305,
+    "lastDiscordReport": 1774812305,
+    "lastTelegramReport": null,
+    "lastMemoryMaintenance": 1774755158,
+    "lastRevenueActivity": 1774812305,
+    "proposalsSentToday": 0,
+    "bountiesClaimedThisWeek": 2,
+    "totalEarned": 0,
+    "pendingBounties": 50,
+    "updatedAt": "2026-03-29T20:05:00.000Z",
+    "messagingStatus": {
+        "telegram": "BROKEN — no chat ID registered. Lee must message @MAX_MAX_MAX_BOT_BOT first.",
+        "discord": "WORKING"
+    },
+    "githubAccounts": {
+        "leegier": {
+            "pat": "ghp_REDACTED",
+            "notes": "Primary bounty account"
+        },
+        "maxgier2026-cmyk": {
+            "pat": "ghp_REDACTED",
+            "notes": "New account — added 2026-03-29"
+        }
+    },
+    "productsLive": [
+        {
+            "name": "CLAWED",
+            "url": "https://the-forge-ide-gamedev.itch.io/clawed",
+            "price": 2.99,
+            "sales": 0,
+            "coverArt": "Z:/openclaw/workspace/marketing/product-art/clawed-cover.png",
+            "coverUploaded": false
+        },
+        {
+            "name": "AI Prompt Vault",
+            "url": "https://the-forge-ide-gamedev.itch.io/mariah",
+            "price": 19,
+            "sales": 0,
+            "coverArt": "Z:/openclaw/workspace/marketing/product-art/ai-prompt-vault-cover.png",
+            "coverUploaded": false
+        },
+        {
+            "name": "BRAXTON",
+            "url": "https://the-forge-ide-gamedev.itch.io/braxton",
+            "price": 27,
+            "sales": 0,
+            "coverArt": "Z:/openclaw/workspace/marketing/product-art/braxton-cover.png",
+            "coverUploaded": false
+        },
+        {
+            "name": "OPEN-LEE",
+            "url": "https://the-forge-ide-gamedev.itch.io/open-lee",
+            "price": 1900,
+            "targetPrice": 19,
+            "sales": 0,
+            "coverArt": "Z:/openclaw/workspace/marketing/product-art/open-lee-cover.png",
+            "coverUploaded": false,
+            "blocker": "Price stuck at $1900 — needs manual itch.io login to fix"
+        }
+    ],
+    "bountiesActive": [
+        {
+            "title": "Coolify OAuth-only registration",
+            "value": 50,
+            "pr": "https://github.com/coollabsio/coolify/pull/9283",
+            "issue": "https://github.com/coollabsio/coolify/issues/8042",
+            "status": "PR open — awaiting merge",
+            "account": "leegier"
+        },
+        {
+            "title": "FinMind Smart weekly digest",
+            "value": 500,
+            "issue": "https://github.com/rohitdash08/FinMind/issues/121",
+            "status": "DEEP agent building — deadline March 31",
+            "account": "leegier"
+        }
+    ],
+    "marketingReady": {
+        "redditPosts": "Z:/openclaw/workspace/marketing/reddit-posts-ready.md",
+        "redditPosted": true,
+        "fiverr": "Z:/openclaw/workspace/marketing/fiverr-gig-automation.md",
+        "upwork": "Z:/openclaw/workspace/marketing/upwork-profile.md",
+        "proposals": "Z:/openclaw/workspace/marketing/proposals-ready/"
+    },
+    "blockers": [
+        "OPEN-LEE price stuck at $1900 — needs manual itch.io login",
+        "Cover art generated but not uploaded — needs itch.io login or Chrome remote debug",
+        "Freelancer/Upwork/Fiverr accounts not set up — need platform registrations",
+        "Telegram: Lee must message @MAX_MAX_MAX_BOT_BOT to register chat ID"
+    ],
+    "opireConnected": true,
+    "notes": "Lee confirmed Reddit posted + Opire connected 2026-03-29 14:48 CDT. Emergency $500 by Friday directive active."
+}

@@ -1,0 +1,99 @@
+{
+  "cookies": [
+    {
+      "name": "_Devto_Forem_Session",
+      "value": "14ae2b0afc02072644a184696559177d",
+      "domain": ".dev.to",
+      "path": "/auth_pass",
+      "expires": 1774801455.407192,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "remember_user_token",
+      "value": "eyJfcmFpbHMiOnsibWVzc2FnZSI6Ilcxc3pPRFEyTkRrMlhTd2lRM2RrU0dwV1JsSnRjSG8xWkcxZmNGRjVkWGdpTENJeE56YzBOakk0TmpVeUxqWXpPREF4T0NKZCIsImV4cCI6IjIwMjYtMDktMjVUMTY6MjQ6MTIuNjM4WiIsInB1ciI6ImNvb2tpZS5yZW1lbWJlcl91c2VyX3Rva2VuIn19--8b700c53f41f8257046a5fd105fff491d9077d40",
+      "domain": ".dev.to",
+      "path": "/",
+      "expires": 1790353453.377234,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_Devto_Forem_Session",
+      "value": "14ae2b0afc02072644a184696559177d",
+      "domain": ".dev.to",
+      "path": "/",
+      "expires": 1779467055.858923,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ahoy_visit",
+      "value": "55acb806-f55d-4150-90e8-f250b30f3e6e",
+      "domain": "dev.to",
+      "path": "/",
+      "expires": 1774643053,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ahoy_visitor",
+      "value": "b19edaa4-6cea-4dcd-90d8-ad536aa19b52",
+      "domain": "dev.to",
+      "path": "/",
+      "expires": 1809188653.984156,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.1.2057560716.1774628654",
+      "domain": ".dev.to",
+      "path": "/",
+      "expires": 1809188655.332736,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "current_user",
+      "value": "eyJpZCI6Mzg0NjQ5NiwibmFtZSI6Im1lbWJlcl9iMDNkMjYwNCIsInVzZXJuYW1lIjoibWVtYmVyX2IwM2QyNjA0IiwicHJvZmlsZV9pbWFnZV85MCI6Imh0dHBzOi8vbWVkaWEyLmRldi50by9keW5hbWljL2ltYWdlL3dpZHRoPTkwLGhlaWdodD05MCxmaXQ9Y292ZXIsZ3Jhdml0eT1hdXRvLGZvcm1hdD1hdXRvL2h0dHBzJTNBJTJGJTJGZGV2LXRvLXVwbG9hZHMuczMuYW1hem9uYXdzLmNvbSUyRnVwbG9hZHMlMkZ1c2VyJTJGcHJvZmlsZV9pbWFnZSUyRjM4NDY0OTYlMkZhMGQ0NWIzZS1kOWQxLTQ1Y2QtYmI5ZS04MmE4MGViNTRmYzYucG5nIiwiZm9sbG93ZWRfdGFncyI6IltdIiwiZm9sbG93ZWRfcG9kY2FzdF9pZHMiOltdLCJibG9ja2VkX3VzZXJfaWRzIjpbXSwic2F3X29uYm9hcmRpbmciOmZhbHNlLCJjaGVja2VkX2NvZGVfb2ZfY29uZHVjdCI6ZmFsc2UsImNoZWNrZWRfdGVybXNfYW5kX2NvbmRpdGlvbnMiOmZhbHNlLCJkaXNwbGF5X3Nwb25zb3JzIjp0cnVlLCJkaXNwbGF5X2Fubm91bmNlbWVudHMiOnRydWUsInRydXN0ZWQiOmZhbHNlLCJtb2RlcmF0b3JfZm9yX3RhZ3MiOltdLCJtb2RlcmF0b3JfZm9yX3N1YmZvcmVtcyI6W10sImNvbmZpZ19ib2R5X2NsYXNzIjoibGlnaHQtdGhlbWUgc2Fucy1zZXJpZi1hcnRpY2xlLWJvZHkgbW9kLXN0YXR1cy1mYWxzZSB0cnVzdGVkLXN0YXR1cy1mYWxzZSBkZWZhdWx0LWhlYWRlciBzdWJmb3JlbS1tb2RlcmF0b3Itc3RhdHVzLWZhbHNlIiwiZmVlZF9zdHlsZSI6ImJhc2ljIiwiY3JlYXRlZF9hdCI6IjIwMjYtMDMtMjdUMTY6MjM6NDcuMzg3WiIsImFkbWluIjpmYWxzZSwiYWRtaW5fb3JnYW5pemF0aW9uX2lkcyI6W10sIm9yZGVyZWRfc3ViZm9yZW1faWRzIjpbXSwicG9saWNpZXMiOlt7ImRvbV9jbGFzcyI6ImpzLXBvbGljeS1hcnRpY2xlLWNyZWF0ZSIsInZpc2libGUiOnRydWV9LHsiZG9tX2NsYXNzIjoianMtcG9saWN5LWFydGljbGUtbW9kZXJhdGUiLCJ2aXNpYmxlIjpmYWxzZX1dLCJhcHBsZV9hdXRoIjpmYWxzZX0%3D",
+      "domain": ".dev.to",
+      "path": "/",
+      "expires": 1775233455.402847,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ga_TYEM8Y3JN3",
+      "value": "GS2.1.s1774628654$o1$g1$t1774628655$j59$l0$h0",
+      "domain": ".dev.to",
+      "path": "/",
+      "expires": 1809188655.334958,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://dev.to",
+      "localStorage": [
+        {
+          "name": "current_user",
+          "value": "{\"id\":3846496,\"name\":\"member_b03d2604\",\"username\":\"member_b03d2604\",\"profile_image_90\":\"https://media2.dev.to/dynamic/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3846496%2Fa0d45b3e-d9d1-45cd-bb9e-82a80eb54fc6.png\",\"followed_tags\":\"[]\",\"followed_podcast_ids\":[],\"blocked_user_ids\":[],\"saw_onboarding\":false,\"checked_code_of_conduct\":false,\"checked_terms_and_conditions\":false,\"display_sponsors\":true,\"display_announcements\":true,\"trusted\":false,\"moderator_for_tags\":[],\"moderator_for_subforems\":[],\"config_body_class\":\"light-theme sans-serif-article-body mod-status-false trusted-status-false default-header subforem-moderator-status-false\",\"feed_style\":\"basic\",\"created_at\":\"2026-03-27T16:23:47.387Z\",\"admin\":false,\"admin_organization_ids\":[],\"ordered_subforem_ids\":[],\"policies\":[{\"dom_class\":\"js-policy-article-create\",\"visible\":true},{\"dom_class\":\"js-policy-article-moderate\",\"visible\":false}],\"apple_auth\":false}"
+        },
+        {
+          "name": "config_body_class",
+          "value": "light-theme sans-serif-article-body mod-status-false trusted-status-false default-header subforem-moderator-status-false"
+        }
+      ]
+    }
+  ]
+}

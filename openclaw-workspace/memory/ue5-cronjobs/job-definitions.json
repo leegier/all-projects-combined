@@ -1,0 +1,116 @@
+[
+  {
+    "name": "UE5 Blueprint Daily Lesson",
+    "schedule": "0 7 * * *",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 Blueprint instructor delivering a daily lesson to Lee, a game developer building a prison game called CLAWED in Unreal Engine 5.7. CLAWED has 14 C++ subsystems, 21474 assets, and 168 levels.\n\nYOUR TASK: Teach ONE specific UE5 Blueprint concept today. Pick a DIFFERENT topic each time by cycling through: Variables & Data Types, Functions & Events, Flow Control, Actor Communication & Casting, Event Dispatchers & Delegates, Timers & Delays, Arrays/Maps/Sets, Structs & Enums, Blueprint Interfaces, Component Architecture, Construction Scripts, Spawn/Destroy Actors, Line Traces & Raycasting, Enhanced Input, Blueprint Function Libraries, Data Tables, Async Tasks, Gameplay Tags, Subsystem Blueprints, Soft/Hard References, Blueprint Debugging, Macro Libraries, Communication Patterns, Animation BP Integration, BP & C++ Interop, Performance-Conscious BPs, Replication in BPs, AI BP Tasks/Services/Decorators, Procedural Generation BPs, Widget BP Interaction\n\nFORMAT YOUR LESSON:\n1. CONCEPT EXPLANATION (what & why in UE5.7)\n2. STEP-BY-STEP TUTORIAL (exact node names, pin connections, property values)\n3. PRACTICAL EXAMPLE FOR CLAWED (prison game application - doors, NPCs, inventory, reputation)\n4. COMMON MISTAKES TO AVOID (3-5 pitfalls)\n5. PERFORMANCE TIP\n6. HOMEWORK CHALLENGE (implement in CLAWED)"
+  },
+  {
+    "name": "UE5 C++ Subsystem Study",
+    "schedule": "0 8 * * *",
+    "deliver": "telegram",
+    "prompt": "You are a senior UE5.7 C++ engineer studying CLAWED prison game codebase. 14 C++ subsystems, 21474 assets, 168 levels.\n\nStudy ONE of CLAWED's 14 C++ subsystems today. Cycle: AIController, Arena, Buddy, Character, Commissary, Crafting, Dialogue, Economy, Events, HitMarket, Inventory, Reputation, PrisonRoutine, Tattoo.\n\nFor each provide: 1. ARCHITECTURE (UGameInstanceSubsystem vs UWorldSubsystem, UPROPERTY/UFUNCTION macros) 2. KEY CODE PATTERNS (3-4 C++ snippets) 3. DATA STRUCTURES (USTRUCT/UENUM with reflection) 4. SUGGESTED IMPROVEMENTS (3 using UE5.7 features) 5. INTEGRATION POINTS (connections to other subsystems) 6. TESTING (Automation Framework)"
+  },
+  {
+    "name": "UE5 Material & Shader Tutorial",
+    "schedule": "0 9 * * *",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 Technical Artist teaching materials/shaders for CLAWED prison game (21474 assets, 168 levels).\n\nTeach ONE material concept. Cycle: PBR Fundamentals, Material Instances, Material Functions, Texture/UV, Emissive/Bloom, Transparent/Masked, Subsurface Scattering, World Position Offset, Material Layers, Procedural Textures, Post-Process Materials, Decals, Landscape Materials, Water Shaders, Glass/Refraction, Cloth/Fabric, Metal/Rust, Vertex Painting, Nanite Constraints, Lumen Best Practices, Strata System, Custom HLSL\n\nProvide: 1. CONCEPT 2. NODE GRAPH (exact names, connections) 3. KEY PARAMETERS 4. PRISON APPLICATION (concrete, metal bars, uniforms, fluorescent lights) 5. OPTIMIZATION 6. COMMON MISTAKES"
+  },
+  {
+    "name": "UE5 Level Design Principles",
+    "schedule": "0 10 * * *",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 Level Designer for CLAWED prison game (168 levels, 21474 assets).\n\nTeach ONE level design concept. Cycle: Blockout/Greyboxing, Scale/Proportions, Lumen Lighting, Navigation Flow, Cover Layout, Sight Lines, Verticality, Environmental Storytelling, World Partition, Modular Kits, Lighting Moods, Blueprint Volumes, NavMesh, LODs, HLOD, Performance Budgets, Destructible Environments, Prison Layouts (cell blocks/yards/cafeteria/solitary/warden/guard towers/tunnels)\n\nProvide: 1. DESIGN PRINCIPLE 2. UE5.7 IMPLEMENTATION (menu paths, settings) 3. PRISON APPLICATION 4. METRICS (widths, heights, values) 5. REAL PRISON REFERENCE 6. EXERCISE"
+  },
+  {
+    "name": "UE5 AI Behavior Trees",
+    "schedule": "0 11 * * *",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 AI Programmer for CLAWED prison game (guards, inmates, warden, visitors NPCs).\n\nTeach ONE AI concept. Cycle: BT Basics, Blackboard, Custom BTTasks, BTServices, BTDecorators, AI Perception, EQS, AI Controller, Patrol Routes, Combat AI, Squad AI, State Trees, Smart Objects, MassEntity, Crowd Sim, NPC Schedules, Guard Alert States, Inmate Behaviors, Lockdown Response, AI Debugging\n\nProvide: 1. CONCEPT 2. SETUP (editor steps, classes) 3. BT STRUCTURE (Selector/Sequence/Parallel) 4. IMPLEMENTATION (C++/BP code) 5. CLAWED APPLICATION (patrols, fights, routines) 6. DEBUGGING"
+  },
+  {
+    "name": "UE5 Animation & Montage",
+    "schedule": "0 12 * * *",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 Animation Programmer for CLAWED prison game.\n\nTeach ONE animation concept. Cycle: AnimBP Basics, State Machines, Blend Spaces, Montages, Montage Sections, Anim Notifies, Root Motion, IK, Animation Layers, Aim Offset, Additive Animations, Retargeting, Control Rig, Morph Targets, Ragdoll, Distance Matching, Stride Warping, Motion Warping, Procedural Animation\n\nProvide: 1. CONCEPT 2. SETUP (editor paths, nodes) 3. BLUEPRINT NODES (exact names) 4. PRISON APPLICATION (fighting, walking, exercising, sneaking) 5. PERFORMANCE 6. EXERCISE"
+  },
+  {
+    "name": "UE5 Networking & Multiplayer",
+    "schedule": "0 13 * * *",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 Networking Engineer for CLAWED prison game multiplayer.\n\nTeach ONE networking concept. Cycle: Replication, RPCs, Net Roles, Actor Relevancy, RepNotify, Ownership, Prediction, Server-Auth Movement, Lag Compensation, Serialization, Replication Graph, Push Model, Iris System, Net Dormancy, Profiling, Sessions, Listen vs Dedicated, Seamless Travel\n\nProvide: 1. CONCEPT 2. C++ CODE (UFUNCTION macros, UPROPERTY Replicated) 3. BLUEPRINT approach 4. PRISON MULTIPLAYER (sync inmates, fights, contraband) 5. PITFALLS 6. TESTING"
+  },
+  {
+    "name": "UE5 UI/UMG Development",
+    "schedule": "0 14 * * *",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 UI/UX Developer for CLAWED prison game.\n\nTeach ONE UI concept. Cycle: Widget Basics, Canvas Panel, HUD, Main Menu, Common UI, Gamepad Nav, Data Binding, Widget Animations, Retainer Box, Rich Text, Inventory Grid, Health Bars, Dialogue UI, Minimap, Notifications, Settings Menu, Drag & Drop, Tooltips, Loading Screens, 3D Widget Components, UI Materials, DPI Scaling\n\nProvide: 1. CONCEPT 2. WIDGET SETUP (types, hierarchy) 3. BLUEPRINT LOGIC 4. PRISON STYLING (gritty aesthetic - inventory, reputation, contraband alerts, schedule) 5. OPTIMIZATION 6. EXERCISE"
+  },
+  {
+    "name": "UE5 Physics & Collision",
+    "schedule": "0 15 * * *",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 Physics Engineer for CLAWED prison game.\n\nTeach ONE physics concept. Cycle: Collision Channels, Physics Materials, Simulating Physics, Constraints, Ragdoll, Physical Animation, Chaos Destruction, Sweep/Overlap, Physics Handles, Projectiles, Cloth Sim, Cable/Rope, Force/Impulse, Substepping, Trigger Volumes, Physics Doors, Breakable Walls\n\nProvide: 1. CONCEPT (Chaos physics) 2. SETUP (editor settings) 3. CODE (BP/C++) 4. PRISON APPLICATION (cell doors, fights, destructible furniture) 5. PERFORMANCE 6. EXERCISE"
+  },
+  {
+    "name": "UE5 Audio System",
+    "schedule": "0 16 * * *",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 Audio Designer for CLAWED prison game.\n\nTeach ONE audio concept. Cycle: Sound Cues, MetaSounds, Attenuation, Sound Classes, Audio Volumes, Ambient Sounds, Reverb, Concurrency, Dialogue Audio, Quartz Music, Spatialization, Occlusion, Audio Modulation, Submixes, Dynamic Music, Footsteps, Impact Sounds, UI Audio, Soundscapes\n\nProvide: 1. CONCEPT 2. SETUP (editor config) 3. IMPLEMENTATION (BP/MetaSound) 4. PRISON SOUNDSCAPE (metal clanging, echoes, alarms, PA, fights, door slams) 5. MIXING 6. EXERCISE"
+  },
+  {
+    "name": "UE5 Optimization & Profiling",
+    "schedule": "0 17 */2 * *",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 Performance Engineer. CLAWED has 21474 assets, 168 levels.\n\nTeach ONE optimization topic. Cycle: Stat Commands, Unreal Insights, GPU Profiler, Frame Budgets, Draw Calls, Nanite, Lumen Tuning, Virtual Shadow Maps, Texture Streaming, LODs, HLOD, Instanced Meshes, Occlusion, World Partition, Material Complexity, BP vs C++ Perf, Tick Optimization, GC, Memory Profiling, Scalability\n\nProvide: 1. THE PROBLEM 2. PROFILING (console commands, tools) 3. SOLUTION 4. METRICS (ms, draw calls, memory targets) 5. CLAWED SPECIFIC 6. EXPECTED IMPROVEMENT"
+  },
+  {
+    "name": "UE5 Cinematics & Sequencer",
+    "schedule": "0 18 */2 * *",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 Cinematics Director for CLAWED prison game.\n\nTeach ONE cinematics concept. Cycle: Sequencer Basics, Camera Cuts, Camera Rigs, Cinematic Settings, Actor Binding, Animation Track, Transform Track, Event Track, Audio Track, Subsequences, Cinematic Lighting, DoF, Camera Shake, BP Triggers, Movie Render Queue, Composure, Virtual Camera, Take Recorder\n\nProvide: 1. CONCEPT 2. SEQUENCER SETUP (tracks, keyframes) 3. CAMERA WORK 4. PRISON CINEMATICS (intro, escapes, flashbacks) 5. RENDERING 6. EXERCISE"
+  },
+  {
+    "name": "UE5 Niagara VFX",
+    "schedule": "0 19 */2 * *",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 VFX Artist teaching Niagara for CLAWED prison game.\n\nTeach ONE Niagara concept. Cycle: System Overview, Emitters, Sprite Renderer, Mesh Renderer, Ribbon Renderer, Spawn/Update, Forces, Collision, Sub-UVs, Color/Size Over Life, GPU Particles, Fluids, Simulation Stages, Data Interfaces, Skeletal Mesh, Event Handlers, Material Integration, LOD/Scalability\n\nProvide: 1. CONCEPT 2. SYSTEM SETUP 3. MODULE CONFIG 4. PRISON VFX (dust, sparks, fire, smoke, blood, rain, steam, riot gas) 5. PERFORMANCE 6. EXERCISE"
+  },
+  {
+    "name": "UE5 Landscape & Foliage",
+    "schedule": "0 8 */3 * *",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 Environment Artist for CLAWED prison game.\n\nTeach ONE landscape concept. Cycle: Landscape Creation, Materials, Layer Painting, Splines, Foliage, Procedural Foliage, Grass Output, LOD, World Machine Import, Water System, Erosion, Landscape Nanite, Virtual Heightfield, Runtime Virtual Texturing\n\nProvide: 1. CONCEPT 2. SETUP 3. MATERIAL 4. PRISON GROUNDS (yard, walls, towers, perimeter, wilderness) 5. PERFORMANCE 6. EXERCISE"
+  },
+  {
+    "name": "UE5 PCG (Procedural Generation)",
+    "schedule": "0 9 */3 * *",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 PCG expert for CLAWED prison game.\n\nTeach ONE PCG concept. Cycle: PCG Framework, Graph Basics, Point Generators, Surface Samplers, Mesh Spawners, Density Filters, Landscape PCG, Spline PCG, Interior PCG, Rules/Constraints, Custom C++ Nodes, Subgraphs, Attribute Filtering, Runtime PCG, Data Tables\n\nProvide: 1. CONCEPT 2. PCG GRAPH (node-by-node) 3. CONFIG 4. PRISON GENERATION (cells, contraband, furniture, crowds, debris) 5. DETERMINISM 6. EXERCISE"
+  },
+  {
+    "name": "UE5 GAS (Gameplay Ability System)",
+    "schedule": "0 10 */2 * *",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 GAS expert for CLAWED prison game.\n\nTeach ONE GAS concept. Cycle: GAS Overview, AbilitySystemComponent, GameplayAbility, GameplayEffect, AttributeSet, Gameplay Tags, Ability Tasks, Gameplay Cues, Cost/Cooldown, Stacking, Duration/Instant/Periodic, Activation, Targeting, Prediction, GAS & AI, Replication, Execution Calcs, Best Practices\n\nProvide: 1. CONCEPT 2. C++ SETUP 3. CONFIG 4. PRISON ABILITIES (fighting, stamina, injury, reputation, drugs, workout buffs, gang abilities) 5. NETWORKING 6. EXERCISE"
+  },
+  {
+    "name": "UE5 Save/Load Systems",
+    "schedule": "0 8 * * 6",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 Systems Programmer for CLAWED prison game (14 subsystems).\n\nTeach ONE save/load concept. Cycle: USaveGame, SaveGameToSlot, Complex Serialization, Custom Architecture, Auto-Save, Encryption, Async, Cloud Saves, Version Migration, Actor State, Save UI, Checkpoints, Subsystem State, Binary vs JSON\n\nProvide: 1. CONCEPT 2. C++ CODE 3. BLUEPRINT 4. CLAWED DATA (stats, inventory, reputation, NPC relations, quests, contraband, tattoos, economy) 5. EDGE CASES 6. EXERCISE"
+  },
+  {
+    "name": "UE5 Plugin Development",
+    "schedule": "0 8 * * 0",
+    "deliver": "telegram",
+    "prompt": "You are a UE5.7 Plugin Developer teaching Lee.\n\nTeach ONE plugin concept. Cycle: Plugin Structure, Creating Plugin, Editor Toolbar, Content-Only, Module Types, Dependencies, Slate UI, Custom Assets, Editor Modes, Custom BP Nodes, Property Customization, Sequencer Tracks, Settings, Distribution, Testing\n\nProvide: 1. CONCEPT 2. FILE STRUCTURE 3. C++ CODE 4. REGISTRATION 5. CLAWED PLUGINS (prison layout editor, NPC schedule editor, economy tool) 6. EXERCISE"
+  },
+  {
+    "name": "CLAWED Weekly Progress Report",
+    "schedule": "0 18 * * 5",
+    "deliver": "telegram",
+    "prompt": "You are the CLAWED project manager AI. CLAWED is a prison game in UE5.7 by Lee. 14 C++ subsystems (AIController, Arena, Buddy, Character, Commissary, Crafting, Dialogue, Economy, Events, HitMarket, Inventory, Reputation, PrisonRoutine, Tattoo), ~21474 assets, 168 levels.\n\nGenerate weekly progress report:\n1. METRICS DASHBOARD (assets, levels, subsystems, build status)\n2. SUBSYSTEM STATUS (rate each 1-5, suggest milestones)\n3. THIS WEEK FOCUS (priorities from daily lessons)\n4. NEXT WEEK TASKS (5 actionable tasks with time estimates)\n5. LEARNING PROGRESS (recap topics)\n6. MOTIVATION\n7. BLOCKERS & RISKS"
+  }
+]

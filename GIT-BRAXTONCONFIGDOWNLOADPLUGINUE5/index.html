@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYGHTSHADE | Ludus-Grade AI Automation</title>
+    <link rel="stylesheet" href="nyghtshade.css">
+</head>
+
+<body>
+    <div class="bg-animation"></div>
+    <div class="scanline"></div>
+
+    <header class="nav">
+        <div class="logo">NYGHTSHADE</div>
+        <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#demo">Demo</a>
+            <a href="#use-cases">Use Cases</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#how-it-works">How it works</a>
+        </nav>
+        <a class="nav-cta" href="#cta">Launch Ludus Mode</a>
+    </header>
+
+    <main>
+        <section class="hero" id="top">
+            <div class="hero-text">
+                <p class="eyebrow">AI-run pipelines for Unreal & live ops</p>
+                <h1>Nightshade gives your agents direct, safe control.</h1>
+                <p class="subtitle">Built for Ludus-style autonomy: deterministic, auditable, and offline-ready so you can let AI ship without babysitting.</p>
+                <div class="cta-buttons">
+                    <a class="btn btn-primary" href="#pricing">Start automation</a>
+                    <a class="btn btn-secondary" href="#demo">See live demo</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-label">Validated ops</span>
+                        <span class="stat-value">1,200+</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Rollback ready</span>
+                        <span class="stat-value">100%</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Offline capable</span>
+                        <span class="stat-value">Full</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-card">
+                <div class="badge">Live today</div>
+                <h3>Ludus AI control surface</h3>
+                <p>Structured commands + safety rails + transparent diffs. Run it locally, pipe it into CI, or let your agents drive.</p>
+                <ul class="hero-list">
+                    <li>JSON-first interface</li>
+                    <li>Command validation & diff preview</li>
+                    <li>Works offline with local agents</li>
+                </ul>
+                <a class="btn btn-primary ghost" href="#cta">Deploy in minutes</a>
+            </div>
+        </section>
+
+        <section class="section" id="features">
+            <div class="section-heading">
+                <p class="eyebrow">Why Nightshade</p>
+                <h2>Automation built for Ludus-grade AI.</h2>
+                <p class="subtitle">Deterministic operations, transparent logs, and guardrails that keep control in your hands.</p>
+            </div>
+            <div class="features-grid">
+                <article class="feature-card reveal">
+                    <h3>Deterministic commands</h3>
+                    <p>AI sends structured intents; Nightshade executes predictably with full traceability.</p>
+                </article>
+                <article class="feature-card reveal">
+                    <h3>Offline & local first</h3>
+                    <p>Run the console locally with zero cloud calls. Perfect for air-gapped or confidential builds.</p>
+                </article>
+                <article class="feature-card reveal">
+                    <h3>Safety & rollback</h3>
+                    <p>Validation layers catch bad diffs before they land. Automatic rollback keeps teams fearless.</p>
+                </article>
+                <article class="feature-card reveal">
+                    <h3>Unreal-native</h3>
+                    <p>Introspect assets, balance weapons, and refactor levels straight from your agents.</p>
+                </article>
+                <article class="feature-card reveal">
+                    <h3>Zero micromanagement</h3>
+                    <p>Let AI handle bulk edits, naming enforcement, and clean-up while you ship content.</p>
+                </article>
+                <article class="feature-card reveal">
+                    <h3>Observability</h3>
+                    <p>Every action is logged with before/after states so you can audit any change instantly.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section code-showcase" id="demo">
+            <div class="section-heading">
+                <p class="eyebrow">Command surface</p>
+                <h2>Speak JSON, get Ludus-level execution.</h2>
+            </div>
+            <div class="code-grid">
+                <div class="code-card reveal">
+                    <div class="code-title">Bulk edit (dry run)</div>
+                    <pre><code>{
+  "command": "bulk_edit",
+  "target": "WeaponAssets",
+  "operation": "normalize_dps",
+  "dry_run": true
+}</code></pre>
+                </div>
+                <div class="code-card reveal">
+                    <div class="code-title">AI routed via Nightshade</div>
+                    <pre><code>{
+  "command": "generate_variants",
+  "target": "AssaultRifles",
+  "count": 3,
+  "constraints": ["naming_conventions", "balance_budget"]
+}</code></pre>
+                </div>
+                <div class="code-card metrics reveal">
+                    <div class="metric">
+                        <span class="metric-value">95%</span>
+                        <span class="metric-label">Diff coverage caught pre-commit</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">0</span>
+                        <span class="metric-label">Cloud dependencies required</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">5 min</span>
+                        <span class="metric-label">From clone to first automation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="use-cases">
+            <div class="section-heading">
+                <p class="eyebrow">Use cases</p>
+                <h2>Let AI own the repetitive work.</h2>
+            </div>
+            <div class="use-cases">
+                <div class="pill reveal">Weapon balancing & DPS normalization</div>
+                <div class="pill reveal">Variant generation with guardrails</div>
+                <div class="pill reveal">Large-scale naming enforcement</div>
+                <div class="pill reveal">Level refactors & cleanup</div>
+                <div class="pill reveal">Telemetry-free local QA</div>
+                <div class="pill reveal">Live-ops content updates</div>
+            </div>
+        </section>
+
+        <section class="section" id="pricing">
+            <div class="section-heading">
+                <p class="eyebrow">Pricing</p>
+                <h2>Pick the track that fits your pipeline.</h2>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card reveal">
+                    <div class="badge">Indie</div>
+                    <h3>$5 / seat</h3>
+                    <p>Run Nightshade locally with baseline automation.</p>
+                    <ul>
+                        <li>Local agent support</li>
+                        <li>Command validation</li>
+                        <li>JSON interface</li>
+                    </ul>
+                    <a class="btn btn-secondary" href="#cta">Start</a>
+                </div>
+                <div class="pricing-card featured reveal">
+                    <div class="badge">Pro</div>
+                    <h3>$20 / seat</h3>
+                    <p>Everything you need for a Ludus-grade workflow.</p>
+                    <ul>
+                        <li>Full audit logs</li>
+                        <li>Rollback & diff previews</li>
+                        <li>CI / CD hooks</li>
+                    </ul>
+                    <a class="btn btn-primary" href="#cta">Go Pro</a>
+                </div>
+                <div class="pricing-card reveal">
+                    <div class="badge">Enterprise</div>
+                    <h3>Custom</h3>
+                    <p>Hardening, SSO, and bespoke safety gates for big teams.</p>
+                    <ul>
+                        <li>Dedicated support</li>
+                        <li>Air-gapped delivery</li>
+                        <li>Custom runbooks</li>
+                    </ul>
+                    <a class="btn btn-secondary" href="#cta">Talk with us</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section timeline" id="how-it-works">
+            <div class="section-heading">
+                <p class="eyebrow">How it works</p>
+                <h2>Four steps to autonomous delivery.</h2>
+            </div>
+            <div class="steps">
+                <div class="step reveal">
+                    <span class="step-number">01</span>
+                    <h4>Install Nightshade</h4>
+                    <p>Drop it into your Unreal project or local agent stack.</p>
+                </div>
+                <div class="step reveal">
+                    <span class="step-number">02</span>
+                    <h4>Connect your AI</h4>
+                    <p>Point Ludus-style agents at Nightshade’s JSON surface.</p>
+                </div>
+                <div class="step reveal">
+                    <span class="step-number">03</span>
+                    <h4>Dry-run & validate</h4>
+                    <p>Preview diffs, enforce policies, and lock in the guardrails.</p>
+                </div>
+                <div class="step reveal">
+                    <span class="step-number">04</span>
+                    <h4>Ship confidently</h4>
+                    <p>Let automation run at scale with rollback always ready.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section final-cta" id="cta">
+            <div class="final-card reveal">
+                <p class="eyebrow">Ready to deploy?</p>
+                <h2>Give your agents a console that never blinks.</h2>
+                <p class="subtitle">Nightshade pairs Ludus-like autonomy with guardrails that keep production safe.</p>
+                <div class="cta-buttons">
+                    <a class="btn btn-primary" href="#pricing">Launch now</a>
+                    <a class="btn btn-secondary" href="mailto:founders@nyghtshade.ai">Book a walkthrough</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="logo">NYGHTSHADE</div>
+        <div class="footer-links">
+            <a href="#features">Product</a>
+            <a href="#demo">Docs</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#cta">Contact</a>
+        </div>
+        <p class="footer-note">Deterministic AI automation, inspired by Ludus.</p>
+    </footer>
+
+    <script src="nyghtshade.js"></script>
+</body>
+
+</html>

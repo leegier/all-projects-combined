@@ -1,0 +1,7 @@
+Loading itch.io login...
+FATAL: page.waitForSelector: Timeout 20000ms exceeded.
+Call log:
+[2m  - waiting for locator('input') to be visible[22m
+[2m    9 × locator resolved to hidden <input type="hidden" name="cf-turnstile-response" id="cf-chl-widget-tko25_response"/>[22m
+[2m    28 × locator resolved to hidden <input type="hidden" name="cf-turnstile-response" id="cf-chl-widget-swdrv_response"/>[22m
+

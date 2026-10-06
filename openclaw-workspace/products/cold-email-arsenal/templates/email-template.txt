@@ -1,0 +1,5 @@
+# Email Template
+
+This is a sample email template.
+
+[Insert additional template content]

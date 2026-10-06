@@ -1,0 +1,1 @@
+I attempted to create a product on Gumroad for Cold Email Arsenal, but was unable to do so due to the daily product limit.

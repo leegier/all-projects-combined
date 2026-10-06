@@ -1,0 +1,1 @@
+# Ollama is not a valid repository

@@ -1,0 +1,1 @@
+Failed to create product on Gumroad: Sorry, you can only create 10 products per day.

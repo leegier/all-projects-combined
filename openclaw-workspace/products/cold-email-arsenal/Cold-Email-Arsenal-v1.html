@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cold Email Arsenal — 60 Premium Templates</title>
+<style>
+:root{--bg:#0a0b0f;--bg2:#12141a;--bg3:#1a1d26;--bg4:#222635;--border:#2a2f45;--accent:#f59e0b;--accent2:#e07b00;--aD:rgba(245,158,11,.12);--blue:#3b82f6;--bD:rgba(59,130,246,.12);--green:#22c55e;--gD:rgba(34,197,94,.12);--red:#ef4444;--rD:rgba(239,68,68,.12);--purple:#a855f7;--pD:rgba(168,85,247,.12);--text:#e2e8f0;--tm:#94a3b8;--td:#64748b;--r:10px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:14px;line-height:1.6;min-height:100vh}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.header{background:linear-gradient(135deg,#0f1118,#1a1020,#0f1118);border-bottom:1px solid var(--border);padding:0 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,.5)}
+.hi{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:16px;height:60px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.logo-text{font-size:15px;font-weight:700;color:var(--text)}.logo-text span{color:var(--accent)}
+.hs{flex:1;max-width:400px;position:relative}
+.hs input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px 12px 8px 36px;color:var(--text);font-size:13px;outline:none;transition:border-color .2s}
+.hs input:focus{border-color:var(--accent)}.hs input::placeholder{color:var(--td)}
+.si{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--td);pointer-events:none}
+.ha{display:flex;align-items:center;gap:8px;margin-left:auto}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;border:none;cursor:pointer;font-size:12px;font-weight:600;transition:all .2s;white-space:nowrap}
+.bg{background:transparent;color:var(--tm);border:1px solid var(--border)}.bg:hover{background:var(--bg3);color:var(--text)}
+.ba{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;box-shadow:0 2px 12px rgba(245,158,11,.3)}.ba:hover{transform:translateY(-1px)}
+.bb{background:var(--bD);color:var(--blue);border:1px solid rgba(59,130,246,.25)}.bb:hover{background:rgba(59,130,246,.2)}
+.bgg{background:var(--gD);color:var(--green);border:1px solid rgba(34,197,94,.25)}.bgg:hover{background:rgba(34,197,94,.2)}
+.app{max-width:1400px;margin:0 auto;padding:24px;display:grid;grid-template-columns:240px 1fr;gap:24px}
+.sidebar{position:sticky;top:84px;height:fit-content;display:flex;flex-direction:column;gap:16px}
+.ss{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:16px}
+.st{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--td);margin-bottom:12px}
+.cb{display:flex;align-items:center;justify-content:space-between;width:100%;padding:8px 10px;border-radius:7px;border:none;background:transparent;color:var(--tm);cursor:pointer;font-size:13px;transition:all .15s;margin-bottom:2px;text-align:left}
+.cb:hover{background:var(--bg3);color:var(--text)}.cb.active{background:var(--aD);color:var(--accent);font-weight:600}
+.cc{background:var(--bg4);color:var(--td);font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;min-width:20px;text-align:center}.cb.active .cc{background:var(--aD);color:var(--accent)}
+.tcl{display:flex;flex-wrap:wrap;gap:6px}
+.tp{padding:4px 10px;border-radius:20px;background:var(--bg3);border:1px solid var(--border);color:var(--tm);font-size:11px;cursor:pointer;transition:all .15s}
+.tp:hover,.tp.active{border-color:var(--accent);color:var(--accent)}.tp.active{background:var(--aD);font-weight:600}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sc{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center}
+.sn{font-size:20px;font-weight:700;color:var(--accent)}.sl{font-size:10px;color:var(--td);margin-top:2px}
+.main{min-width:0}
+.toolbar{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.tl{display:flex;align-items:center;gap:10px;flex:1;flex-wrap:wrap}
+.rc{font-size:13px;color:var(--tm)}.rc span{color:var(--accent);font-weight:700}
+.ss2{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--tm);font-size:12px;cursor:pointer;outline:none}
+.vt{display:flex;gap:4px}
+.vb{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--td);cursor:pointer;font-size:13px;transition:all .15s}
+.vb.active,.vb:hover{background:var(--aD);color:var(--accent);border-color:var(--accent)}
+.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.tg.lv{grid-template-columns:1fr}
+.tc2{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .2s;display:flex;flex-direction:column}
+.tc2:hover{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 4px 24px rgba(0,0,0,.4);transform:translateY(-2px)}
+.tc2.fav{border-color:var(--accent)}
+.ch{padding:14px 16px 10px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px}
+.cat{padding:3px 8px;border-radius:5px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.cs{background:var(--bD);color:var(--blue)}.cag{background:var(--pD);color:var(--purple)}
+.cf{background:var(--gD);color:var(--green)}.cpx{background:rgba(245,158,11,.15);color:var(--accent)}
+.cj{background:var(--rD);color:var(--red)}.ci{background:rgba(16,185,129,.12);color:#10b981}
+.cc2{background:rgba(236,72,153,.12);color:#ec4899}.cl{background:rgba(20,184,166,.12);color:#14b8a6}
+.cm{flex:1;min-width:0}
+.ct{font-size:13px;font-weight:600;line-height:1.3;margin-bottom:4px}
+.sub{font-size:11px;color:var(--tm);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sub em{color:var(--accent);font-style:normal}
+.starfav{background:none;border:none;cursor:pointer;font-size:16px;color:var(--td);transition:all .15s;flex-shrink:0;padding:0;line-height:1}
+.starfav.active,.starfav:hover{color:var(--accent)}
+.cb2{padding:12px 16px;flex:1}
+.ep{font-size:12px;color:var(--tm);line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ep .vr{color:var(--accent);font-weight:600}
+.ctg{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.ctag{padding:2px 7px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;font-size:10px;color:var(--td)}
+.cf2{padding:10px 16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.rr{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--tm)}
+.rb2{font-weight:700;font-size:12px;color:var(--green)}
+.rb{width:48px;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden}
+.rf{height:100%;background:linear-gradient(90deg,var(--green),#4ade80);border-radius:2px}
+.ca2{display:flex;gap:6px}
+.ab{padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg3);color:var(--tm);font-size:11px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:4px;font-weight:500}
+.ab:hover{background:var(--bg4);color:var(--text)}.ab.cpy:hover{background:var(--gD);color:var(--green);border-color:rgba(34,197,94,.3)}
+.ab.vw:hover{background:var(--bD);color:var(--blue);border-color:rgba(59,130,246,.3)}
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .2s}
+.mo.open{opacity:1;pointer-events:all}
+.md{background:var(--bg2);border:1px solid var(--border);border-radius:14px;width:100%;max-width:780px;max-height:90vh;overflow-y:auto;box-shadow:0 8px 48px rgba(0,0,0,.6);transform:translateY(20px);transition:transform .2s}
+.mo.open .md{transform:translateY(0)}
+.mh{padding:20px 24px 16px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:12px;position:sticky;top:0;background:var(--bg2);z-index:1}
+.mt{flex:1}.mt h2{font-size:16px;font-weight:700;margin-bottom:4px}.mt p{font-size:12px;color:var(--tm)}
+.mc{background:none;border:none;color:var(--td);font-size:20px;cursor:pointer;padding:4px;border-radius:6px;transition:all .15s}.mc:hover{background:var(--bg3);color:var(--text)}
+.mb{padding:20px 24px}
+.tabs{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid var(--border)}
+.tab{padding:8px 16px;border:none;background:none;color:var(--tm);font-size:12px;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;border-radius:6px 6px 0 0;display:flex;align-items:center;gap:6px}
+.tab:hover{color:var(--text);background:var(--bg3)}.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tp2{display:none}.tp2.active{display:block}
+.ef{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:12px}
+.fl{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--td);margin-bottom:6px;display:flex;align-items:center;justify-content:space-between}
+.fc{font-size:13px;color:var(--text);line-height:1.6;white-space:pre-wrap;word-break:break-word}
+.fc .vr{color:var(--accent);font-weight:700;background:rgba(245,158,11,.1);padding:1px 4px;border-radius:3px}
+.sb{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px}
+.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.sn2{font-size:40px;font-weight:800;line-height:1}.sla{font-size:12px;color:var(--tm);margin-top:2px}
+.sfs{display:flex;flex-direction:column;gap:8px}
+.sf{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--tm)}
+.fbar{flex:1;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden}
+.ff{height:100%;border-radius:2px;transition:width .4s}
+.fsc{font-weight:700;font-size:11px;min-width:24px;text-align:right}.fn{min-width:130px}
+.tbs{display:flex;gap:8px;margin-bottom:16px}
+.tonebtn{flex:1;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--bg3);color:var(--tm);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
+.tonebtn:hover{border-color:var(--accent);color:var(--text)}.tonebtn.active{background:var(--aD);border-color:var(--accent);color:var(--accent)}
+.tonebtn.fm.active{background:var(--bD);border-color:var(--blue);color:var(--blue)}
+.tonebtn.cs.active{background:var(--gD);border-color:var(--green);color:var(--green)}
+.tonebtn.ag.active{background:var(--rD);border-color:var(--red);color:var(--red)}
+.re{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;font-size:13px;line-height:1.6;color:var(--text);white-space:pre-wrap;min-height:120px}
+.re .vr{color:var(--accent);font-weight:700;background:rgba(245,158,11,.1);padding:1px 4px;border-radius:3px}
+.seqcon{display:flex;flex-direction:column;gap:12px}
+.seqe{background:var(--bg3);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.sqh{padding:10px 14px;background:var(--bg4);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.sqn{width:24px;height:24px;background:var(--accent);color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
+.sql{font-size:12px;font-weight:600;flex:1}
+.sqd{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--tm)}
+.sqd input{width:44px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:3px 6px;color:var(--text);font-size:11px;text-align:center;outline:none}
+.sqd input:focus{border-color:var(--accent)}
+.sqb{padding:12px 14px}
+.sqb textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:10px;color:var(--text);font-size:12px;line-height:1.5;resize:vertical;min-height:80px;outline:none;font-family:inherit}
+.sqb textarea:focus{border-color:var(--accent)}
+.ur{display:flex;align-items:center;gap:4px;margin-top:8px}
+.starb{background:none;border:none;color:var(--td);font-size:18px;cursor:pointer;padding:0;line-height:1;transition:all .15s}
+.starb:hover,.starb.lit{color:var(--accent)}
+.rl{font-size:11px;color:var(--tm);margin-left:4px}
+.iotab{flex:1;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--bg3);color:var(--tm);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;text-align:center}
+.iotab.active{background:var(--aD);border-color:var(--accent);color:var(--accent)}
+.iota{width:100%;min-height:200px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px;color:var(--text);font-size:12px;font-family:'Courier New',monospace;resize:vertical;outline:none}
+.iota:focus{border-color:var(--accent)}
+.tcc{position:fixed;bottom:24px;right:24px;z-index:500;display:flex;flex-direction:column;gap:8px}
+.toast{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-size:12px;color:var(--text);box-shadow:0 4px 24px rgba(0,0,0,.4);display:flex;align-items:center;gap:8px;transform:translateX(120%);opacity:0;transition:all .3s;max-width:300px}
+.toast.show{transform:translateX(0);opacity:1}.toast.ok{border-color:rgba(34,197,94,.4)}.toast.ok .ti{color:var(--green)}
+.toast.err{border-color:rgba(239,68,68,.4)}.toast.err .ti{color:var(--red)}
+.es{text-align:center;padding:60px 24px;color:var(--tm);grid-column:1/-1}
+.ei{font-size:48px;margin-bottom:12px;opacity:.4}.es h3{font-size:16px;margin-bottom:6px;color:var(--td)}
+.wb{background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(168,85,247,.05));border:1px solid rgba(245,158,11,.2);border-radius:var(--r);padding:16px 20px;margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.wi{font-size:28px}.wt h2{font-size:15px;font-weight:700;color:var(--accent);margin-bottom:2px}.wt p{font-size:12px;color:var(--tm)}
+.wc{margin-left:auto;cursor:pointer;background:none;border:none;color:var(--td);font-size:18px}
+@media(max-width:900px){.app{grid-template-columns:1fr;padding:16px}.sidebar{position:static}.tg{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="header">
+<div class="hi">
+<a class="logo" href="#"><div class="logo-icon">&#9889;</div><div class="logo-text">Cold Email <span>Arsenal</span></div></a>
+<div class="hs"><span class="si">&#128269;</span><input type="text" id="gSearch" placeholder="Search templates, subjects, tags..." oninput="doSearch()"></div>
+<div class="ha">
+<button class="btn bg" onclick="openIO('export')">&#8679; Export</button>
+<button class="btn bg" onclick="openIO('import')">&#8681; Import</button>
+<button class="btn bg" id="favBtn" onclick="toggleFavs()">&#9733; Favorites</button>
+<button class="btn ba" onclick="showKb()">&#9109; Shortcuts</button>
+</div>
+</div>
+</header>
+<div class="tcc" id="toasts"></div>
+<div class="app">
+<aside class="sidebar">
+<div class="ss">
+<div class="st">&#128193; Categories</div>
+<button class="cb active" onclick="filterCat('all')" data-cat="all">All Templates<span class="cc" id="c-all">60</span></button>
+<button class="cb" onclick="filterCat('SaaS Sales')" data-cat="SaaS Sales">&#128640; SaaS Sales<span class="cc">8</span></button>
+<button class="cb" onclick="filterCat('Agency Outreach')" data-cat="Agency Outreach">&#127970; Agency Outreach<span class="cc">8</span></button>
+<button class="cb" onclick="filterCat('Freelance Pitching')" data-cat="Freelance Pitching">&#128188; Freelance<span class="cc">8</span></button>
+<button class="cb" onclick="filterCat('Partnership')" data-cat="Partnership">&#129309; Partnership<span class="cc">7</span></button>
+<button class="cb" onclick="filterCat('Job Hunting')" data-cat="Job Hunting">&#127919; Job Hunting<span class="cc">7</span></button>
+<button class="cb" onclick="filterCat('Investor')" data-cat="Investor">&#128176; Investor<span class="cc">7</span></button>
+<button class="cb" onclick="filterCat('Content Collab')" data-cat="Content Collab">&#127907; Content Collab<span class="cc">8</span></button>
+<button class="cb" onclick="filterCat('Link Building')" data-cat="Link Building">&#128279; Link Building<span class="cc">7</span></button>
+</div>
+<div class="ss"><div class="st">&#127991; Tags</div><div class="tcl" id="tagCloud"></div></div>
+<div class="ss">
+<div class="st">&#128202; Your Stats</div>
+<div class="sg">
+<div class="sc"><div class="sn" id="stTotal">60</div><div class="sl">Templates</div></div>
+<div class="sc"><div class="sn" id="stFavs">0</div><div class="sl">Favorited</div></div>
+<div class="sc"><div class="sn" id="stCopied">0</div><div class="sl">Copied</div></div>
+<div class="sc"><div class="sn" id="stRated">0</div><div class="sl">Rated</div></div>
+</div>
+</div>
+</aside>
+<main class="main">
+<div class="wb" id="banner">
+<div class="wi">&#9889;</div>
+<div class="wt"><h2>Welcome to Cold Email Arsenal</h2><p>60 battle-tested templates &bull; Gold text = variables to replace &bull; Star to favorite &bull; Click any card to open</p></div>
+<button class="wc" onclick="dismissBanner()">&#10005;</button>
+</div>
+<div class="toolbar">
+<div class="tl">
+<div class="rc"><span id="rCount">60</span> templates</div>
+<select class="ss2" onchange="doSort(this.value)">
+<option value="default">Sort: Default</option>
+<option value="rate-high">Highest Reply Rate</option>
+<option value="rate-low">Lowest Reply Rate</option>
+<option value="rating">Your Rating</option>
+<option value="favorites">Favorites First</option>
+</select>
+</div>
+<div class="vt">
+<button class="vb active" id="gbtn" onclick="setView('grid')" title="Grid">&#8862;</button>
+<button class="vb" id="lbtn" onclick="setView('list')" title="List">&#9776;</button>
+</div>
+</div>
+<div class="tg" id="grid"></div>
+</main>
+</div>
+
+<!-- TEMPLATE MODAL -->
+<div class="mo" id="tModal" onclick="mClick(event,'tModal')">
+<div class="md">
+<div class="mh">
+<div class="mt"><h2 id="mTitle"></h2><p id="mSubt"></p></div>
+<button class="mc" onclick="closeM('tModal')">&#10005;</button>
+</div>
+<div class="mb">
+<div class="tabs">
+<button class="tab active" onclick="switchTab(event,'t1')">&#128231; Email</button>
+<button class="tab" onclick="switchTab(event,'t2')">&#128202; Score</button>
+<button class="tab" onclick="switchTab(event,'t3')">&#127917; Rewrite</button>
+<button class="tab" onclick="switchTab(event,'t4')">&#128197; Follow-ups</button>
+</div>
+<div class="tp2 active" id="t1">
+<div class="ef"><div class="fl">Subject Line<span id="sChip"></span></div><div class="fc" id="mSubj"></div></div>
+<div class="ef"><div class="fl">Email Body</div><div class="fc" id="mBody"></div></div>
+<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:4px">
+<div><div style="font-size:11px;color:var(--tm);margin-bottom:4px">Your rating:</div><div class="ur" id="uRating"></div></div>
+<div style="display:flex;gap:8px">
+<button class="btn bgg" onclick="copyFull()">&#128203; Copy Email</button>
+<button class="btn bb" onclick="goToSeq()">&#128197; Add to Sequence</button>
+</div>
+</div>
+</div>
+<div class="tp2" id="t2">
+<div class="sb">
+<div class="sh"><div><div class="sn2" id="scoreNum">-</div><div class="sla">Subject Line Score</div></div><div id="scoreMeter" style="font-size:32px">&#127942;</div></div>
+<div class="sfs" id="scoreFactors"></div>
+</div>
+<div class="ef"><div class="fl">Subject Being Scored</div><div class="fc" id="scoreSubj"></div></div>
+<div style="margin-top:12px;padding:12px;background:var(--bg3);border-radius:8px;border:1px solid var(--border)">
+<div style="font-size:11px;font-weight:700;color:var(--td);margin-bottom:8px;text-transform:uppercase;letter-spacing:.8px">Breakdown</div>
+<div style="font-size:12px;color:var(--tm);line-height:1.8" id="scoreExp"></div>
+</div>
+</div>
+<div class="tp2" id="t3">
+<p style="font-size:13px;color:var(--tm);margin-bottom:14px">Choose a tone to see an AI-style rewritten version of this email.</p>
+<div class="tbs">
+<button class="tonebtn fm" onclick="rewrite('formal')">&#127913; Formal</button>
+<button class="tonebtn cs" onclick="rewrite('casual')">&#128526; Casual</button>
+<button class="tonebtn ag" onclick="rewrite('aggressive')">&#128293; Aggressive</button>
+</div>
+<div class="ef"><div class="fl">Rewritten Email<span id="toneLabel" style="color:var(--tm)">Select a tone above</span></div><div class="re" id="rewritten">Select a tone above to see a rewritten version...</div></div>
+<div style="display:flex;gap:8px;margin-top:10px"><button class="btn bgg" onclick="copyRewritten()">&#128203; Copy Rewritten</button></div>
+</div>
+<div class="tp2" id="t4">
+<p style="font-size:13px;color:var(--tm);margin-bottom:14px">Build a follow-up sequence. Customize timing and message for each step.</p>
+<div class="seqcon" id="seqCont"></div>
+<button class="btn ba" style="margin-top:12px" onclick="exportSeq()">&#8681; Export Sequence</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- IO MODAL -->
+<div class="mo" id="ioModal" onclick="mClick(event,'ioModal')">
+<div class="md" style="max-width:600px">
+<div class="mh"><div class="mt"><h2>Import / Export</h2><p>Backup your favorites, ratings, and sequences</p></div><button class="mc" onclick="closeM('ioModal')">&#10005;</button></div>
+<div class="mb">
+<div style="display:flex;gap:8px;margin-bottom:16px">
+<button class="iotab active" id="ioEx" onclick="switchIO('export')">&#8679; Export Data</button>
+<button class="iotab" id="ioIm" onclick="switchIO('import')">&#8681; Import Data</button>
+</div>
+<div id="ioExP"><p style="font-size:13px;color:var(--tm);margin-bottom:12px">Your favorites, ratings, and sequences exported as JSON.</p><textarea class="iota" id="exData" readonly></textarea><div style="display:flex;gap:8px;margin-top:12px"><button class="btn ba" onclick="copyEx()">&#128203; Copy JSON</button><button class="btn bg" onclick="dlEx()">&#8681; Download</button></div></div>
+<div id="ioImP" style="display:none"><p style="font-size:13px;color:var(--tm);margin-bottom:12px">Paste exported JSON to restore your data.</p><textarea class="iota" id="imData" placeholder="Paste JSON here..."></textarea><div style="display:flex;gap:8px;margin-top:12px"><button class="btn ba" onclick="doImport()">&#8679; Import</button></div></div>
+</div>
+</div>
+</div>
+
+<!-- KEYBOARD SHORTCUTS MODAL -->
+<div class="mo" id="kbModal" onclick="mClick(event,'kbModal')">
+<div class="md" style="max-width:480px">
+<div class="mh"><div class="mt"><h2>&#9109; Keyboard Shortcuts</h2><p>Speed up your cold email workflow</p></div><button class="mc" onclick="closeM('kbModal')">&#10005;</button></div>
+<div class="mb">
+<div style="display:grid;gap:8px">
+<div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--bg3);border-radius:8px;font-size:13px"><span style="color:var(--tm)">Focus search bar</span><kbd style="background:var(--bg4);padding:3px 10px;border-radius:5px;font-family:monospace;color:var(--accent);border:1px solid var(--border)">/</kbd></div>
+<div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--bg3);border-radius:8px;font-size:13px"><span style="color:var(--tm)">Close any modal</span><kbd style="background:var(--bg4);padding:3px 10px;border-radius:5px;font-family:monospace;color:var(--accent);border:1px solid var(--border)">Esc</kbd></div>
+<div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--bg3);border-radius:8px;font-size:13px"><span style="color:var(--tm)">Toggle favorites filter</span><kbd style="background:var(--bg4);padding:3px 10px;border-radius:5px;font-family:monospace;color:var(--accent);border:1px solid var(--border)">F</kbd></div>
+<div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--bg3);border-radius:8px;font-size:13px"><span style="color:var(--tm)">Export data</span><kbd style="background:var(--bg4);padding:3px 10px;border-radius:5px;font-family:monospace;color:var(--accent);border:1px solid var(--border)">Ctrl + E</kbd></div>
+<div style="margin-top:8px;padding:12px;background:var(--bg4);border-radius:8px;border-left:3px solid var(--accent)">
+<div style="font-size:12px;color:var(--tm)"><strong style="color:var(--accent)">Pro tip:</strong> Click any card to open the full template with scoring, tone rewriter, and follow-up builder. Gold text = variables to replace before sending.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+const T=[
+{id:1,c:"SaaS Sales",t:"Problem-First SaaS Pitch",s:"{{COMPANY}} losing revenue to {{PROBLEM}}?",b:"Hi {{FIRST_NAME}},\n\nI was looking at {{COMPANY}}'s {{CHANNEL}} and noticed you're still handling {{PAIN_POINT}} manually — most {{ROLE}}s I talk to say this costs 8+ hours/week.\n\nWe built {{PRODUCT_NAME}} to automate exactly that. Companies like {{REFERENCE_CUSTOMER}} cut {{METRIC}} by 40% in the first 30 days.\n\nWould a 15-min call this week make sense?\n\nBest,\n{{YOUR_NAME}}\n{{YOUR_TITLE}} @ {{YOUR_COMPANY}}",tags:["B2B","SaaS","problem-first","ROI"],r:18},
+{id:2,c:"SaaS Sales",t:"Competitor Switch Pitch",s:"Switching from {{COMPETITOR}}? Here's what {{CUSTOMER_NAME}} found",b:"Hey {{FIRST_NAME}},\n\nSaw {{COMPANY}} is using {{COMPETITOR}} — we hear this a lot from teams at your stage.\n\n{{CUSTOMER_NAME}} switched to {{PRODUCT_NAME}} 3 months ago and here's what changed:\n- {{BENEFIT_1}}\n- {{BENEFIT_2}}\n- {{BENEFIT_3}}\n\nWorth a 20-min demo? No deck. No sales pitch. Just the product.\n\n{{YOUR_NAME}}",tags:["competitor","switch","case study","B2B"],r:22},
+{id:3,c:"SaaS Sales",t:"Data-Driven Cold Opener",s:"{{COMPANY}} + {{METRIC}}: quick question",b:"Hi {{FIRST_NAME}},\n\nQuick one: how is {{COMPANY}} currently tracking {{METRIC}}?\n\nI ask because we've been working with {{INDUSTRY}} companies your size and the #1 issue is {{PAIN_POINT}} — it silently kills {{OUTCOME}}.\n\n{{PRODUCT_NAME}} fixes this in under a day. No migration. No consultant needed.\n\nHappy to send a 2-min overview video?\n\n{{YOUR_NAME}}\n{{YOUR_COMPANY}}",tags:["data-driven","metrics","SaaS","short"],r:16},
+{id:4,c:"SaaS Sales",t:"LinkedIn Trigger Email",s:"Saw your post about {{TOPIC}} — thought of this",b:"{{FIRST_NAME}},\n\nYour LinkedIn post about {{TOPIC}} hit home. You're clearly thinking about {{CHALLENGE}} the right way.\n\nThat's exactly why I'm reaching out. We built {{PRODUCT_NAME}} for {{ROLE}}s dealing with {{PAIN_POINT}}.\n\n\"{{TESTIMONIAL}}\" — {{TESTIMONIAL_SOURCE}}\n\nWant me to send the 5-min overview?\n\n{{YOUR_NAME}}",tags:["LinkedIn","trigger","social proof","personalized"],r:24},
+{id:5,c:"SaaS Sales",t:"Free Trial Offer",s:"Free {{TIMEFRAME}} trial for {{COMPANY}}",b:"Hi {{FIRST_NAME}},\n\nI'd like to offer {{COMPANY}} a free {{TIMEFRAME}} trial of {{PRODUCT_NAME}} — no credit card, no commitment.\n\nWhy? We're expanding in {{INDUSTRY}} and want 5 reference customers who'll give honest feedback.\n\nIn {{TIMEFRAME}}, you'll:\n- {{OUTCOME_1}}\n- {{OUTCOME_2}}\n- {{OUTCOME_3}}\n\nIf it's not useful, cancel and we part as friends. If it is, we'll talk pricing.\n\nWorth 10 minutes?\n\n{{YOUR_NAME}}",tags:["free trial","low risk","offer","SaaS"],r:21},
+{id:6,c:"SaaS Sales",t:"Funding Round Trigger",s:"Congrats on the {{ROUND}} raise, {{FIRST_NAME}}",b:"{{FIRST_NAME}},\n\nCongrats on {{COMPANY}}'s {{ROUND}} raise — that's a big milestone.\n\nTeams scaling post-funding usually hit the same wall fast: {{PAIN_POINT}} doesn't scale with headcount.\n\nWe help companies handle {{USE_CASE}} without adding ops overhead. {{REFERENCE_COMPANY}} used us right after their Series A and {{RESULT}}.\n\nWould love to show you how it works.\n\n{{YOUR_NAME}}\n{{YOUR_TITLE}}",tags:["funding trigger","growth","timing","SaaS"],r:26},
+{id:7,c:"SaaS Sales",t:"Hyper-Personalized 3-Line",s:"{{FIRST_NAME}}, {{OBSERVATION}}",b:"{{FIRST_NAME}},\n\nNoticed {{SPECIFIC_OBSERVATION_ABOUT_COMPANY}} — that usually means {{IMPLICATION}}.\n\nWe built {{PRODUCT_NAME}} specifically for this. {{ONE_LINE_RESULT}}.\n\nWorth a quick look?\n\n{{YOUR_NAME}}",tags:["short","hyper-personalized","3-line","direct"],r:28},
+{id:8,c:"SaaS Sales",t:"Annual Review Trigger",s:"How {{COMPANY}} handles {{PROCESS}} in {{YEAR}}",b:"Hi {{FIRST_NAME}},\n\nWith Q{{QUARTER}} planning underway, most {{ROLE}}s are reassessing their {{PROCESS}} stack.\n\nIf {{PRODUCT_NAME}} isn't on your radar — it should be.\n\nWe've helped {{NUMBER}} companies in {{INDUSTRY}} cut {{METRIC}} by {{PERCENTAGE}}% without replacing existing tools.\n\nI can send a 3-minute Loom showing exactly how it fits your workflow. Worth it?\n\n{{YOUR_NAME}}",tags:["Q4","planning","timing","SaaS","video"],r:19},
+{id:9,c:"Agency Outreach",t:"Lead Gen Agency to Brand",s:"{{COMPANY}}'s {{CHANNEL}} has a fixable problem",b:"Hi {{FIRST_NAME}},\n\nI was auditing {{COMPANY}}'s {{CHANNEL}} and spotted 3 quick wins that could move {{METRIC}} in 60 days:\n\n1. {{QUICK_WIN_1}}\n2. {{QUICK_WIN_2}}\n3. {{QUICK_WIN_3}}\n\nI run {{YOUR_AGENCY}} — we specialize in {{SPECIALTY}} for {{INDUSTRY}} brands. We've generated {{RESULT}} for companies at {{COMPANY}}'s stage.\n\nInterested in a free 20-min audit call? No pitch, just value.\n\n{{YOUR_NAME}}",tags:["agency","audit","quick wins","free value"],r:20},
+{id:10,c:"Agency Outreach",t:"Agency White-Label Partnership",s:"White-label {{SERVICE}} for your clients?",b:"Hey {{FIRST_NAME}},\n\nI run {{YOUR_AGENCY}} — we do {{SERVICE}} for marketing agencies who want to offer it without building in-house.\n\nI noticed {{THEIR_AGENCY}} focuses on {{THEIR_SPECIALTY}}. Your clients probably need {{SERVICE}} too.\n\nWe've white-labeled for {{REFERENCE_AGENCY}} for {{TIMEFRAME}} and they've added {{REVENUE}} in new recurring revenue.\n\nWorth a 15-min intro call?\n\n{{YOUR_NAME}}",tags:["agency","white-label","B2B","partnership"],r:23},
+{id:11,c:"Agency Outreach",t:"Performance Agency Offer",s:"We only get paid if {{COMPANY}} grows",b:"{{FIRST_NAME}},\n\nMost agencies charge retainers whether you grow or not. We don't.\n\nWe run performance-based {{SERVICE}} for {{INDUSTRY}} companies — our fee is tied to {{METRIC}}.\n\nAverage result: {{RESULT}}. We only take 3 new clients per quarter.\n\nWould a 20-min call be worth it?\n\n{{YOUR_NAME}}\n{{YOUR_AGENCY}}",tags:["performance","results-based","agency","risk-free"],r:31},
+{id:12,c:"Agency Outreach",t:"Video / Creative Agency Pitch",s:"{{COMPANY}}'s video is leaving money on the table",b:"Hi {{FIRST_NAME}},\n\nI watched {{COMPANY}}'s recent {{VIDEO_TYPE}} on {{PLATFORM}}. The core message is solid — but {{SPECIFIC_ISSUE}} is costing you views and conversions.\n\nChanges I'd make:\n- {{CHANGE_1}}\n- {{CHANGE_2}}\n\n{{REFERENCE}}'s {{METRIC}} went from {{BEFORE}} to {{AFTER}} after we did this.\n\nCan I send a 2-min video breakdown? No strings attached.\n\n{{YOUR_NAME}}\n{{YOUR_AGENCY}}",tags:["video","creative","agency","personalized"],r:19},
+{id:13,c:"Agency Outreach",t:"SEO Agency Cold Email",s:"{{COMPANY}} ranking for {{KEYWORD}}? Not yet",b:"Hi {{FIRST_NAME}},\n\nI ran a quick SEO scan on {{COMPANY}}'s site. You're not showing up for \"{{KEYWORD}}\" — a term {{SEARCH_VOLUME}} people search monthly in your industry.\n\nYour competitor {{COMPETITOR}} owns that traffic right now.\n\nWe moved {{REFERENCE}} from page 3 to #1. They saw a {{PERCENTAGE}}% organic traffic increase in {{TIMEFRAME}}.\n\nWant the full site audit? Free — I'll send a Loom walkthrough.\n\n{{YOUR_NAME}}",tags:["SEO","audit","agency","competitor","organic"],r:17},
+{id:14,c:"Agency Outreach",t:"Paid Ads Agency Pitch",s:"Why {{COMPANY}}'s ads aren't scaling (we checked)",b:"{{FIRST_NAME}},\n\nYour {{PLATFORM}} ads showed up in my feed. {{HONEST_OBSERVATION}}.\n\nCommon issues we see:\n- {{ISSUE_1}}\n- {{ISSUE_2}}\n- {{ISSUE_3}}\n\nWe took {{REFERENCE}}'s ROAS from {{BEFORE}} to {{AFTER}} in {{TIMEFRAME}}.\n\nFree 30-min ad account audit this week. Want me to book a time?\n\n{{YOUR_NAME}}\n{{YOUR_AGENCY}}",tags:["paid ads","ROAS","agency","PPC","audit"],r:22},
+{id:15,c:"Agency Outreach",t:"Email Marketing Agency",s:"{{COMPANY}}'s email list is underperforming",b:"Hi {{FIRST_NAME}},\n\nI subscribed to {{COMPANY}}'s email list last week. Honest take:\n\n{{SPECIFIC_OBSERVATION}}\n\nI run {{YOUR_AGENCY}} — we've helped {{INDUSTRY}} brands turn dormant lists into consistent revenue. {{REFERENCE}} generates ${{AMOUNT}} monthly from their list alone.\n\nQuick wins for {{COMPANY}}:\n- {{WIN_1}}\n- {{WIN_2}}\n\nCan I put together a free 5-email sequence sample?\n\n{{YOUR_NAME}}",tags:["email marketing","list","agency","revenue"],r:24},
+{id:16,c:"Agency Outreach",t:"Social Media Agency Pitch",s:"{{COMPANY}} on {{PLATFORM}}: quick analysis",b:"Hey {{FIRST_NAME}},\n\nDid a quick audit of {{COMPANY}}'s {{PLATFORM}} presence. {{HONEST_OBSERVATION}}.\n\nWhat your top 3 competitors are doing that you're not:\n1. {{GAP_1}}\n2. {{GAP_2}}\n3. {{GAP_3}}\n\nWe handle {{PLATFORM}} growth for {{INDUSTRY}} brands. {{REFERENCE}} went from {{BEFORE}} to {{AFTER}} followers in {{TIMEFRAME}}.\n\nQuick call? I'll bring the full competitor breakdown.\n\n{{YOUR_NAME}} | {{YOUR_AGENCY}}",tags:["social media","agency","growth","competitor analysis"],r:18},
+{id:17,c:"Freelance Pitching",t:"Direct Value Freelance Pitch",s:"{{DELIVERABLE}} for {{COMPANY}} — done in {{TIMEFRAME}}",b:"Hi {{FIRST_NAME}},\n\nI'm a freelance {{ROLE}} and I noticed {{COMPANY}} could use {{SPECIFIC_DELIVERABLE}}.\n\nI've done this for {{REFERENCE_1}} and {{REFERENCE_2}}. Relevant work:\n{{PORTFOLIO_LINK}}\n\nI work fast, communicate clearly, and deliver before deadlines. First draft in {{TIMEFRAME}}.\n\nSend me the brief and I'll quote within 24 hours.\n\n{{YOUR_NAME}}",tags:["freelance","direct","portfolio","fast"],r:16},
+{id:18,c:"Freelance Pitching",t:"Freelance Specialist Pitch",s:"The {{NICHE}} specialist {{COMPANY}} is looking for",b:"{{FIRST_NAME}},\n\nMost freelancers are generalists. I do one thing: {{SPECIFIC_SKILL}}.\n\nIn the last {{TIMEFRAME}}:\n- {{ACHIEVEMENT_1}}\n- {{ACHIEVEMENT_2}}\n- {{ACHIEVEMENT_3}}\n\nI saw {{COMPANY}} is {{COMPANY_CONTEXT}} — exactly where I add the most value.\n\nI'm selective with clients. {{NUMBER}} spots open this month. Worth 15 minutes?\n\n{{YOUR_NAME}}",tags:["specialist","freelance","niche","positioning"],r:20},
+{id:19,c:"Freelance Pitching",t:"Project-Specific Bid",s:"Re: {{JOB_TITLE}} — here's my approach",b:"Hi {{FIRST_NAME}},\n\nI reviewed the {{JOB_TITLE}} brief. Here's how I'd approach it:\n\nPhase 1 ({{DAYS_1}} days): {{PHASE_1_DESC}}\nPhase 2 ({{DAYS_2}} days): {{PHASE_2_DESC}}\nPhase 3 ({{DAYS_3}} days): {{PHASE_3_DESC}}\n\nSimilar work for {{REFERENCE}} — outcome: {{RESULT}}.\n\nBudget: {{RATE}}. Timeline: {{TOTAL_DAYS}} days.\n\nAvailable {{START_DATE}}. Call this week?\n\n{{YOUR_NAME}}",tags:["bid","proposal","freelance","structured"],r:27},
+{id:20,c:"Freelance Pitching",t:"Retainer Pitch",s:"{{FIRST_NAME}}, what if {{SERVICE}} ran on autopilot?",b:"Hi {{FIRST_NAME}},\n\nI help {{INDUSTRY}} companies handle {{SERVICE}} on a monthly retainer so they never think about it again.\n\nIncluded:\n- {{DELIVERABLE_1}}\n- {{DELIVERABLE_2}}\n- {{DELIVERABLE_3}}\n- Unlimited revisions within scope\n- Direct Slack access (under 4-hour response)\n\nInvestment: ${{RATE}}/month. Pause or cancel any time.\n\n{{REFERENCE}} has been on retainer {{MONTHS}} months. Happy to intro you.\n\n{{YOUR_NAME}}",tags:["retainer","freelance","recurring","scope"],r:18},
+{id:21,c:"Freelance Pitching",t:"Cold Pitch with Free Sample",s:"Made something for {{COMPANY}} — free",b:"{{FIRST_NAME}},\n\nI made something for {{COMPANY}} this weekend: {{FREE_DELIVERABLE}}.\n\nIt took me {{TIME_SPENT}} and it's yours regardless of whether we work together.\n\nLink: {{DELIVERABLE_LINK}}\n\nI did this because I think {{COMPANY}} has a real opportunity in {{AREA}} — and I'd love to help you capture it.\n\n{{YOUR_NAME}}",tags:["free sample","upfront value","creative","freelance"],r:34},
+{id:22,c:"Freelance Pitching",t:"Job Listing Response",s:"Your {{ROLE}} post — I'm different from the rest",b:"Hi {{FIRST_NAME}},\n\nI saw your listing for a {{ROLE}}. Most responses will be resumes. Mine is different.\n\nThe problem you're actually trying to solve: {{REAL_PROBLEM}}.\n\nHow I know: I did this for {{REFERENCE}} and {{RESULT}}.\n\nI don't have a traditional background in {{FIELD}}, but I have {{TIMEFRAME}} of doing exactly what you need done.\n\n10-minute call to confirm I'm worth your time?\n\n{{YOUR_NAME}}\n{{PORTFOLIO_LINK}}",tags:["job listing","freelance","positioning","different"],r:22},
+{id:23,c:"Freelance Pitching",t:"Referral Follow-Through",s:"{{MUTUAL_CONNECTION}} suggested I reach out",b:"Hi {{FIRST_NAME}},\n\n{{MUTUAL_CONNECTION}} mentioned you might be looking for {{SERVICE}} — said I'd be worth talking to.\n\nQuick background: I'm a freelance {{ROLE}} specializing in {{NICHE}}. I've worked with {{REFERENCE_1}} and {{REFERENCE_2}}.\n\nRather than oversell, I'd rather show my work:\n{{PORTFOLIO_LINK}}\n\nIf the timing is off, no worries — but if you need {{SERVICE}} soon, I'm available.\n\n{{YOUR_NAME}}",tags:["referral","warm intro","freelance","low pressure"],r:38},
+{id:24,c:"Freelance Pitching",t:"Value-Add Expansion Pitch",s:"While working on {{PROJECT}}, I noticed something",b:"Hi {{FIRST_NAME}},\n\nWhile wrapping up {{PROJECT}} I noticed {{COMPANY}} could get even more value from {{OPPORTUNITY}}.\n\nSpecifically: {{WHAT_I_NOTICED}}.\n\nI could have this done in {{TIMEFRAME}} for {{RATE}}. It's outside our current scope, so no pressure — but wanted to flag it while I'm still deep in your world.\n\nProposal over by {{DATE}} if interested.\n\n{{YOUR_NAME}}",tags:["expansion","upsell","existing client","freelance"],r:45},
+{id:25,c:"Partnership",t:"Complementary Business Partnership",s:"{{COMPANY}} + {{YOUR_COMPANY}}: better together?",b:"Hi {{FIRST_NAME}},\n\nI run {{YOUR_COMPANY}} — we do {{YOUR_SERVICE}} for {{TARGET_AUDIENCE}}.\n\nYou do {{THEIR_SERVICE}} for the same audience. We're not competitors — we're complementary.\n\nThe opportunity: {{PARTNERSHIP_IDEA}}.\n\n{{REFERENCE}} did something similar with us and it drove {{RESULT}} for both sides.\n\nWould a 20-minute exploratory call make sense?\n\n{{YOUR_NAME}}\n{{YOUR_TITLE}}, {{YOUR_COMPANY}}",tags:["partnership","complementary","B2B","mutual benefit"],r:21},
+{id:26,c:"Partnership",t:"Referral Program Pitch",s:"Earn {{COMMISSION}} referring {{YOUR_COMPANY}} clients",b:"Hey {{FIRST_NAME}},\n\nWe just launched a referral program for partners in the {{INDUSTRY}} space.\n\nFor every client you send, you earn {{COMMISSION}} (recurring for the life of the account). Average deal: ${{DEAL_SIZE}}/month.\n\nGiven {{THEIR_COMPANY}} works with {{TARGET_CUSTOMER}}, this could be {{ESTIMATED_VALUE}}/year in passive income.\n\nI can send the partner deck in 5 minutes. Interested?\n\n{{YOUR_NAME}}",tags:["referral","affiliate","commission","passive income"],r:25},
+{id:27,c:"Partnership",t:"Co-Marketing Proposal",s:"Joint {{CONTENT_TYPE}} idea for our audiences",b:"Hi {{FIRST_NAME}},\n\nI've been following {{THEIR_COMPANY}} for a while — your take on {{TOPIC}} is really sharp.\n\nI run {{YOUR_COMPANY}} ({{AUDIENCE_SIZE}} {{AUDIENCE_TYPE}}) and there's a natural co-marketing opportunity here.\n\nIdea: {{SPECIFIC_COLLABORATION_IDEA}}.\n\nBoth audiences win, both brands get exposure. Low lift, high upside.\n\nInterested in a quick call to flesh it out?\n\n{{YOUR_NAME}}",tags:["co-marketing","collaboration","content","audience"],r:23},
+{id:28,c:"Partnership",t:"Integration Partnership",s:"{{YOUR_PRODUCT}} + {{THEIR_PRODUCT}} — users keep asking",b:"Hi {{FIRST_NAME}},\n\nWe keep hearing the same request from users: \"Does it integrate with {{THEIR_PRODUCT}}?\"\n\nWe'd love to build a native integration. Here's what's in it for {{THEIR_COMPANY}}:\n- {{BENEFIT_1}}\n- {{BENEFIT_2}}\n- {{BENEFIT_3}}\n\nWe'd handle the dev work. Beta ready in {{TIMEFRAME}}.\n\nWho's the right person to explore this with?\n\n{{YOUR_NAME}}\n{{YOUR_COMPANY}} Engineering",tags:["integration","technical","partnership","product"],r:29},
+{id:29,c:"Partnership",t:"Distribution Partnership",s:"Get {{YOUR_PRODUCT}} in front of {{NUMBER}} {{AUDIENCE}}",b:"{{FIRST_NAME}},\n\nWe have {{METRIC}} with {{NUMBER}} {{AUDIENCE_TYPE}} — looking for 3 product partners to co-promote this quarter.\n\nIn exchange, we'd want {{WHAT_YOU_WANT}}.\n\nPrevious partners have seen {{RESULT}}. We can structure as rev-share, flat fee, or equity swap.\n\n{{THEIR_COMPANY}}'s {{PRODUCT_SERVICE}} seems like a natural fit for our audience.\n\n{{YOUR_NAME}}",tags:["distribution","co-promotion","partnership","audience"],r:20},
+{id:30,c:"Partnership",t:"Vendor Partnership",s:"Becoming a preferred vendor for {{THEIR_COMPANY}}",b:"Hi {{FIRST_NAME}},\n\nWe'd love to be on {{THEIR_COMPANY}}'s approved vendor list for {{SERVICE}}.\n\nWe already serve {{NUMBER}} companies in your industry including {{REFERENCE_1}} and {{REFERENCE_2}}.\n\nPreferred vendor benefits:\n- Priority pricing ({{DISCOUNT}}% below standard)\n- Dedicated account manager\n- SLA: {{SLA_TERMS}}\n- {{BONUS_PERK}}\n\nHappy to send our vendor package.\n\n{{YOUR_NAME}}\n{{YOUR_COMPANY}}",tags:["vendor","B2B","partnership","enterprise"],r:17},
+{id:31,c:"Partnership",t:"Event / Speaker Partnership",s:"Speaking opportunity for {{FIRST_NAME}} at {{EVENT_NAME}}",b:"Hi {{FIRST_NAME}},\n\nI organize {{EVENT_NAME}} — a {{EVENT_TYPE}} for {{AUDIENCE}} ({{AUDIENCE_SIZE}} attendees).\n\nYour work on {{TOPIC}} would resonate strongly with our audience. I'd love to invite you to speak at our {{DATE}} event.\n\nWhat we offer speakers:\n- {{PERK_1}}\n- {{PERK_2}}\n- {{PERK_3}}\n\nThe session would be {{DURATION}} — talk, panel, or workshop, your call.\n\n{{YOUR_NAME}}\n{{EVENT_NAME}} Organizer",tags:["event","speaking","partnership","B2B"],r:32},
+{id:32,c:"Job Hunting",t:"Direct Hiring Manager Outreach",s:"{{ROLE}} candidate — skipping the ATS",b:"Hi {{FIRST_NAME}},\n\nReaching out directly because great candidates get filtered by ATS before anyone sees them.\n\nI'm a {{ROLE}} with {{YEARS}} years in {{INDUSTRY}}. Why I'm different:\n- {{DIFFERENTIATOR_1}}\n- {{DIFFERENTIATOR_2}}\n- {{DIFFERENTIATOR_3}}\n\nI'm not in a rush — I want the right fit. {{COMPANY}}'s work on {{SPECIFIC_PROJECT}} is exactly the challenge I want.\n\n10-minute intro call this week?\n\n{{YOUR_NAME}}\n{{PORTFOLIO_OR_LINKEDIN}}",tags:["job hunting","direct outreach","hiring manager","ATS"],r:19},
+{id:33,c:"Job Hunting",t:"Dream Company Cold Reach",s:"Long-time {{COMPANY}} fan — openings for {{ROLE}}?",b:"{{FIRST_NAME}},\n\nI'll be honest: {{COMPANY}} is my number one target. I've been following your work on {{SPECIFIC_THING}} for {{TIMEFRAME}} and it's the most exciting {{AREA}} happening right now.\n\nI'm a {{ROLE}} with experience in {{SKILLS}}. My proudest work:\n{{PORTFOLIO_LINK}}\n\nI know there may not be an opening — that's fine. I'd love to be in your pipeline for when there is.\n\n{{YOUR_NAME}}",tags:["dream job","proactive","pipeline","job hunting"],r:16},
+{id:34,c:"Job Hunting",t:"Referral Job Inquiry",s:"{{MUTUAL_CONNECTION}} said to reach out about {{COMPANY}}",b:"Hi {{FIRST_NAME}},\n\n{{MUTUAL_CONNECTION}} suggested I reach out — they thought my background might be relevant to what {{COMPANY}} is building.\n\nI'm a {{ROLE}} with {{YEARS}} years focused on {{SPECIALTY}}. Recently {{RECENT_ACHIEVEMENT}}.\n\nI'm being selective. {{COMPANY}}'s {{SPECIFIC_REASON}} is exactly why I'm reaching out to you.\n\nWould a brief intro call make sense?\n\n{{YOUR_NAME}}\n{{LINKEDIN_URL}}",tags:["referral","job hunting","warm intro","selective"],r:42},
+{id:35,c:"Job Hunting",t:"Portfolio-First Pitch",s:"{{FIRST_NAME}}, I built something you should see",b:"Hi {{FIRST_NAME}},\n\nBefore I say anything else: {{PORTFOLIO_LINK}}\n\nThat's {{PROJECT_DESCRIPTION}} — I built it in {{TIMEFRAME}} because {{REASON}}.\n\nI'm a {{ROLE}} exploring opportunities at companies doing interesting work in {{SPACE}}. {{COMPANY}} keeps coming up.\n\nI'd rather show than tell.\n\nWorth 15 minutes?\n\n{{YOUR_NAME}}",tags:["portfolio","job hunting","show don't tell","creative"],r:28},
+{id:36,c:"Job Hunting",t:"Contract-to-Hire Offer",s:"Try me for {{TIMEFRAME}} before committing",b:"Hi {{FIRST_NAME}},\n\nHiring is risky. I get it.\n\nHere's my proposal: hire me on a {{TIMEFRAME}} contract at ${{RATE}}. If I deliver {{SPECIFIC_OUTCOME}}, we talk full-time. If not, we shake hands and part ways.\n\nI've done contract-to-hire with {{REFERENCE}} — they brought me on full-time after {{TIMEFRAME}}.\n\nThis takes the hiring risk completely off the table.\n\n{{YOUR_NAME}}",tags:["contract-to-hire","low risk","job hunting","trial"],r:22},
+{id:37,c:"Job Hunting",t:"Recruiter Activation",s:"Passive candidate — {{ROLE}} with {{SPECIALTY}}",b:"Hi {{RECRUITER_NAME}},\n\nNot actively job hunting, but open to the right opportunity.\n\nSnapshot:\n- Role: {{CURRENT_TITLE}} at {{CURRENT_COMPANY}}\n- Exp: {{YEARS}} years in {{SPECIALTY}}\n- Looking for: {{IDEAL_ROLE_DESC}}\n- Comp: ${{MIN_COMP}}+ base\n- Open to: {{LOCATION_PREFERENCE}}\n- Not interested in: {{DEAL_BREAKERS}}\n\nHappy to be in your network if you work with companies in {{TARGET_INDUSTRY}}.\n\n{{YOUR_NAME}}\n{{LINKEDIN_URL}}",tags:["recruiter","passive","job hunting","clear requirements"],r:29},
+{id:38,c:"Job Hunting",t:"Post-Layoff Outreach",s:"Recently available — {{ROLE}}, {{YEARS}}y in {{INDUSTRY}}",b:"Hi {{FIRST_NAME}},\n\nMy team was recently laid off as part of {{COMPANY_FORMER}}'s restructuring. I'm now available and moving quickly.\n\nWhat I bring:\n- {{SKILL_1}}\n- {{SKILL_2}}\n- {{SKILL_3}}\n\nMost recent project: {{RECENT_PROJECT}} — {{RESULT}}.\n\nI'm targeting {{ROLE}} roles in {{INDUSTRY}}. Is {{THEIR_COMPANY}} hiring, or do you know anyone who is?\n\n{{YOUR_NAME}}",tags:["layoff","available now","job hunting","urgent"],r:24},
+{id:39,c:"Investor",t:"Seed Stage Cold Outreach",s:"{{COMPANY}} — {{TRACTION_METRIC}} in {{TIMEFRAME}}",b:"Hi {{INVESTOR_NAME}},\n\n{{COMPANY}} helps {{TARGET_CUSTOMER}} {{ACHIEVE_OUTCOME}} without {{PAIN}}.\n\nTraction:\n- ${{ARR}} ARR ({{GROWTH_RATE}}% MoM)\n- {{CUSTOMERS}} paying customers\n- {{KEY_METRIC}}\n\nRaising ${{RAISE_AMOUNT}} seed. Looking for ${{CHECK_SIZE}} checks.\n\nSaw you led {{PORTFOLIO_COMPANY}}'s {{ROUND}} — {{SIMILARITY}}.\n\n20-minute intro call?\n\n{{FOUNDER_NAME}}\n{{COMPANY}} | {{WEBSITE}}",tags:["seed","fundraising","investor","traction"],r:12},
+{id:40,c:"Investor",t:"Series A Outreach",s:"Series A: {{COMPANY}} — ${{ARR}} ARR, {{GROWTH}}% YoY",b:"{{INVESTOR_NAME}},\n\nOpening our Series A at ${{RAISE_AMOUNT}}. Reaching out to {{FUND_NAME}} specifically because of your work with {{PORTFOLIO_COMPANY}}.\n\n{{COMPANY}}: {{ONE_LINER}}.\n\nNumbers:\n- ${{ARR}} ARR | {{GROWTH}}% YoY\n- {{CUSTOMERS}} enterprise customers | {{NRR}}% NRR\n- {{TEAM_SIZE}} team | {{RUNWAY}} months runway\n\nClose in {{TIMELINE}}. Lead: {{LEAD_INVESTOR}}.\n\nDeck: {{DECK_LINK}}\n\n{{FOUNDER_NAME}}",tags:["Series A","fundraising","investor","enterprise"],r:14},
+{id:41,c:"Investor",t:"Angel Investor Pitch",s:"Quick one — investing in {{SPACE}}?",b:"Hi {{INVESTOR_NAME}},\n\nI noticed your portfolio includes {{PORTFOLIO_COMPANY}} — you clearly understand {{SPACE}}.\n\nBuilding {{COMPANY}}: {{ONE_LINER}}.\n\nEarly results: {{EARLY_TRACTION}}.\n\nRaising ${{RAISE_AMOUNT}} at ${{VALUATION}} cap. Looking for angels who can open doors in {{TARGET_MARKET}}.\n\n15 minutes to see if there's a fit?\n\n{{FOUNDER_NAME}}",tags:["angel","pre-seed","fundraising"],r:17},
+{id:42,c:"Investor",t:"Strategic Investor Outreach",s:"Strategic investment opp — {{COMPANY}} x {{THEIR_COMPANY}}",b:"Hi {{FIRST_NAME}},\n\n{{COMPANY}} is building {{PRODUCT}} for {{MARKET}}. {{THEIR_COMPANY}} is a natural strategic partner.\n\nWhy this makes sense:\n- {{STRATEGIC_REASON_1}}\n- {{STRATEGIC_REASON_2}}\n\nRaising ${{RAISE_AMOUNT}} and reserving {{RESERVED_AMOUNT}} for strategic investors who bring {{WHAT_YOU_NEED}}.\n\nHappy to share the deck. 20 minutes this week?\n\n{{FOUNDER_NAME}}\n{{COMPANY}}",tags:["strategic","corporate VC","investor"],r:16},
+{id:43,c:"Investor",t:"Warm Introduction Request",s:"Intro to {{INVESTOR_NAME}} — would mean a lot",b:"Hi {{CONNECTOR_NAME}},\n\nI'm fundraising for {{COMPANY}} and targeting {{INVESTOR_NAME}} at {{FUND}} — their portfolio and thesis align perfectly.\n\nWe have: {{QUICK_TRACTION}}.\n\nI'd love a warm intro if you're comfortable. I've attached a 2-page brief you can forward directly — I'll make you look good.\n\nNo pressure if it's not the right fit.\n\n{{FOUNDER_NAME}}",tags:["warm intro","fundraising","investor","bridge"],r:48},
+{id:44,c:"Investor",t:"Pre-Launch Investor Email",s:"Pre-revenue, but the signal is real",b:"{{INVESTOR_NAME}},\n\nI know you usually see traction first. Reaching out pre-revenue because the signal is strong.\n\nBuilding: {{COMPANY_DESC}}.\n\nPre-launch proof:\n- {{PROOF_1}} (waitlist/LOIs/pilots)\n- {{PROOF_2}}\n- {{PROOF_3}} (team/tech/market)\n\nRaising ${{RAISE_AMOUNT}} on a ${{VALUATION}} SAFE. Launch: {{LAUNCH_DATE}}.\n\nWould love 20 minutes. Deck: {{DECK_LINK}}.\n\n{{FOUNDER_NAME}}",tags:["pre-revenue","pre-launch","investor","SAFE"],r:10},
+{id:45,c:"Investor",t:"Follow-Up After No Response",s:"Re: {{COMPANY}} — following up",b:"{{INVESTOR_NAME}},\n\nFollowing up on my email from {{DAYS_AGO}} days ago.\n\nSince then: {{RECENT_MILESTONE}}.\n\nI'll keep this short — does {{COMPANY}} fit what {{FUND}} is currently looking for?\n\nIf not, that's fine. I'd rather know so I can focus on the right investors.\n\n{{FOUNDER_NAME}}",tags:["follow-up","investor","persistence","brief"],r:11},
+{id:46,c:"Content Collab",t:"Guest Post Pitch",s:"Guest post idea for {{BLOG_NAME}}: '{{ARTICLE_TITLE}}'",b:"Hi {{EDITOR_NAME}},\n\nI have a piece idea I think your readers would love:\n\n\"{{ARTICLE_TITLE}}\"\n\nThe hook: {{HOOK_SENTENCE}}.\n\nOutline:\n1. {{SECTION_1}}\n2. {{SECTION_2}}\n3. {{SECTION_3}}\n\nI've written for {{REFERENCE_PUB_1}} and {{REFERENCE_PUB_2}}. Sample: {{SAMPLE_URL}}.\n\nFull draft within {{TIMEFRAME}}.\n\n{{YOUR_NAME}}",tags:["guest post","content","SEO","writing"],r:20},
+{id:47,c:"Content Collab",t:"Podcast Guest Pitch",s:"Guest for {{PODCAST_NAME}}: {{YOUR_TOPIC}}",b:"Hi {{HOST_NAME}},\n\nLove what you're doing with {{PODCAST_NAME}} — especially the episode on {{SPECIFIC_EPISODE}}.\n\nI'd love to come on and talk about {{TOPIC}}. Value for your audience:\n- {{VALUE_1}}\n- {{VALUE_2}}\n- {{STORY_OR_FRAMEWORK}}\n\nBackground: {{ONE_LINE_BIO}}. Been on {{REFERENCE_PODCAST}} and {{REFERENCE_PODCAST_2}}.\n\nNot looking to promote anything — just a genuinely useful conversation.\n\n{{YOUR_NAME}}",tags:["podcast","guest","content","thought leadership"],r:23},
+{id:48,c:"Content Collab",t:"Newsletter Sponsor Pitch",s:"Sponsoring {{NEWSLETTER_NAME}} — here's why it's a fit",b:"Hi {{NEWSLETTER_NAME}},\n\nI've been a subscriber for {{TIMEFRAME}} — one of the few newsletters I read every issue.\n\nI run {{YOUR_COMPANY}} and think your audience of {{AUDIENCE_DESCRIPTION}} would benefit from knowing about us.\n\nWe help {{WHAT_YOU_DO}}. No fluff.\n\nProposing a {{SPONSORSHIP_TYPE}} sponsorship for {{DURATION}}. Budget: ${{BUDGET}}.\n\nDo you have a sponsor kit?\n\n{{YOUR_NAME}}",tags:["newsletter","sponsor","content","paid"],r:28},
+{id:49,c:"Content Collab",t:"YouTube Collab Pitch",s:"Collab idea — {{YOUR_CHANNEL}} x {{THEIR_CHANNEL}}",b:"Hey {{CREATOR_NAME}},\n\nBig fan of your work on {{TOPIC}}. Your {{SPECIFIC_VIDEO}} was one of the best breakdowns I've seen.\n\nI run {{YOUR_CHANNEL}} ({{YOUR_SUBS}} subs) and our audiences overlap in an interesting way.\n\nCollab idea: {{SPECIFIC_COLLAB_CONCEPT}}.\n\nOptions:\n- {{OPTION_1}}\n- {{OPTION_2}}\n\nNo money changing hands — just two creators making something good. Full creative control on your side.\n\n{{YOUR_NAME}}",tags:["YouTube","collab","creator","video"],r:19},
+{id:50,c:"Content Collab",t:"Influencer Brand Deal",s:"Brand partnership — {{YOUR_COMPANY}} x {{CREATOR_NAME}}",b:"Hi {{CREATOR_NAME}},\n\nI'm {{YOUR_NAME}} from {{YOUR_COMPANY}}. We make {{PRODUCT_DESC}}.\n\nYour audience of {{AUDIENCE_DESC}} is exactly who we want to reach, and how you talk about {{TOPIC}} aligns with how we think.\n\nProposing a {{PARTNERSHIP_TYPE}} partnership.\n\nDeliverables:\n- {{DELIVERABLE_1}}\n- {{DELIVERABLE_2}}\n\nComp: {{COMP_STRUCTURE}}. Full creative freedom.\n\nInterested? I'll send the full brief.\n\n{{YOUR_NAME}}",tags:["influencer","brand deal","partnership","creator"],r:26},
+{id:51,c:"Content Collab",t:"Expert Quote / Interview",s:"Quick quote for {{PUBLICATION}} piece on {{TOPIC}}",b:"Hi {{EXPERT_NAME}},\n\nWriting a piece for {{PUBLICATION}} on {{TOPIC}} — publishing {{DATE}}.\n\nI'd love your perspective on: \"{{SPECIFIC_QUESTION}}\"\n\n2-3 sentences would be perfect. You'd be quoted alongside {{OTHER_EXPERT}} and {{OTHER_EXPERT_2}}.\n\nHappy to send the full piece before it publishes.\n\nDeadline: {{DEADLINE}}.\n\n{{YOUR_NAME}}\n{{PUBLICATION}}",tags:["expert quote","PR","journalist","content","quick ask"],r:35},
+{id:52,c:"Content Collab",t:"Co-Author Proposal",s:"Co-author a {{CONTENT_TYPE}} together?",b:"Hi {{FIRST_NAME}},\n\nI've been reading your work on {{TOPIC}}. Your take on {{SPECIFIC_ANGLE}} is one of the clearest I've seen.\n\nProposal: co-author a {{CONTENT_TYPE}} together.\n\nIdea: {{CONCEPT}}.\n\nI'd bring: {{YOUR_CONTRIBUTION}}.\nYou'd bring: {{THEIR_CONTRIBUTION}}.\n\nWe'd split promotion: {{YOUR_AUDIENCE}} + {{THEIR_AUDIENCE}} = {{COMBINED_REACH}}.\n\n{{FORMAT}} format. Done in {{TIMEFRAME}}.\n\n{{YOUR_NAME}}",tags:["co-author","collaboration","thought leadership","content"],r:22},
+{id:53,c:"Content Collab",t:"Content Syndication Pitch",s:"Syndicate your content on {{YOUR_PLATFORM}}",b:"Hi {{CREATOR_NAME}},\n\nI run {{YOUR_PLATFORM}} — a {{PLATFORM_TYPE}} for {{AUDIENCE}} ({{AUDIENCE_SIZE}} readers).\n\nI've been reading your content and think it would resonate strongly with our community.\n\nI'd like to syndicate your pieces with full attribution, backlinks, and a bio section.\n\nWhat you get:\n- {{BENEFIT_1}}\n- {{BENEFIT_2}}\n- {{BENEFIT_3}}\n\nNo exclusivity, no lock-in.\n\n{{YOUR_NAME}}",tags:["syndication","distribution","content","SEO"],r:31},
+{id:54,c:"Link Building",t:"Resource Page Link Request",s:"Addition to your {{PAGE_TOPIC}} resources",b:"Hi {{FIRST_NAME}},\n\nFound your resource page on {{PAGE_TOPIC}}: {{THEIR_URL}}.\n\nGreat list. I noticed you include {{EXISTING_RESOURCE}} — we recently published something that goes deeper on {{SPECIFIC_ANGLE}}:\n\n{{YOUR_RESOURCE_URL}}\n\n{{ONE_LINE_DESCRIPTION}}.\n\nHappy to link back to {{THEIR_SITE}} from our {{YOUR_RELEVANT_PAGE}} if that helps.\n\nThanks,\n{{YOUR_NAME}}",tags:["link building","resource page","SEO","outreach"],r:13},
+{id:55,c:"Link Building",t:"Broken Link Replacement",s:"Broken link on {{THEIR_SITE}} — I have a fix",b:"Hi {{FIRST_NAME}},\n\nQuick heads up: there's a broken link on {{THEIR_PAGE_URL}}.\n\nThe link pointing to \"{{BROKEN_LINK_TEXT}}\" ({{BROKEN_URL}}) returns a {{ERROR_CODE}} error.\n\nI have a piece that covers the same topic: {{YOUR_URL}}.\n\nFeel free to use it as a replacement — no strings attached.\n\n{{YOUR_NAME}}",tags:["broken link","SEO","link building","helpful"],r:21},
+{id:56,c:"Link Building",t:"Skyscraper Link Request",s:"Better version of the {{TOPIC}} guide you linked",b:"Hi {{FIRST_NAME}},\n\nI noticed you linked to {{COMPETITOR_ARTICLE}} in your piece on {{TOPIC}}: {{THEIR_URL}}.\n\nWe published a more comprehensive guide covering everything in that article plus:\n- {{ADDITIONAL_SECTION_1}}\n- {{ADDITIONAL_SECTION_2}}\n- {{ADDITIONAL_SECTION_3}} (with fresh {{YEAR}} data)\n\n{{YOUR_URL}}\n\nIf you think it's a better resource for your readers, I'd love a swap.\n\n{{YOUR_NAME}}",tags:["skyscraper","link building","SEO"],r:11},
+{id:57,c:"Link Building",t:"HARO-Style Expert Source",s:"Source for your {{TOPIC}} piece — {{YOUR_NAME}}, {{YOUR_TITLE}}",b:"Hi {{JOURNALIST_NAME}},\n\nSaw your query about {{TOPIC}} on {{PLATFORM}}.\n\nI'm {{YOUR_NAME}}, {{YOUR_TITLE}} at {{YOUR_COMPANY}}. I can speak to {{SPECIFIC_ANGLE}} from {{YEARS}} years of experience.\n\nQuick take: {{2_3_SENTENCE_QUOTE}}.\n\nHappy to expand or answer follow-ups. Can respond within {{HOURS}} hours.\n\n{{YOUR_NAME}}\n{{YOUR_TITLE}}, {{YOUR_COMPANY}}\n{{PHONE_OR_EMAIL}}",tags:["HARO","PR","journalist","source","link building"],r:29},
+{id:58,c:"Link Building",t:"Link Reclamation",s:"You mentioned {{YOUR_BRAND}} — missing a link",b:"Hi {{FIRST_NAME}},\n\nI noticed {{THEIR_SITE}} mentioned {{YOUR_BRAND}} in your piece: {{THEIR_URL}}.\n\nAppreciate the mention! The brand name isn't linked to our site — would you mind adding a link to {{YOUR_URL}}?\n\nMakes it easier for your readers to find us.\n\nThanks,\n{{YOUR_NAME}}",tags:["link reclamation","unlinked mention","SEO","quick ask"],r:44},
+{id:59,c:"Link Building",t:"Data / Study Outreach",s:"Original {{INDUSTRY}} data you might want to cite",b:"Hi {{FIRST_NAME}},\n\nWe just published an original study on {{TOPIC}}: {{STUDY_URL}}.\n\nKey findings:\n- {{STAT_1}}\n- {{STAT_2}}\n- {{STAT_3}}\n\nSaw your article on {{RELATED_TOPIC}} ({{THEIR_URL}}) — thought this data might add value.\n\nFeel free to use any findings with attribution and a link back.\n\n{{YOUR_NAME}}\n{{YOUR_COMPANY}} Research",tags:["data","research","link building","original study"],r:18},
+{id:60,c:"Link Building",t:"Guest Post for Link",s:"Free guest post for {{THEIR_BLOG}} — {{TOPIC}} angle",b:"Hi {{EDITOR_NAME}},\n\nI'd love to write a guest post for {{THEIR_BLOG}} on {{TOPIC}}.\n\nProposed title: \"{{ARTICLE_TITLE}}\"\n\nWhy it fits: {{THEIR_BLOG}} covers {{THEIR_NICHE}} and this provides {{SPECIFIC_VALUE}} for your readers.\n\nI'll do all research, writing, and formatting — you just need to publish it. I only ask for one do-follow link in the author bio.\n\nSample from a recent piece for {{REFERENCE_SITE}}: {{SAMPLE_URL}}.\n\n{{YOUR_NAME}}",tags:["guest post","link building","SEO","free content"],r:16}
+];
+
+let S={cat:'all',tag:null,q:'',sort:'default',view:'grid',favOnly:false,favs:{},ratings:{},seqs:{},copies:0,curId:null,bannerDone:false};
+
+function loadS(){try{const d=JSON.parse(localStorage.getItem('cea_v1')||'{}');S.favs=d.favs||{};S.ratings=d.ratings||{};S.seqs=d.seqs||{};S.copies=d.copies||0;S.bannerDone=!!d.bannerDone;}catch(e){}
+if(S.bannerDone){const b=document.getElementById('banner');if(b)b.style.display='none';}}
+
+function saveS(){try{localStorage.setItem('cea_v1',JSON.stringify({favs:S.favs,ratings:S.ratings,seqs:S.seqs,copies:S.copies,bannerDone:S.bannerDone}));}catch(e){}updateStats();}
+
+function updateStats(){
+document.getElementById('stFavs').textContent=Object.keys(S.favs).length;
+document.getElementById('stCopied').textContent=S.copies;
+document.getElementById('stRated').textContent=Object.keys(S.ratings).length;
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+loadS();buildTags();render();updateStats();
+document.addEventListener('keydown',e=>{
+if(e.key==='Escape')closeAllM();
+else if(e.key==='/'&&!inInput()){e.preventDefault();document.getElementById('gSearch').focus();}
+else if((e.key==='f'||e.key==='F')&&!inInput())toggleFavs();
+else if(e.ctrlKey&&e.key==='e'){e.preventDefault();openIO('export');}
+});
+});
+
+function inInput(){const t=document.activeElement.tagName;return t==='INPUT'||t==='TEXTAREA'||t==='SELECT';}
+
+function getF(){
+let L=[...T];
+if(S.cat!=='all')L=L.filter(t=>t.c===S.cat);
+if(S.tag)L=L.filter(t=>t.tags.some(g=>g.toLowerCase()===S.tag.toLowerCase()));
+if(S.q){const q=S.q.toLowerCase();L=L.filter(t=>t.t.toLowerCase().includes(q)||t.s.toLowerCase().includes(q)||t.b.toLowerCase().includes(q)||t.tags.some(g=>g.toLowerCase().includes(q))||t.c.toLowerCase().includes(q));}
+if(S.favOnly)L=L.filter(t=>S.favs[t.id]);
+if(S.sort==='rate-high')L.sort((a,b)=>b.r-a.r);
+else if(S.sort==='rate-low')L.sort((a,b)=>a.r-b.r);
+else if(S.sort==='rating')L.sort((a,b)=>(S.ratings[b.id]||0)-(S.ratings[a.id]||0));
+else if(S.sort==='favorites')L.sort((a,b)=>(S.favs[b.id]?1:0)-(S.favs[a.id]?1:0));
+return L;
+}
+
+function hv(text){return text.replace(/\{\{([^}]+)\}\}/g,'<span class="vr">{{$1}}</span>');}
+function hvI(text){return text.replace(/\{\{([^}]+)\}\}/g,'<em style="color:var(--accent);font-style:normal">{{$1}}</em>');}
+
+function catCls(c){const m={'SaaS Sales':'cs','Agency Outreach':'cag','Freelance Pitching':'cf','Partnership':'cpx','Job Hunting':'cj','Investor':'ci','Content Collab':'cc2','Link Building':'cl'};return m[c]||'cs';}
+
+function render(){
+const L=getF();
+const g=document.getElementById('grid');
+document.getElementById('rCount').textContent=L.length;
+g.className=S.view==='list'?'tg lv':'tg';
+if(!L.length){g.innerHTML='<div class="es"><div class="ei">&#128235;</div><h3>No templates found</h3><p>Try clearing filters or a different search term</p></div>';return;}
+g.innerHTML=L.map(rc).join('');
+}
+
+function rc(t){
+const fav=!!S.favs[t.id];const ur=S.ratings[t.id]||0;const rw=Math.min(t.r*3.5,100);
+return `<div class="tc2${fav?' fav':''}" id="card-${t.id}">
+<div class="ch">
+<div><span class="cat ${catCls(t.c)}">${t.c}</span>${ur>0?`<span style="font-size:10px;color:var(--accent);margin-left:6px">${'&#9733;'.repeat(ur)}</span>`:''}</div>
+<div class="cm"><div class="ct">${t.t}</div><div class="sub">${hvI(t.s)}</div></div>
+<button class="starfav${fav?' active':''}" onclick="togFav(${t.id},event)">${fav?'&#9733;':'&#9734;'}</button>
+</div>
+<div class="cb2" onclick="openT(${t.id})" style="cursor:pointer">
+<div class="ep">${hvI(t.b.substring(0,120)+'...')}</div>
+<div class="ctg">${t.tags.map(g=>`<span class="ctag">#${g}</span>`).join('')}</div>
+</div>
+<div class="cf2">
+<div class="rr"><div class="rb"><div class="rf" style="width:${rw}%"></div></div><span class="rb2">${t.r}%</span><span>reply rate</span></div>
+<div class="ca2">
+<button class="ab vw" onclick="openT(${t.id})">&#128065; View</button>
+<button class="ab cpy" onclick="qCopy(${t.id},event)">&#128203; Copy</button>
+</div>
+</div>
+</div>`;
+}
+
+function buildTags(){
+const cnt={};T.forEach(t=>t.tags.forEach(g=>{cnt[g]=(cnt[g]||0)+1;}));
+const sorted=Object.entries(cnt).sort((a,b)=>b[1]-a[1]).slice(0,22);
+document.getElementById('tagCloud').innerHTML=sorted.map(([g,n])=>`<button class="tp" data-tag="${g}" onclick="filterTag('${g}')">#${g}<span style="opacity:.5;margin-left:3px">${n}</span></button>`).join('');
+}
+
+function filterCat(cat){
+S.cat=cat;S.tag=null;
+document.querySelectorAll('.cb').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));
+document.querySelectorAll('.tp').forEach(p=>p.classList.remove('active'));
+render();
+}
+
+function filterTag(tag){
+S.tag=S.tag===tag?null:tag;
+if(S.tag){S.cat='all';document.querySelectorAll('.cb').forEach(b=>b.classList.toggle('active',b.dataset.cat==='all'));}
+document.querySelectorAll('.tp').forEach(p=>p.classList.toggle('active',p.dataset.tag===S.tag));
+render();
+}
+
+function doSearch(){S.q=document.getElementById('gSearch').value;render();}
+function doSort(v){S.sort=v;render();}
+function setView(m){
+S.view=m;
+document.getElementById('gbtn').classList.toggle('active',m==='grid');
+document.getElementById('lbtn').classList.toggle('active',m==='list');
+render();
+}
+function toggleFavs(){
+S.favOnly=!S.favOnly;
+const b=document.getElementById('favBtn');
+if(S.favOnly){b.style.background='var(--aD)';b.style.color='var(--accent)';b.style.borderColor='var(--accent)';}
+else{b.style.cssText='';}
+render();
+}
+function dismissBanner(){document.getElementById('banner').style.display='none';S.bannerDone=true;saveS();}
+
+function togFav(id,e){if(e)e.stopPropagation();S.favs[id]=!S.favs[id];if(!S.favs[id])delete S.favs[id];saveS();render();}
+
+function setRating(id,n){S.ratings[id]=n;saveS();renderUR(id);render();}
+function renderUR(id){
+const c=document.getElementById('uRating');if(!c)return;
+const cur=S.ratings[id]||0;
+c.innerHTML=[1,2,3,4,5].map(n=>`<button class="starb${n<=cur?' lit':''}" onclick="setRating(${id},${n})">&#9733;</button>`).join('')+`<span class="rl">${cur>0?cur+'/5':'Rate this'}</span>`;
+}
+
+function openT(id){
+const t=T.find(x=>x.id===id);if(!t)return;
+S.curId=id;
+document.getElementById('mTitle').textContent=t.t;
+document.getElementById('mSubt').textContent=`${t.c} \u00b7 Est. reply rate: ${t.r}%`;
+switchTabId('t1');
+document.getElementById('mSubj').innerHTML=hv(t.s);
+document.getElementById('mBody').innerHTML=hv(t.b);
+const sc=scoreSubj(t.s);
+document.getElementById('sChip').innerHTML=`<span style="background:${scColor(sc)};color:#000;padding:2px 8px;border-radius:12px;font-weight:700;font-size:11px">${sc}/10</span>`;
+renderScore(t);
+renderUR(id);
+document.getElementById('rewritten').textContent='Select a tone above to see a rewritten version...';
+document.getElementById('toneLabel').textContent='Select a tone above';
+document.querySelectorAll('.tonebtn').forEach(b=>b.classList.remove('active'));
+renderSeq(id,t);
+openM('tModal');
+}
+
+function scoreSubj(s){const f=scoreFactors(s);return Math.round(f.reduce((a,x)=>a+x.sc,0)/f.length);}
+function scoreFactors(s){
+const len=s.length;
+const vars=(s.match(/\{\{[^}]+\}\}/g)||[]).length;
+const pw=['free','quick','fast','proven','exclusive','limited','new','easy','save','boost','grow','results','mistake','fix','double','hack','tip','warning','urgent','secret','save'];
+const hasPW=pw.some(w=>s.toLowerCase().includes(w));
+const hasNum=/\d/.test(s);const hasQ=s.includes('?');
+const ls=len>=20&&len<=50?10:len<20?Math.round(len/2):Math.max(2,10-Math.round((len-50)/5));
+const vs=vars>=2?10:vars===1?7:3;
+const ps=hasPW?9:5;const ns=hasNum?8:5;const qs=hasQ?9:6;
+return[
+{name:'Length (ideal 20-50 chars)',sc:ls,exp:len<20?'Too short — add more context':len>60?'Too long — will be cut off on mobile':`${len} chars — ideal range`},
+{name:'Personalization tokens',sc:vs,exp:vars>=2?`${vars} variables — highly personalized`:vars===1?'1 variable — consider adding more':'No {{VARIABLES}} — add name or company'},
+{name:'Power / trigger words',sc:ps,exp:hasPW?'Contains a power word that triggers curiosity':'No power words — consider adding one'},
+{name:'Specificity (numbers)',sc:ns,exp:hasNum?'Contains a number — builds trust and specificity':'No numbers — specific stats boost open rates'},
+{name:'Curiosity / question hook',sc:qs,exp:hasQ?'Question format drives higher open rates':'Consider ending with a curiosity question'}
+];
+}
+
+function scColor(n){return n>=8?'#22c55e':n>=6?'#f59e0b':n>=4?'#f97316':'#ef4444';}
+
+function renderScore(t){
+const sc=scoreSubj(t.s);
+const sn=document.getElementById('scoreNum');sn.textContent=sc;sn.style.color=scColor(sc);
+document.getElementById('scoreMeter').innerHTML=sc>=8?'&#127942;':sc>=6?'&#128077;':sc>=4?'&#129300;':'&#9888;&#65039;';
+document.getElementById('scoreSubj').innerHTML=hv(t.s);
+const factors=scoreFactors(t.s);
+document.getElementById('scoreFactors').innerHTML=factors.map(f=>`<div class="sf"><span class="fn">${f.name}</span><div class="fbar"><div class="ff" style="width:${f.sc*10}%;background:${scColor(f.sc)}"></div></div><span class="fsc" style="color:${scColor(f.sc)}">${f.sc}/10</span></div>`).join('');
+document.getElementById('scoreExp').innerHTML=factors.map(f=>`<div style="margin-bottom:4px"><strong style="color:var(--text)">${f.name}:</strong> ${f.exp}</div>`).join('');
+}
+
+function rewrite(tone){
+const t=T.find(x=>x.id===S.curId);if(!t)return;
+document.querySelectorAll('.tonebtn').forEach(b=>b.classList.remove('active'));
+const cls={formal:'fm',casual:'cs',aggressive:'ag'}[tone];
+const btn=document.querySelector(`.tonebtn.${cls}`);if(btn)btn.classList.add('active');
+let ns=t.s,nb=t.b;
+if(tone==='formal'){
+ns=t.s.replace(/\?/g,'').trim()+' \u2014 A Professional Inquiry';
+nb=nb.replace(/^(Hey|Hi)\b/m,'Dear').replace(/\bquick one\b/gi,'brief inquiry').replace(/\bI\u2019d love to\b/gi,'I would be pleased to').replace(/\bWant\b/g,'Would you be amenable to').replace(/\bThanks\b/g,'Thank you kindly').replace(/\bgrab\b/g,'schedule');
+nb='Dear {{FIRST_NAME}},\n\n'+nb;
+document.getElementById('toneLabel').innerHTML='<span style="color:var(--blue)">&#127913; Formal version</span>';
+}else if(tone==='casual'){
+ns=t.s+' &#128075;';
+nb=nb.replace(/^Dear\b[^\n]*/m,'').replace(/^Hi\b/m,'Yo').replace(/^Hey\b/m,'Hey!');
+nb='Hey {{FIRST_NAME}}! &#128075;\n\nQuick thing \u2014 '+nb.trimStart();
+document.getElementById('toneLabel').innerHTML='<span style="color:var(--green)">&#128526; Casual version</span>';
+}else{
+ns=t.s.replace(/\?/g,'').toUpperCase();
+nb=nb.replace(/^(Hey|Hi|Dear)\b[^\n]*/m,'Listen,').replace(/\bInterested\?/g,"Are you in or not?").replace(/\bWorth.*?\?/g,"This is a no-brainer. Book a call.").replace(/\bHappy to\b/gi,'I can');
+nb+='\n\nI have 2 spots left this month. First come, first served.';
+document.getElementById('toneLabel').innerHTML='<span style="color:var(--red)">&#128293; Aggressive version</span>';
+}
+document.getElementById('rewritten').innerHTML=`<strong style="font-size:11px;color:var(--td);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:6px">Subject:</strong>${hv(ns)}\n\n${hv(nb)}`;
+}
+
+function copyRewritten(){
+const el=document.getElementById('rewritten');
+copyText(el.innerText||el.textContent,'Rewritten email copied!');
+}
+
+function renderSeq(id,t){
+const saved=S.seqs[id]||{};
+const d2=saved.d2||3;const d3=saved.d3||7;
+const b1=t.b;
+const b2=saved.b2||`Hi {{FIRST_NAME}},\n\nFollowing up on my email from a few days ago.\n\nJust wanted to make sure this didn't get buried. Would a 15-min call this week work?\n\n{{YOUR_NAME}}`;
+const b3=saved.b3||`{{FIRST_NAME}},\n\nLast follow-up \u2014 I promise.\n\nIf the timing isn't right, no worries. Just reply \"not now\" and I won't reach out again.\n\nIf it is the right time, I'd love 10 minutes.\n\n{{YOUR_NAME}}`;
+document.getElementById('seqCont').innerHTML=`
+<div class="seqe"><div class="sqh"><div class="sqn">1</div><span class="sql">Initial Email</span><div class="sqd">Send on Day 0</div></div><div class="sqb"><textarea readonly style="background:var(--bg4);color:var(--tm)">${b1}</textarea></div></div>
+<div style="text-align:center;padding:6px;font-size:11px;color:var(--td)">&#8595; Day +<span id="dL2">${d2}</span></div>
+<div class="seqe"><div class="sqh"><div class="sqn">2</div><span class="sql">Follow-up #1</span><div class="sqd">Send on day <input type="number" id="delay2" value="${d2}" min="1" max="90" onchange="saveD(${id},2,this.value)"> after initial</div></div><div class="sqb"><textarea id="sb2" onchange="saveSB(${id},2,this.value)">${b2}</textarea></div></div>
+<div style="text-align:center;padding:6px;font-size:11px;color:var(--td)">&#8595; Day +<span id="dL3">${d3}</span></div>
+<div class="seqe"><div class="sqh"><div class="sqn">3</div><span class="sql">Follow-up #2</span><div class="sqd">Send on day <input type="number" id="delay3" value="${d3}" min="1" max="90" onchange="saveD(${id},3,this.value)"> after initial</div></div><div class="sqb"><textarea id="sb3" onchange="saveSB(${id},3,this.value)">${b3}</textarea></div></div>`;
+}
+
+function saveD(id,num,val){if(!S.seqs[id])S.seqs[id]={};S.seqs[id]['d'+num]=parseInt(val);const dl=document.getElementById('dL'+num);if(dl)dl.textContent=val;saveS();}
+function saveSB(id,num,val){if(!S.seqs[id])S.seqs[id]={};S.seqs[id]['b'+num]=val;saveS();}
+
+function goToSeq(){
+document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+document.querySelectorAll('.tp2').forEach(p=>p.classList.remove('active'));
+const tabs=document.querySelectorAll('.tab');
+if(tabs[3]){tabs[3].classList.add('active');document.getElementById('t4').classList.add('active');}
+}
+
+function exportSeq(){
+const id=S.curId;const t=T.find(x=>x.id===id);if(!t)return;
+const b2=document.getElementById('sb2')?.value||'';
+const b3=document.getElementById('sb3')?.value||'';
+const d2=document.getElementById('delay2')?.value||3;
+const d3=document.getElementById('delay3')?.value||7;
+const data={template:t.t,category:t.c,exportedAt:new Date().toISOString(),sequence:[
+{step:1,label:'Initial Email',sendOn:'Day 0',subject:t.s,body:t.b},
+{step:2,label:'Follow-up #1',sendOn:`Day ${d2}`,subject:`Re: ${t.s}`,body:b2},
+{step:3,label:'Follow-up #2',sendOn:`Day ${d3}`,subject:`Re: ${t.s}`,body:b3}
+]};
+dlBlob(JSON.stringify(data,null,2),'application/json',`sequence-${t.t.replace(/[^a-z0-9]+/gi,'-').toLowerCase()}.json`);
+toast('Sequence exported!','ok');
+}
+
+function copyFull(){
+const t=T.find(x=>x.id===S.curId);if(!t)return;
+copyText(`Subject: ${t.s}\n\n${t.b}`,'Email copied to clipboard!');
+S.copies++;saveS();
+}
+
+function qCopy(id,e){
+if(e)e.stopPropagation();
+const t=T.find(x=>x.id===id);if(!t)return;
+copyText(`Subject: ${t.s}\n\n${t.b}`,'Copied!');
+S.copies++;saveS();
+}
+
+function copyText(text,msg){
+if(navigator.clipboard){navigator.clipboard.writeText(text).then(()=>toast(msg,'ok')).catch(()=>fallbackCopy(text,msg));}
+else fallbackCopy(text,msg);
+}
+function fallbackCopy(text,msg){
+const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast(msg,'ok');}catch(e){toast('Copy failed','err');}document.body.removeChild(ta);
+}
+
+function switchTab(e,id){
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+document.querySelectorAll('.tp2').forEach(p=>p.classList.remove('active'));
+e.currentTarget.classList.add('active');document.getElementById(id).classList.add('active');
+}
+function switchTabId(id){
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+document.querySelectorAll('.tp2').forEach(p=>p.classList.remove('active'));
+document.querySelectorAll('.tab')[0].classList.add('active');document.getElementById(id).classList.add('active');
+}
+
+function openM(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+function closeM(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+function closeAllM(){document.querySelectorAll('.mo.open').forEach(m=>m.classList.remove('open'));document.body.style.overflow='';}
+function mClick(e,id){if(e.target===document.getElementById(id))closeM(id);}
+function showKb(){openM('kbModal');}
+
+function openIO(mode){
+switchIO(mode);
+if(mode==='export'){
+const data={favs:S.favs,ratings:S.ratings,seqs:S.seqs,copies:S.copies};
+document.getElementById('exData').value=JSON.stringify(data,null,2);
+}
+openM('ioModal');
+}
+function switchIO(mode){
+document.getElementById('ioEx').classList.toggle('active',mode==='export');
+document.getElementById('ioIm').classList.toggle('active',mode==='import');
+document.getElementById('ioExP').style.display=mode==='export'?'':'none';
+document.getElementById('ioImP').style.display=mode==='import'?'':'none';
+}
+function copyEx(){copyText(document.getElementById('exData').value,'JSON copied!');}
+function dlEx(){dlBlob(document.getElementById('exData').value,'application/json','cold-email-arsenal-backup.json');}
+function doImport(){
+try{
+const data=JSON.parse(document.getElementById('imData').value);
+if(data.favs)S.favs=data.favs;
+if(data.ratings)S.ratings=data.ratings;
+if(data.seqs)S.seqs=data.seqs;
+if(typeof data.copies==='number')S.copies=data.copies;
+saveS();render();closeM('ioModal');toast('Data imported successfully!','ok');
+}catch(e){toast('Invalid JSON — check your data','err');}
+}
+
+function dlBlob(content,type,filename){
+const blob=new Blob([content],{type});
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();document.body.removeChild(a);
+URL.revokeObjectURL(url);
+}
+
+function toast(msg,type='ok'){
+const c=document.getElementById('toasts');
+const el=document.createElement('div');
+el.className=`toast ${type}`;
+el.innerHTML=`<span class="ti">${type==='ok'?'&#10003;':'&#9888;'}</span>${msg}`;
+c.appendChild(el);
+requestAnimationFrame(()=>el.classList.add('show'));
+setTimeout(()=>{el.classList.remove('show');setTimeout(()=>el.remove(),350);},2500);
+}
+</script>
+</body>
+</html>

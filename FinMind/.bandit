@@ -1,0 +1,6 @@
+[bandit]
+# Skip assert usage rule and tests directory
+skips = B101
+exclude = packages/backend/tests
+severity = LOW
+confidence = LOW

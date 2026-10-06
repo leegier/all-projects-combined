@@ -1,0 +1,151 @@
+# Ebook: "The AI Side Hustle Playbook"
+**Subtitle:** 25 Ways to Make Money with AI Tools in 2026 — No Tech Degree Required
+**Target Price:** $9.99–$14.99 on Gumroad
+**Length:** ~8,000–12,000 words (30–40 pages as PDF)
+**Audience:** Beginners who want to make money online using AI tools
+
+---
+
+## Introduction
+- The AI money-making revolution is here
+- You don't need to code, design, or be an expert
+- What you need: a computer, AI tools, and this guide
+- The 3 categories: Create, Sell, Service
+
+---
+
+## PART 1: CREATE — Build Assets That Sell While You Sleep
+
+### Chapter 1: Sell Midjourney Prompt Packs on Etsy
+- What Midjourney prompts are and why people buy them
+- 5 best-selling niches (fitness, real estate, pets, fantasy, business)
+- How to write prompts that generate stunning results
+- Etsy listing checklist
+- Pricing: $7–$29 per pack
+
+### Chapter 2: Write & Sell Ebooks with ChatGPT
+- How to pick a profitable topic in 20 minutes
+- The 5-part ebook structure that sells
+- Using ChatGPT to write chapters fast
+- Formatting for Gumroad/Amazon KDP
+- Pricing: $9–$27
+
+### Chapter 3: Create & Sell Digital Planners on Etsy
+- What's selling: fitness planners, budget trackers, productivity journals
+- Tools: Canva (free), ChatGPT for content
+- How to list on Etsy
+- Pricing: $3–$15 per planner
+
+### Chapter 4: AI-Generated Stock Photos & Art
+- Using DALL-E/Midjourney to create sellable images
+- Where to sell: Shutterstock, Adobe Stock, Etsy, Redbubble
+- What sells: business concepts, nature, abstract, lifestyle
+- Requirements and submission process
+
+### Chapter 5: YouTube Automation Channel
+- The faceless YouTube formula: script + voiceover + visuals
+- Tools: ChatGPT (scripts) + ElevenLabs (voice) + Pictory (video)
+- Best niches: finance tips, history, motivation, true crime
+- Monetization: AdSense + affiliate links
+
+---
+
+## PART 2: SELL — Services People Will Pay For Today
+
+### Chapter 6: Freelance Writing with AI Assistance
+- Platforms: Upwork, Fiverr, Freelancer, Guru
+- Services that pay well: blog posts, product descriptions, email sequences
+- How to price, pitch, and deliver
+- Average rates: $15–$100/article
+
+### Chapter 7: AI-Assisted Translation Services
+- Using ChatGPT to translate + human review for quality
+- Best platforms: Guru.com, ProZ, Upwork
+- Languages in demand: Spanish, French, German, Portuguese
+- Rates: $0.05–$0.15 per word
+
+### Chapter 8: Product Description Writing
+- Amazon sellers NEED descriptions constantly
+- Using ChatGPT to write 10+ descriptions per hour
+- Where to find clients: Upwork, Reddit r/entrepreneur, cold outreach
+- Rate: $10–$50 per product
+
+### Chapter 9: Resume & LinkedIn Profile Writing
+- High-demand, high-pay service ($50–$200 per resume)
+- Using ChatGPT to generate tailored content
+- Finding clients: LinkedIn, Fiverr, local job boards
+- Upsell: cover letter + LinkedIn optimization
+
+### Chapter 10: Social Media Management
+- Create 30 days of content in 2 hours using AI
+- Tools: ChatGPT + Canva + Buffer
+- Pricing: $200–$800/month per client
+- How to land your first client
+
+---
+
+## PART 3: SERVICE — High-Value Consulting & Coaching
+
+### Chapter 11: AI Prompt Engineering as a Service
+- Businesses will PAY for better AI outputs
+- What prompt engineers actually do
+- Finding clients: LinkedIn, Upwork
+- Rates: $50–$150/hour
+
+### Chapter 12: Content Strategy Consulting
+- Help businesses plan their content calendar
+- Using ChatGPT to generate topic clusters and briefs
+- Rates: $500–$2000/month retainer
+
+### Chapter 13: SEO Content Production
+- Companies pay $100–$500 per optimized article
+- Using ChatGPT for research + outline + draft
+- Tools: Surfer SEO (optional), Google Search Console
+- Finding clients: cold email, Upwork
+
+### Chapter 14: Chatbot Building for Small Businesses
+- Simple chatbots using no-code tools + AI
+- Tools: ManyChat, Voiceflow, ChatGPT API
+- Rates: $300–$1500 per build
+- Maintenance retainer: $100–$300/month
+
+### Chapter 15: AI Tool Tutoring & Training
+- Teach people how to use ChatGPT, Midjourney, etc.
+- Format: 1-on-1 sessions or group workshops
+- Platforms: Zoom, Calendly, Fiverr
+- Rates: $50–$150/hour
+
+---
+
+## BONUS CHAPTER: The 7-Day Launch Plan
+- Day 1: Pick your first hustle
+- Day 2: Create your first product or service listing
+- Day 3: Set up your platform account
+- Day 4: Create 3 pieces of content to promote it
+- Day 5: Reach out to 5 potential clients or customers
+- Day 6: Iterate based on feedback
+- Day 7: Reinvest earnings, scale what works
+
+---
+
+## Conclusion
+- Start ugly, iterate fast
+- One stream at a time
+- Resources list: all tools mentioned
+
+---
+
+## Resources
+- ChatGPT: chat.openai.com
+- Midjourney: midjourney.com
+- Canva: canva.com
+- Gumroad: gumroad.com
+- Etsy: etsy.com
+- Upwork: upwork.com
+- Fiverr: fiverr.com
+- ElevenLabs: elevenlabs.io
+- Pictory: pictory.ai
+
+---
+*Status: OUTLINE COMPLETE — ready to write chapters*
+*Generated by MAX | Nightshade Hollow | 2026-03-27*

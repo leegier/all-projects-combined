@@ -1,0 +1,9 @@
+{
+  "env": {
+    "OPENROUTER_API_KEY": "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",
+    "ANTHROPIC_BASE_URL": "https://openrouter.ai/api",
+    "ANTHROPIC_AUTH_TOKEN": "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",
+    "ANTHROPIC_MODEL": "anthropic/claude-sonnet-4",
+    "CLAUDE_CODE_SUB_AGENT_MODEL": "minimax/minimax-m2.5:free"
+  }
+}

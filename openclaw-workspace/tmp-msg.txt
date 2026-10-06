@@ -1,0 +1,6 @@
+✅ Task 1 complete — AI Prompt Vault confirmed $19 on itch.io (verified via API, no script needed).
+
+Current itch.io prices:
+• AI Prompt Vault (mariah): $19.00 ✓ https://the-forge-ide-gamedev.itch.io/mariah
+• CLAWED: $10.00 ✓ https://the-forge-ide-gamedev.itch.io/clawed
+• Cold Email Arsenal (braxton): $1,400 ❌ — still needs manual fix at https://itch.io/dashboard/game/4379091/edit → set to $27

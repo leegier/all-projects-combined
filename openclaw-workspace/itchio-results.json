@@ -1,0 +1,27 @@
+{
+  "status": "API_READONLY",
+  "message": "itch.io API is read-only. Game creation needs butler CLI or web UI.",
+  "existing_games": [
+    {
+      "title": "BRAXTON — Private Local AI Chat",
+      "url": "https://the-forge-ide-gamedev.itch.io/braxton",
+      "published": true
+    },
+    {
+      "title": "mariah",
+      "url": "https://the-forge-ide-gamedev.itch.io/mariah",
+      "published": true
+    },
+    {
+      "title": "OPEN-LEE — Multi-AI Consensus Engine",
+      "url": "https://the-forge-ide-gamedev.itch.io/open-lee",
+      "published": true
+    },
+    {
+      "title": "OPEN-LEE — Multi-AI Consensus Engine",
+      "url": "https://the-forge-ide-gamedev.itch.io/the-forge",
+      "published": true
+    }
+  ],
+  "action_needed": "Install butler OR create page at https://itch.io/game/new"
+}

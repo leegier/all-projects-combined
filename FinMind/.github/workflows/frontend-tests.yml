@@ -1,0 +1,51 @@
+name: Frontend Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["**"]
+    paths:
+      - 'app/**'
+      - '.github/workflows/frontend-tests.yml'
+  pull_request:
+    paths:
+      - 'app/**'
+      - '.github/workflows/frontend-tests.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  test:
+    name: Run Jest on app/
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: app/package-lock.json
+
+      - name: Install dependencies
+        working-directory: app
+        run: npm ci --no-audit --no-fund
+
+      - name: Run tests
+        working-directory: app
+        env:
+          JEST_JUNIT_OUTPUT: ./junit.xml
+        run: npm test -- --ci --reporters=default --reporters=jest-junit
+
+      - name: Upload JUnit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jest-junit-report
+          path: app/junit.xml
+          if-no-files-found: ignore

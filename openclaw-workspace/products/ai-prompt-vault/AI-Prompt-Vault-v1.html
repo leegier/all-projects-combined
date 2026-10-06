@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Prompt Vault</title>
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
+    --bg-card: #1c2128;
+    --bg-hover: #262c36;
+    --border: #30363d;
+    --border-focus: #58a6ff;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-muted: #6e7681;
+    --accent: #58a6ff;
+    --accent-hover: #79b8ff;
+    --accent-glow: rgba(88,166,255,0.15);
+    --green: #3fb950;
+    --green-muted: rgba(63,185,80,0.15);
+    --purple: #bc8cff;
+    --purple-muted: rgba(188,140,255,0.15);
+    --orange: #ffa657;
+    --orange-muted: rgba(255,166,87,0.15);
+    --red: #f85149;
+    --red-muted: rgba(248,81,73,0.15);
+    --yellow: #e3b341;
+    --yellow-muted: rgba(227,179,65,0.15);
+    --teal: #39d353;
+    --pink: #f778ba;
+    --pink-muted: rgba(247,120,186,0.15);
+    --shadow: 0 8px 32px rgba(0,0,0,0.4);
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+    --radius: 10px;
+    --radius-sm: 6px;
+    --radius-lg: 14px;
+    --transition: all 0.18s ease;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-primary); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    white-space: nowrap;
+  }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    box-shadow: 0 0 16px rgba(88,166,255,0.3);
+  }
+  .logo-text span { color: var(--accent); }
+  .header-search {
+    flex: 1;
+    max-width: 480px;
+    position: relative;
+  }
+  .header-search input {
+    width: 100%;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 12px 8px 38px;
+    color: var(--text-primary);
+    font-size: 14px;
+    outline: none;
+    transition: var(--transition);
+  }
+  .header-search input:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--accent-glow); }
+  .header-search input::placeholder { color: var(--text-muted); }
+  .search-icon {
+    position: absolute; left: 11px; top: 50%; transform: translateY(-50%);
+    color: var(--text-muted); font-size: 15px; pointer-events: none;
+  }
+  .header-actions { display: flex; gap: 8px; margin-left: auto; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 14px; border-radius: var(--radius-sm);
+    font-size: 13px; font-weight: 500; cursor: pointer;
+    border: 1px solid transparent; transition: var(--transition);
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--accent); color: #0d1117; border-color: var(--accent);
+  }
+  .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: var(--text-secondary); border-color: var(--border);
+  }
+  .btn-ghost:hover { background: var(--bg-hover); color: var(--text-primary); border-color: var(--text-muted); }
+  .btn-danger {
+    background: var(--red-muted); color: var(--red); border-color: transparent;
+  }
+  .btn-danger:hover { background: var(--red); color: white; }
+  .stat-badge {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: flex; align-items: center; gap: 4px;
+  }
+  .stat-badge strong { color: var(--accent); }
+
+  /* ── LAYOUT ── */
+  .layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: calc(100vh - 64px);
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border);
+    padding: 20px 0;
+    position: sticky;
+    top: 64px;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+  }
+  .sidebar-section { margin-bottom: 24px; }
+  .sidebar-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.8px;
+    color: var(--text-muted); text-transform: uppercase;
+    padding: 0 16px; margin-bottom: 8px;
+  }
+  .sidebar-item {
+    display: flex; align-items: center; gap: 9px;
+    padding: 8px 16px; cursor: pointer; font-size: 13.5px;
+    color: var(--text-secondary); transition: var(--transition);
+    border-left: 2px solid transparent;
+    user-select: none;
+  }
+  .sidebar-item:hover { background: var(--bg-hover); color: var(--text-primary); }
+  .sidebar-item.active {
+    background: var(--accent-glow);
+    color: var(--accent);
+    border-left-color: var(--accent);
+    font-weight: 500;
+  }
+  .sidebar-item .count {
+    margin-left: auto;
+    background: var(--bg-tertiary);
+    border-radius: 10px; padding: 1px 7px;
+    font-size: 11px; color: var(--text-muted);
+  }
+  .sidebar-item.active .count { background: var(--accent-glow); color: var(--accent); }
+
+  /* ── MAIN ── */
+  .main { padding: 24px; overflow: auto; }
+
+  /* toolbar */
+  .toolbar {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px; flex-wrap: wrap;
+  }
+  .toolbar-left { display: flex; align-items: center; gap: 8px; flex: 1; flex-wrap: wrap; }
+  .toolbar-right { display: flex; align-items: center; gap: 8px; }
+  .filter-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: var(--bg-tertiary); border: 1px solid var(--border);
+    border-radius: 20px; padding: 5px 12px;
+    font-size: 12px; cursor: pointer; transition: var(--transition);
+    color: var(--text-secondary); white-space: nowrap;
+  }
+  .filter-chip:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-chip.active { background: var(--accent-glow); border-color: var(--accent); color: var(--accent); }
+  select.sort-select {
+    background: var(--bg-tertiary); border: 1px solid var(--border);
+    color: var(--text-secondary); border-radius: var(--radius-sm);
+    padding: 6px 10px; font-size: 13px; cursor: pointer; outline: none;
+    transition: var(--transition);
+  }
+  select.sort-select:focus { border-color: var(--border-focus); }
+  .view-toggle { display: flex; gap: 2px; background: var(--bg-tertiary); border-radius: var(--radius-sm); padding: 2px; border: 1px solid var(--border); }
+  .view-btn { background: transparent; border: none; color: var(--text-muted); cursor: pointer; padding: 5px 9px; border-radius: 4px; font-size: 14px; transition: var(--transition); }
+  .view-btn.active { background: var(--bg-hover); color: var(--text-primary); }
+
+  /* section heading */
+  .section-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: 16px; font-weight: 600; color: var(--text-primary);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .result-count { font-size: 13px; color: var(--text-muted); font-weight: 400; }
+
+  /* ── GRID ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+  }
+  .cards-list { display: flex; flex-direction: column; gap: 10px; }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+  .card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--cat-color, var(--accent));
+    opacity: 0;
+    transition: var(--transition);
+  }
+  .card:hover { border-color: var(--border-focus); box-shadow: var(--shadow); transform: translateY(-2px); }
+  .card:hover::before { opacity: 1; }
+  .card-list-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    transition: var(--transition);
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .card-list-item:hover { border-color: var(--border-focus); box-shadow: var(--shadow-sm); }
+
+  .card-header { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 10px; }
+  .card-title {
+    font-size: 14px; font-weight: 600; color: var(--text-primary);
+    flex: 1; line-height: 1.4;
+  }
+  .card-fav {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-muted); font-size: 16px; padding: 2px;
+    transition: var(--transition); flex-shrink: 0;
+    line-height: 1;
+  }
+  .card-fav:hover { color: var(--yellow); transform: scale(1.2); }
+  .card-fav.active { color: var(--yellow); }
+
+  .card-body {
+    font-size: 13px; color: var(--text-secondary);
+    line-height: 1.6; margin-bottom: 14px;
+    display: -webkit-box; -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .card-body.expanded { -webkit-line-clamp: unset; }
+
+  .card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .cat-badge {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.3px;
+    padding: 3px 9px; border-radius: 20px;
+    background: var(--cat-bg, var(--bg-tertiary));
+    color: var(--cat-color, var(--text-secondary));
+    border: 1px solid var(--cat-border, var(--border));
+  }
+  .tag-chip {
+    font-size: 11px; color: var(--text-muted);
+    background: var(--bg-tertiary); border: 1px solid var(--border);
+    border-radius: 4px; padding: 2px 7px; cursor: pointer; transition: var(--transition);
+  }
+  .tag-chip:hover { color: var(--accent); border-color: var(--accent); }
+
+  .card-stars { display: flex; gap: 2px; }
+  .star { cursor: pointer; font-size: 14px; color: var(--text-muted); transition: var(--transition); line-height: 1; }
+  .star.filled { color: var(--yellow); }
+  .star:hover { transform: scale(1.2); }
+
+  .card-footer { display: flex; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .copy-count {
+    font-size: 11px; color: var(--text-muted);
+    display: flex; align-items: center; gap: 3px;
+  }
+  .card-actions { display: flex; gap: 6px; margin-left: auto; }
+  .icon-btn {
+    background: var(--bg-tertiary); border: 1px solid var(--border);
+    color: var(--text-secondary); border-radius: var(--radius-sm);
+    padding: 5px 9px; cursor: pointer; font-size: 12px;
+    transition: var(--transition); display: flex; align-items: center; gap: 4px;
+  }
+  .icon-btn:hover { background: var(--accent); color: #0d1117; border-color: var(--accent); }
+  .icon-btn.copied { background: var(--green-muted); border-color: var(--green); color: var(--green); }
+  .icon-btn.expand-btn:hover { background: var(--bg-hover); color: var(--text-primary); border-color: var(--text-muted); }
+  .icon-btn.delete-btn:hover { background: var(--red-muted); color: var(--red); border-color: var(--red); }
+  .icon-btn.edit-btn:hover { background: var(--purple-muted); color: var(--purple); border-color: var(--purple); }
+
+  /* ── EMPTY STATE ── */
+  .empty-state {
+    text-align: center; padding: 80px 24px; color: var(--text-muted);
+  }
+  .empty-icon { font-size: 48px; margin-bottom: 16px; }
+  .empty-state h3 { font-size: 18px; color: var(--text-secondary); margin-bottom: 8px; }
+  .empty-state p { font-size: 14px; margin-bottom: 20px; }
+
+  /* ── MODAL ── */
+  .overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+    z-index: 200; display: flex; align-items: center; justify-content: center;
+    padding: 20px; backdrop-filter: blur(4px);
+    animation: fadeIn 0.15s ease;
+  }
+  .overlay.hidden { display: none; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .modal {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    max-width: 600px; width: 100%;
+    max-height: 90vh; overflow-y: auto;
+    box-shadow: var(--shadow);
+    animation: slideUp 0.2s ease;
+  }
+  @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+  .modal-title { font-size: 18px; font-weight: 700; }
+  .modal-close {
+    background: none; border: none; color: var(--text-muted);
+    cursor: pointer; font-size: 20px; padding: 4px; border-radius: 4px;
+    transition: var(--transition); line-height: 1;
+  }
+  .modal-close:hover { color: var(--text-primary); background: var(--bg-hover); }
+  .form-group { margin-bottom: 18px; }
+  .form-label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.4px; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 7px; }
+  .form-input, .form-textarea, .form-select {
+    width: 100%; background: var(--bg-tertiary);
+    border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 9px 12px; color: var(--text-primary); font-size: 14px;
+    outline: none; transition: var(--transition); font-family: inherit;
+  }
+  .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--accent-glow); }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--text-muted); }
+  .form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .modal-footer { display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); }
+
+  /* toast */
+  .toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 999; display: flex; flex-direction: column; gap: 8px; }
+  .toast {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 12px 18px;
+    font-size: 13px; color: var(--text-primary);
+    box-shadow: var(--shadow); display: flex; align-items: center; gap: 10px;
+    animation: slideInRight 0.2s ease;
+    max-width: 300px;
+  }
+  @keyframes slideInRight { from { transform: translateX(20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+  .toast.success { border-color: var(--green); }
+  .toast.error { border-color: var(--red); }
+  .toast.info { border-color: var(--accent); }
+
+  /* confirm dialog */
+  .confirm-modal { max-width: 380px; }
+  .confirm-text { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 6px; }
+
+  /* import/export modal */
+  .import-area {
+    background: var(--bg-tertiary); border: 2px dashed var(--border);
+    border-radius: var(--radius); padding: 24px; text-align: center;
+    transition: var(--transition); cursor: pointer; margin-bottom: 14px;
+  }
+  .import-area:hover, .import-area.drag { border-color: var(--accent); background: var(--accent-glow); }
+  .import-area p { font-size: 13px; color: var(--text-muted); margin-top: 8px; }
+  .import-textarea {
+    width: 100%; background: var(--bg-tertiary);
+    border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 10px 12px; color: var(--text-primary); font-size: 12px;
+    font-family: 'Courier New', monospace; outline: none; resize: vertical;
+    min-height: 120px; transition: var(--transition);
+  }
+  .import-textarea:focus { border-color: var(--border-focus); }
+
+  /* stats bar */
+  .stats-bar {
+    display: flex; gap: 16px; margin-bottom: 22px;
+    padding: 14px 18px; background: var(--bg-secondary);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    flex-wrap: wrap;
+  }
+  .stat-item { display: flex; flex-direction: column; }
+  .stat-num { font-size: 22px; font-weight: 700; line-height: 1.1; }
+  .stat-lbl { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+
+  /* category colors */
+  .cat-writing   { --cat-color: #79b8ff; --cat-bg: rgba(88,166,255,0.1); --cat-border: rgba(88,166,255,0.3); }
+  .cat-coding    { --cat-color: #39d353; --cat-bg: rgba(57,211,83,0.1);  --cat-border: rgba(57,211,83,0.3); }
+  .cat-marketing { --cat-color: #ffa657; --cat-bg: rgba(255,166,87,0.1); --cat-border: rgba(255,166,87,0.3); }
+  .cat-seo       { --cat-color: #bc8cff; --cat-bg: rgba(188,140,255,0.1);--cat-border: rgba(188,140,255,0.3); }
+  .cat-sales     { --cat-color: #f778ba; --cat-bg: rgba(247,120,186,0.1);--cat-border: rgba(247,120,186,0.3); }
+  .cat-imagegen  { --cat-color: #e3b341; --cat-bg: rgba(227,179,65,0.1); --cat-border: rgba(227,179,65,0.3); }
+  .cat-business  { --cat-color: #f85149; --cat-bg: rgba(248,81,73,0.1);  --cat-border: rgba(248,81,73,0.3); }
+
+  .no-results { text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: 14px; }
+  .no-results-icon { font-size: 36px; margin-bottom: 12px; }
+
+  @media (max-width: 768px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .header { padding: 0 14px; }
+    .main { padding: 14px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .header-actions .btn span { display: none; }
+    .stats-bar { gap: 12px; }
+  }
+
+  .tag-input-wrap { position: relative; }
+  .tags-preview { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+  .tag-remove {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: var(--bg-tertiary); border: 1px solid var(--border);
+    border-radius: 4px; padding: 2px 7px; font-size: 11px; cursor: pointer;
+    color: var(--text-secondary); transition: var(--transition);
+  }
+  .tag-remove:hover { border-color: var(--red); color: var(--red); }
+  .tag-remove::after { content: '×'; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-icon">🔐</div>
+    <div class="logo-text">AI Prompt <span>Vault</span></div>
+  </div>
+  <div class="header-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="globalSearch" placeholder="Search prompts, tags, categories…" oninput="handleSearch()">
+  </div>
+  <div class="header-actions">
+    <div class="stat-badge"><strong id="totalCount">0</strong> prompts</div>
+    <button class="btn btn-ghost" onclick="openImportExport()"><span>⬆⬇</span> <span>Import/Export</span></button>
+    <button class="btn btn-primary" onclick="openAddModal()">+ <span>Add Prompt</span></button>
+  </div>
+</header>
+
+<!-- LAYOUT -->
+<div class="layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Filter</div>
+      <div class="sidebar-item active" data-filter="all" onclick="setFilter('all', this)">
+        <span>📦</span> All Prompts <span class="count" id="cnt-all">0</span>
+      </div>
+      <div class="sidebar-item" data-filter="favorites" onclick="setFilter('favorites', this)">
+        <span>⭐</span> Favorites <span class="count" id="cnt-fav">0</span>
+      </div>
+      <div class="sidebar-item" data-filter="top-rated" onclick="setFilter('top-rated', this)">
+        <span>🏆</span> Top Rated <span class="count" id="cnt-top">0</span>
+      </div>
+      <div class="sidebar-item" data-filter="most-used" onclick="setFilter('most-used', this)">
+        <span>🔥</span> Most Used <span class="count" id="cnt-used">0</span>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Categories</div>
+      <div class="sidebar-item" data-filter="Writing" onclick="setFilter('Writing', this)">
+        <span>✍️</span> Writing <span class="count" id="cnt-Writing">0</span>
+      </div>
+      <div class="sidebar-item" data-filter="Coding" onclick="setFilter('Coding', this)">
+        <span>💻</span> Coding <span class="count" id="cnt-Coding">0</span>
+      </div>
+      <div class="sidebar-item" data-filter="Marketing" onclick="setFilter('Marketing', this)">
+        <span>📣</span> Marketing <span class="count" id="cnt-Marketing">0</span>
+      </div>
+      <div class="sidebar-item" data-filter="SEO" onclick="setFilter('SEO', this)">
+        <span>🔎</span> SEO <span class="count" id="cnt-SEO">0</span>
+      </div>
+      <div class="sidebar-item" data-filter="Sales" onclick="setFilter('Sales', this)">
+        <span>💰</span> Sales <span class="count" id="cnt-Sales">0</span>
+      </div>
+      <div class="sidebar-item" data-filter="Image Gen" onclick="setFilter('Image Gen', this)">
+        <span>🎨</span> Image Gen <span class="count" id="cnt-Image Gen">0</span>
+      </div>
+      <div class="sidebar-item" data-filter="Business" onclick="setFilter('Business', this)">
+        <span>📊</span> Business <span class="count" id="cnt-Business">0</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <!-- Stats -->
+    <div class="stats-bar" id="statsBar">
+      <div class="stat-item"><span class="stat-num" id="stat-total" style="color:var(--accent)">0</span><span class="stat-lbl">Total Prompts</span></div>
+      <div class="stat-item"><span class="stat-num" id="stat-fav" style="color:var(--yellow)">0</span><span class="stat-lbl">Favorites</span></div>
+      <div class="stat-item"><span class="stat-num" id="stat-copies" style="color:var(--green)">0</span><span class="stat-lbl">Total Copies</span></div>
+      <div class="stat-item"><span class="stat-num" id="stat-topcat" style="color:var(--purple)">—</span><span class="stat-lbl">Top Category</span></div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="toolbar-left" id="filterChips">
+        <!-- dynamically inserted -->
+      </div>
+      <div class="toolbar-right">
+        <select class="sort-select" id="sortSelect" onchange="renderCards()">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="az">A → Z</option>
+          <option value="za">Z → A</option>
+          <option value="rating">Top Rated</option>
+          <option value="copies">Most Copied</option>
+        </select>
+        <div class="view-toggle">
+          <button class="view-btn active" id="gridViewBtn" title="Grid View" onclick="setView('grid')">⊞</button>
+          <button class="view-btn" id="listViewBtn" title="List View" onclick="setView('list')">☰</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section header -->
+    <div class="section-header">
+      <div class="section-title" id="sectionTitle">All Prompts <span class="result-count" id="resultCount"></span></div>
+    </div>
+
+    <!-- Cards container -->
+    <div id="cardsContainer" class="cards-grid"></div>
+  </main>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ADD/EDIT MODAL -->
+<div class="overlay hidden" id="promptModal" onclick="handleOverlayClick(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">Add Prompt</div>
+      <button class="modal-close" onclick="closeModal('promptModal')">×</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Title *</label>
+      <input class="form-input" id="fTitle" type="text" placeholder="Give your prompt a clear, descriptive title">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Category *</label>
+        <select class="form-select" id="fCategory">
+          <option value="Writing">✍️ Writing</option>
+          <option value="Coding">💻 Coding</option>
+          <option value="Marketing">📣 Marketing</option>
+          <option value="SEO">🔎 SEO</option>
+          <option value="Sales">💰 Sales</option>
+          <option value="Image Gen">🎨 Image Gen</option>
+          <option value="Business">📊 Business</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tags (comma separated)</label>
+        <input class="form-input" id="fTagsInput" type="text" placeholder="gpt, chatgpt, copy…">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Prompt Text *</label>
+      <textarea class="form-textarea" id="fPrompt" placeholder="Paste or write your full prompt here…" rows="7"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Initial Rating</label>
+      <div id="fStars" class="card-stars" style="font-size:22px;gap:4px;"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('promptModal')">Cancel</button>
+      <button class="btn btn-primary" id="saveBtn" onclick="savePrompt()">Save Prompt</button>
+    </div>
+  </div>
+</div>
+
+<!-- IMPORT/EXPORT MODAL -->
+<div class="overlay hidden" id="ieModal" onclick="handleOverlayClick(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title">Import / Export</div>
+      <button class="modal-close" onclick="closeModal('ieModal')">×</button>
+    </div>
+    <div style="display:flex;gap:10px;margin-bottom:22px;">
+      <button class="btn btn-primary" style="flex:1" onclick="exportJSON()">⬇ Export All as JSON</button>
+      <button class="btn btn-ghost" style="flex:1" onclick="exportFavorites()">⬇ Export Favorites</button>
+    </div>
+    <hr style="border:none;border-top:1px solid var(--border);margin-bottom:20px;">
+    <div class="form-group">
+      <label class="form-label">Import JSON</label>
+      <div class="import-area" id="importDropArea" onclick="document.getElementById('fileInput').click()">
+        <div style="font-size:32px">📂</div>
+        <p>Click to select a JSON file or drag & drop here</p>
+      </div>
+      <input type="file" id="fileInput" accept=".json" style="display:none" onchange="handleFileImport(event)">
+      <div style="text-align:center;color:var(--text-muted);font-size:12px;margin:8px 0">— or paste JSON below —</div>
+      <textarea class="import-textarea" id="importText" placeholder='[{"title":"My Prompt","category":"Writing","tags":["creative"],"prompt":"Your prompt text here..."}]'></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('ieModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="importFromText()">⬆ Import JSON</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM MODAL -->
+<div class="overlay hidden" id="confirmModal" onclick="handleOverlayClick(event)">
+  <div class="modal confirm-modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title">⚠️ Confirm Delete</div>
+      <button class="modal-close" onclick="closeModal('confirmModal')">×</button>
+    </div>
+    <p class="confirm-text">Are you sure you want to delete <strong id="confirmName"></strong>? This cannot be undone.</p>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('confirmModal')">Cancel</button>
+      <button class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────
+let prompts = [];
+let currentFilter = 'all';
+let currentView = 'grid';
+let searchQuery = '';
+let activeTagFilter = '';
+let editingId = null;
+let tempRating = 0;
+let pendingDeleteId = null;
+
+const STORAGE_KEY = 'ai_prompt_vault_v1';
+
+// ─────────────────────────────────────────────
+// CATEGORY CONFIG
+// ─────────────────────────────────────────────
+const catConfig = {
+  'Writing':   { icon:'✍️',  cls:'cat-writing',   color:'#79b8ff' },
+  'Coding':    { icon:'💻',  cls:'cat-coding',    color:'#39d353' },
+  'Marketing': { icon:'📣',  cls:'cat-marketing', color:'#ffa657' },
+  'SEO':       { icon:'🔎',  cls:'cat-seo',       color:'#bc8cff' },
+  'Sales':     { icon:'💰',  cls:'cat-sales',     color:'#f778ba' },
+  'Image Gen': { icon:'🎨',  cls:'cat-imagegen',  color:'#e3b341' },
+  'Business':  { icon:'📊',  cls:'cat-business',  color:'#f85149' },
+};
+
+// ─────────────────────────────────────────────
+// DEFAULT PROMPTS (50 high-quality)
+// ─────────────────────────────────────────────
+const DEFAULT_PROMPTS = [
+  // ── WRITING (8) ──
+  {
+    title: "Blog Post Generator — Long Form",
+    category: "Writing",
+    tags: ["blog","longform","seo","content"],
+    prompt: `Write a comprehensive, long-form blog post (2,000+ words) on the topic: [TOPIC].\n\nRequirements:\n- Compelling headline with emotional hook\n- Introduction that agitates the reader's pain point\n- 5–7 main sections with clear H2 subheadings\n- Include real statistics and data points (cite sources)\n- Use short paragraphs, bullet points, and bold key phrases\n- Add a FAQ section (5 questions)\n- Close with a strong CTA\n- Tone: [conversational/authoritative/inspirational]\n- Target audience: [AUDIENCE]\n- Target keyword (use naturally 3–5×): [KEYWORD]`,
+    rating: 5
+  },
+  {
+    title: "Cold Email Sequence (5-Part)",
+    category: "Writing",
+    tags: ["email","cold outreach","sales","sequence"],
+    prompt: `Write a 5-part cold email sequence for [PRODUCT/SERVICE] targeting [IDEAL CUSTOMER PROFILE].\n\nEmail 1 (Day 1): Pattern interrupt opener, identify pain point, soft CTA (15-second ask)\nEmail 2 (Day 3): Social proof / case study angle\nEmail 3 (Day 5): Different value angle / objection handle\nEmail 4 (Day 8): Scarcity or urgency angle\nEmail 5 (Day 12): Break-up email (reverse psychology close)\n\nEach email: under 150 words, no buzzwords, subject line included, personalization placeholder [FIRST_NAME] and [COMPANY]. Focus on one specific pain: [PAIN POINT].`,
+    rating: 5
+  },
+  {
+    title: "YouTube Script with Hook & CTA",
+    category: "Writing",
+    tags: ["youtube","script","video","content"],
+    prompt: `Write a YouTube video script for a [LENGTH]-minute video titled: "[TITLE]"\n\nStructure:\n1. HOOK (first 30 seconds): Start mid-action or with a bold claim. Do NOT start with "Hey guys".\n2. SETUP (60 sec): Briefly state what they'll learn and why it matters\n3. MAIN CONTENT: Break into 3–5 numbered sections with clear transitions\n4. PATTERN INTERRUPT: One surprising fact, story, or reveal at the midpoint\n5. CTA (final 30 sec): Subscribe ask + comment prompt + next video tease\n\nTone: [energetic/calm/authoritative]\nTarget viewer: [AUDIENCE]\nGoal: [educate/entertain/sell/build trust]`,
+    rating: 4
+  },
+  {
+    title: "LinkedIn Article (Thought Leadership)",
+    category: "Writing",
+    tags: ["linkedin","thought leadership","personal brand"],
+    prompt: `Write a thought leadership LinkedIn article (900–1200 words) on: [TOPIC]\n\nMy background/angle: [YOUR EXPERIENCE]\nIndustry: [INDUSTRY]\n\nRules:\n- Open with a provocative or counterintuitive statement (no "I'm excited to share")\n- Use the 1–3–1 paragraph structure (1 line, 3 lines, 1 line)\n- No fluff — every paragraph must advance the argument\n- Include one personal story or mistake I made\n- Use data to back up 2 key points\n- End with a controversial question to drive comments\n- Add 3 relevant hashtags at the bottom`,
+    rating: 4
+  },
+  {
+    title: "Product Description (Conversion-Focused)",
+    category: "Writing",
+    tags: ["copywriting","product","ecommerce","conversion"],
+    prompt: `Write a conversion-optimized product description for: [PRODUCT NAME]\n\nProduct details: [KEY FEATURES]\nPrice point: [PRICE]\nTarget customer: [AVATAR]\nTop 3 objections: [OBJECTIONS]\n\nFormat:\n- Headline: Benefit-driven (not feature-driven)\n- Subheadline: Empathy statement\n- 3–4 bullet points: lead with the benefit, follow with the feature\n- Social proof line (placeholder: "Join [X] customers who…")\n- Urgency element\n- CTA button copy suggestion\n\nTone: [premium/friendly/bold]. Avoid passive voice. Max 200 words total.`,
+    rating: 5
+  },
+  {
+    title: "Case Study Writer",
+    category: "Writing",
+    tags: ["case study","b2b","social proof","content"],
+    prompt: `Write a compelling customer case study using this information:\n\nClient: [CLIENT NAME/INDUSTRY]\nChallenge: [PROBLEM THEY FACED]\nSolution: [WHAT YOU DID]\nResults: [MEASURABLE OUTCOMES]\nTimeline: [HOW LONG]\n\nFormat:\n1. Headline: "[Result] in [Timeframe] — [Client Type] Case Study"\n2. The Challenge (150 words) — humanize the struggle\n3. The Approach (200 words) — your methodology, step by step\n4. The Results (150 words) — lead with the biggest number\n5. Client Quote (placeholder)\n6. Key Takeaways (3 bullets)\n7. CTA: "Ready for similar results?"\n\nTone: professional but narrative-driven. Make it feel like a story, not a brochure.`,
+    rating: 4
+  },
+  {
+    title: "Newsletter Issue Writer",
+    category: "Writing",
+    tags: ["newsletter","email","audience","content"],
+    prompt: `Write a newsletter issue for my audience of [AUDIENCE DESCRIPTION].\n\nTopic this week: [MAIN TOPIC]\nMy unique angle/opinion: [YOUR TAKE]\n\nFormat:\n- Subject line (3 options, A/B/C)\n- Preview text (under 90 chars)\n- Opening: personal observation or story (100 words)\n- Main section: the "one big idea" (300–400 words), practical and specific\n- Quick Hits: 3 links/resources with one-line explanations\n- Closing: casual sign-off with a question for replies\n\nTone: [conversational/witty/analytical]. Avoid corporate language. Write like you're emailing a smart friend.`,
+    rating: 4
+  },
+  {
+    title: "Sales Page Headline Pack",
+    category: "Writing",
+    tags: ["copywriting","sales page","headlines","cro"],
+    prompt: `Generate 20 powerful headline variations for a sales page selling: [PRODUCT/SERVICE]\n\nTarget customer: [ICP]\nBiggest benefit: [BENEFIT]\nBiggest pain solved: [PAIN]\nPrice: [PRICE]\n\nCreate 4 headlines for each framework:\n1. Curiosity Gap ("How X Without Y")\n2. Direct Benefit (bold and specific)\n3. Social Proof ("X People Are Now…")\n4. Fear/Urgency-Based\n5. Question Format\n\nAfter the headlines, pick your top 3 and explain why they'll convert for this specific audience. Avoid clichés like "revolutionary" or "game-changing."`,
+    rating: 4
+  },
+
+  // ── CODING (8) ──
+  {
+    title: "Code Review & Refactor Expert",
+    category: "Coding",
+    tags: ["code review","refactor","best practices","senior dev"],
+    prompt: `You are a senior software engineer conducting a thorough code review. Analyze the following code:\n\n\`\`\`[LANGUAGE]\n[PASTE CODE HERE]\n\`\`\`\n\nProvide:\n1. **Summary**: What the code does (2–3 sentences)\n2. **Issues Found**: List bugs, security holes, performance problems, and anti-patterns with line references\n3. **Severity Ratings**: Mark each issue Critical / Major / Minor\n4. **Refactored Version**: Rewrite the full code with all fixes applied\n5. **What Changed**: Bullet list of every change and why\n6. **Tests to Write**: Suggest 3–5 unit tests for the most critical paths\n\nContext: This is [PRODUCTION/PROTOTYPE] code in a [STACK] codebase.`,
+    rating: 5
+  },
+  {
+    title: "SQL Query Builder & Optimizer",
+    category: "Coding",
+    tags: ["sql","database","query","optimization"],
+    prompt: `Help me write and optimize a SQL query.\n\nDatabase: [PostgreSQL/MySQL/SQLite/MSSQL]\nTables & schema:\n[PASTE TABLE DEFINITIONS OR DESCRIBE TABLES]\n\nWhat I need:\n[DESCRIBE WHAT DATA YOU WANT]\n\nConstraints:\n- Must handle [X] rows efficiently\n- Needs to run in under [Y] seconds\n- [ANY OTHER CONSTRAINTS]\n\nPlease provide:\n1. The query itself (formatted and readable)\n2. An explanation of the approach (JOINs, indexes used, etc.)\n3. Suggested indexes to add for performance\n4. An alternate query approach if one exists\n5. How to EXPLAIN ANALYZE this query to validate performance`,
+    rating: 5
+  },
+  {
+    title: "REST API Design (OpenAPI Spec)",
+    category: "Coding",
+    tags: ["api","rest","openapi","backend","design"],
+    prompt: `Design a RESTful API for: [DESCRIBE YOUR APP/FEATURE]\n\nTech stack: [BACKEND LANGUAGE/FRAMEWORK]\nAuthentication: [JWT/OAuth/API Key/None]\nDatabase: [YOUR DB]\n\nDeliver:\n1. **Resource list** with nouns (not verbs)\n2. **Endpoint table**: Method | Path | Description | Auth Required | Request Body | Response\n3. **OpenAPI 3.0 YAML snippet** for the 5 most important endpoints\n4. **Error response format** (standardized JSON)\n5. **Pagination strategy** for list endpoints\n6. **Rate limiting recommendations**\n7. **Versioning strategy** (URL path vs header)\n\nFollow REST best practices: stateless, proper HTTP verbs, correct status codes.`,
+    rating: 4
+  },
+  {
+    title: "Debug This Code (Step-by-Step)",
+    category: "Coding",
+    tags: ["debug","fix","error","troubleshoot"],
+    prompt: `I have a bug in my code. Please help me debug it systematically.\n\nLanguage/Framework: [LANGUAGE]\nError message (exact): [ERROR]\nExpected behavior: [WHAT SHOULD HAPPEN]\nActual behavior: [WHAT'S HAPPENING]\n\nCode:\n\`\`\`\n[PASTE CODE]\n\`\`\`\n\nAdditional context:\n- OS: [OS]\n- Runtime version: [VERSION]\n- Relevant dependencies: [LIBS]\n\nPlease:\n1. Identify the root cause (not just symptoms)\n2. Explain WHY this bug occurs\n3. Provide the fixed code\n4. Suggest how to prevent this class of bug in the future\n5. Add any relevant defensive coding patterns`,
+    rating: 5
+  },
+  {
+    title: "React Component Generator",
+    category: "Coding",
+    tags: ["react","component","frontend","typescript"],
+    prompt: `Generate a production-ready React component for: [DESCRIBE COMPONENT]\n\nSpecs:\n- Language: [TypeScript/JavaScript]\n- Styling: [Tailwind/CSS Modules/Styled Components/Plain CSS]\n- State management: [useState/Redux/Zustand/Context]\n- Needs to handle: [EDGE CASES]\n- Props it should accept: [LIST PROPS]\n\nDeliver:\n1. Full component code with TypeScript types/interfaces\n2. PropTypes or interface definition at the top\n3. Default prop values where sensible\n4. Error boundary consideration (note if needed)\n5. Accessibility attributes (aria-*, role, etc.)\n6. A usage example showing how to import and use it\n7. Unit test skeleton (Jest + RTL)\n\nFollow React best practices: single responsibility, memoization where needed, no prop drilling.`,
+    rating: 4
+  },
+  {
+    title: "System Design Interview Answer",
+    category: "Coding",
+    tags: ["system design","architecture","interview","scalability"],
+    prompt: `Help me design a system for: [SYSTEM TO DESIGN — e.g., "URL shortener", "Twitter feed", "Uber backend"]\n\nScope:\n- Scale: [X] users, [Y] requests/second at peak\n- Read/write ratio: [READ-HEAVY / WRITE-HEAVY / BALANCED]\n- Consistency requirement: [STRONG / EVENTUAL]\n- Availability target: [99.9% / 99.99%]\n\nDesign the system covering:\n1. Requirements clarification (functional + non-functional)\n2. High-level architecture diagram (text-based)\n3. Database choice and schema (with reasoning)\n4. API design (key endpoints)\n5. Scaling strategy (horizontal scaling, sharding, CDN, caching)\n6. Bottleneck identification and mitigations\n7. Trade-offs you're making\n\nFormat as a structured interview response I could give verbally.`,
+    rating: 5
+  },
+  {
+    title: "Python Script Generator",
+    category: "Coding",
+    tags: ["python","script","automation","cli"],
+    prompt: `Write a complete, production-ready Python script that: [DESCRIBE WHAT IT SHOULD DO]\n\nRequirements:\n- Python version: [3.x]\n- Input: [HOW DATA COMES IN — CLI args, CSV, API call, etc.]\n- Output: [WHAT IT PRODUCES]\n- Error handling: comprehensive (no bare excepts)\n- Logging: use Python's logging module\n- CLI: argparse with help text for each argument\n- Dependencies: minimize to standard library where possible; if external libs needed, include pip install commands\n\nInclude:\n1. Full script with docstrings\n2. Example usage commands\n3. Requirements.txt snippet\n4. Edge cases it handles\n5. Suggested tests (pytest)`,
+    rating: 4
+  },
+  {
+    title: "Write a Git Commit Message",
+    category: "Coding",
+    tags: ["git","commit","conventional commits","versioning"],
+    prompt: `Write conventional commit messages for my changes.\n\nChanges made:\n[DESCRIBE YOUR CHANGES IN PLAIN ENGLISH]\n\nAffected files/modules:\n[LIST FILES OR AREAS]\n\nIs this a: [feature/fix/refactor/chore/docs/test/perf]\nBreaking change?: [YES/NO]\n\nProduce:\n1. A conventional commit message (format: type(scope): description)\n2. Extended body (what changed and why — not how)\n3. Footer (breaking changes, issue references: Closes #123)\n4. Two alternative shorter commit messages\n5. Semantic version bump recommendation: MAJOR.MINOR.PATCH`,
+    rating: 3
+  },
+
+  // ── MARKETING (7) ──
+  {
+    title: "Ad Copy Creator (Multi-Platform)",
+    category: "Marketing",
+    tags: ["ads","facebook","google","copy","paid traffic"],
+    prompt: `Create complete ad copy for [PRODUCT/SERVICE] for multiple platforms.\n\nProduct: [PRODUCT]\nOffer: [OFFER/DEAL]\nTarget audience: [DEMOGRAPHICS + PSYCHOGRAPHICS]\nPain point: [MAIN PAIN]\nBig benefit: [MAIN BENEFIT]\nSocial proof: [STATS/TESTIMONIALS]\nBudget tier: [COLD/WARM/RETARGETING audience]\n\nGenerate:\n**Facebook/Instagram (3 variations)**\n- Primary text (125 chars)\n- Headline (40 chars)\n- Description (30 chars)\n- Hook style: curiosity / pain-agitate-solve / social proof\n\n**Google Search (2 variations)**\n- Headline 1–3 (30 chars each)\n- Description 1–2 (90 chars each)\n- Display URL path\n\n**YouTube Pre-roll (first 5-second hook)**\n- 3 hook options (must work before "Skip Ad")`,
+    rating: 5
+  },
+  {
+    title: "Brand Voice & Messaging Framework",
+    category: "Marketing",
+    tags: ["branding","voice","messaging","positioning"],
+    prompt: `Develop a complete brand voice and messaging framework for:\n\nCompany: [COMPANY NAME]\nProduct/Service: [WHAT YOU SELL]\nTarget customer: [ICP]\nKey competitors: [COMPETITORS]\nCurrent perception: [HOW PEOPLE SEE YOU NOW]\nDesired perception: [HOW YOU WANT TO BE SEEN]\n\nDeliver:\n1. **Brand Archetype** (from the 12 archetypes) and why\n2. **Voice Attributes** (4 adjectives with "is/isn't" contrasts)\n3. **Tone Variations** (formal vs casual, excited vs serious contexts)\n4. **Core Messaging Pillars** (3 pillars, each with a 1-line proof point)\n5. **Tagline Options** (5 variations)\n6. **Elevator Pitch** (30-second version)\n7. **Words to Use / Words to Avoid** list`,
+    rating: 4
+  },
+  {
+    title: "Content Calendar (30 Days)",
+    category: "Marketing",
+    tags: ["content calendar","social media","planning","30 day"],
+    prompt: `Build a 30-day content calendar for [BRAND/NICHE].\n\nBusiness: [DESCRIBE YOUR BUSINESS]\nGoal: [GROW FOLLOWERS / DRIVE SALES / BUILD AUTHORITY / LAUNCH PRODUCT]\nPlatforms: [INSTAGRAM / LINKEDIN / TWITTER / TIKTOK]\nPosting frequency: [X times per week]\nCurrent following: [SIZE]\nContent pillars: [LIST 3–4 TOPICS YOU OWN]\n\nFor each post include:\n- Day & date slot\n- Content type (carousel/reel/static/story/thread)\n- Hook / opening line\n- Topic & angle\n- CTA\n- Hashtag strategy note\n\nBalancing rule: 40% educational, 30% entertaining, 20% promotional, 10% personal/brand story. Group related content themes by week.`,
+    rating: 4
+  },
+  {
+    title: "Influencer Outreach Email",
+    category: "Marketing",
+    tags: ["influencer","outreach","partnership","ugc"],
+    prompt: `Write an influencer partnership outreach email for my brand.\n\nMy brand: [BRAND NAME + ONE LINE DESCRIPTION]\nProduct to pitch: [PRODUCT]\nInfluencer type: [NANO/MICRO/MID-TIER — their niche]\nOffer: [FREE PRODUCT / PAID COLLAB / COMMISSION / GIFTING]\nValue I bring: [WHAT'S IN IT FOR THEM beyond money]\n\nEmail requirements:\n- Subject line: personalized, under 50 chars, no "collaboration" or "partnership"\n- Opening: reference something specific about their content (use placeholder [SPECIFIC_CONTENT_REFERENCE])\n- Keep under 200 words total\n- One clear ask (reply to this email)\n- No attachments, no media kit in first touch\n- Sound like a human, not a PR agency\n\nAlso write a 3-sentence DM version for Instagram/TikTok.`,
+    rating: 4
+  },
+  {
+    title: "Launch Email Sequence (Product Launch)",
+    category: "Marketing",
+    tags: ["launch","email","product launch","sequence","sales"],
+    prompt: `Write a complete product launch email sequence for: [PRODUCT NAME]\n\nLaunch date: [DATE]\nPrice: [PRICE] (Launch discount: [DISCOUNT])\nTarget list: [EXISTING AUDIENCE DESCRIPTION]\nKey differentiator: [WHAT MAKES IT UNIQUE]\nMain objections to address: [LIST 2–3]\n\nSequence:\n- Email 1 (7 days before): Tease / story origin (don't reveal product yet)\n- Email 2 (4 days before): Problem agitation + hint at solution\n- Email 3 (2 days before): Reveal the product + bonuses\n- Email 4 (Launch Day): Open cart — full pitch\n- Email 5 (Day 2): Testimonials / FAQ / objection handling\n- Email 6 (Day 4): "Last chance" urgency\n- Email 7 (Final hours): Cart closing email\n\nFor each: subject line, preview text, full email body (conversational tone).`,
+    rating: 5
+  },
+  {
+    title: "Go-To-Market Strategy Brief",
+    category: "Marketing",
+    tags: ["gtm","strategy","launch","market entry"],
+    prompt: `Create a Go-To-Market (GTM) strategy brief for:\n\nProduct: [PRODUCT NAME]\nCategory: [PRODUCT CATEGORY]\nTarget market: [MARKET]\nPrice: [PRICE POINT]\nDistribution: [HOW IT'S SOLD — direct, marketplace, partner, etc.]\nBudget: [MARKETING BUDGET]\nTimeline: [LAUNCH TIMELINE]\nTop 3 competitors: [COMPETITORS]\n\nStructure:\n1. Market opportunity (TAM/SAM/SOM estimate)\n2. ICP definition (demographics, psychographics, trigger events)\n3. Positioning statement (fill-in-the-blank format)\n4. Channel strategy (primary + secondary channels with reasoning)\n5. First 30/60/90 day action plan\n6. KPIs to track (with targets)\n7. Biggest risks and mitigations`,
+    rating: 4
+  },
+  {
+    title: "Viral Social Media Post (Hook Formula)",
+    category: "Marketing",
+    tags: ["social media","viral","hook","engagement"],
+    prompt: `Write 10 high-engagement social media posts about [TOPIC] for [PLATFORM].\n\nMy audience: [DESCRIBE YOUR FOLLOWERS]\nMy angle/perspective: [WHAT MAKES YOUR TAKE UNIQUE]\nGoal: [FOLLOWERS / ENGAGEMENT / TRAFFIC / SALES]\n\nFor each post:\n- Use a different hook formula (curiosity, contrarian, list, story, confession, question, data, fear, social proof, transformation)\n- Optimal length for [PLATFORM]\n- Call to engagement (comment prompt, share ask, poll, etc.)\n- Relevant hashtags (5 max)\n\nLabel each post with the hook formula used. Avoid generic advice. Be specific, opinionated, and polarizing enough to spark discussion.`,
+    rating: 5
+  },
+
+  // ── SEO (6) ──
+  {
+    title: "Keyword Research & Cluster Builder",
+    category: "SEO",
+    tags: ["keywords","cluster","seo strategy","content planning"],
+    prompt: `Perform comprehensive keyword research and clustering for:\n\nNiche/Industry: [YOUR NICHE]\nSeed keyword: [SEED KEYWORD]\nWebsite type: [BLOG/ECOMMERCE/SaaS/LOCAL]\nTarget geography: [COUNTRY/REGION]\nDomain authority (approx.): [LOW <30 / MEDIUM 30-60 / HIGH 60+]\n\nDeliver:\n1. **Pillar keyword** (high volume, high competition — target long term)\n2. **Cluster keywords** (15–20 supporting terms grouped by topic)\n3. **Quick-win keywords** (low competition, decent volume — rank within 90 days)\n4. **Question keywords** (People Also Ask style — 10 questions)\n5. **Keyword intent map** (each keyword tagged: informational/commercial/transactional/navigational)\n6. **Priority order** for content creation (which to target first and why)\n7. **Content brief stub** for the #1 priority keyword`,
+    rating: 5
+  },
+  {
+    title: "On-Page SEO Audit Checklist",
+    category: "SEO",
+    tags: ["on-page seo","audit","technical seo","optimization"],
+    prompt: `Conduct an on-page SEO audit for the following page:\n\nURL: [URL]\nTarget keyword: [PRIMARY KEYWORD]\nSecondary keywords: [LIST]\nPage type: [BLOG/PRODUCT/SERVICE/HOME]\nCurrent ranking: [POSITION IF KNOWN]\n\nAudit these elements and give a PASS / FAIL / IMPROVE rating with specific fixes:\n1. Title tag (length, keyword placement, click-worthiness)\n2. Meta description (length, keyword, CTA)\n3. H1/H2/H3 structure (hierarchy + keyword coverage)\n4. URL structure (slug)\n5. Content depth vs. top 3 ranking pages\n6. Keyword density and semantic coverage\n7. Internal links (3+ recommendations for which pages to link to/from)\n8. Image alt text\n9. Page speed considerations\n10. Schema markup recommendation\n11. E-E-A-T signals present/missing\n\nPrioritize fixes by SEO impact.`,
+    rating: 4
+  },
+  {
+    title: "SEO-Optimized Blog Post Brief",
+    category: "SEO",
+    tags: ["content brief","blog","seo","writing"],
+    prompt: `Create a detailed SEO content brief for a blog post targeting: [TARGET KEYWORD]\n\nSearch intent: [INFORMATIONAL/COMMERCIAL/TRANSACTIONAL]\nTarget word count (based on SERP): [ESTIMATE]\nWebsite: [YOUR SITE/NICHE]\n\nBrief must include:\n1. **Title tag** (with keyword in first 60 chars)\n2. **Meta description** (150–160 chars, includes keyword + CTA)\n3. **Target URL slug**\n4. **Outline** (H2s and H3s — full structure)\n5. **Semantic keywords to include** (10–15 LSI/NLP terms)\n6. **Questions to answer** (5 from PAA)\n7. **Competitor gaps** (3 topics competitors miss — [DESCRIBE COMPETITOR ARTICLES])\n8. **Internal link opportunities** (2–3 suggestions)\n9. **Featured snippet opportunity** (if any — how to structure the answer)\n10. **CTA suggestion** at end of post`,
+    rating: 4
+  },
+  {
+    title: "Link Building Outreach Email",
+    category: "SEO",
+    tags: ["link building","outreach","backlinks","seo"],
+    prompt: `Write a link building outreach email sequence for getting backlinks to: [YOUR PAGE URL / TOPIC]\n\nMy site: [SITE NAME + NICHE]\nTarget site: [TARGET SITE TYPE — blog/news/resource page]\nLinking rationale: [WHY THIS SITE SHOULD LINK TO YOU]\nAsset I'm promoting: [WHAT YOU BUILT — guide/tool/data study/infographic]\n\nWrite 3 email versions:\n1. **Cold outreach** — reference their specific article, pitch the value, ask naturally\n2. **Resource page pitch** — specifically for resource/links pages\n3. **Broken link replacement** — their broken link, your replacement\n\nFor each: subject line (under 45 chars), body (under 150 words), follow-up line (1 sentence for day 5). Personalization placeholders included.`,
+    rating: 4
+  },
+  {
+    title: "Schema Markup Generator",
+    category: "SEO",
+    tags: ["schema","structured data","json-ld","technical seo"],
+    prompt: `Generate JSON-LD schema markup for:\n\nPage type: [ARTICLE/PRODUCT/FAQ/HOWTO/LOCAL BUSINESS/EVENT/REVIEW]\nBusiness/Author name: [NAME]\nPage URL: [URL]\n\nInformation to include:\n[FILL IN RELEVANT DETAILS — for example: product name, price, rating, FAQs, steps, address, event date, etc.]\n\nPlease:\n1. Write the complete JSON-LD block (ready to paste into <head>)\n2. Mark which fields are required vs. recommended by Google\n3. Flag any missing info I should add\n4. Add the secondary schema type if applicable (e.g., BreadcrumbList)\n5. Provide the Google Rich Results Test URL to validate it\n6. Note which rich result type this enables in SERPs`,
+    rating: 3
+  },
+  {
+    title: "Competitor SEO Analysis",
+    category: "SEO",
+    tags: ["competitor analysis","seo","gaps","strategy"],
+    prompt: `Perform a competitive SEO analysis framework for my niche.\n\nMy site: [YOUR SITE]\nTop 3 competitors: [COMPETITOR 1], [COMPETITOR 2], [COMPETITOR 3]\nMy niche: [NICHE]\n\nAnalysis framework to apply:\n1. **Content gap analysis**: Topics they rank for that I don't (by intent category)\n2. **Backlink gap**: Types of sites/pages linking to them that I should target\n3. **SERP feature opportunities**: Featured snippets, PAA boxes, knowledge panels they own\n4. **Content format analysis**: Do they win with videos, guides, tools, listicles?\n5. **Publishing cadence**: Frequency and pattern patterns\n6. **Weakness mapping**: Where are their articles thin, outdated, or missing user intent?\n7. **Quick wins I can execute in 30 days**\n\nOutput as a prioritized action plan with specific, actionable tasks.`,
+    rating: 5
+  },
+
+  // ── SALES (6) ──
+  {
+    title: "Sales Call Script (B2B Discovery)",
+    category: "Sales",
+    tags: ["sales call","b2b","discovery","script"],
+    prompt: `Write a complete B2B discovery call script for selling [PRODUCT/SERVICE] to [BUYER PERSONA].\n\nAverage deal size: [VALUE]\nSales cycle: [SHORT/MEDIUM/LONG]\nTop 3 objections: [LIST]\nDifferentiator: [YOUR EDGE]\n\nScript structure:\n1. Opening (warm, disarming — 60 seconds)\n2. Agenda setting (we control the call)\n3. Discovery questions (8–10 questions following SPIN methodology: Situation, Problem, Implication, Need-Payoff)\n4. Mini demo/pitch pivot (3-minute value narrative)\n5. Objection handling section (one response per objection, then reframe)\n6. Next step close (specific, not vague)\n7. If no answer: voicemail script (under 25 seconds)\n\nInclude stage transitions and internal notes [in brackets] for the rep.`,
+    rating: 5
+  },
+  {
+    title: "Proposal Template (Professional Services)",
+    category: "Sales",
+    tags: ["proposal","b2b","professional services","close"],
+    prompt: `Write a professional sales proposal for [YOUR SERVICE] for client [CLIENT TYPE].\n\nProject: [PROJECT DESCRIPTION]\nProposed scope: [DELIVERABLES]\nTimeline: [DURATION]\nInvestment: [PRICE RANGE]\nClient pain point: [PRIMARY PAIN]\nSuccess metric: [HOW WE MEASURE SUCCESS]\n\nProposal sections:\n1. Executive Summary (1 page — their problem + your solution + ROI)\n2. Understanding Your Challenge (show you listened — 200 words)\n3. Our Approach (methodology with 3–5 phases)\n4. Deliverables & Timeline (table format)\n5. Investment Options (3 tiers: good/better/best)\n6. Why Us (3 proof points — case studies, credentials, differentiators)\n7. Next Steps (clear action for them to take)\n8. Terms Snapshot (1-paragraph)\n\nTone: confident and consultative, not desperate. Written from their perspective.`,
+    rating: 4
+  },
+  {
+    title: "Objection Handling Playbook",
+    category: "Sales",
+    tags: ["objections","sales","close","rebuttals"],
+    prompt: `Build a comprehensive objection handling playbook for [PRODUCT/SERVICE] at [$PRICE POINT].\n\nTarget buyer: [ICP]\nSales context: [INBOUND/OUTBOUND — call/email/demo]\n\nFor each of these 10 objections, write:\n- Acknowledge statement (show you heard them)\n- Reframe/pivot\n- Proof point or question to use\n- Close attempt after the reframe\n\nObjections to handle:\n1. "It's too expensive"\n2. "I need to think about it"\n3. "We're using [COMPETITOR]"\n4. "Now isn't a good time"\n5. "I need to check with my boss/team"\n6. "We can do this in-house"\n7. "Send me more info" (stall tactic)\n8. "What's your ROI guarantee?"\n9. "We tried something like this and it didn't work"\n10. "I don't see the value"\n\nInclude a "pattern interrupt" opener for each that breaks the dismissal pattern.`,
+    rating: 5
+  },
+  {
+    title: "Follow-Up Email After No Response",
+    category: "Sales",
+    tags: ["follow up","email","sales","ghosted","outreach"],
+    prompt: `Write 5 follow-up emails for a prospect who has gone silent after [TRIGGER EVENT — demo/proposal/first meeting].\n\nContext:\n- What happened: [DESCRIBE LAST INTERACTION]\n- Days since last contact: [X]\n- Prospect: [TITLE/COMPANY TYPE]\n- Product: [PRODUCT]\n- Where they were in pipeline: [STAGE]\n\nEmails should escalate in directness:\n1. Soft check-in (Day 3) — add new value\n2. New angle / case study (Day 7)\n3. Question-only email (Day 12) — single question, no pitch\n4. Direct address (Day 18) — address the silence\n5. Break-up email (Day 25) — reverse psychology, close the loop\n\nEach email: subject line + body under 100 words. Make each one a reason to reply, not just a nudge.`,
+    rating: 4
+  },
+  {
+    title: "LinkedIn DM Outreach Sequence",
+    category: "Sales",
+    tags: ["linkedin","dm","outreach","b2b","prospecting"],
+    prompt: `Write a LinkedIn DM outreach sequence for [WHAT YOU SELL] targeting [JOB TITLE/ICP].\n\nYour background: [YOUR TITLE/CREDIBILITY]\nCommon pain for this persona: [PAIN POINT]\nYour solution: [HOW YOU HELP]\nSocial proof: [QUICK PROOF POINT]\n\nSequence (after connection accepted):\n- Message 1 (Day 1): Welcome message — no pitch, genuine opener that references their profile/content\n- Message 2 (Day 4): Add value first (share useful resource, insight, or observation about their industry)\n- Message 3 (Day 8): Soft pitch — problem acknowledgment + curiosity-driving question\n- Message 4 (Day 14): Direct but respectful ask for a call (with a specific time suggestion)\n\nEach message: under 75 words. No emojis. Sound human, not templated.`,
+    rating: 4
+  },
+  {
+    title: "Pricing Page Copy",
+    category: "Sales",
+    tags: ["pricing","conversion","saas","copy","plans"],
+    prompt: `Write pricing page copy for [PRODUCT/SERVICE].\n\nPlans:\n- Plan 1: [NAME] at [$PRICE/month] — [FEATURES]\n- Plan 2: [NAME] at [$PRICE/month] — [FEATURES] ← most popular\n- Plan 3: [NAME] at [$PRICE/month] — [FEATURES]\n\nTarget buyer: [ICP]\nBiggest purchase hesitation: [WHAT STOPS THEM FROM BUYING]\n\nDeliver:\n1. Page headline (value-focused, not price-focused)\n2. Subheadline (address the hesitation)\n3. Plan names (make them aspirational, not generic)\n4. Feature list copy (benefits, not specs)\n5. "Most Popular" badge rationale\n6. FAQ section (7 questions about pricing/billing/cancellation)\n7. Guarantee statement\n8. Social proof line near CTA\n9. CTA button copy (3 options per plan)`,
+    rating: 4
+  },
+
+  // ── IMAGE GEN (7) ──
+  {
+    title: "Photorealistic Portrait Prompt",
+    category: "Image Gen",
+    tags: ["portrait","photorealistic","midjourney","stable diffusion"],
+    prompt: `Photorealistic portrait of [DESCRIBE SUBJECT — age, gender, ethnicity, expression], [CLOTHING DESCRIPTION], photographed with a [Canon 5D/Sony A7R/Hasselblad] lens at [85mm/50mm/135mm], [f/1.8/f/2.8] aperture, [studio/natural/golden hour] lighting, [bokeh background/sharp background], skin texture detailed, catchlights in eyes, shot in the style of [Annie Leibovitz/Peter Lindbergh/Yousuf Karsh], ultra-sharp focus, 8K resolution, --ar 2:3 --style raw --v 6`,
+    rating: 5
+  },
+  {
+    title: "Epic Fantasy Landscape",
+    category: "Image Gen",
+    tags: ["fantasy","landscape","concept art","midjourney"],
+    prompt: `Epic fantasy landscape: [DESCRIBE SCENE — mountain fortress, floating islands, dark forest, etc.], dramatic cinematic lighting, god rays through clouds, volumetric fog in the valleys, [season/weather], [time of day], photorealistic but painterly, concept art style, inspired by [Craig Mullins/Marc Simonetti/Jessica Rossier], matte painting, UHD, highly detailed environment, sense of scale with [tiny silhouetted figure/ship/creature] for reference, --ar 16:9 --style raw --v 6 --q 2`,
+    rating: 4
+  },
+  {
+    title: "Product Photography (Clean Commerce)",
+    category: "Image Gen",
+    tags: ["product","ecommerce","photography","commercial"],
+    prompt: `Professional product photography of [DESCRIBE PRODUCT], clean [white/marble/dark wood/gradient] background, [soft studio lighting/dramatic side lighting], shadows soft and natural, product centered with [1/3 negative space], photorealistic, commercial quality, shot at [f/8] for full product sharpness, color grade: [bright & clean / moody & premium / warm & natural], no people, no hands, high-end commercial photography style, 8K, print-ready quality, --ar 1:1 --style raw --v 6`,
+    rating: 5
+  },
+  {
+    title: "Logo & Brand Identity Concept",
+    category: "Image Gen",
+    tags: ["logo","branding","design","vector"],
+    prompt: `Minimal logo design for a [TYPE OF COMPANY] called "[COMPANY NAME]", flat vector style, [icon/wordmark/combination mark], color palette: [2–3 COLORS], style: [modern/classic/playful/tech/organic], white background, SVG-clean lines, no gradients unless specified, scalable at any size, inspired by [Dieter Rams / Swiss International Style / Bauhaus / contemporary startup aesthetic], multiple variations shown on white and dark backgrounds, --ar 1:1 --v 6 --style raw`,
+    rating: 4
+  },
+  {
+    title: "Cinematic Scene (Movie Still)",
+    category: "Image Gen",
+    tags: ["cinematic","film","movie still","dramatic","story"],
+    prompt: `Cinematic movie still: [DESCRIBE THE SCENE — character, location, action, emotion], shot on [35mm/anamorphic lens], [golden hour/blue hour/neon night/overcast] lighting, [color grade: warm tones / cold desaturated / high contrast noir / vibrant saturated], shallow depth of field, film grain texture, widescreen composition, reminiscent of [Blade Runner 2049 / No Country for Old Men / Mad Max: Fury Road / Parasite / Dune], photorealistic, cinematography by Roger Deakins, --ar 2.39:1 --style cinematic --v 6`,
+    rating: 5
+  },
+  {
+    title: "Character Concept Sheet",
+    category: "Image Gen",
+    tags: ["character","concept art","game","design sheet"],
+    prompt: `Character concept art design sheet for: [CHARACTER NAME]\nSpecies/Race: [HUMAN/ELF/ROBOT/ORC/etc.]\nClass/Role: [WARRIOR/MAGE/ROGUE/etc.]\nPersonality: [ADJECTIVES]\nDesign elements: [ARMOR/CLOTHING/WEAPONS/MARKINGS]\nColor palette: [MAIN COLORS]\n\nStyle: [anime / western comic / realistic / stylized 3D]\nShow: front view, 3/4 view, and back view on clean background\nInclude: face close-up detail, weapon/item detail\nInspired by: [ARTIST/GAME — e.g., concept art from Elden Ring, World of Warcraft, Hades]\n--ar 16:9 --v 6 --style raw`,
+    rating: 4
+  },
+  {
+    title: "Interior Design Visualization",
+    category: "Image Gen",
+    tags: ["interior design","architecture","visualization","3d render"],
+    prompt: `Architectural interior visualization of a [ROOM TYPE — living room, kitchen, office, bedroom], [DESIGN STYLE: Scandinavian minimal / industrial / japandi / maximalist / mid-century modern], [TIME OF DAY] natural light through [window type], material palette: [wood/concrete/marble/linen/steel], color scheme: [COLORS], [furnished/empty for staging], photorealistic 3D render quality, shot at [wide angle 24mm], high ceiling / cozy proportions, no people, no lens distortion, ultra-detailed textures, architectural digest quality, --ar 4:3 --style raw --v 6`,
+    rating: 4
+  },
+
+  // ── BUSINESS (8) ──
+  {
+    title: "Business Plan Executive Summary",
+    category: "Business",
+    tags: ["business plan","executive summary","startup","investor"],
+    prompt: `Write a compelling executive summary for a business plan.\n\nBusiness name: [NAME]\nIndustry: [INDUSTRY]\nBusiness model: [HOW YOU MAKE MONEY]\nProblem solved: [PAIN POINT]\nSolution: [YOUR PRODUCT/SERVICE]\nTarget market: [TAM / WHO BUYS]\nTraction/Proof: [REVENUE/USERS/PILOTS/LETTERS OF INTENT]\nFunding ask: [AMOUNT] for [USE OF FUNDS]\nTeam: [KEY MEMBERS AND WHY THEY'RE RIGHT FOR THIS]\n\nWrite a 1-page executive summary (500–600 words) that:\n- Hooks an investor in the first sentence\n- Demonstrates market understanding\n- Shows unfair advantage / moat\n- Is factual, specific, no fluff\n- Ends with a clear ask and compelling vision\n\nFormat: flowing narrative with 5–6 clear paragraphs, not bullet points.`,
+    rating: 5
+  },
+  {
+    title: "Job Description Writer",
+    category: "Business",
+    tags: ["hiring","job description","hr","recruiting"],
+    prompt: `Write a compelling job description for: [JOB TITLE]\n\nCompany: [COMPANY NAME AND 1-LINE DESCRIPTION]\nTeam size: [SIZE]\nRole type: [FULL-TIME/PART-TIME/CONTRACT — REMOTE/HYBRID/ON-SITE]\nCompensation range: [RANGE]\nKey responsibilities: [LIST 5–7]\nRequired qualifications: [MUST-HAVES]\nNice-to-haves: [PREFERRED SKILLS]\nCulture/vibe: [DESCRIBE WORKING ENVIRONMENT]\n\nJob description format:\n1. Hook headline (not just the title)\n2. "About Us" (3 sentences — real, human, no corporate speak)\n3. "What You'll Do" (6–8 bullets, action verbs, outcomes-focused)\n4. "What We're Looking For" (split into Must Have / Nice to Have)\n5. "What You'll Get" (compensation + perks — specific, not "competitive salary")\n6. Diversity & inclusion statement (2 sentences, genuine)\n7. Application CTA\n\nTone: direct, welcoming, non-corporate.`,
+    rating: 4
+  },
+  {
+    title: "SWOT Analysis Generator",
+    category: "Business",
+    tags: ["swot","strategy","analysis","planning"],
+    prompt: `Conduct a thorough SWOT analysis for:\n\nBusiness: [COMPANY/PRODUCT]\nIndustry: [INDUSTRY]\nCompetitors: [KEY COMPETITORS]\nCurrent stage: [STARTUP / GROWTH / MATURE]\nRecent developments: [ANY CONTEXT — new product, market shift, team change, etc.]\n\nFor each quadrant, provide 6–8 specific, non-generic points:\n\n**Strengths**: Internal advantages you genuinely have\n**Weaknesses**: Honest internal gaps (don't sugarcoat)\n**Opportunities**: External trends you can capitalize on\n**Threats**: Genuine external risks (market, competitive, regulatory, tech)\n\nAfter the SWOT grid, add:\n- **SO Strategies** (use strengths to capture opportunities): 3 ideas\n- **WO Strategies** (fix weaknesses to capture opportunities): 3 ideas\n- **ST Strategies** (use strengths to mitigate threats): 3 ideas\n- **WT Strategies** (minimize weaknesses, avoid threats): 3 ideas\n\nBe brutally honest and specific.`,
+    rating: 4
+  },
+  {
+    title: "Investor Pitch Deck Outline",
+    category: "Business",
+    tags: ["pitch deck","investor","startup","fundraising"],
+    prompt: `Create a detailed pitch deck outline for my startup.\n\nCompany: [NAME]\nProblem: [PROBLEM]\nSolution: [YOUR PRODUCT]\nBusiness model: [REVENUE MODEL]\nTraction: [NUMBERS]\nAsk: [$AMOUNT] [SEED/SERIES A]\nValuation: [$X]\n\nFor each of the 12 slides, provide:\n- Slide title\n- Exact content to include (bullet points)\n- Recommended visual/chart type\n- Investor "so what" — what they need to feel after this slide\n\nSlides: 1. Cover, 2. Problem, 3. Solution, 4. Market Size, 5. Product Demo, 6. Business Model, 7. Traction, 8. Go-To-Market, 9. Competition, 10. Team, 11. Financials, 12. The Ask\n\nAlso include: 3 questions investors will definitely ask + strong answers for each.`,
+    rating: 5
+  },
+  {
+    title: "SOP (Standard Operating Procedure) Writer",
+    category: "Business",
+    tags: ["sop","operations","process","documentation","team"],
+    prompt: `Write a Standard Operating Procedure (SOP) for the following business process:\n\nProcess name: [PROCESS NAME]\nDepartment: [TEAM/DEPARTMENT]\nFrequency: [DAILY/WEEKLY/AS NEEDED]\nPeople involved: [ROLES]\nTools/Systems used: [SOFTWARE/TOOLS]\nDesired outcome: [WHAT DOES DONE LOOK LIKE]\n\nSOP Format:\n1. **Purpose** — why this process exists\n2. **Scope** — who this applies to and when\n3. **Definitions** — key terms\n4. **Responsibilities** — who owns each part (RACI table if needed)\n5. **Step-by-Step Instructions** — numbered, clear, unambiguous (include decision points with IF/THEN)\n6. **Quality Checks** — how to verify it's done correctly\n7. **Common Mistakes** — top 3 errors and how to avoid them\n8. **Revision History** — table (date, version, change summary)\n\nWrite as if training a smart person who has never done this before.`,
+    rating: 4
+  },
+  {
+    title: "Meeting Agenda Creator",
+    category: "Business",
+    tags: ["meeting","agenda","productivity","team"],
+    prompt: `Create a structured meeting agenda for:\n\nMeeting type: [WEEKLY STANDUP / STRATEGY SESSION / CLIENT MEETING / RETROSPECTIVE / ALL-HANDS]\nDuration: [30 min / 60 min / 90 min]\nAttendees: [LIST ROLES]\nMeeting goal: [ONE SENTENCE — what decision or outcome do we need?]\nBackground context: [WHAT'S HAPPENING THAT PROMPTED THIS MEETING]\nKey topics to cover: [LIST]\n\nAgenda format:\n- Meeting purpose & desired outcome (1 line at top)\n- Pre-read materials / prep ask (if any)\n- Timed agenda items (include owner per item)\n- Decision items (clearly marked vs. discussion items)\n- Parking lot section\n- Action items template (task / owner / due date)\n- Next meeting date slot\n\nAlso write a 3-sentence pre-meeting email to send to attendees 24 hours before.`,
+    rating: 3
+  },
+  {
+    title: "Customer Persona Builder",
+    category: "Business",
+    tags: ["persona","ux","customer","research","avatar"],
+    prompt: `Build a detailed customer persona for [PRODUCT/SERVICE].\n\nIndustry: [YOUR INDUSTRY]\nExisting customer data: [DESCRIBE WHAT YOU KNOW — demographics, behavior, interviews]\nPrimary problem you solve: [PROBLEM]\n\nPersona document:\n1. **Name + Photo Description** (fictional but realistic)\n2. **Demographics** (age, location, income, education, family status, job title)\n3. **Day in the Life** (narrative, 150 words — make it vivid)\n4. **Goals & Aspirations** (professional and personal)\n5. **Pain Points & Frustrations** (specific to your category — 5–7 points)\n6. **Triggers** (what events push them to look for a solution like yours)\n7. **Decision Criteria** (how they evaluate and buy — price, trust, features, social proof)\n8. **Watering Holes** (where they hang out online and offline)\n9. **Objections to Your Product** (top 3 with the psychological root cause)\n10. **Messaging that resonates** (actual phrases and words they use)`,
+    rating: 5
+  },
+  {
+    title: "OKR Framework Builder",
+    category: "Business",
+    tags: ["okr","goals","strategy","kpi","management"],
+    prompt: `Build a complete OKR (Objectives & Key Results) framework for:\n\nOrganization/Team: [COMPANY / TEAM NAME]\nTime period: [Q1 2025 / ANNUAL]\nBusiness context: [WHAT STAGE YOU'RE IN — pre-revenue / scaling / optimizing]\nTop company priority this period: [NORTH STAR]\n\nCreate OKRs for 3 levels:\n\n**Company Level** (1 objective, 3–5 key results)\n**Department Level** (choose 3 departments: [LIST], each with 1 objective + 3 KRs)\n**Individual Level** (1 example for a [ROLE] that ladders up)\n\nFor each Key Result:\n- Make it measurable (number, %, or binary)\n- Include baseline / starting point\n- Include stretch target\n- Note confidence level (0.5 = stretch, 0.7 = ambitious, 1.0 = committed)\n\nAlso include: check-in cadence, scoring rubric, and 3 common OKR mistakes to avoid.`,
+    rating: 4
+  }
+];
+
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+function init() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    prompts = JSON.parse(saved);
+  } else {
+    prompts = DEFAULT_PROMPTS.map((p, i) => ({
+      id: `p${Date.now()}_${i}`,
+      title: p.title,
+      category: p.category,
+      tags: p.tags || [],
+      prompt: p.prompt,
+      rating: p.rating || 0,
+      favorite: false,
+      copies: 0,
+      createdAt: Date.now() - (DEFAULT_PROMPTS.length - i) * 86400000
+    }));
+    save();
+  }
+  buildFilterChips();
+  renderCards();
+  updateStats();
+  updateCounts();
+  buildFormStars();
+}
+
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(prompts));
+}
+
+// ─────────────────────────────────────────────
+// FILTER & SEARCH
+// ─────────────────────────────────────────────
+function setFilter(filter, el) {
+  currentFilter = filter;
+  activeTagFilter = '';
+  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+  if (el) el.classList.add('active');
+  renderCards();
+}
+
+function handleSearch() {
+  searchQuery = document.getElementById('globalSearch').value.toLowerCase().trim();
+  renderCards();
+}
+
+function filterByTag(tag) {
+  activeTagFilter = activeTagFilter === tag ? '' : tag;
+  searchQuery = '';
+  document.getElementById('globalSearch').value = '';
+  renderCards();
+  updateTagChips();
+}
+
+function buildFilterChips() {
+  const allTags = [...new Set(prompts.flatMap(p => p.tags))].sort();
+  const container = document.getElementById('filterChips');
+  container.innerHTML = allTags.slice(0, 12).map(t =>
+    `<span class="filter-chip" id="chip_${t.replace(/\s/g,'_')}" onclick="filterByTag('${t}')">${t}</span>`
+  ).join('');
+}
+
+function updateTagChips() {
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  if (activeTagFilter) {
+    const id = `chip_${activeTagFilter.replace(/\s/g,'_')}`;
+    const el = document.getElementById(id);
+    if (el) el.classList.add('active');
+  }
+}
+
+function getFiltered() {
+  let list = [...prompts];
+  // search
+  if (searchQuery) {
+    list = list.filter(p =>
+      p.title.toLowerCase().includes(searchQuery) ||
+      p.prompt.toLowerCase().includes(searchQuery) ||
+      p.category.toLowerCase().includes(searchQuery) ||
+      p.tags.some(t => t.toLowerCase().includes(searchQuery))
+    );
+  }
+  // tag filter
+  if (activeTagFilter) {
+    list = list.filter(p => p.tags.includes(activeTagFilter));
+  }
+  // sidebar filter
+  if (currentFilter === 'favorites') {
+    list = list.filter(p => p.favorite);
+  } else if (currentFilter === 'top-rated') {
+    list = list.filter(p => p.rating >= 4);
+  } else if (currentFilter === 'most-used') {
+    list = list.filter(p => p.copies > 0);
+  } else if (currentFilter !== 'all') {
+    list = list.filter(p => p.category === currentFilter);
+  }
+  // sort
+  const sort = document.getElementById('sortSelect').value;
+  if (sort === 'newest') list.sort((a,b) => b.createdAt - a.createdAt);
+  else if (sort === 'oldest') list.sort((a,b) => a.createdAt - b.createdAt);
+  else if (sort === 'az') list.sort((a,b) => a.title.localeCompare(b.title));
+  else if (sort === 'za') list.sort((a,b) => b.title.localeCompare(a.title));
+  else if (sort === 'rating') list.sort((a,b) => b.rating - a.rating);
+  else if (sort === 'copies') list.sort((a,b) => b.copies - a.copies);
+  return list;
+}
+
+// ─────────────────────────────────────────────
+// RENDER
+// ─────────────────────────────────────────────
+function setView(v) {
+  currentView = v;
+  document.getElementById('gridViewBtn').classList.toggle('active', v === 'grid');
+  document.getElementById('listViewBtn').classList.toggle('active', v === 'list');
+  const container = document.getElementById('cardsContainer');
+  container.className = v === 'grid' ? 'cards-grid' : 'cards-list';
+  renderCards();
+}
+
+function renderCards() {
+  const list = getFiltered();
+  const container = document.getElementById('cardsContainer');
+  const countEl = document.getElementById('resultCount');
+  countEl.textContent = `(${list.length})`;
+
+  if (list.length === 0) {
+    container.innerHTML = `<div class="no-results" style="grid-column:1/-1"><div class="no-results-icon">🔍</div><p>No prompts found. Try a different search or filter.</p></div>`;
+    return;
+  }
+
+  if (currentView === 'grid') {
+    container.innerHTML = list.map(p => renderCard(p)).join('');
+  } else {
+    container.innerHTML = list.map(p => renderListItem(p)).join('');
+  }
+  updateCounts();
+}
+
+function catClass(cat) {
+  return 'cat-' + (cat || '').toLowerCase().replace(/\s/g,'');
+}
+
+function renderStars(p, interactive = false) {
+  let html = '';
+  for (let i = 1; i <= 5; i++) {
+    const filled = i <= p.rating ? 'filled' : '';
+    if (interactive) {
+      html += `<span class="star ${filled}" onclick="ratePrompt('${p.id}', ${i})" onmouseover="previewStars('${p.id}',${i})" onmouseout="resetStarPreview('${p.id}')">★</span>`;
+    } else {
+      html += `<span class="star ${filled}">★</span>`;
+    }
+  }
+  return html;
+}
+
+function renderCard(p) {
+  const cc = catClass(p.category);
+  const cfg = catConfig[p.category] || {};
+  const tags = p.tags.slice(0, 4).map(t =>
+    `<span class="tag-chip" onclick="filterByTag('${t}')">${t}</span>`
+  ).join('');
+  const favClass = p.favorite ? 'active' : '';
+  const favIcon = p.favorite ? '★' : '☆';
+  return `
+  <div class="card ${cc}" id="card_${p.id}">
+    <div class="card-header">
+      <div class="card-title">${escHtml(p.title)}</div>
+      <button class="card-fav ${favClass}" title="Toggle Favorite" onclick="toggleFav('${p.id}')">${favIcon}</button>
+    </div>
+    <div class="card-meta">
+      <span class="cat-badge ${cc}">${cfg.icon||''} ${p.category}</span>
+      ${tags}
+    </div>
+    <div class="card-body" id="body_${p.id}">${escHtml(p.prompt)}</div>
+    <div class="card-footer">
+      <div class="card-stars" id="stars_${p.id}">${renderStars(p, true)}</div>
+      <div class="copy-count" title="Times copied">📋 ${p.copies || 0}</div>
+      <div class="card-actions">
+        <button class="icon-btn expand-btn" title="Expand" onclick="toggleExpand('${p.id}')">⤢</button>
+        <button class="icon-btn edit-btn" title="Edit" onclick="openEditModal('${p.id}')">✏️</button>
+        <button class="icon-btn delete-btn" title="Delete" onclick="confirmDelete('${p.id}')">🗑</button>
+        <button class="icon-btn" id="copy_${p.id}" title="Copy to clipboard" onclick="copyPrompt('${p.id}')">📋 Copy</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderListItem(p) {
+  const cc = catClass(p.category);
+  const cfg = catConfig[p.category] || {};
+  const favClass = p.favorite ? 'active' : '';
+  const favIcon = p.favorite ? '★' : '☆';
+  return `
+  <div class="card-list-item" id="card_${p.id}">
+    <div style="flex:1;min-width:0">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <span class="cat-badge ${cc}" style="white-space:nowrap">${cfg.icon||''} ${p.category}</span>
+        <strong style="font-size:14px;color:var(--text-primary)">${escHtml(p.title)}</strong>
+        <button class="card-fav ${favClass}" style="margin-left:auto" title="Favorite" onclick="toggleFav('${p.id}')">${favIcon}</button>
+      </div>
+      <div style="font-size:12px;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:600px">${escHtml(p.prompt.substring(0,120))}…</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-top:8px">
+        <div class="card-stars" id="stars_${p.id}">${renderStars(p, true)}</div>
+        <div class="copy-count">📋 ${p.copies || 0}</div>
+        ${p.tags.slice(0,3).map(t => `<span class="tag-chip" onclick="filterByTag('${t}')">${t}</span>`).join('')}
+      </div>
+    </div>
+    <div style="display:flex;gap:6px;align-items:center;flex-shrink:0">
+      <button class="icon-btn edit-btn" onclick="openEditModal('${p.id}')">✏️</button>
+      <button class="icon-btn delete-btn" onclick="confirmDelete('${p.id}')">🗑</button>
+      <button class="icon-btn" id="copy_${p.id}" onclick="copyPrompt('${p.id}')">📋 Copy</button>
+    </div>
+  </div>`;
+}
+
+// ─────────────────────────────────────────────
+// INTERACTIONS
+// ─────────────────────────────────────────────
+function copyPrompt(id) {
+  const p = prompts.find(x => x.id === id);
+  if (!p) return;
+  navigator.clipboard.writeText(p.prompt).then(() => {
+    p.copies = (p.copies || 0) + 1;
+    save();
+    const btn = document.getElementById(`copy_${id}`);
+    if (btn) {
+      btn.textContent = '✅ Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = '📋 Copy'; btn.classList.remove('copied'); }, 2000);
+    }
+    const countEl = btn ? btn.closest('.card,.card-list-item').querySelector('.copy-count') : null;
+    if (countEl) countEl.textContent = '📋 ' + p.copies;
+    updateStats();
+    showToast(`Copied: "${p.title}"`, 'success');
+  }).catch(() => {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = p.prompt;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    p.copies = (p.copies || 0) + 1;
+    save();
+    showToast(`Copied: "${p.title}"`, 'success');
+  });
+}
+
+function toggleFav(id) {
+  const p = prompts.find(x => x.id === id);
+  if (!p) return;
+  p.favorite = !p.favorite;
+  save();
+  updateStats();
+  updateCounts();
+  renderCards();
+  showToast(p.favorite ? `Added to favorites` : `Removed from favorites`, 'info');
+}
+
+function ratePrompt(id, rating) {
+  const p = prompts.find(x => x.id === id);
+  if (!p) return;
+  p.rating = p.rating === rating ? 0 : rating;
+  save();
+  const starsEl = document.getElementById(`stars_${id}`);
+  if (starsEl) starsEl.innerHTML = renderStars(p, true);
+  updateCounts();
+}
+
+function previewStars(id, n) {
+  const starsEl = document.getElementById(`stars_${id}`);
+  if (!starsEl) return;
+  starsEl.querySelectorAll('.star').forEach((s, i) => {
+    s.classList.toggle('filled', i < n);
+  });
+}
+
+function resetStarPreview(id) {
+  const p = prompts.find(x => x.id === id);
+  if (!p) return;
+  const starsEl = document.getElementById(`stars_${id}`);
+  if (starsEl) starsEl.innerHTML = renderStars(p, true);
+}
+
+function toggleExpand(id) {
+  const el = document.getElementById(`body_${id}`);
+  if (el) el.classList.toggle('expanded');
+}
+
+// ─────────────────────────────────────────────
+// ADD / EDIT MODAL
+// ─────────────────────────────────────────────
+let formRating = 0;
+
+function buildFormStars() {
+  const container = document.getElementById('fStars');
+  if (!container) return;
+  let html = '';
+  for (let i = 1; i <= 5; i++) {
+    html += `<span class="star" id="fstar_${i}" onclick="setFormRating(${i})" onmouseover="previewFormStars(${i})" onmouseout="resetFormStars()">★</span>`;
+  }
+  container.innerHTML = html;
+}
+
+function setFormRating(n) {
+  formRating = n;
+  updateFormStars();
+}
+function previewFormStars(n) {
+  for (let i = 1; i <= 5; i++) {
+    const s = document.getElementById(`fstar_${i}`);
+    if (s) s.classList.toggle('filled', i <= n);
+  }
+}
+function resetFormStars() { updateFormStars(); }
+function updateFormStars() {
+  for (let i = 1; i <= 5; i++) {
+    const s = document.getElementById(`fstar_${i}`);
+    if (s) s.classList.toggle('filled', i <= formRating);
+  }
+}
+
+function openAddModal() {
+  editingId = null;
+  formRating = 0;
+  document.getElementById('modalTitle').textContent = 'Add Prompt';
+  document.getElementById('saveBtn').textContent = 'Save Prompt';
+  document.getElementById('fTitle').value = '';
+  document.getElementById('fCategory').value = 'Writing';
+  document.getElementById('fTagsInput').value = '';
+  document.getElementById('fPrompt').value = '';
+  updateFormStars();
+  openModal('promptModal');
+  setTimeout(() => document.getElementById('fTitle').focus(), 100);
+}
+
+function openEditModal(id) {
+  const p = prompts.find(x => x.id === id);
+  if (!p) return;
+  editingId = id;
+  formRating = p.rating || 0;
+  document.getElementById('modalTitle').textContent = 'Edit Prompt';
+  document.getElementById('saveBtn').textContent = 'Update Prompt';
+  document.getElementById('fTitle').value = p.title;
+  document.getElementById('fCategory').value = p.category;
+  document.getElementById('fTagsInput').value = p.tags.join(', ');
+  document.getElementById('fPrompt').value = p.prompt;
+  updateFormStars();
+  openModal('promptModal');
+}
+
+function savePrompt() {
+  const title = document.getElementById('fTitle').value.trim();
+  const category = document.getElementById('fCategory').value;
+  const tagsRaw = document.getElementById('fTagsInput').value;
+  const promptText = document.getElementById('fPrompt').value.trim();
+
+  if (!title) { showToast('Title is required', 'error'); document.getElementById('fTitle').focus(); return; }
+  if (!promptText) { showToast('Prompt text is required', 'error'); document.getElementById('fPrompt').focus(); return; }
+
+  const tags = tagsRaw.split(',').map(t => t.trim()).filter(Boolean);
+
+  if (editingId) {
+    const idx = prompts.findIndex(x => x.id === editingId);
+    if (idx !== -1) {
+      prompts[idx] = { ...prompts[idx], title, category, tags, prompt: promptText, rating: formRating };
+    }
+    showToast('Prompt updated!', 'success');
+  } else {
+    prompts.unshift({
+      id: `p${Date.now()}`,
+      title, category, tags, prompt: promptText,
+      rating: formRating, favorite: false, copies: 0, createdAt: Date.now()
+    });
+    showToast('Prompt added!', 'success');
+  }
+  save();
+  closeModal('promptModal');
+  buildFilterChips();
+  renderCards();
+  updateStats();
+  updateCounts();
+}
+
+// ─────────────────────────────────────────────
+// DELETE
+// ─────────────────────────────────────────────
+function confirmDelete(id) {
+  const p = prompts.find(x => x.id === id);
+  if (!p) return;
+  pendingDeleteId = id;
+  document.getElementById('confirmName').textContent = `"${p.title}"`;
+  document.getElementById('confirmDeleteBtn').onclick = () => deletePrompt(id);
+  openModal('confirmModal');
+}
+
+function deletePrompt(id) {
+  prompts = prompts.filter(x => x.id !== id);
+  save();
+  closeModal('confirmModal');
+  buildFilterChips();
+  renderCards();
+  updateStats();
+  updateCounts();
+  showToast('Prompt deleted', 'info');
+}
+
+// ─────────────────────────────────────────────
+// IMPORT / EXPORT
+// ─────────────────────────────────────────────
+function openImportExport() { openModal('ieModal'); }
+
+function exportJSON() {
+  const data = JSON.stringify(prompts, null, 2);
+  downloadJSON(data, 'ai-prompt-vault-export.json');
+  showToast(`Exported ${prompts.length} prompts`, 'success');
+}
+
+function exportFavorites() {
+  const favs = prompts.filter(p => p.favorite);
+  if (!favs.length) { showToast('No favorites to export', 'error'); return; }
+  downloadJSON(JSON.stringify(favs, null, 2), 'ai-prompt-vault-favorites.json');
+  showToast(`Exported ${favs.length} favorites`, 'success');
+}
+
+function downloadJSON(data, filename) {
+  const blob = new Blob([data], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function handleFileImport(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    document.getElementById('importText').value = ev.target.result;
+  };
+  reader.readAsText(file);
+}
+
+function importFromText() {
+  const raw = document.getElementById('importText').value.trim();
+  if (!raw) { showToast('No JSON provided', 'error'); return; }
+  let data;
+  try { data = JSON.parse(raw); } catch(e) { showToast('Invalid JSON', 'error'); return; }
+  if (!Array.isArray(data)) { showToast('JSON must be an array', 'error'); return; }
+
+  let added = 0;
+  data.forEach(item => {
+    if (!item.title || !item.prompt) return;
+    const exists = prompts.some(p => p.title === item.title && p.prompt === item.prompt);
+    if (!exists) {
+      prompts.unshift({
+        id: `p${Date.now()}_${Math.random().toString(36).slice(2)}`,
+        title: item.title || 'Untitled',
+        category: item.category || 'Writing',
+        tags: Array.isArray(item.tags) ? item.tags : [],
+        prompt: item.prompt,
+        rating: item.rating || 0,
+        favorite: item.favorite || false,
+        copies: item.copies || 0,
+        createdAt: item.createdAt || Date.now()
+      });
+      added++;
+    }
+  });
+
+  save();
+  closeModal('ieModal');
+  document.getElementById('importText').value = '';
+  document.getElementById('fileInput').value = '';
+  buildFilterChips();
+  renderCards();
+  updateStats();
+  updateCounts();
+  showToast(`Imported ${added} prompts (${data.length - added} duplicates skipped)`, 'success');
+}
+
+// drag & drop on import area
+const dropArea = document.getElementById('importDropArea');
+if (dropArea) {
+  dropArea.addEventListener('dragover', e => { e.preventDefault(); dropArea.classList.add('drag'); });
+  dropArea.addEventListener('dragleave', () => dropArea.classList.remove('drag'));
+  dropArea.addEventListener('drop', e => {
+    e.preventDefault();
+    dropArea.classList.remove('drag');
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = ev => { document.getElementById('importText').value = ev.target.result; };
+      reader.readAsText(file);
+    }
+  });
+}
+
+// ─────────────────────────────────────────────
+// STATS & COUNTS
+// ─────────────────────────────────────────────
+function updateStats() {
+  document.getElementById('stat-total').textContent = prompts.length;
+  document.getElementById('totalCount').textContent = prompts.length;
+  document.getElementById('stat-fav').textContent = prompts.filter(p => p.favorite).length;
+  document.getElementById('stat-copies').textContent = prompts.reduce((s,p) => s + (p.copies||0), 0);
+  // top category
+  const catCounts = {};
+  prompts.forEach(p => { catCounts[p.category] = (catCounts[p.category]||0) + 1; });
+  const top = Object.entries(catCounts).sort((a,b) => b[1]-a[1])[0];
+  document.getElementById('stat-topcat').textContent = top ? top[0] : '—';
+}
+
+function updateCounts() {
+  const categories = ['Writing','Coding','Marketing','SEO','Sales','Image Gen','Business'];
+  const el = id => document.getElementById(id);
+  if (el('cnt-all')) el('cnt-all').textContent = prompts.length;
+  if (el('cnt-fav')) el('cnt-fav').textContent = prompts.filter(p => p.favorite).length;
+  if (el('cnt-top')) el('cnt-top').textContent = prompts.filter(p => p.rating >= 4).length;
+  if (el('cnt-used')) el('cnt-used').textContent = prompts.filter(p => p.copies > 0).length;
+  categories.forEach(cat => {
+    const cntEl = el(`cnt-${cat}`);
+    if (cntEl) cntEl.textContent = prompts.filter(p => p.category === cat).length;
+  });
+}
+
+// ─────────────────────────────────────────────
+// MODAL HELPERS
+// ─────────────────────────────────────────────
+function openModal(id) {
+  document.getElementById(id).classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.add('hidden');
+  document.body.style.overflow = '';
+}
+function handleOverlayClick(e) {
+  if (e.target.classList.contains('overlay')) {
+    e.target.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+}
+
+// keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    ['promptModal','ieModal','confirmModal'].forEach(id => closeModal(id));
+  }
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('globalSearch').focus();
+    document.getElementById('globalSearch').select();
+  }
+  if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
+    e.preventDefault();
+    openAddModal();
+  }
+});
+
+// ─────────────────────────────────────────────
+// TOAST
+// ─────────────────────────────────────────────
+function showToast(msg, type = 'info') {
+  const icons = { success: '✅', error: '❌', info: 'ℹ️' };
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.innerHTML = `<span>${icons[type]}</span> <span>${msg}</span>`;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transition = 'opacity 0.3s';
+    setTimeout(() => container.removeChild(toast), 350);
+  }, 3000);
+}
+
+// ─────────────────────────────────────────────
+// UTILS
+// ─────────────────────────────────────────────
+function escHtml(str) {
+  const div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
+// ─────────────────────────────────────────────
+// SECTION TITLE
+// ─────────────────────────────────────────────
+const filterTitles = {
+  all: '📦 All Prompts',
+  favorites: '⭐ Favorites',
+  'top-rated': '🏆 Top Rated',
+  'most-used': '🔥 Most Used',
+  Writing: '✍️ Writing',
+  Coding: '💻 Coding',
+  Marketing: '📣 Marketing',
+  SEO: '🔎 SEO',
+  Sales: '💰 Sales',
+  'Image Gen': '🎨 Image Gen',
+  Business: '📊 Business',
+};
+
+const _origRenderCards = renderCards;
+window.renderCards = function() {
+  const titleEl = document.getElementById('sectionTitle');
+  if (titleEl) {
+    const base = filterTitles[currentFilter] || currentFilter;
+    titleEl.innerHTML = `${base} <span class="result-count" id="resultCount"></span>`;
+  }
+  _origRenderCards();
+};
+
+// ─────────────────────────────────────────────
+// BOOT
+// ─────────────────────────────────────────────
+init();
+</script>
+</body>
+</html>

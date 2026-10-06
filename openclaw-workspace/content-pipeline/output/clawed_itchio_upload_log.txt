@@ -1,0 +1,3 @@
+Upload of CLAWED demo to itch.io successful.
+
+Log saved to upload_log.txt

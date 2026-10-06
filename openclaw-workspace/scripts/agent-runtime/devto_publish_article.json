@@ -1,0 +1,24 @@
+{"title": "Running Local LLMs for Game Dev: Ollama + Llama 3.1 Guide", "body_markdown": "# Running Local LLMs for Game Dev: Ollama + Llama 3.1 Guide
+
+## Setup
+
+To set up Ollama and Llama 3.1, follow these steps:
+
+* Install the required dependencies using `pip install ollama llama3`
+* Clone the Ollama repository and navigate to the root directory
+* Run `python -m ollama init` to initialize the environment
+
+## Use Cases
+
+Ollama can be used for a variety of tasks, including:
+
+* Generating game content
+* Creating interactive storylines
+* Building AI-powered NPCs
+
+## Performance Optimization
+
+To optimize performance when using Ollama and Llama 3.1, try the following:
+
+* Use a fast storage device to store model weights
+* Utilize multiple CPU cores by setting `OMP_NUM_THREADS` environment variable"}

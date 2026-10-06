@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowDesk — Turn Your Inbox Into a Revenue Machine</title>
+  <meta name="description" content="FlowDesk automates your email workflow so you spend 80% less time in your inbox and 100% more time closing deals. Start free today." />
+  <meta property="og:title" content="FlowDesk — Turn Your Inbox Into a Revenue Machine" />
+  <meta property="og:description" content="Automate your email workflow. Close more deals. Start free." />
+  <meta property="og:type" content="website" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand: #6C63FF;
+      --brand-dark: #4B44CC;
+      --brand-light: #EEF0FF;
+      --text: #1A1A2E;
+      --muted: #6B7280;
+      --bg: #FFFFFF;
+      --border: #E5E7EB;
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 1.4rem; font-weight: 800; color: var(--brand); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.95rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .btn-nav {
+      background: var(--brand); color: #fff; border: none;
+      padding: 0.6rem 1.4rem; border-radius: 8px;
+      font-size: 0.95rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-nav:hover { background: var(--brand-dark); }
+
+    /* HERO */
+    .hero {
+      max-width: 900px; margin: 0 auto;
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--brand-light); color: var(--brand);
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em;
+      text-transform: uppercase; padding: 0.3rem 1rem;
+      border-radius: 100px; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 900; line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 span { color: var(--brand); }
+    .hero p {
+      font-size: 1.2rem; color: var(--muted);
+      max-width: 580px; margin: 0 auto 2.5rem;
+    }
+    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--brand); color: #fff; border: none;
+      padding: 0.9rem 2rem; border-radius: var(--radius);
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      text-decoration: none; transition: background 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--brand-dark); transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      border: 2px solid var(--border);
+      padding: 0.9rem 2rem; border-radius: var(--radius);
+      font-size: 1rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; transition: border-color 0.2s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--brand); color: var(--brand); }
+    .hero-meta {
+      margin-top: 2rem; font-size: 0.85rem; color: var(--muted);
+      display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;
+    }
+    .hero-meta span::before { content: "✓ "; color: #22C55E; font-weight: bold; }
+
+    /* SOCIAL PROOF BAR */
+    .social-bar {
+      background: var(--brand-light);
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    .social-bar p { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; font-weight: 500; }
+    .logos { display: flex; gap: 3rem; justify-content: center; align-items: center; flex-wrap: wrap; }
+    .logos span {
+      font-size: 1.1rem; font-weight: 800; color: var(--muted);
+      opacity: 0.5; letter-spacing: -0.02em;
+    }
+
+    /* FEATURES */
+    .section { padding: 6rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--brand);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900; line-height: 1.15;
+      letter-spacing: -0.02em; margin-bottom: 1rem;
+    }
+    .section-sub { font-size: 1.1rem; color: var(--muted); max-width: 540px; margin-bottom: 3.5rem; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .feature-card {
+      background: #FAFAFA;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: box-shadow 0.2s;
+    }
+    .feature-card:hover { box-shadow: 0 8px 32px rgba(108,99,255,0.1); }
+    .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .feature-card p { font-size: 0.95rem; color: var(--muted); }
+
+    /* STATS */
+    .stats { background: var(--text); color: #fff; padding: 5rem 2rem; }
+    .stats-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+    .stats-inner h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 3rem; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+    .stat-item .number { font-size: 3rem; font-weight: 900; color: var(--brand); line-height: 1; }
+    .stat-item .label { font-size: 0.95rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem; }
+
+    /* TESTIMONIALS */
+    .testimonials { padding: 6rem 2rem; background: var(--brand-light); }
+    .testimonials-inner { max-width: 1100px; margin: 0 auto; }
+    .testimonials h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; text-align: center; margin-bottom: 3rem; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .testimonial-card {
+      background: #fff; border-radius: var(--radius);
+      padding: 2rem; border: 1px solid var(--border);
+    }
+    .testimonial-card .quote { font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; color: var(--text); }
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+    .avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--brand); display: flex; align-items: center;
+      justify-content: center; color: #fff; font-weight: 700; font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .author-name { font-weight: 700; font-size: 0.9rem; }
+    .author-title { font-size: 0.8rem; color: var(--muted); }
+    .stars { color: #F59E0B; font-size: 0.9rem; margin-bottom: 1rem; }
+
+    /* PRICING */
+    .pricing { padding: 6rem 2rem; }
+    .pricing-inner { max-width: 960px; margin: 0 auto; text-align: center; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .pricing-card {
+      border: 2px solid var(--border); border-radius: var(--radius);
+      padding: 2.5rem 2rem; position: relative;
+    }
+    .pricing-card.featured {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 4px rgba(108,99,255,0.08);
+    }
+    .popular-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--brand); color: #fff;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em;
+      text-transform: uppercase; padding: 0.25rem 1rem; border-radius: 100px;
+    }
+    .plan-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--muted); }
+    .plan-price { font-size: 2.8rem; font-weight: 900; line-height: 1; margin-bottom: 0.25rem; }
+    .plan-price span { font-size: 1rem; font-weight: 400; color: var(--muted); }
+    .plan-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; }
+    .plan-features { list-style: none; text-align: left; margin-bottom: 2rem; }
+    .plan-features li {
+      padding: 0.4rem 0; font-size: 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .plan-features li::before { content: "✓  "; color: #22C55E; font-weight: bold; }
+    .btn-plan {
+      display: block; width: 100%; padding: 0.85rem;
+      border-radius: var(--radius); font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; text-decoration: none; text-align: center;
+      border: 2px solid var(--brand); transition: all 0.2s;
+    }
+    .btn-plan-outline { background: transparent; color: var(--brand); }
+    .btn-plan-outline:hover { background: var(--brand); color: #fff; }
+    .btn-plan-filled { background: var(--brand); color: #fff; }
+    .btn-plan-filled:hover { background: var(--brand-dark); }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      padding: 6rem 2rem; text-align: center; color: #fff;
+    }
+    .cta-section h2 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 1rem; }
+    .cta-section p { font-size: 1.1rem; opacity: 0.85; margin-bottom: 2.5rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .btn-cta {
+      background: #fff; color: var(--brand);
+      padding: 1rem 2.5rem; border-radius: var(--radius);
+      font-size: 1.1rem; font-weight: 800; text-decoration: none;
+      display: inline-block; transition: transform 0.1s;
+    }
+    .btn-cta:hover { transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: var(--text); color: rgba(255,255,255,0.5);
+      padding: 3rem 2rem; text-align: center;
+      font-size: 0.85rem;
+    }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: #fff; }
+    .footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+
+    @media (max-width: 640px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      .hero { padding: 4rem 1.5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">FlowDesk</a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+  </ul>
+  <a href="#pricing" class="btn-nav">Start Free Trial</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🚀 Now with GPT-4 Integration</div>
+  <h1>Turn Your Inbox Into a<br /><span>Revenue Machine</span></h1>
+  <p>FlowDesk automates email responses, lead follow-ups, and deal tracking so your team spends 80% less time in their inbox — and closes 3x more deals.</p>
+  <div class="hero-cta">
+    <a href="#pricing" class="btn-primary">Start Free — No Credit Card</a>
+    <a href="#features" class="btn-secondary">See How It Works →</a>
+  </div>
+  <div class="hero-meta">
+    <span>Free 14-day trial</span>
+    <span>Setup in 5 minutes</span>
+    <span>Cancel anytime</span>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<div class="social-bar">
+  <p>Trusted by 4,000+ sales teams at companies like</p>
+  <div class="logos">
+    <span>ACME Corp</span>
+    <span>Novex</span>
+    <span>PipelineIO</span>
+    <span>Stackr</span>
+    <span>GrowthOS</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-inner">
+    <div class="section-label">Features</div>
+    <h2 class="section-title">Everything your team needs.<br />Nothing they don't.</h2>
+    <p class="section-sub">FlowDesk handles the email busywork so your reps can focus on what actually closes deals.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>AI-Powered Reply Drafts</h3>
+        <p>FlowDesk reads incoming emails and drafts replies in your voice. One click to send — no rewriting needed.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔁</div>
+        <h3>Automated Follow-Up Sequences</h3>
+        <p>Set it and forget it. FlowDesk sends personalized follow-ups at the right time, every time. Never let a warm lead go cold.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Deal Pipeline Sync</h3>
+        <p>Every email thread automatically updates your CRM. Salesforce, HubSpot, Pipedrive — they all stay in sync without manual data entry.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Lead Scoring</h3>
+        <p>FlowDesk analyzes email signals to score leads 1-10. Your hottest prospects surface to the top before you've had your morning coffee.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>Meeting Summaries</h3>
+        <p>After every call, FlowDesk writes a summary with action items and sends it to everyone who was in the room. Zero effort recaps.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔐</div>
+        <h3>Enterprise-Grade Security</h3>
+        <p>SOC 2 Type II certified. End-to-end encryption. Your emails never train our models. GDPR and CCPA compliant.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <h2>The numbers speak for themselves</h2>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="number">80%</div>
+        <div class="label">Less time spent in inbox</div>
+      </div>
+      <div class="stat-item">
+        <div class="number">3.2x</div>
+        <div class="label">More deals closed per rep</div>
+      </div>
+      <div class="stat-item">
+        <div class="number">4,000+</div>
+        <div class="label">Teams using FlowDesk</div>
+      </div>
+      <div class="stat-item">
+        <div class="number">98%</div>
+        <div class="label">Customer retention rate</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-inner">
+    <h2>What our customers say</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"I used to spend 3 hours a day on email. FlowDesk cut that down to 40 minutes. My close rate went up 40% in the first month because I was actually talking to people instead of writing emails."</p>
+        <div class="testimonial-author">
+          <div class="avatar">MR</div>
+          <div>
+            <div class="author-name">Marcus Reynolds</div>
+            <div class="author-title">VP of Sales, Novex Technologies</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"The CRM sync alone is worth the price. No more 'did you update Salesforce?' conversations. Everything is just... there. My team hated CRM data entry. Now they don't have to do it."</p>
+        <div class="testimonial-author">
+          <div class="avatar">SL</div>
+          <div>
+            <div class="author-name">Sarah Liu</div>
+            <div class="author-title">Head of Revenue, Stackr Inc.</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Set up took 8 minutes. By the end of day one, FlowDesk had drafted 47 follow-up emails for me. I would have spent the whole day writing those. ROI was instant."</p>
+        <div class="testimonial-author">
+          <div class="avatar">DJ</div>
+          <div>
+            <div class="author-name">Derek Johnson</div>
+            <div class="author-title">Founder, GrowthOS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <div class="section-label" style="text-align:center;">Pricing</div>
+    <h2 class="section-title">Simple, transparent pricing</h2>
+    <p style="color:var(--muted);">Start free. No credit card required. Cancel anytime.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">$29<span>/mo</span></div>
+        <div class="plan-desc">For solo reps and freelancers</div>
+        <ul class="plan-features">
+          <li>1 connected inbox</li>
+          <li>AI reply drafts (100/mo)</li>
+          <li>Basic follow-up sequences</li>
+          <li>Gmail + Outlook support</li>
+          <li>Email support</li>
+        </ul>
+        <a href="#" class="btn-plan btn-plan-outline">Start Free Trial</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="popular-badge">Most Popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$79<span>/mo</span></div>
+        <div class="plan-desc">For growing sales teams</div>
+        <ul class="plan-features">
+          <li>5 connected inboxes</li>
+          <li>Unlimited AI reply drafts</li>
+          <li>Advanced sequences + A/B test</li>
+          <li>CRM sync (HubSpot, Salesforce)</li>
+          <li>Lead scoring</li>
+          <li>Meeting summaries</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="#" class="btn-plan btn-plan-filled">Start Free Trial</a>
+      </div>
+      <div class="pricing-card">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price">$199<span>/mo</span></div>
+        <div class="plan-desc">For large revenue teams</div>
+        <ul class="plan-features">
+          <li>Unlimited inboxes</li>
+          <li>Custom AI model fine-tuning</li>
+          <li>SSO + advanced security</li>
+          <li>Dedicated account manager</li>
+          <li>Custom integrations</li>
+          <li>SLA guarantee</li>
+          <li>24/7 phone support</li>
+        </ul>
+        <a href="#" class="btn-plan btn-plan-outline">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section">
+  <h2>Start closing more deals today.</h2>
+  <p>Join 4,000+ sales teams who spend less time writing emails and more time winning business.</p>
+  <a href="#" class="btn-cta">Get Started Free →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">Security</a>
+    <a href="#">Blog</a>
+    <a href="#">Contact</a>
+  </div>
+  <p>© 2025 FlowDesk Inc. · Made with ❤️ in Austin, TX</p>
+</footer>
+
+</body>
+</html>

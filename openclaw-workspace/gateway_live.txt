@@ -1,0 +1,1147 @@
+[90m2026-03-25T20:32:20.815-05:00[39m [35m[canvas][39m [36mhost mounted at http://127.0.0.1:18789/__openclaw__/canvas/ (root C:\Users\Gierl\.openclaw\canvas)[39m
+[90m2026-03-25T20:32:21.445-05:00[39m [36m[heartbeat][39m [36mstarted[39m
+[90m2026-03-25T20:32:21.449-05:00[39m [32m[health-monitor][39m [36mstarted (interval: 300s, startup-grace: 60s, channel-connect-grace: 120s)[39m
+[90m2026-03-25T20:32:21.453-05:00[39m [36m[gateway][39m [36magent model: max-router/router:auto[39m
+[90m2026-03-25T20:32:21.456-05:00[39m [36m[gateway][39m [36mlistening on ws://127.0.0.1:18789, ws://[::1]:18789 (PID 11288)[39m
+[90m2026-03-25T20:32:21.459-05:00[39m [36m[gateway][39m [36mlog file: C:\Users\Gierl\AppData\Local\Temp\openclaw\openclaw-2026-03-25.log[39m
+[90m2026-03-25T20:32:21.464-05:00[39m [34m[telegram][39m [36mautoSelectFamily=true (default-node22)[39m
+[90m2026-03-25T20:32:21.466-05:00[39m [34m[telegram][39m [36mdnsResultOrder=ipv4first (default-node22)[39m
+[90m2026-03-25T20:32:21.503-05:00[39m [36m[browser/server][39m [36mBrowser control listening on http://127.0.0.1:18791/ (auth=token)[39m
+[90m2026-03-25T20:32:21.848-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: boot-md -> gateway:startup[39m
+[90m2026-03-25T20:32:21.923-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: bootstrap-extra-files -> agent:bootstrap[39m
+[90m2026-03-25T20:32:21.927-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: command-logger -> command[39m
+[90m2026-03-25T20:32:21.932-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: session-memory -> command:new, command:reset[39m
+[90m2026-03-25T20:32:21.935-05:00[39m [33m[hooks][39m [36mloaded 4 internal hook handlers[39m
+2026-03-25T20:32:21.945-05:00 [34m[telegram][39m [36mautoSelectFamily=true (default-node22)[39m
+2026-03-25T20:32:21.950-05:00 [34m[telegram][39m [36mdnsResultOrder=ipv4first (default-node22)[39m
+2026-03-25T20:32:22.294-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T20:32:22.323-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-25T20:32:22.546-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-25T20:32:22.547-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-25T20:32:22.771-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-25T20:32:22.773-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 223ms gateway=missing[39m
+[90m2026-03-25T20:32:23.030-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 480ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-25T20:32:23.134-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T20:32:24.186-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-25T20:32:24.192-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1642ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T20:32:24.194-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1645ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-25T20:32:24.200-05:00[39m [34m[telegram][39m [36m[default] starting provider (@MAX_MAX_MAX_BOT_BOT)[39m
+2026-03-25T20:32:24.218-05:00 [34m[telegram][39m [36mautoSelectFamily=true (default-node22)[39m
+2026-03-25T20:32:24.220-05:00 [34m[telegram][39m [36mdnsResultOrder=ipv4first (default-node22)[39m
+2026-03-25T20:32:24.296-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T20:32:24.438-05:00[39m [34m[telegram][39m [36mlimits bots to 100 commands. 179 configured; registering first 100. Use channels.telegram.commands.native: false to disable, or reduce plugin/skill/custom commands.[39m
+[90m2026-03-25T20:32:24.649-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 2099ms WebSocket connection opened[39m
+[90m2026-03-25T20:32:26.151-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 3600ms path=/applications/1485367231427903579/commands requestMs=1955[39m
+[90m2026-03-25T20:32:26.153-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 3603ms gatewayConnected=true reconnectAttempts=0[39m
+[90m2026-03-25T20:32:26.154-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 3605ms gatewayConnected=true reconnectAttempts=0[39m
+[90m2026-03-25T20:32:26.254-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 3705ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=true reconnectAttempts=0[39m
+[90m2026-03-25T20:32:26.297-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-25T21:07:21.761-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: stale-socket)[39m
+[90m2026-03-25T21:07:22.170-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-25T21:07:22.172-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-25T21:07:22.330-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-25T21:07:22.331-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 157ms gateway=missing[39m
+[90m2026-03-25T21:07:22.514-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 339ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-25T21:07:22.663-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T21:07:23.369-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-25T21:07:23.373-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1198ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:07:23.375-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1200ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-25T21:07:23.721-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1546ms WebSocket connection opened[39m
+[90m2026-03-25T21:07:23.747-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1572ms path=/applications/1485367231427903579/commands requestMs=372[39m
+[90m2026-03-25T21:07:23.748-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1574ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:07:23.750-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1576ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:07:23.855-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1680ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:07:23.857-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+2026-03-25T21:13:25.899-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-25T21:13:26.281-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-25T21:13:26.820-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T21:13:26.853-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-25T21:13:28.883-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T21:13:28.897-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-25T21:13:47.961-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-25T21:13:48.507-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T21:13:48.521-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-25T21:15:26.505-05:00[39m [34m[telegram][39m [31mPolling stall detected (no getUpdates for 98.66s); forcing restart.[39m
+2026-03-25T21:15:26.517-05:00 typing TTL reached (2m); stopping typing indicator
+2026-03-25T21:15:28.153-05:00 [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+2026-03-25T21:15:30.777-05:00 [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+2026-03-25T21:15:33.908-05:00 [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+2026-03-25T21:15:36.790-05:00 [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+2026-03-25T21:15:38.579-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=441bd671-107b-41de-b251-c6b649d8ab14 isError=true model=router:auto provider=max-router error=Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.[39m
+2026-03-25T21:15:39.931-05:00 [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-25T21:15:41.521-05:00[39m [34m[telegram][39m [31mPolling runner stop timed out after 15s; forcing restart cycle.[39m
+[90m2026-03-25T21:15:41.525-05:00[39m [34m[telegram][39m [31mpolling runner stopped (polling stall detected); restarting in 2.47s.[39m
+2026-03-25T21:15:42.795-05:00 [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+2026-03-25T21:15:45.912-05:00 [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+2026-03-25T21:15:48.131-05:00 typing TTL reached (2m); stopping typing indicator
+2026-03-25T21:15:59.024-05:00 [34m[telegram][39m [36mautoSelectFamily=true (default-node22)[39m
+2026-03-25T21:15:59.027-05:00 [34m[telegram][39m [36mdnsResultOrder=ipv4first (default-node22)[39m
+2026-03-25T21:15:59.155-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T21:15:59.415-05:00[39m [34m[telegram][39m [36mlimits bots to 100 commands. 179 configured; registering first 100. Use channels.telegram.commands.native: false to disable, or reduce plugin/skill/custom commands.[39m
+2026-03-25T21:16:02.394-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-25T21:16:08.730-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=4d45c6ab-586e-4c1d-b071-466d188ce7da isError=true model=router:auto provider=max-router error=Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.[39m
+2026-03-25T21:16:08.740-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-25T21:16:08.801-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T21:16:08.815-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-25T21:16:08.838-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+[90m2026-03-25T21:16:09.879-05:00[39m [34m[telegram][39m [31msendMessage failed: Network request for 'sendMessage' failed![39m
+[90m2026-03-25T21:16:09.882-05:00[39m [34m[telegram][39m [31mfinal reply failed: HttpError: Network request for 'sendMessage' failed![39m
+[90m2026-03-25T21:16:10.869-05:00[39m [34m[telegram][39m [31msendMessage failed: Network request for 'sendMessage' failed![39m
+[90m2026-03-25T21:16:10.871-05:00[39m [34m[telegram][39m [31mmessage processing failed: HttpError: Network request for 'sendMessage' failed![39m
+2026-03-25T21:16:11.983-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-25T21:16:13.746-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-25T21:16:38.590-05:00 [33m[agent/embedded][39m [33mcompaction retry aggregate timeout (60000ms): proceeding with pre-compaction state runId=441bd671-107b-41de-b251-c6b649d8ab14 sessionId=226d09c3-9e42-44a2-b6d6-22eee9f29f45[39m
+2026-03-25T21:16:38.593-05:00 [33m[agent/embedded][39m [33musing current snapshot: timed out during compaction runId=441bd671-107b-41de-b251-c6b649d8ab14 sessionId=226d09c3-9e42-44a2-b6d6-22eee9f29f45[39m
+[90m2026-03-25T21:17:21.844-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-25T21:17:22.387-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-25T21:17:22.389-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-25T21:17:22.563-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-25T21:17:22.565-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 173ms gateway=missing[39m
+[90m2026-03-25T21:17:22.796-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 404ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-25T21:17:22.914-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T21:17:23.680-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-25T21:17:23.683-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1292ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:17:23.685-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1294ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-25T21:17:24.003-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1610ms WebSocket connection opened[39m
+[90m2026-03-25T21:17:24.035-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1643ms path=/applications/1485367231427903579/commands requestMs=349[39m
+[90m2026-03-25T21:17:24.037-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1645ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:17:24.038-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1647ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:17:24.149-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1757ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:17:24.152-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+2026-03-25T21:18:16.966-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-25T21:18:17.663-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T21:18:17.682-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-25T21:18:42.503-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=e67bcd8b-0c84-4273-a191-63bcd058c7a6 isError=true model=router:auto provider=max-router error=Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.[39m
+2026-03-25T21:19:42.524-05:00 [33m[agent/embedded][39m [33mcompaction retry aggregate timeout (60000ms): proceeding with pre-compaction state runId=e67bcd8b-0c84-4273-a191-63bcd058c7a6 sessionId=154dfc91-4400-4a43-b889-6ba10e0f1ad2[39m
+2026-03-25T21:19:42.530-05:00 [33m[agent/embedded][39m [33musing current snapshot: timed out during compaction runId=e67bcd8b-0c84-4273-a191-63bcd058c7a6 sessionId=154dfc91-4400-4a43-b889-6ba10e0f1ad2[39m
+2026-03-25T21:20:12.543-05:00 [33m[agent/embedded][39m [33membedded run failover decision: runId=e67bcd8b-0c84-4273-a191-63bcd058c7a6 stage=assistant decision=fallback_model reason=rate_limit provider=max-router/router:auto profile=-[39m
+2026-03-25T21:20:12.547-05:00 [31m[diagnostic][39m [31mlane task error: lane=main durationMs=243764 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-25T21:20:12.551-05:00 [31m[diagnostic][39m [31mlane task error: lane=session:agent:main:telegram:direct:7615833146 durationMs=243771 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-25T21:20:12.553-05:00 Followup agent failed before reply: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.
+2026-03-25T21:20:12.569-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T21:20:12.580-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-25T21:20:17.285-05:00 typing TTL reached (2m); stopping typing indicator
+2026-03-25T21:20:51.462-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=a9916a44-5815-4caf-98f2-33451464cf57 isError=true model=router:auto provider=max-router error=Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.[39m
+2026-03-25T21:20:51.471-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-25T21:20:51.481-05:00 [33m[agent/embedded][39m [33membedded run failover decision: runId=a9916a44-5815-4caf-98f2-33451464cf57 stage=assistant decision=fallback_model reason=rate_limit provider=max-router/router:auto profile=-[39m
+2026-03-25T21:20:51.485-05:00 [31m[diagnostic][39m [31mlane task error: lane=main durationMs=153830 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-25T21:20:51.489-05:00 [31m[diagnostic][39m [31mlane task error: lane=session:agent:main:discord:channel:1484731361272139838 durationMs=153837 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-25T21:20:51.491-05:00 Embedded agent failed before reply: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.
+2026-03-25T21:22:46.330-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=bd11a6fb-fe27-4ef9-a31b-b2b49d014797 isError=true model=router:auto provider=max-router error=Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.[39m
+2026-03-25T21:22:46.336-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-25T21:22:46.343-05:00 [33m[agent/embedded][39m [33membedded run failover decision: runId=bd11a6fb-fe27-4ef9-a31b-b2b49d014797 stage=assistant decision=fallback_model reason=rate_limit provider=max-router/router:auto profile=-[39m
+2026-03-25T21:22:46.346-05:00 [31m[diagnostic][39m [31mlane task error: lane=main durationMs=153780 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-25T21:22:46.349-05:00 [31m[diagnostic][39m [31mlane task error: lane=session:agent:main:telegram:direct:7615833146 durationMs=153784 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-25T21:22:46.350-05:00 Followup agent failed before reply: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.
+2026-03-25T21:24:17.646-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-25T21:24:18.234-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T21:24:18.245-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-25T21:24:18.259-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-25T21:24:42.074-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-25T21:24:42.757-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T21:24:42.770-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-25T21:24:42.791-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-25T21:26:17.881-05:00 typing TTL reached (2m); stopping typing indicator
+2026-03-25T21:26:42.361-05:00 typing TTL reached (2m); stopping typing indicator
+2026-03-25T21:27:16.424-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=7f8cfc61-0aec-4e49-8d92-24aa93f3e9d9 isError=true model=router:auto provider=max-router error=Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.[39m
+2026-03-25T21:27:16.430-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-25T21:27:16.438-05:00 [33m[agent/embedded][39m [33membedded run failover decision: runId=7f8cfc61-0aec-4e49-8d92-24aa93f3e9d9 stage=assistant decision=fallback_model reason=rate_limit provider=max-router/router:auto profile=-[39m
+2026-03-25T21:27:16.441-05:00 [31m[diagnostic][39m [31mlane task error: lane=main durationMs=153690 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-25T21:27:16.444-05:00 [31m[diagnostic][39m [31mlane task error: lane=session:agent:main:telegram:direct:7615833146 durationMs=153695 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-25T21:27:16.455-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T21:27:16.466-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-25T21:27:16.485-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+[90m2026-03-25T21:27:21.877-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-25T21:27:22.249-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-25T21:27:22.251-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-25T21:27:22.389-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-25T21:27:22.391-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 138ms gateway=missing[39m
+[90m2026-03-25T21:27:22.700-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 447ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-25T21:27:22.877-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T21:27:23.780-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-25T21:27:23.784-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1531ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:27:23.786-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1533ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-25T21:27:24.071-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1817ms WebSocket connection opened[39m
+[90m2026-03-25T21:27:24.121-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1867ms path=/applications/1485367231427903579/commands requestMs=334[39m
+[90m2026-03-25T21:27:24.124-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1870ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:27:24.126-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1873ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:27:24.247-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1993ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:27:24.250-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+2026-03-25T21:29:02.722-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-25T21:29:03.462-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T21:29:03.474-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-25T21:29:50.176-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=50915bb2-9d6b-41ba-9f55-2b6c796a7348 isError=true model=router:auto provider=max-router error=Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.[39m
+2026-03-25T21:29:50.184-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-25T21:29:50.194-05:00 [33m[agent/embedded][39m [33membedded run failover decision: runId=50915bb2-9d6b-41ba-9f55-2b6c796a7348 stage=assistant decision=fallback_model reason=rate_limit provider=max-router/router:auto profile=-[39m
+2026-03-25T21:29:50.198-05:00 [31m[diagnostic][39m [31mlane task error: lane=main durationMs=153746 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-25T21:29:50.201-05:00 [31m[diagnostic][39m [31mlane task error: lane=session:agent:main:telegram:direct:7615833146 durationMs=153750 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-25T21:29:50.203-05:00 Embedded agent failed before reply: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.
+2026-03-25T21:29:52.833-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-25T21:31:03.011-05:00 typing TTL reached (2m); stopping typing indicator
+2026-03-25T21:31:37.626-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=cb4de5cd-79f7-4ff3-bbe3-532560996702 isError=true model=router:auto provider=max-router error=Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.[39m
+2026-03-25T21:31:37.634-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-25T21:31:38.892-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-25T21:31:39.461-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T21:31:39.470-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-25T21:31:39.485-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-25T21:33:39.178-05:00 typing TTL reached (2m); stopping typing indicator
+[90m2026-03-25T21:34:27.433-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T21:34:28.012-05:00[39m [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+[90m2026-03-25T21:34:28.052-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-25T21:37:21.993-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-25T21:37:22.457-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-25T21:37:22.459-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-25T21:37:22.587-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-25T21:37:22.589-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 128ms gateway=missing[39m
+[90m2026-03-25T21:37:23.495-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 1035ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-25T21:37:23.587-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T21:37:24.214-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-25T21:37:24.217-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1757ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:37:24.219-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1758ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-25T21:37:24.537-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 2076ms path=/applications/1485367231427903579/commands requestMs=318[39m
+[90m2026-03-25T21:37:24.538-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 2078ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:37:24.540-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 2080ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:37:24.542-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 2081ms WebSocket connection opened[39m
+[90m2026-03-25T21:37:24.651-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 2190ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:37:24.653-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-25T21:47:22.041-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-25T21:47:22.453-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-25T21:47:22.456-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-25T21:47:22.605-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-25T21:47:22.606-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 149ms gateway=missing[39m
+[90m2026-03-25T21:47:22.840-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 381ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-25T21:47:22.940-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T21:47:23.560-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-25T21:47:23.563-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1106ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:47:23.565-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1108ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-25T21:47:23.852-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1394ms path=/applications/1485367231427903579/commands requestMs=286[39m
+[90m2026-03-25T21:47:23.853-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1396ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:47:23.855-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1398ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:47:23.992-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1534ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T21:47:23.994-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-25T22:22:22.423-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: stale-socket)[39m
+[90m2026-03-25T22:22:23.075-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-25T22:22:23.077-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-25T22:22:23.413-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-25T22:22:23.415-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 336ms gateway=missing[39m
+[90m2026-03-25T22:22:23.683-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 604ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-25T22:22:23.777-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T22:22:24.400-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-25T22:22:24.403-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1325ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T22:22:24.405-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1327ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-25T22:22:24.957-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1879ms path=/applications/1485367231427903579/commands requestMs=552[39m
+[90m2026-03-25T22:22:24.959-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1881ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T22:22:24.961-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1882ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T22:22:25.218-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 2139ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T22:22:25.220-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-25T22:34:27.208-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T22:34:27.511-05:00[39m [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+[90m2026-03-25T22:34:27.522-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-25T22:57:22.677-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: stale-socket)[39m
+[90m2026-03-25T22:57:23.469-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-25T22:57:23.470-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-25T22:57:23.600-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-25T22:57:23.602-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 131ms gateway=missing[39m
+[90m2026-03-25T22:57:23.847-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 376ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-25T22:57:23.938-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T22:57:24.565-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-25T22:57:24.567-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1096ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T22:57:24.569-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1098ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-25T22:57:24.899-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1427ms WebSocket connection opened[39m
+[90m2026-03-25T22:57:25.017-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1546ms path=/applications/1485367231427903579/commands requestMs=448[39m
+[90m2026-03-25T22:57:25.019-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1548ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T22:57:25.020-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1549ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T22:57:25.146-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1674ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=true reconnectAttempts=0[39m
+[90m2026-03-25T22:57:25.147-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+2026-03-25T23:06:30.964-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-25T23:06:31.619-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T23:06:31.633-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-25T23:06:31.653-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-25T23:08:31.242-05:00 typing TTL reached (2m); stopping typing indicator
+2026-03-25T23:09:05.125-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=8ec726c3-0973-45a0-a7d5-ceedab947d13 isError=true model=router:auto provider=max-router error=Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.[39m
+2026-03-25T23:09:05.130-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-25T23:09:05.137-05:00 [33m[agent/embedded][39m [33membedded run failover decision: runId=8ec726c3-0973-45a0-a7d5-ceedab947d13 stage=assistant decision=fallback_model reason=rate_limit provider=max-router/router:auto profile=-[39m
+2026-03-25T23:09:05.140-05:00 [31m[diagnostic][39m [31mlane task error: lane=main durationMs=153528 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-25T23:09:05.143-05:00 [31m[diagnostic][39m [31mlane task error: lane=session:agent:main:telegram:direct:7615833146 durationMs=153533 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-25T23:09:05.153-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T23:09:05.161-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-25T23:09:05.176-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+[90m2026-03-25T23:32:22.958-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: stale-socket)[39m
+[90m2026-03-25T23:32:23.330-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-25T23:32:23.332-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-25T23:32:23.507-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-25T23:32:23.509-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 176ms gateway=missing[39m
+[90m2026-03-25T23:32:23.712-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 378ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-25T23:32:23.820-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T23:32:24.503-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-25T23:32:24.506-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1172ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T23:32:24.507-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1174ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-25T23:32:24.820-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1486ms WebSocket connection opened[39m
+[90m2026-03-25T23:32:24.855-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1521ms path=/applications/1485367231427903579/commands requestMs=347[39m
+[90m2026-03-25T23:32:24.857-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1523ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T23:32:24.858-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1525ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T23:32:25.036-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1702ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T23:32:25.037-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-25T23:34:27.218-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T23:34:27.530-05:00[39m [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+[90m2026-03-25T23:34:27.553-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-25T23:42:23.038-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-25T23:42:23.390-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-25T23:42:23.391-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-25T23:42:23.506-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-25T23:42:23.509-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 115ms gateway=missing[39m
+[90m2026-03-25T23:42:23.724-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 331ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-25T23:42:23.826-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T23:42:24.477-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-25T23:42:24.480-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1088ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T23:42:24.482-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1089ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-25T23:42:24.792-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1399ms path=/applications/1485367231427903579/commands requestMs=310[39m
+[90m2026-03-25T23:42:24.794-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1402ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T23:42:24.796-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1403ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T23:42:24.847-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1454ms WebSocket connection opened[39m
+[90m2026-03-25T23:42:24.918-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1525ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T23:42:24.920-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+2026-03-25T23:50:02.044-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-25T23:50:02.690-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T23:50:02.701-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-25T23:50:25.954-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-25T23:50:26.386-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T23:50:26.396-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-25T23:52:02.325-05:00 typing TTL reached (2m); stopping typing indicator
+[90m2026-03-25T23:52:23.104-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-25T23:52:23.627-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-25T23:52:23.629-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-25T23:52:23.772-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-25T23:52:23.774-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 144ms gateway=missing[39m
+[90m2026-03-25T23:52:24.039-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 408ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-25T23:52:24.319-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T23:52:25.256-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-25T23:52:25.260-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1629ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T23:52:25.263-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1631ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-25T23:52:25.546-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1915ms WebSocket connection opened[39m
+[90m2026-03-25T23:52:25.652-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 2021ms path=/applications/1485367231427903579/commands requestMs=390[39m
+[90m2026-03-25T23:52:25.654-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 2023ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T23:52:25.656-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 2025ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T23:52:25.749-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 2117ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T23:52:25.751-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+2026-03-25T23:52:36.436-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=537a768f-076c-4686-9a38-541923bc3030 isError=true model=router:auto provider=max-router error=Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.[39m
+2026-03-25T23:52:36.440-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-25T23:52:36.473-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T23:52:36.483-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-25T23:52:36.498-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+[90m2026-03-25T23:53:23.106-05:00[39m [34m[telegram][39m [36msendMessage ok chat=7615833146 message=1019[39m
+[90m2026-03-26T00:02:23.190-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T00:02:23.642-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T00:02:23.644-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T00:02:23.818-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T00:02:23.821-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 175ms gateway=missing[39m
+[90m2026-03-26T00:02:24.128-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 481ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T00:02:24.234-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T00:02:24.925-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T00:02:24.928-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1282ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T00:02:24.930-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1284ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T00:02:25.236-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1590ms WebSocket connection opened[39m
+[90m2026-03-26T00:02:25.346-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1700ms path=/applications/1485367231427903579/commands requestMs=416[39m
+[90m2026-03-26T00:02:25.349-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1703ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T00:02:25.350-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1705ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T00:02:25.474-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1828ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T00:02:25.476-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T00:12:23.338-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T00:12:23.851-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T00:12:23.854-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T00:12:24.048-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T00:12:24.052-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 193ms gateway=missing[39m
+[90m2026-03-26T00:12:24.325-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 467ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T00:12:24.539-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T00:12:25.654-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T00:12:25.681-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1823ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T00:12:25.685-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1828ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T00:12:25.952-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 2094ms path=/applications/1485367231427903579/commands requestMs=267[39m
+[90m2026-03-26T00:12:25.960-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 2102ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T00:12:25.962-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 2105ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T00:12:26.002-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 2145ms WebSocket connection opened[39m
+[90m2026-03-26T00:12:26.087-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 2229ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T00:12:26.090-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T00:20:06.177-05:00[39m [34m[reload][39m [36mconfig change detected; evaluating reload (agents.defaults.compaction.mode, agents.defaults.contextPruning, agents.defaults.heartbeat, agents.list, talk)[39m
+[90m2026-03-26T00:20:06.206-05:00[39m [34m[reload][39m [36mconfig hot reload applied (agents.defaults.heartbeat)[39m
+[90m2026-03-26T00:20:06.333-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T00:20:06.800-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T00:22:23.320-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T00:22:23.804-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T00:22:23.807-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T00:22:23.968-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T00:22:23.970-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 161ms gateway=missing[39m
+[90m2026-03-26T00:22:24.173-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 365ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T00:22:24.284-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T00:22:25.063-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T00:22:25.067-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1258ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T00:22:25.069-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1261ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T00:22:25.519-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1710ms WebSocket connection opened[39m
+[90m2026-03-26T00:22:25.594-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1785ms path=/applications/1485367231427903579/commands requestMs=524[39m
+[90m2026-03-26T00:22:25.596-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1788ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T00:22:25.598-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1790ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T00:22:25.732-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1923ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=true reconnectAttempts=0[39m
+[90m2026-03-26T00:22:25.735-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+2026-03-26T00:45:44.960-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-26T00:46:47.046-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-26T00:46:47.583-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-26T00:46:47.603-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-26T00:46:51.084-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=b0a22801-b5f5-4e84-ad2e-02bc494ba8af isError=true model=router:auto provider=max-router error=Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.[39m
+2026-03-26T00:46:51.089-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-26T00:46:51.124-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-26T00:46:51.132-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-26T00:46:51.145-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-26T00:46:54.445-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=c01626eb-c38e-4921-bd9b-dad5eb33a584 isError=true model=router:auto provider=max-router error=Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.[39m
+2026-03-26T00:46:54.450-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+[90m2026-03-26T00:46:59.745-05:00[39m [34m[telegram][39m [36msendMessage ok chat=7615833146 message=1024[39m
+2026-03-26T00:47:03.321-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+2026-03-26T00:47:03.870-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-26T00:47:03.878-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-26T00:47:03.891-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-26T00:47:07.438-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=b1fb4330-43d1-42e1-aae0-e867f3873f5f isError=true model=router:auto provider=max-router error=Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.[39m
+2026-03-26T00:47:07.442-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-26T00:47:07.449-05:00 [33m[agent/embedded][39m [33membedded run failover decision: runId=b1fb4330-43d1-42e1-aae0-e867f3873f5f stage=assistant decision=fallback_model reason=rate_limit provider=max-router/router:auto profile=-[39m
+2026-03-26T00:47:07.452-05:00 [31m[diagnostic][39m [31mlane task error: lane=main durationMs=3585 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-26T00:47:07.455-05:00 [31m[diagnostic][39m [31mlane task error: lane=session:agent:main:telegram:direct:7615833146 durationMs=3589 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-26T00:47:07.463-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-26T00:47:07.472-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-26T00:47:07.485-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-26T00:47:10.701-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=fc589797-c57d-4ad6-9ea7-cbde0b72900f isError=true model=router:auto provider=max-router error=Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.[39m
+2026-03-26T00:47:10.705-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-26T00:47:10.711-05:00 [33m[agent/embedded][39m [33membedded run failover decision: runId=fc589797-c57d-4ad6-9ea7-cbde0b72900f stage=assistant decision=fallback_model reason=rate_limit provider=max-router/router:auto profile=-[39m
+2026-03-26T00:47:10.714-05:00 [31m[diagnostic][39m [31mlane task error: lane=main durationMs=3253 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-26T00:47:10.717-05:00 [31m[diagnostic][39m [31mlane task error: lane=session:agent:main:telegram:direct:7615833146 durationMs=3258 error="FailoverError: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."[39m
+2026-03-26T00:47:10.720-05:00 Embedded agent failed before reply: Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model.
+[90m2026-03-26T00:50:06.324-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T00:50:06.480-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T00:57:23.596-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: stale-socket)[39m
+[90m2026-03-26T00:57:24.014-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T00:57:24.016-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T00:57:24.135-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T00:57:24.136-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 119ms gateway=missing[39m
+[90m2026-03-26T00:57:24.333-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 315ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T00:57:24.410-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T00:57:24.941-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T00:57:24.944-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 926ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T00:57:24.945-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 928ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T00:57:25.254-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1236ms path=/applications/1485367231427903579/commands requestMs=308[39m
+[90m2026-03-26T00:57:25.255-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1238ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T00:57:25.257-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1240ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T00:57:25.268-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1251ms WebSocket connection opened[39m
+[90m2026-03-26T00:57:25.372-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1354ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T00:57:25.373-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T01:07:23.694-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T01:07:24.062-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T01:07:24.064-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T01:07:24.772-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T01:07:24.773-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 708ms gateway=missing[39m
+[90m2026-03-26T01:07:24.984-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 918ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T01:07:25.055-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T01:07:25.582-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T01:07:25.585-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1519ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T01:07:25.586-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1521ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T01:07:25.822-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1756ms path=/applications/1485367231427903579/commands requestMs=235[39m
+[90m2026-03-26T01:07:25.824-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1758ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T01:07:25.825-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1760ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T01:07:25.871-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1806ms WebSocket connection opened[39m
+[90m2026-03-26T01:07:25.930-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1865ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T01:07:25.932-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T01:17:23.773-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T01:17:24.140-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T01:17:24.142-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T01:17:24.295-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T01:17:24.296-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 152ms gateway=missing[39m
+[90m2026-03-26T01:17:24.486-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 341ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T01:17:24.559-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T01:17:25.076-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T01:17:25.079-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 934ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T01:17:25.080-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 936ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T01:17:25.355-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1210ms path=/applications/1485367231427903579/commands requestMs=274[39m
+[90m2026-03-26T01:17:25.357-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1212ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T01:17:25.359-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1214ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T01:17:25.386-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1241ms WebSocket connection opened[39m
+[90m2026-03-26T01:17:25.456-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1311ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T01:17:25.458-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T01:20:06.344-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T01:20:06.495-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T01:27:23.849-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T01:27:24.309-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T01:27:24.311-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T01:27:24.438-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T01:27:24.440-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 127ms gateway=missing[39m
+[90m2026-03-26T01:27:24.603-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 289ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T01:27:24.674-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T01:27:25.232-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T01:27:25.235-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 922ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T01:27:25.236-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 924ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T01:27:25.557-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1245ms WebSocket connection opened[39m
+[90m2026-03-26T01:27:25.659-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1346ms path=/applications/1485367231427903579/commands requestMs=422[39m
+[90m2026-03-26T01:27:25.661-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1348ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T01:27:25.662-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1350ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T01:27:25.787-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1475ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T01:27:25.789-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T01:37:23.912-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T01:37:24.306-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T01:37:24.308-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T01:37:24.475-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T01:37:24.477-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 167ms gateway=missing[39m
+[90m2026-03-26T01:37:24.685-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 375ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T01:37:24.758-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T01:37:25.285-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T01:37:25.288-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 978ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T01:37:25.289-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 980ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T01:37:25.647-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1337ms WebSocket connection opened[39m
+[90m2026-03-26T01:37:25.670-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1360ms path=/applications/1485367231427903579/commands requestMs=380[39m
+[90m2026-03-26T01:37:25.671-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1362ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T01:37:25.673-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1364ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T01:37:25.914-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1604ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=true reconnectAttempts=0[39m
+[90m2026-03-26T01:37:25.916-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T01:50:06.379-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T01:50:06.541-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T01:55:05.193-05:00[39m [36m[discord][39m [36mgateway: Attempting resume with backoff: 1000ms[39m
+[90m2026-03-26T01:55:05.267-05:00[39m [36m[discord][39m [36mgateway: WebSocket connection closed with code 1005[39m
+[90m2026-03-26T02:20:06.398-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T02:20:06.545-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T02:27:24.328-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: stale-socket)[39m
+[90m2026-03-26T02:27:24.719-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T02:27:24.721-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T02:27:24.888-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T02:27:24.889-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 167ms gateway=missing[39m
+[90m2026-03-26T02:27:25.078-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 356ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T02:27:25.151-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T02:27:25.707-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T02:27:25.710-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 988ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:27:25.712-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 989ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T02:27:26.009-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1287ms WebSocket connection opened[39m
+[90m2026-03-26T02:27:26.144-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1421ms path=/applications/1485367231427903579/commands requestMs=432[39m
+[90m2026-03-26T02:27:26.145-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1423ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:27:26.147-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1425ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:27:26.282-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1559ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:27:26.283-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T02:37:24.385-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T02:37:24.777-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T02:37:24.779-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T02:37:24.909-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T02:37:24.911-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 130ms gateway=missing[39m
+[90m2026-03-26T02:37:25.113-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 332ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T02:37:25.185-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T02:37:25.710-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T02:37:25.713-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 932ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:37:25.714-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 934ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T02:37:26.083-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1302ms WebSocket connection opened[39m
+[90m2026-03-26T02:37:26.151-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1371ms path=/applications/1485367231427903579/commands requestMs=437[39m
+[90m2026-03-26T02:37:26.153-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1373ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:37:26.154-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1374ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:37:26.290-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1510ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:37:26.292-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T02:47:24.460-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T02:47:24.877-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T02:47:24.880-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T02:47:25.014-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T02:47:25.016-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 134ms gateway=missing[39m
+[90m2026-03-26T02:47:25.247-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 365ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T02:47:25.319-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T02:47:25.833-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T02:47:25.836-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 954ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:47:25.837-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 956ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T02:47:26.133-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1252ms WebSocket connection opened[39m
+[90m2026-03-26T02:47:26.193-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1312ms path=/applications/1485367231427903579/commands requestMs=356[39m
+[90m2026-03-26T02:47:26.195-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1314ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:47:26.196-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1315ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:47:26.345-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1463ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:47:26.347-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T02:50:06.429-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T02:50:06.584-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T02:57:24.526-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T02:57:24.927-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T02:57:24.929-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T02:57:25.124-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T02:57:25.126-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 195ms gateway=missing[39m
+[90m2026-03-26T02:57:25.320-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 389ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T02:57:25.391-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T02:57:25.941-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T02:57:25.943-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1013ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:57:25.945-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1015ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T02:57:26.237-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1307ms path=/applications/1485367231427903579/commands requestMs=292[39m
+[90m2026-03-26T02:57:26.239-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1309ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:57:26.240-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1310ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:57:26.304-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1374ms WebSocket connection opened[39m
+[90m2026-03-26T02:57:26.358-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1427ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T02:57:26.359-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T03:07:24.617-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T03:07:25.005-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T03:07:25.007-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T03:07:25.135-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T03:07:25.136-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 128ms gateway=missing[39m
+[90m2026-03-26T03:07:25.325-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 316ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T03:07:25.398-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T03:07:25.926-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T03:07:25.929-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 921ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:07:25.931-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 923ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T03:07:26.267-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1258ms path=/applications/1485367231427903579/commands requestMs=335[39m
+[90m2026-03-26T03:07:26.268-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1260ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:07:26.270-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1261ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:07:26.272-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1264ms WebSocket connection opened[39m
+[90m2026-03-26T03:07:26.382-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1374ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:07:26.384-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T03:17:24.683-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T03:17:25.132-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T03:17:25.134-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T03:17:25.292-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T03:17:25.293-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 158ms gateway=missing[39m
+[90m2026-03-26T03:17:25.499-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 363ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T03:17:25.572-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T03:17:26.098-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T03:17:26.101-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 965ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:17:26.102-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 967ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T03:17:26.387-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1251ms path=/applications/1485367231427903579/commands requestMs=284[39m
+[90m2026-03-26T03:17:26.389-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1253ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:17:26.390-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1255ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:17:26.446-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1310ms WebSocket connection opened[39m
+[90m2026-03-26T03:17:26.493-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1357ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:17:26.494-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T03:20:06.455-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T03:20:06.597-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T03:27:24.772-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T03:27:25.364-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T03:27:25.366-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T03:27:25.537-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T03:27:25.539-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 171ms gateway=missing[39m
+[90m2026-03-26T03:27:25.765-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 397ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T03:27:25.838-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T03:27:26.363-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T03:27:26.369-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1000ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:27:26.372-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1003ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T03:27:26.723-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1355ms WebSocket connection opened[39m
+[90m2026-03-26T03:27:26.758-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1390ms path=/applications/1485367231427903579/commands requestMs=387[39m
+[90m2026-03-26T03:27:26.760-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1392ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:27:26.762-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1394ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:27:26.871-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1504ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:27:26.873-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T03:37:24.873-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T03:37:25.267-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T03:37:25.269-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T03:37:25.394-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T03:37:25.396-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 126ms gateway=missing[39m
+[90m2026-03-26T03:37:25.755-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 485ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T03:37:25.829-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T03:37:26.366-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T03:37:26.369-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1098ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:37:26.371-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1100ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T03:37:26.711-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1440ms WebSocket connection opened[39m
+[90m2026-03-26T03:37:26.788-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1517ms path=/applications/1485367231427903579/commands requestMs=417[39m
+[90m2026-03-26T03:37:26.790-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1519ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:37:26.791-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1521ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:37:26.935-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1664ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:37:26.936-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T03:47:24.942-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T03:47:25.343-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T03:47:25.345-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T03:47:25.538-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T03:47:25.540-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 193ms gateway=missing[39m
+[90m2026-03-26T03:47:25.721-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 374ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T03:47:25.791-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T03:47:26.315-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T03:47:26.317-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 971ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:47:26.319-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 972ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T03:47:26.655-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1308ms path=/applications/1485367231427903579/commands requestMs=336[39m
+[90m2026-03-26T03:47:26.657-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1310ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:47:26.659-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1313ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:47:26.728-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1382ms WebSocket connection opened[39m
+[90m2026-03-26T03:47:26.771-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1425ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:47:26.772-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T03:50:06.504-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T03:50:06.662-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T03:57:25.014-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T03:57:25.445-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T03:57:25.447-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T03:57:25.618-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T03:57:25.620-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 172ms gateway=missing[39m
+[90m2026-03-26T03:57:25.804-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 355ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T03:57:25.882-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T03:57:26.404-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T03:57:26.407-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 959ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:57:26.409-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 960ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T03:57:26.672-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1224ms path=/applications/1485367231427903579/commands requestMs=264[39m
+[90m2026-03-26T03:57:26.674-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1226ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:57:26.675-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1227ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:57:26.769-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1321ms WebSocket connection opened[39m
+[90m2026-03-26T03:57:26.774-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1325ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T03:57:26.775-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T04:07:25.071-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T04:07:25.503-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T04:07:25.505-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T04:07:25.701-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T04:07:25.703-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 196ms gateway=missing[39m
+[90m2026-03-26T04:07:26.292-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 785ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T04:07:26.363-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T04:07:26.883-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T04:07:26.885-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1379ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T04:07:26.887-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1381ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T04:07:27.203-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1696ms WebSocket connection opened[39m
+[90m2026-03-26T04:07:27.244-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1737ms path=/applications/1485367231427903579/commands requestMs=356[39m
+[90m2026-03-26T04:07:27.245-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1739ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T04:07:27.247-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1741ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T04:07:27.356-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1849ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T04:07:27.357-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T04:17:25.171-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T04:17:25.571-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T04:17:25.572-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T04:17:25.737-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T04:17:25.739-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 165ms gateway=missing[39m
+[90m2026-03-26T04:17:25.959-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 386ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T04:17:26.032-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T04:17:26.559-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T04:17:26.562-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 989ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T04:17:26.565-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 991ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T04:17:26.916-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1342ms WebSocket connection opened[39m
+[90m2026-03-26T04:17:26.928-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1354ms path=/applications/1485367231427903579/commands requestMs=363[39m
+[90m2026-03-26T04:17:26.930-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1356ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T04:17:26.931-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1358ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T04:17:27.041-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1467ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T04:17:27.043-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T04:20:06.522-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T04:20:06.682-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T04:20:06.870-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T04:27:25.241-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T04:27:25.694-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T04:27:25.696-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T04:27:25.837-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T04:27:25.838-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 141ms gateway=missing[39m
+[90m2026-03-26T04:27:26.023-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 326ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T04:27:26.095-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T04:27:26.621-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T04:27:26.624-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 926ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T04:27:26.626-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 928ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T04:27:26.973-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1275ms WebSocket connection opened[39m
+[90m2026-03-26T04:27:27.002-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1304ms path=/applications/1485367231427903579/commands requestMs=376[39m
+[90m2026-03-26T04:27:27.003-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1306ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T04:27:27.005-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1307ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T04:27:27.100-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1402ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T04:27:27.102-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T04:37:25.320-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T04:37:25.677-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T04:37:25.679-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T04:37:25.821-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T04:37:25.823-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 142ms gateway=missing[39m
+[90m2026-03-26T04:37:26.001-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 320ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T04:37:26.075-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T04:37:26.599-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T04:37:26.603-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 921ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T04:37:26.604-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 924ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T04:37:26.909-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1228ms WebSocket connection opened[39m
+[90m2026-03-26T04:37:27.032-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1352ms path=/applications/1485367231427903579/commands requestMs=428[39m
+[90m2026-03-26T04:37:27.034-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1354ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T04:37:27.035-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1355ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T04:37:27.148-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1468ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=true reconnectAttempts=0[39m
+[90m2026-03-26T04:37:27.150-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T04:50:06.539-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T04:50:06.698-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T05:12:25.565-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: stale-socket)[39m
+[90m2026-03-26T05:12:26.709-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T05:12:26.711-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T05:12:26.855-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T05:12:26.858-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 145ms gateway=missing[39m
+[90m2026-03-26T05:12:27.083-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 370ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T05:12:27.154-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T05:12:27.682-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T05:12:27.685-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 972ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T05:12:27.687-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 974ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T05:12:27.985-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1272ms path=/applications/1485367231427903579/commands requestMs=298[39m
+[90m2026-03-26T05:12:27.987-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1275ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T05:12:27.988-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1276ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T05:12:28.042-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1330ms WebSocket connection opened[39m
+[90m2026-03-26T05:12:28.576-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1864ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=true reconnectAttempts=0[39m
+[90m2026-03-26T05:12:28.578-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T05:20:06.557-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T05:20:06.700-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+2026-03-26T05:20:14.753-05:00 [tools] read failed: ENOENT: no such file or directory, access 'Z:\openclaw\workspace\memory\2026-03-26.md'
+[90m2026-03-26T05:31:51.277-05:00[39m [36m[discord][39m [36mgateway: WebSocket connection closed with code 1006[39m
+[90m2026-03-26T05:31:51.279-05:00[39m [36m[discord][39m [36mgateway: Attempting resume with backoff: 1000ms after code 1006[39m
+[90m2026-03-26T05:40:20.533-05:00[39m [36m[discord][39m [36mgateway: WebSocket connection closed with code 1006[39m
+[90m2026-03-26T05:40:20.534-05:00[39m [36m[discord][39m [36mgateway: Attempting resume with backoff: 1000ms after code 1006[39m
+[90m2026-03-26T05:50:06.590-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T05:50:06.742-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T06:12:26.007-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: stale-socket)[39m
+[90m2026-03-26T06:12:26.407-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T06:12:26.409-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T06:12:26.527-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T06:12:26.529-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 118ms gateway=missing[39m
+[90m2026-03-26T06:12:26.748-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 337ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T06:12:26.821-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T06:12:27.375-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T06:12:27.379-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 969ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:12:27.381-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 971ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T06:12:27.705-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1294ms WebSocket connection opened[39m
+[90m2026-03-26T06:12:27.733-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1323ms path=/applications/1485367231427903579/commands requestMs=352[39m
+[90m2026-03-26T06:12:27.735-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1325ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:12:27.736-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1326ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:12:27.849-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1438ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:12:27.850-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T06:20:06.598-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T06:20:06.748-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T06:22:26.333-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T06:22:26.751-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T06:22:26.753-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T06:22:26.887-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T06:22:26.889-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 135ms gateway=missing[39m
+[90m2026-03-26T06:22:27.128-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 372ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T06:22:27.215-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T06:22:27.789-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T06:22:27.792-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1037ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:22:27.794-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1039ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T06:22:28.116-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1361ms WebSocket connection opened[39m
+[90m2026-03-26T06:22:28.140-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1385ms path=/applications/1485367231427903579/commands requestMs=346[39m
+[90m2026-03-26T06:22:28.142-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1387ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:22:28.143-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1389ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:22:28.273-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1518ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:22:28.274-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T06:25:59.267-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T06:25:59.426-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T06:32:26.438-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T06:32:26.904-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T06:32:26.905-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T06:32:27.033-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T06:32:27.035-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 127ms gateway=missing[39m
+[90m2026-03-26T06:32:27.318-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 410ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T06:32:27.408-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T06:32:27.994-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T06:32:27.997-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1089ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:32:27.999-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1092ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T06:32:28.327-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1419ms path=/applications/1485367231427903579/commands requestMs=328[39m
+[90m2026-03-26T06:32:28.328-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1421ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:32:28.330-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1422ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:32:28.344-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1436ms WebSocket connection opened[39m
+[90m2026-03-26T06:32:28.440-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1533ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:32:28.442-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T06:42:26.527-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T06:42:26.955-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T06:42:26.957-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T06:42:27.083-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T06:42:27.085-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 127ms gateway=missing[39m
+[90m2026-03-26T06:42:27.247-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 288ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T06:42:27.323-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T06:42:27.860-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T06:42:27.863-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 904ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:42:27.864-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 906ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T06:42:28.202-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1243ms WebSocket connection opened[39m
+[90m2026-03-26T06:42:28.246-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1288ms path=/applications/1485367231427903579/commands requestMs=382[39m
+[90m2026-03-26T06:42:28.248-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1289ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:42:28.249-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1291ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:42:28.353-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1395ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:42:28.355-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T06:52:26.571-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T06:52:27.322-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T06:52:27.324-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T06:52:27.449-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T06:52:27.450-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 125ms gateway=missing[39m
+[90m2026-03-26T06:52:27.905-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 579ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T06:52:27.981-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T06:52:28.515-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T06:52:28.518-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1192ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:52:28.519-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1194ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T06:52:28.769-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1443ms path=/applications/1485367231427903579/commands requestMs=249[39m
+[90m2026-03-26T06:52:28.771-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1445ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:52:28.772-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1447ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:52:28.831-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1505ms WebSocket connection opened[39m
+[90m2026-03-26T06:52:28.884-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1558ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T06:52:28.885-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T06:55:59.295-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T06:55:59.439-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T07:02:26.683-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T07:02:27.272-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T07:02:27.274-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T07:02:27.401-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T07:02:27.402-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 127ms gateway=missing[39m
+[90m2026-03-26T07:02:27.612-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 336ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T07:02:27.683-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T07:02:28.210-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T07:02:28.212-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 937ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T07:02:28.214-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 938ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T07:02:28.548-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1272ms WebSocket connection opened[39m
+[90m2026-03-26T07:02:28.809-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1533ms path=/applications/1485367231427903579/commands requestMs=595[39m
+[90m2026-03-26T07:02:28.811-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1536ms gatewayConnected=true reconnectAttempts=0[39m
+[90m2026-03-26T07:02:28.812-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1537ms gatewayConnected=true reconnectAttempts=0[39m
+[90m2026-03-26T07:02:28.919-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1643ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=true reconnectAttempts=0[39m
+[90m2026-03-26T07:02:28.920-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T07:25:59.322-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T07:25:59.467-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T07:55:10.032-05:00[39m [36m[discord][39m [36mgateway: WebSocket connection closed with code 1006[39m
+[90m2026-03-26T07:55:10.034-05:00[39m [36m[discord][39m [36mgateway: Attempting resume with backoff: 1000ms after code 1006[39m
+[90m2026-03-26T07:55:59.379-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T07:55:59.541-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T08:25:59.368-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T08:25:59.516-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T08:27:27.389-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: stale-socket)[39m
+[90m2026-03-26T08:27:27.770-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T08:27:27.772-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T08:27:27.910-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T08:27:27.912-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 137ms gateway=missing[39m
+[90m2026-03-26T08:27:28.105-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 330ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T08:27:28.181-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T08:27:28.717-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T08:27:28.719-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 945ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:27:28.721-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 947ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T08:27:29.042-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1267ms WebSocket connection opened[39m
+[90m2026-03-26T08:27:29.165-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1391ms path=/applications/1485367231427903579/commands requestMs=444[39m
+[90m2026-03-26T08:27:29.167-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1393ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:27:29.169-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1394ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:27:29.316-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1541ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:27:29.318-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T08:37:27.467-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T08:37:27.862-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T08:37:27.864-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T08:37:27.997-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T08:37:28.000-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 134ms gateway=missing[39m
+[90m2026-03-26T08:37:28.157-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 292ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T08:37:28.231-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T08:37:28.751-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T08:37:28.754-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 888ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:37:28.756-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 890ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T08:37:29.088-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1222ms path=/applications/1485367231427903579/commands requestMs=332[39m
+[90m2026-03-26T08:37:29.090-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1224ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:37:29.091-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1226ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:37:29.112-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1247ms WebSocket connection opened[39m
+[90m2026-03-26T08:37:29.226-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1360ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:37:29.228-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T08:47:27.537-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T08:47:27.914-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T08:47:27.915-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T08:47:28.049-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T08:47:28.051-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 133ms gateway=missing[39m
+[90m2026-03-26T08:47:28.228-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 310ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T08:47:28.300-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T08:47:28.824-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T08:47:28.826-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 909ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:47:28.828-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 911ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T08:47:29.191-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1273ms WebSocket connection opened[39m
+[90m2026-03-26T08:47:29.211-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1293ms path=/applications/1485367231427903579/commands requestMs=382[39m
+[90m2026-03-26T08:47:29.212-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1295ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:47:29.214-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1297ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:47:29.364-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1446ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:47:29.366-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T08:55:59.428-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T08:55:59.584-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T08:57:27.607-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T08:57:28.039-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T08:57:28.041-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T08:57:28.197-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T08:57:28.199-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 157ms gateway=missing[39m
+[90m2026-03-26T08:57:28.406-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 362ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T08:57:28.476-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T08:57:28.995-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T08:57:28.998-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 955ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:57:28.999-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 957ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T08:57:29.331-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1288ms WebSocket connection opened[39m
+[90m2026-03-26T08:57:29.334-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1291ms path=/applications/1485367231427903579/commands requestMs=334[39m
+[90m2026-03-26T08:57:29.336-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1293ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:57:29.337-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1295ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:57:29.476-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1433ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T08:57:29.478-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T09:07:27.694-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T09:07:28.088-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T09:07:28.090-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T09:07:28.283-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T09:07:28.285-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 193ms gateway=missing[39m
+[90m2026-03-26T09:07:28.593-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 501ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T09:07:28.666-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T09:07:29.191-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T09:07:29.193-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1102ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:07:29.194-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1103ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T09:07:29.564-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1472ms WebSocket connection opened[39m
+[90m2026-03-26T09:07:29.581-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1489ms path=/applications/1485367231427903579/commands requestMs=386[39m
+[90m2026-03-26T09:07:29.583-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1491ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:07:29.585-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1493ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:07:29.723-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1631ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:07:29.724-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T09:17:27.777-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T09:17:28.201-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T09:17:28.203-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T09:17:28.339-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T09:17:28.340-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 136ms gateway=missing[39m
+[90m2026-03-26T09:17:28.671-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 466ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T09:17:28.745-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T09:17:29.274-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T09:17:29.277-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1072ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:17:29.278-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1074ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T09:17:29.644-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1439ms WebSocket connection opened[39m
+[90m2026-03-26T09:17:29.660-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1456ms path=/applications/1485367231427903579/commands requestMs=382[39m
+[90m2026-03-26T09:17:29.662-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1458ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:17:29.663-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1459ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:17:29.781-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1576ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:17:29.782-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T09:25:59.424-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T09:25:59.576-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T09:27:27.864-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T09:27:28.273-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T09:27:28.274-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T09:27:28.428-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T09:27:28.430-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 155ms gateway=missing[39m
+[90m2026-03-26T09:27:28.696-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 421ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T09:27:28.771-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T09:27:29.305-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T09:27:29.308-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1032ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:27:29.310-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1035ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T09:27:29.642-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1366ms WebSocket connection opened[39m
+[90m2026-03-26T09:27:29.644-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1369ms path=/applications/1485367231427903579/commands requestMs=334[39m
+[90m2026-03-26T09:27:29.646-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1371ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:27:29.648-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1372ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:27:29.760-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1485ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:27:29.762-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T09:37:27.952-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T09:37:28.428-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T09:37:28.429-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T09:37:28.579-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T09:37:28.581-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 149ms gateway=missing[39m
+[90m2026-03-26T09:37:28.830-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 399ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T09:37:28.905-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T09:37:29.415-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T09:37:29.417-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 986ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:37:29.419-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 988ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T09:37:29.738-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1306ms WebSocket connection opened[39m
+[90m2026-03-26T09:37:29.769-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1337ms path=/applications/1485367231427903579/commands requestMs=349[39m
+[90m2026-03-26T09:37:29.770-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1339ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:37:29.772-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1340ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:37:29.914-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1482ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:37:29.915-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T09:47:28.017-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T09:47:28.485-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T09:47:28.487-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T09:47:28.683-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T09:47:28.685-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 196ms gateway=missing[39m
+[90m2026-03-26T09:47:28.934-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 446ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T09:47:29.005-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T09:47:29.525-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T09:47:29.527-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1039ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:47:29.529-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1041ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T09:47:29.847-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1358ms path=/applications/1485367231427903579/commands requestMs=317[39m
+[90m2026-03-26T09:47:29.848-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1360ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:47:29.850-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1362ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:47:29.852-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1363ms WebSocket connection opened[39m
+[90m2026-03-26T09:47:29.983-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1494ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:47:29.985-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T09:55:59.451-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T09:55:59.607-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T09:57:28.089-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T09:57:28.460-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T09:57:28.461-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T09:57:28.637-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T09:57:28.638-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 175ms gateway=missing[39m
+[90m2026-03-26T09:57:29.091-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 627ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T09:57:29.170-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T09:57:29.691-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T09:57:29.693-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1230ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:57:29.695-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1232ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T09:57:30.037-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1573ms WebSocket connection opened[39m
+[90m2026-03-26T09:57:30.056-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1592ms path=/applications/1485367231427903579/commands requestMs=361[39m
+[90m2026-03-26T09:57:30.058-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1594ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:57:30.059-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1596ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:57:30.247-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1783ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T09:57:30.249-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T10:07:28.184-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T10:07:28.699-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T10:07:28.700-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T10:07:28.825-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T10:07:28.827-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 126ms gateway=missing[39m
+[90m2026-03-26T10:07:28.992-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 291ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T10:07:29.065-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T10:07:29.581-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T10:07:29.583-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 882ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T10:07:29.585-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 883ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T10:07:29.930-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1228ms WebSocket connection opened[39m
+[90m2026-03-26T10:07:31.522-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 2821ms path=/applications/1485367231427903579/commands requestMs=1938[39m
+[90m2026-03-26T10:07:31.524-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 2823ms gatewayConnected=true reconnectAttempts=0[39m
+[90m2026-03-26T10:07:31.526-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 2824ms gatewayConnected=true reconnectAttempts=0[39m
+[90m2026-03-26T10:07:31.625-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 2924ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=true reconnectAttempts=0[39m
+[90m2026-03-26T10:07:31.627-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T10:25:59.466-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T10:25:59.607-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T10:29:12.304-05:00[39m [36m[discord][39m [36mgateway: Attempting resume with backoff: 1000ms[39m
+[90m2026-03-26T10:29:12.379-05:00[39m [36m[discord][39m [36mgateway: WebSocket connection closed with code 1005[39m
+[90m2026-03-26T10:30:20.145-05:00[39m [33m[agent/embedded][39m [33membedded run agent end: runId=cb8eb9dd-ece9-47c7-9b12-d3d0c6d85d00 isError=true model=claude-sonnet-4-6 provider=anthropic error=The AI service is temporarily overloaded. Please try again in a moment.[39m
+[90m2026-03-26T10:55:59.498-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T10:55:59.669-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T11:25:59.565-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T11:25:59.893-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T11:32:28.839-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: stale-socket)[39m
+[90m2026-03-26T11:32:29.498-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T11:32:29.499-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T11:32:29.653-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T11:32:29.656-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 154ms gateway=missing[39m
+[90m2026-03-26T11:32:29.874-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 372ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T11:32:29.953-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T11:32:30.492-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T11:32:30.495-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 993ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T11:32:30.497-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 995ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T11:32:30.800-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1298ms path=/applications/1485367231427903579/commands requestMs=303[39m
+[90m2026-03-26T11:32:30.802-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1300ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T11:32:30.803-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1302ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T11:32:30.921-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1420ms WebSocket connection opened[39m
+[90m2026-03-26T11:32:30.941-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1439ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T11:32:30.942-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T11:42:28.904-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T11:42:29.298-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T11:42:29.299-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T11:42:29.436-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T11:42:29.438-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 137ms gateway=missing[39m
+[90m2026-03-26T11:42:29.808-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 507ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T11:42:29.885-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T11:42:30.439-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T11:42:30.441-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1141ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T11:42:30.442-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1142ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T11:42:30.736-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1435ms path=/applications/1485367231427903579/commands requestMs=293[39m
+[90m2026-03-26T11:42:30.737-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1437ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T11:42:30.739-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1439ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T11:42:30.797-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1497ms WebSocket connection opened[39m
+[90m2026-03-26T11:42:30.857-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1556ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T11:42:30.859-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T11:52:28.979-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T11:52:29.465-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T11:52:29.466-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T11:52:29.640-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T11:52:29.642-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 174ms gateway=missing[39m
+[90m2026-03-26T11:52:29.931-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 463ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T11:52:30.005-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T11:52:30.545-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T11:52:30.547-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1080ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T11:52:30.549-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1082ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T11:52:30.942-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1474ms path=/applications/1485367231427903579/commands requestMs=392[39m
+[90m2026-03-26T11:52:30.943-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1476ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T11:52:30.945-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1477ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T11:52:30.952-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1484ms WebSocket connection opened[39m
+[90m2026-03-26T11:52:31.084-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1617ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T11:52:31.086-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+[90m2026-03-26T11:55:59.534-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T11:55:59.694-05:00[39m [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch, cron). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-26T12:02:29.066-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T12:02:29.488-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T12:02:29.489-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T12:02:29.639-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T12:02:29.641-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 150ms gateway=missing[39m
+[90m2026-03-26T12:02:29.895-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 404ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T12:02:29.972-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T12:02:30.567-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T12:02:30.570-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1080ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T12:02:30.572-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1082ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T12:02:30.930-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 1438ms WebSocket connection opened[39m
+[90m2026-03-26T12:02:30.995-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 1504ms path=/applications/1485367231427903579/commands requestMs=422[39m
+[90m2026-03-26T12:02:30.997-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 1507ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T12:02:30.999-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 1508ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T12:02:31.112-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 1622ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T12:02:31.114-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m
+2026-03-26T12:03:37.523-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T12:12:29.142-05:00[39m [32m[health-monitor][39m [36m[discord:default] health-monitor: restarting (reason: disconnected)[39m
+[90m2026-03-26T12:12:29.516-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-26T12:12:29.518-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+[90m2026-03-26T12:12:29.655-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-26T12:12:29.656-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 137ms gateway=missing[39m
+[90m2026-03-26T12:12:30.501-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 981ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-26T12:12:30.605-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-26T12:12:31.209-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-26T12:12:31.212-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1693ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T12:12:31.214-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1694ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-26T12:12:31.567-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 2046ms path=/applications/1485367231427903579/commands requestMs=352[39m
+[90m2026-03-26T12:12:31.569-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 2049ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T12:12:31.571-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 2052ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T12:12:31.705-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 2186ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-26T12:12:31.707-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m

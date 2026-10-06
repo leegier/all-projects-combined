@@ -1,0 +1,6 @@
+# Product Features
+
+* Automated email sending with customizable templates
+* Personalization options for subject lines and email bodies
+* Integration with CRM and email providers for seamless data exchange
+* Analytics and tracking features to measure campaign performance

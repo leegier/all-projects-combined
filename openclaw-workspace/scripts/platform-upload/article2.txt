@@ -1,0 +1,56 @@
+I've been collecting and refining AI prompts for the past year. Not the generic act-as-an-expert
+stuff — I mean prompts that I use daily in real production work. Here are 5 of them, plus info on the full pack.
+
+## Why Most Prompts Are Garbage
+
+The problem with most prompt lists is they're designed to impress in a screenshot, not to work reliably. A good prompt is:
+
+- **Specific about format** — tells the AI exactly how to structure output
+- **Scoped** — one job, not five
+- **Handles edge cases** — what should the AI do when it's unsure?
+
+Here are 5 from my personal vault:
+
+---
+
+### 1. Code Review (Actually Useful)
+
+Review this code for: (1) bugs, (2) security issues, (3) performance bottlenecks, (4) anything that would fail code review at a senior level. For each issue: quote the line, explain why it's a problem, give the fix. Skip compliments.
+
+The 'skip compliments' line alone saves 40% of the output.
+
+---
+
+### 2. Debugging Unknown Errors
+
+I have this error: [error message]. Context: [language/framework, what you were doing]. I already tried: [what you tried]. Give me 3 ranked hypotheses for the root cause. For each: confidence %, why you think it, exact steps to verify. Start with most likely.
+
+Ranked hypotheses > here are some possibilities.
+
+---
+
+### 3. Architecture Decision
+
+I need to [describe the system requirement]. Constraints: [list real constraints — budget, team size, existing stack]. Give me 3 architecture options. For each: overview, pros, cons, what type of team/project it's best for, estimated complexity (1-10). End with a recommendation and why.
+
+---
+
+### 4. Rewrite for Clarity
+
+Rewrite this for a technical audience who are smart but unfamiliar with this specific domain. Keep all technical accuracy. Remove jargon where plain language works. Target: someone could read this once and explain it to a colleague.
+
+---
+
+### 5. Daily Standup Generator
+
+Turn these rough notes into a standup update. Format: Yesterday / Today / Blockers. Keep it under 5 sentences total. Tone: direct, no fluff. Notes: [your rough notes]
+
+---
+
+## The Full Pack
+
+These 5 are from a set of 50 prompts I've compiled — covering code review, debugging, architecture, writing, product decisions, and more. Every prompt has been tested on real work, not demos.
+
+**[Get the full 50-prompt pack — $19](https://the-forge-ide-gamedev.itch.io/mariah)**
+
+If you only buy one productivity tool this year, make it something you'll actually use every day. These prompts are that.

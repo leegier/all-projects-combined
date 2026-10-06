@@ -1,0 +1,49 @@
+Most indie founders write one landing page and hope it resonates. I tried something different: I built 22 versions of the same landing page, each tuned for a completely different audience and platform. Here is what I learned.
+
+## The Problem with One Landing Page
+
+Your product is the same. Your audience is not.
+
+A developer on Hacker News wants to know: does this solve a real technical problem, is it open source, what is the stack?
+
+A founder on Product Hunt wants: beautiful design, social proof, clear pricing, one-click CTA.
+
+A freelancer on Reddit wants: does this save me time, what is the ROI, can I try it free?
+
+The same copy that wins on HN will bomb on Product Hunt. So I stopped trying to write one page that works everywhere.
+
+## The 22-Audience Strategy
+
+I built a pack of 22 HTML landing page templates, each designed for a specific context:
+
+- **Hacker News launch post** — minimal, technical, no hype language
+- **Product Hunt** — visual, benefit-led, CTA above the fold
+- **Reddit r/entrepreneur** — story-driven, honest about limitations
+- **LinkedIn** — professional tone, ROI framing, case study format
+- **Cold email landing** — short, single action, trust signals only
+- **AppSumo** — lifetime deal framing, feature checklist, urgency
+- ... and 16 more
+
+Each template has the same core sections (headline, problem, solution, social proof, CTA) but different **tone**, **emphasis**, and **structure** for that platform.
+
+## How to Use This
+
+1. Pick your product
+2. List 5-10 channels where your audience lives
+3. Match each channel to the appropriate template
+4. Swap in your copy — each template has clearly labeled placeholder sections
+5. Deploy to Netlify/Vercel/GitHub Pages in under 10 minutes per page
+
+You now have a landing page optimized for each traffic source. When you post on HN, link to the HN version. When you run a LinkedIn ad, link to the LinkedIn version.
+
+## Does It Work?
+
+The conversion lift depends on your product, but the logic is sound: message-to-market fit matters at the page level, not just the ad level. If someone clicks an ad that speaks their language and then lands on a generic page, you have already lost them.
+
+## Get the Templates
+
+All 22 templates are plain HTML/CSS — no frameworks, no build step, just edit and deploy. They work with any hosting platform.
+
+**[Browse all templates and products at the store](https://the-forge-ide-gamedev.itch.io)**
+
+The FORGE Landing Pack is available separately on Gumroad if you want just the templates. Each one is production-ready and has been tested on real launches.

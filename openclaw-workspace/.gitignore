@@ -1,0 +1,16 @@
+node_modules/
+__pycache__/
+*.pyc
+.env
+*.db
+*.db.old
+credentials.json
+
+# Large files (over 100MB - GitHub limit)
+gpu-drivers/
+*.exe
+*.zip
+*.tar.gz
+*.iso
+*.fbx
+*.blend

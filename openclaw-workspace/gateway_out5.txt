@@ -1,0 +1,41 @@
+[90m2026-03-25T18:56:30.389-05:00[39m [35m[canvas][39m [36mhost mounted at http://127.0.0.1:18789/__openclaw__/canvas/ (root C:\Users\Gierl\.openclaw\canvas)[39m
+[90m2026-03-25T18:56:31.080-05:00[39m [36m[heartbeat][39m [36mstarted[39m
+[90m2026-03-25T18:56:31.085-05:00[39m [32m[health-monitor][39m [36mstarted (interval: 300s, startup-grace: 60s, channel-connect-grace: 120s)[39m
+[90m2026-03-25T18:56:31.090-05:00[39m [36m[gateway][39m [36magent model: max-router/router:auto[39m
+[90m2026-03-25T18:56:31.093-05:00[39m [36m[gateway][39m [36mlistening on ws://127.0.0.1:18789, ws://[::1]:18789 (PID 26292)[39m
+[90m2026-03-25T18:56:31.097-05:00[39m [36m[gateway][39m [36mlog file: C:\Users\Gierl\AppData\Local\Temp\openclaw\openclaw-2026-03-25.log[39m
+[90m2026-03-25T18:56:31.102-05:00[39m [34m[telegram][39m [36mautoSelectFamily=true (default-node22)[39m
+[90m2026-03-25T18:56:31.105-05:00[39m [34m[telegram][39m [36mdnsResultOrder=ipv4first (default-node22)[39m
+[90m2026-03-25T18:56:31.147-05:00[39m [36m[browser/server][39m [36mBrowser control listening on http://127.0.0.1:18791/ (auth=token)[39m
+[90m2026-03-25T18:56:31.564-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: boot-md -> gateway:startup[39m
+[90m2026-03-25T18:56:31.641-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: bootstrap-extra-files -> agent:bootstrap[39m
+[90m2026-03-25T18:56:31.645-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: command-logger -> command[39m
+[90m2026-03-25T18:56:31.652-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: session-memory -> command:new, command:reset[39m
+[90m2026-03-25T18:56:31.657-05:00[39m [33m[hooks][39m [36mloaded 4 internal hook handlers[39m
+2026-03-25T18:56:31.665-05:00 [34m[telegram][39m [36mautoSelectFamily=true (default-node22)[39m
+2026-03-25T18:56:31.672-05:00 [34m[telegram][39m [36mdnsResultOrder=ipv4first (default-node22)[39m
+2026-03-25T18:56:32.023-05:00 [33m[agent/embedded][39m [33mlow context window: max-router/router:auto ctx=16384 (warn<32000) source=modelsConfig[39m
+2026-03-25T18:56:32.056-05:00 [34m[tools][39m [33mtools.profile (coding) allowlist contains unknown entries (apply_patch). These entries are shipped core tools but unavailable in the current runtime/provider/model/config.[39m
+[90m2026-03-25T18:56:32.267-05:00[39m [36m[discord][39m [36m[default] Discord Message Content Intent is limited; bots under 100 servers can use it without verification.[39m
+[90m2026-03-25T18:56:32.269-05:00[39m [36m[discord][39m [36m[default] starting provider (@MAX)[39m
+2026-03-25T18:56:32.298-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+2026-03-25T18:56:32.319-05:00 [33m[agent/embedded][39m [33membedded run agent end: runId=boot-2026-03-25_23-56-31-943-d0e26316 isError=true model=router:auto provider=max-router error=Ollama API error 422: {"error":"Streaming not supported"}[39m
+2026-03-25T18:56:32.325-05:00 [35m[compaction-safeguard][39m [33mCompaction safeguard: cancelling compaction with no real conversation messages to summarize.[39m
+[90m2026-03-25T18:56:32.472-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-25T18:56:32.475-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:start 204ms gateway=missing[39m
+[90m2026-03-25T18:56:32.652-05:00[39m [36m[discord][39m [36mstartup [default] fetch-application-id:done 381ms applicationId=1485367231427903579 gateway=missing[39m
+2026-03-25T18:56:32.771-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T18:56:33.935-05:00[39m [36m[discord][39m [36m179 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-25T18:56:33.943-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:start 1672ms native=on commandCount=41 gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T18:56:33.945-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:start 1675ms path=/applications/1485367231427903579/commands commands=41 bytes=12777[39m
+[90m2026-03-25T18:56:33.951-05:00[39m [34m[telegram][39m [36m[default] starting provider (@MAX_MAX_MAX_BOT_BOT)[39m
+2026-03-25T18:56:33.957-05:00 [34m[telegram][39m [36mautoSelectFamily=true (default-node22)[39m
+2026-03-25T18:56:33.961-05:00 [34m[telegram][39m [36mdnsResultOrder=ipv4first (default-node22)[39m
+2026-03-25T18:56:34.050-05:00 [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-25T18:56:34.202-05:00[39m [34m[telegram][39m [36mlimits bots to 100 commands. 179 configured; registering first 100. Use channels.telegram.commands.native: false to disable, or reduce plugin/skill/custom commands.[39m
+[90m2026-03-25T18:56:34.402-05:00[39m [36m[discord][39m [36mstartup [default] gateway-debug 2131ms WebSocket connection opened[39m
+[90m2026-03-25T18:56:34.477-05:00[39m [36m[discord][39m [36mstartup [default] deploy-rest:put:done 2206ms path=/applications/1485367231427903579/commands requestMs=531[39m
+[90m2026-03-25T18:56:34.479-05:00[39m [36m[discord][39m [36mstartup [default] deploy-commands:done 2209ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T18:56:34.481-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:start 2211ms gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T18:56:34.591-05:00[39m [36m[discord][39m [36mstartup [default] fetch-bot-identity:done 2320ms botUserId=1485367231427903579 botUserName=MAX gatewayConnected=false reconnectAttempts=0[39m
+[90m2026-03-25T18:56:34.612-05:00[39m [36m[discord][39m [36mlogged in to discord as 1485367231427903579 (MAX)[39m

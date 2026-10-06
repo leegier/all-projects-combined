@@ -1,0 +1,88 @@
+[90m2026-03-29T12:28:54.299-05:00[39m [35m[canvas][39m [36mhost mounted at http://127.0.0.1:18789/__openclaw__/canvas/ (root C:\Users\Gierl\.openclaw\canvas)[39m
+[90m2026-03-29T12:29:01.672-05:00[39m [36m[heartbeat][39m [36mstarted[39m
+[90m2026-03-29T12:29:01.674-05:00[39m [32m[health-monitor][39m [36mstarted (interval: 300s, startup-grace: 60s, channel-connect-grace: 120s)[39m
+[90m2026-03-29T12:29:01.687-05:00[39m [36m[gateway][39m [36magent model: anthropic/claude-sonnet-4-6[39m
+[90m2026-03-29T12:29:01.688-05:00[39m [36m[gateway][39m [36mlistening on ws://127.0.0.1:18789, ws://[::1]:18789 (PID 16868)[39m
+[90m2026-03-29T12:29:01.689-05:00[39m [36m[gateway][39m [36mlog file: \tmp\openclaw\openclaw-2026-03-29.log[39m
+[90m2026-03-29T12:29:01.710-05:00[39m [31m[bonjour][39m [33mwatchdog detected non-announced service; attempting re-advertise (gateway fqdn=DESKTOP-EJ1NQF3 (OpenClaw)._openclaw-gw._tcp.local. host=openclaw.local. port=18789 state=unannounced)[39m
+[90m2026-03-29T12:29:01.777-05:00[39m [36m[gateway][39m [33mremoved stale session lock: C:\Users\Gierl\.openclaw\agents\main\sessions\542ce853-4736-4bdd-8408-93fde7dae8ab.jsonl.lock (dead-pid)[39m
+[90m2026-03-29T12:29:01.887-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: boot-md -> gateway:startup[39m
+[90m2026-03-29T12:29:01.891-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: bootstrap-extra-files -> agent:bootstrap[39m
+[90m2026-03-29T12:29:01.893-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: command-logger -> command[39m
+[90m2026-03-29T12:29:01.901-05:00[39m [31m[hooks:loader][39m [36mRegistered hook: session-memory -> command:new, command:reset[39m
+[90m2026-03-29T12:29:01.902-05:00[39m [33m[hooks][39m [36mloaded 4 internal hook handlers[39m
+[90m2026-03-29T12:29:03.351-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:29:07.511-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:29:08.507-05:00[39m [34m[telegram][39m [36m[builder] starting provider[39m
+[90m2026-03-29T12:29:08.509-05:00[39m [34m[telegram][39m [36m[default] starting provider[39m
+[90m2026-03-29T12:29:08.511-05:00[39m [34m[telegram][39m [36m[ink] starting provider[39m
+[90m2026-03-29T12:29:08.513-05:00[39m [36m[discord][39m [36m[default] starting provider[39m
+[90m2026-03-29T12:29:08.522-05:00[39m [34m[telegram][39m [36m[scout] starting provider[39m
+[90m2026-03-29T12:29:09.330-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-29T12:29:09.639-05:00[39m [34m[telegram][39m [36mlimits bots to 100 commands. 172 configured; registering first 100. Use channels.telegram.commands.native: false to disable, or reduce plugin/skill/custom commands.[39m
+[90m2026-03-29T12:29:12.226-05:00[39m [36m[discord][39m [36mchannels resolved: guild:1484731360382812204→1484731360382812204 (guild:THE_NYGHTSHADE_HOLLOW's server)[39m
+[90m2026-03-29T12:29:12.407-05:00[39m [31m[agents/model-providers][39m [36m[xai-auth] bootstrap config fallback: no config-backed key found[39m
+[90m2026-03-29T12:29:13.862-05:00[39m [31m[bonjour][39m [33mrestarting advertiser (service stuck in unannounced for 12152ms (gateway fqdn=DESKTOP-EJ1NQF3 (OpenClaw)._openclaw-gw._tcp.local. host=openclaw.local. port=18789 state=unannounced))[39m
+[90m2026-03-29T12:29:14.060-05:00[39m [34m[telegram][39m [31mdeleteMyCommands failed: Call to 'deleteMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:14.064-05:00[39m [34m[telegram][39m [31mdeleteWebhook failed: Call to 'deleteWebhook' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:14.066-05:00[39m [34m[telegram][39m [31m[scout] channel exited: Call to 'deleteWebhook' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:14.067-05:00[39m [34m[telegram][39m [36m[scout] auto-restart attempt 1/10 in 5s[39m
+[90m2026-03-29T12:29:14.142-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-29T12:29:20.782-05:00[39m [36m[discord][39m [36m175 commands exceeds limit; removing per-skill commands and keeping /skill.[39m
+[90m2026-03-29T12:29:20.789-05:00[39m [36m[discord][39m [36mnative commands using Carbon reconcile path[39m
+[90m2026-03-29T12:29:21.114-05:00[39m [34m[telegram][39m [31msetMyCommands failed: Call to 'setMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:21.115-05:00[39m [34m[telegram][39m [31mcommand sync failed: GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:21.255-05:00[39m [34m[telegram][39m [36m[scout] starting provider[39m
+[90m2026-03-29T12:29:21.385-05:00[39m [36m[discord][39m [36mclient initialized as 1485367231427903579 (MAX); awaiting gateway readiness[39m
+[90m2026-03-29T12:29:21.872-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-29T12:29:22.053-05:00[39m [34m[telegram][39m [31mdeleteMyCommands failed: Call to 'deleteMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:22.056-05:00[39m [34m[telegram][39m [31mdeleteWebhook failed: Call to 'deleteWebhook' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:22.057-05:00[39m [34m[telegram][39m [31m[scout] channel exited: Call to 'deleteWebhook' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:22.058-05:00[39m [34m[telegram][39m [36m[scout] auto-restart attempt 2/10 in 10s[39m
+[90m2026-03-29T12:29:22.592-05:00[39m [34m[telegram][39m [31msetMyCommands failed: Call to 'setMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:22.593-05:00[39m [34m[telegram][39m [31mcommand sync failed: GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:31.623-05:00[39m [36m[ws][39m [33mclosed before connect conn=fa71405d-dedd-4123-bd41-18c77e375620 remote=127.0.0.1 fwd=n/a origin=n/a host=127.0.0.1:18789 ua=n/a code=1008 reason=connect failed[39m
+[90m2026-03-29T12:29:32.678-05:00[39m [34m[telegram][39m [36m[scout] starting provider[39m
+[90m2026-03-29T12:29:33.226-05:00[39m [34m[telegram][39m [31mdeleteMyCommands failed: Call to 'deleteMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:33.229-05:00[39m [34m[telegram][39m [31mdeleteWebhook failed: Call to 'deleteWebhook' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:33.230-05:00[39m [34m[telegram][39m [31m[scout] channel exited: Call to 'deleteWebhook' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:33.231-05:00[39m [34m[telegram][39m [36m[scout] auto-restart attempt 3/10 in 20s[39m
+[90m2026-03-29T12:29:33.682-05:00[39m [34m[telegram][39m [31msetMyCommands failed: Call to 'setMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:33.683-05:00[39m [34m[telegram][39m [31mcommand sync failed: GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:53.911-05:00[39m [34m[telegram][39m [36m[scout] starting provider[39m
+[90m2026-03-29T12:29:54.494-05:00[39m [34m[telegram][39m [31mdeleteMyCommands failed: Call to 'deleteMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:54.496-05:00[39m [34m[telegram][39m [31mdeleteWebhook failed: Call to 'deleteWebhook' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:54.498-05:00[39m [34m[telegram][39m [31m[scout] channel exited: Call to 'deleteWebhook' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:54.499-05:00[39m [34m[telegram][39m [36m[scout] auto-restart attempt 4/10 in 41s[39m
+[90m2026-03-29T12:29:54.951-05:00[39m [34m[telegram][39m [31msetMyCommands failed: Call to 'setMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:29:54.952-05:00[39m [34m[telegram][39m [31mcommand sync failed: GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:30:04.422-05:00[39m [36m[ws][39m [36m⇄ res ✓ channels.status 2986ms conn=efce066f…d156 id=ef5980ae…db64[39m
+[90m2026-03-29T12:30:05.239-05:00[39m [31m[memory][39m [33membeddings rate limited; retrying in 517ms[39m
+[90m2026-03-29T12:30:05.998-05:00[39m [31m[memory][39m [33membeddings rate limited; retrying in 1128ms[39m
+[90m2026-03-29T12:30:07.771-05:00[39m [31m[memory][39m [33membeddings rate limited; retrying in 2107ms[39m
+[90m2026-03-29T12:30:10.106-05:00[39m [36m[ws][39m [36m⇄ res ✓ doctor.memory.status 5665ms conn=e5a796d8…1836 id=0155720c…977c[39m
+[90m2026-03-29T12:30:10.782-05:00[39m [34m[reload][39m [36mconfig change detected; evaluating reload (meta.lastTouchedAt, wizard.lastRunAt, channels.telegram.dmPolicy, channels.telegram.botToken, channels.telegram.allowFrom, channels.telegram.groupPolicy, channels.telegram.accounts.default)[39m
+[90m2026-03-29T12:30:10.871-05:00[39m [31m[gateway/channels][39m [36mrestarting telegram channel[39m
+[90m2026-03-29T12:30:10.880-05:00[39m [34m[reload][39m [36mconfig hot reload applied (channels.telegram.dmPolicy, channels.telegram.botToken, channels.telegram.allowFrom, channels.telegram.groupPolicy, channels.telegram.accounts.default)[39m
+[90m2026-03-29T12:30:11.332-05:00[39m [34m[telegram][39m [36m[scout] starting provider[39m
+[90m2026-03-29T12:30:11.490-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-29T12:30:11.776-05:00[39m [34m[telegram][39m [36m[builder] starting provider (@newbotclaw_bot)[39m
+[90m2026-03-29T12:30:12.075-05:00[39m [34m[telegram][39m [31mdeleteMyCommands failed: Call to 'deleteMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:30:12.077-05:00[39m [34m[telegram][39m [36m[ink] starting provider (@The_Nightshade_Hollow_bot)[39m
+[90m2026-03-29T12:30:12.079-05:00[39m [34m[telegram][39m [31mdeleteWebhook failed: Call to 'deleteWebhook' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:30:12.080-05:00[39m [34m[telegram][39m [31m[scout] channel exited: Call to 'deleteWebhook' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:30:12.081-05:00[39m [34m[telegram][39m [36m[scout] auto-restart attempt 1/10 in 5s[39m
+[90m2026-03-29T12:30:12.217-05:00[39m [34m[telegram][39m [36m[default] starting provider (@MAX_MAX_MAX_BOT_BOT)[39m
+[90m2026-03-29T12:30:12.301-05:00[39m [36m[skills][39m [33mroot has many entries, truncating discovery.[39m
+[90m2026-03-29T12:30:12.437-05:00[39m [34m[telegram][39m [36mlimits bots to 100 commands. 175 configured; registering first 100. Use channels.telegram.commands.native: false to disable, or reduce plugin/skill/custom commands.[39m
+[90m2026-03-29T12:30:12.747-05:00[39m [34m[telegram][39m [31msetMyCommands failed: Call to 'setMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:30:12.748-05:00[39m [34m[telegram][39m [31mcommand sync failed: GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:30:14.615-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-29T12:30:17.583-05:00[39m [34m[telegram][39m [31msendChatAction failed: Network request for 'sendChatAction' failed![39m
+[90m2026-03-29T12:30:17.859-05:00[39m [34m[telegram][39m [36m[scout] starting provider[39m
+[90m2026-03-29T12:30:18.417-05:00[39m [34m[telegram][39m [31mdeleteWebhook failed: Call to 'deleteWebhook' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:30:18.418-05:00[39m [34m[telegram][39m [31m[scout] channel exited: Call to 'deleteWebhook' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:30:18.419-05:00[39m [34m[telegram][39m [36m[scout] auto-restart attempt 2/10 in 10s[39m
+[90m2026-03-29T12:30:18.420-05:00[39m [34m[telegram][39m [31mdeleteMyCommands failed: Call to 'deleteMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:30:18.574-05:00[39m [34m[telegram][39m [31msetMyCommands failed: Call to 'setMyCommands' failed! (401: Unauthorized)[39m
+[90m2026-03-29T12:30:18.575-05:00[39m [34m[telegram][39m [31mcommand sync failed: GrammyError: Call to 'setMyCommands' failed! (401: Unauthorized)[39m

@@ -1,0 +1,4 @@
+# The Automation Blueprint
+## How to Automate Your Freelance Business with AI and Work Half the Hours
+
+... (rest of the content)

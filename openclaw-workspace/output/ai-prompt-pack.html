@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>AI Game Dev Prompt Pack</title>
+<style>
+body{font-family:Georgia,serif;max-width:800px;margin:40px auto;padding:0 24px;color:#1a1a1a;line-height:1.7;font-size:1.05rem;}
+h1{font-size:2rem;border-bottom:3px solid #1a1a1a;padding-bottom:10px;margin-top:2em;}
+h2{font-size:1.5rem;margin-top:2em;color:#333;}
+h3{font-size:1.2rem;margin-top:1.5em;}
+pre{background:#f4f4f4;padding:16px;border-radius:6px;overflow-x:auto;white-space:pre-wrap;}
+code{font-family:monospace;font-size:0.9em;}
+ul{margin:1em 0 1em 2em;}li{margin:0.4em 0;}
+strong{font-weight:700;}
+@media print{body{font-size:10pt;} h1{page-break-before:always;} }
+</style></head>
+<body><h1>Gumroad Product — AI Game Dev Prompt Pack</h1>
+<h2>Product Details</h2>
+<strong>Title:</strong> AI Game Dev Prompt Pack — 25 Power Prompts for Unity & UE5 Devs
+<strong>Price:</strong> $0.99
+<strong>Format:</strong> PDF (or Markdown → PDF via pandoc)
+<strong>Platform:</strong> Gumroad (account: maxgier2026@gmail.com)
+<p>---</p>
+<h2>Gumroad Listing Copy</h2>
+<h3>Product Title</h3>
+AI Game Dev Prompt Pack: 25 Copy-Paste Prompts for Unity & Unreal Devs
+<h3>Short Description (shown in search)</h3>
+Stop wasting time explaining your project to AI. These 25 tested prompts get Claude, ChatGPT, and Copilot to write production-ready game code, fix bugs, and design systems — instantly.
+<h3>Full Description</h3>
+<strong>The problem:</strong> You ask AI to help with your game. It gives you generic, broken code that doesn't fit your project.
+<strong>The fix:</strong> These 25 battle-tested prompts are engineered to get working results — not boilerplate.
+<p>---</p>
+<strong>What's inside:</strong>
+<p>🔧 <strong>Bug Fixing (5 prompts)</strong>
+<ul><li>"Here's my Unity error log. Find the root cause and fix it without changing anything else: [PASTE LOG]"</li>
+<li>NullReferenceException killer prompt</li>
+<li>Missing component auto-detective prompt</li>
+</ul></p>
+<p>🎮 <strong>Gameplay Systems (8 prompts)</strong>
+<ul><li>Third-person character controller (Unity Input System)</li>
+<li>Inventory system with hotbar</li>
+<li>Save/Load system (JSON + PlayerPrefs)</li>
+<li>Enemy patrol AI with NavMesh</li>
+<li>Combat system with hitboxes</li>
+<li>UE5 Blueprint → C++ migration prompt</li>
+<li>State machine generator</li>
+<li>Camera system with wall avoidance</li>
+</ul></p>
+<p>🎨 <strong>Level Design & Scene (4 prompts)</strong>
+<ul><li>Procedural room layout generator</li>
+<li>Enemy spawn balancing calculator</li>
+<li>Performance optimization audit prompt</li>
+<li>Scene hierarchy organizer</li>
+</ul></p>
+<p>✍️ <strong>Code Quality (4 prompts)</strong>
+<ul><li>"Review this script for bugs, performance issues, and Unity best practices"</li>
+<li>Comment generator (adds XML docs to any script)</li>
+<li>Refactor for SOLID principles</li>
+<li>Convert coroutines to async/await</li>
+</ul></p>
+<p>🚀 <strong>Shipping (4 prompts)</strong>
+<ul><li>itch.io product description writer</li>
+<li>Steam store page generator</li>
+<li>Patch notes writer from git diff</li>
+<li>Bug report template for players</li>
+</ul></p>
+<p>---</p>
+<strong>Works with:</strong> ChatGPT, Claude, GitHub Copilot, Gemini
+<strong>Game engines:</strong> Unity (2022 LTS, Unity 6), Unreal Engine 5
+<strong>Format:</strong> PDF, instant download
+<p>---</p>
+<h3>Price: $0.99</h3>
+<h3>Tags</h3>
+unity, unreal engine, game development, AI prompts, ChatGPT, Claude, game dev tools, indie game, Unity C#
+<p>---</p>
+<h2>THE ACTUAL PRODUCT — 25 PROMPTS</h2>
+<h3>SECTION 1: BUG FIXING</h3>
+<strong>Prompt 1 — Error Log Analyzer</strong>
+<pre><code>You are a Unity C# expert. Here is my error log:
+<p>[PASTE ERROR LOG]</p>
+<p>Here is the relevant script:</p>
+<p>[PASTE SCRIPT]</p>
+<p>Find the root cause. Explain it in one sentence. Then give me the minimal fix — change only what's broken, don't refactor anything else. Show me exactly which lines change.
+</code></pre></p>
+<strong>Prompt 2 — NullReferenceException Hunter</strong>
+<pre><code>I'm getting a NullReferenceException in Unity at runtime. Here's the stack trace:
+<p>[PASTE STACK TRACE]</p>
+<p>And here's the script mentioned in the trace:</p>
+<p>[PASTE SCRIPT]</p>
+<p>Identify exactly which variable is null and why. Give me the fix AND explain how to prevent this pattern in the future.
+</code></pre></p>
+<strong>Prompt 3 — Compile Error Fixer</strong>
+<pre><code>Unity won't compile. Here are all my CS errors:
+<p>[PASTE ALL ERRORS]</p>
+<p>Fix them all. List each error, explain what caused it in plain English, and show the corrected line. Prioritize: fix errors that are causing other errors first.
+</code></pre></p>
+<strong>Prompt 4 — Performance Profiler Interpreter</strong>
+<pre><code>My Unity game is dropping frames. Here's my Profiler output:
+<p>[PASTE PROFILER DATA OR SCREENSHOT DESCRIPTION]</p>
+<p>Identify the top 3 performance bottlenecks. For each: what it is, why it's expensive, and how to fix it. Give me code if the fix requires code changes.
+</code></pre></p>
+<strong>Prompt 5 — Missing Reference Detector</strong>
+<pre><code>My Unity script has serialized fields that are showing as None/Missing in the Inspector. Script:
+<p>[PASTE SCRIPT]</p>
+<p>Tell me: (1) which fields need to be assigned, (2) what type of component/asset to assign, (3) whether they should be assigned in Inspector or via GetComponent() at runtime, and why.
+</code></pre></p>
+<p>---</p>
+<h3>SECTION 2: GAMEPLAY SYSTEMS</h3>
+<strong>Prompt 6 — Third-Person Character Controller</strong>
+<pre><code>Write a Unity C# third-person character controller using the new Input System package.
+<p>Requirements:
+<ul><li>WASD/left stick movement relative to camera direction</li>
+<li>Shift to sprint (drains stamina float)</li>
+<li>Space to jump (only when grounded)</li>
+<li>C to toggle crouch (reduces collider height by 50%)</li>
+<li>Uses CharacterController component (not Rigidbody)</li>
+<li>GroundCheck using Physics.CheckSphere</li>
+<li>Smooth rotation toward movement direction</li>
+<li>[ADD YOUR PROJECT-SPECIFIC REQUIREMENTS HERE]</li>
+</ul></p>
+<p>Write clean, commented C# with [RequireComponent] attributes. Use a nested [System.Serializable] Settings class for all tunable values.
+</code></pre></p>
+<strong>Prompt 7 — Inventory System</strong>
+<pre><code>Write a Unity C# inventory system.
+<p>Requirements:
+<ul><li>ItemData ScriptableObject: name, icon Sprite, type enum (Consumable/KeyItem/Weapon), stackable bool, maxStack int</li>
+<li>InventorySystem MonoBehaviour: List&lt;ItemSlot&gt; slots, max capacity, AddItem/RemoveItem/HasItem methods</li>
+<li>ItemSlot struct: ItemData item, int quantity</li>
+<li>InteractableObject MonoBehaviour: OnInteract() adds item to player inventory</li>
+<li>UI: simple HUD showing item names (Canvas + Text, no fancy UI needed)</li>
+<li>Singleton pattern for InventorySystem</li>
+</ul></p>
+<p>Namespace: [YOUR_PROJECT_NAME].Systems
+</code></pre></p>
+<strong>Prompt 8 — Save/Load System</strong>
+<pre><code>Write a Unity C# save/load system using JSON.
+<p>Requirements:
+<ul><li>SaveData [Serializable] class: player position (Vector3), health (float), inventory item IDs (string[]), completed objectives (bool[])</li>
+<li>SaveSystem static class with Save(SaveData data) and Load() → SaveData methods</li>
+<li>Save path: Application.persistentDataPath + "/save.json"</li>
+<li>Graceful handling: if no save file exists, return default SaveData</li>
+<li>Include DeleteSave() method</li>
+<li>Add debug logging with [SAVE] prefix</li>
+</ul></p>
+<p>No third-party libraries. Plain JsonUtility only.
+</code></pre></p>
+<strong>Prompt 9 — Enemy Patrol AI</strong>
+<pre><code>Write a Unity C# enemy AI that patrols waypoints and detects the player.
+<p>Requirements:
+<ul><li>Uses NavMeshAgent for movement</li>
+<li>States: Patrol → Alert → Chase → Attack → ReturnToPatrol</li>
+<li>Patrol: cycle through Transform[] waypoints array, wait X seconds at each</li>
+<li>Detection: Physics.CheckSphere for proximity + linecast for line-of-sight</li>
+<li>Alert: stop, play alert animation trigger, wait 1s, then Chase</li>
+<li>Chase: follow player NavMesh target</li>
+<li>Attack: stop at attackRange, call TakeDamage on player, cooldown</li>
+<li>ReturnToPatrol: if player lost for 5s, return to last waypoint</li>
+<li>All ranges/speeds/timers exposed as [SerializeField] floats</li>
+</ul></p>
+<p>Script name: GuardAI.cs — namespace: [YOUR_NAMESPACE].AI
+</code></pre></p>
+<strong>Prompt 10 — Combat System</strong>
+<pre><code>Write a Unity C# combat system with hitbox-based damage.
+<p>Requirements:
+<ul><li>Health component: float currentHP, float maxHP, TakeDamage(float amount), OnDeath event</li>
+<li>Attack component: trigger collider activates during animation window only, OnTriggerEnter checks for Health component, applies damage</li>
+<li>Animation-driven: use Animation Events to enable/disable the hitbox collider</li>
+<li>DamageNumber: instantiate floating text prefab at hit position showing damage value</li>
+<li>Death: disable components, play death animation, destroy after 2s</li>
+</ul></p>
+<p>Works for both player and enemies. No hardcoded layer checks — use LayerMask field.
+</code></pre></p>
+<strong>Prompt 11 — UE5 Blueprint to C++ Migration</strong>
+<pre><code>I have a Blueprint in Unreal Engine 5 that I want to convert to C++.
+<p>Here's what the Blueprint does (describe it):
+[DESCRIBE YOUR BLUEPRINT LOGIC]</p>
+<p>Write the equivalent C++ code as a UCLASS. Include:
+<ul><li>Proper header (.h) and implementation (.cpp) files</li>
+<li>All UPROPERTY() and UFUNCTION() macros needed</li>
+<li>BeginPlay() and Tick() if used in Blueprint</li>
+<li>Comments explaining each section</li>
+<li>Any includes needed</li>
+</ul></p>
+<p>Target: UE5.3+, use modern C++ practices.
+</code></pre></p>
+<strong>Prompt 12 — State Machine Generator</strong>
+<pre><code>Write a Unity C# generic state machine for [ENEMY/PLAYER/NPC].
+<p>Requirements:
+<ul><li>IState interface: Enter(), Update(), Exit()</li>
+<li>StateMachine class: currentState, ChangeState(IState newState), Update()</li>
+<li>Concrete states for: [LIST YOUR STATES, e.g. IdleState, PatrolState, ChaseState]</li>
+<li>Each state has reference to owner via constructor</li>
+<li>No string-based state switching — use direct state object references</li>
+</ul></p>
+<p>Write all classes. Show me how to initialize and use it in the owner MonoBehaviour.
+</code></pre></p>
+<strong>Prompt 13 — Third-Person Camera</strong>
+<pre><code>Write a Unity C# third-person camera controller.
+<p>Requirements:
+<ul><li>Attach to Camera GameObject, Target = player Transform</li>
+<li>Mouse X = horizontal orbit (yaw), Mouse Y = vertical orbit (pitch)</li>
+<li>Pitch clamp: -20 to 60 degrees</li>
+<li>Offset from target: (0, 1.8, -4) default, exposed as [SerializeField]</li>
+<li>Wall collision: SphereCast from target to desired camera position, pull camera in if blocked</li>
+<li>Cursor locked in game, unlocked on pause</li>
+<li>Smooth follow using Vector3.Lerp</li>
+</ul></p>
+<p>No Cinemachine. Pure C#.
+</code></pre></p>
+<p>---</p>
+<h3>SECTION 3: LEVEL DESIGN & SCENE</h3>
+<strong>Prompt 14 — Procedural Room Layout</strong>
+<pre><code>Write a Unity C# editor script that generates a simple grid-based dungeon layout.
+<p>Requirements:
+<ul><li>Grid size: configurable width × height (default 10×10)</li>
+<li>Room types: enum (Empty, Room, Corridor, Start, Exit)</li>
+<li>Algorithm: random walk from center, place rooms, connect with corridors</li>
+<li>Output: 2D int array representing the grid</li>
+<li>Visualization: draw gizmos in Scene view showing room types as colored squares</li>
+<li>MenuItem: "Tools/Generate Dungeon" </li>
+</ul></p>
+<p>C# editor script, runs in Editor only (#if UNITY_EDITOR).
+</code></pre></p>
+<strong>Prompt 15 — Enemy Spawn Balancer</strong>
+<pre><code>I'm designing enemy spawning for my [GAME TYPE] game. Here's my current setup:
+<ul><li>Player health: [X]</li>
+<li>Player DPS: [X]  </li>
+<li>Encounter duration target: [X] seconds</li>
+<li>Enemy types: [LIST ENEMIES WITH HEALTH AND DAMAGE]</li>
+</ul>
+<p>Calculate:
+1. How many of each enemy type to spawn for a fair fight
+2. A "difficulty score" formula I can use to scale encounters
+3. Spawn timing suggestions (all at once vs. waves)</p>
+<p>Show your math. I want to understand the formula so I can adjust it myself.
+</code></pre></p>
+<strong>Prompt 16 — Performance Optimization Audit</strong>
+<pre><code>Audit this Unity C# script for performance issues:
+<p>[PASTE SCRIPT]</p>
+<p>Check for:
+<ul><li>GameObject.Find() or FindObjectOfType() in Update()</li>
+<li>GetComponent() calls that should be cached</li>
+<li>String concatenation in hot paths</li>
+<li>Unnecessary new() allocations per frame</li>
+<li>Missing [SerializeField] on Inspector references</li>
+<li>Update() doing work that could be in a coroutine or event</li>
+</ul></p>
+<p>For each issue found: show the bad code, explain why it's slow, show the fix.
+</code></pre></p>
+<strong>Prompt 17 — Scene Hierarchy Organizer</strong>
+<pre><code>I want to reorganize my Unity scene hierarchy. Here are my current objects:
+<p>[PASTE YOUR HIERARCHY - just the names]</p>
+<p>Suggest a clean hierarchy structure using empty parent GameObjects as folders. Rules:
+<ul><li>Group by function (Environment, Characters, UI, Lighting, Managers, VFX)</li>
+<li>Name managers with underscore prefix (_GameManager, _AudioManager)</li>
+<li>Separate static from dynamic objects</li>
+<li>Keep it flat enough that nothing is more than 3 levels deep</li>
+</ul></p>
+<p>Give me the full suggested hierarchy as an indented list.
+</code></pre></p>
+<p>---</p>
+<h3>SECTION 4: CODE QUALITY</h3>
+<strong>Prompt 18 — Code Reviewer</strong>
+<pre><code>Review this Unity C# script as a senior game developer:
+<p>[PASTE SCRIPT]</p>
+<p>Check for:
+1. Bugs or logic errors
+2. Performance issues (Update loops, allocations, GetComponent calls)
+3. Unity best practices violations
+4. Naming convention issues
+5. Missing null checks
+6. Thread safety issues</p>
+<p>Format: for each issue, show the line, explain the problem, give the fix. Rate overall code quality 1-10 and explain why.
+</code></pre></p>
+<strong>Prompt 19 — XML Doc Comment Generator</strong>
+<pre><code>Add XML documentation comments to this Unity C# script.
+<p>[PASTE SCRIPT]</p>
+<p>For every public method, property, and field add:
+<ul><li>&lt;summary&gt; describing what it does</li>
+<li>&lt;param&gt; for each parameter  </li>
+<li>&lt;returns&gt; if it returns something</li>
+<li>&lt;remarks&gt; for any non-obvious behavior</li>
+</ul></p>
+<p>Keep comments accurate and concise — one sentence per summary. Don't state the obvious.
+</code></pre></p>
+<strong>Prompt 20 — SOLID Refactor</strong>
+<pre><code>Refactor this Unity C# script to follow SOLID principles:
+<p>[PASTE SCRIPT]</p>
+<p>Specifically:
+<ul><li>Single Responsibility: split if this class does more than one thing</li>
+<li>Open/Closed: use interfaces or abstract classes where behavior should be extensible</li>
+<li>Dependency Injection: replace direct GetComponent calls with injected dependencies where appropriate</li>
+</ul></p>
+<p>Show me: (1) what violated SOLID and why, (2) the refactored code, (3) how to wire it up in the Inspector.
+</code></pre></p>
+<strong>Prompt 21 — Async Converter</strong>
+<pre><code>Convert these Unity C# coroutines to async/await:
+<p>[PASTE COROUTINES]</p>
+<p>Requirements:
+<ul><li>Use UniTask if available, otherwise System.Threading.Tasks</li>
+<li>Preserve all timing behavior (WaitForSeconds → await UniTask.Delay)</li>
+<li>Handle cancellation with CancellationToken</li>
+<li>Wrap MonoBehaviour entry points with .Forget() or async void</li>
+<li>Add try/catch for OperationCanceledException</li>
+</ul></p>
+<p>Show both the original and converted version side by side.
+</code></pre></p>
+<p>---</p>
+<h3>SECTION 5: SHIPPING</h3>
+<strong>Prompt 22 — itch.io Product Description Writer</strong>
+<pre><code>Write an itch.io game page description for my game:
+<p>Name: [GAME NAME]
+Genre: [GENRE]
+Core mechanic: [WHAT THE PLAYER DOES]
+Unique feature: [WHAT MAKES IT DIFFERENT]
+Tone: [DARK/FUNNY/CHILL/etc.]
+Platform: [PC/BROWSER/MOBILE]
+Price: [FREE/PAID]</p>
+<p>Write:
+1. Short description (140 chars max — shown in search)
+2. Full description (300-500 words, use itch.io HTML formatting)
+3. 5 tags to maximize discoverability</p>
+<p>Make it sound interesting, not like a press release.
+</code></pre></p>
+<strong>Prompt 23 — Steam Store Page Generator</strong>
+<pre><code>Write Steam store page copy for my game:
+<p>[SAME INPUT AS PROMPT 22, PLUS:]
+<ul><li>Target audience: [WHO IS THIS FOR]</li>
+<li>Comparable games: [2-3 games yours is similar to]</li>
+<li>Key features: [LIST 5 BULLET POINTS]</li>
+</ul></p>
+<p>Write:
+1. Short description (300 chars)
+2. Long description (full HTML, ~600 words)
+3. Feature bullet list (5 items, bold + description format)
+4. Tags suggestions (15 tags)
+</code></pre></p>
+<strong>Prompt 24 — Patch Notes Writer</strong>
+<pre><code>Write patch notes for my game update.
+<p>Here are the git commits since last release:
+[PASTE GIT LOG --oneline]</p>
+<p>Or here's what changed (plain English):
+[DESCRIBE CHANGES]</p>
+<p>Write patch notes in this format:
+<ul><li>Version number: [I'LL FILL IN]</li>
+<li>Tone: [CASUAL/PROFESSIONAL]</li>
+<li>Sections: New Features, Changes, Bug Fixes, Known Issues</li>
+<li>Length: short (players skim patch notes)</li>
+</ul></p>
+<p>Make it sound like a real developer wrote it, not a robot.
+</code></pre></p>
+<strong>Prompt 25 — Player Bug Report Template</strong>
+<pre><code>Create a bug report template for players of my [GENRE] game.
+<p>The template should collect:
+<ul><li>What they were doing when it happened</li>
+<li>What they expected vs. what happened</li>
+<li>How to reproduce it</li>
+<li>System info (OS, GPU, RAM)</li>
+<li>Game version</li>
+<li>Screenshot/video link (optional)</li>
+</ul></p>
+<p>Format it as a simple form players can fill out in Discord or email. Keep it short — players won't fill out a 20-field form. Max 8 fields.
+</code></pre></p>
+<p>---</p>
+<h2>GUMROAD PRODUCT SETUP INSTRUCTIONS</h2>
+<p>1. Go to https://app.gumroad.com/products/new
+2. Product type: <strong>Digital product</strong>
+3. Name: `AI Game Dev Prompt Pack: 25 Power Prompts for Unity & Unreal Devs`
+4. Price: <strong>$0.99</strong> (suggested: $0+, so buyers can pay more)
+5. File to upload: Export this document as PDF (or use `pandoc gumroad-ai-prompt-pack.md -o ai-prompt-pack.pdf`)
+6. Cover image: Dark background, "25 AI PROMPTS" in bold white text, Unity/Unreal logos
+7. Summary: *Stop writing bad AI prompts. These 25 tested prompts get Claude, ChatGPT, and Copilot to write production-ready Unity and UE5 code.*
+8. Tags: unity, unreal, game dev, AI, ChatGPT, Claude, prompts, C#, game programming
+9. Publish immediately</p>
+<strong>Expected:</strong> First sale possible within 24-48h of listing if posted to r/gamedev or r/Unity3D</body></html>

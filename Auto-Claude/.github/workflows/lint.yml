@@ -1,0 +1,53 @@
+name: Lint
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  # Python linting
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install ruff
+        run: pip install ruff
+
+      - name: Run ruff check
+        run: ruff check apps/backend/ --output-format=github
+
+      - name: Run ruff format check
+        run: ruff format apps/backend/ --check --diff
+
+  # TypeScript/React linting
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        working-directory: apps/frontend
+        run: npm ci --ignore-scripts
+
+      - name: Run ESLint
+        working-directory: apps/frontend
+        run: npm run lint
+
+      - name: Run TypeScript check
+        working-directory: apps/frontend
+        run: npm run typecheck

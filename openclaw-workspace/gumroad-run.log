@@ -1,0 +1,20 @@
+Session state: found
+✓ Session loaded. Verifying...
+  Verify URL: https://gumroad.com/
+  Session valid.
+
+→ Creating: FORGE Landing Page Template Pack — 22 Multi-Brand SaaS Pages
+  ✗ Failed: Session expired during product creation — need to re-login
+  Screenshot: Z:/openclaw/workspace/gumroad-error-1774627562421.png
+
+→ Creating: Autonomous Agent Startup Pack — Full OpenClaw Config + Agent Runtime
+  ✗ Failed: Session expired during product creation — need to re-login
+  Screenshot: Z:/openclaw/workspace/gumroad-error-1774627564754.png
+
+=== Results ===
+✗ FORGE Landing Page Template Pack — 22 Multi-Brand SaaS Pages
+  Error: Session expired during product creation — need to re-login
+✗ Autonomous Agent Startup Pack — Full OpenClaw Config + Agent Runtime
+  Error: Session expired during product creation — need to re-login
+
+Done. Results → gumroad-results.json

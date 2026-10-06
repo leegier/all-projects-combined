@@ -1,0 +1,5 @@
+# Feature Template
+
+This is a sample feature template.
+
+[Insert additional template content]

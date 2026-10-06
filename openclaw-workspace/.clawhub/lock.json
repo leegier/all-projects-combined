@@ -1,0 +1,725 @@
+{
+  "version": 1,
+  "skills": {
+    "morning-daily-briefing": {
+      "version": "1.0.0",
+      "installedAt": 1774213521771
+    },
+    "unreal-engine": {
+      "version": "1.0.0",
+      "installedAt": 1774213521780
+    },
+    "morning-briefing-pro": {
+      "version": "1.0.2",
+      "installedAt": 1774213523646
+    },
+    "agent-team-orchestration": {
+      "version": "1.0.0",
+      "installedAt": 1774213523647
+    },
+    "game-developer-skill": {
+      "version": "1.0.0",
+      "installedAt": 1774238944740
+    },
+    "freelancer-bidder": {
+      "version": "1.0.1",
+      "installedAt": 1774213524901
+    },
+    "ai-daily-briefing": {
+      "version": "1.0.0",
+      "installedAt": 1774213525444
+    },
+    "ue-log-analyzer": {
+      "version": "1.0.0",
+      "installedAt": 1774213525581
+    },
+    "agentic-workflow-automation": {
+      "version": "0.1.0",
+      "installedAt": 1774213526351
+    },
+    "subagent-driven-development": {
+      "version": "0.1.0",
+      "installedAt": 1774213526626
+    },
+    "briefing": {
+      "version": "2.1.0",
+      "installedAt": 1774213527357
+    },
+    "ue57-gamepiece-designer": {
+      "version": "0.1.0",
+      "installedAt": 1774213528721
+    },
+    "daily-report": {
+      "version": "1.0.0",
+      "installedAt": 1774213529180
+    },
+    "openclaw-money-maker": {
+      "version": "1.0.0",
+      "installedAt": 1774213958409
+    },
+    "freelance-automation-gig": {
+      "version": "1.0.0",
+      "installedAt": 1774213960410
+    },
+    "freelance-proposal-engine": {
+      "version": "1.0.0",
+      "installedAt": 1774213962516
+    },
+    "agent-orchestrator": {
+      "version": "0.1.0",
+      "installedAt": 1774213964373
+    },
+    "ue-build-package": {
+      "version": "1.0.0",
+      "installedAt": 1774213965612
+    },
+    "openclaw-mission-control": {
+      "version": "1.0.0",
+      "installedAt": 1774213967302
+    },
+    "mission-control-builder": {
+      "version": "1.0.0",
+      "installedAt": 1774213969246
+    },
+    "playwright-pro": {
+      "version": "2.1.1",
+      "installedAt": 1774215174233
+    },
+    "review-analysis": {
+      "version": "1.0.0",
+      "installedAt": 1774215175975
+    },
+    "agent-scorecard": {
+      "version": "1.0.6",
+      "installedAt": 1774215178108
+    },
+    "clawsafe": {
+      "version": "1.1.0",
+      "installedAt": 1774215182234
+    },
+    "http-static-server": {
+      "version": "2026.3.10",
+      "installedAt": 1774215185263
+    },
+    "agent-browser-5": {
+      "version": "0.1.0",
+      "installedAt": 1774233487418
+    },
+    "postthatlater": {
+      "version": "1.0.0",
+      "installedAt": 1774233510067
+    },
+    "massblogger": {
+      "version": "1.0.0",
+      "installedAt": 1774233513011
+    },
+    "duckduckgo-search-skills": {
+      "version": "1.0.0",
+      "installedAt": 1774233516093
+    },
+    "growth-hub": {
+      "version": "1.0.1",
+      "installedAt": 1774233519129
+    },
+    "md-web": {
+      "version": "1.0.4",
+      "installedAt": 1774233522768
+    },
+    "self-improvement-system": {
+      "version": "1.2.0",
+      "installedAt": 1774233525944
+    },
+    "action-bias": {
+      "version": "1.0.0",
+      "installedAt": 1774233529299
+    },
+    "skillforge": {
+      "version": "1.0.0",
+      "installedAt": 1774233532275
+    },
+    "openclaw-memory-enhancer-pro": {
+      "version": "0.1.5",
+      "installedAt": 1774233547460
+    },
+    "openclaw-usage-dashboard": {
+      "version": "1.0.1",
+      "installedAt": 1774233553340
+    },
+    "webperf-core-web-vitals": {
+      "version": "0.1.0",
+      "installedAt": 1774233561787
+    },
+    "resume-job-match-lab": {
+      "version": "1.0.0",
+      "installedAt": 1774233566280
+    },
+    "hkysj-github-analyzer": {
+      "version": "1.0.3",
+      "installedAt": 1774233570439
+    },
+    "return-rate-reducer": {
+      "version": "0.1.0",
+      "installedAt": 1774233575488
+    },
+    "geo-local-search-optimization": {
+      "version": "1.0.1",
+      "installedAt": 1774233579680
+    },
+    "structured-dev": {
+      "version": "0.1.0",
+      "installedAt": 1774233584005
+    },
+    "automation-workflows-temp": {
+      "version": "1.0.0",
+      "installedAt": 1774233588610
+    },
+    "xreply": {
+      "version": "0.1.0",
+      "installedAt": 1774233592820
+    },
+    "viral-app": {
+      "version": "0.1.5",
+      "installedAt": 1774233597340
+    },
+    "ga4-data-api": {
+      "version": "0.1.0",
+      "installedAt": 1774233601315
+    },
+    "youtube-caption": {
+      "version": "0.10.7-dev",
+      "installedAt": 1774233605605
+    },
+    "youtube-comment-thread": {
+      "version": "0.10.7-dev",
+      "installedAt": 1774233614372
+    },
+    "interview-buddy": {
+      "version": "1.0.2",
+      "installedAt": 1774233618428
+    },
+    "graph-polymarket-mcp": {
+      "version": "1.5.2",
+      "installedAt": 1774233625855
+    },
+    "atlassian": {
+      "version": "1.0.0",
+      "installedAt": 1774233630243
+    },
+    "maps": {
+      "version": "1.0.0",
+      "installedAt": 1774233634811
+    },
+    "browser-capture": {
+      "version": "1.0.0",
+      "installedAt": 1774233639239
+    },
+    "pingagi-web": {
+      "version": "0.1.0",
+      "installedAt": 1774233643515
+    },
+    "devto-surfer": {
+      "version": "1.0.0",
+      "installedAt": 1774233647853
+    },
+    "telegram-agent-coordination": {
+      "version": "1.0.0",
+      "installedAt": 1774233652116
+    },
+    "rss-reader-skill": {
+      "version": "0.1.0",
+      "installedAt": 1774233656575
+    },
+    "problem-solving-methodology": {
+      "version": "0.1.1",
+      "installedAt": 1774233666149
+    },
+    "self-improving-learner": {
+      "version": "3.0.7",
+      "installedAt": 1774233670986
+    },
+    "publish-checklist": {
+      "version": "1.0.0",
+      "installedAt": 1774233675127
+    },
+    "release-preflight": {
+      "version": "1.0.0",
+      "installedAt": 1774233679533
+    },
+    "es-file-search-win": {
+      "version": "1.0.0",
+      "installedAt": 1774233683880
+    },
+    "yes-md": {
+      "version": "1.1.1",
+      "installedAt": 1774233688213
+    },
+    "clawpick": {
+      "version": "1.0.0",
+      "installedAt": 1774233692476
+    },
+    "featureplanningautopilot": {
+      "version": "1.0.1",
+      "installedAt": 1774233696432
+    },
+    "product-discovery": {
+      "version": "2.1.1",
+      "installedAt": 1774233700415
+    },
+    "research-planner": {
+      "version": "1.0.0",
+      "installedAt": 1774233706094
+    },
+    "queue": {
+      "version": "2.0.1",
+      "installedAt": 1774233710054
+    },
+    "hash": {
+      "version": "3.0.1",
+      "installedAt": 1774233713916
+    },
+    "duckduckgo-search-backup": {
+      "version": "1.0.0",
+      "installedAt": 1774233717812
+    },
+    "onlyfans": {
+      "version": "1.0.0",
+      "installedAt": 1774233721922
+    },
+    "claw3d": {
+      "version": "1.0.0",
+      "installedAt": 1774233726942
+    },
+    "socrates": {
+      "version": "0.1.1",
+      "installedAt": 1774233731171
+    },
+    "skills-cli": {
+      "version": "1.0.2",
+      "installedAt": 1774233735051
+    },
+    "self-improving-agent": {
+      "version": "3.0.5",
+      "installedAt": 1774239021320
+    },
+    "proactive-agent": {
+      "version": "3.1.0",
+      "installedAt": 1774239023764
+    },
+    "free-ride": {
+      "version": "1.0.5",
+      "installedAt": 1774238959557
+    },
+    "clawdhub": {
+      "version": "1.0.0",
+      "installedAt": 1774239032066
+    },
+    "skill-vetter": {
+      "version": "1.0.0",
+      "installedAt": 1774239027943
+    },
+    "auto-updater": {
+      "version": "1.0.0",
+      "installedAt": 1774239030127
+    },
+    "agent-browser": {
+      "version": "0.2.0",
+      "installedAt": 1774239025706
+    },
+    "web-scraper": {
+      "version": "0.1.1",
+      "installedAt": 1774235674591
+    },
+    "social-poster": {
+      "version": "1.0.0",
+      "installedAt": 1774235679509
+    },
+    "content-scheduler": {
+      "version": "3.1.0",
+      "installedAt": 1774235682556
+    },
+    "seo-optimizer": {
+      "version": "0.1.0",
+      "installedAt": 1774235685638
+    },
+    "linkedin-poster": {
+      "version": "1.0.0",
+      "installedAt": 1774235773703
+    },
+    "youtube-uploader": {
+      "version": "1.0.0",
+      "installedAt": 1774235777677
+    },
+    "invoice-generator": {
+      "version": "1.0.0",
+      "installedAt": 1774235787911
+    },
+    "client-onboarding": {
+      "version": "1.0.0",
+      "installedAt": 1774235791783
+    },
+    "project-manager": {
+      "version": "1.0.0",
+      "installedAt": 1774235795575
+    },
+    "time-tracker": {
+      "version": "2.0.1",
+      "installedAt": 1774235799420
+    },
+    "vulnerability-scanner": {
+      "version": "1.0.0",
+      "installedAt": 1774235701979
+    },
+    "code-auditor": {
+      "version": "1.1.0",
+      "installedAt": 1774235704768
+    },
+    "docker-manager": {
+      "version": "1.0.2",
+      "installedAt": 1774235879412
+    },
+    "database-manager": {
+      "version": "1.0.0",
+      "installedAt": 1774235883647
+    },
+    "api-tester": {
+      "version": "1.0.0",
+      "installedAt": 1774235821800
+    },
+    "load-tester": {
+      "version": "2.0.2",
+      "installedAt": 1774235825661
+    },
+    "website-monitor": {
+      "version": "1.1.0",
+      "installedAt": 1774235713424
+    },
+    "uptime-checker": {
+      "version": "1.0.0",
+      "installedAt": 1774235828976
+    },
+    "price-monitor": {
+      "version": "1.0.0",
+      "installedAt": 1774235832788
+    },
+    "stock-watcher": {
+      "version": "1.0.0",
+      "installedAt": 1774235840192
+    },
+    "news-aggregator": {
+      "version": "1.0.3",
+      "installedAt": 1774235720173
+    },
+    "funnel-builder": {
+      "version": "1.0.3",
+      "installedAt": 1774235847330
+    },
+    "email-marketer": {
+      "version": "2.0.0",
+      "installedAt": 1774235851110
+    },
+    "chatbot-builder": {
+      "version": "1.0.0",
+      "installedAt": 1774235854916
+    },
+    "customer-support": {
+      "version": "1.0.0",
+      "installedAt": 1774235858955
+    },
+    "crm-manager": {
+      "version": "1.0.0",
+      "installedAt": 1774235862430
+    },
+    "cold-outreach": {
+      "version": "2.0.0",
+      "installedAt": 1774235761653
+    },
+    "proposal-writer": {
+      "version": "1.0.0",
+      "installedAt": 1774235764428
+    },
+    "contract-generator": {
+      "version": "1.0.0",
+      "installedAt": 1774235869296
+    },
+    "multi-search-engine": {
+      "version": "2.0.1",
+      "installedAt": 1774238919577
+    },
+    "prompt-engineering-expert": {
+      "version": "1.0.0",
+      "installedAt": 1774238941971
+    },
+    "marl-middleware": {
+      "version": "1.0.0",
+      "installedAt": 1774238947263
+    },
+    "primitives-dsl": {
+      "version": "1.0.0",
+      "installedAt": 1774238950123
+    },
+    "multi-agent-builder": {
+      "version": "1.0.0",
+      "installedAt": 1774238954641
+    },
+    "rune-prompt-amplification": {
+      "version": "1.0.0",
+      "installedAt": 1774238957259
+    },
+    "websocket-engineer": {
+      "version": "0.1.0",
+      "installedAt": 1774238962395
+    },
+    "ai-engineer": {
+      "version": "1.0.0",
+      "installedAt": 1774238965154
+    },
+    "seo-content-engine": {
+      "version": "1.0.0",
+      "installedAt": 1774238967711
+    },
+    "content-engine": {
+      "version": "1.0.0",
+      "installedAt": 1774238970351
+    },
+    "social-repurpose-engine": {
+      "version": "1.0.0",
+      "installedAt": 1774238973159
+    },
+    "architect-engineer": {
+      "version": "1.0.1",
+      "installedAt": 1774238976674
+    },
+    "iknowkungfu": {
+      "version": "1.2.0",
+      "installedAt": 1774238979887
+    },
+    "gog": {
+      "version": "1.0.0",
+      "installedAt": 1774239034185
+    },
+    "blender": {
+      "version": "1.0.0",
+      "installedAt": 1774239036756
+    },
+    "fivem-dev": {
+      "version": "0.1.0",
+      "installedAt": 1774239039281
+    },
+    "easy-search": {
+      "version": "1.0.1",
+      "installedAt": 1774239042045
+    },
+    "story-time": {
+      "version": "1.0.0",
+      "installedAt": 1774239061402
+    },
+    "repo2": {
+      "version": "1.0.0",
+      "installedAt": 1774239068672
+    },
+    "masterswarm": {
+      "version": "1.1.2",
+      "installedAt": 1774239071316
+    },
+    "ugc-brief-to-script-engine": {
+      "version": "1.0.3",
+      "installedAt": 1774239073992
+    },
+    "linkedin-ghostwriting": {
+      "version": "1.1.0",
+      "installedAt": 1774239076731
+    },
+    "freelance-proposal-writer-pro": {
+      "version": "1.0.0",
+      "installedAt": 1774248782386
+    },
+    "freelance-invoice-tracker": {
+      "version": "1.0.0",
+      "installedAt": 1774248784268
+    },
+    "neckr0ik-freelance-automator": {
+      "version": "1.0.0",
+      "installedAt": 1774248788040
+    },
+    "ai-proposal-freelance-deal-generator": {
+      "version": "1.0.0",
+      "installedAt": 1774248790229
+    },
+    "revenue-tracker": {
+      "version": "1.0.0",
+      "installedAt": 1774248795608
+    },
+    "afrexai-revenue-forecasting": {
+      "version": "1.0.0",
+      "installedAt": 1774248799522
+    },
+    "multi-channel-income-tracker": {
+      "version": "1.0.0",
+      "installedAt": 1774248806301
+    },
+    "passive-income-tracker-pro": {
+      "version": "1.0.0",
+      "installedAt": 1774248808006
+    },
+    "ai-revenue-tracker": {
+      "version": "1.0.0",
+      "installedAt": 1774248811357
+    },
+    "crypto-market-data": {
+      "version": "1.0.2",
+      "installedAt": 1774248813801
+    },
+    "crypto-trader": {
+      "version": "1.0.0",
+      "installedAt": 1774248854821
+    },
+    "trading": {
+      "version": "1.0.1",
+      "installedAt": 1774248859960
+    },
+    "trading-brain": {
+      "version": "1.0.0",
+      "installedAt": 1774248902525
+    },
+    "auto-trading-strategy": {
+      "version": "1.1.0",
+      "installedAt": 1774248904601
+    },
+    "crypto-stock-market-data": {
+      "version": "1.0.3",
+      "installedAt": 1774248966594
+    },
+    "affiliate-marketing": {
+      "version": "1.0.0",
+      "installedAt": 1774249026053
+    },
+    "dropshipping": {
+      "version": "1.0.0",
+      "installedAt": 1774249093795
+    },
+    "content-creator": {
+      "version": "2.1.1",
+      "installedAt": 1774249095230
+    },
+    "build-game": {
+      "version": "1.2.0",
+      "installedAt": 1774249095933
+    },
+    "ai-dropshipping-market-finder": {
+      "version": "1.0.0",
+      "installedAt": 1774249099567
+    },
+    "google-maps-revenue-estimator": {
+      "version": "1.0.0",
+      "installedAt": 1774249099763
+    },
+    "game-engine": {
+      "version": "1.0.0",
+      "installedAt": 1774249100747
+    },
+    "ai-remote-work-empire-builder": {
+      "version": "1.0.0",
+      "installedAt": 1774249102776
+    },
+    "watch-my-money": {
+      "version": "1.0.0",
+      "installedAt": 1774249142244
+    },
+    "ecommerce": {
+      "version": "1.0.0",
+      "installedAt": 1774249143689
+    },
+    "godot-dev-guide": {
+      "version": "1.0.0",
+      "installedAt": 1774249144413
+    },
+    "ai-personal-finance-advisor": {
+      "version": "1.0.0",
+      "installedAt": 1774249145321
+    },
+    "ecommerce-scraper": {
+      "version": "1.0.0",
+      "installedAt": 1774249146937
+    },
+    "crypto-portfolio-tracker": {
+      "version": "1.0.0",
+      "installedAt": 1774249394662
+    },
+    "clawd-ecommerce-automation": {
+      "version": "1.0.0",
+      "installedAt": 1774249456897
+    },
+    "saas-landing-page-generator": {
+      "version": "1.0.0",
+      "installedAt": 1774249460905
+    },
+    "game-development": {
+      "version": "1.0.0",
+      "installedAt": 1774249515465
+    },
+    "bountyswarm": {
+      "version": "1.0.0",
+      "installedAt": 1774249521449
+    },
+    "multi-bounty-scanner": {
+      "version": "1.0.0",
+      "installedAt": 1774249569292
+    },
+    "bountyhub-agent": {
+      "version": "0.1.7",
+      "installedAt": 1774249573335
+    },
+    "ai-affiliate-marketing-goldmine": {
+      "version": "1.0.0",
+      "installedAt": 1774249681656
+    },
+    "github-bounty-hunter": {
+      "version": "1.0.1",
+      "installedAt": 1774249759181
+    },
+    "ai-saas-pricing-intelligence": {
+      "version": "1.0.0",
+      "installedAt": 1774249862290
+    },
+    "affiliate-link-injector": {
+      "version": "1.0.0",
+      "installedAt": 1774249992258
+    },
+    "agent-bounty-scanner": {
+      "version": "1.0.1",
+      "installedAt": 1774250120821
+    },
+    "unity": {
+      "version": "1.0.0",
+      "installedAt": 1774250175368
+    },
+    "max-content-machine": {
+      "version": "1.0.0",
+      "installedAt": 1774353776867
+    },
+    "openclaw-command-center": {
+      "version": "1.4.1",
+      "installedAt": 1774927385958
+    },
+    "openclaw-agent-optimize": {
+      "version": "1.2.1",
+      "installedAt": 1774927388043
+    },
+    "topic-monitor": {
+      "version": "1.5.2",
+      "installedAt": 1774927444457
+    },
+    "market-research": {
+      "version": "1.0.1",
+      "installedAt": 1774927446393
+    },
+    "seo-content-writer": {
+      "version": "5.1.0",
+      "installedAt": 1774927448056
+    },
+    "proactivity": {
+      "version": "1.0.1",
+      "installedAt": 1774927501836
+    }
+  }
+}
