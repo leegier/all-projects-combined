@@ -7,7 +7,7 @@
 | `contact-sheet.jpg` | One frame every 8 s of the golden path (49 tiles), for a quick visual review of the whole run |
 
 The **full-quality master** — `nyghtshade-hollow-playtest.mp4`, 1280×720 · 30 fps · H.264 (≈ 1.5 Mbit/s) + AAC, 99.9 MB — is not committed
-(it is just under GitHub's 100 MiB file limit); it was handed over in the Claude session that built it. Rebuild it any time with
+(it is just under GitHub's 100 MiB file limit); it was handed over in the Claude session that built it (as four parts, because uploads there are capped at 30 MiB, plus a 480p single-file copy). Rebuild it any time with
 [`tools/make-video.sh`](../tools/make-video.sh) → [`tools/make-video-extras.sh`](../tools/make-video-extras.sh) → [`tools/assemble.mjs`](../tools/assemble.mjs)
 (≈ 3 hours of wall-clock on 4 cores, no GPU), and the lite version with [`tools/make-lite.sh`](../tools/make-lite.sh).
 

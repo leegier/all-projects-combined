@@ -3,7 +3,7 @@
 The master recording (`nyghtshade-hollow-playtest.mp4`) shows the **playtest bot** playing *The Intake* start to finish while the
 assertions it makes appear on screen: 8 min 8 s, 1280×720, 30 fps, H.264 + AAC, 24 chapter markers. Nothing is faked: the
 video frames are screenshots of the real game (WebGL canvas **and** DOM HUD) at chosen simulation steps; the audio is the game's
-own procedural soundtrack rendered from the same simulation. The master is 99.9 MB, just under GitHub's file limit, so it is not committed — it was handed over in the Claude session; the
+own procedural soundtrack rendered from the same simulation. The master is 99.9 MB, just under GitHub's file limit, so it is not committed — it was handed over in the Claude session (as four ≤ 30 MiB parts cut at keyframes, plus a 480p single-file copy); the
 repository carries `media/nyghtshade-hollow-playtest-lite.mp4` (854×480, 32 MB, same chapters), 21 stills and a contact sheet.
 
 ## What you see
