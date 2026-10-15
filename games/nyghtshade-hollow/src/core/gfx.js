@@ -86,8 +86,8 @@ class ViewmodelPass extends RenderPass {
 export class Gfx {
   constructor(canvas, { quality = 'high', width = 1280, height = 720 } = {}) {
     this.q = { ...(QUALITY[quality] || QUALITY.high) };
-    // URL overrides (capture/perf experiments): ?msaa=2&sm=1024&pool=5
-    { const sp = new URLSearchParams(typeof location !== 'undefined' ? location.search : ''); if (sp.has('msaa')) this.q.samples = +sp.get('msaa'); if (sp.has('sm')) this.q.shadowMap = +sp.get('sm'); if (sp.has('pool')) this.q.pool = +sp.get('pool'); if (sp.has('bloom')) this.q.bloom = sp.get('bloom') !== '0'; }
+    // URL overrides (capture/perf experiments): ?msaa=2&sm=1024&pool=5&grain=0.5
+    { const sp = new URLSearchParams(typeof location !== 'undefined' ? location.search : ''); if (sp.has('msaa')) this.q.samples = +sp.get('msaa'); if (sp.has('sm')) this.q.shadowMap = +sp.get('sm'); if (sp.has('pool')) this.q.pool = +sp.get('pool'); if (sp.has('bloom')) this.q.bloom = sp.get('bloom') !== '0'; if (sp.has('grain')) this.q.grain = +sp.get('grain'); }
     this.qualityName = quality;
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, powerPreference: 'high-performance', preserveDrawingBuffer: true });
     renderer.setPixelRatio(this.q.pixelRatio);

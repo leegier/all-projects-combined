@@ -115,7 +115,7 @@ const CSS = `
 .title{background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.15) 40%,rgba(0,0,0,.65))}
 .title h1{font-size:9vmin;letter-spacing:.32em;margin:0;font-weight:700;color:#e8e0d0;text-shadow:0 0 30px rgba(179,32,42,.55),0 4px 18px #000;padding-left:.32em}
 .title h1 span{color:var(--red2)}
-.title h2{font-size:1.9vmin;letter-spacing:.9em;color:var(--dim);margin:1.2vmin 0 5vmin;font-weight:400;padding-left:.9em;text-transform:uppercase}
+.title h2{font-size:2.1vmin;letter-spacing:.9em;color:#b9b19e;text-shadow:0 0 10px #000,0 2px 6px #000;margin:1.2vmin 0 5vmin;font-weight:400;padding-left:.9em;text-transform:uppercase}
 .title .ver{position:absolute;bottom:2.4vmin;left:2.4vmin;font-size:1.2vmin;letter-spacing:.25em;color:#6a6458;text-transform:uppercase}
 .end{background:rgba(0,0,0,.88)}
 .end h1{font-size:5.4vmin;letter-spacing:.4em;font-weight:400;margin:0;padding-left:.4em}
@@ -281,6 +281,8 @@ export class UI {
       c.appendChild(b);
     });
     c.classList.toggle('on', list.length > 0);
+    // keep the line being answered readable: lift the subtitle above the choice list instead of letting them overlap
+    this.el('u-sub').style.bottom = list.length ? (7 + list.length * 7.4 + 2.5).toFixed(1) + '%' : '';
     this.el('u-cont').style.display = list.length ? 'none' : 'block';
   }
 

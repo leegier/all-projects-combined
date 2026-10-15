@@ -167,7 +167,7 @@ export class AudioEngine {
     switch (name) {
       case 'door': this._src(this.brown, t, 0.35, { f: 260, g: 0.5 * v }); this._tone(t, 160, 0.18, { f1: 60, g: 0.4 * v }); this._tone(t + 0.04, 920, 0.5, { f1: 700, g: 0.04 * v, vib: 12 }); break;
       case 'doorClose': this._src(this.brown, t, 0.3, { f: 220, g: 0.55 * v }); this._tone(t, 130, 0.22, { f1: 45, g: 0.5 * v }); this._metal(t + 0.01, 360, 0.08 * v, 0.5); break;
-      case 'celldoor': this._src(this.brown, t, 1.5, { f: 340, type: 'lowpass', g: 0.5 * v, attack: 0.08 }); this._src(this.pink, t, 1.4, { f: 1200, q: 3, g: 0.07 * v }); this._metal(t + 1.4, 520, 0.28 * v, 1.6); this._tone(t + 1.38, 70, 0.3, { f1: 38, g: 0.5 * v }); break;
+      case 'celldoor': this._src(this.brown, t, 1.5, { f: 340, type: 'lowpass', g: 0.3 * v, attack: 0.08 }); this._src(this.pink, t, 1.4, { f: 1200, q: 3, g: 0.06 * v }); this._metal(t + 1.4, 520, 0.18 * v, 1.6); this._tone(t + 1.38, 70, 0.3, { f1: 38, g: 0.28 * v }); break;
       case 'gate': this._tone(t, 118, 0.7, { type: 'square', g: 0.07 * v }); this._src(this.brown, t + 0.6, 2.0, { f: 300, type: 'lowpass', g: 0.5 * v, attack: 0.1 }); this._src(this.pink, t + 0.7, 1.8, { f: 2200, q: 4, g: 0.05 * v }); this._metal(t + 2.5, 420, 0.3 * v, 1.8); break;
       case 'buzzer': this._tone(t, 120, 0.9, { type: 'square', g: 0.09 * v }); this._tone(t, 240, 0.9, { type: 'square', g: 0.04 * v }); break;
       case 'keycard': this._tone(t, 1760, 0.1, { g: 0.12 * v }); this._tone(t + 0.14, 2349, 0.12, { g: 0.12 * v }); this._src(this.white, t + 0.32, 0.06, { f: 1800, g: 0.2 * v }); break;

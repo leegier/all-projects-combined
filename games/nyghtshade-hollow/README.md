@@ -134,8 +134,9 @@ games/nyghtshade-hollow/
 │  ├─ capture.js    deterministic capture API (window.NH_CAP)
 │  └─ game.js, main.js
 ├─ tests/           unit.mjs · run-tests.mjs (bot) · integration.mjs
-├─ tools/           build · serve · capture · make-video.sh · look (stills) · perf (render cost) · montage.py
-├─ docs/            DESIGN · TESTING · VIDEO + machine-readable reports
+├─ tools/           build · serve · capture.mjs + make-video.sh + chapters.mjs (video) · look (stills) · perf (render cost)
+│                   montage.py / stills.py (contact sheets, media stills) · report.mjs (docs/TESTING.md)
+├─ docs/            DESIGN · TESTING · VIDEO · FINDINGS + machine-readable reports
 └─ media/           playtest video + screenshots
 ```
 

@@ -20,12 +20,13 @@ const ROUTE = arg('route', 'shim');
 const FPS = +arg('fps', 30);
 const WORKERS = +arg('workers', 3);
 const Q = arg('q', 'high');
-const QX = arg('qx', 'sm=1024&sunsm=1024');       // render-cost trims for the software rasteriser (shadow map sizes); the game default is 2048
+const QX = arg('qx', 'sm=1024&sunsm=1024&grain=0.5'); // software-rasteriser trims (shadow map sizes; the game default is 2048) and half film grain (grain is expensive to encode)
 const W = +arg('w', 1280), H = +arg('h', 720);
 const STAGE = arg('stage', 'all');
 const PREVIEW = +arg('preview', 0);
 const FROM = +arg('from', 0), TO = +arg('to', 1e9);
 const JPEG_Q = +arg('jpegq', 93);
+const PB = +(process.env.NH_PORT || 8100);               // base port for the local servers (set NH_PORT to run a second capture alongside)
 const WARM = 24;                       // frames rendered (not saved) before a worker's slice so camera/light smoothing has converged
 const TAIL_S = 7;                      // seconds of the end screen kept after the bot finishes
 const TITLE_S = 4.5, OUTRO_S = 10, INTER_S = 4;
@@ -57,7 +58,7 @@ async function runToEnd(page, tailSteps, onChunk) {
 
 async function stagePlan() {
   log('plan: simulating the bot run headlessly …');
-  const t = await open({ port: 8090, query: `bot=${ROUTE}&annotate&capture&manual&q=low`, width: W, height: H, log: false });
+  const t = await open({ port: PB - 10, query: `bot=${ROUTE}&annotate&capture&manual&q=low`, width: W, height: H, log: false });
   await t.page.evaluate(() => NH_CAP.begin());
   const { checkpoints, finishedAt } = await runToEnd(t.page, TAIL_S * STEPS_PER_S);
   const plan = await t.page.evaluate(() => NH_CAP.plan());
@@ -89,7 +90,7 @@ function buildSchedule(plan) {
 }
 
 async function worker(id, todo, all, plan, nameFn) {
-  const t = await open({ port: 8100 + id, query: `bot=${ROUTE}&annotate&capture&manual&q=${Q}&${QX}`, width: W, height: H, log: false });
+  const t = await open({ port: PB + id, query: `bot=${ROUTE}&annotate&capture&manual&q=${Q}&${QX}`, width: W, height: H, log: false });
   const { page } = t;
   await page.evaluate(() => NH_CAP.begin());
   let cur = 0;
@@ -136,12 +137,22 @@ async function worker(id, todo, all, plan, nameFn) {
 
 async function stageFrames(plan) {
   const dir = PREVIEW > 0 ? P('preview') : P('frames');
-  const resume = !!arg('resume', false);
+  const resume = !!arg('resume', false) || !!arg('redo', false);
   if (!resume) { fs.rmSync(dir, { recursive: true, force: true }); }
   fs.mkdirSync(dir, { recursive: true });
   const all = buildSchedule(plan);
   fs.writeFileSync(P(PREVIEW > 0 ? 'preview.json' : 'schedule.json'), JSON.stringify(all));
   const nameFn = PREVIEW > 0 ? (f) => path.join(dir, `p_${String(Math.round(f.step / 6)).padStart(6, '0')}.jpg`) : (f) => path.join(dir, `f_${String(f.i).padStart(6, '0')}.jpg`);
+  // --redo "139-141.6,150-153": delete and re-render the frames inside these windows of simulated seconds (patch pass after a fix)
+  const redo = arg('redo', null);
+  if (redo && redo !== true) {
+    let n = 0;
+    for (const w of String(redo).split(',')) {
+      const [a, b] = w.split('-').map(Number);
+      for (const f of all) if (f.step >= a * STEPS_PER_S && f.step <= b * STEPS_PER_S && fs.existsSync(nameFn(f))) { fs.unlinkSync(nameFn(f)); n++; }
+    }
+    log(`redo: removed ${n} frames`);
+  }
   const todo = all.filter((f) => !(resume && fs.existsSync(nameFn(f)) && fs.statSync(nameFn(f)).size > 1000));
   log(`frames: ${all.length} frames (${(all.length / FPS).toFixed(1)} s of video at ${FPS} fps), ${todo.length} to render, ${WORKERS} workers, q=${Q}&${QX}, ${W}x${H}`);
   const chunk = Math.ceil(todo.length / WORKERS);
@@ -158,7 +169,7 @@ async function stageFrames(plan) {
 async function stageAudio(plan) {
   log('audio: simulating with the offline soundtrack attached …');
   const dur = AUDIO_S || plan.totalSteps / STEPS_PER_S + OUTRO_S + 2;
-  const t = await open({ port: 8095, query: `bot=${ROUTE}&annotate&capture&manual&q=low`, width: W, height: H, log: false });
+  const t = await open({ port: PB - 5, query: `bot=${ROUTE}&annotate&capture&manual&q=low`, width: W, height: H, log: false });
   await t.page.evaluate((d) => NH_CAP.begin({ audioSeconds: d }), dur);
   let steps = 0;
   const total = Math.round(dur * STEPS_PER_S) - 60;
@@ -219,7 +230,7 @@ function cardHtml(kind, plan) {
 async function stageCards(plan) {
   log('cards:', PARTS.filter((x) => x !== 'frames').join(', '));
   fs.rmSync(P('cards'), { recursive: true, force: true }); fs.mkdirSync(P('cards'), { recursive: true });
-  const t = await open({ port: 8096, query: `bot=${ROUTE}&annotate&capture&manual&q=low`, width: W, height: H, log: false });
+  const t = await open({ port: PB - 4, query: `bot=${ROUTE}&annotate&capture&manual&q=low`, width: W, height: H, log: false });
   const shoot = async (kind, secs, prefix, animSecs) => {
     await t.page.evaluate((html) => NH_CAP.showCard(html), cardHtml(kind, plan));
     const n = Math.round(secs * FPS), anim = Math.round(animSecs * FPS);

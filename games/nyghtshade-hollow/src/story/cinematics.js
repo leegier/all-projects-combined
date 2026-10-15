@@ -65,7 +65,7 @@ export function makeFontCine(g) {
       { t0: 0, t1: 4.2, from: (g) => ({ p: [g.player.eyePos.x, g.player.eyePos.y, g.player.eyePos.z], l: [font.x, 0.8, font.z - 0.2], fov: 62 }), to: (g) => ({ p: [font.x + 1.0, 1.1, font.z + 3.4], l: [font.x, 0.5, font.z - 1.0], fov: 52 }), area: 'chapel' },
       { t0: 4.2, t1: 8.5, from: (g) => ({ p: [font.x + 1.0, 1.1, font.z + 3.4], l: [font.x, 0.5, font.z - 1.0], fov: 52 }), to: { p: [font.x + 0.2, 1.6, font.z + 1.8], l: [font.x, -1.6, font.z - 0.6], fov: 58 } },
     ],
-    onStart(g) { g.audio && g.audio.sfx('lift'); this._p0 = g.ctx.fontGroup.position.x; g.ui.setPrompt(null); },
+    onStart(g) { g.audio && g.audio.sfx('lift'); this._p0 = g.ctx.fontGroup.position.x; g.ui.setPrompt(null); g.ui.hud(false); },
     events: [
       { at: 0.5, fn: (g) => g.ui.say('Harrington', 'Easy. Slow — stone remembers being hurried.', { cont: false, cps: 40, onChar: () => g.audio && g.audio.voice(118, 0.8) }) },
       { at: 3.6, fn: (g) => { g.ui.clearSay(); g.audio && g.audio.sfx('thud', { vol: 1.2 }); g.camShake = 0.6; } },
@@ -78,7 +78,7 @@ export function makeFontCine(g) {
       g.ctx.fontCollider.enabled = e < 0.55;
     },
     onEnd(g) {
-      g.mode = 'play'; g.player.frozen = false; g.letter = 0; g.ui.clearSay();
+      g.mode = 'play'; g.ui.hud(true); g.player.frozen = false; g.letter = 0; g.ui.clearSay();
       g.ctx.fontGroup.position.x = 2.6; g.ctx.fontCollider.enabled = false;
       g.story.startLead();
       g.ui.toast('The tunnel is open — follow Harrington', 'good');

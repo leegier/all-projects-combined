@@ -27,7 +27,7 @@ for (const route of routes) {
   console.log(`route ${route}: ${res.results.length - bad.length}/${res.results.length} checks, finished=${res.finished}, mode=${res.mode}, sim ${res.simTime.toFixed(0)}s, stuck ${res.stuck}, wall ${((Date.now() - t0) / 1000).toFixed(0)}s`);
   for (const b of bad) console.log('  FAIL', b.name, b.detail, '@', b.t + 's', b.hour);
   failed += bad.length + (res.finished ? 0 : 1);
-  report.push({ route, ...res });
+  report.push({ ...res, via: res.route, route });
   await t.close();
 }
 fs.mkdirSync(path.join(here, '../docs'), { recursive: true });

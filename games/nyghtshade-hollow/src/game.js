@@ -152,7 +152,7 @@ export class Game {
       if (dist < 35) {
         const v = clamp(1 - dist / 35, 0.15, 1), name = t ? (d.sound === 'door' ? 'door' : d.sound) : (d.sound === 'door' ? 'doorClose' : d.sound);
         // a whole tier of cell doors releases at once: spread them out and thin each one so the sum stays a rumble, not a wall
-        if (this.audio) this.audio.sfx(name, d.sound === 'celldoor' ? { vol: v * 0.4, t: this.audio.now() + (this._cellDoorN = ((this._cellDoorN || 0) + 1) % 12) * 0.075 } : { vol: v });
+        if (this.audio) this.audio.sfx(name, d.sound === 'celldoor' ? { vol: v * 0.35, t: this.audio.now() + (this._cellDoorN = ((this._cellDoorN || 0) + 1) % 12) * 0.11 } : { vol: v });
       }
     });
     this.events.on('step', (e) => { if (this.audio) this.audio.step(e.surface, e.loud, e.who === 'player' ? 1 : 0.4); });

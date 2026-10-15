@@ -24,5 +24,6 @@ $CAP --out "$OUT/shim"  --route shim  --stage encode --parts title,frames --name
 $CAP --out "$OUT/alarm" --route alarm --stage encode --parts interlude,frames --name B.mp4 --gain-db $G --interlude "FAILURE PATH|What happens when the camera sees you"
 $CAP --out "$OUT/shim"  --route shim  --stage encode --parts outro --name C.mp4 --gain-db $G --also "$OUT/alarm/plan.json"
 printf "file '%s'\nfile '%s'\nfile '%s'\n" "$OUT/shim/A.mp4" "$OUT/alarm/B.mp4" "$OUT/shim/C.mp4" > "$OUT/concat.txt"
-ffmpeg -y -f concat -safe 0 -i "$OUT/concat.txt" -c copy -movflags +faststart "$OUT/nyghtshade-hollow-playtest.mp4"
+node tools/chapters.mjs "$OUT/shim" "$OUT/alarm" "$OUT/chapters.ffmeta"
+ffmpeg -y -f concat -safe 0 -i "$OUT/concat.txt" -i "$OUT/chapters.ffmeta" -map 0 -map_metadata 1 -map_chapters 1 -c copy -movflags +faststart "$OUT/nyghtshade-hollow-playtest.mp4"
 ls -la "$OUT/nyghtshade-hollow-playtest.mp4"
