@@ -1,12 +1,12 @@
 // End-to-end test: boots the real game in headless Chromium and lets the playtest bot play the whole slice.
-// Usage: node tests/run-tests.mjs [route=shim|keycard|bribe|all] [--render]
+// Usage: node tests/run-tests.mjs [route=shim|keycard|bribe|alarm|all] [--render]
 import { open } from '../tools/lib.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const arg = process.argv[2] && !process.argv[2].startsWith('--') ? process.argv[2] : 'all';
-const routes = arg === 'all' ? ['shim', 'keycard', 'bribe'] : [arg];
+const routes = arg === 'all' ? ['shim', 'keycard', 'bribe', 'alarm'] : [arg];
 const report = [];
 let failed = 0;
 for (const route of routes) {

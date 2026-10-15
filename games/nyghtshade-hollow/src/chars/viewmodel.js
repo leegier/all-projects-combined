@@ -58,7 +58,7 @@ export class Viewmodel {
       const lg = new THREE.LatheGeometry(prof, 20); lg.rotateX(-Math.PI / 2);
       const fore = new THREE.Mesh(lg, skin); g.add(fore);
       // rolled sleeve at the elbow end
-      const sl = new THREE.Mesh(new THREE.CylinderGeometry(0.0695, 0.0665, 0.07, 24), sleeve); sl.rotation.x = Math.PI / 2; sl.position.z = -0.035; g.add(sl);
+      const sl = new THREE.Mesh(new THREE.CylinderGeometry(0.079, 0.0665, 0.46, 24, 1, true), sleeve); sl.rotation.x = Math.PI / 2; sl.position.z = 0.16; g.add(sl);   // runs up the upper arm, out of frame
       const rim = new THREE.Mesh(new THREE.TorusGeometry(0.0665, 0.0105, 10, 28), hem); rim.position.z = -0.07; g.add(rim);
       // hand: relaxed, slightly curled, seen from behind/above — tapered back of hand, three-segment fingers, two-segment thumb
       const hand = new THREE.Group(); hand.position.z = -0.31; g.add(hand);

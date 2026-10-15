@@ -1,0 +1,77 @@
+{
+ "generated": "2026-10-15T05:17:21.297Z",
+ "pass": 14,
+ "fail": 0,
+ "results": [
+  {
+   "name": "new game: intro hands control to the player",
+   "ok": true,
+   "detail": "mode play"
+  },
+  {
+   "name": "save writes a slot in localStorage",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "state was really wrecked before loading (test sanity)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "continue restores economy, inventory, reputation, clock, vitals, flags and position",
+   "ok": true,
+   "detail": "\n   saved  [87,[{\"id\":\"keycard\",\"n\":1},{\"id\":\"cigs\",\"n\":3}],27,5,9.5,41,true,10.5]\n   loaded [87,[{\"id\":\"keycard\",\"n\":1},{\"id\":\"cigs\",\"n\":3}],27,5,9.5,41,true,10.5]"
+  },
+  {
+   "name": "continue returns to play mode",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "nav graph: no isolated waypoints (169 nodes)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "nav graph: every hop of the golden-path route is connected",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "doors: sally gate locked at COUNT, open at CHOW",
+   "ok": true,
+   "detail": "[true,false]"
+  },
+  {
+   "name": "doors: chapel locked before 13:00, open 13:00-15:00",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "doors: cells locked at COUNT and LIGHTS OUT, open in between",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "doors: Records stays locked without keycard/shim/bribe",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "restricted: hall only while locked in at count",
+   "ok": true,
+   "detail": "{\"hallCountLocked\":true,\"hallCountReleased\":false,\"hallChow\":false,\"records\":true,\"canteenChow\":false,\"canteenCount\":true,\"chapelClosed\":true,\"chapelOpen\":false}"
+  },
+  {
+   "name": "restricted: Records always; canteen only outside meal hours; chapel only while closed",
+   "ok": true,
+   "detail": "{\"hallCountLocked\":true,\"hallCountReleased\":false,\"hallChow\":false,\"records\":true,\"canteenChow\":false,\"canteenCount\":true,\"chapelClosed\":true,\"chapelOpen\":false}"
+  },
+  {
+   "name": "determinism: two bot runs of the shim route end in the identical state",
+   "ok": true,
+   "detail": "\n   {\"t\":444.467,\"dc\":55,\"cred\":24,\"fear\":22,\"hour\":14.7009,\"x\":-98,\"z\":-29,\"results\":39,\"rng\":{\"arrests\":0,\"dcEarned\":30}}\n   {\"t\":444.467,\"dc\":55,\"cred\":24,\"fear\":22,\"hour\":14.7009,\"x\":-98,\"z\":-29,\"results\":39,\"rng\":{\"arrests\":0,\"dcEarned\":30}}"
+  }
+ ]
+}

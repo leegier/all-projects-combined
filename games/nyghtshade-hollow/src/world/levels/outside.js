@@ -153,8 +153,12 @@ export function buildOutside(world, ctx) {
   const leafMat = mkLeafMat(leafTex), leafMat2 = mkLeafMat(leafTex2), spruceMat = mkLeafMat(spruceTex, { alphaTest: 0.35 });
   const barkMat = MAT.bark;
   ctx.vegMats = [leafMat, leafMat2, spruceMat];
-  const broad = [11, 12, 13].map((seed, i) => ({ geo: buildBroadleaf({ height: 5.4 + i * 0.9, trunkR: 0.3 + i * 0.05, crownR: 3.1 + i * 0.5, limbs: 5, leafCards: 240, seed, leafSize: 1.45, hue: i * 0.2 - 0.2 }), mat: i === 1 ? leafMat2 : leafMat }));
-  const spr = [21, 22, 23].map((seed, i) => ({ geo: buildSpruce({ height: 8 + i * 1.6, trunkR: 0.24 + i * 0.03, seed, whorls: 15, branchLen: 2.5 + i * 0.3 }), mat: spruceMat }));
+  // three levels of detail per species: full cards near the clearing, thinned crowns with bigger leaves further out, coarse backdrop trees beyond
+  const LOD = [{ cards: 1, leaf: 1, whorls: 1 }, { cards: 0.62, leaf: 1.2, whorls: 0.75 }, { cards: 0.36, leaf: 1.5, whorls: 0.5 }];
+  const broadSpec = (seed, i, l) => ({ height: 5.4 + i * 0.9, trunkR: 0.3 + i * 0.05, crownR: 3.1 + i * 0.5, limbs: 5, leafCards: Math.round(240 * l.cards), seed, leafSize: 1.45 * l.leaf, hue: i * 0.2 - 0.2 });
+  const spruceSpec = (seed, i, l) => ({ height: 8 + i * 1.6, trunkR: 0.24 + i * 0.03, seed, whorls: Math.max(6, Math.round(15 * l.whorls)), branchLen: 2.5 + i * 0.3 });
+  const broad = [11, 12, 13].map((seed, i) => ({ geos: LOD.map((l) => buildBroadleaf(broadSpec(seed, i, l))), mat: i === 1 ? leafMat2 : leafMat }));
+  const spr = [21, 22, 23].map((seed, i) => ({ geos: LOD.map((l) => buildSpruce(spruceSpec(seed, i, l))), mat: spruceMat }));
   const placesAll = [];
   for (let i = 0; i < 700 && placesAll.length < 330; i++) {
     const x = lerp(X0 + 3, X1 - 3, rnd()), z = lerp(Z0 + 3, Z1 - 4, rnd());
@@ -169,16 +173,17 @@ export function buildOutside(world, ctx) {
   }
   ctx.trees = placesAll;
   const variants = [...broad.map((v) => ({ ...v, kind: 'broad' })), ...spr.map((v) => ({ ...v, kind: 'spruce' }))];
-  const groups = variants.map(() => ({ near: [], far: [] }));
+  const groups = variants.map(() => ({ near: [], mid: [], far: [] }));
   for (const [x, z] of placesAll) {
     const k = rnd() < 0.42 ? Math.floor(rnd() * 3) : 3 + Math.floor(rnd() * 3);
-    const near = Math.hypot(x - CLEARING.x, z - CLEARING.z) < 46;
-    groups[k][near ? 'near' : 'far'].push([x, z]);
+    const dd = Math.hypot(x - CLEARING.x, z - CLEARING.z);
+    groups[k][dd < 24 ? 'near' : dd < 46 ? 'mid' : 'far'].push([x, z]);
   }
   const _m = new THREE.Matrix4(), _q = new THREE.Quaternion(), _e = new THREE.Euler(), _p = new THREE.Vector3(), _s = new THREE.Vector3(), _c = new THREE.Color();
   variants.forEach((v, vi) => {
-    for (const bucket of ['near', 'far']) {
+    for (const [bi, bucket] of ['near', 'mid', 'far'].entries()) {
       const list = groups[vi][bucket]; if (!list.length) continue;
+      const geo = v.geos[bi];
       // one transform per tree, shared by trunk and crown so the crown actually sits on its branches
       const items = list.map(([x, z]) => {
         const sc = (v.kind === 'broad' ? 0.9 : 0.85) + rnd() * 0.5;
@@ -187,8 +192,8 @@ export function buildOutside(world, ctx) {
         const k = 0.8 + rnd() * 0.4;
         return { x, z, m: new THREE.Matrix4().compose(_p, _q, _s), c: new THREE.Color().setRGB(k, k * (0.96 + rnd() * 0.08), k * 0.92) };
       });
-      chunkedInstances(g, v.geo.bark, barkMat, items, 24, { cast: bucket === 'near', receive: false });
-      chunkedInstances(g, v.geo.leaves, v.mat, items, 24, { cast: bucket === 'near', receive: false });
+      chunkedInstances(g, geo.bark, barkMat, items, 24, { cast: bucket !== 'far', receive: false });
+      chunkedInstances(g, geo.leaves, v.mat, items, 24, { cast: bucket !== 'far', receive: false });
     }
   });
 

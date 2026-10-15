@@ -17,7 +17,7 @@ export class Inventory extends Emitter {
   add(id, n = 1) {
     const def = ITEMS[id]; const s = this.slots.find((x) => x.id === id);
     if (s) { s.n = Math.min(def.stack || 1, s.n + n); }
-    else { if (this.slots.length >= this.max) return false; this.slots.push({ id, n }); }
+    else { if (this.slots.length >= this.max) return false; this.slots.push({ id, n: Math.min(def.stack || 1, n) }); }
     this.emit('change', id, n); return true;
   }
   remove(id, n = 1) {

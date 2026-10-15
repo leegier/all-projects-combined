@@ -261,12 +261,12 @@ export class Bot {
     const cutter = st.npcMap.cutter;
     yield* this.walk('C.cut', { radius: 0.8 });
     const fearBefore = g.reputation.fear;
-    const cutterChoices = route === 'keycard' ? ['Skip the small talk', 'kitchen job', 'I\'ll talk to Pruitt'] : route === 'shim' ? ['Skip the small talk', 'kitchen job', 'Buy a shim'] : ['Skip the small talk', 'kitchen job', 'I\'ll talk to Pruitt'];
+    const cutterChoices = route === 'keycard' ? ['Skip the small talk', 'kitchen job', 'I\'ll talk to Pruitt'] : route === 'shim' || route === 'alarm' ? ['Skip the small talk', 'kitchen job', 'Buy a shim'] : ['Skip the small talk', 'kitchen job', 'I\'ll talk to Pruitt'];
     yield* this.talk('cutter', cutterChoices);
     this.check('Cutter explained the ledger lead', st.flag('metCutter') || route !== 'none');
     this.check('reputation changed by dialogue choice (fear +2)', g.reputation.fear >= fearBefore + 2 - 0.01);
     this.noteOff();
-    if (route === 'shim') this.check('bought the shim (−25 DC)', inv.has('shim') && eco.balance === 25, `balance ${eco.balance}`);
+    if (route === 'shim' || route === 'alarm') this.check('bought the shim (−25 DC)', inv.has('shim') && eco.balance === 25, `balance ${eco.balance}`);
 
     // ===== 4. mop job ============================================================================
     this.note('WORK DETAIL', 'Kitchen mop job: four spills, 30 DC and Guard standing.');
@@ -316,7 +316,7 @@ export class Bot {
       yield* this.use(st.its.reader, { radiusOK: 1 });
       yield* this.until(() => st.recordsUnlocked(), 3, 'reader');
       this.check('keycard opened the Records door', st.recordsUnlocked());
-    } else if (route === 'shim') {
+    } else if (route === 'shim' || route === 'alarm') {
       // wait until Pruitt is facing away from the reader for the next ~6 s, then work the lock
       yield* this.walk({ x: 43.2, z: 4.9 }, { radius: 0.3 });
       yield* this.face(g.ctx.recordsDoor.readerPos.x, 1.3, g.ctx.recordsDoor.readerPos.z, { time: 1.2 });
@@ -337,6 +337,31 @@ export class Bot {
       for (let h = 0; h < hold; h += 0.25) if (cam.covers(last.x, last.z, t + h + 0.1)) exp += 0.25;
       return exp;
     };
+    if (route === 'alarm') {
+      // FAILURE PATH: rush into Records without timing the camera sweep
+      this.note('SECURITY CAMERA', 'Rushing in without timing the sweep: the camera spots you and trips the alarm.');
+      const dcBefore = eco.balance, hourBefore = R.hour, credBefore = g.reputation.standing.Guards;
+      yield* this.walk('I.r2', { radius: 0.4 });
+      yield* this.until(() => !W.doors.get('door-records').locked, 3, 'door unlock');
+      yield* this.walk('R.in', { radius: 0.4 });
+      yield* this.walk('R.a', { radius: 0.4 });
+      yield* this.walk('R.l', { radius: 0.35, quiet: true, timeout: 25 });
+      yield* this.until(() => g.alert.level >= 2 || g.stats.arrests > 0 || g.mode === 'cine', 40, 'camera alarm');
+      this.check('security camera spotted the player and tripped the alarm', g.alert.level >= 2 || g.stats.arrests > 0, `alert ${g.alert.level}`);
+      this.noteOff();
+      this.note('GUARD AI + ARREST', 'Pruitt breaks his post, chases the player down and arrests them: fine, standing loss, an hour in the cell.');
+      yield* this.until(() => g.stats.arrests > 0, 40, 'arrest');
+      this.check('Pruitt chased the player down and arrested them', g.stats.arrests === 1);
+      yield* this.until(() => g.mode === 'play', 30, 'arrest cinematic');
+      yield* this.wait(1.5);
+      this.check('after the arrest: back in the own cell, fined and an hour later', st.inOwnCell(g.player) && eco.balance < dcBefore && ((R.hour - hourBefore + 24) % 24) >= 0.9, `balance ${dcBefore} -> ${eco.balance}`);
+      this.check('arrest cost guard standing', g.reputation.standing.Guards < credBefore, `${credBefore} -> ${g.reputation.standing.Guards}`);
+      yield* this.wait(2.5);
+      this.noteOff();
+      const failed2 = this.results.filter((r) => !r.ok);
+      this.say(`DONE — ${this.results.length - failed2.length}/${this.results.length} checks passed, ${this.stuckCount} stuck events`);
+      return;
+    }
     this.note('SECURITY CAMERA', 'The ceiling camera sweeps Records. Crouch, time the sweep, copy the page.');
     const P = (n) => g.world.waypoints.get(n);
     const inPath = [{ x: 44.7, z: 6.0 }, P('R.in'), P('R.a'), P('R.l')];

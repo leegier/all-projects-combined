@@ -170,7 +170,7 @@ export class Humanoid {
     }
     if (L.glasses) {
       const gm = new THREE.MeshStandardMaterial({ color: 0x15130f, roughness: 0.4, metalness: 0.5 });
-      for (const sx of [-1, 1]) { add(this.head, new THREE.TorusGeometry(0.0225, 0.0028, 8, 18), gm, sx * 0.0345, 0.142, 0.099); add(this.head, new THREE.BoxGeometry(0.004, 0.003, 0.09), gm, sx * 0.076, 0.144, 0.056); }
+      for (const sx of [-1, 1]) { add(this.head, new THREE.TorusGeometry(0.0215, 0.0017, 8, 24), gm, sx * 0.0345, 0.142, 0.099); add(this.head, new THREE.BoxGeometry(0.003, 0.0022, 0.09), gm, sx * 0.076, 0.144, 0.056); }
       add(this.head, new THREE.BoxGeometry(0.018, 0.003, 0.003), gm, 0, 0.147, 0.099);
     }
     if (L.cig) {
