@@ -1,0 +1,13 @@
+{
+  "records": [],
+  "detected_connector_records": [
+    {
+      "source_path": "\\\\?\\C:\\Users\\Gierl\\.claude\\projects\\C--Users-Gierl-Documents-Unreal-Projects-MyProject2\\14543be0-585a-4946-83a6-831f7e58722f.jsonl",
+      "connector_names": [
+        "Gmail",
+        "Google Drive",
+        "Hugging Face"
+      ]
+    }
+  ]
+}

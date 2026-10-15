@@ -1,0 +1,30 @@
+# 由 sparc3d-runtime 生成的 Codex 配置（CODEX_HOME/config.toml）。
+# sparc3d-runtime-config-version: 6
+# 自研模型服务需要兼容 OpenAI Responses API；鉴权 token 通过环境变量 SPARC3D_DESKTOP_MODEL_TOKEN 注入（auth/setCredential）。
+
+model = "gpt-6-astra"
+model_provider = "sparc3d"
+
+# Agent 行为基线：沙箱失败后升级审批、工作区可写、沙箱内网络完全开放
+approval_policy = "on-failure"
+sandbox_mode = "workspace-write"
+
+[model_providers."sparc3d"]
+name = "Hi3D 自研模型"
+base_url = "http://127.0.0.1:64700/v1"
+env_key = "SPARC3D_DESKTOP_MODEL_TOKEN"
+wire_api = "responses"
+
+[sandbox_workspace_write]
+network_access = true
+
+# 模型凭据只供 codex provider 读取，不传递给 shell / Blender 子进程。
+[shell_environment_policy]
+inherit = "core"
+exclude = ["SPARC3D_DESKTOP_MODEL_TOKEN", "*_SECRET*", "*_TOKEN*", "*_KEY*"]
+
+[hooks.state.'C:\<session-flags>\config.toml:pre_tool_use:0:0']
+enabled = true
+trusted_hash = "sha256:bd7d87b72c6c551ddf7692a4cae6bfdef1e00f49de7f3cdf0b8118cbace7c35f"
+
+# skills / MCP / 其他 provider 参数在这里补；打包时由 distribution 覆盖。

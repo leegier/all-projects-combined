@@ -1,0 +1,31 @@
+# --- Unreal Engine source/install tree (do not track engine binaries & content) ---
+/Engine/
+/FeaturePacks/
+/Templates/
+/VaultCache/
+/.egstore/
+/.vscode/
+
+# --- Build / generated artifacts ---
+Binaries/
+Intermediate/
+DerivedDataCache/
+Saved/
+/zen-manifest.json
+/ToolComplete.txt
+/Directory.Build.props
+/Directory.Build.targets
+
+# --- Epic launcher temp extraction folders (GUID-named) ---
+/23cbc3e4-ddd9-4f6f-ac33-deb5000e1819/
+/2bb50b9e-85cd-43d9-ab0c-cb9673662cf7/
+/886af49f-4341-4bd6-9679-808a15d3c96d/
+/8cdfadfb-5fa6-4b4e-99db-1a02b01295c2/
+/990d2a4b-19d7-4e0d-970c-3cc038fa7de2/
+/a7849939-ef65-45d8-a6a4-58b0cd5556c3/
+/cb85da0d-4b8e-4ef1-8844-d04a7e02ddad/
+/e1f5a0f8-a9fc-471b-b4d6-5aeade879542/
+
+# --- Working output (keep scripts, ignore their generated logs) ---
+/ue_scripts/out*.json
+/ue_scripts/*.log

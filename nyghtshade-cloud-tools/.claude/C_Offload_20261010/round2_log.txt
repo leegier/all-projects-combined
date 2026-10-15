@@ -1,0 +1,19 @@
+﻿21:51:57 round 2 waiting for round 1 (move_log.txt) to finish
+22:38:50 START  C: free 123.8 GB
+22:38:51 == C:\Users\Gierl\Desktop\aurabound  22.1 GB
+22:38:51 copying to E:\C_Offload_20261010\Users\Gierl\Desktop\aurabound ...
+22:39:50 verified: every file matches by name/size/date; 22.1 GB
+22:39:57 done. C: free now 145.5 GB
+22:39:58 == C:\Users\Gierl\Documents\JERE_MetaHuman  4.7 GB
+22:39:58 copying to E:\C_Offload_20261010\Users\Gierl\Documents\JERE_MetaHuman ...
+22:40:21 verified: every file matches by name/size/date; 4.7 GB
+22:40:21 done. C: free now 150.2 GB
+22:40:21 == C:\Users\Gierl\.codex  8.0 GB
+22:40:21 SKIP: in use by a running app or session (close it and re-run)
+22:40:29 == C:\Users\Gierl\AppData\Local\UnrealEngine  81.0 GB
+22:40:29 SKIP: Unreal Editor/tools are running; close them and re-run
+22:40:29 == C:\Users\Gierl\AppData\Local\pip  2.7 GB
+22:40:29 copying to E:\C_Offload_20261010\Users\Gierl\AppData\Local\pip ...
+22:40:36 verified: every file matches by name/size/date; 2.7 GB
+22:40:37 done. C: free now 152.7 GB
+22:40:37 FINISHED  C: free 152.7 GB

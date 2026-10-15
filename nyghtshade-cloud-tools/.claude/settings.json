@@ -1,0 +1,14 @@
+{
+  "model": "sonnet",
+  "modelSettings": {
+    "claude-sonnet-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "autoUpdatesChannel": "latest",
+  "theme": "dark",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "enableWorkflows": true,
+  "skipWorkflowUsageWarning": true
+}

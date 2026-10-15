@@ -1,0 +1,85 @@
+
+iframe
+
+
+
+svg
+
+
+
+README.md
+
+
+
+svg
+
+
+
+imageimage (image) (image)
+
+
+
+svg
+
+# My Tech Empire: Monorepo
+
+This repository serves as the central hub for all proprietary development, separating infrastructure from creative execution.
+
+---
+
+## 🏗️ Project 1: The Buddy System (The Engine)
+**Core:** Distributed Computing & Proof-of-Compute IDE  
+**Status:** Operational Infrastructure  
+**Key Directories:**
+* Visual-Studio-18/ - Core IDE components.
+* injectioncgpt55/ - Advanced logic modules.
+* fictional-tribble/ - Experimental bridge protocols.
+
+> **Hardware Safeguard:** Thermal Guard active. Throttling at 45°C, Disconnect at 50°C.
+
+---
+
+## 🎮 Project 2: Nyghtshade Hollow (The Game)
+**Core:** Flagship Grit-Prison Masterpiece  
+**Status:** Active Development  
+**Key Directories:**
+* OpenSourceLudus/ - AI Copilot Scripts (Unity/Unreal).
+* shiny-happiness/ - High-fidelity game assets and core environment.
+* FRANKENSTINES-DEV-BOXX/ - Master archive of dev resources and parameters.
+
+---
+
+## 🛠️ Workstation Config
+* **Primary Node:** Ryzen 7 1700X
+* **Titan Mode:** Daily at 18:15
+README.md
+
+100%
+# sturdy-octo-waffle
+End-to-end ecosystem for Nyghtshade Hollow: a UE5 prison role-play demo plus the Buddy Project distributed compute framework powering automation, asset pipelines, AI tools, and build orchestration across multiple machines.
+Displaying README.md.APPENDIX B: CONTRACTOR HANDOFF
+
+B.1 Technical Requirements
+Engine: Unreal Engine 5.7
+Target: 60 FPS at 720p low on Intel Iris Xe
+Architecture: C++ first. No tick spam. Event-driven. Modular components.
+Version Control: Git mandatory. Weekly commits. No ZIP files.
+B.2 Milestone Payments
+M# Deliverable Payment
+M1 Project setup + repo + base map $150
+M2 AI perception + behavior + social AI $250
+M3 Dialogue + memory + voice integration $300
+M4 Playable vertical slice $300
+M5 Polish + bugs + packaging $200
+
+B.3 Contract Essentials
+All work owned exclusively by Lee Gier. All source code delivered every milestone. No third-
+party paid assets without approval. Weekly playable builds. Communication every 48 hours.
+Failure to deliver = payment withheld.
+B.4 25-Second Disclaimer
+Full-screen disclaimer at startup for 25 seconds. Player acknowledges to proceed. Warns of
+extreme language, offensive AI content, adult themes. Pre-loads NPC LLM models during
+countdown. Accept button only after timer.
+
+END OF DOCUMENT
+

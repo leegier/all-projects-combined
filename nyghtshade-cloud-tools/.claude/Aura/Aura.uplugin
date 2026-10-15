@@ -1,0 +1,148 @@
+{
+	"FileVersion": 3,
+	"Version": 74,
+	"VersionName": "1.0.6",
+	"FriendlyName": "Aura",
+	"Description": "Aura",
+	"Category": "Other",
+	"CreatedBy": "RamenVR",
+	"CreatedByURL": "https://www.ramenvr.com",
+	"DocsURL": "https://www.tryaura.dev",
+	"MarketplaceURL": "",
+	"SupportURL": "https://discord.gg/tryaura",
+	"EngineVersion": "5.3.0",
+	"CanContainContent": true,
+	"Installed": true,
+	"SupportedTargetPlatforms": [
+		"Win64",
+		"Mac"
+	],
+	"Modules": [
+		{
+			"Name": "Aura",
+			"Type": "EditorNoCommandlet",
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Win64",
+				"Mac"
+			]
+		},
+		{
+			"Name": "AuraModelGenerator",
+			"Type": "EditorNoCommandlet",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64",
+				"Mac"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "RemoteControl",
+			"Enabled": true
+		},
+		{
+			"Name": "WebBrowserWidget",
+			"Enabled": true
+		},
+		{
+			"Name": "PythonScriptPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "GameplayAbilities",
+			"Enabled": true
+		},
+		{
+			"Name": "StateTree",
+			"Enabled": true
+		},
+		{
+			"Name": "PropertyBindingUtils",
+			"Enabled": true,
+			"Optional": true
+		},
+		{
+			"Name": "ProceduralMeshComponent",
+			"Enabled": true
+		},
+		{
+			"Name": "EnvironmentQueryEditor",
+			"Enabled": true
+		},
+		{
+			"Name": "GeometryScripting",
+			"Enabled": true
+		},
+		{
+			"Name": "MeshModelingToolset",
+			"Enabled": true
+		},
+		{
+			"Name": "EnhancedInput",
+			"Enabled": true
+		},
+		{
+			"Name": "EditorScriptingUtilities",
+			"Enabled": true
+		},
+		{
+			"Name": "AssetSearch",
+			"Enabled": true
+		},
+		{
+			"Name": "PCG",
+			"Enabled": true
+		},
+		{
+			"Name": "IKRig",
+			"Enabled": true
+		},
+		{
+			"Name": "Interchange",
+			"Enabled": true
+		},
+		{
+			"Name": "CascadeToNiagaraConverter",
+			"Enabled": true
+		},
+		{
+			"Name": "FileSandbox",
+			"Enabled": true,
+			"Optional": true
+		},
+		{
+			"Name": "SandboxedEditing",
+			"Enabled": true,
+			"Optional": true
+		},
+		{
+			"Name": "ModelContextProtocol",
+			"Enabled": true,
+			"Optional": true
+		},
+		{
+			"Name": "AllToolsets",
+			"Enabled": true,
+			"Optional": true
+		},
+		{
+			"Name": "AVCodecsCore",
+			"Enabled": true,
+			"PlatformAllowList": [
+				"Win64",
+				"Linux",
+				"Mac"
+			]
+		},
+		{
+			"Name": "NVCodecs",
+			"Enabled": true,
+			"PlatformAllowList": [
+				"Win64",
+				"Linux"
+			]
+		}
+	]
+}

@@ -1,0 +1,12 @@
+{
+  "script": "E:\\_codex_tasks\\build_prison_material_review_native_20261010.py",
+  "sha256": "44d19e002105b78e116fb817bc25722d679f629fa84b10c38c25c2f802407872",
+  "syntax": "PASS",
+  "isolated_fake_graph_checks": [
+    "wall_substrate_node_found_with_null_input_preserved",
+    "wall_wrong_signature_rejected",
+    "floor_substrate_node_found_with_null_input_preserved",
+    "floor_wrong_signature_rejected"
+  ],
+  "native_unreal_runtime_executed": false
+}

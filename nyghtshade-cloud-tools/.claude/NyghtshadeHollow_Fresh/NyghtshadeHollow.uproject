@@ -1,0 +1,20 @@
+{
+  "FileVersion": 3,
+  "EngineAssociation": "5.8",
+  "Category": "",
+  "Description": "Nyghtshade Hollow - Prison RPG",
+  "Modules": [
+    {
+      "Name": "NyghtshadeHollow",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    }
+  ],
+  "Plugins": [
+    {
+      "Name": "ModelingToolsEditorMode",
+      "Enabled": false,
+      "TargetAllowList": ["Editor"]
+    }
+  ]
+}

@@ -1,0 +1,1101 @@
+{
+  "status": "PASS_STATIC_CAMERA_CAUSE_AND_REPLACEMENT_POSES; MATERIAL_RENDER_REVIEW_REMAINS_VISUAL",
+  "generated_utc": "2026-10-10T14:03:10.525456+00:00",
+  "scope": "read-only static export/receipt audit; no Unreal launch and no package writes",
+  "co099": {
+    "zone_bounds_cm": {
+      "x0": -11800,
+      "x1": -700,
+      "y0": -6300,
+      "y1": -5600,
+      "z0": -20,
+      "z1": 300
+    },
+    "verified_wall_face_ranges_y_cm": [
+      [
+        -6298,
+        -6268
+      ],
+      [
+        -6297,
+        -6268
+      ],
+      [
+        -5877,
+        -5848
+      ]
+    ],
+    "verified_clear_interior_y_cm": [
+      -6268.0,
+      -5877.0
+    ],
+    "verified_clear_width_cm": 391.0,
+    "verified_floor_z_cm": -20.0
+  },
+  "old_cameras": [
+    {
+      "name": "03_wall_front",
+      "origin_cm": [
+        -6500,
+        -5800,
+        150
+      ],
+      "target_cm": [
+        -6500,
+        -6200,
+        150
+      ],
+      "fov_degrees": 52,
+      "origin_inside_verified_clear_width": false,
+      "origin_nearest_inner_wall_clearance_cm": -77.0,
+      "center_ray_first_geometry": {
+        "instance_id": 58733,
+        "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+        "mesh_logical_name": "PrisonOutsideWallTwo",
+        "distance_cm": 47.5234,
+        "point_cm": [
+          -6500.0,
+          -5847.5234,
+          150.0
+        ]
+      }
+    },
+    {
+      "name": "04_wall_three_quarter",
+      "origin_cm": [
+        -6780,
+        -5790,
+        155
+      ],
+      "target_cm": [
+        -6320,
+        -6200,
+        150
+      ],
+      "fov_degrees": 52,
+      "origin_inside_verified_clear_width": false,
+      "origin_nearest_inner_wall_clearance_cm": -87.0,
+      "center_ray_first_geometry": {
+        "instance_id": 58733,
+        "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+        "mesh_logical_name": "PrisonOutsideWallTwo",
+        "distance_cm": 86.4553,
+        "point_cm": [
+          -6715.4621,
+          -5847.5229,
+          154.2985
+        ]
+      }
+    },
+    {
+      "name": "06_floor_three_quarter",
+      "origin_cm": [
+        -6440,
+        -5780,
+        125
+      ],
+      "target_cm": [
+        -5850,
+        -6070,
+        -20
+      ],
+      "fov_degrees": 55,
+      "origin_inside_verified_clear_width": false,
+      "origin_nearest_inner_wall_clearance_cm": -97.0,
+      "center_ray_first_geometry": {
+        "instance_id": 58695,
+        "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+        "mesh_logical_name": "PrisonOutsideWallTwo",
+        "distance_cm": 156.7509,
+        "point_cm": [
+          -6302.6258,
+          -5847.5229,
+          91.2385
+        ]
+      }
+    }
+  ],
+  "proposed_cameras": [
+    {
+      "name": "03_wall_front_corrected",
+      "origin_cm": [
+        -6500,
+        -6100,
+        150
+      ],
+      "target_cm": [
+        -6500,
+        -5800,
+        145
+      ],
+      "fov_degrees": 50,
+      "origin_inside_verified_clear_width": true,
+      "origin_nearest_inner_wall_clearance_cm": 168.0,
+      "center_ray_first_geometry": {
+        "instance_id": 58733,
+        "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+        "mesh_logical_name": "PrisonOutsideWallTwo",
+        "distance_cm": 227.5082,
+        "point_cm": [
+          -6500.0,
+          -5872.5234,
+          146.2087
+        ]
+      }
+    },
+    {
+      "name": "04_wall_three_quarter_corrected",
+      "origin_cm": [
+        -6800,
+        -6100,
+        160
+      ],
+      "target_cm": [
+        -6350,
+        -5800,
+        135
+      ],
+      "fov_degrees": 50,
+      "origin_inside_verified_clear_width": true,
+      "origin_nearest_inner_wall_clearance_cm": 168.0,
+      "center_ray_first_geometry": {
+        "instance_id": 58733,
+        "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+        "mesh_logical_name": "PrisonOutsideWallTwo",
+        "distance_cm": 410.527,
+        "point_cm": [
+          -6458.7852,
+          -5872.5235,
+          141.0436
+        ]
+      }
+    },
+    {
+      "name": "06_floor_three_quarter_corrected",
+      "origin_cm": [
+        -6440,
+        -6100,
+        150
+      ],
+      "target_cm": [
+        -5850,
+        -5920,
+        -20
+      ],
+      "fov_degrees": 55,
+      "origin_inside_verified_clear_width": true,
+      "origin_nearest_inner_wall_clearance_cm": 168.0,
+      "center_ray_first_geometry": {
+        "instance_id": 44731,
+        "mesh": "SM_RP_064_PrisonFloorTileCellSetTwo",
+        "mesh_logical_name": "PrisonFloorTileCellSetTwo",
+        "distance_cm": 564.8207,
+        "point_cm": [
+          -5919.1788,
+          -5941.1054,
+          -0.0671
+        ]
+      }
+    }
+  ],
+  "occupancy_grid_checks": {
+    "03_wall_front": {
+      "point_cm": [
+        -6500,
+        -5800,
+        150
+      ],
+      "grid_index": [
+        512,
+        1405
+      ],
+      "in_grid": true,
+      "occupied_cell": false,
+      "floor_cell": false,
+      "nearest_occupied_cell_center_cm": 60.0,
+      "grid_floor_z_cm": -20.0,
+      "note": "40 cm rasterized export grid; this is static geometry evidence, not runtime collision proof"
+    },
+    "04_wall_three_quarter": {
+      "point_cm": [
+        -6780,
+        -5790,
+        155
+      ],
+      "grid_index": [
+        505,
+        1405
+      ],
+      "in_grid": true,
+      "occupied_cell": false,
+      "floor_cell": false,
+      "nearest_occupied_cell_center_cm": 70.0,
+      "grid_floor_z_cm": -20.0,
+      "note": "40 cm rasterized export grid; this is static geometry evidence, not runtime collision proof"
+    },
+    "06_floor_three_quarter": {
+      "point_cm": [
+        -6440,
+        -5780,
+        125
+      ],
+      "grid_index": [
+        514,
+        1405
+      ],
+      "in_grid": true,
+      "occupied_cell": false,
+      "floor_cell": false,
+      "nearest_occupied_cell_center_cm": 82.462,
+      "grid_floor_z_cm": -20.0,
+      "note": "40 cm rasterized export grid; this is static geometry evidence, not runtime collision proof"
+    },
+    "03_wall_front_corrected": {
+      "point_cm": [
+        -6500,
+        -6100,
+        150
+      ],
+      "grid_index": [
+        512,
+        1397
+      ],
+      "in_grid": true,
+      "occupied_cell": false,
+      "floor_cell": true,
+      "nearest_occupied_cell_center_cm": 160.0,
+      "grid_floor_z_cm": -20.0,
+      "note": "40 cm rasterized export grid; this is static geometry evidence, not runtime collision proof"
+    },
+    "04_wall_three_quarter_corrected": {
+      "point_cm": [
+        -6800,
+        -6100,
+        160
+      ],
+      "grid_index": [
+        505,
+        1397
+      ],
+      "in_grid": true,
+      "occupied_cell": false,
+      "floor_cell": true,
+      "nearest_occupied_cell_center_cm": 161.245,
+      "grid_floor_z_cm": -20.0,
+      "note": "40 cm rasterized export grid; this is static geometry evidence, not runtime collision proof"
+    },
+    "06_floor_three_quarter_corrected": {
+      "point_cm": [
+        -6440,
+        -6100,
+        150
+      ],
+      "grid_index": [
+        514,
+        1397
+      ],
+      "in_grid": true,
+      "occupied_cell": false,
+      "floor_cell": true,
+      "nearest_occupied_cell_center_cm": 161.245,
+      "grid_floor_z_cm": -20.0,
+      "note": "40 cm rasterized export grid; this is static geometry evidence, not runtime collision proof"
+    }
+  },
+  "material_override_coverage": {
+    "receipted_wall_slots": 41,
+    "receipted_floor_slots": 24,
+    "receipted_actor_count": 65,
+    "all_receipted_actors_start_RP": true,
+    "co099_intersecting_mesh_group_count": 11,
+    "co099_non_RP_mesh_groups": [],
+    "co099_relevant_surface_groups": [
+      {
+        "mesh": "SM_RP_016_PrisonRoofTileSetOne",
+        "mesh_logical_name": "PrisonRoofTileSetOne",
+        "instance_count_intersecting_CO099": 29,
+        "expected_review_kind": null,
+        "receipted_override_actor_labels": [],
+        "receipted_override_sources": [],
+        "receipted_override_replacements": []
+      },
+      {
+        "mesh": "SM_RP_038_PrisonOutsidePillerRoofOne",
+        "mesh_logical_name": "PrisonOutsidePillerRoofOne",
+        "instance_count_intersecting_CO099": 58,
+        "expected_review_kind": null,
+        "receipted_override_actor_labels": [],
+        "receipted_override_sources": [],
+        "receipted_override_replacements": []
+      },
+      {
+        "mesh": "SM_RP_055_PrisonFloorTileOne",
+        "mesh_logical_name": "PrisonFloorTileOne",
+        "instance_count_intersecting_CO099": 112,
+        "expected_review_kind": "floor",
+        "receipted_override_actor_labels": [
+          "RP_056_PrisonFloorTileOne"
+        ],
+        "receipted_override_sources": [
+          "/Game/Nyghtshade/Materials/M_PrisonFloor.M_PrisonFloor"
+        ],
+        "receipted_override_replacements": [
+          "/Game/_CodexReview/PrisonMaterial/Run_20261010_082615_3d6b9856/Materials/M_PrisonFloor_Before.M_PrisonFloor_Before"
+        ]
+      },
+      {
+        "mesh": "SM_RP_064_PrisonFloorTileCellSetTwo",
+        "mesh_logical_name": "PrisonFloorTileCellSetTwo",
+        "instance_count_intersecting_CO099": 29,
+        "expected_review_kind": "floor",
+        "receipted_override_actor_labels": [
+          "RP_065_PrisonFloorTileCellSetTwo"
+        ],
+        "receipted_override_sources": [
+          "/Game/Nyghtshade/Materials/M_PrisonFloor.M_PrisonFloor"
+        ],
+        "receipted_override_replacements": [
+          "/Game/_CodexReview/PrisonMaterial/Run_20261010_082615_3d6b9856/Materials/M_PrisonFloor_Before.M_PrisonFloor_Before"
+        ]
+      },
+      {
+        "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+        "mesh_logical_name": "PrisonOutsideWallTwo",
+        "instance_count_intersecting_CO099": 58,
+        "expected_review_kind": "wall",
+        "receipted_override_actor_labels": [
+          "RP_210_PrisonOutsideWallTwo"
+        ],
+        "receipted_override_sources": [
+          "/Game/Nyghtshade/Materials/M_PrisonWall.M_PrisonWall"
+        ],
+        "receipted_override_replacements": [
+          "/Game/_CodexReview/PrisonMaterial/Run_20261010_082615_3d6b9856/Materials/M_PrisonWall_Before.M_PrisonWall_Before"
+        ]
+      }
+    ],
+    "all_co099_wall_floor_groups_have_expected_receipted_source": true,
+    "qualification": "Geometry export has mesh names/transforms/triangles but no material-slot metadata; receipt proves actor-level slot replacement, not per-pixel ownership."
+  },
+  "duplicates": {
+    "exact_same_mesh_and_transform_count": 0,
+    "rows": [],
+    "sampled_floor_and_wall_ray_count": 36,
+    "sampled_coincident_distinct_instance_pair_count": 0,
+    "sampled_coincident_rows": [],
+    "sampled_surface_rays": [
+      {
+        "kind": "floor",
+        "x_cm": -11237.3,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 39000,
+            "mesh": "SM_RP_055_PrisonFloorTileOne",
+            "mesh_logical_name": "PrisonFloorTileOne",
+            "distance_cm": 250.0667,
+            "point_cm": [
+              -11237.3,
+              -6100.0,
+              -0.0667
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "north_wall",
+        "x_cm": -11237.3,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58725,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 227.4765,
+            "point_cm": [
+              -11237.3,
+              -5872.5235,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "south_wall",
+        "x_cm": -11237.3,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58724,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 172.5237,
+            "point_cm": [
+              -11237.3,
+              -6272.5237,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "floor",
+        "x_cm": -10311.7,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 44796,
+            "mesh": "SM_RP_064_PrisonFloorTileCellSetTwo",
+            "mesh_logical_name": "PrisonFloorTileCellSetTwo",
+            "distance_cm": 250.0668,
+            "point_cm": [
+              -10311.7,
+              -6100.0,
+              -0.0668
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "north_wall",
+        "x_cm": -10311.7,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58704,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 227.4771,
+            "point_cm": [
+              -10311.7,
+              -5872.5229,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "south_wall",
+        "x_cm": -10311.7,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58703,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 172.5234,
+            "point_cm": [
+              -10311.7,
+              -6272.5234,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "floor",
+        "x_cm": -9386.1,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 44816,
+            "mesh": "SM_RP_064_PrisonFloorTileCellSetTwo",
+            "mesh_logical_name": "PrisonFloorTileCellSetTwo",
+            "distance_cm": 250.0668,
+            "point_cm": [
+              -9386.1,
+              -6100.0,
+              -0.0668
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "north_wall",
+        "x_cm": -9386.1,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58744,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 227.4769,
+            "point_cm": [
+              -9386.1,
+              -5872.5231,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "south_wall",
+        "x_cm": -9386.1,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58743,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 172.5235,
+            "point_cm": [
+              -9386.1,
+              -6272.5235,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "floor",
+        "x_cm": -8460.5,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 38930,
+            "mesh": "SM_RP_055_PrisonFloorTileOne",
+            "mesh_logical_name": "PrisonFloorTileOne",
+            "distance_cm": 250.067,
+            "point_cm": [
+              -8460.5,
+              -6100.0,
+              -0.067
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "north_wall",
+        "x_cm": -8460.5,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58688,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 227.4766,
+            "point_cm": [
+              -8460.5,
+              -5872.5234,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "south_wall",
+        "x_cm": -8460.5,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58687,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 172.5237,
+            "point_cm": [
+              -8460.5,
+              -6272.5237,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "floor",
+        "x_cm": -7534.9,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 44585,
+            "mesh": "SM_RP_064_PrisonFloorTileCellSetTwo",
+            "mesh_logical_name": "PrisonFloorTileCellSetTwo",
+            "distance_cm": 250.0018,
+            "point_cm": [
+              -7534.9,
+              -6100.0,
+              -0.0018
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "north_wall",
+        "x_cm": -7534.9,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58336,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 227.5788,
+            "point_cm": [
+              -7534.9,
+              -5872.4212,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "south_wall",
+        "x_cm": -7534.9,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58335,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 172.4218,
+            "point_cm": [
+              -7534.9,
+              -6272.4218,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "floor",
+        "x_cm": -6609.3,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 44810,
+            "mesh": "SM_RP_064_PrisonFloorTileCellSetTwo",
+            "mesh_logical_name": "PrisonFloorTileCellSetTwo",
+            "distance_cm": 250.067,
+            "point_cm": [
+              -6609.3,
+              -6100.0,
+              -0.067
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "north_wall",
+        "x_cm": -6609.3,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58733,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 227.4769,
+            "point_cm": [
+              -6609.3,
+              -5872.5231,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "south_wall",
+        "x_cm": -6609.3,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58732,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 172.5235,
+            "point_cm": [
+              -6609.3,
+              -6272.5235,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "floor",
+        "x_cm": -5683.7,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 38703,
+            "mesh": "SM_RP_055_PrisonFloorTileOne",
+            "mesh_logical_name": "PrisonFloorTileOne",
+            "distance_cm": 250.0672,
+            "point_cm": [
+              -5683.7,
+              -6100.0,
+              -0.0672
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "north_wall",
+        "x_cm": -5683.7,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58593,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 227.4766,
+            "point_cm": [
+              -5683.7,
+              -5872.5234,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "south_wall",
+        "x_cm": -5683.7,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58592,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 172.5237,
+            "point_cm": [
+              -5683.7,
+              -6272.5237,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "floor",
+        "x_cm": -4758.1,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 44808,
+            "mesh": "SM_RP_064_PrisonFloorTileCellSetTwo",
+            "mesh_logical_name": "PrisonFloorTileCellSetTwo",
+            "distance_cm": 250.0672,
+            "point_cm": [
+              -4758.1,
+              -6100.0,
+              -0.0672
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "north_wall",
+        "x_cm": -4758.1,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58729,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 227.4772,
+            "point_cm": [
+              -4758.1,
+              -5872.5228,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "south_wall",
+        "x_cm": -4758.1,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58728,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 172.5234,
+            "point_cm": [
+              -4758.1,
+              -6272.5234,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "floor",
+        "x_cm": -3832.5,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 44729,
+            "mesh": "SM_RP_064_PrisonFloorTileCellSetTwo",
+            "mesh_logical_name": "PrisonFloorTileCellSetTwo",
+            "distance_cm": 250.0673,
+            "point_cm": [
+              -3832.5,
+              -6100.0,
+              -0.0673
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "north_wall",
+        "x_cm": -3832.5,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58588,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 227.4769,
+            "point_cm": [
+              -3832.5,
+              -5872.5231,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "south_wall",
+        "x_cm": -3832.5,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58587,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 172.5235,
+            "point_cm": [
+              -3832.5,
+              -6272.5235,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "floor",
+        "x_cm": -2906.9,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 38192,
+            "mesh": "SM_RP_055_PrisonFloorTileOne",
+            "mesh_logical_name": "PrisonFloorTileOne",
+            "distance_cm": 250.0021,
+            "point_cm": [
+              -2906.9,
+              -6100.0,
+              -0.0021
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "north_wall",
+        "x_cm": -2906.9,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58338,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 227.5782,
+            "point_cm": [
+              -2906.9,
+              -5872.4218,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "south_wall",
+        "x_cm": -2906.9,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58337,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 172.4221,
+            "point_cm": [
+              -2906.9,
+              -6272.4221,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "floor",
+        "x_cm": -1981.3,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 44792,
+            "mesh": "SM_RP_064_PrisonFloorTileCellSetTwo",
+            "mesh_logical_name": "PrisonFloorTileCellSetTwo",
+            "distance_cm": 250.0674,
+            "point_cm": [
+              -1981.3,
+              -6100.0,
+              -0.0674
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "north_wall",
+        "x_cm": -1981.3,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58697,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 227.4772,
+            "point_cm": [
+              -1981.3,
+              -5872.5228,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "south_wall",
+        "x_cm": -1981.3,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58696,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 172.5233,
+            "point_cm": [
+              -1981.3,
+              -6272.5233,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "floor",
+        "x_cm": -1055.7,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 44801,
+            "mesh": "SM_RP_064_PrisonFloorTileCellSetTwo",
+            "mesh_logical_name": "PrisonFloorTileCellSetTwo",
+            "distance_cm": 250.0675,
+            "point_cm": [
+              -1055.7,
+              -6100.0,
+              -0.0675
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "north_wall",
+        "x_cm": -1055.7,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58716,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 227.4769,
+            "point_cm": [
+              -1055.7,
+              -5872.5231,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      },
+      {
+        "kind": "south_wall",
+        "x_cm": -1055.7,
+        "hit_count": 1,
+        "hits": [
+          {
+            "instance_id": 58715,
+            "mesh": "SM_RP_207_PrisonOutsideWallTwo",
+            "mesh_logical_name": "PrisonOutsideWallTwo",
+            "distance_cm": 172.5235,
+            "point_cm": [
+              -1055.7,
+              -6272.5235,
+              150.0
+            ]
+          }
+        ],
+        "coincident_distinct_instance_pairs_within_1cm": []
+      }
+    ],
+    "qualification": "Exact transforms plus 36 non-seam floor/wall rays found no distinct instances within 1 cm when both counts are zero. This is strong local static evidence, not an exhaustive triangle-overlap proof."
+  },
+  "inputs": [
+    {
+      "path": "E:/GameDev/Staging/MyProject2_EnvCopy_Claude_20261009/_claude_evidence/nav/geo_instances.bin",
+      "bytes": 2762104,
+      "sha256": "e47a0cff41dbabe00741cbb2f7631deb92faa96511570b649f6900e59be776eb"
+    },
+    {
+      "path": "E:/GameDev/Staging/MyProject2_EnvCopy_Claude_20261009/_claude_evidence/nav/geo_meshes.bin",
+      "bytes": 22064030,
+      "sha256": "ce29b50a1b34bbe707dca9e6b77afcd64a56eafbc8311b3709d09324bf3148f9"
+    },
+    {
+      "path": "E:/GameDev/Staging/MyProject2_EnvCopy_Claude_20261009/_claude_evidence/nav/occ_all_f0.npz",
+      "bytes": 37223,
+      "sha256": "e79efb3408c67fbfd4585da05215ac6107979189787a439455e61e40813ea48f"
+    },
+    {
+      "path": "E:/GameDev/Staging/MyProject2_EnvCopy_Claude_20261009/_claude_evidence/wf/prison_zones.json",
+      "bytes": 493451,
+      "sha256": "11067061ba6b24ac0c0735f9a8221dc636e27e562346040373cd514817739902"
+    },
+    {
+      "path": "H:/NyghtshadeHollow_Development/2026-10-10/PrisonMaterialReview/Run_20261010_082615_3d6b9856/receipt.json",
+      "bytes": 178947,
+      "sha256": "e3e167647ce26613de6f1f9471b0956cbf83a0ddbaf5263ac3b5f4f17895807d"
+    }
+  ]
+}

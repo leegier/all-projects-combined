@@ -1,0 +1,1 @@
+@echo off\r\nexit /b 1\r\n

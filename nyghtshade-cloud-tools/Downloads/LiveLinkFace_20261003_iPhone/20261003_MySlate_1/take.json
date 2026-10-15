@@ -1,0 +1,23 @@
+{
+  "startTimecode" : "11:08:27:53.719",
+  "deviceModel" : "iPhone18,3",
+  "version" : 1,
+  "videoTargetFrameRate" : 60,
+  "identifier" : "20261003_MySlate_1",
+  "take" : 1,
+  "endTimecode" : "11:09:18:13.337",
+  "startTimestamp" : {
+    "value" : 126507895331375,
+    "timescale" : 1000000000
+  },
+  "endTimestamp" : {
+    "value" : 126558222299333,
+    "timescale" : 1000000000
+  },
+  "slate" : "MySlate",
+  "calibrated" : false,
+  "frames" : 3019,
+  "appVersion" : "v1.7.3 (build 185)",
+  "subject" : "iPhone",
+  "date" : "2026-10-03T23:26:15Z"
+}

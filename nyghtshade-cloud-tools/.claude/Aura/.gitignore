@@ -1,0 +1,55 @@
+# ignore ./ThirdParty/chroma_db
+/ThirdParty/chroma_db/
+
+/ThirdParty/Lib/
+
+# ignore anything underneath a __pycache__ folder
+**/__pycache__/**
+# ignore pyc files
+*.pyc
+
+# ignore the aura server port (its dynamically generated)
+aura_server_port.txt
+
+# Never commit auth token material (written to shared .Aura dirs at runtime)
+session_token.txt
+refresh_token.txt
+
+# Plugin-specific folders to ignore
+Binaries/
+Intermediate/
+
+# User-specific files
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build artifacts
+*.xcworkspace
+*.xcodeproj
+*.xcuserstate
+
+# Ignore log files
+*.log
+
+# Ignore crash reports
+*.dmp
+
+# Additional dist folder entries
+!dist/**
+dist/win-unpacked/.Aura/
+dist/win-unpacked/next/.mcp-config.json
+dist/win-unpacked/logs/
+dist/win-unpacked/next/.next/cache/
+# node_modules is reconstituted at runtime from node_modules_no_ats; never submit it.
+dist/win-unpacked/next/node_modules/
+dist/win-unpacked/next/node_modules/local.db
+dist/win-unpacked/next/node_modules/local_v5_0.db

@@ -1,0 +1,7 @@
+09/24/26 23:09:11: infinst: Installing C:\WINDOWS\Installer\DXF6FE.tmp\xinput1_3_x64.inf [Install_Driver]
+09/24/26 23:09:11: infinst: Installed file C:\WINDOWS\system32\xinput1_3.dll
+10/06/26 12:01:39: infinst: Installing C:\Users\Gierl\AppData\Local\Temp\DXF362.tmp\xinput1_3_x64.inf [Install_Driver]
+10/06/26 12:01:39: infinst: Target file: 'C:\WINDOWS\system32\xinput1_3.dll' 
+	Target file is Version 9.18.944.0
+	Source file is Version 9.18.944.0
+10/06/26 12:01:39: infinst: C:\WINDOWS\system32\xinput1_3.dll have been installed already.

@@ -1,0 +1,40 @@
+# Unity .gitignore
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# Asset meta-data
+*.pidb.meta
+*.pdb.meta
+
+# Unity3D generated meta files
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Unity3D generated file on crash reports
+sysinfo.txt
+
+# Crashlytics generated file
+crashlytics-build.properties
+
+# Visual Studio cache
+.vs/
+*.csproj
+*.sln
+
+# Rider
+.idea/
+
+# OS generated
+.DS_Store
+._*
+Thumbs.db

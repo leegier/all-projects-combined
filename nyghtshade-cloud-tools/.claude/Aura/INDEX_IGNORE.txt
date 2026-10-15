@@ -1,0 +1,106 @@
+
+# Folders to ignore. Place them here with a "/" at the end. They should be relative to your project root
+Content/3rdParty/
+Content/__ExternalActors__/
+Content/__ExternalObjects__/
+Content/Characters/
+Content/Collections/
+Content/Art/
+
+
+Config/
+Content/FirstPersonArms/
+Content/StarterContent/
+
+Plugins/Aura/
+Plugins/AuraForUnity/
+Plugins/UnrealMCP/
+Plugins/Ramen/
+Plugins/node_modules/
+
+# Tooling scratch/config directories (never project content). A dev checkout
+# mounted as Plugins/ exposes these at Plugins/.tmp etc.; the files inside are
+# often UTF-16 (PowerShell output) and were indexed as NUL-riddled text.
+.tmp/
+**/.tmp/**
+.agents/
+**/.agents/**
+.claude/
+**/.claude/**
+.git/
+**/.git/**
+
+# Unreal Engine specific
+Binaries/
+Intermediate/
+**/Intermediate/**
+**/Binaries/**
+**__ExternalActors__**
+**__ExternalObjects__**
+Saved/
+DerivedDataCache/
+**/*.Target.cs
+
+# Build results
+Build/
+Builds/
+*.generated.h
+*.generated.cpp
+
+.vscode/
+
+# Visual Studio
+.vs/
+.vsconfig
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+*.user
+*.userosscache
+*.sln.docstates
+UpgradeLog.htm
+
+# IDEA
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Git
+.git/
+**/.git/**
+.gitignore
+.gitattributes
+
+# Plastic
+.plastic/
+ignore.conf
+
+# SVN
+.svn/
+
+# OS specific
+.DS_Store
+Thumbs.db

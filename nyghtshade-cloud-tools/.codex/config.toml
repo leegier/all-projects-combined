@@ -1,0 +1,154 @@
+model = "gpt-6.1-sol"
+model_reasoning_effort = "low"
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+model_verbosity = "low"
+model_reasoning_summary = "auto"
+approvals_reviewer = "user"
+service_tier = "priority"
+notify = [ "C:\\Users\\Gierl\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\cfb32733c877621e\\bin\\node_modules\\@oai\\sky\\bin\\windows\\codex-computer-use.exe", "turn-ended" ]
+[desktop]
+followUpQueueMode = "steer"
+show-context-window-usage = true
+notifications-sound = "default"
+notifications-questions-enabled = true
+toys-confetti-enabled = true
+projectlessWorkspaceRoot = 'C:\Users\Gierl\Desktop\aurabound\2026-09-20'
+microphoneInputDeviceId = "communications"
+keepRemoteControlAwakeWhilePluggedIn = true
+enabled-reasoning-efforts = ["low", "medium", "high", "xhigh", "persistent", "ultra", "max"]
+conversationDetailMode = "STEPS_COMMANDS"
+selected-avatar-id = "pet_6ac8fa1f6dcc8191901c9b71b0306881"
+
+[marketplaces.openai-bundled]
+source_type = "local"
+source = '\\?\C:\Users\Gierl\.codex\.tmp\bundled-marketplaces\openai-bundled'
+
+[marketplaces.openai-primary-runtime]
+source_type = "local"
+source = '\\?\C:\Users\Gierl\.cache\codex-runtimes\codex-primary-runtime\plugins\openai-primary-runtime'
+
+[plugins."codex-app-tools@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."unified-computer-use@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."code-review@openai-bundled"]
+enabled = true
+
+[mcp_servers.node_repl]
+args = []
+command = 'C:\Users\Gierl\AppData\Local\OpenAI\Codex\runtimes\cua_node\cfb32733c877621e\bin\node_repl.exe'
+env_vars = ["CODEX_WINDOWS_REGISTERED_CORE"]
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = 'C:\Users\Gierl\AppData\Local\OpenAI\Codex\runtimes\cua_node\cfb32733c877621e\bin\node_modules'
+NODE_REPL_NODE_PATH = 'C:\Users\Gierl\AppData\Local\OpenAI\Codex\runtimes\cua_node\cfb32733c877621e\bin\node.exe'
+NODE_REPL_TRUSTED_CODE_PATHS = 'C:\Users\Gierl\.codex;C:\Users\Gierl\AppData\Local\OpenAI\Codex\runtimes\cua_node\cfb32733c877621e\bin\node_modules'
+CODEX_HOME = 'C:\Users\Gierl\.codex'
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab,mcpapps"
+BROWSER_USE_TINYSKY_ENABLED = "1"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.1007.21434"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"C:/Users/Gierl/.codex/plugins/cache/openai-bundled/browser/26.1007.21434/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
+SKY_CUA_NATIVE_PIPE = "1"
+SKY_CUA_NATIVE_PIPE_DIRECTORY = '\\.\pipe\codex-computer-use-ec337532-d419-4f1d-ae1a-79a5582d810d'
+CODEX_CLI_PATH = 'C:\Users\Gierl\AppData\Local\OpenAI\Codex\bin\2e5e00daee91c61d\codex.exe'
+NODE_REPL_UNTRUSTED_ENV_ALLOWLIST = "CODEX_WINDOWS_REGISTERED_CORE"
+
+[mcp_servers.unreal-native]
+url = "http://127.0.0.1:8000/mcp"
+
+[mcp_servers.blender]
+command = 'F:\DevTools\BlenderMCP\venv\Scripts\mcp-for-blender.exe'
+
+[mcp_servers.blender.env]
+BLENDERMCP_ADDONS_DIR = 'F:\DevTools\Blender\scripts\addons'
+BLENDER_HOST = "127.0.0.1"
+BLENDER_PORT = "9876"
+DISABLE_TELEMETRY = "true"
+
+[mcp_servers.unreal_inspector]
+command = 'H:\UE_5.8\Engine\Plugins\Marketplace\Aura\PortablePython\Windows\python.exe'
+args = ['H:\UE_5.8\Engine\Plugins\Marketplace\Aura\MCP\unreal_inspector.py']
+
+[mcp_servers.unreal_inspector.tools.get_unreal_context]
+approval_mode = "approve"
+
+[mcp_servers.unreal_editor]
+command = 'H:\UE_5.8\Engine\Plugins\Marketplace\Aura\PortablePython\Windows\python.exe'
+args = ['H:\UE_5.8\Engine\Plugins\Marketplace\Aura\MCP\unreal_editor.py']
+
+[mcp_servers.unrealEditor]
+url = "http://127.0.0.1:8000/mcp"
+
+[windows]
+sandbox = "elevated"
+
+[projects.'e:\']
+trust_level = "trusted"
+
+[projects.'c:\users\gierl\documents\codex\2026-09-20\referenced-chatgpt-conversation-this-is-an']
+trust_level = "trusted"
+
+[projects.'c:\users\gierl\documents\codex\2026-09-20\referenced-chatgpt-conversation-this-is-an-2']
+trust_level = "trusted"
+
+[projects.'c:\users\gierl\documents\codex\2026-09-20\referenced-chatgpt-conversation-this-is-an-3']
+trust_level = "trusted"
+
+[projects.'c:\users\gierl\documents\codex\2026-09-20\e-unconfirmed-893377-crdownload']
+trust_level = "trusted"
+
+[projects.'c:\users\gierl\documents\codex\2026-09-20\i-want-to-work-with-blender']
+trust_level = "trusted"
+
+[projects.'c:\users\gierl\desktop\aurabound\2026-09-20\2026-09-24\files-pasted-by-the-user-so']
+trust_level = "trusted"
+
+[projects.'c:\users\gierl\desktop\aurabound\2026-09-20\2026-09-24\files-mentioned-by-the-user-codex']
+trust_level = "trusted"
+
+[projects.'c:\users\gierl']
+trust_level = "trusted"
+
+[projects.'f:\devtools\unrealmcpworkspace']
+trust_level = "trusted"
+
+[tui]
+screen_reader_detection_done = true
+
+[tui.model_availability_nux]
+gpt-6-astra = 4

@@ -1,0 +1,14 @@
+.claude.json*
+.claude/.claude.json
+.claude/.credentials.json
+.claude/mcp-needs-auth-cache.json
+.codex/auth.json
+.codex/cap_sid
+.gitconfig
+**/.credentials.json
+**/auth.json
+**/cap_sid
+**/mcp-needs-auth-cache.json
+.pytest_cache/
+__pycache__/
+*.py[cod]
