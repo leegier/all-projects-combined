@@ -5,7 +5,8 @@ const shots = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 const out = process.argv[3] || '/tmp/look';
 const q = process.argv[4] || 'high';
 fs.mkdirSync(out, { recursive: true });
-const t = await open({ query: `auto&manual&nostart&q=${q}`, log: true });
+const extra = process.env.NH_QUERY ? '&' + process.env.NH_QUERY : '';      // e.g. NH_QUERY=chars=/fixtures/characters/
+const t = await open({ query: `auto&manual&nostart&q=${q}${extra}`, log: true });
 const { page } = t;
 await page.evaluate(() => { NH.ui.show('u-disc', false); NH.mode = 'play'; NH.ui.hud(false); NH.ui.el('u-title').classList.remove('on'); });
 for (const s of shots) {
@@ -34,6 +35,7 @@ for (const s of shots) {
       g.viewmodel.visible = false;
     } else g.viewmodel.visible = true;
     g.advance(40);
+    if (g.crowd) { g.crowd.update(0); g.crowd.snap(); }
     if (s.dialogue) { g.ui.hud(false); g.story.startDialogue(s.dialogue[0], g.story.npcMap[s.dialogue[1]], { cam: s.dialogue[2] || 'face' }); g.advance(240); }
     for (let i = 0; i < 6; i++) g.render(1, 0.05);
     g.stepEnv(5, true);

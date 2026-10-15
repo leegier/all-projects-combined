@@ -1,6 +1,7 @@
 // NPCs: characters that live in the world, walk the nav graph, sit/stand/work, and look at the player when close.
 import * as THREE from 'three';
 import { Humanoid } from '../chars/humanoid.js';
+import { characters } from '../chars/library.js';
 import { damp, dampAngle, angleDiff, clamp } from '../util.js';
 
 export class NPC {
@@ -12,10 +13,11 @@ export class NPC {
     this.home = this.pos.clone();
     this.yaw = cfg.yaw || 0;
     this.alive = true; this.hiddenFromWorld = false;
-    this.body = new Humanoid(cfg.look || 'inmateA', { seed: cfg.seed || (this.id.length * 7 + 3), scale: cfg.scale });
-    this.root = this.body.root;
+    this.look = cfg.look || 'inmateA'; this.seed = cfg.seed || (this.id.length * 7 + 3); this.scaleOpt = cfg.scale;
     this.pose = cfg.pose || 'idle';
-    this.body.setPose(this.pose);
+    this.root = new THREE.Group();                // stable outer node: the body (procedural or glTF) hangs below and can be swapped
+    this.body = null;
+    this.setBody(characters.create(this.look, { seed: this.seed, scale: this.scaleOpt }) || new Humanoid(this.look, { seed: this.seed, scale: this.scaleOpt }));
     this.speed = 0;
     this.walkSpeed = cfg.walkSpeed || 1.35;
     this.path = []; this.pathIdx = 0; this.onArrive = null; this.moving = false;
@@ -30,6 +32,18 @@ export class NPC {
     this.root.position.copy(this.pos); this.root.rotation.y = this.yaw;
     game.world.root.add(this.root);
     this.area = null;
+  }
+  setBody(b) {
+    if (this.body) { this.root.remove(this.body.root); if (!this.body.isGltf) this.body.root.traverse((o) => { if (o.geometry) o.geometry.dispose(); }); }
+    this.body = b; this.root.add(b.root); b.setPose(this.pose);
+    if (this._cast !== undefined) b.setCast(this._cast);
+  }
+  /** Swap the procedural body for a glTF character once the library has loaded (no-op if there is none for this look). */
+  refreshBody() {
+    if (this.body.isGltf) return false;
+    const b = characters.create(this.look, { seed: this.seed, scale: this.scaleOpt });
+    if (!b) return false;
+    this.setBody(b); return true;
   }
   setPose(p, seatY = 0) { this.pose = p; this.body.setPose(p); this.seatOffsetY = seatY; }
   teleport(x, z, y = null) { this.pos.x = x; this.pos.z = z; if (y !== null) this.pos.y = y; this.path = []; this.moving = false; }
@@ -91,6 +105,7 @@ export class NPC {
     // shadows only for nearby characters
     const near = dist < 16;
     if (near !== this._cast) { this._cast = near; this.body.setCast(near); }
+    if (this.body.setLod) this.body.setLod(dist > 14 ? 1 : 0);
     this.root.visible = !this.hiddenFromWorld && !!(this.area ? this.area.visible : true);
   }
   blockedByDoor(tgt) {

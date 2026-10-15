@@ -11,6 +11,7 @@ import { Survival } from '../src/systems/survival.js';
 import { AlertSystem } from '../src/systems/alert.js';
 import { Inventory, ITEMS } from '../src/systems/inventory.js';
 import { DIALOGUE } from '../src/story/dialogue.js';
+import { mapBones, isUsable, roleOf, normalizeBoneName } from '../src/chars/rigmap.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 let pass = 0, fail = 0;
@@ -172,6 +173,54 @@ test('fx / cond strings used by scripts are handled by Story', () => {
   for (const sc of Object.values(DIALOGUE)) for (const n of Object.values(sc.nodes)) { grab(n.fx); for (const c of n.choices || []) { grab(c.fx); grab(c.cond); } }
   const missing = [...used].filter((k) => !storySrc.includes(k));
   assert.deepEqual(missing, [], `unhandled: ${missing}`);
+});
+
+console.log('character rig mapping');
+const skel = (list) => { const nodes = {}; for (const [n, p] of list) { nodes[n] = { name: n, parent: p ? nodes[p] : null, children: [] }; if (p) nodes[p].children.push(nodes[n]); } return nodes; };
+const side = (f) => [['l', 1], ['r', 2]].flatMap(([s]) => f(s));
+const METAHUMAN = [['root', null], ['pelvis', 'root'], ['spine_01', 'pelvis'], ['spine_02', 'spine_01'], ['spine_03', 'spine_02'], ['spine_04', 'spine_03'], ['spine_05', 'spine_04'], ['neck_01', 'spine_05'], ['neck_02', 'neck_01'], ['head', 'neck_02'],
+  ['FACIAL_C_FacialRoot', 'head'], ['FACIAL_C_Jaw', 'FACIAL_C_FacialRoot'], ['FACIAL_C_JawRaise', 'FACIAL_C_FacialRoot'], ['FACIAL_L_Eye', 'FACIAL_C_FacialRoot'], ['FACIAL_R_Eye', 'FACIAL_C_FacialRoot'], ['FACIAL_L_Lip', 'FACIAL_C_Jaw'], ['ik_foot_root', 'root'], ['ik_hand_root', 'root'],
+  ...side((s) => [[`clavicle_${s}`, 'spine_05'], [`clavicle_out_${s}`, `clavicle_${s}`], [`upperarm_${s}`, `clavicle_${s}`], [`upperarm_twist_01_${s}`, `upperarm_${s}`], [`upperarm_correctiveRoot_${s}`, `upperarm_${s}`], [`upperarm_fwd_${s}`, `upperarm_correctiveRoot_${s}`],
+    [`lowerarm_${s}`, `upperarm_${s}`], [`lowerarm_twist_01_${s}`, `lowerarm_${s}`], [`hand_${s}`, `lowerarm_${s}`], [`index_01_${s}`, `hand_${s}`], [`thumb_01_${s}`, `hand_${s}`], [`pinky_02_${s}`, `hand_${s}`],
+    [`thigh_${s}`, 'pelvis'], [`thigh_twist_01_${s}`, `thigh_${s}`], [`thigh_correctiveRoot_${s}`, `thigh_${s}`], [`calf_${s}`, `thigh_${s}`], [`calf_knee_${s}`, `calf_${s}`], [`calf_twist_01_${s}`, `calf_${s}`], [`foot_${s}`, `calf_${s}`], [`ball_${s}`, `foot_${s}`]])];
+test('MetaHuman / UE5 skeleton: every role found, twist / corrective / facial / ik helpers ignored', () => {
+  const m = mapBones(Object.values(skel(METAHUMAN)));
+  assert.equal(m.rig, 'metahuman'); assert.deepEqual(m.missing, []); assert.ok(isUsable(m));
+  assert.equal(m.hips.name, 'pelvis'); assert.equal(m.head.name, 'head'); assert.equal(m.jaw.name, 'FACIAL_C_Jaw');
+  assert.deepEqual(m.spine.map((b) => b.name), ['spine_01', 'spine_02', 'spine_03', 'spine_04', 'spine_05']);
+  assert.deepEqual(m.neck.map((b) => b.name), ['neck_01', 'neck_02']);
+  for (const [s, S] of [['l', 'L'], ['r', 'R']]) {
+    const o = m[S];
+    assert.deepEqual([o.clav, o.arm, o.fore, o.hand, o.thigh, o.calf, o.foot, o.toe].map((b) => b.name), [`clavicle_${s}`, `upperarm_${s}`, `lowerarm_${s}`, `hand_${s}`, `thigh_${s}`, `calf_${s}`, `foot_${s}`, `ball_${s}`]);
+  }
+});
+test('Mixamo skeleton (with and without the colon glTF strips)', () => {
+  for (const P of ['mixamorig:', 'mixamorig']) {
+    const L = [['Hips', null], ['Spine', 'Hips'], ['Spine1', 'Spine'], ['Spine2', 'Spine1'], ['Neck', 'Spine2'], ['Head', 'Neck'], ['HeadTop_End', 'Head'],
+      ...['Left', 'Right'].flatMap((S) => [[`${S}Shoulder`, 'Spine2'], [`${S}Arm`, `${S}Shoulder`], [`${S}ForeArm`, `${S}Arm`], [`${S}Hand`, `${S}ForeArm`], [`${S}HandIndex1`, `${S}Hand`], [`${S}HandThumb1`, `${S}Hand`], [`${S}UpLeg`, 'Hips'], [`${S}Leg`, `${S}UpLeg`], [`${S}Foot`, `${S}Leg`], [`${S}ToeBase`, `${S}Foot`], [`${S}Toe_End`, `${S}ToeBase`]])].map(([n, p]) => [P + n, p ? P + p : null]);
+    const m = mapBones(Object.values(skel(L)));
+    assert.equal(m.rig, 'mixamo'); assert.ok(isUsable(m), `${P}: ${m.missing}`);
+    assert.equal(m.L.arm.name, P + 'LeftArm'); assert.equal(m.R.thigh.name, P + 'RightUpLeg'); assert.equal(m.L.calf.name, P + 'LeftLeg'); assert.equal(m.R.toe.name, P + 'RightToeBase');
+    assert.equal(m.spine.length, 3);
+  }
+});
+test('Rigify deform bones, VRM / Unity humanoid and VRoid names', () => {
+  const rig = [['spine', null], ['spine.001', 'spine'], ['spine.002', 'spine.001'], ['neck', 'spine.002'], ['head', 'neck'],
+    ...['L', 'R'].flatMap((S) => [[`shoulder.${S}`, 'spine.002'], [`upper_arm.${S}`, `shoulder.${S}`], [`forearm.${S}`, `upper_arm.${S}`], [`hand.${S}`, `forearm.${S}`], [`thigh.${S}`, 'spine'], [`shin.${S}`, `thigh.${S}`], [`foot.${S}`, `shin.${S}`], [`toe.${S}`, `foot.${S}`], [`MCH-thigh.${S}`, 'spine'], [`ORG-shin.${S}`, `thigh.${S}`]])];
+  const m = mapBones(Object.values(skel([['hips', null], ...rig.map(([n, p]) => [n, p || 'hips'])])));
+  assert.equal(m.rig, 'rigify'); assert.ok(isUsable(m), String(m.missing)); assert.equal(m.R.calf.name, 'shin.R'); assert.equal(m.L.arm.name, 'upper_arm.L');
+  const vrm = [['hips', null], ['spine', 'hips'], ['chest', 'spine'], ['upperChest', 'chest'], ['neck', 'upperChest'], ['head', 'neck'], ['jaw', 'head'],
+    ...['left', 'right'].flatMap((S) => [[`${S}Shoulder`, 'upperChest'], [`${S}UpperArm`, `${S}Shoulder`], [`${S}LowerArm`, `${S}UpperArm`], [`${S}Hand`, `${S}LowerArm`], [`${S}UpperLeg`, 'hips'], [`${S}LowerLeg`, `${S}UpperLeg`], [`${S}Foot`, `${S}LowerLeg`], [`${S}Toes`, `${S}Foot`]])];
+  const v = mapBones(Object.values(skel(vrm)));
+  assert.equal(v.rig, 'vrm'); assert.ok(isUsable(v)); assert.equal(v.L.thigh.name, 'leftUpperLeg'); assert.equal(v.R.fore.name, 'rightLowerArm'); assert.equal(v.jaw.name, 'jaw'); assert.deepEqual(v.spine.map((b) => b.name), ['spine', 'chest', 'upperChest']);
+  const vroid = [['J_Bip_C_Hips', null], ['J_Bip_C_Spine', 'J_Bip_C_Hips'], ['J_Bip_C_Neck', 'J_Bip_C_Spine'], ['J_Bip_C_Head', 'J_Bip_C_Neck'],
+    ...['L', 'R'].flatMap((S) => [[`J_Bip_${S}_UpperArm`, 'J_Bip_C_Spine'], [`J_Bip_${S}_LowerArm`, `J_Bip_${S}_UpperArm`], [`J_Bip_${S}_Hand`, `J_Bip_${S}_LowerArm`], [`J_Bip_${S}_UpperLeg`, 'J_Bip_C_Hips'], [`J_Bip_${S}_LowerLeg`, `J_Bip_${S}_UpperLeg`], [`J_Bip_${S}_Foot`, `J_Bip_${S}_LowerLeg`], [`J_Bip_${S}_ToeBase`, `J_Bip_${S}_Foot`]])];
+  const r = mapBones(Object.values(skel(vroid))); assert.ok(isUsable(r), String(r.missing)); assert.equal(r.R.arm.name, 'J_Bip_R_UpperArm'); assert.equal(r.L.calf.name, 'J_Bip_L_LowerLeg');
+});
+test('unknown skeletons are reported, not guessed', () => {
+  const m = mapBones(Object.values(skel([['Bone', null], ['Bone.001', 'Bone'], ['Bone.002', 'Bone.001']])));
+  assert.equal(m.rig, 'generic'); assert.ok(!isUsable(m)); assert.ok(m.missing.includes('hips') && m.missing.includes('L.thigh'));
+  assert.equal(roleOf('thumb_01_l'), null); assert.equal(roleOf('calf_twist_01_r'), null); assert.equal(roleOf('ik_foot_l'), null); assert.equal(normalizeBoneName('mixamorig:LeftUpLeg'), 'leftupleg');
 });
 
 console.log(`\n${pass} passed, ${fail} failed`);

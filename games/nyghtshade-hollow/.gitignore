@@ -2,3 +2,13 @@ node_modules/
 capture_tmp/
 dist/game.js
 *.log
+# MetaHuman / character exports are licensed assets: they stay on the machine (or in a private repo), never in this public tree.
+assets/characters/*.glb
+assets/characters/*.gltf
+assets/characters/*.bin
+assets/characters/*.ktx2
+assets/characters/*.webp
+assets/characters/*.mhpkg
+assets/characters/manifest.json
+assets/characters/_work/
+tests/fixtures/_tmp/

@@ -26,6 +26,7 @@ import { Save } from './systems/save.js';
 import { Viewmodel } from './chars/viewmodel.js';
 import { UI } from './ui/ui.js';
 import { Story } from './story/story.js';
+import { characters } from './chars/library.js';
 import { Emitter, mulberry32, clamp, damp, lerp, smoothstep, hash01 } from './util.js';
 
 export const STEP = 1 / 60;
@@ -47,7 +48,8 @@ const ENV = {
 const AREA_LIGHT = { hall: 0.7, eastCorr: 0.8, westCorr: 0.8, canteen: 1.0, intake: 0.85, records: 0.5, library: 0.6, chapel: 0.45, tunnel: 0.15, outside: 0.8 };
 
 export class Game {
-  constructor({ canvas, uiRoot, quality = 'high', capture = false, seed = 1337, width = 1280, height = 720 }) {
+  constructor({ canvas, uiRoot, quality = 'high', capture = false, seed = 1337, width = 1280, height = 720, crowd = true }) {
+    this.crowdOn = crowd; this.crowd = null;
     this.canvas = canvas; this.uiRoot = uiRoot; this.quality = quality; this.capture = capture; this.seed = seed;
     this.width = width; this.height = height;
     this.events = new Emitter();
@@ -95,6 +97,9 @@ export class Game {
     this.input = new Input(this.canvas);
     this.story = new Story(this);
     this.story.setup();
+    await characters.ready;                                   // glTF characters (MetaHuman exports), if there are any, are loaded before bodies are chosen
+    if (characters.enabled) for (const n of this.npcs) n.refreshBody();
+    if (this.crowd) { onProgress(0.97, 'crowd'); this.crowd.bake(); }
     this.wire();
     this.applyEnv('hall', true);
     world.setActiveArea('hall');
@@ -372,6 +377,7 @@ export class Game {
     const area = this.player.area;
     if (area !== this._area && area) { this._area = area; this.onArea(area); }
     for (const n of this.npcs) { n.area = this.world.areaAt(n.pos.x, n.pos.z, n.pos.y + 1); n.update(dt); }
+    if (this.crowd) this.crowd.update(dt);
     for (const c of this.cams || []) c.update(dt);
     this.maxDetect = 0; for (const g of this.guards) this.maxDetect = Math.max(this.maxDetect, g.detect || 0);
     for (const c of this.cams || []) this.maxDetect = Math.max(this.maxDetect, c.detect || 0);

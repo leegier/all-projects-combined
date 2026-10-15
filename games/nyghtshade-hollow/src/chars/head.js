@@ -138,30 +138,31 @@ export function hairTexture(base = '#2a2018', seed = 1) {
 export function buildHead(opts) {
   const {
     skinTex, skinCol = new THREE.Color(0xb98a70), stubble = 0, scalpDark = 0, hairColor = null, hairStyle = 'none', beardColor = null, beardStyle = 'none',
-    irisColor = '#5b3a24', browColor = 0x2a1c12, seed = 1, age = 0,
+    irisColor = '#5b3a24', browColor = 0x2a1c12, seed = 1, age = 0, seg = 72, rings = 56, detail = 1,    // seg/rings/detail < 1: crowd level of detail (fewer triangles)
   } = opts;
   const grp = new THREE.Group();
-  const geo = buildHeadGeometry({ skinCol, stubble, scalpDark, seed, flush: 0.12 + age * 0.1 });
+  const geo = buildHeadGeometry({ skinCol, stubble, scalpDark, seed, flush: 0.12 + age * 0.1, seg, rings });
+  const dt = (n, min = 5) => Math.max(min, Math.round(n * detail));
   const mat = new THREE.MeshStandardMaterial({ normalMap: skinTex.normalMap, normalScale: new THREE.Vector2(0.5, 0.5), vertexColors: true, roughness: 0.55, metalness: 0 });
   const skull = new THREE.Mesh(geo, mat); skull.castShadow = true; grp.add(skull);
   // ears
   const earMat = new THREE.MeshStandardMaterial({ color: skinCol.clone().multiply(new THREE.Color(1.05, 0.9, 0.88)), roughness: 0.6 });
   for (const sx of [-1, 1]) {
-    const e = new THREE.Mesh(new THREE.SphereGeometry(0.024, 12, 10), earMat); e.scale.set(0.38, 1.15, 0.72); e.position.set(sx * 0.077, -0.004, -0.006); e.rotation.z = sx * 0.1; grp.add(e);
+    const e = new THREE.Mesh(new THREE.SphereGeometry(0.024, dt(12), dt(10)), earMat); e.scale.set(0.38, 1.15, 0.72); e.position.set(sx * 0.077, -0.004, -0.006); e.rotation.z = sx * 0.1; grp.add(e);
   }
   // eyes (white + iris painted), lids and brows
   const eyeMat = new THREE.MeshStandardMaterial({ map: eyeTexture(irisColor), roughness: 0.18, metalness: 0 });
   const lidMat = new THREE.MeshStandardMaterial({ color: skinCol.clone().multiplyScalar(0.96), roughness: 0.6, side: THREE.DoubleSide });
   const eyes = [], lids = [];
   for (const sx of [-1, 1]) {
-    const eye = new THREE.Mesh(new THREE.SphereGeometry(0.0128, 20, 14), eyeMat);
+    const eye = new THREE.Mesh(new THREE.SphereGeometry(0.0128, dt(20, 8), dt(14, 6)), eyeMat);
     eye.position.set(sx * 0.0345, 0.027, 0.084); eye.rotation.y = -Math.PI / 2 + sx * 0.06;   // iris (u=0.25) toward +z
     grp.add(eye); eyes.push(eye);
-    const lid = new THREE.Mesh(new THREE.SphereGeometry(0.0138, 16, 8, 0, Math.PI * 2, 0, Math.PI * 0.46), lidMat);
+    const lid = new THREE.Mesh(new THREE.SphereGeometry(0.0138, dt(16, 8), dt(8, 4), 0, Math.PI * 2, 0, Math.PI * 0.46), lidMat);
     lid.position.copy(eye.position); lid.rotation.x = 0.55; grp.add(lid); lids.push(lid);
-    const lidL = new THREE.Mesh(new THREE.SphereGeometry(0.0137, 16, 8, 0, Math.PI * 2, Math.PI * 0.62, Math.PI * 0.2), lidMat);
+    const lidL = new THREE.Mesh(new THREE.SphereGeometry(0.0137, dt(16, 8), dt(8, 4), 0, Math.PI * 2, Math.PI * 0.62, Math.PI * 0.2), lidMat);
     lidL.position.copy(eye.position); grp.add(lidL);
-    const brow = new THREE.Mesh(new THREE.CapsuleGeometry(0.0046, 0.036, 3, 8), new THREE.MeshStandardMaterial({ color: browColor, roughness: 0.9 }));
+    const brow = new THREE.Mesh(new THREE.CapsuleGeometry(0.0046, 0.036, detail < 1 ? 1 : 3, dt(8, 5)), new THREE.MeshStandardMaterial({ color: browColor, roughness: 0.9 }));
     brow.rotation.z = Math.PI / 2 + sx * -0.16; brow.rotation.y = 0; brow.position.set(sx * 0.0385, 0.0555, 0.0895); brow.scale.set(1, 1, 0.8);
     grp.add(brow);
   }

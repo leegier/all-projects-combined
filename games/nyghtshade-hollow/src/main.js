@@ -2,13 +2,16 @@
 import { Game } from './game.js';
 import { installCapture } from './capture.js';
 import { Bot } from './bot/bot.js';
+import { characters } from './chars/library.js';
 
 const q = new URLSearchParams(location.search);
+window.NH_CHARS_LIB = characters;
+characters.init();      // glTF characters (MetaHuman exports) load alongside the rest of the boot; inert when assets/characters has no manifest
 const canvas = document.getElementById('c');
 const root = document.getElementById('ui');
 const W = +q.get('w') || 1280, H = +q.get('h') || 720;
 canvas.width = W; canvas.height = H;
-const game = new Game({ canvas, uiRoot: root, quality: q.get('q') || 'high', capture: q.has('capture'), width: W, height: H, seed: +q.get('seed') || 1337 });
+const game = new Game({ canvas, uiRoot: root, quality: q.get('q') || 'high', capture: q.has('capture'), width: W, height: H, seed: +q.get('seed') || 1337, crowd: q.get('crowd') !== 'off' });
 window.NH = game;
 const ui = game.ui;
 const DISC = q.has('fast') || q.has('auto') || q.has('bot') || q.has('capture') ? 0.4 : 25;
@@ -37,6 +40,8 @@ function startAudio() {
 }
 
 game.init((p, name) => { ui.el('u-load').style.width = (p * 100).toFixed(0) + '%'; }).then(() => {
+  if (characters.enabled) console.log(`[NH] characters: ${game.npcs.filter((n) => n.body.isGltf).length}/${game.npcs.length} NPCs use glTF bodies (${characters.specs.length} character files)`);
+  if (game.crowd) console.log(`[NH] crowd: ${game.crowd.stats.residents} residents + ${game.crowd.stats.staff} staff, ${game.crowd.stats.bakes} baked poses (${(game.crowd.stats.tris / 1000).toFixed(0)}k tris), ${game.crowd.stats.materials} materials, ${game.crowd.stats.bakeMs.toFixed(0)} ms`);
   loaded = true; ui.el('u-load').style.width = '100%'; refreshAccept();
   game.input.onPointerLockChange = (locked) => { if (!locked && game.mode === 'play' && !game.input.virtual && !ui.panelOpen && !ui.shopOpen && !ui.docOpen) game.pause(true); };
   game.debug = q.has('debug');

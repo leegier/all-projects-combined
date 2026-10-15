@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { TEX } from '../proc/textures.js';
 import { buildHead } from './head.js';
 import { damp, lerp, hash01 } from '../util.js';
+import { POSES, poseTargets } from './poses.js';
 
 const texCache = new Map();
 function canvasTex(key, w, h, draw) {
@@ -29,7 +30,7 @@ function taperedCapsule(r0, r1, len, radial = 14, cap = 5) {
   return new THREE.LatheGeometry(pts, radial);
 }
 let blobTex = null;
-function blobShadowTexture() {
+export function blobShadowTexture() {
   if (blobTex) return blobTex;
   const c = document.createElement('canvas'); c.width = c.height = 128;
   const g = c.getContext('2d'), gr = g.createRadialGradient(64, 64, 4, 64, 64, 62);
@@ -85,26 +86,14 @@ export const LOOKS = {
   maddox: { skin: 'skinLight', shirt: ['inmate', '#9a5a22'], pants: '#8a5220', scale: 1.1, wide: true, tattoo: true, bald: true },
 };
 
-const POSES = {
-  idle: {},
-  sit: { hipsY: -0.5, lThigh: -1.55, rThigh: -1.55, lKnee: 1.5, rKnee: 1.5, lUpper: -0.4, rUpper: -0.4, lElbow: -1.0, rElbow: -1.0 },
-  lie: { lie: 1 },
-  lean: { lean: 1, lUpper: 0.1, rUpper: -0.2, rElbow: -1.2 },
-  pray: { hipsY: -0.42, lThigh: -0.2, rThigh: -0.2, lKnee: 2.4, rKnee: 2.4, spine: 0.3, head: 0.45, lUpper: -0.9, rUpper: -0.9, lElbow: -1.7, rElbow: -1.7, lUpperZ: 0.2, rUpperZ: -0.2 },
-  mop: { spine: 0.28, lUpper: -0.8, rUpper: -0.9, lElbow: -0.6, rElbow: -0.5, mop: 1 },
-  hands: { lUpper: -3.0, rUpper: -3.0, lElbow: -0.3, rElbow: -0.3 },
-  talk: { talk: 1 },
-  stand: {},
-  read: { lUpper: -0.7, rUpper: -0.7, lElbow: -1.6, rElbow: -1.6, head: 0.35 },
-  ground: { hipsY: -0.86, lThigh: -1.4, rThigh: -1.25, lKnee: 0.45, rKnee: 0.7, spine: -0.08, head: 0.05, lUpper: 0.2, rUpper: -0.35, lElbow: -0.5, rElbow: -1.0 },
-  type: { spine: 0.08, lUpper: -0.7, rUpper: -0.7, lElbow: -1.3, rElbow: -1.3, type: 1 },
-};
-
 export class Humanoid {
   constructor(look = 'inmateA', opts = {}) {
     const L = typeof look === 'string' ? LOOKS[look] : look;
     this.look = L; this.name = opts.name || look;
+    const crowd = opts.lod === 'crowd';                                   // low-polygon build for background characters (baked by chars/bake.js)
+    const sg = (n, min = 6) => (crowd ? Math.max(min, Math.round(n * 0.55)) : n);
     const s = (L.scale || 1) * (opts.scale || 1);
+    this.heightRatio = s;                                              // body height relative to the 1.78 m reference (dialogue camera framing)
     const wide = L.wide ? 1.22 : L.slim ? 0.88 : L.thin ? 0.9 : 1;
     this.root = new THREE.Group();
     // Engine heading convention: forward = (-sin yaw, -cos yaw) = local -Z, so the rig (modelled facing +Z) is flipped.
@@ -129,13 +118,13 @@ export class Humanoid {
     const J = (parent, x = 0, y = 0, z = 0) => { const g = new THREE.Group(); g.position.set(x, y, z); parent.add(g); return g; };
 
     this.hips = J(this.rig, 0, 0.95, 0);
-    add(this.hips, new THREE.CapsuleGeometry(0.118 * wide, 0.05, 6, 14), pants, 0, 0.035, 0).scale.set(1.3, 1, 0.9);
+    add(this.hips, new THREE.CapsuleGeometry(0.118 * wide, 0.05, crowd ? 3 : 6, sg(14, 8)), pants, 0, 0.035, 0).scale.set(1.3, 1, 0.9);
     this.spine = J(this.hips, 0, 0.12, 0);
     const torsoLen = 0.45;   // spine origin (waist) -> neck base
     const TP = [[0.152, -0.1], [0.14, -0.04], [0.124, 0.0], [0.122, 0.06], [0.128, 0.14], [0.145, 0.22], [0.158, 0.3], [0.158, 0.35], [0.146, 0.395], [0.11, 0.425], [0.07, 0.445], [0.054, 0.455]];
-    const torso = add(this.spine, new THREE.LatheGeometry(TP.map(([r, y]) => new THREE.Vector2(r, y)), 30, Math.PI), shirt, 0, 0, 0);
+    const torso = add(this.spine, new THREE.LatheGeometry(TP.map(([r, y]) => new THREE.Vector2(r, y)), sg(30, 14), Math.PI), shirt, 0, 0, 0);
     torso.scale.set(1.1 * wide, 1, L.wide ? 0.92 : 0.78);
-    const yoke = add(this.spine, new THREE.SphereGeometry(0.17 * wide, 18, 10), shirt, 0, 0.392, -0.004); yoke.scale.set(1.28, 0.27, L.wide ? 0.78 : 0.66);
+    const yoke = add(this.spine, new THREE.SphereGeometry(0.17 * wide, sg(18, 10), sg(10, 5)), shirt, 0, 0.392, -0.004); yoke.scale.set(1.28, 0.27, L.wide ? 0.78 : 0.66);
     if (L.apron) {
       const am = new THREE.MeshStandardMaterial({ map: canvasTex('apron', 128, 256, (g, w, h) => { g.fillStyle = '#e6e2d4'; g.fillRect(0, 0, w, h); fabricNoise(g, w, h, 16); g.fillStyle = 'rgba(120,90,40,0.18)'; for (let i = 0; i < 14; i++) g.fillRect(hash01(i + 3) * w, h * (0.25 + hash01(i + 8) * 0.7), 4 + hash01(i) * 22, 2 + hash01(i + 5) * 9); g.fillStyle = 'rgba(0,0,0,0.12)'; g.fillRect(0, h * 0.5 - 1, w, 2); }), roughness: 0.95, side: THREE.DoubleSide });
       const bib = add(this.spine, new THREE.CylinderGeometry(0.168, 0.19, 0.5, 20, 1, true, -0.95, 1.9), am, 0, 0.08, 0);
@@ -149,13 +138,14 @@ export class Humanoid {
       add(this.spine, new THREE.BoxGeometry(0.05, 0.1, 0.03), new THREE.MeshStandardMaterial({ color: 0x050505, roughness: 0.4 }), -0.13, 0.4, 0.13);  // shoulder radio
     }
     this.neck = J(this.spine, 0, torsoLen, 0);
-    add(this.neck, new THREE.CylinderGeometry(0.056 * wide, 0.07 * wide, 0.12, 16), skinFlat, 0, 0.02, 0);
+    add(this.neck, new THREE.CylinderGeometry(0.056 * wide, 0.07 * wide, 0.12, sg(16, 8)), skinFlat, 0, 0.02, 0);
     this.head = J(this.neck, 0, 0.05, 0); this.head.scale.setScalar(1.08);
     const hh = buildHead({
       skinTex, skinCol, stubble: L.stubble ?? (L.thin ? 0.2 : 0.55), scalpDark: L.bald ? 0.75 : 0,
       hairColor: L.hair || null, hairStyle: L.hair ? (L.hairStyle || (L.thin ? 'sides' : 'short')) : 'none',
       beardColor: L.beard || L.goatee || null, beardStyle: L.beard ? 'full' : L.goatee ? 'goatee' : 'none',
       irisColor: L.iris || '#5b3a24', browColor: L.hair || 0x2a1c12, seed: opts.seed || 3, age: L.thin ? 1 : 0,
+      ...(crowd ? { seg: 40, rings: 28, detail: 0.5 } : {}),
     });
     hh.group.position.y = 0.115; this.head.add(hh.group);
     this.headParts = hh;
@@ -184,26 +174,27 @@ export class Humanoid {
     const mkArm = (side) => {
       const sh = J(this.spine, side * 0.185 * wide, torsoLen - 0.085, 0);
       const aw = L.wide ? 1.2 : 1;
-      add(sh, taperedCapsule(0.062 * aw, 0.05 * aw, 0.34, 16), sleeve, 0, -0.17, 0);
+      add(sh, taperedCapsule(0.062 * aw, 0.05 * aw, 0.34, sg(16, 8), crowd ? 3 : 5), sleeve, 0, -0.17, 0);
       const el = J(sh, 0, -0.34, 0);
-      add(el, taperedCapsule(0.048 * aw, 0.034 * aw, 0.32, 16), armMat, 0, -0.16, 0);
-      if (L.shirt[0] === 'guard') add(el, taperedCapsule(0.052 * aw, 0.044 * aw, 0.2, 16), sleeve, 0, -0.1, 0);   // long sleeve to the wrist-ish
+      add(el, taperedCapsule(0.048 * aw, 0.034 * aw, 0.32, sg(16, 8), crowd ? 3 : 5), armMat, 0, -0.16, 0);
+      if (L.shirt[0] === 'guard') add(el, taperedCapsule(0.052 * aw, 0.044 * aw, 0.2, sg(16, 8), crowd ? 3 : 5), sleeve, 0, -0.1, 0);   // long sleeve to the wrist-ish
       const hand = J(el, 0, -0.32, 0);
-      add(hand, new THREE.SphereGeometry(0.05, 14, 10), armMat, 0, -0.02, 0).scale.set(0.9, 1.15, 0.62);
-      for (let f = 0; f < 4; f++) { const fg = add(hand, new THREE.CapsuleGeometry(0.0125, 0.045, 3, 8), armMat, (f - 1.5) * 0.02, -0.085, 0.004); fg.rotation.x = 0.12; }
-      const thb = add(hand, new THREE.CapsuleGeometry(0.0135, 0.04, 3, 8), armMat, -side * 0.045, -0.04, 0.014); thb.rotation.z = side * 0.6;
+      add(hand, new THREE.SphereGeometry(0.05, sg(14, 8), sg(10, 5)), armMat, 0, -0.02, 0).scale.set(0.9, 1.15, 0.62);
+      if (crowd) { const fg = add(hand, new THREE.CapsuleGeometry(0.0125, 0.045, 1, 5), armMat, 0, -0.095, 0.004); fg.scale.set(3.4, 1, 1.2); fg.rotation.x = 0.12; }      // fingers as one block
+      else for (let f = 0; f < 4; f++) { const fg = add(hand, new THREE.CapsuleGeometry(0.0125, 0.045, 3, 8), armMat, (f - 1.5) * 0.02, -0.085, 0.004); fg.rotation.x = 0.12; }
+      const thb = add(hand, new THREE.CapsuleGeometry(0.0135, 0.04, crowd ? 1 : 3, crowd ? 5 : 8), armMat, -side * 0.045, -0.04, 0.014); thb.rotation.z = side * 0.6;
       return { sh, el, hand };
     };
     this.lArm = mkArm(-1); this.rArm = mkArm(1);
     // legs
     const mkLeg = (side) => {
       const hip = J(this.hips, side * 0.09 * wide, -0.02, 0);
-      add(hip, taperedCapsule(0.094 * wide, 0.062 * wide, 0.45, 18), pants, 0, -0.225, 0);
+      add(hip, taperedCapsule(0.094 * wide, 0.062 * wide, 0.45, sg(18, 8), crowd ? 3 : 5), pants, 0, -0.225, 0);
       const knee = J(hip, 0, -0.45, 0);
-      add(knee, taperedCapsule(0.062 * wide, 0.042 * wide, 0.41, 18), pants, 0, -0.205, 0);
+      add(knee, taperedCapsule(0.062 * wide, 0.042 * wide, 0.41, sg(18, 8), crowd ? 3 : 5), pants, 0, -0.205, 0);
       const ankle = J(knee, 0, -0.41, 0);
-      const boot = add(ankle, new THREE.CapsuleGeometry(0.046, 0.15, 4, 12), boots, 0, -0.03, 0.075); boot.rotation.x = Math.PI / 2; boot.scale.set(1.12, 1, 0.66);
-      add(ankle, new THREE.CylinderGeometry(0.05, 0.056, 0.09, 12), boots, 0, 0.02, -0.005);
+      const boot = add(ankle, new THREE.CapsuleGeometry(0.046, 0.15, crowd ? 2 : 4, sg(12, 7)), boots, 0, -0.03, 0.075); boot.rotation.x = Math.PI / 2; boot.scale.set(1.12, 1, 0.66);
+      add(ankle, new THREE.CylinderGeometry(0.05, 0.056, 0.09, sg(12, 7)), boots, 0, 0.02, -0.005);
       add(ankle, new THREE.BoxGeometry(0.1, 0.018, 0.25), new THREE.MeshStandardMaterial({ color: 0x050505, roughness: 0.9 }), 0, -0.065, 0.07);
       return { hip, knee, ankle };
     };
@@ -225,28 +216,7 @@ export class Humanoid {
     this.speed = damp(this.speed, speed, 8, dt);
     this.walkAmt = damp(this.walkAmt, Math.min(1, this.speed / 1.6), 8, dt);
     this.phase += this.speed * dt * 3.3;
-    const P = POSES[this.pose] || POSES.idle;
-    const w = this.walkAmt;
-    const s = Math.sin(this.phase), c = Math.cos(this.phase);
-    const breathe = Math.sin(this.t * 1.7 + this.seed) * 0.012;
-    const shift = Math.sin(this.t * 0.4 + this.seed * 3.1) * 0.03;
-    const talk = P.talk || this.talking ? Math.max(P.talk || 0, this.talking) : 0;
-    const g = (k, d = 0) => (P[k] !== undefined ? P[k] : d);
-    const walkOk = this.pose === 'idle' || this.pose === 'stand' || this.pose === 'talk';
-    const wa = walkOk ? w : 0;
-    const T = {
-      hipsY: g('hipsY') + Math.abs(s) * -0.03 * wa,
-      spine: g('spine') + breathe + this.stoop * (1 - wa * 0.3) + (g('mop') ? Math.sin(this.t * 2.2) * 0.05 : 0),
-      head: g('head') + this.stoop * -0.4 + Math.sin(this.t * 0.6 + this.seed) * 0.03,
-      lThigh: g('lThigh') + s * 0.62 * wa, rThigh: g('rThigh') - s * 0.62 * wa,
-      lKnee: g('lKnee') + Math.max(0, -c) * 0.8 * wa, rKnee: g('rKnee') + Math.max(0, c) * 0.8 * wa,
-      lUpper: g('lUpper', 0.05) - s * 0.55 * wa + (talk ? Math.sin(this.t * 2.3) * 0.18 - 0.2 : 0),
-      rUpper: g('rUpper', 0.05) + s * 0.55 * wa + (talk ? Math.sin(this.t * 2.9 + 1) * 0.28 - 0.5 : 0),
-      lElbow: g('lElbow', -0.15) - (wa > 0.1 ? 0.3 * wa : 0), rElbow: g('rElbow', -0.15) - (wa > 0.1 ? 0.3 * wa : 0) - (talk ? 0.5 : 0),
-      lUpperZ: g('lUpperZ', 0.05) + shift * 0.3, rUpperZ: g('rUpperZ', -0.05) + shift * 0.3,
-    };
-    if (P.mop) { T.lUpper = -0.9 + Math.sin(this.t * 2.2) * 0.12; T.rUpper = -0.95 + Math.sin(this.t * 2.2) * 0.12; }
-    if (P.type) { T.lElbow = -1.3 + Math.sin(this.t * 11) * 0.06; T.rElbow = -1.3 + Math.sin(this.t * 13 + 1) * 0.06; }
+    const { P, T, wa, walkOk } = poseTargets(this.pose, { t: this.t, phase: this.phase, walkAmt: this.walkAmt, talking: this.talking, seed: this.seed, stoop: this.stoop });
     const k = 12;
     for (const key of Object.keys(T)) this.cur[key] = this.cur[key] === undefined ? T[key] : damp(this.cur[key], T[key], k, dt);
     const C = this.cur;

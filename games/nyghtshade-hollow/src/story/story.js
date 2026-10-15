@@ -2,6 +2,7 @@
 // Records access (keycard / shim / bribe), arrest & alarm consequences, save/load.
 import * as THREE from 'three';
 import { NPC } from '../ai/npc.js';
+import { Crowd } from '../ai/crowd.js';
 import { Guard, SecurityCam } from '../ai/guard.js';
 import { DIALOGUE, VOICE, BARKS } from './dialogue.js';
 import { makeIntro, makeFontCine, makeEnding, makeArrestCine } from './cinematics.js';
@@ -96,6 +97,7 @@ export class Story {
     const walkers = [['wk1', 'inmateB', 'H.w1', ['H.e1', 'H.w1', 'H.bs', 'H.nw']], ['wk2', 'inmateC', 'H.e1', ['H.w2', 'H.se', 'H.e1']]];
     walkers.forEach(([id, look, start, loop], i) => { const nd = g.world.waypoints.get(start); const n = add(new NPC(g, { id, name: 'Inmate', look, x: nd.x, z: nd.z, seed: 90 + i * 13, walkSpeed: 1.0 + i * 0.2 })); n.loop = loop; n.loopI = 0; n.hiddenFromWorld = true; n.waitT = 0; });
     this.updateNpcPresence();
+    if (g.crowdOn) { g.crowd = new Crowd(g); g.crowd.build(); }                // the other inmates (visual only); bodies are baked once the character library is ready
   }
 
   /** Who is visible/where depends on the routine slot. */
@@ -107,6 +109,7 @@ export class Story {
       if (n.dinerFor) n.hiddenFromWorld = !(chow || r.slot === SLOT.FreeTime);
       if (n.loop) n.hiddenFromWorld = count;
       if (n.hallSitter) n.hiddenFromWorld = count;
+      if (n.sleeper) n.hiddenFromWorld = r.slot === SLOT.Count && !this.cellsReleased;        // everyone stands at their door for count (the crowd takes their place)
     }
   }
   onSlot(slot, entry) {
@@ -607,7 +610,7 @@ export class Story {
   dialogueFrame() {
     const g = this.g, d = this.dialogue; if (!d) return;
     const pl = g.player; const n = d.npc;
-    const hy = n.pose === 'sit' ? 1.12 : n.pose === 'ground' ? 0.95 : n.pose === 'pray' ? 1.05 : 1.55;
+    const hy = (n.pose === 'sit' ? 1.12 : n.pose === 'ground' ? 0.95 : n.pose === 'pray' ? 1.05 : 1.55) * ((n.body && n.body.heightRatio) || 1);      // head height scales with the body (taller / shorter characters)
     const head = new THREE.Vector3(n.pos.x, n.pos.y + hy, n.pos.z);
     const dir = new THREE.Vector3(head.x - pl.eyePos.x, 0, head.z - pl.eyePos.z);
     const dist = dir.length() || 1; dir.divideScalar(dist);
