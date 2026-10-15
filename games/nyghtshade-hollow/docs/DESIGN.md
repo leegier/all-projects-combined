@@ -64,6 +64,16 @@ arrest cinematic → −15 DC, −3 guard standing, one hour later in your cell.
 * **Tunnel** — brick stair, T1 north passage, T2 west passage with a gap, a drain portal.
 * **Outside** — gully, forest bowl (≈ 330 trees), the clearing with the old oak, perimeter wall, towers, floodlights, lit windows.
 
+## People
+
+* **Cast** — three COs (Reyes, Dalton, Pruitt), Tuck, Cutter, Harrington, Maddox (the player's body in cutscenes) and a dozen day-room, chapel and
+  cell inmates are full `NPC`s: nav graph, head tracking, dialogue.
+* **Crowd** — 45 residents (one per cell) and two kitchen hands, visual only, live by the clock: **count = every man at attention at his cell
+  door (both rows, both tiers)**, chow = full mess hall, free time = day-room tables, chapel hours = pews and library, lights out = asleep.
+  Details and numbers in [CHARACTERS.md](CHARACTERS.md).
+* **Bodies** — procedural by default; glTF characters (MetaHumans) replace them through `assets/characters/manifest.json`, animated by the same
+  pose table. The design brief calls for MetaHumans for every character (15–20 reusable presets); the slice's pipeline is ready for them.
+
 ## Art & audio direction
 
 *Look*: desaturated institutional blue-greens and block-wall greys, hard cool fluorescents against warm accents (lantern, candles,
@@ -75,4 +85,4 @@ piano motif at the end. No spoken VO in the slice — captions + voice blips.
 ## Backlog (from the end screen)
 
 Yard & gym factions · visitation · hit market · Arianna's office · Valley's arrival · more NPC routines · inmate-to-inmate
-AI conflicts · inventory trading · save slots.
+AI conflicts · inventory trading · save slots · real MetaHumans for the cast and crowd · walking / reacting crowd.

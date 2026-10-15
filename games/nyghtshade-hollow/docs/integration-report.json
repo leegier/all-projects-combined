@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-15T07:49:10.627Z",
+ "generated": "2026-10-15T13:25:10.513Z",
  "pass": 14,
  "fail": 0,
  "results": [
@@ -71,7 +71,7 @@
   {
    "name": "determinism: two bot runs of the shim route end in the identical state",
    "ok": true,
-   "detail": "\n   {\"t\":444.467,\"dc\":55,\"cred\":24,\"fear\":22,\"hour\":14.7009,\"x\":-98,\"z\":-29,\"results\":39,\"rng\":{\"arrests\":0,\"dcEarned\":30}}\n   {\"t\":444.467,\"dc\":55,\"cred\":24,\"fear\":22,\"hour\":14.7009,\"x\":-98,\"z\":-29,\"results\":39,\"rng\":{\"arrests\":0,\"dcEarned\":30}}"
+   "detail": "\n   {\"t\":444.433,\"dc\":55,\"cred\":24,\"fear\":22,\"hour\":14.7001,\"x\":-98,\"z\":-29,\"results\":39,\"rng\":{\"arrests\":0,\"dcEarned\":30}}\n   {\"t\":444.433,\"dc\":55,\"cred\":24,\"fear\":22,\"hour\":14.7001,\"x\":-98,\"z\":-29,\"results\":39,\"rng\":{\"arrests\":0,\"dcEarned\":30}}"
   }
  ]
 }

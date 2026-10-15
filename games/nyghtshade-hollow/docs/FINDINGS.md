@@ -38,6 +38,18 @@ Everything below was found by the automated playtest bot, the unit/integration s
 | Dialogue choice list sat on top of the line being answered, and then the yellow system caption covered choice 1 | video review (contact sheets of the choice screens) | subtitle lifts above the list; the caption and the assertion feed step out of the way while choices are open |
 | HUD stayed on during the baptismal-font cinematic | video review | HUD hidden for that cinematic and restored at its end |
 
+## Characters & crowd (this round)
+
+| Finding | How found | Fix |
+|---|---|---|
+| Walking glTF characters **sank up to 7 cm into the floor** (planting estimated from leg lengths ignored the foot's pitch) | `tests/characters.mjs` (lowest mesh point while walking) | pelvis **ground lock**: after posing, the lowest measured sole point (ankle / ball) is put on the floor |
+| VRoid bone names lost their side letter (`J_Bip_L_UpperArm` → `upperarm`); Rigify `DEF-` bones unmapped; the wrong MetaHuman jaw helper could win | unit tests of `rigmap.js` | side kept, `DEF-` stripped, `FACIAL_C_Jaw` preferred over its helpers |
+| Crowd members invisible after a jump in time (the placement did not refresh visibility) | stills | `show()` on arrival and every step |
+| Commissary queue stood in front of the window; the bot **stuck 6×** at (39.4, −9.1) | bot `stuck` counter (0 → 6 after adding the crowd) | queue waits beside the window; stuck back to 0 and the old sim times |
+| The draw-call budget test measured **1 call** (`renderer.info` only holds the last post-processing pass) | reviewing the measured numbers | `autoReset = false`, all passes summed (≈ 500 calls / 250 k triangles added by the crowd) |
+| Optimiser created the merged **jaw joint once per face skin** (6×); `meshopt` then cloned a skin per mesh, which looked like unmerged skeletons | split-skeleton test | jaw created once; "separate skeletons" is judged by joint sets, not skin count |
+| A face / hair mesh on its own skeleton stays behind when the body moves | built as a deliberate control in `tests/metahuman-tools.mjs` (drift > 5 cm raw, < 1 cm optimised) | `optimize.mjs` merges skeletons by bone name |
+
 ## Process
 
 * The capture tool can **patch** a finished render: after a UI fix, `--redo "a-b,…" --only-redo` deletes and re-renders only the

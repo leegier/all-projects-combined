@@ -5,6 +5,7 @@
 | `nyghtshade-hollow-playtest-lite.mp4` | The playtest recording at 854×480 · 30 fps · H.264 + AAC · 8 min 8 s · 32 MB, with the chapter markers below |
 | `stills/*.jpg` | 21 stills (1280×720) picked from the capture: intro, C-Block, count, routine board, serve line, Cutter's choices, mop job, Records, chapel, baptismal font, tunnel, forest, clearing, ending, report card, camera alarm, keycard and bribe routes |
 | `contact-sheet.jpg` | One frame every 8 s of the golden path (49 tiles), for a quick visual review of the whole run |
+| `stills/crowd-*.jpg` + `crowd-contact-sheet.jpg` | **After the video was recorded** the block was populated (see [`docs/CHARACTERS.md`](../docs/CHARACTERS.md)): 45 residents + 2 kitchen hands living by the clock. Eight 1280×720 stills at high quality — count at the cell doors, both rows, the day room, the mess hall at chow, the serving line, the chapel, the library, lights out. The video above predates this and shows the original, sparsely populated block; it has **not** been re-recorded |
 
 The **full-quality master** — `nyghtshade-hollow-playtest.mp4`, 1280×720 · 30 fps · H.264 (≈ 1.5 Mbit/s) + AAC, 99.9 MB — is not committed
 (it is just under GitHub's 100 MiB file limit); it was handed over in the Claude session that built it (as four parts, because uploads there are capped at 30 MiB, plus a 480p single-file copy). Rebuild it any time with

@@ -8,6 +8,9 @@ A combined, organised snapshot of all repositories — plus a new, playable vert
 Open `games/nyghtshade-hollow/dist/index.html` in a browser (WebGL 2, keyboard + mouse; no install, no assets).
 A recording of an automated playtest (real input, live assertions on screen, cinematics, failure path) is in
 [`games/nyghtshade-hollow/media`](games/nyghtshade-hollow/media).
+The block is now populated (45 inmates living by the prison clock) and the game is ready for **MetaHuman characters**
+(glTF pipeline + optimiser + crowd baking, tested with stand-in rigs; the real MetaHumans still have to be exported on the Unreal PC —
+[`tools/metahuman/PC-PROMPT.md`](games/nyghtshade-hollow/tools/metahuman/PC-PROMPT.md)). See [`docs/CHARACTERS.md`](games/nyghtshade-hollow/docs/CHARACTERS.md).
 
 ## Layout
 

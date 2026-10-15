@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-15T07:42:41.609Z",
- "pass": 27,
+ "generated": "2026-10-15T13:21:33.896Z",
+ "pass": 31,
  "fail": 0,
  "results": [
   {
@@ -109,6 +109,22 @@
   },
   {
    "name": "fx / cond strings used by scripts are handled by Story",
+   "ok": true
+  },
+  {
+   "name": "MetaHuman / UE5 skeleton: every role found, twist / corrective / facial / ik helpers ignored",
+   "ok": true
+  },
+  {
+   "name": "Mixamo skeleton (with and without the colon glTF strips)",
+   "ok": true
+  },
+  {
+   "name": "Rigify deform bones, VRM / Unity humanoid and VRoid names",
+   "ok": true
+  },
+  {
+   "name": "unknown skeletons are reported, not guessed",
    "ok": true
   }
  ]

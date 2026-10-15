@@ -1,16 +1,19 @@
 # Test report
 
 Generated 2026-10-15 by `node tools/report.mjs` from `docs/*-report.json`.
-Run everything with `npm test` (unit → bot routes → integration).
+Run everything with `npm test` (unit → bot routes → integration → characters → crowd → metahuman tools).
 
 | Suite | Result | Notes |
 |---|---|---|
-| Unit (Node) | ✔ 27/27 | routine, economy, reputation, survival, alert, inventory, dialogue graph |
+| Unit (Node) | ✔ 31/31 | routine, economy, reputation, survival, alert, inventory, dialogue graph |
 | Bot route `shim` | ✔ 39/39 | sim 444 s · stuck 0 · end mode `end` |
 | Bot route `keycard` | ✔ 39/39 | sim 429 s · stuck 0 · end mode `end` |
 | Bot route `bribe` | ✔ 39/39 | sim 445 s · stuck 0 · end mode `end` |
 | Bot route `alarm` | ✔ 26/26 | sim 218 s · stuck 0 · end mode `play` |
 | Integration (Chromium) | ✔ 14/14 | save/load, nav graph, door policy, restricted areas, determinism |
+| Characters (Chromium) | ✔ 56/56 | glTF loader, bone mapping, poses, foot planting, LOD, fallbacks, crowd + library, determinism (stand-in rigs, not MetaHumans) |
+| Crowd (Chromium) | ✔ 17/17 | who is where per routine state, no overlaps, colliders, visibility, transitions, cost, simulation unchanged |
+| MetaHuman tools | ✔ 11/11 | optimize.mjs on a split-skeleton export, loaded in the game |
 
 ## Unit tests
 
@@ -41,6 +44,10 @@ Run everything with `npm test` (unit → bot routes → integration).
 - ✔ every script has a start node and every next/choice target exists
 - ✔ every script node is reachable from its start
 - ✔ fx / cond strings used by scripts are handled by Story
+- ✔ MetaHuman / UE5 skeleton: every role found, twist / corrective / facial / ik helpers ignored
+- ✔ Mixamo skeleton (with and without the colon glTF strips)
+- ✔ Rigify deform bones, VRM / Unity humanoid and VRoid names
+- ✔ unknown skeletons are reported, not guessed
 
 ## Integration tests
 
@@ -59,6 +66,99 @@ Run everything with `npm test` (unit → bot routes → integration).
 - ✔ restricted: Records always; canteen only outside meal hours; chapel only while closed
 - ✔ determinism: two bot runs of the shim route end in the identical state
 
+## Character pipeline tests
+
+- ✔ library: all four stand-in files load, none fail
+- ✔ library: MetaHuman- and Mixamo-style skeletons recognised and usable
+- ✔ NPCs: every cast member got a glTF body
+- ✔ NPCs: guards use the files listed for the guard looks
+- ✔ NPCs: a look listed for several files spreads over them (deterministically)
+- ✔ [standin-mh-a] stands on the floor, head at the requested height (0.002..1.74 m for 1.74)
+- ✔ [standin-mh-a] upright (head above hips above floor) and no NaN vertices
+- ✔ [standin-mh-a] faces engine forward (-Z): toes point to -Z
+- ✔ [standin-mh-a] A-/T-pose arms re-hung: wrist 0.54 m below shoulder, 0.03 m out
+- ✔ [standin-mh-a] sit: pelvis drops 0.3-0.7 m and the knee points forward
+- ✔ [standin-mh-a] pray: kneels (pelvis 0.50 m, under a third of the height)
+- ✔ [standin-mh-a] lie: body horizontal (height span < 0.6 m)
+- ✔ [standin-mh-a] every pose finite, back to standing after idle
+- ✔ [standin-mh-a] walking: feet stay on the floor (lowest point -0.025..0.023, mean -0.006)
+- ✔ [standin-mh-a] LOD: lashes/teeth hide when far and come back near
+- ✔ [standin-mh-b] stands on the floor, head at the requested height (0.002..1.78 m for 1.78)
+- ✔ [standin-mh-b] upright (head above hips above floor) and no NaN vertices
+- ✔ [standin-mh-b] faces engine forward (-Z): toes point to -Z
+- ✔ [standin-mh-b] A-/T-pose arms re-hung: wrist 0.55 m below shoulder, 0.03 m out
+- ✔ [standin-mh-b] sit: pelvis drops 0.3-0.7 m and the knee points forward
+- ✔ [standin-mh-b] pray: kneels (pelvis 0.51 m, under a third of the height)
+- ✔ [standin-mh-b] lie: body horizontal (height span < 0.6 m)
+- ✔ [standin-mh-b] every pose finite, back to standing after idle
+- ✔ [standin-mh-b] walking: feet stay on the floor (lowest point -0.026..0.023, mean -0.006)
+- ✔ [standin-mh-b] LOD: lashes/teeth hide when far and come back near
+- ✔ [standin-mx-a] stands on the floor, head at the requested height (0.002..1.90 m for 1.90)
+- ✔ [standin-mx-a] upright (head above hips above floor) and no NaN vertices
+- ✔ [standin-mx-a] faces engine forward (-Z): toes point to -Z
+- ✔ [standin-mx-a] A-/T-pose arms re-hung: wrist 0.59 m below shoulder, 0.03 m out
+- ✔ [standin-mx-a] sit: pelvis drops 0.3-0.7 m and the knee points forward
+- ✔ [standin-mx-a] pray: kneels (pelvis 0.55 m, under a third of the height)
+- ✔ [standin-mx-a] lie: body horizontal (height span < 0.6 m)
+- ✔ [standin-mx-a] every pose finite, back to standing after idle
+- ✔ [standin-mx-a] walking: feet stay on the floor (lowest point -0.028..0.025, mean -0.006)
+- ✔ [standin-mx-a] LOD: lashes/teeth hide when far and come back near
+- ✔ [standin-mx-b] stands on the floor, head at the requested height (0.002..1.74 m for 1.74)
+- ✔ [standin-mx-b] upright (head above hips above floor) and no NaN vertices
+- ✔ [standin-mx-b] faces engine forward (-Z): toes point to -Z
+- ✔ [standin-mx-b] A-/T-pose arms re-hung: wrist 0.54 m below shoulder, 0.03 m out
+- ✔ [standin-mx-b] sit: pelvis drops 0.3-0.7 m and the knee points forward
+- ✔ [standin-mx-b] pray: kneels (pelvis 0.50 m, under a third of the height)
+- ✔ [standin-mx-b] lie: body horizontal (height span < 0.6 m)
+- ✔ [standin-mx-b] every pose finite, back to standing after idle
+- ✔ [standin-mx-b] walking: feet stay on the floor (lowest point -0.025..0.023, mean -0.006)
+- ✔ [standin-mx-b] LOD: lashes/teeth hide when far and come back near
+- ✔ fallback ?chars=off: game boots (status none)
+- ✔ fallback ?chars=off: everyone keeps the procedural body
+- ✔ fallback no manifest at the location: game boots (status none)
+- ✔ fallback no manifest at the location: everyone keeps the procedural body
+- ✔ fallback broken manifest (one good file, a missing one, a corrupt one): game boots (status ready)
+- ✔ fallback broken manifest (one good file, a missing one, a corrupt one): the good file is used, the bad ones are reported
+- ✔ crowd + library: manifest "crowd" files are loaded as light variants and used for the crowd (not for NPCs)
+- ✔ crowd + library: residents share baked bodies (a handful of bakes instead of one per person and pose)
+- ✔ crowd + library: everyone is still placed for the current state
+- ✔ embedded build: manifest, characters and their crowd variants live inside the one HTML file and are used without any network fetch
+- ✔ determinism: bot route ends in the identical state with procedural and with glTF bodies
+
+## Crowd tests
+
+- ✔ crowd: 45 residents (one per cell but the player's) + 2 kitchen hands, every pose baked
+- ✔ crowd: baked bodies are light (≤ 9k triangles on average) and share materials (< 400 in all)
+- ✔ count: all 45 residents stand at their cell doors and the sleeper NPCs step aside
+- ✔ lights out: the cells hold sleepers (41: four cells already have a sleeper NPC) and those NPCs are back in their bunks
+- ✔ lockdown: everyone sits in their cell
+- ✔ chow: the mess hall is full (diners, serving line, commissary, two cooks) and cells are mostly empty
+- ✔ free time: about 21 men at the day-room tables, some in the mess hall and in cells
+- ✔ chapel hours: pews and the library are used
+- ✔ work / yard / gym / visitation: the block is quieter but not empty
+- ✔ nobody shares a seat or a cell in any state
+- ✔ nobody stands or sits inside a wall or furniture (open-floor positions)
+- ✔ colliders: enabled exactly for the occupied seats / queue spots
+- ✔ visibility follows the active areas (cells are not drawn from the canteen)
+- ✔ transitions: people drift out and in over several seconds (count drops, then fills the mess hall), never two on one seat
+- ✔ cost: the busiest crowd views stay under 2400 draw calls and 1.6 M triangles (all passes summed)
+- ✔ ?crowd=off: no crowd, no crowd colliders, the 24 cast members are untouched
+- ✔ simulation: the bot route ends in the same state with and without the crowd (clock within 2 s), never stuck on it
+
+## MetaHuman tool tests
+
+- ✔ inspect: the raw export is recognised as MetaHuman-style and flagged for its separate face skeleton
+- ✔ optimize: skeletons merged (no separate-skeleton warning left) and every skin drives the same joints
+- ✔ optimize: joints reduced (helpers / twist / fingers / facial collapsed) but the rig stays usable
+- ✔ optimize: triangles unchanged without a budget, file much smaller (meshopt)
+- ✔ optimize: the face skeleton's jaw became one joint under the body's head
+- ✔ optimize --tris: triangle budget is honoured (±40 %)
+- ✔ optimize --keep-*: nothing is collapsed when asked to keep everything
+- ✔ game: the raw split export loads and its rig is recognised, but the face stays behind when the head moves (why the merge exists)
+- ✔ game: after optimize.mjs the face and hair follow the head (drift < 1 cm over a pose change)
+- ✔ game: the merged jaw joint is found and animates while talking
+- ✔ game: a single-skeleton export kept whole works too
+
 ## Bot routes — assertions
 
 The bot plays through the real input layer at a fixed 60 Hz; each line is an assertion evaluated live (time = simulated seconds).
@@ -74,20 +174,20 @@ The bot plays through the real input layer at a fixed 60 Hz; each line is an ass
 | 55.2 | 06:26 | ✔ inmates visible in the hall after count |
 | 56.2 | 06:27 | ✔ picked up cigarettes (inventory) |
 | 87.6 | 07:06 | ✔ drinking restores thirst |
-| 95.3 | 07:16 | ✔ sally gate is locked during count/lights-out period |
-| 95.3 | 07:16 | ✔ PA/slot change to CHOW at 07:00 |
+| 95.2 | 07:16 | ✔ sally gate is locked during count/lights-out period |
+| 95.2 | 07:16 | ✔ PA/slot change to CHOW at 07:00 |
 | 96.3 | 07:18 | ✔ sally gates open during CHOW |
-| 101.9 | 07:25 | ✔ arrived in the mess hall |
-| 107.8 | 07:31 | ✔ got a chow tray from Tuck |
+| 101.8 | 07:25 | ✔ arrived in the mess hall |
+| 107.7 | 07:31 | ✔ got a chow tray from Tuck |
 | 117 | 07:43 | ✔ ate chow — hunger restored |
-| 123.5 | 07:50 | ✔ commissary UI opens |
-| 149.4 | 07:54 | ✔ Cutter explained the ledger lead |
-| 149.4 | 07:54 | ✔ reputation changed by dialogue choice (fear +2) |
-| 149.4 | 07:54 | ✔ bought the shim (−25 DC) — balance 25 |
-| 149.4 | 07:54 | ✔ mop job offered |
-| 150.5 | 07:56 | ✔ took the mop |
-| 170.1 | 08:22 | ✔ mop job complete (+30 DC) — balance 55 |
-| 179.1 | 08:34 | ✔ walked into Intake lobby unchallenged (not restricted) |
+| 123.4 | 07:50 | ✔ commissary UI opens |
+| 149.9 | 07:55 | ✔ Cutter explained the ledger lead |
+| 149.9 | 07:55 | ✔ reputation changed by dialogue choice (fear +2) |
+| 149.9 | 07:55 | ✔ bought the shim (−25 DC) — balance 25 |
+| 149.9 | 07:55 | ✔ mop job offered |
+| 151 | 07:56 | ✔ took the mop |
+| 170.5 | 08:22 | ✔ mop job complete (+30 DC) — balance 55 |
+| 179.6 | 08:34 | ✔ walked into Intake lobby unchallenged (not restricted) |
 | 199.1 | 09:00 | ✔ shim defeated the reader without raising the alert |
 | 208.6 | 09:13 | ✔ inside Records (restricted area) without tripping the alarm — alert 0 |
 | 211.9 | 09:18 | ✔ copied the ledger page (item in inventory) |
@@ -97,14 +197,14 @@ The bot plays through the real input layer at a fixed 60 Hz; each line is an ass
 | 233.1 | 09:37 | ✔ journal closes |
 | 245.6 | 09:54 | ✔ can sprint (stamina drains) |
 | 282.8 | 13:00 | ✔ chapel unlocks at 13:00 (routine policy) |
-| 284.2 | 13:01 | ✔ entered the chapel |
+| 284.1 | 13:01 | ✔ entered the chapel |
 | 298.9 | 13:08 | ✔ Harrington accepted the ledger page |
 | 298.9 | 13:08 | ✔ Street Cred / General Pop standing rose |
 | 310.4 | 13:23 | ✔ baptismal font lifted — tunnel revealed |
-| 326.2 | 13:33 | ✔ descended into the tunnel |
-| 329.1 | 13:37 | ✔ tunnel conversation triggered |
+| 326.1 | 13:33 | ✔ descended into the tunnel |
+| 329 | 13:37 | ✔ tunnel conversation triggered |
 | 338.9 | 13:37 | ✔ tunnel rules scene complete |
-| 391 | 14:42 | ✔ emerged into the forest |
+| 390.9 | 14:42 | ✔ emerged into the forest |
 | 444.4 | 14:42 | ✔ ending cinematic and end screen reached |
 
 ### `keycard`
@@ -118,23 +218,23 @@ The bot plays through the real input layer at a fixed 60 Hz; each line is an ass
 | 55.2 | 06:26 | ✔ inmates visible in the hall after count |
 | 56.2 | 06:27 | ✔ picked up cigarettes (inventory) |
 | 87.6 | 07:06 | ✔ drinking restores thirst |
-| 95.3 | 07:16 | ✔ sally gate is locked during count/lights-out period |
-| 95.3 | 07:16 | ✔ PA/slot change to CHOW at 07:00 |
+| 95.2 | 07:16 | ✔ sally gate is locked during count/lights-out period |
+| 95.2 | 07:16 | ✔ PA/slot change to CHOW at 07:00 |
 | 96.3 | 07:18 | ✔ sally gates open during CHOW |
-| 101.9 | 07:25 | ✔ arrived in the mess hall |
-| 107.8 | 07:31 | ✔ got a chow tray from Tuck |
+| 101.8 | 07:25 | ✔ arrived in the mess hall |
+| 107.7 | 07:31 | ✔ got a chow tray from Tuck |
 | 117 | 07:43 | ✔ ate chow — hunger restored |
-| 123.5 | 07:50 | ✔ commissary UI opens |
-| 148.3 | 07:54 | ✔ Cutter explained the ledger lead |
-| 148.3 | 07:54 | ✔ reputation changed by dialogue choice (fear +2) |
-| 148.3 | 07:54 | ✔ mop job offered |
-| 149.4 | 07:56 | ✔ took the mop |
-| 169 | 08:22 | ✔ mop job complete (+30 DC) — balance 80 |
-| 174.8 | 08:27 | ✔ bought the keycard (−60 DC) |
-| 184.1 | 08:39 | ✔ walked into Intake lobby unchallenged (not restricted) |
-| 187 | 08:43 | ✔ keycard opened the Records door |
-| 192.9 | 08:51 | ✔ inside Records (restricted area) without tripping the alarm — alert 0 |
-| 196.2 | 08:55 | ✔ copied the ledger page (item in inventory) |
+| 123.4 | 07:50 | ✔ commissary UI opens |
+| 148.7 | 07:55 | ✔ Cutter explained the ledger lead |
+| 148.7 | 07:55 | ✔ reputation changed by dialogue choice (fear +2) |
+| 148.7 | 07:55 | ✔ mop job offered |
+| 149.8 | 07:56 | ✔ took the mop |
+| 169.4 | 08:22 | ✔ mop job complete (+30 DC) — balance 80 |
+| 175.2 | 08:27 | ✔ bought the keycard (−60 DC) |
+| 184.5 | 08:40 | ✔ walked into Intake lobby unchallenged (not restricted) |
+| 187.5 | 08:44 | ✔ keycard opened the Records door |
+| 193.1 | 08:51 | ✔ inside Records (restricted area) without tripping the alarm — alert 0 |
+| 196.5 | 08:55 | ✔ copied the ledger page (item in inventory) |
 | 210.6 | 09:14 | ✔ left Records with no alarm raised |
 | 210.6 | 09:14 | ✔ document popup shown after leaving Records |
 | 215.2 | 09:14 | ✔ journal opens |
@@ -149,7 +249,7 @@ The bot plays through the real input layer at a fixed 60 Hz; each line is an ass
 | 313.5 | 13:37 | ✔ tunnel conversation triggered |
 | 323.3 | 13:37 | ✔ tunnel rules scene complete |
 | 375.4 | 14:41 | ✔ emerged into the forest |
-| 428.9 | 14:41 | ✔ ending cinematic and end screen reached |
+| 428.8 | 14:41 | ✔ ending cinematic and end screen reached |
 
 ### `bribe`
 
@@ -162,21 +262,21 @@ The bot plays through the real input layer at a fixed 60 Hz; each line is an ass
 | 55.2 | 06:26 | ✔ inmates visible in the hall after count |
 | 56.2 | 06:27 | ✔ picked up cigarettes (inventory) |
 | 87.6 | 07:06 | ✔ drinking restores thirst |
-| 95.3 | 07:16 | ✔ sally gate is locked during count/lights-out period |
-| 95.3 | 07:16 | ✔ PA/slot change to CHOW at 07:00 |
+| 95.2 | 07:16 | ✔ sally gate is locked during count/lights-out period |
+| 95.2 | 07:16 | ✔ PA/slot change to CHOW at 07:00 |
 | 96.3 | 07:18 | ✔ sally gates open during CHOW |
-| 101.9 | 07:25 | ✔ arrived in the mess hall |
-| 107.8 | 07:31 | ✔ got a chow tray from Tuck |
+| 101.8 | 07:25 | ✔ arrived in the mess hall |
+| 107.7 | 07:31 | ✔ got a chow tray from Tuck |
 | 117 | 07:43 | ✔ ate chow — hunger restored |
-| 123.5 | 07:50 | ✔ commissary UI opens |
-| 148.3 | 07:54 | ✔ Cutter explained the ledger lead |
-| 148.3 | 07:54 | ✔ reputation changed by dialogue choice (fear +2) |
-| 148.3 | 07:54 | ✔ mop job offered |
-| 149.4 | 07:56 | ✔ took the mop |
-| 169 | 08:22 | ✔ mop job complete (+30 DC) — balance 80 |
-| 178 | 08:34 | ✔ walked into Intake lobby unchallenged (not restricted) |
-| 189.8 | 08:34 | ✔ bribed Pruitt (−40 DC, Guards standing up) — balance 40 |
-| 189.8 | 08:34 | ✔ Pruitt looks away (distracted) |
+| 123.4 | 07:50 | ✔ commissary UI opens |
+| 148.7 | 07:55 | ✔ Cutter explained the ledger lead |
+| 148.7 | 07:55 | ✔ reputation changed by dialogue choice (fear +2) |
+| 148.7 | 07:55 | ✔ mop job offered |
+| 149.8 | 07:56 | ✔ took the mop |
+| 169.4 | 08:22 | ✔ mop job complete (+30 DC) — balance 80 |
+| 178.5 | 08:34 | ✔ walked into Intake lobby unchallenged (not restricted) |
+| 190.3 | 08:35 | ✔ bribed Pruitt (−40 DC, Guards standing up) — balance 40 |
+| 190.3 | 08:35 | ✔ Pruitt looks away (distracted) |
 | 208.6 | 08:59 | ✔ inside Records (restricted area) without tripping the alarm — alert 0 |
 | 211.9 | 09:04 | ✔ copied the ledger page (item in inventory) |
 | 226.3 | 09:23 | ✔ left Records with no alarm raised |
@@ -188,7 +288,7 @@ The bot plays through the real input layer at a fixed 60 Hz; each line is an ass
 | 284.9 | 13:02 | ✔ entered the chapel |
 | 299.6 | 13:08 | ✔ Harrington accepted the ledger page |
 | 299.6 | 13:08 | ✔ Street Cred / General Pop standing rose |
-| 311.2 | 13:23 | ✔ baptismal font lifted — tunnel revealed |
+| 311.1 | 13:23 | ✔ baptismal font lifted — tunnel revealed |
 | 326.9 | 13:33 | ✔ descended into the tunnel |
 | 329.8 | 13:37 | ✔ tunnel conversation triggered |
 | 339.7 | 13:37 | ✔ tunnel rules scene complete |
@@ -206,20 +306,20 @@ The bot plays through the real input layer at a fixed 60 Hz; each line is an ass
 | 55.2 | 06:26 | ✔ inmates visible in the hall after count |
 | 56.2 | 06:27 | ✔ picked up cigarettes (inventory) |
 | 87.6 | 07:06 | ✔ drinking restores thirst |
-| 95.3 | 07:16 | ✔ sally gate is locked during count/lights-out period |
-| 95.3 | 07:16 | ✔ PA/slot change to CHOW at 07:00 |
+| 95.2 | 07:16 | ✔ sally gate is locked during count/lights-out period |
+| 95.2 | 07:16 | ✔ PA/slot change to CHOW at 07:00 |
 | 96.3 | 07:18 | ✔ sally gates open during CHOW |
-| 101.9 | 07:25 | ✔ arrived in the mess hall |
-| 107.8 | 07:31 | ✔ got a chow tray from Tuck |
+| 101.8 | 07:25 | ✔ arrived in the mess hall |
+| 107.7 | 07:31 | ✔ got a chow tray from Tuck |
 | 117 | 07:43 | ✔ ate chow — hunger restored |
-| 123.5 | 07:50 | ✔ commissary UI opens |
-| 149.4 | 07:54 | ✔ Cutter explained the ledger lead |
-| 149.4 | 07:54 | ✔ reputation changed by dialogue choice (fear +2) |
-| 149.4 | 07:54 | ✔ bought the shim (−25 DC) — balance 25 |
-| 149.4 | 07:54 | ✔ mop job offered |
-| 150.5 | 07:56 | ✔ took the mop |
-| 170.1 | 08:22 | ✔ mop job complete (+30 DC) — balance 55 |
-| 179.1 | 08:34 | ✔ walked into Intake lobby unchallenged (not restricted) |
+| 123.4 | 07:50 | ✔ commissary UI opens |
+| 149.9 | 07:55 | ✔ Cutter explained the ledger lead |
+| 149.9 | 07:55 | ✔ reputation changed by dialogue choice (fear +2) |
+| 149.9 | 07:55 | ✔ bought the shim (−25 DC) — balance 25 |
+| 149.9 | 07:55 | ✔ mop job offered |
+| 151 | 07:56 | ✔ took the mop |
+| 170.5 | 08:22 | ✔ mop job complete (+30 DC) — balance 55 |
+| 179.6 | 08:34 | ✔ walked into Intake lobby unchallenged (not restricted) |
 | 199.1 | 09:00 | ✔ shim defeated the reader without raising the alert |
 | 204.2 | 09:07 | ✔ security camera spotted the player and tripped the alarm — alert 2 |
 | 207.9 | 09:12 | ✔ Pruitt chased the player down and arrested them |

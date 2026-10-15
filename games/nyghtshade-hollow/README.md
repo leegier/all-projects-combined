@@ -3,7 +3,8 @@
 A playable first-person vertical slice of the prison game: one morning inside **C-Block**, four hours of
 freedom under an old oak. It runs in any modern browser (WebGL 2), needs **no assets and no install** —
 every texture, model, sound and cinematic is generated procedurally at start-up — and ships as a single
-`dist/index.html`.
+`dist/index.html`. Drop MetaHuman GLBs into `assets/characters/` and they replace the procedural people (see
+[Characters & the crowd](#characters--the-crowd)).
 
 > You are **Maddox Callahan Thatcher, inmate 1106553**. Nine years in. A name moves on the transfer ledger,
 > an old chaplain is about to be shipped out, and under the chapel floor there is a tunnel that has not been
@@ -32,7 +33,8 @@ npm run serve                       # http://localhost:8080
 
 URL options: `?q=low|medium|high` (quality preset, default `high`), `?w=1920&h=1080`, `?fast` (skip the 25 s
 content advisory), `?debug` (fps / draw calls, or press F3), `?bot=shim|keycard|bribe|alarm` (let the playtest
-bot play, see [Testing](#testing--the-playtest-bot)).
+bot play, see [Testing](#testing--the-playtest-bot)), `?crowd=off` (no background inmates), `?chars=off` (procedural humans only)
+or `?chars=/folder/` (another character folder).
 
 ### Controls
 
@@ -73,7 +75,7 @@ his lantern down the stair and through the tunnel → the clearing → ending.`
 
 ## Graphics & audio
 
-Everything is built at start-up from code; the page is ~0.8 MB minified.
+Everything is built at start-up from code; the page is ~0.93 MB minified.
 
 * **Renderer** — Three.js r170, HalfFloat HDR pipeline with MSAA, ACES tone-mapping, unreal bloom, and a custom
   grade pass (vignette, grain, chromatic aberration, letterbox, eyelid/blur/alarm overlays). First-person arms render
@@ -87,11 +89,26 @@ Everything is built at start-up from code; the page is ~0.8 MB minified.
 * **Characters** — jointed humanoids with a sculpted procedural head (displaced ellipsoid, eyes with lids/brows, hair and
   beard shells), tapered limbs, uniforms with stencil/badge textures, blob shadows and a pose-blending animator
   (walk, idle, talk, sit, pray, mop, lie…). First-person hands are fully modelled (three-segment fingers, tattoo sleeve).
+  Or glTF characters (MetaHumans) driven by the same pose table — see below.
 * **Foliage** — procedural broadleaf, spruce, grass, fern and leaf-card textures with three LOD buckets and spatially chunked
   instancing for frustum culling.
 * **Audio** — a WebAudio engine with room tone, fluorescent hum, drone/tension/warm pads, footsteps per surface, doors,
   gates, buzzers, PA chimes, voice blips, heartbeat, birds/wind, piano. Every call is scheduled against an injectable
   clock, so the same code renders **offline** from the simulation clock for the video soundtrack.
+
+## Characters & the crowd
+
+* **A populated block.** 45 residents (one per cell) and two kitchen hands live by the prison clock: at **count** every man stands at his cell
+  door, both rows, both tiers; at **chow** the mess hall fills (tables, serving line, commissary); at free time the day-room tables are
+  taken; chapel hours fill the pews and the library; after lights-out they sleep on the bunks. They are baked static meshes (a few draw
+  calls each), visual only — the simulation and every bot route are unchanged (`?crowd=off` removes them).
+* **MetaHumans.** `assets/characters/manifest.json` maps glTF characters to roles (guards, the named inmates, the 45 residents). Any humanoid
+  skeleton works — MetaHuman / UE5, Mixamo, Rigify, VRM — in any rest pose, unit or facing; the game animates them with its own
+  pose table (walk, sit, lie, pray, mop, talk…, ground-locked feet). `tools/metahuman/optimize.mjs` shrinks a raw export (merges the Body
+  and Face skeletons, collapses ~800 facial joints, 4 influences per vertex, textures → 1024 px WebP, Meshopt).
+  **The pipeline is built and tested with stand-in rigs; no real MetaHuman has been loaded yet** (they are on the Unreal PC and are
+  too big for the cloud connector) — [`tools/metahuman/PC-PROMPT.md`](tools/metahuman/PC-PROMPT.md) is the hand-off.
+  Details: [docs/CHARACTERS.md](docs/CHARACTERS.md).
 
 ## Testing & the playtest bot
 
@@ -100,11 +117,15 @@ Everything is built at start-up from code; the page is ~0.8 MB minified.
 
 | Suite | Command | What it covers |
 |---|---|---|
-| Unit (Node, 27 tests) | `npm run test:unit` | routine clock/doors/PA, economy, reputation, survival, alert, inventory, dialogue graph integrity (no dead ends, no orphans, every `fx`/`cond` handled) |
+| Unit (Node, 31 tests) | `npm run test:unit` | routine clock/doors/PA, economy, reputation, survival, alert, inventory, dialogue graph integrity (no dead ends, no orphans, every `fx`/`cond` handled), **rig bone mapping** (MetaHuman / Mixamo / Rigify / VRM / VRoid names) |
 | Bot routes (headless Chromium) | `npm run test:bot` | **shim**, **keycard**, **bribe** golden paths (39 checks each) and the **alarm** failure path (26 checks) |
 | Integration (Chromium, 14 tests) | `npm run test:integration` | save/load round trip, nav-graph connectivity, door policy per slot, restricted-area rules, **determinism** (two runs of a route end in the identical state) |
 
-`npm test` runs all three; reports land in `docs/*.json`. See [docs/TESTING.md](docs/TESTING.md).
+| Characters (Chromium, 56 checks) | `npm run test:characters` | glTF loader, bone mapping, orientation, A/T-pose re-hang, every pose, **feet on the floor while walking**, LOD, fallbacks (off / no manifest / broken files), crowd with library characters, determinism with glTF bodies |
+| Crowd (Chromium, 17 checks) | `npm run test:crowd` | who is where in each routine state, nobody in walls or sharing seats, colliders, visibility, transitions, draw-call budget, simulation unchanged |
+| MetaHuman tools (11 checks) | `npm run test:tools` | `optimize.mjs` on a split-skeleton export, then in the game: face follows the head, jaw moves, smaller file (needs `cd tools/metahuman && npm install`) |
+
+`npm test` runs everything; reports land in `docs/*.json`. See [docs/TESTING.md](docs/TESTING.md).
 
 ## The video
 
@@ -127,18 +148,21 @@ games/nyghtshade-hollow/
 │  ├─ core/         gfx (composer, light rig, shafts, grade), audio, input, stage
 │  ├─ proc/         procedural textures + materials + noise
 │  ├─ world/        World, areas, doors, props, foliage, levels/{hall,east,west,tunnel,outside}, nav definition
-│  ├─ chars/        humanoid rig, sculpted heads, first-person viewmodel
-│  ├─ ai/           nav graph + A*, NPC, Guard (+ SecurityCam)
+│  ├─ chars/        procedural humanoid + sculpted heads, first-person viewmodel; glTF characters: library, gltf-human, rigmap,
+│  │                rigdriver, poses (shared pose table), bake (posed body → static meshes)
+│  ├─ ai/           nav graph + A*, NPC, Guard (+ SecurityCam), crowd (the other inmates)
 │  ├─ systems/      routine, economy, reputation, survival, alert, inventory, player controller, save
 │  ├─ story/        quest/story state machine, dialogue scripts, cinematics
 │  ├─ ui/           HUD, dialogue, journal, shop, document viewer, title/pause/end screens
 │  ├─ bot/          playtest bot (routes: shim · keycard · bribe · alarm)
 │  ├─ capture.js    deterministic capture API (window.NH_CAP)
 │  └─ game.js, main.js
-├─ tests/           unit.mjs · run-tests.mjs (bot) · integration.mjs
+├─ assets/characters/   put MetaHuman GLBs + manifest.json here (git-ignored, licensed) — README + manifest.example.json
+├─ tests/           unit · run-tests (bot) · integration · characters · crowd · metahuman-tools · fixtures/ (stand-in characters)
 ├─ tools/           build · serve · capture.mjs + make-video.sh + chapters.mjs (video) · look (stills) · perf (render cost)
 │                   montage.py / stills.py (contact sheets, media stills) · report.mjs (docs/TESTING.md)
-├─ docs/            DESIGN · TESTING · VIDEO · FINDINGS + machine-readable reports
+│                   metahuman/ (optimize.mjs, README, PC-PROMPT) · standin/ + make-standin.mjs (test characters)
+├─ docs/            DESIGN · CHARACTERS · TESTING · VIDEO · FINDINGS + machine-readable reports
 └─ media/           playtest video + screenshots
 ```
 
@@ -147,7 +171,8 @@ games/nyghtshade-hollow/
 * One area of the prison is built (C-Block, east wing: sally port, corridor, mess hall + commissary + kitchen, Intake,
   Records; west wing: corridor, library, chapel; tunnel; forest). Yard, gym, visitation, the hit market, Arianna's
   office and Valley's arrival are the next vertical slices (the end screen lists them).
-* Characters are procedural and stylised; no skeletal animation clips, no lip-sync (voice blips + captions instead).
+* Characters are procedural and stylised until real MetaHumans are loaded (see above); body animation is procedural (no mocap clips),
+  face animation is a jaw flap, no lip-sync (voice blips + captions instead). The crowd is static and does not react to the player.
 * No spoken voice-over: PA lines are subtitles + chimes (the live game also uses `speechSynthesis` for PA when the
   browser offers it).
 * Software rendering (no GPU) is ~2 s/frame at 1080p; on a real GPU the slice runs at 60 fps on `high`.

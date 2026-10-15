@@ -1,0 +1,92 @@
+{
+ "generated": "2026-10-15T13:30:43.145Z",
+ "pass": 17,
+ "fail": 0,
+ "results": [
+  {
+   "name": "crowd: 45 residents (one per cell but the player's) + 2 kitchen hands, every pose baked",
+   "ok": true,
+   "detail": "{\"on\":true,\"stats\":{\"residents\":45,\"staff\":2,\"bakes\":133,\"tris\":802187,\"bakeMs\":712.8000000007451,\"materials\":151},\"members\":47,\"npcs\":24}"
+  },
+  {
+   "name": "crowd: baked bodies are light (≤ 9k triangles on average) and share materials (< 400 in all)",
+   "ok": true,
+   "detail": "{\"residents\":45,\"staff\":2,\"bakes\":133,\"tris\":802187,\"bakeMs\":712.8000000007451,\"materials\":151}"
+  },
+  {
+   "name": "count: all 45 residents stand at their cell doors and the sleeper NPCs step aside",
+   "ok": true,
+   "detail": "{\"state\":\"count\",\"placed\":45,\"dup\":0,\"area\":{\"hall\":45},\"pose\":{\"idle\":45},\"collidersOn\":0,\"withCol\":0,\"inside\":0,\"worst\":0,\"sleepersHidden\":true,\"sleepersShown\":false}"
+  },
+  {
+   "name": "lights out: the cells hold sleepers (41: four cells already have a sleeper NPC) and those NPCs are back in their bunks",
+   "ok": true,
+   "detail": "{\"state\":\"lights\",\"placed\":41,\"dup\":0,\"area\":{\"hall\":41},\"pose\":{\"lie\":41},\"collidersOn\":0,\"withCol\":0,\"inside\":0,\"worst\":0,\"sleepersHidden\":false,\"sleepersShown\":true}"
+  },
+  {
+   "name": "lockdown: everyone sits in their cell",
+   "ok": true,
+   "detail": "{\"state\":\"lockdown\",\"placed\":41,\"dup\":0,\"area\":{\"hall\":41},\"pose\":{\"sit\":41},\"collidersOn\":0,\"withCol\":0,\"inside\":0,\"worst\":0,\"sleepersHidden\":false,\"sleepersShown\":true}"
+  },
+  {
+   "name": "chow: the mess hall is full (diners, serving line, commissary, two cooks) and cells are mostly empty",
+   "ok": true,
+   "detail": "{\"state\":\"Chow\",\"placed\":30,\"dup\":0,\"area\":{\"canteen\":27,\"hall\":3},\"pose\":{\"idle\":9,\"sit\":21},\"collidersOn\":25,\"withCol\":25,\"inside\":0,\"worst\":0,\"sleepersHidden\":false,\"sleepersShown\":true}"
+  },
+  {
+   "name": "free time: about 21 men at the day-room tables, some in the mess hall and in cells",
+   "ok": true,
+   "detail": "{\"state\":\"FreeTime\",\"placed\":36,\"dup\":0,\"area\":{\"hall\":31,\"canteen\":5},\"pose\":{\"sit\":32,\"lie\":4},\"collidersOn\":26,\"withCol\":26,\"inside\":0,\"worst\":0,\"sleepersHidden\":false,\"sleepersShown\":true}"
+  },
+  {
+   "name": "chapel hours: pews and the library are used",
+   "ok": true,
+   "detail": "{\"state\":\"Chapel\",\"placed\":32,\"dup\":0,\"area\":{\"chapel\":8,\"hall\":20,\"library\":4},\"pose\":{\"sit\":28,\"lie\":4},\"collidersOn\":22,\"withCol\":22,\"inside\":0,\"worst\":0,\"sleepersHidden\":false,\"sleepersShown\":true}"
+  },
+  {
+   "name": "work / yard / gym / visitation: the block is quieter but not empty",
+   "ok": true,
+   "detail": "[16,15,23,21]"
+  },
+  {
+   "name": "nobody shares a seat or a cell in any state",
+   "ok": true,
+   "detail": "[[\"count\",0],[\"lights\",0],[\"lockdown\",0],[\"after\",0],[\"chow\",0],[\"work\",0],[\"yard\",0],[\"free\",0],[\"chapel\",0],[\"gym\",0],[\"visit\",0]]"
+  },
+  {
+   "name": "nobody stands or sits inside a wall or furniture (open-floor positions)",
+   "ok": true,
+   "detail": "[[\"count\",0,0],[\"lights\",0,0],[\"lockdown\",0,0],[\"after\",0,0],[\"chow\",0,0],[\"work\",0,0],[\"yard\",0,0],[\"free\",0,0],[\"chapel\",0,0],[\"gym\",0,0],[\"visit\",0,0]]"
+  },
+  {
+   "name": "colliders: enabled exactly for the occupied seats / queue spots",
+   "ok": true,
+   "detail": "[[\"count\",0,0],[\"lights\",0,0],[\"lockdown\",0,0],[\"after\",6,6],[\"chow\",25,25],[\"work\",4,4],[\"yard\",3,3],[\"free\",26,26],[\"chapel\",22,22],[\"gym\",12,12],[\"visit\",10,10]]"
+  },
+  {
+   "name": "visibility follows the active areas (cells are not drawn from the canteen)",
+   "ok": true,
+   "detail": "{\"inHall\":45,\"inCanteen\":0,\"placed\":45}"
+  },
+  {
+   "name": "transitions: people drift out and in over several seconds (count drops, then fills the mess hall), never two on one seat",
+   "ok": true,
+   "detail": "{\"log\":[45,28,15,3,2,10,14,20,24,30,30,30,30,30],\"maxDup\":0,\"state\":\"Chow\",\"pending\":0}"
+  },
+  {
+   "name": "cost: the busiest crowd views stay under 2400 draw calls and 1.6 M triangles (all passes summed)",
+   "ok": true,
+   "detail": "{\"count down the tier\":{\"calls\":1031,\"tris\":716420},\"free time hall\":{\"calls\":1537,\"tris\":967958},\"chow canteen\":{\"calls\":837,\"tris\":340364}}"
+  },
+  {
+   "name": "?crowd=off: no crowd, no crowd colliders, the 24 cast members are untouched",
+   "ok": true,
+   "detail": "{\"crowd\":null,\"on\":false,\"npcs\":24,\"colliders\":0}"
+  },
+  {
+   "name": "simulation: the bot route ends in the same state with and without the crowd (clock within 2 s), never stuck on it",
+   "ok": true,
+   "detail": "\n   off {\"t\":444.47,\"dc\":55,\"cred\":24,\"fear\":22,\"hour\":14.701,\"x\":-98,\"z\":-29,\"results\":39,\"failed\":0,\"stuck\":0,\"stats\":{\"arrests\":0,\"dcEarned\":30}}\n   on  {\"t\":444.43,\"dc\":55,\"cred\":24,\"fear\":22,\"hour\":14.7,\"x\":-98,\"z\":-29,\"results\":39,\"failed\":0,\"stuck\":0,\"stats\":{\"arrests\":0,\"dcEarned\":30}}"
+  }
+ ]
+}
