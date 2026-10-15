@@ -134,10 +134,12 @@ const CSS = `
 @keyframes cardin{0%{opacity:0;letter-spacing:.7em}100%{opacity:1}}
 .caption{position:absolute;left:2.2%;bottom:20%;max-width:40%;font-size:1.65vmin;line-height:1.45;color:#ffe9a8;background:rgba(0,0,0,.62);border-left:3px solid #ffd66b;padding:.9vmin 1.6vmin;opacity:0;transition:opacity .35s;text-shadow:0 0 6px #000}
 .caption.on{opacity:1}.caption b{display:block;font-size:1.1vmin;letter-spacing:.3em;color:#ffd66b;margin-bottom:.3vmin;text-transform:uppercase}
-.rec{position:absolute;left:50%;top:1.6%;transform:translateX(-50%);display:none;align-items:center;gap:1.1vmin;font-size:1.25vmin;letter-spacing:.26em;color:#e8e0d0;background:rgba(0,0,0,.5);padding:.5vmin 1.6vmin;border:1px solid rgba(255,255,255,.18);text-transform:uppercase;white-space:nowrap}
+.rec{position:absolute;left:50%;top:1.6%;transform:translateX(-50%);display:none;align-items:center;gap:1.1vmin;font-size:1.4vmin;letter-spacing:.26em;color:#e8e0d0;background:rgba(0,0,0,.5);padding:.5vmin 1.6vmin;border:1px solid rgba(255,255,255,.18);text-transform:uppercase;white-space:nowrap}
 .rec.on{display:flex}.rec i{width:1vmin;height:1vmin;border-radius:50%;background:#d8222c;box-shadow:0 0 8px #d8222c}
 .rec b{font-weight:400;color:#ffd66b}.rec u{text-decoration:none;color:var(--dim)}
-.feed{position:absolute;right:2.2%;bottom:25.5%;width:36vmin;text-align:left;font-size:1.25vmin;letter-spacing:.06em}
+.feed{position:absolute;right:2.2%;bottom:25.5%;width:40vmin;text-align:left;font-size:1.5vmin;letter-spacing:.05em}
+.cap .note{top:6.8%}
+.settle,.settle *{transition:none!important;animation:none!important}
 .feed div{margin-top:.45vmin;padding:.45vmin 1.1vmin;background:rgba(4,12,6,.66);border-left:2px solid #5fd07a;color:#bfe9c8;text-shadow:0 0 4px #000}
 .feed div.bad{background:rgba(24,4,4,.7);border-left-color:#e0323d;color:#f0b8b8}
 .feed div b{color:#5fd07a;margin-right:.7vmin}.feed div.bad b{color:#e0323d}

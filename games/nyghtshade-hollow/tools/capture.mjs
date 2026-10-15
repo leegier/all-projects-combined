@@ -118,7 +118,9 @@ async function worker(id, todo, all, plan, nameFn) {
     if (!prev || f.i !== prev.i + 1) {
       // discontinuity (worker start or a resumed gap): render a few frames ahead so camera/light smoothing has converged
       const w0 = Math.max(0, all.findIndex((x) => x.i === f.i) - lead);
+      await page.evaluate(() => NH_CAP.settle(true));
       await catchUp(all[w0].step);
+      await page.evaluate(() => NH_CAP.settle(false));
       let ps = cur;
       for (let j = w0; j < all.findIndex((x) => x.i === f.i); j++) { if (all[j].step < cur) continue; await render(all[j], ps); ps = all[j].step; }
     }

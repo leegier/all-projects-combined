@@ -5,6 +5,7 @@
 import { STEP } from './game.js';
 
 export function installCapture(game, ui) {
+  ui.root.classList.add('cap');                       // capture-only layout tweaks (hint note moves below the rec badge)
   // ---- virtual timers ---------------------------------------------------------------------------------------------
   const timers = new Map(); let tid = 1, vnow = 0;
   window.setTimeout = (fn, ms = 0, ...a) => { const id = tid++; timers.set(id, { at: vnow + ms / 1000, fn: () => fn(...a) }); return id; };
@@ -44,6 +45,11 @@ export function installCapture(game, ui) {
       ui.setRec(cap.recOn && game.mode !== 'cine' && game.mode !== 'end' && !game.letter, game.simTime, cap.speed);
       game.render(1, dt);
       syncAnim();
+    },
+    /** While re-simulating silently (no frames), apply DOM changes instantly so a slice never starts mid-transition. */
+    settle(on) {
+      if (!on) { void ui.root.offsetHeight; for (const a of document.getAnimations()) a.finish(); }   // flush DOM changes made while transitions were still disabled
+      ui.root.classList.toggle('settle', !!on); void ui.root.offsetHeight;
     },
     /** advance + frame in one round trip */
     run(n, dt) { cap.adv(n); cap.frame(dt); },
