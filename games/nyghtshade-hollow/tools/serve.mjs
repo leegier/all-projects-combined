@@ -3,7 +3,7 @@
 //   /fixtures/  -> ../tests/fixtures/  stand-in test rigs used by tests/integration.mjs
 import http from 'node:http'; import fs from 'node:fs'; import path from 'node:path'; import { fileURLToPath, pathToFileURL } from 'node:url';
 const here = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(here, '../dist');
+const root = process.env.NH_DIST ? path.resolve(process.env.NH_DIST) : path.resolve(here, '../dist');       // NH_DIST: serve another build folder (parallel renders each use their own snapshot)
 const side = { '/assets/': path.resolve(here, '../assets'), '/fixtures/': path.resolve(here, '../tests/fixtures') };
 const port = +process.env.PORT || 8080;
 const types = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.png': 'image/png', '.mp4': 'video/mp4', '.glb': 'model/gltf-binary', '.gltf': 'model/gltf+json', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.ktx2': 'image/ktx2' };

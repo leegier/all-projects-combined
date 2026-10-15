@@ -47,6 +47,7 @@ export function installDirector(game) {
       clearLights();
       g.cine = null; g.camOverride = null; g.mode = 'cine'; g.player.frozen = true; g.letter = 0; g.fade = 0; g.fadeTarget = 0; g.eyelid = 0; g.blur = 0; g.flash = 0;
       g.viewmodel.visible = false; g.outsideMode = s.outside === 'gold' ? 'gold' : 'night'; g.camInOutside = !!s.camOutside || s.area === 'outside';
+      g.cineHumans = s.humans || 'show';                                                                       // 'hide': no NPC and no crowd member is drawn (only the double, if asked for)
       const r = g.routine;
       if (s.hour !== undefined) { r.paused = true; r.hour = s.hour; r._evaluate(true); }
       g.story.cellsReleased = s.released !== false;
@@ -63,12 +64,13 @@ export function installDirector(game) {
       g.stepEnv(5, true);
     },
     /** Extra staging for a shot that follows the playtest bot: only lights / js (the bot owns the world). */
-    stageBot(s = {}) { clearLights(); for (const d of s.lights || []) lightFrom(d); if (s.js) new Function('g', 'D', s.js)(g, D); },
+    stageBot(s = {}) { clearLights(); g.cineHumans = s.humans || 'show'; for (const d of s.lights || []) lightFrom(d); if (s.js) new Function('g', 'D', s.js)(g, D); },
     /** Camera + effects for the next render. s = { p, l, lens | fov, roll, area, env, outside, ev, bloom, grade:{…}, dof:{focus(m|point), fstop, maxR, boost, taps},
      *  prev:{p,l,lens,roll}, mb:amount, streak:{amount,threshold,len,tint} } — p / l are [x,y,z] or { rel, off }. */
     set(s) {
       const lens = s.lens || 35, fov = s.fov ?? fovFromLens(lens);
       g.directorCam = s.fpv ? null : { pos: resolve(s.p), look: resolve(s.l), fov, roll: s.roll || 0 };      // fpv: the player's own eyes, effects only
+      if (g.cineHumans === 'hide') { for (const n of g.npcs) n.root.visible = false; if (g.crowd) g.crowd.root.visible = false; } else if (g.crowd) g.crowd.root.visible = true;
       gfx.vmPass.enabled = !!s.fpv;                                                                            // no first-person hands in third-person shots
       if (s.area) { if (s.area !== area) { area = s.area; g.world.setActiveArea(area); g.applyEnv(s.env || g.envFor(g.world.areas.get(area)), true); } else { g.world.setActiveArea(area); g.envTarget = s.env || g.envTarget; } }
       if (s.outside !== undefined) g.camInOutside = !!s.outside;
@@ -109,7 +111,7 @@ export function installDirector(game) {
     },
     /** Hand the camera back (bot-driven cutaways): the player's own area and environment return. */
     clear() {
-      g.directorCam = null; g.cineGrade = null; g.cineEv = 0; g.cineBloom = 1; g.cineEnv = null; gfx.setCine({}); D.double(false); clearLights();
+      g.directorCam = null; g.cineGrade = null; g.cineEv = 0; g.cineBloom = 1; g.cineEnv = null; g.cineHumans = 'show'; if (g.crowd) g.crowd.root.visible = true; gfx.setCine({}); D.double(false); clearLights();
       const a = g.player.area; if (a) { g.world.setActiveArea(a.name); g.applyEnv(g.envFor(a), true); } g.camInOutside = false; area = null;
     },
     info() { return { area: g.player.area && g.player.area.name, hour: +g.routine.hour.toFixed(3), mode: g.mode, calls: gfx.renderer.info.render.calls, tris: gfx.renderer.info.render.triangles }; },
