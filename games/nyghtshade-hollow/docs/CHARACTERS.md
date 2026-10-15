@@ -13,8 +13,10 @@ MetaHumans is in [`tools/metahuman/README.md`](../tools/metahuman/README.md); th
 [`assets/characters/README.md`](../assets/characters/README.md).
 
 > **Status.** The pipeline is built and tested end to end with *stand-in* rigs (mannequins on MetaHuman- and Mixamo-style skeletons).
-> **No real MetaHuman has been loaded yet** — the packages are on a machine with Unreal Engine and could not be moved to the cloud session
-> (Google Drive's connector fails above ~5 MB; the packages are 9 MB – 1.3 GB). `tools/metahuman/PC-PROMPT.md` is the hand-off.
+> **No real MetaHuman has been loaded yet.** The packages are in Google Drive (9 MB – 1.3 GB each) and the Drive connector of the cloud session fails above ~5 MB, so
+> `tools/metahuman/drive-pull.mjs` reads them through the Drive REST API with a short-lived read-only token (ranged and resumable: it can look inside a package and move single
+> entries or pieces — tools README, section 0). A `.mhpkg` holds Unreal assets, so turning one into a GLB is still a step (Unreal's glTF exporter);
+> `tools/metahuman/PC-PROMPT.md` is the hand-off for a machine with Unreal Engine.
 
 ## glTF characters
 

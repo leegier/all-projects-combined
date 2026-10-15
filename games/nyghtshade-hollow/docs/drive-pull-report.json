@@ -1,0 +1,177 @@
+{
+ "generated": "2026-10-15T19:30:10.392Z",
+ "pass": 34,
+ "fail": 0,
+ "results": [
+  {
+   "name": "whoami: the token is accepted and the account name is shown",
+   "ok": true,
+   "detail": "token accepted for Test Owner\n"
+  },
+  {
+   "name": "no token: exit 1 with instructions, no network call",
+   "ok": true,
+   "detail": "error: no token: set GDRIVE_TOKEN (an OAuth access token with the drive.readonly scope) or GDRIVE_TOKEN_FILE\n requests=0"
+  },
+  {
+   "name": "wrong / expired token: exit 2 with a clear message, and the token is not echoed",
+   "ok": true,
+   "detail": "error: the access token was rejected (expired after ~1 h, revoked, or missing the drive.readonly scope) — create a new one and run the same command again; downloads resume where they stopped\n"
+  },
+  {
+   "name": "list: folder contents with sizes; the token never appears in any output",
+   "ok": true,
+   "detail": "sub          —     DIR extras\nmaria       3.72 MB      mhc_maria.mhpkg\nz64e       3.72 MB      z64e.mhpkg\nz64d       3.72 MB      z64d.mhpkg\nz64b       3.72 MB      z64b.mhpkg\njunk       3.72 MB      junk.mhpkg\n6 item(s)\n"
+  },
+  {
+   "name": "list --recursive descends into sub-folders",
+   "ok": true,
+   "detail": "sub          —     DIR extras\nnote       0.00 MB      extras/notes.txt\nmaria       3.72 MB      mhc_maria.mhpkg\nz64e       3.72 MB      z64e.mhpkg\nz64d       3.72 MB      z64d.mhpkg\nz64b       3.72 MB      z64b.mhpkg\njunk       3.72 MB      junk.mhpkg\n7 item(s)\n"
+  },
+  {
+   "name": "toc: every entry, with its real size, from a few KB of the archive",
+   "ok": true,
+   "detail": "{\n \"file\": \"mhc_maria.mhpkg\",\n \"size\": 3901309,\n \"zip64\": false,\n \"entries\": [\n  {\n   \"name\": \"Content/Characters/Maria/SK_Maria_Body.uasset\",\n   \"method\": 0,\n   \"csize\": 2097473,\n   \"usize\": 2097473,\n   \"crc\": 2099953565\n  },\n  {\n   \"name\": \"Content/Characters/Maria/Textures/T_Maria_Skin_BC.png\",\n   \"method\": 0,\n   \"csize\": 1500000,\n   \"usize\": 1500000,\n   \"crc\": 3094496485\n  },\n  {\n   \"name\": \"Content/Characters/Maria/Maria.json\",\n   \"method\": 8,\n   \"csize\": 267,\n   \"usize\": 90000,\n   \"crc\": 773899382\n  },\n  {\n   \"name\": \"Content/Characters/Maria/Face/Maria_face.dna\",\n   \"method\": 8,\n   \"csi"
+  },
+  {
+   "name": "toc: only the end of a 3.7 MB archive was transferred (70234 bytes served)",
+   "ok": true,
+   "detail": "served 70234"
+  },
+  {
+   "name": "toc: zip64 entries (64-bit sizes and offsets in the extra field)",
+   "ok": true,
+   "detail": "{\n \"file\": \"z64e.mhpkg\",\n \"size\": 3901597,\n \"zip64\": false,\n \"entries\": [\n  {\n   \"name\": \"Content/Characters/Maria/SK_Maria_Body.uasset\",\n   \"method\": 0,\n   \"csize\": 2097473,\n   \"usize\": 2097473,\n   \"crc\": 2099953565\n  },\n  {\n   \"name\": \"Content/Characters/Maria/Textures/T_Maria_Skin_BC.png\",\n   \"method\": 0,\n   \"csize\": 1500000,\n   \"usize\": 1500000,\n   \"crc\": 3094496485\n  },\n  {\n   \"name\": \"Content/Characters/Maria/Maria.json\",\n   \"method\": 8,\n   \"csize\": 267,\n   \"usize\": 90000,\n   \"crc\": 773899"
+  },
+  {
+   "name": "extract: z64e — selected entries are byte-identical (crc checked)",
+   "ok": true,
+   "detail": "z64e.mhpkg: 2 of 6 entries selected (0.1 MB unpacked, 0.0 MB to download)\n  1/2  Content/Characters/Maria/Maria.json  0.09 MB  crc ok\n  2/2  Content/Ünïcode/héllo wörld.txt  0.00 MB  crc ok\n"
+  },
+  {
+   "name": "toc: zip64 end-of-central-directory record",
+   "ok": true,
+   "detail": "{\n \"file\": \"z64d.mhpkg\",\n \"size\": 3901385,\n \"zip64\": true,\n \"entries\": [\n  {\n   \"name\": \"Content/Characters/Maria/SK_Maria_Body.uasset\",\n   \"method\": 0,\n   \"csize\": 2097473,\n   \"usize\": 2097473,\n   \"crc\": 2099953565\n  },\n  {\n   \"name\": \"Content/Characters/Maria/Textures/T_Maria_Skin_BC.png\",\n   \"method\": 0,\n   \"csize\": 1500000,\n   \"usize\": 1500000,\n   \"crc\": 3094496485\n  },\n  {\n   \"name\": \"Content/Characters/Maria/Maria.json\",\n   \"method\": 8,\n   \"csize\": 267,\n   \"usize\": 90000,\n   \"crc\": 7738993"
+  },
+  {
+   "name": "extract: z64d — selected entries are byte-identical (crc checked)",
+   "ok": true,
+   "detail": "z64d.mhpkg: 2 of 6 entries selected (0.1 MB unpacked, 0.0 MB to download)\n  1/2  Content/Characters/Maria/Maria.json  0.09 MB  crc ok\n  2/2  Content/Ünïcode/héllo wörld.txt  0.00 MB  crc ok\n"
+  },
+  {
+   "name": "toc: both zip64 forms and 777 junk bytes before the archive",
+   "ok": true,
+   "detail": "{\n \"file\": \"z64b.mhpkg\",\n \"size\": 3902450,\n \"zip64\": true,\n \"entries\": [\n  {\n   \"name\": \"Content/Characters/Maria/SK_Maria_Body.uasset\",\n   \"method\": 0,\n   \"csize\": 2097473,\n   \"usize\": 2097473,\n   \"crc\": 2099953565\n  },\n  {\n   \"name\": \"Content/Characters/Maria/Textures/T_Maria_Skin_BC.png\",\n   \"method\": 0,\n   \"csize\": 1500000,\n   \"usize\": 1500000,\n   \"crc\": 3094496485\n  },\n  {\n   \"name\": \"Content/Characters/Maria/Maria.json\",\n   \"method\": 8,\n   \"csize\": 267,\n   \"usize\": 90000,\n   \"crc\": 7738993"
+  },
+  {
+   "name": "extract: z64b — selected entries are byte-identical (crc checked)",
+   "ok": true,
+   "detail": "z64b.mhpkg: 2 of 6 entries selected (0.1 MB unpacked, 0.0 MB to download)\n  1/2  Content/Characters/Maria/Maria.json  0.09 MB  crc ok\n  2/2  Content/Ünïcode/héllo wörld.txt  0.00 MB  crc ok\n"
+  },
+  {
+   "name": "toc: 1234 junk bytes before a plain archive (self-extractor style)",
+   "ok": true,
+   "detail": "{\n \"file\": \"junk.mhpkg\",\n \"size\": 3902543,\n \"zip64\": false,\n \"entries\": [\n  {\n   \"name\": \"Content/Characters/Maria/SK_Maria_Body.uasset\",\n   \"method\": 0,\n   \"csize\": 2097473,\n   \"usize\": 2097473,\n   \"crc\": 2099953565\n  },\n  {\n   \"name\": \"Content/Characters/Maria/Textures/T_Maria_Skin_BC.png\",\n   \"method\": 0,\n   \"csize\": 1500000,\n   \"usize\": 1500000,\n   \"crc\": 3094496485\n  },\n  {\n   \"name\": \"Content/Characters/Maria/Maria.json\",\n   \"method\": 8,\n   \"csize\": 267,\n   \"usize\": 90000,\n   \"crc\": 773899"
+  },
+  {
+   "name": "extract: junk — selected entries are byte-identical (crc checked)",
+   "ok": true,
+   "detail": "junk.mhpkg: 2 of 6 entries selected (0.1 MB unpacked, 0.0 MB to download)\n  1/2  Content/Characters/Maria/Maria.json  0.09 MB  crc ok\n  2/2  Content/Ünïcode/héllo wörld.txt  0.00 MB  crc ok\n"
+  },
+  {
+   "name": "extract --match: the DNA and the json come out intact, the 2 MB body and the 1.5 MB texture are not touched",
+   "ok": true,
+   "detail": "mhc_maria.mhpkg: 2 of 6 entries selected (0.9 MB unpacked, 0.3 MB to download)\n  1/2  Content/Characters/Maria/Maria.json  0.09 MB  crc ok\n  2/2  Content/Characters/Maria/Face/Maria_face.dna  0.86 MB  crc ok\n"
+  },
+  {
+   "name": "extract --match: only the selected entries' bytes crossed the wire (373144 of 3901309)",
+   "ok": true,
+   "detail": "served 373144"
+  },
+  {
+   "name": "extract --dry: lists what it would extract and writes nothing",
+   "ok": true,
+   "detail": "mhc_maria.mhpkg: 6 of 6 entries selected (4.4 MB unpacked, 3.7 MB to download)\n  Content/Characters/Maria/SK_Maria_Body.uasset\n  Content/Characters/Maria/Textures/T_Maria_Skin_BC.png\n  Content/Characters/Maria/Maria.json\n  Content/Characters/Maria/Face/Maria_face.dna\n  Content/Ünïcode/héllo wörld.txt\n  Content/empty.bin\n"
+  },
+  {
+   "name": "extract --max-mb: bigger entries are skipped and named",
+   "ok": true,
+   "detail": "mhc_maria.mhpkg: 4 of 6 entries selected (0.9 MB unpacked, 0.3 MB to download), 2 skipped for size: Content/Characters/Maria/SK_Maria_Body.uasset, Content/Characters/Maria/Textures/T_Maria_Skin_BC.png\n  1/4  Content/Characters/Maria/Maria.json  0.09 MB  crc ok\n  2/4  Content/Characters/Maria/Face/Maria_face.dna  0.86 MB  crc ok\n  3/4  Content/Ünïcode/héllo wörld.txt  0.00 MB  crc ok\n  4/4  Content/empty.bin  0.00 MB  crc ok\n"
+  },
+  {
+   "name": "extract without a selector refuses (no accidental 1 GB download)",
+   "ok": true,
+   "detail": "error: say what to extract: --match REGEX, --names a,b or --all (use \"toc\" first)\n"
+  },
+  {
+   "name": "extract --all with 1 MB chunks: every entry byte-identical, including the empty one",
+   "ok": true,
+   "detail": "mhc_maria.mhpkg: 6 of 6 entries selected (4.4 MB unpacked, 3.7 MB to download)\n  1/6  Content/Characters/Maria/SK_Maria_Body.uasset  2.00 MB  crc ok\n  2/6  Content/Characters/Maria/Textures/T_Maria_Skin_BC.png  1.43 MB  crc ok\n  3/6  Content/Characters/Maria/Maria.json  0.09 MB  crc ok\n  4/6  Content/Characters/Maria/Face/Maria_face.dna  0.86 MB  crc ok\n  5/6  Content/Ünïcode/héllo wörld.txt  0.00 MB  crc ok\n  6/6  Content/empty.bin  0.00 MB  crc ok\n"
+  },
+  {
+   "name": "extract: a corrupted transfer is detected (crc / inflate), exits 1 and leaves no half-written file",
+   "ok": true,
+   "detail": "mhc_maria.mhpkg: 1 of 6 entries selected (0.9 MB unpacked, 0.3 MB to download)\nerror: Content/Characters/Maria/Face/Maria_face.dna: integrity check failed (size 900000/900000, crc 51069d06/aacef4dd)\n"
+  },
+  {
+   "name": "extract: an entry that tries to leave the output folder (zip-slip) is refused",
+   "ok": true,
+   "detail": "slip.zip: 2 of 2 entries selected (0.0 MB unpacked, 0.0 MB to download)\nerror: unsafe path in archive: ../evil.txt\n"
+  },
+  {
+   "name": "get: 3.7 MB in 1 MB chunks, 3 parallel, md5 verified, no state file left",
+   "ok": true,
+   "detail": "  mhc_maria.mhpkg: 2 / 4 MB  2.0 MB/s  ETA 1 s\n  mhc_maria.mhpkg: 4 / 4 MB  3.7 MB/s\nmhc_maria.mhpkg: 3.7 MB → /tmp/drive-pull-test-wGmucS/whole.bin  (md5 verified)\n"
+  },
+  {
+   "name": "get: a download whose md5 differs from Drive's is reported, not accepted silently",
+   "ok": true,
+   "detail": "  mhc_maria.mhpkg: 2 / 4 MB  2.0 MB/s  ETA 1 s\n  mhc_maria.mhpkg: 4 / 4 MB  3.7 MB/s\nerror: mhc_maria.mhpkg: md5 differs from Drive's (00000000000000000000000000000000) — delete /tmp/drive-pull-test-wGmucS/lie.bin and /tmp/drive-pull-test-wGmucS/lie.bin.dp.json and run it again\n"
+  },
+  {
+   "name": "get --range: exactly those bytes",
+   "ok": true,
+   "detail": "  mhc_maria.mhpkg: 0 / 0 MB  0.0 MB/s\n  mhc_maria.mhpkg: 0 / 0 MB  0.0 MB/s\nmhc_maria.mhpkg: 0.0 MB → /tmp/drive-pull-test-wGmucS/range.bin\n"
+  },
+  {
+   "name": "get: the token expires mid-download → exit 2, progress is kept",
+   "ok": true,
+   "detail": "  mhc_maria.mhpkg: 0 / 4 MB  0.3 MB/s  ETA 14 s\nerror: the access token was rejected (expired after ~1 h, revoked, or missing the drive.readonly scope) — create a new one and run the same command again; downloads resume where they stopped\n partial=5"
+  },
+  {
+   "name": "get: run again with a new token → only the missing chunks are fetched (10 of 15), file complete and verified",
+   "ok": true,
+   "detail": "  mhc_maria.mhpkg: 2 / 4 MB  0.3 MB/s  ETA 9 s\n  mhc_maria.mhpkg: 4 / 4 MB  2.5 MB/s\nmhc_maria.mhpkg: 3.7 MB → /tmp/drive-pull-test-wGmucS/resume.bin  (md5 verified)\n fetched=10 partial=5 first=5"
+  },
+  {
+   "name": "get: two 503 answers and one dropped connection are retried transparently",
+   "ok": true,
+   "detail": "  mhc_maria.mhpkg: 2 / 4 MB  1.7 MB/s  ETA 1 s\n  mhc_maria.mhpkg: 4 / 4 MB  2.1 MB/s\nmhc_maria.mhpkg: 3.7 MB → /tmp/drive-pull-test-wGmucS/retry.bin  (md5 verified)\n"
+  },
+  {
+   "name": "get: an unknown file is a clear error",
+   "ok": true,
+   "detail": "error: metadata nope: not found, or this account has no access to it\n"
+  },
+  {
+   "name": "split: parts ≤ the size limit, listed with sha256, no token needed",
+   "ok": true,
+   "detail": "3 part(s) of ≤ 1.5 MB in /tmp/drive-pull-test-wGmucS/parts  (big.glb.parts.json lists their sha256)\n"
+  },
+  {
+   "name": "join: reassembles the identical file",
+   "ok": true,
+   "detail": "big.glb: 3 part(s) verified and joined → /tmp/drive-pull-test-wGmucS/joined.glb\n"
+  },
+  {
+   "name": "join: a damaged part is detected by its sha256",
+   "ok": true,
+   "detail": "error: big.glb.part002: damaged or incomplete (sha256 / size differ from the manifest)\n"
+  },
+  {
+   "name": "help prints the usage",
+   "ok": true,
+   "detail": "Pulls files out of Google Drive through the Drive REST API with HTTP Range requests, no dependencies (Node 18+):\nlist a folder, read a zip's table of contents (only the central directory travels — a f"
+  }
+ ]
+}

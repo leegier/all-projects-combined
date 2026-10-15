@@ -18,6 +18,7 @@
     "test:characters": "node tests/characters.mjs",
     "test:crowd": "node tests/crowd.mjs",
     "test:tools": "node tests/metahuman-tools.mjs",
+    "test:drive": "node tests/drive-pull.mjs",
     "standins": "node tools/make-standin.mjs",
     "report": "node tools/report.mjs"
   },

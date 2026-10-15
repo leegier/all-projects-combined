@@ -7,7 +7,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const docs = path.join(here, '../docs');
 const read = (f) => { try { return JSON.parse(fs.readFileSync(path.join(docs, f), 'utf8')); } catch (e) { return null; } };
 const unit = read('unit-report.json'), bot = read('test-report.json'), integ = read('integration-report.json');
-const chars = read('characters-report.json'), crowd = read('crowd-report.json'), mhtools = read('metahuman-tools-report.json');
+const chars = read('characters-report.json'), crowd = read('crowd-report.json'), mhtools = read('metahuman-tools-report.json'), drive = read('drive-pull-report.json');
 const tick = (ok) => (ok ? '✔' : '✖');
 let md = `# Test report\n\nGenerated ${new Date().toISOString().slice(0, 10)} by \`node tools/report.mjs\` from \`docs/*-report.json\`.\nRun everything with \`npm test\` (unit → bot routes → integration → characters → crowd → metahuman tools).\n\n`;
 const row = (a, b, c) => `| ${a} | ${b} | ${c} |\n`;
@@ -18,10 +18,11 @@ if (integ) md += row('Integration (Chromium)', `${tick(!integ.fail)} ${integ.pas
 if (chars) md += row('Characters (Chromium)', `${tick(!chars.fail)} ${chars.pass}/${chars.pass + chars.fail}`, 'glTF loader, bone mapping, poses, foot planting, LOD, fallbacks, crowd + library, determinism (stand-in rigs, not MetaHumans)');
 if (crowd) md += row('Crowd (Chromium)', `${tick(!crowd.fail)} ${crowd.pass}/${crowd.pass + crowd.fail}`, 'who is where per routine state, no overlaps, colliders, visibility, transitions, cost, simulation unchanged');
 if (mhtools) md += row('MetaHuman tools', `${tick(!mhtools.fail)} ${mhtools.pass}/${mhtools.pass + mhtools.fail}`, 'optimize.mjs on a split-skeleton export, loaded in the game');
+if (drive) md += row('Drive downloader', `${tick(!drive.fail)} ${drive.pass}/${drive.pass + drive.fail}`, 'drive-pull.mjs against a local Drive-shaped server: ranged reads, zip central directory (incl. zip64), selective extraction, resumable download, retries, token expiry, integrity checks');
 md += '\n';
 if (unit) { md += '## Unit tests\n\n'; for (const r of unit.results) md += `- ${tick(r.ok)} ${r.name}${r.ok ? '' : ' — ' + r.error}\n`; md += '\n'; }
 if (integ) { md += '## Integration tests\n\n'; for (const r of integ.results) md += `- ${tick(r.ok)} ${r.name}\n`; md += '\n'; }
-for (const [title, rep] of [['Character pipeline tests', chars], ['Crowd tests', crowd], ['MetaHuman tool tests', mhtools]]) if (rep) { md += `## ${title}\n\n`; for (const r of rep.results) md += `- ${tick(r.ok)} ${r.name}\n`; md += '\n'; }
+for (const [title, rep] of [['Character pipeline tests', chars], ['Crowd tests', crowd], ['MetaHuman tool tests', mhtools], ['Drive downloader tests', drive]]) if (rep) { md += `## ${title}\n\n`; for (const r of rep.results) md += `- ${tick(r.ok)} ${r.name}\n`; md += '\n'; }
 if (bot) {
   md += '## Bot routes — assertions\n\nThe bot plays through the real input layer at a fixed 60 Hz; each line is an assertion evaluated live (time = simulated seconds).\n\n';
   for (const r of bot.routes) {

@@ -21,6 +21,34 @@ page (hundreds of MB of 4K textures, ~800 joints, several skeletons), so every c
 The game animates characters **procedurally** (no animation clips needed): the same pose table drives every body — walk,
 idle, sit, lie, pray, mop, type, talk (jaw) — through the mapped bones, with foot planting and a ground lock.
 
+## 0 — get the packages out of Google Drive (`drive-pull.mjs`)
+
+The MetaHuman packages (`*.mhpkg`) are 9 MB – 1.3 GB, and a chat / connector session cannot move a file above ~5 MB. `drive-pull.mjs` (Node 18+, no
+dependencies) uses the **Drive REST API** with HTTP `Range` requests and a short-lived, read-only access token instead, so a package can be inspected,
+partly extracted, or moved in pieces:
+
+1. **Make the token** (about a minute, your own Google account, valid ~1 hour): open <https://developers.google.com/oauthplayground>, *Step 1*: type the scope
+   `https://www.googleapis.com/auth/drive.readonly` → *Authorize APIs* → sign in as the Drive owner → *Step 2*: *Exchange authorization code for tokens* → copy the **Access token** (`ya29…`).
+   Revoke it afterwards at <https://myaccount.google.com/permissions>. It can read, not change, your Drive.
+2. `export GDRIVE_TOKEN=ya29…` (or `GDRIVE_TOKEN_FILE=path`). It is only ever sent in the `Authorization` header — never printed, never written to disk.
+3. Use it:
+
+```bash
+node drive-pull.mjs whoami                                   # token accepted?
+node drive-pull.mjs list <folderId> [--recursive]            # ids, sizes, names
+node drive-pull.mjs toc <fileId>                             # a .mhpkg is a zip: reads only its table of contents (the last ~70 KB) — see what is inside first
+node drive-pull.mjs extract <fileId> work/maria --match '\.(dna|json|png|fbx|glb)$' --max-mb 60    # only those entries cross the wire, each crc-checked
+node drive-pull.mjs get <fileId> work/walker.mhpkg           # the whole file: 16 MB chunks, 4 in parallel, resumable, md5-checked against Drive
+node drive-pull.mjs split work/big.glb parts --mb 45         # pieces under GitHub's file limit (+ sha256 manifest); `join NAME.parts.json out` verifies and reassembles
+```
+
+Exit code 2 means the token was rejected (expired / revoked / wrong scope): make a new one and run the same command again — `get` resumes where it stopped.
+Transient errors (429, 5xx, dropped connections) are retried with back-off. Entries that try to leave the output folder are refused.
+
+According to Epic's documentation a `.mhpkg` is what the MetaHuman Manager in Unreal Editor produces for Fab — a zip of **Unreal assets**, not glTF — so after
+`toc` has shown what a package really holds, the geometry still has to become a GLB (Unreal's glTF exporter on the PC, see [PC-PROMPT.md](PC-PROMPT.md), or a reader for
+the extracted assets). Whatever is moved to a repo must go to a **private** one; split big files with `split`.
+
 ## 1 — get a raw GLB
 
 Any route that ends in a skinned GLB works. Which one is available depends on your Unreal / MetaHuman version — check Epic's
@@ -110,5 +138,6 @@ The stand-ins (`tools/standin/gen.js`, `tools/make-standin.mjs`) are rigid-skinn
 | script | does |
 |---|---|
 | `optimize.mjs` | inspect / optimise (this document) |
+| `drive-pull.mjs` | list / table of contents / extract / download from Google Drive with a read-only token (section 0); `split` / `join` for piecewise transfer. Tested against a local Drive-shaped server: `npm run test:drive` |
 | `../make-standin.mjs` | regenerates the test characters in `tests/fixtures/` |
 | `../look.mjs` | stills from the real game: `NH_QUERY='chars=/fixtures/characters/' node tools/look.mjs shots.json outDir` |

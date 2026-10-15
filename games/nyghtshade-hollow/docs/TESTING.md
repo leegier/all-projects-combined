@@ -12,8 +12,9 @@ Run everything with `npm test` (unit → bot routes → integration → characte
 | Bot route `alarm` | ✔ 26/26 | sim 218 s · stuck 0 · end mode `play` |
 | Integration (Chromium) | ✔ 14/14 | save/load, nav graph, door policy, restricted areas, determinism |
 | Characters (Chromium) | ✔ 56/56 | glTF loader, bone mapping, poses, foot planting, LOD, fallbacks, crowd + library, determinism (stand-in rigs, not MetaHumans) |
-| Crowd (Chromium) | ✔ 17/17 | who is where per routine state, no overlaps, colliders, visibility, transitions, cost, simulation unchanged |
-| MetaHuman tools | ✔ 11/11 | optimize.mjs on a split-skeleton export, loaded in the game |
+| Crowd (Chromium) | ✔ 18/18 | who is where per routine state, no overlaps, colliders, visibility, transitions, cost, simulation unchanged |
+| MetaHuman tools | ✔ 15/15 | optimize.mjs on a split-skeleton export, loaded in the game |
+| Drive downloader | ✔ 34/34 | drive-pull.mjs against a local Drive-shaped server: ranged reads, zip central directory (incl. zip64), selective extraction, resumable download, retries, token expiry, integrity checks |
 
 ## Unit tests
 
@@ -136,6 +137,7 @@ Run everything with `npm test` (unit → bot routes → integration → characte
 - ✔ free time: about 21 men at the day-room tables, some in the mess hall and in cells
 - ✔ chapel hours: pews and the library are used
 - ✔ work / yard / gym / visitation: the block is quieter but not empty
+- ✔ heights: sleepers lie on the mattress (0.44 m over the cell floor, upper tier included), everyone else at floor level
 - ✔ nobody shares a seat or a cell in any state
 - ✔ nobody stands or sits inside a wall or furniture (open-floor positions)
 - ✔ colliders: enabled exactly for the occupied seats / queue spots
@@ -148,16 +150,57 @@ Run everything with `npm test` (unit → bot routes → integration → characte
 ## MetaHuman tool tests
 
 - ✔ inspect: the raw export is recognised as MetaHuman-style and flagged for its separate face skeleton
+- ✔ inspect: blend shapes in the export are counted and flagged
 - ✔ optimize: skeletons merged (no separate-skeleton warning left) and every skin drives the same joints
 - ✔ optimize: joints reduced (helpers / twist / fingers / facial collapsed) but the rig stays usable
 - ✔ optimize: triangles unchanged without a budget, file much smaller (meshopt)
+- ✔ optimize: morph targets removed by default (and kept with --keep-morphs)
 - ✔ optimize: the face skeleton's jaw became one joint under the body's head
+- ✔ optimize: socketed static meshes stay where they were (≤ 1 mm) and hang from the nearest kept joint (badge → head, radio → upper arm)
 - ✔ optimize --tris: triangle budget is honoured (±40 %)
 - ✔ optimize --keep-*: nothing is collapsed when asked to keep everything
 - ✔ game: the raw split export loads and its rig is recognised, but the face stays behind when the head moves (why the merge exists)
 - ✔ game: after optimize.mjs the face and hair follow the head (drift < 1 cm over a pose change)
+- ✔ game: socketed meshes follow their bone after optimising (badge on the head, radio on the arm); in the raw file the badge stays behind
 - ✔ game: the merged jaw joint is found and animates while talking
 - ✔ game: a single-skeleton export kept whole works too
+
+## Drive downloader tests
+
+- ✔ whoami: the token is accepted and the account name is shown
+- ✔ no token: exit 1 with instructions, no network call
+- ✔ wrong / expired token: exit 2 with a clear message, and the token is not echoed
+- ✔ list: folder contents with sizes; the token never appears in any output
+- ✔ list --recursive descends into sub-folders
+- ✔ toc: every entry, with its real size, from a few KB of the archive
+- ✔ toc: only the end of a 3.7 MB archive was transferred (70234 bytes served)
+- ✔ toc: zip64 entries (64-bit sizes and offsets in the extra field)
+- ✔ extract: z64e — selected entries are byte-identical (crc checked)
+- ✔ toc: zip64 end-of-central-directory record
+- ✔ extract: z64d — selected entries are byte-identical (crc checked)
+- ✔ toc: both zip64 forms and 777 junk bytes before the archive
+- ✔ extract: z64b — selected entries are byte-identical (crc checked)
+- ✔ toc: 1234 junk bytes before a plain archive (self-extractor style)
+- ✔ extract: junk — selected entries are byte-identical (crc checked)
+- ✔ extract --match: the DNA and the json come out intact, the 2 MB body and the 1.5 MB texture are not touched
+- ✔ extract --match: only the selected entries' bytes crossed the wire (373144 of 3901309)
+- ✔ extract --dry: lists what it would extract and writes nothing
+- ✔ extract --max-mb: bigger entries are skipped and named
+- ✔ extract without a selector refuses (no accidental 1 GB download)
+- ✔ extract --all with 1 MB chunks: every entry byte-identical, including the empty one
+- ✔ extract: a corrupted transfer is detected (crc / inflate), exits 1 and leaves no half-written file
+- ✔ extract: an entry that tries to leave the output folder (zip-slip) is refused
+- ✔ get: 3.7 MB in 1 MB chunks, 3 parallel, md5 verified, no state file left
+- ✔ get: a download whose md5 differs from Drive's is reported, not accepted silently
+- ✔ get --range: exactly those bytes
+- ✔ get: the token expires mid-download → exit 2, progress is kept
+- ✔ get: run again with a new token → only the missing chunks are fetched (10 of 15), file complete and verified
+- ✔ get: two 503 answers and one dropped connection are retried transparently
+- ✔ get: an unknown file is a clear error
+- ✔ split: parts ≤ the size limit, listed with sha256, no token needed
+- ✔ join: reassembles the identical file
+- ✔ join: a damaged part is detected by its sha256
+- ✔ help prints the usage
 
 ## Bot routes — assertions
 
