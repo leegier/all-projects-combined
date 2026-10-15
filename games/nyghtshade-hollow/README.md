@@ -122,8 +122,8 @@ Everything is built at start-up from code; the page is ~0.93 MB minified.
 | Integration (Chromium, 14 tests) | `npm run test:integration` | save/load round trip, nav-graph connectivity, door policy per slot, restricted-area rules, **determinism** (two runs of a route end in the identical state) |
 
 | Characters (Chromium, 56 checks) | `npm run test:characters` | glTF loader, bone mapping, orientation, A/T-pose re-hang, every pose, **feet on the floor while walking**, LOD, fallbacks (off / no manifest / broken files), crowd with library characters, determinism with glTF bodies |
-| Crowd (Chromium, 17 checks) | `npm run test:crowd` | who is where in each routine state, nobody in walls or sharing seats, colliders, visibility, transitions, draw-call budget, simulation unchanged |
-| MetaHuman tools (11 checks) | `npm run test:tools` | `optimize.mjs` on a split-skeleton export, then in the game: face follows the head, jaw moves, smaller file (needs `cd tools/metahuman && npm install`) |
+| Crowd (Chromium, 18 checks) | `npm run test:crowd` | who is where in each routine state, nobody in walls or sharing seats, colliders, visibility, transitions, draw-call budget, simulation unchanged |
+| MetaHuman tools (15 checks) | `npm run test:tools` | `optimize.mjs` on a split-skeleton export, then in the game: face follows the head, jaw moves, smaller file (needs `cd tools/metahuman && npm install`) |
 
 `npm test` runs everything; reports land in `docs/*.json`. See [docs/TESTING.md](docs/TESTING.md).
 

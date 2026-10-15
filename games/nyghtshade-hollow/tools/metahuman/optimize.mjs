@@ -11,6 +11,7 @@
 //                       character are expensive to update)
 //   --keep-fingers      keep the finger joints (default: collapse into the hands)
 //   --keep-twist        keep twist / corrective / helper joints (default: collapse into their parent limb joint)
+//   --keep-morphs       keep morph targets / blend shapes (default: removed — the game does not animate them and a MetaHuman face can carry hundreds)
 //   --no-meshopt        do not compress geometry (EXT_meshopt_compression)
 //   --scale <k>         multiply the whole character (e.g. 0.01 for centimetres) — normally not needed, the game measures the model
 //   --report <file>     write the numbers as JSON
@@ -26,7 +27,7 @@ import { MeshoptEncoder, MeshoptDecoder, MeshoptSimplifier } from 'meshoptimizer
 import sharp from 'sharp';
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { mapBones, roleOf, normalizeBoneName, isUsable } from '../../src/chars/rigmap.js';
 
 // ---- small helpers ------------------------------------------------------------------------------------------------------------------
@@ -44,6 +45,18 @@ function minv(m) {                                                              
 }
 const ancestors = (node) => { const out = []; for (let p = node.getParentNode(); p; p = p.getParentNode()) out.push(p); return out; };
 const rootOf = (node) => { let p = node; while (p.getParentNode()) p = p.getParentNode(); return p; };
+/** Move `child` under `parent` keeping its world transform (a socketed hat / hair / eye mesh must not jump when the joint it hung from is collapsed). */
+function reparentKeepWorld(child, parent) {
+  const w = child.getWorldMatrix(); parent.addChild(child);
+  child.setMatrix(mmul(minv(parent.getWorldMatrix()), w));
+}
+/** Plain (unskinned) mesh nodes hung on `joint` directly or through non-joint nodes; other joints in `skip` are not entered (each is handled on its own, so a mesh goes to its own nearest joint). */
+function attachmentsBelow(joint, skip) {
+  const out = [];
+  const walk = (n) => { for (const c of n.listChildren()) { if (skip.has(c)) continue; if (c.getMesh() && !c.getSkin()) out.push(c); else walk(c); } };
+  walk(joint);
+  return out;
+}
 const trisOf = (prim) => { const i = prim.getIndices(); return (i ? i.getCount() : prim.getAttribute('POSITION').getCount()) / 3; };
 
 /** { name, parent } views of every node so src/chars/rigmap.js (pure) can run on a glTF-Transform document. */
@@ -66,11 +79,11 @@ export function inspectDocument(doc) {
     return { index: i, name: s.getName(), joints: joints.length, roots: [...new Set(joints.map((j) => rootOf(j).getName()))], coreRoles: roles, rig: map.rig, usable: isUsable(map), missing: map.missing,
       facial: joints.filter((j) => isFacial(j.getName())).length, fingers: joints.filter((j) => FINGER.test(normalizeBoneName(j.getName()))).length, helpers: joints.filter((j) => { const n = normalizeBoneName(j.getName()); return roleOf(j.getName()) === null && !FINGER.test(n) && !isFacial(j.getName()); }).length };
   });
-  const meshes = []; let tris = 0, verts = 0, influenceSets = 0;
+  const meshes = []; let tris = 0, verts = 0, influenceSets = 0, morphs = 0;
   for (const n of root.listNodes()) {
     const m = n.getMesh(); if (!m) continue;
     let t = 0, v = 0; const mats = new Set();
-    for (const p of m.listPrimitives()) { t += trisOf(p); v += p.getAttribute('POSITION').getCount(); if (p.getMaterial()) mats.add(p.getMaterial().getName()); if (p.getAttribute('JOINTS_1')) influenceSets = Math.max(influenceSets, 2); }
+    for (const p of m.listPrimitives()) { t += trisOf(p); v += p.getAttribute('POSITION').getCount(); morphs += p.listTargets().length; if (p.getMaterial()) mats.add(p.getMaterial().getName()); if (p.getAttribute('JOINTS_1')) influenceSets = Math.max(influenceSets, 2); }
     tris += t; verts += v;
     meshes.push({ node: n.getName(), mesh: m.getName(), tris: Math.round(t), verts: v, skinned: !!n.getSkin(), skin: n.getSkin() ? root.listSkins().indexOf(n.getSkin()) : null, materials: [...mats] });
   }
@@ -84,8 +97,9 @@ export function inspectDocument(doc) {
   if (skins.length && !skins.some((s) => s.usable)) warnings.push('no skeleton the game can drive (hips / head / arms / legs not found by bone name)');
   if (influenceSets > 1) warnings.push('vertices use more than 4 joint influences: three.js reads 4 — optimize.mjs reduces and renormalises them');
   if (height > 10) warnings.push(`model is ${height.toFixed(0)} units tall: looks like centimetres (the game scales by measured height, so this still works)`);
+  if (morphs) warnings.push(`${morphs} morph targets (blend shapes): not animated by the game and expensive — optimize.mjs removes them (--keep-morphs keeps them)`);
   const big = textures.filter((t) => Math.max(...(t.size || [0])) > 2048).length; if (big) warnings.push(`${big} textures are larger than 2048 px`);
-  return { nodes: root.listNodes().length, skins, meshes, tris: Math.round(tris), verts, materials: root.listMaterials().length, textures, textureMB: +(textures.reduce((s, t) => s + t.kb, 0) / 1024).toFixed(1), height: +height.toFixed(3), warnings };
+  return { nodes: root.listNodes().length, skins, meshes, tris: Math.round(tris), verts, morphTargets: morphs, materials: root.listMaterials().length, textures, textureMB: +(textures.reduce((s, t) => s + t.kb, 0) / 1024).toFixed(1), height: +height.toFixed(3), warnings };
 }
 
 // ---- skinning: remap joints, merge duplicates, keep the 4 strongest influences --------------------------------------------------------------
@@ -162,6 +176,7 @@ export function unifySkeletons(doc, log = () => {}) {
       for (const p of n.getMesh().listPrimitives()) remapSkinning(doc, p, map);
       n.setSkin(primary);
     }
+    sj.forEach((j, i) => { if (!pj.includes(j)) { const dest = joints[map[i]]; for (const a of attachmentsBelow(j, new Set(sj))) reparentKeepWorld(a, dest); } });     // sockets: hats, hair, eyes hung on the face skeleton
     for (const j of sj) if (!pj.includes(j) && !forced.has(j)) dropNodes.push(j);
     log(`merge: skin "${sec.getName() || '#' + skins.indexOf(sec)}" (${sj.length} joints, ${nodes.length} mesh nodes) re-skinned onto "${primary.getName() || 'primary'}"`);
     sec.dispose();
@@ -195,6 +210,7 @@ export function collapseJoints(doc, { keepFace = false, keepFingers = false, kee
     });
     for (const n of skinnedNodes(doc, skin)) for (const p of n.getMesh().listPrimitives()) remapSkinning(doc, p, map);
     const dropped = joints.filter((j) => !keep.has(j));
+    for (const j of dropped) { const dest = ancestors(j).find((p) => keep.has(p)); if (dest) for (const a of attachmentsBelow(j, new Set(dropped))) reparentKeepWorld(a, dest); }      // keep socketed meshes where they are
     setJointsAndIBM(doc, skin, newJoints, joints.map((j, i) => ({ j, i })).filter(({ j }) => keep.has(j)).map(({ i }) => ibm[i]));
     for (const j of dropped) { for (const c of j.listChildren()) if (c.getMesh()) { j.removeChild(c); (doc.getRoot().getDefaultScene() || doc.getRoot().listScenes()[0]).addChild(c); } }
     for (const j of dropped) j.dispose();
@@ -215,6 +231,18 @@ function limitInfluences(doc, log = () => {}) {
   if (n) log(`skinning: ${n} primitives reduced to 4 influences per vertex`);
 }
 
+// ---- morph targets ---------------------------------------------------------------------------------------------------------------------
+/** Blend shapes are not animated by the game; a MetaHuman face export can carry hundreds (memory, and they block simplification). */
+export function stripMorphTargets(doc, log = () => {}) {
+  let n = 0;
+  for (const mesh of doc.getRoot().listMeshes()) {
+    for (const p of mesh.listPrimitives()) for (const t of p.listTargets()) { p.removeTarget(t); t.dispose(); n++; }
+    mesh.setWeights([]);
+  }
+  if (n) log(`morph targets: ${n} removed`);
+  return n;
+}
+
 // ---- the whole pipeline --------------------------------------------------------------------------------------------------------------------
 export async function makeIO() {
   await Promise.all([MeshoptEncoder.ready, MeshoptDecoder.ready, MeshoptSimplifier.ready]);
@@ -222,11 +250,12 @@ export async function makeIO() {
 }
 
 export async function optimizeFile(inPath, outPath, o = {}) {
-  const opt = { tex: 1024, format: 'webp', tris: 0, keepFace: false, keepFingers: false, keepTwist: false, meshopt: true, scale: 1, ...o };
+  const opt = { tex: 1024, format: 'webp', tris: 0, keepFace: false, keepFingers: false, keepTwist: false, keepMorphs: false, meshopt: true, scale: 1, ...o };
   const log = opt.log || ((m) => console.log('  ' + m));
   const io = await makeIO(), doc = await io.read(inPath), t0 = Date.now();
   const before = inspectDocument(doc);
   const inBytes = fs.statSync(inPath).size;
+  if (!opt.keepMorphs) stripMorphTargets(doc, log);
   unifySkeletons(doc, log);
   collapseJoints(doc, opt, log);
   limitInfluences(doc, log);
@@ -257,20 +286,20 @@ function cli(argv) {
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--inspect') o.inspect = true;
-    else if (a === '--keep-face-rig') o.keepFace = true; else if (a === '--keep-fingers') o.keepFingers = true; else if (a === '--keep-twist') o.keepTwist = true; else if (a === '--no-meshopt') o.meshopt = false;
+    else if (a === '--keep-face-rig') o.keepFace = true; else if (a === '--keep-fingers') o.keepFingers = true; else if (a === '--keep-twist') o.keepTwist = true; else if (a === '--keep-morphs') o.keepMorphs = true; else if (a === '--no-meshopt') o.meshopt = false;
     else if (a === '--tex') o.tex = +argv[++i]; else if (a === '--format') o.format = argv[++i]; else if (a === '--tris') o.tris = +argv[++i]; else if (a === '--scale') o.scale = +argv[++i]; else if (a === '--report') o.report = argv[++i];
     else if (a.startsWith('--')) { console.error('unknown option', a); process.exit(2); } else pos.push(a);
   }
   return { o, pos };
 }
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {          // run as a command (works with Windows paths too)
   const { o, pos } = cli(process.argv.slice(2));
   if (o.inspect) {
     if (!pos[0]) { console.error('usage: node optimize.mjs --inspect file.glb'); process.exit(2); }
     const info = inspectDocument(await (await makeIO()).read(pos[0]));
     console.log(JSON.stringify(info, null, 2));
   } else {
-    if (pos.length < 2) { console.error('usage: node optimize.mjs in.glb out.glb [--tex 1024] [--tris 30000] [--format webp|jpeg|png|keep] [--keep-face-rig] [--keep-fingers] [--keep-twist] [--no-meshopt] [--scale k] [--report file.json]'); process.exit(2); }
+    if (pos.length < 2) { console.error('usage: node optimize.mjs in.glb out.glb [--tex 1024] [--tris 30000] [--format webp|jpeg|png|keep] [--keep-face-rig] [--keep-fingers] [--keep-twist] [--keep-morphs] [--no-meshopt] [--scale k] [--report file.json]'); process.exit(2); }
     console.log(`optimizing ${pos[0]}`);
     const rep = await optimizeFile(pos[0], pos[1], o);
     console.log(`  ${(rep.bytes.in / 1048576).toFixed(1)} MB -> ${(rep.bytes.out / 1048576).toFixed(2)} MB, ${rep.before.tris} -> ${rep.after.tris} triangles, joints ${rep.before.joints.join('+')} -> ${rep.after.joints.join('+')}, textures ${rep.before.textureMB} -> ${rep.after.textureMB} MB (${(rep.ms / 1000).toFixed(1)} s)`);

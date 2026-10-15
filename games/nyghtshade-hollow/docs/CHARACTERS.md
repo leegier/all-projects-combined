@@ -69,8 +69,8 @@ without the crowd (clock within a few frames), and all four bot routes pass with
 |---|---|---|
 | rig mapping (Node) | `tests/unit.mjs` | MetaHuman / Mixamo / Rigify / VRM / VRoid name sets, helpers ignored, unknown skeletons reported |
 | characters (Chromium) | `tests/characters.mjs` — 56 checks | all stand-ins load and are recognised; every NPC gets a glTF body, guards get the guard file; per character: stands on the floor at the requested height, faces −Z, A-/T-pose arms hang, sit / pray / lie correct, every pose finite, **feet stay on the floor while walking**, LOD; fallbacks (`?chars=off`, no manifest, a manifest with a missing and a corrupt file); crowd + library (light variants, shared bakes); **determinism** (bot route identical with procedural vs glTF bodies) |
-| crowd (Chromium) | `tests/crowd.mjs` — 17 checks | counts per state, nobody inside a wall/furniture, nobody sharing a seat, colliders only under occupied seats, visibility by area, staggered transitions, cost budget, `?crowd=off`, simulation unchanged |
-| MetaHuman tools | `tests/metahuman-tools.mjs` — 11 checks | optimiser on a split-skeleton export, then in the game (see the tools README) |
+| crowd (Chromium) | `tests/crowd.mjs` — 18 checks | counts per state, nobody inside a wall/furniture, nobody sharing a seat, correct heights (mattress / stool), colliders only under occupied seats, visibility by area, staggered transitions, cost budget, `?crowd=off`, simulation unchanged |
+| MetaHuman tools | `tests/metahuman-tools.mjs` — 15 checks | optimiser on a split-skeleton export, then in the game (see the tools README) |
 
 ## Not done / next
 

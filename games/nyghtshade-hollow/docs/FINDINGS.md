@@ -48,6 +48,8 @@ Everything below was found by the automated playtest bot, the unit/integration s
 | Commissary queue stood in front of the window; the bot **stuck 6×** at (39.4, −9.1) | bot `stuck` counter (0 → 6 after adding the crowd) | queue waits beside the window; stuck back to 0 and the old sim times |
 | The draw-call budget test measured **1 call** (`renderer.info` only holds the last post-processing pass) | reviewing the measured numbers | `autoReset = false`, all passes summed (≈ 500 calls / 250 k triangles added by the crowd) |
 | Optimiser created the merged **jaw joint once per face skin** (6×); `meshopt` then cloned a skin per mesh, which looked like unmerged skeletons | split-skeleton test | jaw created once; "separate skeletons" is judged by joint sets, not skin count |
+| Plain meshes hung on bones (hat, hair, eyes as sockets) were re-attached to the **skeleton root** when their joint was collapsed — the file-level check ("parent is a joint, world position unchanged") passed, the in-game follow test did not | `tests/metahuman-tools.mjs` (badge drift 0.55 m) | `attachmentsBelow` no longer descends into other joints, so each mesh goes to its own nearest kept joint; the file test now checks the exact parent |
+| Sleeping residents floated 0.44 m above the mattress (the mattress height was added twice) | a lights-out frame of the crowd reel showing an *empty* bunk | station height fixed; `tests/crowd.mjs` checks the height of every pose |
 | A face / hair mesh on its own skeleton stays behind when the body moves | built as a deliberate control in `tests/metahuman-tools.mjs` (drift > 5 cm raw, < 1 cm optimised) | `optimize.mjs` merges skeletons by bone name |
 
 ## Process

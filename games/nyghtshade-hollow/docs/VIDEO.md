@@ -91,3 +91,19 @@ Each pass rendered a contact sheet every 4 s of the run and looked at it frame b
   and the yellow caption / assertion feed step aside (the list used to cover the line being answered, then the caption covered choice 1)
 * baptismal-font cinematic: HUD hidden while it plays
 * audio: a whole tier of cell doors opened at once and clipped → staggered/thinned + limiter; sub-bass rumble trimmed
+
+
+## Crowd reel (added after the playtest video)
+
+The playtest video predates the populated block (see [CHARACTERS.md](CHARACTERS.md)). `media/nyghtshade-hollow-crowd-reel.mp4` is a short, silent
+reel of the crowd living through a day: count at the cell doors, both rows, chow, free time, chapel, lights out. It is rendered by
+`tools/crowd-reel.mjs` (six authored camera shots; camera, prison hour and caption are interpolated per frame, and each frame advances the **real
+simulation** 12 steps, so doors, routine events and the residents' staggered departures/arrivals are the game's own — the clock runs ≈ 2.4× real time)
+and encoded by `tools/make-reel.sh`:
+
+```bash
+NH_GL=llvmpipe xvfb-run -a node tools/crowd-reel.mjs /tmp/reel 15 high      # ≈ 26 min on 4 cores, no GPU
+bash tools/make-reel.sh /tmp/reel media/nyghtshade-hollow-crowd-reel.mp4 15
+```
+
+`REEL_FRAMES=3` renders three frames per shot for a smoke test. It is a time-lapse of a bot-free world: nobody plays.

@@ -177,6 +177,12 @@ export function makeStandIn(spec) {
   };
   const body = mkSide(bodyTable, mkArmature('Armature'));
   const face = split ? mkSide(faceTable, mkArmature('Armature_Face')) : body;
+  if (spec.attach) {                                  // plain (unskinned) meshes hung on bones, like a socketed hat / hair / eyes: they must stay with the head / arm after optimising
+    const badge = new THREE.Mesh(new THREE.BoxGeometry(0.03 * unit, 0.03 * unit, 0.012 * unit), mat('M_badge', 0xc9b16a)); badge.name = 'StaticBadge'; badge.position.set(0.02 * unit, 0, 0.05 * unit);
+    (face.sk.byName.get('FACIAL_L_Eye') || face.sk.byName.get('head')).add(badge);
+    const radio = new THREE.Mesh(new THREE.BoxGeometry(0.05 * unit, 0.1 * unit, 0.03 * unit), mat('M_radio', 0x222222)); radio.name = 'StaticRadio'; radio.position.set(0.02 * unit, 0, 0.04 * unit);
+    (body.sk.byName.get('upperarm_twist_01_l') || body.sk.byName.get('upperarm_l')).add(radio);
+  }
   const at = (r) => role.get(r).p;
   const w = wide, tint = spec.skin || 0xc89a7c;
   const skinShapes = [], shirtShapes = [], pantsShapes = [], shoeShapes = [];
@@ -203,7 +209,15 @@ export function makeStandIn(spec) {
     shoeShapes.push({ geo: box(at('toe' + s).clone().add(V(0, 0.005 * k, 0.025 * k)), 0.088 * k, 0.045 * k, 0.07 * k), role: 'toe' + s });
   }
   const meshes = [];
-  const addMesh = (name, material, shapes, onFace) => { const side = onFace ? face : body; const m = skinnedMesh(name, material, shapes, side.ctx); side.armature.add(m); meshes.push({ m, side }); };
+  const addMesh = (name, material, shapes, onFace) => {
+    const side = onFace ? face : body; const m = skinnedMesh(name, material, shapes, side.ctx); side.armature.add(m); meshes.push({ m, side });
+    if (onFace && spec.morphs && /^(Face_skin|Body_skin|Eyes)$/.test(name)) {                       // fake blend shapes (a real MetaHuman face export carries hundreds)
+      const pos = m.geometry.attributes.position, list = [], names = [];
+      for (let k = 0; k < spec.morphs; k++) { const a = new Float32Array(pos.count * 3); for (let i = 0; i < pos.count; i++) a[i * 3 + 1] = Math.sin(i * 0.1 + k) * 0.0005 * unit; list.push(new THREE.Float32BufferAttribute(a, 3)); names.push('mouth_' + k); }
+      m.geometry.morphAttributes.position = list; m.updateMorphTargets(); m.morphTargetInfluences = names.map(() => 0);
+      m.morphTargetDictionary = Object.fromEntries(names.map((n, i) => [n, i]));
+    }
+  };
   const faceRole = (sh) => sh.role === 'head' || sh.role === 'jaw';
   if (split) {
     addMesh('Body_skin', mat('M_skin', tint, { roughness: 0.55 }), skinShapes.filter((x) => !faceRole(x)), false);
@@ -243,7 +257,7 @@ export const STAND_INS = [
 
 /** "Raw exports" for the optimizer tests: not in the game manifest.  mh-split = body and face on two separate skeletons (as UE exports a MetaHuman's Body and Face meshes). */
 export const RAW_EXPORTS = [
-  { id: 'mh-split', style: 'metahuman', pose: 'A', height: 1.8, wide: 1.0, skin: 0xcda085, shirt: 0xc8651b, pants: 0xc8651b, hair: 0x2a1d14, split: true },
+  { id: 'mh-split', style: 'metahuman', pose: 'A', height: 1.8, wide: 1.0, skin: 0xcda085, shirt: 0xc8651b, pants: 0xc8651b, hair: 0x2a1d14, split: true, morphs: 12, attach: true },
   { id: 'mh-single', style: 'metahuman', pose: 'A', height: 1.8, wide: 1.0, skin: 0xcda085, shirt: 0xc8651b, pants: 0xc8651b, hair: 0x2a1d14 },
 ];
 

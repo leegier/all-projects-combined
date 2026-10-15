@@ -1,7 +1,10 @@
 // Shared Playwright helpers for tests / capture.
 import { chromium } from 'playwright-core';
+import fs from 'node:fs';
 import { serve } from './serve.mjs';
-export const CHROME = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+// Browser: NH_CHROME=/path/to/chrome, else the container's preinstalled Chromium, else Playwright's own (npx playwright-core install chromium) — so look.mjs also runs on a PC.
+const PRE = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+export const CHROME = process.env.NH_CHROME || (fs.existsSync(PRE) ? PRE : undefined);
 // NH_GL=llvmpipe (run under xvfb-run) uses Mesa llvmpipe through ANGLE's GL backend: ~6x faster than SwiftShader here.
 export const LLVMPIPE = process.env.NH_GL === 'llvmpipe';
 export const ARGS = LLVMPIPE

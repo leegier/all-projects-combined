@@ -79,7 +79,7 @@ export class Crowd {
         i, id: d.id, look: crowdLook((i * 7 + 3) % CROWD_POOL), lookIdx: (i * 7 + 3) % CROWD_POOL, seed: 11 + Math.floor(i / CROWD_POOL) * 23 + (i % 5), staff: false,
         cell: {
           stand: { x: cx, y: yb, z: front + side * 0.85, yaw, pose: 'idle', area: 'hall' },
-          lie: occupied ? null : { x: cx - 0.95, y: yb + 0.44, z: back - side * 2.05, yaw, pose: 'lie', area: 'hall', seatY: 0.44 },
+          lie: occupied ? null : { x: cx - 0.95, y: yb, z: back - side * 2.05, yaw, pose: 'lie', area: 'hall', seatY: 0.44 },          // seatY: the mattress is 0.44 m above the cell floor
           sit: occupied ? null : { x: cx - 0.95, y: yb, z: back - side * 1.85, yaw, pose: 'sit', area: 'hall', sway: 0.012 },
         },
       });

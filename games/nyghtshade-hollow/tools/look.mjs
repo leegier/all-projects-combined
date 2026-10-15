@@ -1,8 +1,10 @@
 // Look-dev: renders stills from the real game at chosen spots.  node tools/look.mjs shots.json outDir [quality]
 import { open } from './lib.mjs';
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 const shots = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
-const out = process.argv[3] || '/tmp/look';
+const out = process.argv[3] || path.join(os.tmpdir(), 'nh-look');
 const q = process.argv[4] || 'high';
 fs.mkdirSync(out, { recursive: true });
 const extra = process.env.NH_QUERY ? '&' + process.env.NH_QUERY : '';      // e.g. NH_QUERY=chars=/fixtures/characters/

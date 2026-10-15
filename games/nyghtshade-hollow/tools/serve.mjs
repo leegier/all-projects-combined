@@ -1,7 +1,7 @@
 // Tiny static server (npm run serve -> http://localhost:8080).  Serves dist/ plus two side folders that are not part of the single-file build:
 //   /assets/    -> ../assets/          local character files (assets/characters/manifest.json + *.glb — see assets/characters/README.md)
 //   /fixtures/  -> ../tests/fixtures/  stand-in test rigs used by tests/integration.mjs
-import http from 'node:http'; import fs from 'node:fs'; import path from 'node:path'; import { fileURLToPath } from 'node:url';
+import http from 'node:http'; import fs from 'node:fs'; import path from 'node:path'; import { fileURLToPath, pathToFileURL } from 'node:url';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '../dist');
 const side = { '/assets/': path.resolve(here, '../assets'), '/fixtures/': path.resolve(here, '../tests/fixtures') };
@@ -28,4 +28,4 @@ export function serve(p = port) {
     }).listen(p, () => res(s));
   });
 }
-if (import.meta.url === `file://${process.argv[1]}`) { await serve(); console.log('Nyghtshade Hollow: http://localhost:' + port); }
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) { await serve(); console.log('Nyghtshade Hollow: http://localhost:' + port); }

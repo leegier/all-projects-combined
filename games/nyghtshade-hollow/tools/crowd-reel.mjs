@@ -4,8 +4,10 @@
 //   NH_GL=llvmpipe xvfb-run -a node tools/crowd-reel.mjs OUT_DIR [fps=15] [q=high]      then   bash tools/make-reel.sh OUT_DIR out.mp4 [fps]
 import { open } from './lib.mjs';
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 
-const out = process.argv[2] || '/tmp/crowd-reel', fps = +process.argv[3] || 15, quality = process.argv[4] || 'high';
+const out = process.argv[2] || path.join(os.tmpdir(), 'crowd-reel'), fps = +process.argv[3] || 15, quality = process.argv[4] || 'high';
 fs.rmSync(out, { recursive: true, force: true }); fs.mkdirSync(out, { recursive: true });
 const dt = 1 / fps;
 // shot = { title, sub, secs, area, pos (where the player stands, so the right area is active), hour:[from,to], from/to:{p,l,fov} }
@@ -15,7 +17,7 @@ const SHOTS = [
   { title: 'CHOW', sub: '07:00 · the mess hall fills', secs: 9, area: 'canteen', pos: [30, 0, -4], hour: [6.97, 7.45], from: { p: [25.2, 1.9, -3.6], l: [31, 1.1, -10.0], fov: 62 }, to: { p: [26.6, 1.7, -8.2], l: [33, 1.1, -13.0], fov: 60 } },
   { title: 'FREE TIME', sub: '18:00 · the day room', secs: 9, area: 'hall', pos: [0, 0, 3], hour: [17.97, 18.45], from: { p: [-15.7, 2.0, 0.6], l: [-6.5, 1.0, 1.6], fov: 60 }, to: { p: [-5.0, 2.2, 5.0], l: [8.0, 1.0, -1.5], fov: 60 } },
   { title: 'CHAPEL', sub: '13:00 · the pews and the library', secs: 7, area: 'chapel', pos: [-52, 0, 0], hour: [13.0, 13.45], from: { p: [-52.2, 2.2, 0.2], l: [-62.5, 0.9, 3.8], fov: 62 }, to: { p: [-54.0, 2.0, -1.0], l: [-63.5, 0.9, 5.0], fov: 60 } },
-  { title: 'LIGHTS OUT', sub: '22:00 · asleep', secs: 7, area: 'hall', pos: [0, 0, 3], hour: [21.8, 22.4], from: { p: [-6.0, 1.6, -4.6], l: [-10.8, 0.9, -8.5], fov: 55 }, to: { p: [2.0, 1.6, -4.6], l: [-2.8, 0.9, -8.5], fov: 55 } },
+  { title: 'LIGHTS OUT', sub: '22:00 · asleep', secs: 8, area: 'hall', pos: [0, 0, 3], hour: [21.8, 22.5], from: { p: [-6.0, 1.6, -4.6], l: [-10.8, 0.9, -8.5], fov: 55 }, to: { p: [2.0, 1.6, -4.6], l: [-2.8, 0.9, -8.5], fov: 55 } },
 ];
 
 const t = await open({ query: `auto&manual&nostart&q=${quality}`, log: true });
@@ -29,7 +31,7 @@ await page.evaluate(() => {
 });
 let n = 0, prevArea = null;
 for (const [si, s] of SHOTS.entries()) {
-  const frames = Math.round(s.secs * fps);
+  const frames = Math.min(Math.round(s.secs * fps), +process.env.REEL_FRAMES || 1e9);                 // REEL_FRAMES=2: smoke test with two frames per shot
   for (let i = 0; i < frames; i++) {
     const k = i / (frames - 1), e = k * k * (3 - 2 * k), L = (a, b) => a + (b - a) * e;
     const hour = s.hour[0] + (s.hour[1] - s.hour[0]) * k;
@@ -37,7 +39,7 @@ for (const [si, s] of SHOTS.entries()) {
       const g = NH, r = g.routine, lerp = (a, b) => a + (b - a) * e, V = (a, b) => [0, 1, 2].map((j) => lerp(a[j], b[j]));
       if (first) { g.cine = null; g.mode = 'cine'; g.player.frozen = true; g.letter = 1; g.fade = 0; g.fadeTarget = 0; g.eyelid = 0; g.blur = 0; g.outsideMode = 'night'; g.viewmodel.visible = false; g.world.setActiveArea(s.area); g.applyEnv(s.env || s.area); g.player.teleport(s.pos[0], s.pos[1], s.pos[2], 0); }
       r.paused = true; r.hour = hour; r._evaluate(false);                                   // fires the slot events (PA, doors, presence) like the real clock
-      const slot = r.slot, locked = slot === 'LightsOut' || (slot === 'Count' && (hour < 6.45 || (hour >= 21 && hour < 21.95)));
+      const slot = r.slot, locked = slot === 'LightsOut' || (slot === 'Count' && (hour < 6.75 || (hour >= 21 && hour < 21.95)));
       g.story.cellsReleased = !locked;
       g.story.updateNpcPresence();
       const p = V(s.from.p, s.to.p), l = V(s.from.l, s.to.l), P3 = g.player.pos.constructor;

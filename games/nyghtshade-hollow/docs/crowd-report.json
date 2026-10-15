@@ -1,52 +1,57 @@
 {
- "generated": "2026-10-15T13:30:43.145Z",
- "pass": 17,
+ "generated": "2026-10-15T14:01:51.991Z",
+ "pass": 18,
  "fail": 0,
  "results": [
   {
    "name": "crowd: 45 residents (one per cell but the player's) + 2 kitchen hands, every pose baked",
    "ok": true,
-   "detail": "{\"on\":true,\"stats\":{\"residents\":45,\"staff\":2,\"bakes\":133,\"tris\":802187,\"bakeMs\":712.8000000007451,\"materials\":151},\"members\":47,\"npcs\":24}"
+   "detail": "{\"on\":true,\"stats\":{\"residents\":45,\"staff\":2,\"bakes\":133,\"tris\":802187,\"bakeMs\":686.6999999992549,\"materials\":151},\"members\":47,\"npcs\":24}"
   },
   {
    "name": "crowd: baked bodies are light (≤ 9k triangles on average) and share materials (< 400 in all)",
    "ok": true,
-   "detail": "{\"residents\":45,\"staff\":2,\"bakes\":133,\"tris\":802187,\"bakeMs\":712.8000000007451,\"materials\":151}"
+   "detail": "{\"residents\":45,\"staff\":2,\"bakes\":133,\"tris\":802187,\"bakeMs\":686.6999999992549,\"materials\":151}"
   },
   {
    "name": "count: all 45 residents stand at their cell doors and the sleeper NPCs step aside",
    "ok": true,
-   "detail": "{\"state\":\"count\",\"placed\":45,\"dup\":0,\"area\":{\"hall\":45},\"pose\":{\"idle\":45},\"collidersOn\":0,\"withCol\":0,\"inside\":0,\"worst\":0,\"sleepersHidden\":true,\"sleepersShown\":false}"
+   "detail": "{\"state\":\"count\",\"placed\":45,\"dup\":0,\"area\":{\"hall\":45},\"pose\":{\"idle\":45},\"lieOff\":0,\"sitOff\":0,\"collidersOn\":0,\"withCol\":0,\"inside\":0,\"worst\":0,\"sleepersHidden\":true,\"sleepersShown\":false}"
   },
   {
    "name": "lights out: the cells hold sleepers (41: four cells already have a sleeper NPC) and those NPCs are back in their bunks",
    "ok": true,
-   "detail": "{\"state\":\"lights\",\"placed\":41,\"dup\":0,\"area\":{\"hall\":41},\"pose\":{\"lie\":41},\"collidersOn\":0,\"withCol\":0,\"inside\":0,\"worst\":0,\"sleepersHidden\":false,\"sleepersShown\":true}"
+   "detail": "{\"state\":\"lights\",\"placed\":41,\"dup\":0,\"area\":{\"hall\":41},\"pose\":{\"lie\":41},\"lieOff\":0,\"sitOff\":0,\"collidersOn\":0,\"withCol\":0,\"inside\":0,\"worst\":0,\"sleepersHidden\":false,\"sleepersShown\":true}"
   },
   {
    "name": "lockdown: everyone sits in their cell",
    "ok": true,
-   "detail": "{\"state\":\"lockdown\",\"placed\":41,\"dup\":0,\"area\":{\"hall\":41},\"pose\":{\"sit\":41},\"collidersOn\":0,\"withCol\":0,\"inside\":0,\"worst\":0,\"sleepersHidden\":false,\"sleepersShown\":true}"
+   "detail": "{\"state\":\"lockdown\",\"placed\":41,\"dup\":0,\"area\":{\"hall\":41},\"pose\":{\"sit\":41},\"lieOff\":0,\"sitOff\":0,\"collidersOn\":0,\"withCol\":0,\"inside\":0,\"worst\":0,\"sleepersHidden\":false,\"sleepersShown\":true}"
   },
   {
    "name": "chow: the mess hall is full (diners, serving line, commissary, two cooks) and cells are mostly empty",
    "ok": true,
-   "detail": "{\"state\":\"Chow\",\"placed\":30,\"dup\":0,\"area\":{\"canteen\":27,\"hall\":3},\"pose\":{\"idle\":9,\"sit\":21},\"collidersOn\":25,\"withCol\":25,\"inside\":0,\"worst\":0,\"sleepersHidden\":false,\"sleepersShown\":true}"
+   "detail": "{\"state\":\"Chow\",\"placed\":30,\"dup\":0,\"area\":{\"canteen\":27,\"hall\":3},\"pose\":{\"idle\":9,\"sit\":21},\"lieOff\":0,\"sitOff\":0,\"collidersOn\":25,\"withCol\":25,\"inside\":0,\"worst\":0,\"sleepersHidden\":false,\"sleepersShown\":true}"
   },
   {
    "name": "free time: about 21 men at the day-room tables, some in the mess hall and in cells",
    "ok": true,
-   "detail": "{\"state\":\"FreeTime\",\"placed\":36,\"dup\":0,\"area\":{\"hall\":31,\"canteen\":5},\"pose\":{\"sit\":32,\"lie\":4},\"collidersOn\":26,\"withCol\":26,\"inside\":0,\"worst\":0,\"sleepersHidden\":false,\"sleepersShown\":true}"
+   "detail": "{\"state\":\"FreeTime\",\"placed\":36,\"dup\":0,\"area\":{\"hall\":31,\"canteen\":5},\"pose\":{\"sit\":32,\"lie\":4},\"lieOff\":0,\"sitOff\":0,\"collidersOn\":26,\"withCol\":26,\"inside\":0,\"worst\":0,\"sleepersHidden\":false,\"sleepersShown\":true}"
   },
   {
    "name": "chapel hours: pews and the library are used",
    "ok": true,
-   "detail": "{\"state\":\"Chapel\",\"placed\":32,\"dup\":0,\"area\":{\"chapel\":8,\"hall\":20,\"library\":4},\"pose\":{\"sit\":28,\"lie\":4},\"collidersOn\":22,\"withCol\":22,\"inside\":0,\"worst\":0,\"sleepersHidden\":false,\"sleepersShown\":true}"
+   "detail": "{\"state\":\"Chapel\",\"placed\":32,\"dup\":0,\"area\":{\"chapel\":8,\"hall\":20,\"library\":4},\"pose\":{\"sit\":28,\"lie\":4},\"lieOff\":0,\"sitOff\":0,\"collidersOn\":22,\"withCol\":22,\"inside\":0,\"worst\":0,\"sleepersHidden\":false,\"sleepersShown\":true}"
   },
   {
    "name": "work / yard / gym / visitation: the block is quieter but not empty",
    "ok": true,
    "detail": "[16,15,23,21]"
+  },
+  {
+   "name": "heights: sleepers lie on the mattress (0.44 m over the cell floor, upper tier included), everyone else at floor level",
+   "ok": true,
+   "detail": "[[\"count\",0,0],[\"lights\",0,0],[\"lockdown\",0,0],[\"after\",0,0],[\"chow\",0,0],[\"work\",0,0],[\"yard\",0,0],[\"free\",0,0],[\"chapel\",0,0],[\"gym\",0,0],[\"visit\",0,0]]"
   },
   {
    "name": "nobody shares a seat or a cell in any state",
@@ -76,7 +81,7 @@
   {
    "name": "cost: the busiest crowd views stay under 2400 draw calls and 1.6 M triangles (all passes summed)",
    "ok": true,
-   "detail": "{\"count down the tier\":{\"calls\":1031,\"tris\":716420},\"free time hall\":{\"calls\":1537,\"tris\":967958},\"chow canteen\":{\"calls\":837,\"tris\":340364}}"
+   "detail": "{\"count down the tier\":{\"calls\":1031,\"tris\":716420},\"free time hall\":{\"calls\":1536,\"tris\":967484},\"chow canteen\":{\"calls\":837,\"tris\":340364}}"
   },
   {
    "name": "?crowd=off: no crowd, no crowd colliders, the 24 cast members are untouched",

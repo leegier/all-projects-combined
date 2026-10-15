@@ -62,6 +62,8 @@ What it does, in order (all of it reported):
 2. **Collapse joints the game never animates** into their nearest kept parent (skin weights follow): ~800 facial joints, twist /
    corrective / helper joints, fingers. A real MetaHuman has several hundred joints, most of them facial; what is left is the ~60 the game drives (the test stand-ins go from 42–48 to 27–32). `--keep-face-rig`, `--keep-twist`, `--keep-fingers` keep them.
 3. **Limit skinning to 4 influences per vertex** (what three.js reads; MetaHuman uses 8), renormalised.
+3a. **Sockets are kept**: a plain mesh hung on a joint that gets collapsed or merged (glasses, hair, a hat, eyes attached to the face skeleton) is re-attached to the nearest kept joint **without moving** (world transform preserved).
+3b. **Morph targets (blend shapes) are removed** — the game does not animate them and a MetaHuman face export can carry hundreds (`--keep-morphs` keeps them).
 4. dedup / prune / weld; optional **triangle budget** (`--tris`, meshoptimizer simplification).
 5. **Textures** resized to `--tex` and converted (`--format webp|jpeg|png|keep`; default WebP).
 6. **Meshopt compression** (`EXT_meshopt_compression`; `--no-meshopt` to skip).
@@ -83,6 +85,8 @@ npm run build && npm run serve        # http://localhost:8080 — open the brows
 One line per character (`[NH] character gavin: metahuman rig, 61 bones, 38950 tris, 1.84 m` (example numbers)), then
 `[NH] crowd: 45 residents + 2 staff, … baked poses`. Walk to the hall: at 06:00 everybody stands at a cell door, at 07:00 the mess hall fills.
 `?chars=off` shows the procedural humans for comparison; `?crowd=off` hides the crowd.
+For screenshots without a display: `npx playwright-core install chromium` (once), then `node tools/look.mjs tools/shots-crowd.json out` renders eight stills of the crowd
+(`NH_CHROME=/path/to/chrome` picks another browser; `NH_QUERY='chars=/fixtures/characters/'` points it at another character folder).
 
 | symptom | cause | fix |
 |---|---|---|
@@ -99,7 +103,7 @@ One line per character (`[NH] character gavin: metahuman rig, 61 bones, 38950 tr
 
 `npm run test:tools` (from the game folder, after `npm install` here) runs the optimiser on a stand-in export whose face lives on its own skeleton
 and loads the result in the real game: skeletons merged, jaw created once, joints reduced, file smaller, triangle budget honoured,
-**the face follows the head** (and does *not* in the raw file — that is the control), jaw animates, a single-skeleton export works.
+**the face follows the head** (and does *not* in the raw file — that is the control), jaw animates, blend shapes are removed (or kept with `--keep-morphs`), socketed meshes (a badge on a facial joint, a radio on a twist joint) end up on the nearest kept joint and follow it, a single-skeleton export works.
 The stand-ins (`tools/standin/gen.js`, `tools/make-standin.mjs`) are rigid-skinned mannequins on MetaHuman- and Mixamo-style skeletons,
 **not MetaHumans** — they exist so the whole pipeline can be tested without licensed assets.
 

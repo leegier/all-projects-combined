@@ -40,7 +40,10 @@ const ok = (name, cond, detail = '') => { cond ? pass++ : fail++; results.push({
         g.world.resolveCircle(p, 0.2, 1.4, new Set(['crowd', 'celldoor']));
         const d = Math.hypot(p.x - x0, p.z - z0); if (d > 0.06) { inside++; worst = Math.max(worst, d); }
       }
-      out[name] = { state: c.state, placed: placed.length, dup, area, pose, collidersOn: enabled, withCol: withCol.length, inside, worst: +worst.toFixed(2),
+      // lying people rest on the mattress (0.44 m above their cell floor), sitters on stools / bunks at floor level
+      const lieOff = placed.filter((m) => m.cur.pose === 'lie').map((m) => Math.abs(m.group.position.y - m.cur.y - 0.44)).reduce((a, b) => Math.max(a, b), 0);
+      const sitOff = placed.filter((m) => m.cur.pose !== 'lie').map((m) => Math.abs(m.group.position.y - m.cur.y)).reduce((a, b) => Math.max(a, b), 0);
+      out[name] = { state: c.state, placed: placed.length, dup, area, pose, lieOff: +lieOff.toFixed(3), sitOff: +sitOff.toFixed(3), collidersOn: enabled, withCol: withCol.length, inside, worst: +worst.toFixed(2),
         sleepersHidden: g.npcs.filter((n) => n.sleeper).every((n) => n.hiddenFromWorld), sleepersShown: g.npcs.filter((n) => n.sleeper).every((n) => !n.hiddenFromWorld) };
     };
     at('count', 6.3, false); at('lights', 23, false); at('lockdown', 9.5, true, true); at('after', 6.5, true); at('chow', 7.4); at('work', 9); at('yard', 10.4); at('free', 18.5); at('chapel', 13.6); at('gym', 15.5); at('visit', 16.4);
@@ -54,6 +57,7 @@ const ok = (name, cond, detail = '') => { cond ? pass++ : fail++; results.push({
   ok('free time: about 21 men at the day-room tables, some in the mess hall and in cells', S.free.area.hall >= 25 && S.free.area.canteen >= 4, JSON.stringify(S.free));
   ok('chapel hours: pews and the library are used', S.chapel.area.chapel >= 6 && S.chapel.area.library >= 3 && S.chapel.area.hall >= 10, JSON.stringify(S.chapel));
   ok('work / yard / gym / visitation: the block is quieter but not empty', [S.work, S.yard, S.gym, S.visit].every((x) => x.placed >= 10 && x.placed <= 30), JSON.stringify([S.work.placed, S.yard.placed, S.gym.placed, S.visit.placed]));
+  ok('heights: sleepers lie on the mattress (0.44 m over the cell floor, upper tier included), everyone else at floor level', Object.values(S).every((x) => x.lieOff < 0.01 && x.sitOff < 0.01), JSON.stringify(Object.entries(S).map(([k, x]) => [k, x.lieOff, x.sitOff])));
   ok('nobody shares a seat or a cell in any state', Object.values(S).every((x) => x.dup === 0), JSON.stringify(Object.entries(S).map(([k, x]) => [k, x.dup])));
   ok('nobody stands or sits inside a wall or furniture (open-floor positions)', Object.values(S).every((x) => x.inside === 0), JSON.stringify(Object.entries(S).map(([k, x]) => [k, x.inside, x.worst])));
   ok('colliders: enabled exactly for the occupied seats / queue spots', Object.values(S).every((x) => x.collidersOn === x.withCol), JSON.stringify(Object.entries(S).map(([k, x]) => [k, x.collidersOn, x.withCol])));

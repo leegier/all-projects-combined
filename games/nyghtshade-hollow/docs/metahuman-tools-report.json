@@ -1,12 +1,17 @@
 {
- "generated": "2026-10-15T13:31:43.407Z",
- "pass": 11,
+ "generated": "2026-10-15T14:10:03.553Z",
+ "pass": 15,
  "fail": 0,
  "results": [
   {
    "name": "inspect: the raw export is recognised as MetaHuman-style and flagged for its separate face skeleton",
    "ok": true,
-   "detail": "[\"2 separate skeletons (one per skin): a face / hair mesh on its own skeleton would not follow the body — optimize.mjs merges them\"]"
+   "detail": "[\"2 separate skeletons (one per skin): a face / hair mesh on its own skeleton would not follow the body — optimize.mjs merges them\",\"24 morph targets (blend shapes): not animated by the game and expensive — optimize.mjs removes them (--keep-morphs keeps them)\"]"
+  },
+  {
+   "name": "inspect: blend shapes in the export are counted and flagged",
+   "ok": true,
+   "detail": "{\"morphs\":24,\"w\":[\"2 separate skeletons (one per skin): a face / hair mesh on its own skeleton would not follow the body — optimize.mjs merges them\",\"24 morph targets (blend shapes): not animated by the game and expensive — optimize.mjs removes them (--keep-morphs keeps them)\"]}"
   },
   {
    "name": "optimize: skeletons merged (no separate-skeleton warning left) and every skin drives the same joints",
@@ -21,7 +26,12 @@
   {
    "name": "optimize: triangles unchanged without a budget, file much smaller (meshopt)",
    "ok": true,
-   "detail": "{\"in\":323032,\"out\":90428}"
+   "detail": "{\"in\":481804,\"out\":92692}"
+  },
+  {
+   "name": "optimize: morph targets removed by default (and kept with --keep-morphs)",
+   "ok": true,
+   "detail": "{\"after\":0}"
   },
   {
    "name": "optimize: the face skeleton's jaw became one joint under the body's head",
@@ -29,34 +39,44 @@
    "detail": "FACIAL_C_Jaw"
   },
   {
+   "name": "optimize: socketed static meshes stay where they were (≤ 1 mm) and hang from the nearest kept joint (badge → head, radio → upper arm)",
+   "ok": true,
+   "detail": "{\"moved\":[1.1103585416259206e-16,2.8066088919804617e-16],\"res\":[[\"StaticBadge\",\"FACIAL_L_Eye\",\"head\",true],[\"StaticRadio\",\"upperarm_twist_01_l\",\"upperarm_l\",true]]}"
+  },
+  {
    "name": "optimize --tris: triangle budget is honoured (±40 %)",
    "ok": true,
-   "detail": "{\"joints\":[27],\"tris\":4036,\"textureMB\":0,\"usable\":[true],\"warnings\":[]}"
+   "detail": "{\"joints\":[27],\"tris\":4052,\"textureMB\":0,\"usable\":[true],\"warnings\":[]}"
   },
   {
    "name": "optimize --keep-*: nothing is collapsed when asked to keep everything",
    "ok": true,
-   "detail": "{\"input\":\"standin-mh-single.glb\",\"output\":\"kept.glb\",\"ms\":58,\"bytes\":{\"in\":328984,\"out\":292868},\"before\":{\"joints\":[46,46,46,46,46,46,46,46,46],\"tris\":8318,\"textureMB\":0,\"warnings\":[]},\"after\":{\"joints\":[46],\"tris\":8318,\"textureMB\":0,\"usable\":[true],\"warnings\":[]},\"options\":{\"tex\":1024,\"format\":\"webp\",\"tris\":0,\"keepFace\":true,\"keepFingers\":true,\"keepTwist\":true,\"meshopt\":false,\"scale\":1}}"
+   "detail": "{\"input\":\"standin-mh-single.glb\",\"output\":\"kept.glb\",\"ms\":93,\"bytes\":{\"in\":328984,\"out\":292868},\"before\":{\"joints\":[46,46,46,46,46,46,46,46,46],\"tris\":8318,\"textureMB\":0,\"warnings\":[]},\"after\":{\"joints\":[46],\"tris\":8318,\"textureMB\":0,\"usable\":[true],\"warnings\":[]},\"options\":{\"tex\":1024,\"format\":\"webp\",\"tris\":0,\"keepFace\":true,\"keepFingers\":true,\"keepTwist\":true,\"keepMorphs\":false,\"meshopt\":false,\"scale\":1}}"
   },
   {
    "name": "game: the raw split export loads and its rig is recognised, but the face stays behind when the head moves (why the merge exists)",
    "ok": true,
-   "detail": "{\"drift\":[0.5634025251840333,0.5178683766514891,0.5597646576614039,0.5707028448381122,0.5479022423245998],\"rig\":\"metahuman\",\"usable\":true,\"bones\":56,\"hasJaw\":true,\"skins\":10,\"jawName\":\"FACIAL_C_Jaw\",\"jawMoved\":0.13166261287020514}"
+   "detail": "{\"drift\":[0.5634025251840333,0.5178683766514891,0.5597646576614039,0.5707028448381122,0.5479022423245998],\"sockDrift\":[0.5550388187569775,3.610892649124533e-16],\"rig\":\"metahuman\",\"usable\":true,\"bones\":56,\"hasJaw\":true,\"skins\":10,\"jawName\":\"FACIAL_C_Jaw\",\"jawMoved\":0.13166261287020514}"
   },
   {
    "name": "game: after optimize.mjs the face and hair follow the head (drift < 1 cm over a pose change)",
    "ok": true,
-   "detail": "{\"drift\":[3.400765989603717e-16,2.3520701021126763e-16,4.163336342344337e-16,3.0507468685964945e-16,3.664498128972097e-16],\"rig\":\"metahuman\",\"usable\":true,\"bones\":27,\"hasJaw\":true,\"skins\":10,\"jawName\":\"FACIAL_C_Jaw\",\"jawMoved\":0.13166261287020514}"
+   "detail": "{\"drift\":[3.400765989603717e-16,2.3520701021126763e-16,4.163336342344337e-16,3.0507468685964945e-16,3.664498128972097e-16],\"sockDrift\":[4.166948782366562e-17,3.3727325213528156e-16],\"rig\":\"metahuman\",\"usable\":true,\"bones\":27,\"hasJaw\":true,\"skins\":10,\"jawName\":\"FACIAL_C_Jaw\",\"jawMoved\":0.13166261287020514}"
+  },
+  {
+   "name": "game: socketed meshes follow their bone after optimising (badge on the head, radio on the arm); in the raw file the badge stays behind",
+   "ok": true,
+   "detail": "{\"opt\":[4.166948782366562e-17,3.3727325213528156e-16],\"raw\":[0.5550388187569775,3.610892649124533e-16]}"
   },
   {
    "name": "game: the merged jaw joint is found and animates while talking",
    "ok": true,
-   "detail": "{\"drift\":[3.400765989603717e-16,2.3520701021126763e-16,4.163336342344337e-16,3.0507468685964945e-16,3.664498128972097e-16],\"rig\":\"metahuman\",\"usable\":true,\"bones\":27,\"hasJaw\":true,\"skins\":10,\"jawName\":\"FACIAL_C_Jaw\",\"jawMoved\":0.13166261287020514}"
+   "detail": "{\"drift\":[3.400765989603717e-16,2.3520701021126763e-16,4.163336342344337e-16,3.0507468685964945e-16,3.664498128972097e-16],\"sockDrift\":[4.166948782366562e-17,3.3727325213528156e-16],\"rig\":\"metahuman\",\"usable\":true,\"bones\":27,\"hasJaw\":true,\"skins\":10,\"jawName\":\"FACIAL_C_Jaw\",\"jawMoved\":0.13166261287020514}"
   },
   {
    "name": "game: a single-skeleton export kept whole works too",
    "ok": true,
-   "detail": "{\"drift\":[6.754025054663843e-16,6.753579488534262e-16,3.1401968961995204e-16,2.220513810852149e-16,2.220446049250313e-16],\"rig\":\"metahuman\",\"usable\":true,\"bones\":46,\"hasJaw\":true,\"skins\":9,\"jawName\":\"FACIAL_C_Jaw\",\"jawMoved\":0.13166261287020514}"
+   "detail": "{\"drift\":[6.754025054663843e-16,6.753579488534262e-16,3.1401968961995204e-16,2.220513810852149e-16,2.220446049250313e-16],\"sockDrift\":null,\"rig\":\"metahuman\",\"usable\":true,\"bones\":46,\"hasJaw\":true,\"skins\":9,\"jawName\":\"FACIAL_C_Jaw\",\"jawMoved\":0.13166261287020514}"
   }
  ]
 }
