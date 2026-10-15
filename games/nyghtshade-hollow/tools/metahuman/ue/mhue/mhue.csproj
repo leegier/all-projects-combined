@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- mhue: read Unreal assets (loose .uasset/.uexp/.ubulk, .pak, IoStore .utoc/.ucas, or a zip such as a .mhpkg)
+       and export skeletal meshes to GLB (with skin), textures to PNG, MetaHuman DNA to .dna.
+       Built on CUE4Parse (Apache-2.0), pinned to the exact NuGet versions below. No Unreal Engine needed. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>mhue</AssemblyName>
+    <RootNamespace>Mhue</RootNamespace>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <TieredPGO>false</TieredPGO>
+    <NoWarn>$(NoWarn);NU1701;CS8601;CS8602;CS8604</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CUE4Parse" Version="1.2.2.202610" />
+    <PackageReference Include="CUE4Parse-Conversion" Version="1.2.2.202610" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.9" />
+  </ItemGroup>
+
+</Project>
