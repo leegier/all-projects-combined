@@ -8,6 +8,8 @@ mhue="$here/mhue.sh"; fail=0; n=0
 ok()   { n=$((n+1)); echo "  ok   $*"; }
 bad()  { n=$((n+1)); fail=$((fail+1)); echo "  FAIL $*"; }
 check(){ if eval "$2"; then ok "$1"; else bad "$1  [$2]"; fi; }
+# says(pattern, cmd...): run cmd, capture stdout+stderr, then grep (no pipe: grep -q + pipefail = false SIGPIPE failures)
+says(){ local pat="$1" out; shift; out="$("$@" 2>&1)"; grep -q -- "$pat" <<<"$out"; }
 
 fetch() { # repo dir sparse-path
   [ -d "$samples/$2/$3" ] && return 0
@@ -31,7 +33,8 @@ check "every package reported as cooked" "python3 -I -c '$py; sys.exit(0 if all(
 
 echo "== export: skeletal mesh -> GLB (skin), textures -> PNG"
 "$mhue" export "$FX/IoStore/Tagged/Zlib" --game UE5_8 --out "$tmp/o" --match 'Meshes/|Textures/' --morphs > export.log 2>&1
-check "export exit 0, 20 items"       "[ \$? -eq 0 ] && grep -q '^20 exported, 0 failed' export.log"
+export_rc=$?
+check "export exit 0, 20 items"       "[ $export_rc -eq 0 ] && grep -q '^20 exported, 0 failed' export.log"
 M="$tmp/o/CUE4ParseFixtures/Content/Fixtures"
 check "SK_Fixture.glb is skinned, weights sum to 1" "node '$here/check-glb.mjs' '$M/Meshes/SK_Fixture.glb' --expect-skin >/dev/null"
 check "SM_Nanite.glb has geometry"     "node '$here/check-glb.mjs' '$M/Meshes/SM_Nanite.glb' | grep -q '1083 verts'"
@@ -45,7 +48,7 @@ n_of() { "$mhue" list "$@" --json 2>/dev/null | python3 -I -c 'import json,sys; 
 check "Oodle-compressed IoStore decodes (managed decoder)" "[ \"\$(n_of '$FX/IoStore/Tagged/Oodle' --game UE5_8)\" = 97 ]"
 check "unversioned + usmap reads"      "[ \"\$(n_of '$FX/IoStore/Unversioned/Uncompressed' --game UE5_8 --usmap '$FX/Mappings/CUE4ParseFixtures-Uncompressed.usmap')\" = 97 ]"
 key="$(python3 -I -c "print(b'CUE4ParseFixtureAESKey0123456789'.hex())")"
-check "encrypted container: no key -> loud warning" "'$mhue' list '$FX/IoStore/Tagged/OodleEncrypted' --game UE5_8 --fast 2>&1 | grep -q 'NOT mounted'"
+check "encrypted container: no key -> loud warning" "says 'NOT mounted' '$mhue' list '$FX/IoStore/Tagged/OodleEncrypted' --game UE5_8 --fast"
 check "encrypted container: right key reads"        "[ \"\$(n_of '$FX/IoStore/Tagged/OodleEncrypted' --game UE5_8 --aes $key)\" = 97 ]"
 
 echo "== zip input (.mhpkg) and hostile zips"
@@ -56,7 +59,7 @@ for name, entry in [("dotdot", "../escaped.txt"), ("abs", "/tmp/escaped-abs.txt"
     with zipfile.ZipFile(f"{t}/evil-{name}.zip", "w") as z: z.writestr(entry, "owned")
 PY
 for z in dotdot abs bs nested drive; do
-  check "hostile zip refused: $z" "'$mhue' list '$tmp/evil-$z.zip' --work '$tmp/w-$z' --fast 2>&1 | grep -q 'unsafe zip entry'"
+  check "hostile zip refused: $z" "says 'unsafe zip entry' '$mhue' list '$tmp/evil-$z.zip' --work '$tmp/w-$z' --fast"
 done
 check "no file escaped the extraction folder" "[ ! -e '$tmp/escaped.txt' ] && [ ! -e /tmp/escaped-abs.txt ] && [ ! -e '$tmp/../escaped.txt' ]"
 UA="$samples/uassetapi/UAssetAPI.Tests/TestAssets/TestUE5_5/BlankGame"

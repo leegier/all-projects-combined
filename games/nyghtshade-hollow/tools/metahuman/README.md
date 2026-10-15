@@ -138,6 +138,68 @@ The stand-ins (`tools/standin/gen.js`, `tools/make-standin.mjs`) are rigid-skinn
 | script | does |
 |---|---|
 | `optimize.mjs` | inspect / optimise (this document) |
+| `dna2glb.py` | MetaHuman **DNA** file(s) (head, and with `--body` the body of the same character) → one skinned GLB for `optimize.mjs` (section 3b). `--selftest` / `--probe` |
 | `drive-pull.mjs` | list / table of contents / extract / download from Google Drive with a read-only token (section 0); `split` / `join` for piecewise transfer. Tested against a local Drive-shaped server: `npm run test:drive` |
 | `../make-standin.mjs` | regenerates the test characters in `tests/fixtures/` |
 | `../look.mjs` | stills from the real game: `NH_QUERY='chars=/fixtures/characters/' node tools/look.mjs shots.json outDir` |
+
+## 3b — from a DNA file (`dna2glb.py`)
+
+A MetaHuman Creator **DCC export** writes the character as `.dna` files (head DNA, body DNA) plus skin textures ([PC-PROMPT.md](PC-PROMPT.md) step 4); a `.dna` is a binary file
+that holds the geometry, the joints, the skin weights and the blend shapes of a head or a body. `dna2glb.py` turns one (or a head + body pair) into a skinned GLB that sections 2 and 3
+take from there. One Python 3 file, standard library only; the DNA itself is read through **Epic's own `dna` Python bindings** (it carries no parser of its own, so it stays right
+across DNA versions).
+
+```bash
+cd tools/metahuman
+python3 -I dna2glb.py --selftest                              # converter checks on synthetic DNA-shaped data (needs no DNA file and no bindings)
+python3 -I dna2glb.py --probe export/maria/head.dna --dna-lib ~/dna/lib/<platform>/<your python>    # header, API check, what the file holds
+python3 -I dna2glb.py export/maria/head.dna raw/maria.glb --body export/maria/body.dna --dna-lib ~/dna/lib/<platform>/<your python>
+node optimize.mjs --inspect raw/maria.glb                     # rig: metahuman, usable: true, missing: []
+node optimize.mjs raw/maria.glb ../../assets/characters/maria.glb --tex 1024 --tris 40000
+```
+
+(`-I` because a DNA is untrusted input: Python then loads nothing from the folder the file sits in.)
+
+**1. The bindings** (once). They are in Epic's open repository, <https://github.com/EpicGamesExt/MetaHuman-DNA-Calibration> (the `dna` and `dnacalib` modules; read its
+README for prebuilt libraries and build steps - not checked from here). A binding is built **per Python minor version**: `--dna-lib` must point at the folder that holds `dna.py` and the
+compiled `_dna` module for *the python that runs the script* (`python3 --version`); if none matches, build them from the repository (CMake) or run the script with a Python that matches
+(`uv run --python 3.12 dna2glb.py …`). `--probe` says which of the Reader calls the tool needs the module lacks. The repository's `data` folder is said to hold sample DNA files (Ada, Taro): a good first test.
+
+**2. What comes out**
+
+| | |
+|---|---|
+| meshes | the LOD0 meshes of the DNA (`--lod N` for another), **one named mesh / node / primitive / material each**: `head_lod0_mesh`, `teeth_…`, `eyeLeft_…`, `eyeRight_…`, `eyelashes_…`, `eyeshell_…`, `saliva_…`, `cartilage_…` … (DNA names kept; the material is the same name without `_lodN_mesh`, which is what the game's hair / lash / teeth / eye-shell rules match). With `--body` the body meshes follow |
+| skeleton | every DNA joint as a glTF node, DNA names and hierarchy (UE5 names such as `pelvis`, `spine_01…05`, `neck_01`, `head`, `FACIAL_C_Jaw`), one skin, inverse bind matrices from the neutral pose. `--body`: the body DNA's skeleton is the base, the head DNA's joints are joined **by name** (shared joints become one, the facial rig is appended under `head`) |
+| skin | **4 influences per vertex**, largest kept, renormalised (MetaHuman uses 8) |
+| frame | metres, +Y up, facing +Z (the unit and the axis directions are read from the DNA and converted; the game turns any facing anyway). UVs flipped to glTF's top-left origin, quads and n-gons triangulated, vertices split where position / UV / normal differ, winding judged against the DNA normals |
+| `--morphs` | the DNA's blend shapes as morph targets (sparse accessors, named after the DNA channels). **Off by default**: the game does not animate them and `optimize.mjs` strips them unless `--keep-morphs` |
+| not in a DNA | **textures, hair, clothing, a body mesh for a head DNA.** The materials are plain placeholders; the UVs are kept so the export's skin textures fit — assigning them is a separate step |
+
+**3. A head alone.** A head DNA has no arms or legs, so the game cannot drive it (the tool warns, `optimize.mjs --inspect` says *generic / not usable*), and the game measures a character's
+height from its mesh bounds, so a bare head would be scaled to body size and lie chin-on-floor. `--body-stub` adds the missing UE5 body *joints* (scaled to the head height) and an invisible
+zero-area triangle at sole level: a head floating on an invisible skeleton, enough for face close-ups and for checking the rig in the game. A real character needs the body DNA (`--body`).
+
+**4. Conventions the DNA format leaves to the reader — read these lines of the output on the first real file.**
+
+| what | how it is decided | override |
+|---|---|---|
+| unit, axes | read from the DNA's descriptor (default cm, left/up/front) | `--unit`, `--axes left,up,front` |
+| joint transforms **world or parent-relative** | both are built and the one that puts the joints at the skin they weight (mean vertex-to-dominant-joint distance, printed as `joint_fit_m`) is used; a warning if the two are too close to tell | `--joint-space world|local` |
+| joint rotation order | Maya `xyz` (R = Rz·Ry·Rx). It does not move the mesh in the bind pose (inverse bind matrices come from the same transforms) — only the joints' local axes, which the game does not care about | `--euler zyx` |
+| triangle winding | compared with the DNA's own normals | `--flip-winding yes|no` |
+| head height sanity | warning if the head joint is outside 1.2 – 2.1 m | — |
+
+**5. Look at it in the game** without putting the file in the repo: serve any folder that has a `manifest.json` ([assets/characters/README.md](../../assets/characters/README.md); for a
+head-only or stubbed file set `"height"` to the `height` that `--inspect` prints, for a full character the usual 1.7 – 1.9) from a static server that sends
+`Access-Control-Allow-Origin: *`, and open the game with `?chars=http://127.0.0.1:PORT/`; the render tools take the same through `--qx "…&chars=http://127.0.0.1:PORT/"`
+(`node tools/cine/render.mjs SHOTS.mjs --scout --qx …`). The console line should read `character NAME: metahuman rig, N bones, … tris, H m`.
+
+**What has and has not been checked.** *Checked* (`--selftest`, 272 checks on synthetic head + body DNA-shaped data through a test double of the Reader API, in three conventions —
+world / parent-relative joints, mirrored axes, centimetres / metres — and 11 deliberate bugs, injected one at a time while developing it (that throw-away script is not kept), each made the checks fail: weights not renormalised, wrong unit, UV not flipped,
+transposed inverse bind matrices, winding never / always corrected, mirrored axis ignored, merge by index, skin indices off by one, joint space forced, morph delta flipped): own GLB parser verifies names, hierarchy, metres, facing,
+left/right, weights, bind pose, winding, UVs and morph deltas; `optimize.mjs --inspect` reads the output as *metahuman, usable*; the game loads it (`metahuman rig, 34 bones`), the head is
+upright at 1.56 – 1.80 m and its nose points where the feet do; 26 k vertices with 300 morph targets convert in about 2 s. *Not checked:* the adapter against the real `dna` module (its
+call names follow Epic's documented Reader interface; `--probe` reports any that differ) and the conventions above on a real MetaHuman DNA file — the session that wrote the tool could not reach Epic's repository, so neither the
+bindings nor a sample DNA were available. **Nothing here has touched a real MetaHuman yet.** The selftest model (a sphere with eyes on a UE5-named skeleton) is a test fixture, not a character.

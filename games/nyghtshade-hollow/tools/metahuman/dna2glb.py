@@ -14,12 +14,15 @@ SourceAssets/<Name>.dna).  This tool turns one into a single GLB:
   * with --morphs: DNA blend shape targets as morph targets (sparse accessors, one target per DNA channel); default off
 
 USAGE
-  python3 dna2glb.py INPUT.dna OUTPUT.glb [options]
+  python3 dna2glb.py INPUT.dna OUTPUT.glb [options]                   # INPUT = the head DNA (or any single DNA)
+  python3 dna2glb.py HEAD.dna OUTPUT.glb --body BODY.dna [options]    # head + body DNA of one character -> one skeleton, one GLB
   python3 dna2glb.py --probe INPUT.dna            # header + (if the bindings load) a summary of what the file holds
   python3 dna2glb.py --selftest [--keep DIR]      # converter checks on a synthetic DNA-shaped model (no DNA file needed)
 
 OPTIONS
   --lod N               LOD to export (default 0)
+  --body BODY.dna       merge the character's body DNA: its skeleton is the base, the head DNA's joints are joined by name (shared joints
+                        become one), head meshes are re-skinned onto the merged joint list
   --morphs              also export blend shapes as morph targets (default off: the game does not animate them)
   --body-stub           a head-only DNA has no arms/legs, so the game cannot drive it: add the missing UE5 body JOINTS
                         (pelvis, spine_01..05, neck, clavicle/upperarm/lowerarm/hand, thigh/calf/foot/ball) scaled to the head
@@ -317,6 +320,44 @@ def read_dna(path: str, libdir: Optional[str], lod: int, morphs: bool, unit: Opt
     if not dna.Status.isOk():
         raise SystemExit('cannot read %s: %s' % (path, dna.Status.get().message))
     return model_from_reader(reader, dna, lod, morphs, unit, axes)
+
+
+def merge_models(head: DnaModel, body: DnaModel) -> Tuple[DnaModel, dict]:
+    """One character from its two DNA files: the body DNA's skeleton is the base, the head DNA's joints are joined to it BY NAME (a joint both
+    files have - spine_05, neck_01, head ... - is one joint; its transform comes from the body file), head-only joints (the facial rig) are appended
+    under their parents, and the head meshes are re-skinned onto the merged joint list.  Meshes: head first, then body."""
+    for k in ('unit', 'rot_unit', 'axes'):
+        if getattr(head, k) != getattr(body, k):
+            raise SystemExit('the head and body DNA disagree on %s (%s vs %s): not the same export?' % (k, getattr(head, k), getattr(body, k)))
+    out = DnaModel()
+    out.name = '%s + %s' % (head.name or 'head', body.name or 'body')
+    out.unit, out.rot_unit, out.axes, out.lod, out.lod_count = body.unit, body.rot_unit, body.axes, body.lod, max(head.lod_count, body.lod_count)
+    out.joints = [Joint(j.name, j.parent, j.t, j.r) for j in body.joints]
+    idx = {j.name.lower(): i for i, j in enumerate(out.joints)}
+    remap: Dict[int, int] = {}
+    shared = added = 0
+    worst = 0.0
+    for i in topo_order([j.parent for j in head.joints]):
+        j = head.joints[i]
+        k = j.name.lower()
+        if k in idx:
+            remap[i] = idx[k]
+            shared += 1
+            b = out.joints[idx[k]]
+            worst = max(worst, max(abs(a - c) for a, c in zip(j.t, b.t)))
+            continue
+        out.joints.append(Joint(j.name, remap[j.parent] if j.parent >= 0 else -1, j.t, j.r))
+        idx[k] = remap[i] = len(out.joints) - 1
+        added += 1
+    for me in head.meshes:
+        me.influences = [[(remap[a], w) for a, w in inf if a in remap] for inf in me.influences]
+    taken = {m.name for m in head.meshes}
+    for me in body.meshes:
+        if me.name in taken:
+            me.name += '_body'
+    out.meshes = head.meshes + body.meshes
+    out.channel_count = head.channel_count
+    return out, {'shared_joints': shared, 'head_only_joints': added, 'max_shared_translation_difference': round(worst, 4), 'unit': out.unit}
 
 
 def probe(path: str, libdir: Optional[str]) -> None:
@@ -857,10 +898,12 @@ def convert(model: DnaModel, *, morphs: bool = False, body_stub: bool = False, j
     if body_stub:
         out.append(ground_proxy(rig))
     head = rig.index('head')
+    need = ['pelvis', 'spine_01', 'head', 'thigh_l', 'thigh_r', 'calf_l', 'calf_r', 'upperarm_l', 'upperarm_r']
+    missing_for_game = [n for n in need if rig.index(n) < 0]
     info = {
         'dna_name': model.name, 'lod': model.lod, 'unit_in': model.unit, 'axes_in': list(model.axes), 'joint_space': space,
         'joint_fit_m': {k: (None if math.isnan(v) else round(v, 4)) for k, v in fits.items()}, 'euler': euler,
-        'joints': len(rig.names), 'stub_joints': added, 'head_height_m': (round(rig.world[head][1][1], 3) if head >= 0 else None),
+        'joints': len(rig.names), 'stub_joints': added, 'missing_for_game': missing_for_game, 'head_height_m': (round(rig.world[head][1][1], 3) if head >= 0 else None),
         'meshes': {o.name: {'vertices': len(o.pos), 'triangles': len(o.tris) // 3, 'morph_targets': len(o.targets),
                             'vertices_over_influence_limit': int(o.stats['over_limit']), 'winding_flipped': bool(o.stats['flipped'])} for o in out},
     }
@@ -982,7 +1025,7 @@ def _sphere(name: str, center: Vec, radii: Vec, nu: int, nv: int, weigh: Callabl
     return me
 
 
-def synthetic_model(space: str, axes: Tuple[str, str, str], unit: str = 'cm', lod_extra: bool = True, with_morphs: bool = True):
+def synthetic_model(space: str, axes: Tuple[str, str, str], unit: str = 'cm', lod_extra: bool = True, with_morphs: bool = True, reverse_faces: bool = False):
     """A DNA-shaped model: UE5/MetaHuman joint names, head/teeth/eyes/lashes meshes (+ a LOD1 head), 6-8 influences per vertex,
     blend shapes.  Data is written the way a DNA would hold it for the given joint space and axis description."""
     names = [j[0] for j in _SYN_JOINTS]
@@ -1053,6 +1096,9 @@ def synthetic_model(space: str, axes: Tuple[str, str, str], unit: str = 'cm', lo
                     ids.append(pi)
                     de.append(((0.2 * (5 - d)) * (1 if ci != 2 else p[0] / 8), -0.5 * (5 - d) * (1 if ci == 0 else 0.2), 0.1 * (5 - d)))
             h.targets.append(Target(ci, c, ids, de))
+    if reverse_faces:   # the opposite face order: the converter must leave it alone where it already agrees with the normals
+        for me in meshes:
+            me.faces = [list(reversed(f)) for f in me.faces]
     # mirror into the DNA frame if requested (positions, normals, morph deltas); winding indices stay as they are
     if flip_x:
         for me in meshes:
@@ -1164,6 +1210,10 @@ def verify_glb(data: bytes, expect_morphs: bool, label: str) -> List[Tuple[str, 
         nz = [sum(1 for w in wv[4 * v:4 * v + 4] if w > 0) for v in range(n)]
         ck('%s: weights sum to 1, <= 4 influences, joint indices valid' % mname,
            max(abs(s - 1) for s in sums) < 1e-5 and max(nz) <= 4 and max(jv) < len(jn), 'max |sum-1| %.1e, max influences %d' % (max(abs(s - 1) for s in sums), max(nz)))
+        want = {'teeth_lod0_mesh': 'FACIAL_C_Jaw', 'eyeLeft_lod0_mesh': 'FACIAL_L_Eye', 'eyeRight_lod0_mesh': 'FACIAL_R_Eye'}.get(mname)
+        if want:
+            dom = {doc['nodes'][jn[int(jv[4 * v + max(range(4), key=lambda k: wv[4 * v + k])])]]['name'] for v in range(n)}
+            ck('%s: every vertex is dominated by the joint %s' % (mname, want), dom == {want}, str(sorted(dom)))
         # bind pose: sum w * (W_j * IBM_j * v) == v
         worst = 0.0
         for v in range(0, n, max(1, n // 200)):
@@ -1224,18 +1274,34 @@ def verify_glb(data: bytes, expect_morphs: bool, label: str) -> List[Tuple[str, 
     return res
 
 
+def _reduce(jts: List[Joint], meshes: List[Mesh], keep: set) -> List[Joint]:
+    """A skeleton with only the joints in `keep` (a removed joint's children go to its nearest kept ancestor); mesh influences are re-indexed in place."""
+    keep_idx = [i for i, j in enumerate(jts) if j.name in keep]
+    remap = {old: new for new, old in enumerate(keep_idx)}
+    out = []
+    for old in keep_idx:
+        j = jts[old]
+        p = j.parent
+        while p >= 0 and p not in remap:
+            p = jts[p].parent
+        out.append(Joint(j.name, remap[p] if p >= 0 else -1, j.t, j.r))
+    for me in meshes:
+        me.influences = [[(remap[a], w) for a, w in inf if a in remap] for inf in me.influences]
+    return out
+
+
 def selftest(keep: Optional[str]) -> int:
     import tempfile
     results: List[Tuple[str, bool, str]] = []
     variants = [
-        ('A world-space joints, axes left/up/front', 'world', ('left', 'up', 'front'), {}),
-        ('B parent-relative joints, axes left/up/front', 'local', ('left', 'up', 'front'), {}),
-        ('C world-space, mirrored axes right/up/front, metres', 'world', ('right', 'up', 'front'), {'unit': 'm'}),
+        ('A world-space joints, axes left/up/front', 'world', ('left', 'up', 'front'), {'flip': True}),
+        ('B parent-relative joints, axes left/up/front, faces in the other order', 'local', ('left', 'up', 'front'), {'reverse': True, 'flip': False}),
+        ('C world-space, mirrored axes right/up/front, metres', 'world', ('right', 'up', 'front'), {'unit': 'm', 'flip': None}),
     ]
     out_dir = keep or tempfile.mkdtemp(prefix='dna2glb-selftest-')
     os.makedirs(out_dir, exist_ok=True)
     for label, space, axes, extra in variants:
-        jts, meshes, lod_of, channels = synthetic_model(space, axes)
+        jts, meshes, lod_of, channels = synthetic_model(space, axes, reverse_faces=extra.get('reverse', False))
         unit = extra.get('unit', 'cm')
         if unit == 'm':   # the same data, written in metres
             for j in jts:
@@ -1250,23 +1316,16 @@ def selftest(keep: Optional[str]) -> int:
             glb, info = convert(model, morphs=morphs)
             tag = '%s%s' % (label.split()[0], '+morphs' if morphs else '')
             results.append((tag + ': joint space detected as %s' % space, info['joint_space'] == space, json.dumps(info['joint_fit_m'])))
+            flips = [v['winding_flipped'] for v in info['meshes'].values()]
+            if extra.get('flip') is not None:
+                results.append((tag + ': winding %s' % ('corrected (the file order disagrees with the normals)' if extra['flip'] else 'left alone (the file order already agrees)'),
+                                all(f == extra['flip'] for f in flips), str(flips)))
             results += verify_glb(glb, morphs, tag)
             with open(os.path.join(out_dir, 'selftest-%s.glb' % tag.replace('+', '-')), 'wb') as f:
                 f.write(glb)
     # body stub on a head-only skeleton
     jts, meshes, lod_of, channels = synthetic_model('world', ('left', 'up', 'front'))
-    keep_names = {'root', 'spine_05', 'neck_01', 'neck_02', 'head'} | {j.name for j in jts if j.name.startswith('FACIAL')}
-    keep_idx = [i for i, j in enumerate(jts) if j.name in keep_names]
-    remap = {old: new for new, old in enumerate(keep_idx)}
-    jts2 = []
-    for old in keep_idx:
-        j = jts[old]
-        p = j.parent
-        while p >= 0 and p not in remap:
-            p = jts[p].parent
-        jts2.append(Joint(j.name, remap[p] if p >= 0 else -1, j.t, j.r))
-    for me in meshes:
-        me.influences = [[(remap[j], w) for j, w in inf if j in remap] for inf in me.influences]
+    jts2 = _reduce(jts, meshes, {'root', 'spine_05', 'neck_01', 'neck_02', 'head'} | {j.name for j in jts if j.name.startswith('FACIAL')})
     reader = FakeReader(jts2, meshes, lod_of, channels, 'cm', ('left', 'up', 'front'))
     glb, info = convert(model_from_reader(reader, FakeDnaModule), body_stub=True)
     doc, _ = read_glb(glb)
@@ -1281,6 +1340,43 @@ def selftest(keep: Optional[str]) -> int:
     results.append(('stub: invisible ground proxy makes the mesh bounds span floor to head (the game measures height from them)', len(pm) == 1 and abs(lo) < 0.01 and 1.6 < hi < 1.9,
                     'y %.3f .. %.3f m' % (lo, hi)))
     with open(os.path.join(out_dir, 'selftest-stub.glb'), 'wb') as f:
+        f.write(glb)
+    # a character's head DNA and body DNA, merged
+    jts, meshes, lod_of, channels = synthetic_model('world', ('left', 'up', 'front'))
+    idx = {j.name: i for i, j in enumerate(jts)}
+    spine = ['spine_01', 'spine_02', 'spine_03', 'spine_04', 'spine_05']
+
+    def torso_w(p: Vec) -> List[Tuple[int, float]]:
+        near = sorted(spine, key=lambda n: abs(p[1] - jts[idx[n]].t[1]))[:2]
+        a, b = (1.0 / (0.5 + abs(p[1] - jts[idx[n]].t[1])) for n in near)
+        return [(idx[near[0]], a / (a + b)), (idx[near[1]], b / (a + b))]
+    torso = _sphere('body_lod0_mesh', (0, 122, 0), (16, 28, 9), 20, 14, torso_w)
+    facial = {j.name for j in jts if j.name.startswith('FACIAL')}
+    head_keep = {'root', 'spine_05', 'neck_01', 'neck_02', 'head'} | facial
+    body_keep = {j.name for j in jts} - facial
+    head_j = _reduce(jts, meshes, head_keep)
+    body_j = _reduce(jts, [torso], body_keep)
+    rh = FakeReader(head_j, meshes, lod_of, channels, 'cm', ('left', 'up', 'front'))
+    rb = FakeReader(body_j, [torso], [0], [], 'cm', ('left', 'up', 'front'))
+    merged, minfo = merge_models(model_from_reader(rh, FakeDnaModule), model_from_reader(rb, FakeDnaModule))
+    glb, info = convert(merged)
+    results += verify_glb(glb, False, 'merged')
+    doc, binb = read_glb(glb)
+    nm = [n['name'] for n in doc['nodes']]
+    par = {c: pi for pi, n in enumerate(doc['nodes']) for c in n.get('children', [])}
+
+    def chain(name: str) -> List[str]:
+        out, i = [], nm.index(name)
+        while i in par:
+            i = par[i]
+            out.append(nm[i])
+        return out
+    results.append(('merged: head DNA joints join the body skeleton by name (5 shared, 8 facial added, no duplicates)',
+                    minfo['shared_joints'] == 5 and minfo['head_only_joints'] == 8 and len(set(n.lower() for n in nm[:info['joints']])) == info['joints'] == 34, json.dumps(minfo)))
+    results.append(('merged: facial rig hangs under head -> neck -> spine of the BODY skeleton', chain('FACIAL_C_Jaw')[:6] == ['FACIAL_C_FacialRoot', 'head', 'neck_02', 'neck_01', 'spine_05', 'spine_04'], ' > '.join(chain('FACIAL_C_Jaw')[:7])))
+    meshes_out = [m['name'] for m in doc['meshes']]
+    results.append(('merged: head meshes and the body mesh are separate named meshes', meshes_out[:5] == ['head_lod0_mesh', 'teeth_lod0_mesh', 'eyeLeft_lod0_mesh', 'eyeRight_lod0_mesh', 'eyelashes_lod0_mesh'] and 'body_lod0_mesh' in meshes_out, ', '.join(meshes_out)))
+    with open(os.path.join(out_dir, 'selftest-merged.glb'), 'wb') as f:
         f.write(glb)
     # API probe on the test double
     miss, opt = check_api(reader)
@@ -1301,6 +1397,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     ap.add_argument('input', nargs='?')
     ap.add_argument('output', nargs='?')
     ap.add_argument('--lod', type=int, default=0)
+    ap.add_argument('--body', metavar='BODY.dna', help='the character\'s body DNA: its skeleton is merged with INPUT (the head DNA) into one GLB')
     ap.add_argument('--morphs', action='store_true')
     ap.add_argument('--body-stub', action='store_true')
     ap.add_argument('--joint-space', choices=['auto', 'world', 'local'], default='auto')
@@ -1333,11 +1430,25 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     log('reading %s ...' % a.input)
     model = read_dna(a.input, a.dna_lib, a.lod, a.morphs, a.unit, axes)
     log('%d joints, %d LOD%d meshes, unit %s, axes %s' % (len(model.joints), len(model.meshes), a.lod, model.unit, ','.join(model.axes)))
+    merge_info = None
+    if a.body:
+        log('reading %s ...' % a.body)
+        body = read_dna(a.body, a.dna_lib, a.lod, False, a.unit, axes)
+        log('%d joints, %d LOD%d meshes' % (len(body.joints), len(body.meshes), a.lod))
+        model, merge_info = merge_models(model, body)
+        log('merged: %s' % json.dumps(merge_info))
+        if merge_info['max_shared_translation_difference'] > 0.5 * (1.0 if model.unit == 'cm' else 0.01):
+            log('warning: joints that both files have differ by up to %s %s - are these two DNA files from the same character export?' % (merge_info['max_shared_translation_difference'], model.unit))
     glb, info = convert(model, morphs=a.morphs, body_stub=a.body_stub, joint_space=a.joint_space, euler=a.euler, flip=a.flip_winding, max_inf=a.max_influences)
+    if merge_info:
+        info['merged'] = merge_info
     with open(a.output, 'wb') as f:
         f.write(glb)
     log(json.dumps(info, indent=1))
     log('wrote %s (%.1f MB)' % (a.output, len(glb) / 1048576))
+    if info['missing_for_game']:
+        log('warning: the game cannot drive this skeleton - missing joints: %s.  A DNA may hold the head rig only: add --body-stub (head on an invisible UE5 skeleton, enough for\n'
+            '         faces) or merge this GLB with the body mesh of the same character in optimize.mjs.' % ', '.join(info['missing_for_game']))
     hh = info['head_height_m']
     if hh is not None and not 1.2 < hh < 2.1:
         log('warning: the head joint is at %.2f m - wrong unit (--unit) or axes (--axes), or a DNA that is not a standing human' % hh)
