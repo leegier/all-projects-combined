@@ -303,7 +303,12 @@ export class Story {
     // Harrington leading
     if (this.leading) this.updateLead(dt);
     // lantern
-    if (this.lantern) { const h = this.npcMap.harrington; this.lantern.fx.pos.set(h.pos.x + Math.sin(-h.yaw) * -0.35 + 0.15, h.pos.y + 1.0, h.pos.z + Math.cos(-h.yaw) * 0.35); this.lantern.mesh.position.copy(this.lantern.fx.pos); this.lantern.sp.position.copy(this.lantern.fx.pos); }
+    if (this.lantern) {
+      // carried at his left hip, held a little out from the body so the near field never blows out his coat
+      const h = this.npcMap.harrington, fx = -Math.sin(h.yaw), fz = -Math.cos(h.yaw), rx = -fz, rz = fx;   // forward / right
+      this.lantern.fx.pos.set(h.pos.x + fx * 0.28 - rx * 0.46, h.pos.y + 0.82, h.pos.z + fz * 0.28 - rz * 0.46);
+      this.lantern.mesh.position.copy(this.lantern.fx.pos); this.lantern.sp.position.copy(this.lantern.fx.pos);
+    }
   }
   startCountRun() {
     const g = this.g, r = this.reyes;
@@ -717,11 +722,11 @@ export class Story {
     this.leadIdx = 0; this.leadWait = 0; this.leading = { speed: 1.25 };
     g.outsideMode = 'gold';
     // lantern
-    const mesh = new THREE.Mesh(new THREE.SphereGeometry(0.06, 10, 8), MAT.bulb); g.world.areas.get('tunnel1').group.add(mesh);
-    const fx = g.world.addFixture({ pos: new THREE.Vector3(), color: 0xffb35a, intensity: 9, range: 10, flicker: 0.2, area: null, priority: 3 });
+    const mesh = new THREE.Mesh(new THREE.SphereGeometry(0.045, 10, 8), MAT.bulb); g.world.areas.get('tunnel1').group.add(mesh);
+    const fx = g.world.addFixture({ pos: new THREE.Vector3(), color: 0xffb35a, intensity: 5, range: 9, flicker: 0.2, area: null, priority: 3 });
     fx.area = null;
-    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: g.ctx.candles[0].sp.material.map, color: 0xffb866, transparent: true, opacity: 0.7, depthWrite: false, blending: THREE.AdditiveBlending }));
-    sp.scale.set(1.0, 1.0, 1); g.world.root.add(sp);
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: g.ctx.candles[0].sp.material.map, color: 0xffb866, transparent: true, opacity: 0.5, depthWrite: false, blending: THREE.AdditiveBlending }));
+    sp.scale.set(0.5, 0.5, 1); g.world.root.add(sp);
     this.lantern = { fx, mesh, sp };
   }
   resumeLead() { this.leadWait = 0; }

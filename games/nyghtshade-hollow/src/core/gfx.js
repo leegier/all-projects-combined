@@ -85,7 +85,9 @@ class ViewmodelPass extends RenderPass {
 
 export class Gfx {
   constructor(canvas, { quality = 'high', width = 1280, height = 720 } = {}) {
-    this.q = QUALITY[quality] || QUALITY.high;
+    this.q = { ...(QUALITY[quality] || QUALITY.high) };
+    // URL overrides (capture/perf experiments): ?msaa=2&sm=1024&pool=5
+    { const sp = new URLSearchParams(typeof location !== 'undefined' ? location.search : ''); if (sp.has('msaa')) this.q.samples = +sp.get('msaa'); if (sp.has('sm')) this.q.shadowMap = +sp.get('sm'); if (sp.has('pool')) this.q.pool = +sp.get('pool'); if (sp.has('bloom')) this.q.bloom = sp.get('bloom') !== '0'; }
     this.qualityName = quality;
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, powerPreference: 'high-performance', preserveDrawingBuffer: true });
     renderer.setPixelRatio(this.q.pixelRatio);
@@ -153,7 +155,7 @@ export class LightRig {
     this.lights = [];
     for (let i = 0; i < count; i++) {
       const l = new THREE.PointLight(0xffffff, 0, 16, 2);
-      l.layers.enable(0); l.layers.enable(1);
+      l.layers.enable(0);
       if (i < shadowCount) { l.castShadow = true; l.shadow.mapSize.set(shadowSize, shadowSize); l.shadow.bias = -0.0008; l.shadow.normalBias = 0.03; l.shadow.radius = 3; l.shadow.camera.near = 0.2; l.shadow.camera.far = 22; }
       scene.add(l);
       this.lights.push({ light: l, fx: null, next: null, level: 0 });
@@ -224,7 +226,7 @@ const ShaftMat = (color, intensity) => new THREE.ShaderMaterial({
   uniforms: { color: { value: new THREE.Color(color) }, intensity: { value: intensity }, time: { value: 0 } },
   vertexShader: `varying vec3 vN; varying vec3 vV; varying float vH; void main(){ vec4 mv = modelViewMatrix * vec4(position,1.0); vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz); vH = uv.y; gl_Position = projectionMatrix * mv; }`,
   fragmentShader: `uniform vec3 color; uniform float intensity, time; varying vec3 vN; varying vec3 vV; varying float vH;
-    void main(){ float f = abs(dot(normalize(vN), normalize(vV))); float a = pow(f, 1.6) * smoothstep(0.0, 0.35, vH) * (1.0 - vH * 0.55); a *= 0.85 + 0.15 * sin(time * 0.7 + vH * 9.0); gl_FragColor = vec4(color * a * intensity, 1.0); }`,
+    void main(){ float f = abs(dot(normalize(vN), normalize(vV))); float a = pow(f, 1.6) * smoothstep(0.0, 0.35, vH) * (1.0 - vH * 0.55); a *= 0.85 + 0.15 * sin(time * 0.7 + vH * 9.0); a *= 1.0 - smoothstep(0.7, 1.0, vH); gl_FragColor = vec4(color * a * intensity, 1.0); }`,
 });
 /** Light shaft from `a` (source, small) to `b` (floor, wide). */
 export function lightShaft(a, b, r0, r1, color = 0xbdd6ff, intensity = 0.18) {

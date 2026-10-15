@@ -17,6 +17,7 @@ export class Bot {
     this.gen = this.script();
     this.finished = false; this.steps = 0; this.stuckCount = 0;
     this.targetYaw = null; this.targetPitch = 0; this.lookRate = 5;
+    this.speedLog = [{ step: 0, speed: 1 }];      // capture time-map: playback speed of the recorded video from this sim step on
   }
 
   // ------------------------------------------------------------------ stepping
@@ -40,12 +41,15 @@ export class Bot {
   check(name, ok, detail = '') {
     this.results.push({ name, ok: !!ok, detail, t: +this.g.simTime.toFixed(1), hour: this.g.routine.clock });
     this.log.push({ t: this.g.simTime, msg: (ok ? 'PASS ' : 'FAIL ') + name + (detail ? ' — ' + detail : '') });
+    if (this.annotate) this.g.ui.feed(name + (detail ? ' — ' + detail : ''), !!ok);
     if (typeof console !== 'undefined') console.log('[NH]', ok ? 'PASS' : 'FAIL', name, detail, '@', this.g.simTime.toFixed(1) + 's');
     return ok;
   }
   say(msg) { this.log.push({ t: this.g.simTime, msg }); }
   note(title, text) { if (this.annotate) this.g.ui.caption(title, text); this.log.push({ t: this.g.simTime, msg: `${title}: ${text}`, caption: true }); }
   noteOff() { if (this.annotate) this.g.ui.caption(null); }
+  /** Playback speed of the recorded video from now on (time-lapse for walking/waiting). No effect on the simulation. */
+  speed(v) { const last = this.speedLog[this.speedLog.length - 1]; if (last.speed === v) return; if (last.step === this.steps) last.speed = v; else this.speedLog.push({ step: this.steps, speed: v }); }
 
   // ------------------------------------------------------------------ primitives (generators)
   *wait(sec) { const n = Math.round(sec / STEP); for (let i = 0; i < n; i++) yield; }
@@ -195,14 +199,14 @@ export class Bot {
     yield* this.walk('N7', { radius: 0.5 });
     // walk the length of the hall west→east past the day-room (shows inmates, light, stairs, catwalks)
     this.noteOff();
-    yield* this.walk('H.w2', { radius: 0.8 });
+    this.speed(2); yield* this.walk('H.w2', { radius: 0.8 }); this.speed(1);
     // talk to a day-room inmate (flavour)
     const sit = g.npcs.find((n) => n.id === 'sit0');
     this.note('DIALOGUE', 'Branching dialogue with voice blips; choices cost DC or shift reputation.');
     yield* this.talk('sit0', [], { at: { x: -9.0, z: 0.7 } });
     this.noteOff();
     // drink at the east fountain on the way to the gate
-    yield* this.walk('H.e1', { radius: 1 });
+    this.speed(2); yield* this.walk('H.e1', { radius: 1 }); this.speed(1);
     const thirstBefore = g.survival.thirst;
     yield* this.use(W.interactables.find((i) => i.label && i.label() === 'Drink water' && i.pos.distanceTo(g.ctx.fountainPos) < 0.1), { at: { x: 17.0, z: 3.5 }, radiusOK: 0.5 });
     yield* this.wait(0.3);
@@ -217,6 +221,7 @@ export class Bot {
     this.noteOff();
 
     // ===== 2. to the mess hall =====================================================================
+    this.speed(2);
     yield* this.walk('E.g1', { radius: 0.8, label: 'sally gate 1' });
     yield* this.until(() => !W.doors.get('gate-sally-1').locked, 6, 'gate unlock');
     this.check('sally gates open during CHOW', !W.doors.get('gate-sally-1').locked);
@@ -224,6 +229,7 @@ export class Bot {
     this.note('GUARD AI', 'Guards patrol with vision cones. They only react to what you are not allowed to be doing.');
     yield* this.walk('E.cd', { radius: 0.9, label: 'canteen door' });
     yield* this.walk('C.in', { radius: 0.8, label: 'canteen' });
+    this.speed(1);
     this.check('arrived in the mess hall', g.player.area && g.player.area.name === 'canteen');
     this.noteOff();
     this.note('CHOW + COMMISSARY', 'Free tray, hunger restores. The commissary sells with DC.');
@@ -270,6 +276,7 @@ export class Bot {
     yield* this.walk('C.mop', { radius: 0.6 });
     yield* this.use(st.its.bucket, { radiusOK: 1.0, done: () => st.hasMop });
     this.check('took the mop', st.hasMop);
+    this.speed(2);
     const stainIts = () => W.interactables.filter((i) => i.label && i.label() === 'Mop the spill');
     for (let k = 0; k < 4; k++) {
       const s = st.stainMeshes.filter((x) => !x.clean).sort((a, b) => a.pos.distanceTo(g.player.pos) - b.pos.distanceTo(g.player.pos))[0];
@@ -279,6 +286,7 @@ export class Bot {
       yield* this.use(it, { done: () => s.clean, holdPad: 0.8, look: new THREE.Vector3(s.pos.x, 0.25, s.pos.z) });
       yield* this.until(() => s.clean, 3, 'stain ' + k);
     }
+    this.speed(1);
     yield* this.wait(0.5);
     this.check('mop job complete (+30 DC)', st.flag('jobDone') && eco.balance >= dcBeforeJob + 30, `balance ${eco.balance}`);
     this.noteOff();
@@ -290,9 +298,11 @@ export class Bot {
       this.check('bought the keycard (−60 DC)', inv.has('keycard'));
     }
     this.note('STEALTH', 'Three ways into Records — keycard, shim, or a bribe. Cameras and guards watch.');
+    this.speed(2);
     yield* this.walk('E.cd', { radius: 0.9 });
     yield* this.walk('E.id', { radius: 0.9, label: 'intake arch' });
     yield* this.walk('I.a', { radius: 0.8, label: 'intake desk' });
+    this.speed(1);
     this.check('walked into Intake lobby unchallenged (not restricted)', g.alert.level === 0 && g.player.area.name === 'intake');
     const pr = st.npcMap.pruitt;
     if (route === 'bribe') {
@@ -364,6 +374,7 @@ export class Bot {
     this.pulse('journal'); yield; yield* this.wait(0.3); this.pulse('pause'); yield; yield; yield* this.wait(0.4);
     this.check('journal closes', !g.ui.panelOpen);
     this.noteOff();
+    this.speed(3);
     yield* this.walk('E.cd', { radius: 1 });
     yield* this.walk('E.g2', { radius: 1 });
     yield* this.walk('H.e1', { radius: 1.2, run: true });
@@ -371,6 +382,7 @@ export class Bot {
     yield* this.walk('H.w1', { radius: 1.2 });
     yield* this.walk('W.g1', { radius: 1 });
     yield* this.walk('W.c4', { radius: 1, label: 'west corridor' });
+    this.speed(1);
     this.note('TIME FLOW', 'The chapel only opens at 13:00 — fast-forward the clock.');
     yield* this.fastForward(() => R.chapelOpen(), 500, 'chapel open');
     this.check('chapel unlocks at 13:00 (routine policy)', R.chapelOpen() && !g.world.doors.get('door-chapel').locked);
@@ -418,7 +430,9 @@ export class Bot {
     yield* this.dialogue();
     this.check('tunnel rules scene complete', st.flag('tunnelRulesDone'));
     this.noteOff();
+    this.speed(2);
     yield* follow(this, () => g.mode === 'dialogue' || (g.player.area && g.player.area.name === 'outside' && st.flag('endStarted')), 300);
+    this.speed(1);
     this.check('emerged into the forest', true);
     this.note('THE CLEARING', 'Old oak, a crate, a blanket — four hours of being unowned.');
     yield* this.dialogue();

@@ -46,6 +46,9 @@ export class Viewmodel {
     const ink = inkTexture();
     const skin = new THREE.MeshStandardMaterial({ map: ink, normalMap: TEX.skinMid.normalMap, normalScale: new THREE.Vector2(0.6, 0.6), roughness: 0.58, fog: false });
     const skinPlain = new THREE.MeshStandardMaterial({ color: 0xa87860, normalMap: TEX.skinMid.normalMap, normalScale: new THREE.Vector2(0.6, 0.6), roughness: 0.55, fog: false });
+    const skinHand = new THREE.MeshStandardMaterial({ color: 0xb4846c, roughness: 0.56, fog: false });
+    const skinJoint = new THREE.MeshStandardMaterial({ color: 0xa87763, roughness: 0.6, fog: false });
+    const nailMat = new THREE.MeshStandardMaterial({ color: 0xd9b8a6, roughness: 0.35, fog: false });
     const sleeve = new THREE.MeshStandardMaterial({ color: 0x9a5a22, roughness: 0.95, fog: false });
     const hem = new THREE.MeshStandardMaterial({ color: 0x6c3d15, roughness: 0.95, fog: false });
     const mk = (side) => {
@@ -55,25 +58,41 @@ export class Viewmodel {
       const lg = new THREE.LatheGeometry(prof, 20); lg.rotateX(-Math.PI / 2);
       const fore = new THREE.Mesh(lg, skin); g.add(fore);
       // rolled sleeve at the elbow end
-      const sl = new THREE.Mesh(new THREE.CylinderGeometry(0.074, 0.07, 0.085, 22), sleeve); sl.rotation.x = Math.PI / 2; sl.position.z = -0.01; g.add(sl);
-      const rim = new THREE.Mesh(new THREE.TorusGeometry(0.072, 0.012, 8, 24), hem); rim.position.z = -0.055; g.add(rim);
-      // hand: a clenched fist seen from behind/above — back of hand, four knuckles, curled proximal phalanges, wrapped thumb
+      const sl = new THREE.Mesh(new THREE.CylinderGeometry(0.0695, 0.0665, 0.07, 24), sleeve); sl.rotation.x = Math.PI / 2; sl.position.z = -0.035; g.add(sl);
+      const rim = new THREE.Mesh(new THREE.TorusGeometry(0.0665, 0.0105, 10, 28), hem); rim.position.z = -0.07; g.add(rim);
+      // hand: relaxed, slightly curled, seen from behind/above — tapered back of hand, three-segment fingers, two-segment thumb
       const hand = new THREE.Group(); hand.position.z = -0.31; g.add(hand);
-      const back = new THREE.Mesh(new THREE.SphereGeometry(1, 20, 14), skinPlain); back.scale.set(0.047, 0.027, 0.062); back.position.set(0, 0.004, -0.048); hand.add(back);
-      const wristBlend = new THREE.Mesh(new THREE.SphereGeometry(1, 16, 12), skin); wristBlend.scale.set(0.04, 0.034, 0.03); wristBlend.position.set(0, 0, -0.008); hand.add(wristBlend);
+      const backA = new THREE.Mesh(new THREE.SphereGeometry(1, 22, 16), skinHand); backA.scale.set(0.043, 0.0215, 0.056); backA.position.set(0, 0.002, -0.05); hand.add(backA);
+      const backB = new THREE.Mesh(new THREE.SphereGeometry(1, 16, 12), skinHand); backB.scale.set(0.0345, 0.026, 0.03); backB.position.set(0, 0.001, -0.012); hand.add(backB);
+      const fingerLen = [0.071, 0.079, 0.074, 0.058], curls = [[-0.34, -0.62, -0.42], [-0.3, -0.58, -0.4], [-0.38, -0.66, -0.44], [-0.46, -0.74, -0.5]];
       for (let f = 0; f < 4; f++) {
-        const fx = (f - 1.5) * 0.0215 * -side * -1, big = 1 - Math.abs(f - 1.5) * 0.06;
-        const kn = new THREE.Mesh(new THREE.SphereGeometry(0.0158 * big, 14, 10), skinPlain); kn.position.set(fx, 0.014, -0.098 + Math.abs(f - 1.5) * 0.004); hand.add(kn);
-        // proximal phalanx pitched down in front of the knuckle
-        const l1 = 0.04 * big;
-        const p1 = new THREE.Mesh(new THREE.CapsuleGeometry(0.0128 * big, l1, 4, 10), skinPlain); p1.position.set(fx, 0.0, -0.112 + Math.abs(f - 1.5) * 0.004); p1.rotation.x = -0.35; p1.position.y = -0.006; p1.position.z -= 0.012;
-        hand.add(p1);
-        const p2 = new THREE.Mesh(new THREE.CapsuleGeometry(0.0118 * big, 0.028, 4, 10), skinPlain); p2.position.set(fx, -0.032, -0.108 + Math.abs(f - 1.5) * 0.004); p2.rotation.x = -1.2; hand.add(p2);
-        // knuckle wear
-        const scar = new THREE.Mesh(new THREE.SphereGeometry(0.0062, 8, 6), hem); scar.position.set(fx, 0.0295, -0.098 + Math.abs(f - 1.5) * 0.004); scar.scale.set(1, 0.4, 1); if (f % 2 === 0) hand.add(scar);
+        const fx = (f - 1.5) * 0.0215 * side, L = fingerLen[f], r0 = 0.0107 - Math.abs(f - 1.5) * 0.0006;
+        const base = new THREE.Group(); base.position.set(fx, 0.006, -0.098 + Math.abs(f - 1.5) * 0.004); hand.add(base);
+        base.rotation.y = side * (f - 1.5) * -0.045;                       // fan the fingers slightly
+        let parent = base;
+        const knuckle = new THREE.Mesh(new THREE.SphereGeometry(r0 * 1.12, 12, 9), skinHand); parent.add(knuckle);
+        const seg = [0.44, 0.33, 0.23];
+        for (let k = 0; k < 3; k++) {
+          const len = L * seg[k], rad = r0 * (1 - k * 0.1);
+          const j = new THREE.Group(); j.rotation.x = curls[f][k]; parent.add(j);
+          const cap = new THREE.Mesh(new THREE.CapsuleGeometry(rad, Math.max(0.004, len - rad * 1.6), 4, 10), skinHand); cap.rotation.x = Math.PI / 2; cap.position.z = -len / 2; j.add(cap);
+          const nxt = new THREE.Group(); nxt.position.z = -len; j.add(nxt);
+          if (k < 2) { const jt = new THREE.Mesh(new THREE.SphereGeometry(rad * 1.04, 10, 8), skinJoint); jt.position.z = -len; j.add(jt); }
+          else { const nail = new THREE.Mesh(new THREE.SphereGeometry(1, 10, 8), nailMat); nail.scale.set(rad * 0.82, rad * 0.28, len * 0.42); nail.position.set(0, rad * 0.78, -len * 0.55); j.add(nail); }
+          parent = nxt;
+        }
       }
-      const th = new THREE.Mesh(new THREE.CapsuleGeometry(0.0148, 0.052, 4, 10), skinPlain); th.position.set(-side * 0.047, 0.004, -0.078); th.rotation.set(-1.25, 0, side * 0.35); hand.add(th);
-      const thTip = new THREE.Mesh(new THREE.SphereGeometry(0.0138, 10, 8), skinPlain); thTip.position.set(-side * 0.038, -0.008, -0.108); hand.add(thTip);
+      const thumb = new THREE.Group(); thumb.position.set(-side * 0.036, -0.002, -0.052); thumb.rotation.set(-0.12, side * -0.38, side * 0.55); hand.add(thumb);
+      let tp = thumb;
+      for (let k = 0; k < 2; k++) {
+        const len = k === 0 ? 0.04 : 0.034, rad = k === 0 ? 0.0132 : 0.0118;
+        const j = new THREE.Group(); j.rotation.x = k === 0 ? -0.1 : -0.34; tp.add(j);
+        const cap = new THREE.Mesh(new THREE.CapsuleGeometry(rad, Math.max(0.004, len - rad * 1.6), 4, 10), skinHand); cap.rotation.x = Math.PI / 2; cap.position.z = -len / 2; j.add(cap);
+        const nxt = new THREE.Group(); nxt.position.z = -len; j.add(nxt);
+        if (k === 0) { const jt = new THREE.Mesh(new THREE.SphereGeometry(rad * 1.05, 10, 8), skinJoint); jt.position.z = -len; j.add(jt); }
+        else { const nail = new THREE.Mesh(new THREE.SphereGeometry(1, 10, 8), nailMat); nail.scale.set(rad * 0.8, rad * 0.28, len * 0.42); nail.position.set(0, rad * 0.8, -len * 0.55); j.add(nail); }
+        tp = nxt;
+      }
       this.root.add(g);
       g.userData.hand = hand;
       return g;
@@ -91,6 +110,7 @@ export class Viewmodel {
     const head = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.05, 0.1), new THREE.MeshStandardMaterial({ color: 0xcfc7b0, roughness: 1, fog: false })); head.position.y = -0.74; this.mop.add(head);
     this.mop.visible = false; this.root.add(this.mop);
     this.paper = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.005, 0.28), new THREE.MeshStandardMaterial({ color: 0xd8d0b4, roughness: 0.9, fog: false })); this.paper.visible = false; this.root.add(this.paper);
+    this.key = new THREE.PointLight(0xffffff, 0, 4, 2); this.key.position.set(0, 0.3, 0.1); this.key.layers.set(1); this.root.add(this.key);
     this.root.traverse((o) => o.layers.set(1));
     this.act = 'none'; this.actT = 0; this.visible = true; this.reach = 0;
     this.pose = { L: [0, 0, 0, 0, 0, 0], R: [0, 0, 0, 0, 0, 0] };
@@ -104,8 +124,8 @@ export class Viewmodel {
   }
   restPose(walkX, walkY, swing) {
     return {
-      L: [-0.255 + walkX, -0.345 + walkY, -0.215 + swing * 0.4, 0.42 + swing * 0.5, -0.2, 0.03],
-      R: [0.255 - walkX, -0.345 + walkY, -0.215 - swing * 0.4, 0.42 - swing * 0.5, 0.2, -0.03],
+      L: [-0.275 + walkX, -0.385 + walkY, -0.2 + swing * 0.4, 0.4 + swing * 0.5, -0.24, 0.03],
+      R: [0.275 - walkX, -0.385 + walkY, -0.2 - swing * 0.4, 0.4 - swing * 0.5, 0.24, -0.03],
     };
   }
   /** act: 'none' | 'reach' | 'hold' | 'mop' | 'tray' | 'lift' | 'eat' | 'paper' | 'shim' */
@@ -114,6 +134,11 @@ export class Viewmodel {
     this.root.visible = this.visible && g.mode !== 'title' && g.mode !== 'dialogue' && !(g.cine && !g.cine.showArms);
     if (!this.root.visible) return;
     this.actT += dt;
+    // key light for the hands: aggregate of the rig lights with the near field clamped, so a fixture right above the camera never blows them out
+    { const cam = g.gfx.camera.position; let r = 0, gg = 0, b = 0, e = 0;
+      for (const s of g.rig.lights) { const l = s.light; if (l.intensity < 0.01) continue; const d2 = Math.max(5, l.position.distanceToSquared(cam)), k = l.intensity / d2; r += l.color.r * k; gg += l.color.g * k; b += l.color.b * k; e += k; }
+      if (e > 1e-4) this.key.color.setRGB(r / e, gg / e, b / e);
+      this.key.intensity = 0.3 * Math.min(e, 2.0); }
     const bob = p.bobAmp, ph = p.bobPhase;
     const sprint = p.sprinting ? 1 : 0;
     const crouch = p.crouch;

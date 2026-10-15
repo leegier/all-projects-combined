@@ -39,9 +39,12 @@ export class AudioEngine {
     this.rng = mulberry32(seed);
     this.log = [];                                 // [{t,type,...}] for the capture mixer
     this.master = ctx.createGain(); this.master.gain.value = 0.9;
+    const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 32; hp.Q.value = 0.6;      // nothing useful below this, it only eats headroom
     const comp = ctx.createDynamicsCompressor();
-    comp.threshold.value = -16; comp.ratio.value = 4; comp.attack.value = 0.01; comp.release.value = 0.25;
-    this.master.connect(comp); comp.connect(ctx.destination);
+    comp.threshold.value = -18; comp.ratio.value = 4; comp.attack.value = 0.01; comp.release.value = 0.25;
+    const lim = ctx.createDynamicsCompressor();                                                                  // brick-wall-ish limiter so stacked one-shots never clip
+    lim.threshold.value = -3; lim.knee.value = 0; lim.ratio.value = 20; lim.attack.value = 0.002; lim.release.value = 0.12;
+    this.master.connect(hp); hp.connect(comp); comp.connect(lim); lim.connect(ctx.destination);
     this.sfxBus = ctx.createGain(); this.sfxBus.gain.value = 0.9; this.sfxBus.connect(this.master);
     this.musicBus = ctx.createGain(); this.musicBus.gain.value = 0.55; this.musicBus.connect(this.master);
     this.ambBus = ctx.createGain(); this.ambBus.gain.value = 0.8; this.ambBus.connect(this.master);
@@ -72,7 +75,7 @@ export class AudioEngine {
     };
     this.room = loop(this.pink, this.ambBus, { f: 380, g: 0.22 });
     this.wind = loop(this.pink, this.ambBus, { f: 700, type: 'bandpass', q: 0.5, g: 0.0 });
-    this.rumble = loop(this.brown, this.ambBus, { f: 90, g: 0.12 });
+    this.rumble = loop(this.brown, this.ambBus, { f: 90, g: 0.08 });
     // fluorescent hum
     const hum = c.createGain(); hum.gain.value = 0.028; hum.connect(this.ambBus);
     for (const f of [100, 200, 300]) { const o = c.createOscillator(); o.type = f === 100 ? 'sawtooth' : 'sine'; o.frequency.value = f; const gg = c.createGain(); gg.gain.value = f === 100 ? 0.4 : 0.2; o.connect(gg); gg.connect(hum); o.start(t); }
@@ -110,7 +113,7 @@ export class AudioEngine {
     this.room.fl.frequency.setTargetAtTime(tunnel ? 160 : name === 'hall' ? 420 : 320, t, tc);
     this.wind.gn.gain.setTargetAtTime(outdoor ? 0.22 : 0.0, t, 1.0);
     this.humGain.gain.setTargetAtTime(outdoor || tunnel || name === 'chapel' ? 0 : name === 'hall' ? 0.03 : 0.022, t, tc);
-    this.rumble.gn.gain.setTargetAtTime(outdoor ? 0.02 : tunnel ? 0.2 : 0.11, t, tc);
+    this.rumble.gn.gain.setTargetAtTime(outdoor ? 0.015 : tunnel ? 0.12 : 0.07, t, tc);
     this.verbGain.gain.setTargetAtTime(outdoor ? 0.15 : 0.35 + reverb * 0.5, t, tc);
     this.log.push({ t, type: 'area', name });
   }

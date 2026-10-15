@@ -1,5 +1,6 @@
 // Entry point: content advisory (25 s, pre-loads textures/systems) → title → game.
 import { Game } from './game.js';
+import { installCapture } from './capture.js';
 import { Bot } from './bot/bot.js';
 
 const q = new URLSearchParams(location.search);
@@ -42,7 +43,8 @@ game.init((p, name) => { ui.el('u-load').style.width = (p * 100).toFixed(0) + '%
   if (q.has('manual')) game.manual = true;
   game.start();
   if (q.has('bot')) { window.NH_BOT = game.bot = new Bot(game, { route: q.get('bot') || 'shim', annotate: q.has('annotate'), hurry: q.has('hurry') }); }
-  if (q.has('bot') && !q.has('nostart')) { clearInterval(tick); ui.show('u-disc', false); game.toTitle(); game.newGame(); }
+  if (q.has('capture')) installCapture(game, ui);
+  if (q.has('bot') && !q.has('nostart') && !q.has('capture')) { clearInterval(tick); ui.show('u-disc', false); game.toTitle(); game.newGame(); }
   if (q.has('auto') || q.has('bot') || q.has('capture')) { window.NH_READY = true; }
 }).catch((e) => { console.error(e); ui.el('u-cnt').textContent = 'Error: ' + e.message; window.NH_ERROR = e.stack || String(e); });
 

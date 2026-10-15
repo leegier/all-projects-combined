@@ -9,7 +9,7 @@ export function makeIntro(g) {
   return {
     dur: 34, letter: true, skippable: true, showArms: false,
     shots: [
-      T(0, 8.5, { p: [-132, 19, -72], l: [-72, 8, -14], fov: 52 }, { p: [-104, 12.5, -44], l: [-70, 8, -14], fov: 44 }, { area: 'outside', outside: true, env: 'outsideNight' }),
+      T(0, 8.5, { p: [-126, 25, -66], l: [-70, 7, -12], fov: 50 }, { p: [-103, 17.5, -46], l: [-70, 8.5, -13], fov: 42 }, { area: 'outside', outside: true, env: 'outsideNight' }),
       T(8.5, 17.5, { p: [-15.5, 1.72, 0.6], l: [-1, 2.0, -3.5], fov: 68 }, { p: [-5.5, 1.66, -1.4], l: [3.0, 1.7, -5.8], fov: 60 }, { area: 'hall', outside: false, env: 'hall' }),
       T(17.5, 24.2, { p: [0.52, 0.93, -9.42], l: [0.62, 1.7, -7.2], fov: 72 }, { p: [0.55, 0.96, -9.36], l: [0.9, 1.2, -6.2], fov: 68 }),
       T(24.2, 34, { p: [0.55, 0.96, -9.36], l: [0.9, 1.2, -6.2], fov: 68 }, { p: [0.95, 1.84, -8.0], l: [1.5, 1.7, -4.0], fov: 72 }),
@@ -36,7 +36,7 @@ export function makeIntro(g) {
     ],
     tick(g, t) {
       // eyelids: closed → slow blink → open; blur clears as they focus
-      if (t < 17.5) { g.eyelid = 1; g.blur = 1; return; }
+      if (t < 17.5) { g.eyelid = 0; g.blur = 0; return; }
       const k = t - 17.5;
       let e = 1;
       if (k < 1.2) e = 1; else if (k < 2.4) e = 1 - smoothstep(1.2, 2.4, k) * 0.7; else if (k < 3.0) e = 0.3 + smoothstep(2.4, 3.0, k) * 0.7; else if (k < 4.4) e = 1 - smoothstep(3.0, 4.4, k); else e = 0;
@@ -108,9 +108,12 @@ export function makeEnding(g) {
   return {
     dur: 40, letter: true, showArms: false, skippable: false,
     shots: [
-      { t0: 0, t1: 10, from: { p: [-99.0, hy(-99, -29, 1.5), -28.6], l: [-103.0, hy(-103, -32.4, 0.7), -32.4], fov: 52 }, to: { p: [-99.6, hy(-99.6, -29.8, 1.15), -29.6], l: [-103.0, hy(-103, -32.4, 0.75), -32.4], fov: 46 } },
-      { t0: 10, t1: 22, from: { p: [-99.6, hy(-99.6, -29.8, 1.15), -29.6], l: [-103.0, hy(-103, -32.4, 0.75), -32.4], fov: 46 }, to: { p: [-93.0, hy(-93, -22, 4.5), -22.0], l: [-103.5, hy(-103, -33, 2.4), -33.0], fov: 40 } },
-      { t0: 22, t1: 40, from: { p: [-93.0, hy(-93, -22, 4.5), -22.0], l: [-103.5, hy(-103, -33, 2.4), -33.0], fov: 40 }, to: { p: [-86.0, hy(-86, -15.5, 8), -15.0], l: [-104, hy(-104, -34, 5.5), -34.0], fov: 38 } },
+      // 1: eye level from the path side, slow push-in on the two men under the oak
+      { t0: 0, t1: 11, from: { p: [-98.4, hy(-98.4, -28.4, 1.5), -28.4], l: [-103.0, hy(-103, -32.4, 0.95), -32.4], fov: 40 }, to: { p: [-99.7, hy(-99.7, -29.7, 1.3), -29.7], l: [-103.0, hy(-103, -32.4, 0.95), -32.4], fov: 34 } },
+      // 2: from the sunlit side, low, drifting left; the glare of the low sun sits behind the oak
+      { t0: 11, t1: 24, from: { p: [-97.0, hy(-97, -39, 3.0), -39.0], l: [-103.0, hy(-103, -32.6, 0.9), -32.6], fov: 38 }, to: { p: [-95.4, hy(-95.4, -37.6, 2.3), -37.6], l: [-103.2, hy(-103, -32.6, 1.25), -32.6], fov: 33 } },
+      // 3: from behind them, rising and drawing back over the clearing toward the prison in the haze
+      { t0: 24, t1: 40, from: { p: [-108.5, hy(-108.5, -30.5, 1.1), -30.5], l: [-102.8, hy(-103, -32.4, 1.05), -32.4], fov: 40 }, to: { p: [-113.5, hy(-113.5, -27.0, 5.2), -27.0], l: [-97.5, hy(-98, -28.5, 2.6), -28.5], fov: 48 } },
     ],
     onStart(g) {
       g.audio && g.audio.musicTo('finale');

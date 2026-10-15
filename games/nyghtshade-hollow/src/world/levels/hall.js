@@ -244,7 +244,7 @@ export function buildHall(world, ctx) {
     if (Math.abs(lx) < 3 && Math.abs(lz) < 3 && Math.abs(lx) < 4.5 && Math.abs(lz) < 2.6) continue;
     const fx = hangingTube(world, area, B, { x: lx, y: 7.7, z: lz, len: 1.6, along: 'x', intensity: 140, range: 17, flicker: Math.abs(lx) > 12 ? 0.6 : 0 });
     fx.pos.y = 6.7;
-    const sp = glowSprite(new THREE.Vector3(lx, 7.62, lz), 3.2, 0xdff4ec, 0.55);
+    const sp = glowSprite(new THREE.Vector3(lx, 7.62, lz), 2.3, 0xdff4ec, 0.42);
     area.group.add(sp); fx.sprite = sp;
     // hanging chains
     B.cyl(lx - 0.7, 8.4, lz, 0.01, 0.01, 1.6, 'steel', { seg: 4 }); B.cyl(lx + 0.7, 8.4, lz, 0.01, 0.01, 1.6, 'steel', { seg: 4 });
@@ -257,7 +257,7 @@ export function buildHall(world, ctx) {
     const lx = i * 7.2, lz = side * 4.75;
     const fx = hangingTube(world, area, B, { x: lx, y: 3.2, z: lz, len: 1.1, along: 'x', intensity: 26, range: 8 });
     fx.pos.y = 2.9;
-    area.group.add(glowSprite(new THREE.Vector3(lx, 3.14, lz), 1.8, 0xdff4ec, 0.4));
+    area.group.add(glowSprite(new THREE.Vector3(lx, 3.14, lz), 1.4, 0xdff4ec, 0.3));
     B.quad(lx, 0.02, lz, 5, 2.5, '+y', 'dPool', { tint: 0xaaaaaa });
   }
   // cell-front wall lamps (emissive only)

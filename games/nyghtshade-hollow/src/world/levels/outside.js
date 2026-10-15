@@ -9,6 +9,20 @@ import { mulberry32, smoothstep, clamp, lerp } from '../../util.js';
 import { buildBroadleaf, buildSpruce, leafClusterTexture, spruceTexture, grassTexture, fernTexture, tuftGeometry } from '../foliage.js';
 import { lightShaft } from '../../core/gfx.js';
 
+
+/** Split a big instance list into spatial cells (own bounding spheres) so frustum culling works for the camera and the shadow passes. */
+function chunkedInstances(g, geo, mat, items, cell, { cast = false, receive = false } = {}) {
+  const cells = new Map();
+  for (const it of items) { const k = Math.floor(it.x / cell) + ',' + Math.floor(it.z / cell); let a = cells.get(k); if (!a) cells.set(k, a = []); a.push(it); }
+  for (const list of cells.values()) {
+    const inst = new THREE.InstancedMesh(geo, mat, list.length);
+    list.forEach((it, i) => { inst.setMatrixAt(i, it.m); if (it.c) inst.setColorAt(i, it.c); });
+    inst.castShadow = cast; inst.receiveShadow = receive;
+    inst.computeBoundingSphere(); inst.frustumCulled = true;
+    g.add(inst);
+  }
+}
+
 export const CLEARING = new THREE.Vector3(-102, 0, -32);
 export const OAK = new THREE.Vector3(-105.5, 0, -35);
 export const MOUTH = new THREE.Vector3(-76.3, -3.2, -24);
@@ -122,7 +136,7 @@ export function buildOutside(world, ctx) {
   // ---- sun ---------------------------------------------------------------------------------
   const sun = new THREE.DirectionalLight(0xffc990, 0);
   sun.castShadow = true;
-  sun.shadow.mapSize.set(2048, 2048);
+  { const sm = Math.min(2048, +(new URLSearchParams(location.search).get('sunsm') || 2048)); sun.shadow.mapSize.set(sm, sm); }
   Object.assign(sun.shadow.camera, { left: -30, right: 30, top: 30, bottom: -30, near: 1, far: 140 });
   sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.05;
   sun.position.set(CLEARING.x + 38, 32, CLEARING.z + 55);
@@ -135,7 +149,7 @@ export function buildOutside(world, ctx) {
   const leafTex = leafClusterTexture(3);
   const leafTex2 = leafClusterTexture(8, { h: 78, s: 46, l: [26, 48] });
   const spruceTex = spruceTexture(4);
-  const mkLeafMat = (map, extra = {}) => new THREE.MeshStandardMaterial({ map, alphaTest: 0.42, side: THREE.DoubleSide, vertexColors: true, roughness: 0.82, metalness: 0, ...extra });
+  const mkLeafMat = (map, extra = {}) => new THREE.MeshLambertMaterial({ map, alphaTest: 0.42, side: THREE.DoubleSide, vertexColors: true, ...extra });
   const leafMat = mkLeafMat(leafTex), leafMat2 = mkLeafMat(leafTex2), spruceMat = mkLeafMat(spruceTex, { alphaTest: 0.35 });
   const barkMat = MAT.bark;
   ctx.vegMats = [leafMat, leafMat2, spruceMat];
@@ -165,48 +179,53 @@ export function buildOutside(world, ctx) {
   variants.forEach((v, vi) => {
     for (const bucket of ['near', 'far']) {
       const list = groups[vi][bucket]; if (!list.length) continue;
-      const mk = (geo, mat, isBark) => {
-        const inst = new THREE.InstancedMesh(geo, mat, list.length);
-        list.forEach(([x, z], i) => {
-          const sc = (v.kind === 'broad' ? 0.9 : 0.85) + rnd() * 0.5;
-          _e.set((rnd() - 0.5) * 0.05, rnd() * 6.283, (rnd() - 0.5) * 0.05); _q.setFromEuler(_e);
-          _p.set(x, terrainHeight(x, z) - 0.1, z); _s.set(sc, sc * (0.9 + rnd() * 0.25), sc);
-          inst.setMatrixAt(i, _m.compose(_p, _q, _s));
-          const k = 0.8 + rnd() * 0.4; _c.setRGB(k, k * (0.96 + rnd() * 0.08), k * 0.92); inst.setColorAt(i, _c);
-        });
-        inst.castShadow = bucket === 'near'; inst.receiveShadow = !isBark; inst.frustumCulled = false;
-        g.add(inst);
-      };
-      mk(v.geo.bark, barkMat, true); mk(v.geo.leaves, v.mat, false);
+      // one transform per tree, shared by trunk and crown so the crown actually sits on its branches
+      const items = list.map(([x, z]) => {
+        const sc = (v.kind === 'broad' ? 0.9 : 0.85) + rnd() * 0.5;
+        _e.set((rnd() - 0.5) * 0.05, rnd() * 6.283, (rnd() - 0.5) * 0.05); _q.setFromEuler(_e);
+        _p.set(x, terrainHeight(x, z) - 0.1, z); _s.set(sc, sc * (0.9 + rnd() * 0.25), sc);
+        const k = 0.8 + rnd() * 0.4;
+        return { x, z, m: new THREE.Matrix4().compose(_p, _q, _s), c: new THREE.Color().setRGB(k, k * (0.96 + rnd() * 0.08), k * 0.92) };
+      });
+      chunkedInstances(g, v.geo.bark, barkMat, items, 24, { cast: bucket === 'near', receive: false });
+      chunkedInstances(g, v.geo.leaves, v.mat, items, 24, { cast: bucket === 'near', receive: false });
     }
   });
 
   // ---- ground cover: grass tufts, ferns, rocks, logs ---------------------------------------
   {
-    const grassA = new THREE.MeshStandardMaterial({ map: grassTexture(5, 0.35), alphaTest: 0.4, side: THREE.DoubleSide, roughness: 0.9 });
-    const grassB = new THREE.MeshStandardMaterial({ map: grassTexture(11, 0.0), alphaTest: 0.4, side: THREE.DoubleSide, roughness: 0.9 });
-    const fernMat = new THREE.MeshStandardMaterial({ map: fernTexture(2), alphaTest: 0.4, side: THREE.DoubleSide, roughness: 0.9 });
-    const scatter = (geo, mat, N, rMax, hMin, hMax, wMul = 1, avoidPath = 1.2) => {
-      const inst = new THREE.InstancedMesh(geo, mat, N);
+    const grassA = new THREE.MeshLambertMaterial({ map: grassTexture(5, 0.35), alphaTest: 0.4, side: THREE.DoubleSide });
+    const grassB = new THREE.MeshLambertMaterial({ map: grassTexture(11, 0.0), alphaTest: 0.4, side: THREE.DoubleSide });
+    const fernMat = new THREE.MeshLambertMaterial({ map: fernTexture(2), alphaTest: 0.4, side: THREE.DoubleSide });
+    // a trodden lawn around the two figures under the oak keeps the ending's composition readable
+    const LAWN = { x: -103, z: -32.6, r0: 5.6, r1: 8.6 };
+    const scatter = (geo, mat, N, rMax, hMin, hMax, wMul = 1, avoidPath = 1.2, lawnOnly = false) => {
+      const items = [];
       let n = 0, guard = 0;
       while (n < N && guard++ < N * 8) {
-        const a = rnd() * 6.283, rr = Math.sqrt(rnd()) * rMax;
-        const x = CLEARING.x + Math.cos(a) * rr * 1.35 + 5, z = CLEARING.z + Math.sin(a) * rr;
+        let x, z;
+        if (lawnOnly) { const a = rnd() * 6.283, rr = Math.sqrt(rnd()) * LAWN.r1; x = LAWN.x + Math.cos(a) * rr; z = LAWN.z + Math.sin(a) * rr; }
+        else {
+          const a = rnd() * 6.283, rr = Math.sqrt(rnd()) * rMax;
+          x = CLEARING.x + Math.cos(a) * rr * 1.35 + 5; z = CLEARING.z + Math.sin(a) * rr;
+          const dl = Math.hypot(x - LAWN.x, z - LAWN.z);
+          if (dl < LAWN.r0 || (dl < LAWN.r1 && rnd() < (LAWN.r1 - dl) / (LAWN.r1 - LAWN.r0))) continue;
+        }
         if (z > -15.5 || z < -96) continue;
         const [pd] = polyDist(x, z); if (pd < avoidPath && x < -77) continue;
         if (x > -76.3) continue;
         const sc = hMin + rnd() * (hMax - hMin);
         _e.set(0, rnd() * 6.283, 0); _q.setFromEuler(_e); _p.set(x, terrainHeight(x, z) - 0.03, z); _s.set(sc * wMul, sc, sc * wMul);
-        inst.setMatrixAt(n, _m.compose(_p, _q, _s));
-        const k = 0.85 + rnd() * 0.3; _c.setRGB(k, k, k * 0.9); inst.setColorAt(n, _c);
+        const k = 0.85 + rnd() * 0.3;
+        items.push({ x, z, m: new THREE.Matrix4().compose(_p, _q, _s), c: new THREE.Color().setRGB(k, k, k * 0.9) });
         n++;
       }
-      inst.count = n; inst.frustumCulled = false; inst.castShadow = false; inst.receiveShadow = false;
-      g.add(inst); return inst;
+      chunkedInstances(g, geo, mat, items, 10, { cast: false, receive: false });
     };
     scatter(tuftGeometry(0.9, 0.9, 3), grassA, 3600, 30, 0.6, 1.35);
     scatter(tuftGeometry(0.8, 0.7, 3), grassB, 2400, 34, 0.5, 1.1);
     scatter(tuftGeometry(1.5, 1.2, 2), fernMat, 420, 30, 0.7, 1.4, 1, 2.5);
+    scatter(tuftGeometry(0.8, 0.7, 3), grassB, 900, 0, 0.16, 0.34, 1.2, 0, true);   // short lawn grass
     // rocks
     const rockGeo = new THREE.IcosahedronGeometry(0.5, 2); { const p = rockGeo.attributes.position; for (let i = 0; i < p.count; i++) { const n = 1 + (fbm(p.getX(i) * 0.9 + 0.5, p.getZ(i) * 0.9 + 0.5, 4, 3, 7) - 0.5) * 0.6; p.setXYZ(i, p.getX(i) * n * 1.25, p.getY(i) * n * 0.7, p.getZ(i) * n); } rockGeo.computeVertexNormals(); }
     const rockMat = new THREE.MeshStandardMaterial({ color: 0x77736a, roughness: 0.95, map: TEX.flagstone.map, normalMap: TEX.flagstone.normalMap });
@@ -310,6 +329,28 @@ export function buildOutside(world, ctx) {
       const sp = glowSprite(new THREE.Vector3(fx, 12.2, -12.9), 9, 0xe8f4ff, 0.65); g.add(sp); ctx.floods.push({ fl, sp });
     }
     B.build(g);
+    // lit windows on the masses behind the wall (read as a living prison from the forest at night) + stained-glass nave
+    {
+      const mk = (c, e) => { const m = MAT.bulb.clone(); m.color.set(c); m.emissive.set(c); m.emissiveIntensity = e; m.fog = true; return m; };
+      const place = (list, w, h, mat) => {
+        if (!list.length) return;
+        const inst = new THREE.InstancedMesh(new THREE.PlaneGeometry(w, h), mat, list.length);
+        const m4 = new THREE.Matrix4(), q = new THREE.Quaternion().setFromEuler(new THREE.Euler(0, Math.PI, 0)), sc = new THREE.Vector3(1, 1, 1), ps = new THREE.Vector3();
+        list.forEach(([x, y, z], i) => inst.setMatrixAt(i, m4.compose(ps.set(x, y, z), q, sc)));
+        inst.frustumCulled = false; g.add(inst);
+      };
+      const warm = [], cool = [], dim = [];
+      const wr = mulberry32(77);
+      const rows = (x0, x1, ys, z) => { for (const y of ys) for (let x = x0; x <= x1; x += 2.4) { const r = wr(); if (r < 0.3) continue; (r < 0.62 ? warm : r < 0.86 ? dim : cool).push([x, y, z - 0.02]); } };
+      rows(-38, -12, [7.3, 9.3], -10);
+      rows(-108, -78, [6.85], -9);
+      rows(-100, -52, [], -9);
+      place(warm, 1.1, 0.7, mk(0xffc27a, 1.5)); place(cool, 1.1, 0.7, mk(0xbfd4ff, 1.3)); place(dim, 1.1, 0.7, mk(0xb4793a, 0.7));
+      // nave windows: tall, stained glass
+      for (const [i, c] of [0xb83a3a, 0x3f9a58, 0x3b62c8, 0xc9a03a, 0xb83a3a, 0x3f9a58, 0x3b62c8].entries()) place([[-70.2 + i * 3.4, 7.55, -13.22]], 1.0, 2.0, mk(c, 1.25));
+    }
+    // aircraft-warning beacon on the bell cross
+    { const bc = new THREE.Mesh(new THREE.SphereGeometry(0.16, 10, 8), MAT.bulb.clone()); bc.material.color.set(0xff2a20); bc.material.emissive.set(0xff2a20); bc.position.set(-61, 17.4, -13.3); g.add(bc); ctx.beacon = bc; }
   }
   marks.clearing = CLEARING.clone();
   marks.gullyStart = new THREE.Vector3(-78.5, terrainHeight(-78.5, -24), -24);

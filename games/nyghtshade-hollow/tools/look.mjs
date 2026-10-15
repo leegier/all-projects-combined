@@ -19,10 +19,14 @@ for (const s of shots) {
     g.story.cellsReleased = s.released !== false;
     g.player.teleport(s.pos[0], s.pos[1] || 0, s.pos[2], s.yaw || 0);
     g.player.pitch = s.pitch || 0; g.player.crouch = s.crouch || 0;
-    if (s.npcs) for (const [id, x, z, pose] of s.npcs) { const n = g.story.npcMap[id]; n.teleport(x, z); if (pose) n.setPose(pose); n.hiddenFromWorld = false; }
+    if (s.npcs) for (const [id, x, z, pose, fx, fz] of s.npcs) { const n = g.story.npcMap[id]; n.teleport(x, z); if (pose) n.setPose(pose); n.hiddenFromWorld = false; if (fx !== undefined) { n.facePoint(fx, fz); n.yaw = n.targetYaw; } }
     if (s.show) for (const id of s.show) g.story.npcMap[id].hiddenFromWorld = false;
+    if (s.js) new Function('g', s.js)(g);
     if (s.hud) g.ui.hud(true); else g.ui.hud(false);
     if (s.cam) {
+      const H = (x, z) => g.world.groundAt(x, z, 80, 0) ?? 0;
+      const ev = (a) => a.map((v) => (typeof v === 'string' ? new Function('H', 'g', 'return (' + v + ')')(H, g) : v));
+      s.cam = { ...s.cam, p: ev(s.cam.p), l: ev(s.cam.l) };
       g.mode = 'cine'; g.player.frozen = true; g.letter = s.letter === false ? 0 : 1; g.u = null;
       g.camOverride = { pos: new g.player.pos.constructor(...s.cam.p), look: new g.player.pos.constructor(...s.cam.l), fov: s.cam.fov || 55, roll: 0 };
       g.camInOutside = !!s.camOutside; g._cineArea = null;

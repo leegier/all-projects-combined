@@ -40,7 +40,7 @@ const ENV = {
   library: { fog: 0x100d0a, fd: 0.016, hs: 0x6a5a48, hg: 0x241a10, hi: 0.5, am: 0x2a1e14, ai: 0.55, bg: 0x040608, ex: 1.05, bloom: 0.55 },
   chapel: { fog: 0x140e0a, fd: 0.012, hs: 0x7a6650, hg: 0x2a1c12, hi: 0.5, am: 0x2a1e18, ai: 0.5, bg: 0x040404, ex: 1.05, bloom: 0.6 },
   tunnel: { fog: 0x070a0a, fd: 0.085, hs: 0x2a3a40, hg: 0x14100a, hi: 0.18, am: 0x10161a, ai: 0.35, bg: 0x020303, ex: 1.2, bloom: 0.6 },
-  outsideNight: { fog: 0x070e1c, fd: 0.011, hs: 0x1c2c4c, hg: 0x07080a, hi: 0.26, am: 0x0a1226, ai: 0.35, bg: 0x040810, ex: 1.05, bloom: 0.65 },
+  outsideNight: { fog: 0x070e1c, fd: 0.011, hs: 0x1c2c4c, hg: 0x07080a, hi: 0.36, am: 0x0a1226, ai: 0.35, bg: 0x040810, ex: 1.05, bloom: 0.65 },
   outsideGold: { fog: 0xcfa86e, fd: 0.011, hs: 0xb4c6e0, hg: 0x4a3a22, hi: 1.05, am: 0x6a5a40, ai: 0.45, bg: 0xcfa86e, ex: 0.95, bloom: 0.55 },
 };
 
@@ -149,7 +149,11 @@ export class Game {
     alert.on('level', (l, p) => { ui.setAlert(l); this.events.emit('alertLevel', l, p); if (l >= 3 && !routine.lockdown) routine.startLockdown(0.4); });
     world.on('door', (d, t) => {
       const dist = d.pos.distanceTo(this.player.eyePos);
-      if (dist < 35) { const v = clamp(1 - dist / 35, 0.15, 1); this.audio && this.audio.sfx(t ? (d.sound === 'door' ? 'door' : d.sound) : (d.sound === 'door' ? 'doorClose' : d.sound), { vol: v }); }
+      if (dist < 35) {
+        const v = clamp(1 - dist / 35, 0.15, 1), name = t ? (d.sound === 'door' ? 'door' : d.sound) : (d.sound === 'door' ? 'doorClose' : d.sound);
+        // a whole tier of cell doors releases at once: spread them out and thin each one so the sum stays a rumble, not a wall
+        if (this.audio) this.audio.sfx(name, d.sound === 'celldoor' ? { vol: v * 0.4, t: this.audio.now() + (this._cellDoorN = ((this._cellDoorN || 0) + 1) % 12) * 0.075 } : { vol: v });
+      }
     });
     this.events.on('step', (e) => { if (this.audio) this.audio.step(e.surface, e.loud, e.who === 'player' ? 1 : 0.4); });
     routine.on('lockdown', (on) => { ui.toast(on ? 'LOCKDOWN' : 'Lockdown lifted', on ? 'bad' : 'good'); });
@@ -230,7 +234,7 @@ export class Game {
       this.sun.position.set(-102 + 40, 22, -32 + 52);
     } else {
       mat.zenith.value.set(0x050a1a); mat.horizon.value.set(0x1a2a46); mat.sunColor.value.set(0x9fb8ff); mat.sunSize.value = 0.0; mat.stars.value = 1;
-      this.sun.color.set(0x6f8fd8); this.sun.intensity = out ? 0.42 : 0;
+      this.sun.color.set(0x7f9fe4); this.sun.intensity = out ? 0.75 : 0;
       this.sun.position.set(-102 - 30, 40, -32 + 20);
     }
     mat.sunDir.value.copy(this.sun.position).sub(this.sun.target.position).normalize();
@@ -241,6 +245,7 @@ export class Game {
     const night = this.outsideMode === 'night';
     for (const t of this.ctx.towerLights) { t.beam.material.uniforms.k.value = night ? 1 : 0; t.beam.rotation.z = Math.sin(this.time * 0.5 + t.tx) * 0.35; t.beam.rotation.x = Math.cos(this.time * 0.37 + t.tx) * 0.25 + 0.15; }
     for (const f of this.ctx.floods) { f.sp.material.opacity = night ? 0.7 : 0.12; }
+    if (this.ctx.beacon) this.ctx.beacon.material.emissiveIntensity = Math.sin(this.time * 3.1) > 0.55 ? 3.2 : 0.15;
     for (const sh of this.ctx.sunShafts || []) { sh.material.uniforms.intensity.value = out && !night ? 0.22 : 0; sh.material.uniforms.time.value = this.time; }
   }
   lightLevelAt(pos) {
@@ -455,6 +460,7 @@ export class Game {
   updateHud(dt) {
     const ui = this.ui, r = this.routine, p = this.player;
     if (this.mode === 'title' || this.mode === 'boot') return;
+    ui.el('hud').classList.toggle('dlg', this.mode === 'dialogue');
     const e = r.entry; const prog = e ? clamp(((r.hour - e.start + 24) % 24) / e.dur, 0, 1) : 0;
     ui.setClock(r.clock, r.day, r.label, prog);
     ui.setVitals(this.survival.health, this.survival.hunger, this.survival.thirst, p.stamina);

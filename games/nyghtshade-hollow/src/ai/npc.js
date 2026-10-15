@@ -87,6 +87,7 @@ export class NPC {
     this.body.update(dt, spd, lookRel, pitchRel);
     this.root.position.set(this.pos.x, this.pos.y + this.seatOffsetY, this.pos.z);
     this.root.rotation.y = this.yaw;
+    this.body.blob.position.y = 0.012 - this.seatOffsetY;
     // shadows only for nearby characters
     const near = dist < 16;
     if (near !== this._cast) { this._cast = near; this.body.setCast(near); }

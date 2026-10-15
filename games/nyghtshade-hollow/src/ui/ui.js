@@ -12,6 +12,8 @@ const CSS = `
 .caps{text-transform:uppercase;letter-spacing:.14em}
 .hud{position:absolute;inset:0;opacity:0;transition:opacity .5s}
 .hud.on{opacity:1}
+.hud.dlg .tl,.hud.dlg .bl,.hud.dlg .mini,.hud.dlg .prompt,.hud.dlg .cross,.hud.dlg .detect{opacity:0;transition:opacity .3s}
+.hud .tl,.hud .bl,.hud .mini,.hud .prompt,.hud .cross{transition:opacity .3s}
 .tl{position:absolute;left:2.2%;top:3.2%;max-width:36%}
 .clock{font-size:2.9vmin;font-weight:700;letter-spacing:.06em;text-shadow:0 0 10px rgba(0,0,0,.8)}
 .clock small{font-size:1.5vmin;color:var(--dim);letter-spacing:.2em;margin-left:.8vmin}
@@ -132,6 +134,14 @@ const CSS = `
 @keyframes cardin{0%{opacity:0;letter-spacing:.7em}100%{opacity:1}}
 .caption{position:absolute;left:2.2%;bottom:20%;max-width:40%;font-size:1.65vmin;line-height:1.45;color:#ffe9a8;background:rgba(0,0,0,.62);border-left:3px solid #ffd66b;padding:.9vmin 1.6vmin;opacity:0;transition:opacity .35s;text-shadow:0 0 6px #000}
 .caption.on{opacity:1}.caption b{display:block;font-size:1.1vmin;letter-spacing:.3em;color:#ffd66b;margin-bottom:.3vmin;text-transform:uppercase}
+.rec{position:absolute;left:50%;top:1.6%;transform:translateX(-50%);display:none;align-items:center;gap:1.1vmin;font-size:1.25vmin;letter-spacing:.26em;color:#e8e0d0;background:rgba(0,0,0,.5);padding:.5vmin 1.6vmin;border:1px solid rgba(255,255,255,.18);text-transform:uppercase;white-space:nowrap}
+.rec.on{display:flex}.rec i{width:1vmin;height:1vmin;border-radius:50%;background:#d8222c;box-shadow:0 0 8px #d8222c}
+.rec b{font-weight:400;color:#ffd66b}.rec u{text-decoration:none;color:var(--dim)}
+.feed{position:absolute;right:2.2%;bottom:25.5%;width:36vmin;text-align:left;font-size:1.25vmin;letter-spacing:.06em}
+.feed div{margin-top:.45vmin;padding:.45vmin 1.1vmin;background:rgba(4,12,6,.66);border-left:2px solid #5fd07a;color:#bfe9c8;text-shadow:0 0 4px #000}
+.feed div.bad{background:rgba(24,4,4,.7);border-left-color:#e0323d;color:#f0b8b8}
+.feed div b{color:#5fd07a;margin-right:.7vmin}.feed div.bad b{color:#e0323d}
+.cap-still *{transition:none!important}
 .fps{position:absolute;left:1%;top:1%;font:11px monospace;color:#7f7;display:none;text-transform:none}
 `;
 
@@ -162,6 +172,8 @@ export class UI {
       <div class="panel shop" id="u-shop"><h2>Commissary</h2><div class="pbody" id="u-shopbody"></div></div>
       <div class="doc" id="u-doc"></div>
       <div class="caption" id="u-caption"><b></b><span></span></div>
+      <div class="rec" id="u-rec"><i></i>PLAYTEST BOT<u>·</u><span id="u-rect">T+00:00</span><u>·</u><b id="u-recs"></b></div>
+      <div class="feed" id="u-feed"></div>
       <div class="ovl disc" id="u-disc"><h1>NYGHTSHADE HOLLOW</h1>
         <p class="caps" style="color:#d9a16a;letter-spacing:.3em;font-size:1.5vmin">Content advisory</p>
         <p>This game contains extreme language, offensive AI-driven characters, violence, and adult themes set inside a maximum-security prison.</p>
@@ -219,6 +231,19 @@ export class UI {
   pa(text) { const e = this.el('u-pa'); e.textContent = text; e.classList.add('on'); clearTimeout(this._paT); this._paT = setTimeout(() => e.classList.remove('on'), 6500); }
   note(label, text, ms = 6000) { const e = this.el('u-note'); e.innerHTML = `<b>${label}</b>${text}`; e.classList.add('on'); clearTimeout(this._nT); this._nT = setTimeout(() => e.classList.remove('on'), ms); }
   caption(title, text) { const e = this.el('u-caption'); if (!title) { e.classList.remove('on'); return; } e.querySelector('b').textContent = title; e.querySelector('span').textContent = text; e.classList.add('on'); }
+  /** Recording overlay (capture mode): sim time + playback speed badge. */
+  setRec(on, simTime = 0, speed = 1) {
+    const e = this.el('u-rec'); e.classList.toggle('on', !!on); if (!on) return;
+    const m = Math.floor(simTime / 60), sec = Math.floor(simTime % 60);
+    this.el('u-rect').textContent = 'T+' + String(m).padStart(2, '0') + ':' + String(sec).padStart(2, '0');
+    this.el('u-recs').textContent = speed > 1.01 ? '▶▶ ×' + (Math.round(speed * 10) / 10) + ' time-lapse' : '● live ×1';
+  }
+  /** Playtest result feed (capture mode). */
+  feed(text, ok = true) {
+    const f = this.el('u-feed'), d = document.createElement('div'); d.className = ok ? '' : 'bad';
+    d.innerHTML = `<b>${ok ? '✔' : '✖'}</b>`; d.appendChild(document.createTextNode(text)); f.appendChild(d);
+    setTimeout(() => d.remove(), 6500); while (f.children.length > 4) f.firstChild.remove();
+  }
   fps(txt) { const e = this.el('u-fps'); e.style.display = txt ? 'block' : 'none'; e.textContent = txt || ''; }
 
   // ---- subtitles / dialogue ----------------------------------------------------------------
