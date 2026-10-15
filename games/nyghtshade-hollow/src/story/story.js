@@ -82,7 +82,7 @@ export class Story {
     const sleepers = [[2, 'inmateA'], [4, 'inmateB'], [9, 'inmateC'], [11, 'inmateA']];
     for (const [i, look] of sleepers) {
       const cx = -16.5 + (i - 1) * 3;
-      const n = add(new NPC(g, { id: 'sleep' + i, name: 'Inmate', look, x: cx - 0.95, z: -7.95, yaw: 0, seed: i * 11, dialogue: null }));
+      const n = add(new NPC(g, { id: 'sleep' + i, name: 'Inmate', look, x: cx - 0.95, z: -7.95, yaw: Math.PI, seed: i * 11, dialogue: null }));
       n.setPose('lie'); n.seatOffsetY = 0.44; n.sleeper = true; n.cellIndex = i;
     }
     const mad = add(new NPC(g, { id: 'maddox', name: 'Maddox', look: 'maddox', x: 0, z: 0 })); mad.hiddenFromWorld = true;
@@ -594,6 +594,7 @@ export class Story {
     const g = this.g, script = DIALOGUE[id];
     if (!script) return;
     this.dialogue = { id, script, node: null, npc, cam, h: null, wait: 0 };
+    if (npc && npc.role !== 'nobody') { npc.restYaw = npc.targetYaw; npc.restLook = npc.lookTarget; npc.stopForTalk = true; if (!npc.moving) npc.facePoint(g.player.pos.x, g.player.pos.z); npc.lookTarget = g.player.eyePos; }
     g.mode = 'dialogue'; g.player.frozen = true; g.letter = 1;
     g.ui.setPrompt(null); g.ui.show('u-pause', false);
     this.goNode(script.start);
@@ -601,16 +602,16 @@ export class Story {
   dialogueFrame() {
     const g = this.g, d = this.dialogue; if (!d) return;
     const pl = g.player; const n = d.npc;
-    const head = new THREE.Vector3(n.pos.x, n.pos.y + (n.pose === 'sit' ? 1.15 : 1.6), n.pos.z);
-    if (d.cam === 'tunnel' || d.cam === 'oak') {
-      const dir = new THREE.Vector3(head.x - pl.eyePos.x, 0, head.z - pl.eyePos.z).normalize();
-      const side = new THREE.Vector3(-dir.z, 0, dir.x);
-      this.dialogueCam = { pos: pl.eyePos.clone().addScaledVector(side, 0.35).addScaledVector(dir, -0.15), look: head.clone().add(new THREE.Vector3(0, -0.05, 0)), fov: 54 };
-    } else {
-      const dir = new THREE.Vector3(head.x - pl.eyePos.x, 0, head.z - pl.eyePos.z).normalize();
-      const side = new THREE.Vector3(-dir.z, 0, dir.x);
-      this.dialogueCam = { pos: pl.eyePos.clone().addScaledVector(side, 0.28).addScaledVector(dir, -0.2), look: head, fov: 52 };
-    }
+    const hy = n.pose === 'sit' ? 1.12 : n.pose === 'ground' ? 0.95 : n.pose === 'pray' ? 1.05 : 1.55;
+    const head = new THREE.Vector3(n.pos.x, n.pos.y + hy, n.pos.z);
+    const dir = new THREE.Vector3(head.x - pl.eyePos.x, 0, head.z - pl.eyePos.z);
+    const dist = dir.length() || 1; dir.divideScalar(dist);
+    const side = new THREE.Vector3(-dir.z, 0, dir.x);
+    // portrait framing: low, close, slightly over the shoulder, NPC off-centre
+    const pos = pl.eyePos.clone().addScaledVector(dir, Math.min(dist * 0.3, 0.9)).addScaledVector(side, 0.34);
+    pos.y = THREE.MathUtils.lerp(pl.eyePos.y, head.y + 0.1, 0.7);
+    const look = head.clone().addScaledVector(side, -0.1); look.y -= 0.02;
+    this.dialogueCam = { pos, look, fov: d.cam === 'oak' || d.cam === 'tunnel' ? 44 : 42 };
     // keep the player's own facing aligned so control resumes naturally
     pl.yaw = Math.atan2(-(head.x - pl.eyePos.x), -(head.z - pl.eyePos.z)); pl.pitch = 0;
   }
@@ -665,7 +666,7 @@ export class Story {
       g.mode = 'play'; g.letter = 0;
       if (!(this.f.endStarted && !this.f.ended)) g.player.frozen = false;
     }
-    const npc = d.npc; if (npc) { npc.talkTimer = 0; }
+    const npc = d.npc; if (npc) { npc.talkTimer = 0; npc.lookTarget = npc.restLook || null; if (npc.restYaw !== undefined && !npc.moving) npc.targetYaw = npc.restYaw; npc.stopForTalk = false; }
     this.after && this.after(d.id);
   }
   cond(c) {

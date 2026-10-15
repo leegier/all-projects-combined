@@ -6,6 +6,8 @@ import { TEX } from '../../proc/textures.js';
 import { glowSprite } from '../../core/gfx.js';
 import { fbm } from '../../proc/noise.js';
 import { mulberry32, smoothstep, clamp, lerp } from '../../util.js';
+import { buildBroadleaf, buildSpruce, leafClusterTexture, spruceTexture, grassTexture, fernTexture, tuftGeometry } from '../foliage.js';
+import { lightShaft } from '../../core/gfx.js';
 
 export const CLEARING = new THREE.Vector3(-102, 0, -32);
 export const OAK = new THREE.Vector3(-105.5, 0, -35);
@@ -129,120 +131,107 @@ export function buildOutside(world, ctx) {
   g.add(sun); g.add(sun.target);
   ctx.sun = sun;
 
-  // ---- trees (instanced) -------------------------------------------------------------------
-  const trunkGeo = new THREE.CylinderGeometry(0.14, 0.26, 3.2, 7); trunkGeo.translate(0, 1.6, 0);
-  const cone = (r, h, y) => { const c = new THREE.ConeGeometry(r, h, 8); c.translate(0, y + h / 2, 0); return c; };
-  const colorize = (geo, r, gg, b, jitter = 0.08) => {
-    const c = new Float32Array(geo.attributes.position.count * 3);
-    for (let i = 0; i < geo.attributes.position.count; i++) { const j = (rnd() - 0.5) * jitter; c[i * 3] = r + j; c[i * 3 + 1] = gg + j; c[i * 3 + 2] = b + j; }
-    geo.setAttribute('color', new THREE.BufferAttribute(c, 3));
-    if (!geo.attributes.uv) geo.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(geo.attributes.position.count * 2), 2));
-    return geo;
-  };
-  const merge = (arr) => { const out = new THREE.BufferGeometry(); const pos = [], nor = [], col = [], uvs = [], idx = []; let off = 0; for (const gm of arr) { const g2 = gm.index ? gm : gm; for (let i = 0; i < g2.attributes.position.count; i++) { pos.push(g2.attributes.position.getX(i), g2.attributes.position.getY(i), g2.attributes.position.getZ(i)); nor.push(g2.attributes.normal.getX(i), g2.attributes.normal.getY(i), g2.attributes.normal.getZ(i)); col.push(g2.attributes.color.getX(i), g2.attributes.color.getY(i), g2.attributes.color.getZ(i)); uvs.push(0, 0); } if (g2.index) { for (let i = 0; i < g2.index.count; i++) idx.push(g2.index.array[i] + off); } else { for (let i = 0; i < g2.attributes.position.count; i++) idx.push(i + off); } off += g2.attributes.position.count; } out.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); out.setAttribute('normal', new THREE.Float32BufferAttribute(nor, 3)); out.setAttribute('color', new THREE.Float32BufferAttribute(col, 3)); out.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2)); out.setIndex(idx); return out; };
-  const conifer = merge([
-    colorize(trunkGeo.clone(), 0.2, 0.13, 0.08),
-    colorize(cone(1.5, 2.4, 1.4), 0.07, 0.17, 0.09), colorize(cone(1.15, 2.2, 2.8), 0.08, 0.2, 0.1), colorize(cone(0.8, 2.0, 4.2), 0.09, 0.22, 0.11), colorize(cone(0.45, 1.5, 5.6), 0.1, 0.24, 0.12),
-  ]);
-  const broadleaf = (() => {
-    const parts = [colorize(new THREE.CylinderGeometry(0.2, 0.35, 3.0, 7).translate(0, 1.5, 0), 0.19, 0.13, 0.09)];
-    for (const [x, y, z, r] of [[0, 4.4, 0, 1.9], [1.1, 3.8, 0.4, 1.4], [-1.0, 4.0, -0.5, 1.5], [0.2, 5.5, 0.3, 1.2], [-0.3, 3.6, 1.2, 1.2]]) {
-      const s = new THREE.IcosahedronGeometry(r, 1); s.translate(x, y, z);
-      const p = s.attributes.position; for (let i = 0; i < p.count; i++) { const k = 1 + (rnd() - 0.5) * 0.25; p.setXYZ(i, p.getX(i) * k, p.getY(i) * (0.85 + rnd() * 0.1), p.getZ(i) * k); }
-      s.computeVertexNormals(); parts.push(colorize(s, 0.14, 0.26, 0.09, 0.1));
-    }
-    return merge(parts);
-  })();
-  const treeMat = MAT.leaf.clone(); treeMat.vertexColors = true; treeMat.roughness = 0.92; treeMat.color.set(0xffffff);
-  const places = [];
-  for (let i = 0; i < 520 && places.length < 380; i++) {
+  // ---- vegetation ----------------------------------------------------------------------------
+  const leafTex = leafClusterTexture(3);
+  const leafTex2 = leafClusterTexture(8, { h: 78, s: 46, l: [26, 48] });
+  const spruceTex = spruceTexture(4);
+  const mkLeafMat = (map, extra = {}) => new THREE.MeshStandardMaterial({ map, alphaTest: 0.42, side: THREE.DoubleSide, vertexColors: true, roughness: 0.82, metalness: 0, ...extra });
+  const leafMat = mkLeafMat(leafTex), leafMat2 = mkLeafMat(leafTex2), spruceMat = mkLeafMat(spruceTex, { alphaTest: 0.35 });
+  const barkMat = MAT.bark;
+  ctx.vegMats = [leafMat, leafMat2, spruceMat];
+  const broad = [11, 12, 13].map((seed, i) => ({ geo: buildBroadleaf({ height: 5.4 + i * 0.9, trunkR: 0.3 + i * 0.05, crownR: 3.1 + i * 0.5, limbs: 5, leafCards: 240, seed, leafSize: 1.45, hue: i * 0.2 - 0.2 }), mat: i === 1 ? leafMat2 : leafMat }));
+  const spr = [21, 22, 23].map((seed, i) => ({ geo: buildSpruce({ height: 8 + i * 1.6, trunkR: 0.24 + i * 0.03, seed, whorls: 15, branchLen: 2.5 + i * 0.3 }), mat: spruceMat }));
+  const placesAll = [];
+  for (let i = 0; i < 700 && placesAll.length < 330; i++) {
     const x = lerp(X0 + 3, X1 - 3, rnd()), z = lerp(Z0 + 3, Z1 - 4, rnd());
     const dc = Math.hypot(x - CLEARING.x, z - CLEARING.z);
     if (dc < 15) continue;
     const [pd] = polyDist(x, z);
-    if (pd < 4.5 && x < -70) continue;
-    if (x > -82 && z > -30 && z < -19) continue; // keep the area above the tunnel mouth open
-    if (z > -19.5) { if (rnd() < 0.55) continue; } // thin near the wall
-    places.push([x, z]);
+    if (pd < 4.2 && x < -70) continue;
+    if (x > -82 && z > -30 && z < -19) continue;
+    if (z > -19.5 && rnd() < 0.6) continue;
+    if (placesAll.some(([px, pz]) => Math.hypot(px - x, pz - z) < 3.2)) continue;
+    placesAll.push([x, z]);
   }
-  ctx.trees = places;
-  for (const [geo, share] of [[conifer, 0.62], [broadleaf, 0.38]]) {
-    const list = places.filter(() => rnd() < share);
-    const inst = new THREE.InstancedMesh(geo, treeMat, list.length);
-    const m = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler(), p = new THREE.Vector3(), sc = new THREE.Vector3(), col = new THREE.Color();
-    list.forEach(([x, z], i) => {
-      const s = 0.8 + rnd() * 0.9; e.set((rnd() - 0.5) * 0.06, rnd() * 6.28, (rnd() - 0.5) * 0.06); q.setFromEuler(e);
-      p.set(x, terrainHeight(x, z) - 0.15, z); sc.set(s, s * (0.9 + rnd() * 0.3), s);
-      inst.setMatrixAt(i, m.compose(p, q, sc));
-      col.setHSL(0.27 + (rnd() - 0.5) * 0.05, 0.25 + rnd() * 0.15, 0.55 + rnd() * 0.35); inst.setColorAt(i, col);
-    });
-    inst.castShadow = true; inst.receiveShadow = false; inst.frustumCulled = false;
-    g.add(inst);
+  ctx.trees = placesAll;
+  const variants = [...broad.map((v) => ({ ...v, kind: 'broad' })), ...spr.map((v) => ({ ...v, kind: 'spruce' }))];
+  const groups = variants.map(() => ({ near: [], far: [] }));
+  for (const [x, z] of placesAll) {
+    const k = rnd() < 0.42 ? Math.floor(rnd() * 3) : 3 + Math.floor(rnd() * 3);
+    const near = Math.hypot(x - CLEARING.x, z - CLEARING.z) < 46;
+    groups[k][near ? 'near' : 'far'].push([x, z]);
+  }
+  const _m = new THREE.Matrix4(), _q = new THREE.Quaternion(), _e = new THREE.Euler(), _p = new THREE.Vector3(), _s = new THREE.Vector3(), _c = new THREE.Color();
+  variants.forEach((v, vi) => {
+    for (const bucket of ['near', 'far']) {
+      const list = groups[vi][bucket]; if (!list.length) continue;
+      const mk = (geo, mat, isBark) => {
+        const inst = new THREE.InstancedMesh(geo, mat, list.length);
+        list.forEach(([x, z], i) => {
+          const sc = (v.kind === 'broad' ? 0.9 : 0.85) + rnd() * 0.5;
+          _e.set((rnd() - 0.5) * 0.05, rnd() * 6.283, (rnd() - 0.5) * 0.05); _q.setFromEuler(_e);
+          _p.set(x, terrainHeight(x, z) - 0.1, z); _s.set(sc, sc * (0.9 + rnd() * 0.25), sc);
+          inst.setMatrixAt(i, _m.compose(_p, _q, _s));
+          const k = 0.8 + rnd() * 0.4; _c.setRGB(k, k * (0.96 + rnd() * 0.08), k * 0.92); inst.setColorAt(i, _c);
+        });
+        inst.castShadow = bucket === 'near'; inst.receiveShadow = !isBark; inst.frustumCulled = false;
+        g.add(inst);
+      };
+      mk(v.geo.bark, barkMat, true); mk(v.geo.leaves, v.mat, false);
+    }
+  });
+
+  // ---- ground cover: grass tufts, ferns, rocks, logs ---------------------------------------
+  {
+    const grassA = new THREE.MeshStandardMaterial({ map: grassTexture(5, 0.35), alphaTest: 0.4, side: THREE.DoubleSide, roughness: 0.9 });
+    const grassB = new THREE.MeshStandardMaterial({ map: grassTexture(11, 0.0), alphaTest: 0.4, side: THREE.DoubleSide, roughness: 0.9 });
+    const fernMat = new THREE.MeshStandardMaterial({ map: fernTexture(2), alphaTest: 0.4, side: THREE.DoubleSide, roughness: 0.9 });
+    const scatter = (geo, mat, N, rMax, hMin, hMax, wMul = 1, avoidPath = 1.2) => {
+      const inst = new THREE.InstancedMesh(geo, mat, N);
+      let n = 0, guard = 0;
+      while (n < N && guard++ < N * 8) {
+        const a = rnd() * 6.283, rr = Math.sqrt(rnd()) * rMax;
+        const x = CLEARING.x + Math.cos(a) * rr * 1.35 + 5, z = CLEARING.z + Math.sin(a) * rr;
+        if (z > -15.5 || z < -96) continue;
+        const [pd] = polyDist(x, z); if (pd < avoidPath && x < -77) continue;
+        if (x > -76.3) continue;
+        const sc = hMin + rnd() * (hMax - hMin);
+        _e.set(0, rnd() * 6.283, 0); _q.setFromEuler(_e); _p.set(x, terrainHeight(x, z) - 0.03, z); _s.set(sc * wMul, sc, sc * wMul);
+        inst.setMatrixAt(n, _m.compose(_p, _q, _s));
+        const k = 0.85 + rnd() * 0.3; _c.setRGB(k, k, k * 0.9); inst.setColorAt(n, _c);
+        n++;
+      }
+      inst.count = n; inst.frustumCulled = false; inst.castShadow = false; inst.receiveShadow = false;
+      g.add(inst); return inst;
+    };
+    scatter(tuftGeometry(0.9, 0.9, 3), grassA, 3600, 30, 0.6, 1.35);
+    scatter(tuftGeometry(0.8, 0.7, 3), grassB, 2400, 34, 0.5, 1.1);
+    scatter(tuftGeometry(1.5, 1.2, 2), fernMat, 420, 30, 0.7, 1.4, 1, 2.5);
+    // rocks
+    const rockGeo = new THREE.IcosahedronGeometry(0.5, 2); { const p = rockGeo.attributes.position; for (let i = 0; i < p.count; i++) { const n = 1 + (fbm(p.getX(i) * 0.9 + 0.5, p.getZ(i) * 0.9 + 0.5, 4, 3, 7) - 0.5) * 0.6; p.setXYZ(i, p.getX(i) * n * 1.25, p.getY(i) * n * 0.7, p.getZ(i) * n); } rockGeo.computeVertexNormals(); }
+    const rockMat = new THREE.MeshStandardMaterial({ color: 0x77736a, roughness: 0.95, map: TEX.flagstone.map, normalMap: TEX.flagstone.normalMap });
+    for (let i = 0; i < 26; i++) {
+      const a = rnd() * 6.283, rr = 5 + rnd() * 26; const x = CLEARING.x + Math.cos(a) * rr * 1.3, z = CLEARING.z + Math.sin(a) * rr;
+      if (z > -16 || x > -78) continue; const [pd] = polyDist(x, z); if (pd < 1.6) continue;
+      const m = new THREE.Mesh(rockGeo, rockMat); const sc = 0.5 + rnd() * 1.6; m.scale.set(sc, sc * (0.8 + rnd() * 0.5), sc); m.position.set(x, terrainHeight(x, z) + 0.05 * sc, z); m.rotation.y = rnd() * 6.28; m.castShadow = m.receiveShadow = true; g.add(m);
+    }
+    // fallen logs
+    for (let i = 0; i < 6; i++) {
+      const a = rnd() * 6.283, rr = 12 + rnd() * 22; const x = CLEARING.x + Math.cos(a) * rr * 1.2, z = CLEARING.z + Math.sin(a) * rr;
+      if (z > -17 || x > -80) continue; const [pd] = polyDist(x, z); if (pd < 3) continue;
+      const len = 2.5 + rnd() * 3.5, lg = new THREE.CylinderGeometry(0.2 + rnd() * 0.1, 0.26 + rnd() * 0.1, len, 9); lg.rotateZ(Math.PI / 2);
+      const lu = lg.attributes.uv; for (let k = 0; k < lu.count; k++) lu.setXY(k, lu.getX(k) * 2, lu.getY(k) * len * 0.5);
+      const m = new THREE.Mesh(lg, barkMat); m.position.set(x, terrainHeight(x, z) + 0.2, z); m.rotation.y = rnd() * 6.28; m.castShadow = m.receiveShadow = true; g.add(m);
+    }
   }
 
-  // ---- grass tufts around the clearing -----------------------------------------------------
+  // ---- the old oak, crate and blanket ---------------------------------------------------------
   {
-    const c = document.createElement('canvas'); c.width = 128; c.height = 128; const x = c.getContext('2d');
-    x.clearRect(0, 0, 128, 128);
-    for (let b = 0; b < 18; b++) {
-      const bx = 8 + rnd() * 112, h = 50 + rnd() * 70, lean = (rnd() - 0.5) * 36;
-      const gr = x.createLinearGradient(0, 128, 0, 128 - h); gr.addColorStop(0, '#1d3a12'); gr.addColorStop(1, '#8fae4a');
-      x.fillStyle = gr; x.beginPath(); x.moveTo(bx - 3, 128); x.quadraticCurveTo(bx + lean * 0.4, 128 - h * 0.6, bx + lean, 128 - h); x.quadraticCurveTo(bx + lean * 0.4 + 3, 128 - h * 0.6, bx + 3, 128); x.fill();
-    }
-    const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
-    const gm = new THREE.MeshStandardMaterial({ map: tex, alphaTest: 0.5, side: THREE.DoubleSide, roughness: 0.9 });
-    const q1 = new THREE.PlaneGeometry(0.7, 0.55); q1.translate(0, 0.27, 0);
-    const q2 = q1.clone().rotateY(Math.PI / 2);
-    const tuft = merge([q1, q2].map((gg) => { const gc = gg.clone(); gc.setAttribute('color', new THREE.BufferAttribute(new Float32Array(gc.attributes.position.count * 3).fill(1), 3)); return gc; }));
-    // keep real uvs for the tuft
-    const u1 = q1.attributes.uv.array, u2 = q2.attributes.uv.array; const uvs = new Float32Array(u1.length + u2.length); uvs.set(u1, 0); uvs.set(u2, u1.length); tuft.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
-    const N = 2600;
-    const inst = new THREE.InstancedMesh(tuft, gm, N);
-    const m = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler(), p = new THREE.Vector3(), sc = new THREE.Vector3();
-    let n = 0;
-    while (n < N) {
-      const a = rnd() * 6.283, r = Math.sqrt(rnd()) * 30;
-      const x2 = CLEARING.x + Math.cos(a) * r * 1.3 + 4, z2 = CLEARING.z + Math.sin(a) * r;
-      if (z2 > -15 || z2 < -95) continue;
-      const [pd] = polyDist(x2, z2); if (pd < 1.4) continue;
-      const s = 0.7 + rnd() * 0.9;
-      e.set(0, rnd() * 6.28, 0); q.setFromEuler(e); p.set(x2, terrainHeight(x2, z2) - 0.02, z2); sc.set(s, s * (0.8 + rnd() * 0.6), s);
-      inst.setMatrixAt(n++, m.compose(p, q, sc));
-    }
-    inst.frustumCulled = false; inst.castShadow = false; inst.receiveShadow = false;
-    g.add(inst);
-  }
-
-  // ---- the old oak, crate and blanket -----------------------------------------------------
-  {
-    const oak = new THREE.Group();
+    const oakGeo = buildBroadleaf({ height: 7.6, trunkR: 0.62, crownR: 6.4, limbs: 8, leafCards: 760, seed: 5, leafSize: 2.0, hue: 0.1 });
     const y0 = terrainHeight(OAK.x, OAK.z);
-    oak.position.set(OAK.x, y0 - 0.1, OAK.z);
-    // trunk: lathe with root flare
-    const profile = [[0.9, 0], [0.74, 0.35], [0.62, 0.9], [0.6, 2.2], [0.57, 3.4], [0.5, 4.4]].map(([r, y]) => new THREE.Vector2(r, y));
-    const lg = new THREE.LatheGeometry(profile, 14);
-    const lp = lg.attributes.position; for (let i = 0; i < lp.count; i++) { const a = Math.atan2(lp.getZ(i), lp.getX(i)); const k = 1 + Math.sin(a * 5) * 0.06 * (1 - lp.getY(i) / 5) + Math.sin(a * 11 + lp.getY(i)) * 0.03; lp.setX(i, lp.getX(i) * k); lp.setZ(i, lp.getZ(i) * k); }
-    lg.computeVertexNormals();
-    const lu = lg.attributes.uv; for (let i = 0; i < lu.count; i++) lu.setXY(i, lu.getX(i) * 3, lu.getY(i) * 2);
-    const trunk = new THREE.Mesh(lg, MAT.bark); trunk.castShadow = trunk.receiveShadow = true; oak.add(trunk);
-    // roots
-    for (let r = 0; r < 6; r++) { const rg = new THREE.CylinderGeometry(0.07, 0.22, 2.0, 6); rg.rotateZ(Math.PI / 2.6); rg.translate(0.9, 0.12, 0); const m = new THREE.Mesh(rg, MAT.bark); m.rotation.y = r * 1.05 + 0.3; m.castShadow = true; oak.add(m); }
-    // limbs
-    for (const [ang, h, len, tilt] of [[0.4, 3.9, 3.2, 0.9], [2.2, 4.1, 3.6, 0.85], [4.0, 3.6, 3.0, 1.0], [5.3, 4.5, 3.4, 0.8], [1.3, 4.6, 2.6, 0.7]]) {
-      const lm = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.26, len, 7), MAT.bark);
-      lm.geometry.translate(0, len / 2, 0); lm.position.set(0, h, 0); lm.rotation.set(0, ang, tilt, 'YZX'); lm.castShadow = true; oak.add(lm);
-    }
-    // canopy blobs
-    const lm = MAT.leaf.clone(); lm.color.set(0x3a5a22); lm.roughness = 0.9; lm.side = THREE.DoubleSide;
-    const rr = mulberry32(31);
-    for (let i = 0; i < 16; i++) {
-      const a = rr() * 6.28, rad = 1.5 + rr() * 3.8;
-      const bg = new THREE.IcosahedronGeometry(1.4 + rr() * 1.5, 2);
-      const bp = bg.attributes.position; for (let k = 0; k < bp.count; k++) { const n = 1 + (rr() - 0.5) * 0.35; bp.setXYZ(k, bp.getX(k) * n, bp.getY(k) * n * 0.8, bp.getZ(k) * n); }
-      bg.computeVertexNormals();
-      const b = new THREE.Mesh(bg, lm); b.position.set(Math.cos(a) * rad, 5.2 + rr() * 2.6, Math.sin(a) * rad); b.castShadow = true; b.receiveShadow = true; oak.add(b);
-    }
-    g.add(oak);
+    const bark = new THREE.Mesh(oakGeo.bark, barkMat), leaves = new THREE.Mesh(oakGeo.leaves, leafMat2);
+    for (const m of [bark, leaves]) { m.position.set(OAK.x, y0 - 0.1, OAK.z); m.castShadow = true; m.receiveShadow = m === leaves; m.frustumCulled = false; g.add(m); }
+    ctx.oakLeaves = leaves;
     // crate + blanket + books + tin cup at the foot of the oak
     const B = new Batch();
     const cx = OAK.x + 1.5, cz = OAK.z + 1.4, cy = terrainHeight(cx, cz);
@@ -255,6 +244,12 @@ export function buildOutside(world, ctx) {
     B.build(g);
     marks.crate = new THREE.Vector3(cx, cy + 0.3, cz);
     marks.oak = OAK.clone(); marks.blanket = new THREE.Vector3(cx - 1.4, cy, cz + 0.5);
+  }
+  // ---- golden-hour shafts through the canopy -------------------------------------------------
+  ctx.sunShafts = [];
+  for (const [dx, dz, w] of [[-3, 6, 2.2], [2, 3, 1.6], [-7, 1, 2.6], [5, -4, 1.8], [-1, -6, 2.0], [-9, -7, 2.4]]) {
+    const top = new THREE.Vector3(CLEARING.x + dx + 22, 24, CLEARING.z + dz + 30), bot = new THREE.Vector3(CLEARING.x + dx, terrainHeight(CLEARING.x + dx, CLEARING.z + dz) + 0.2, CLEARING.z + dz);
+    const sh = lightShaft(top, bot, 0.4, w, 0xffd7a0, 0.0); g.add(sh); ctx.sunShafts.push(sh);
   }
 
   // ---- prison perimeter & towers (backdrop) ------------------------------------------------

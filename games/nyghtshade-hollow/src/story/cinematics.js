@@ -9,7 +9,7 @@ export function makeIntro(g) {
   return {
     dur: 34, letter: true, skippable: true, showArms: false,
     shots: [
-      T(0, 8.5, { p: [-118, 2.7, -55], l: [-72, 7.5, -14], fov: 54 }, { p: [-110, 2.5, -47], l: [-70, 8, -14], fov: 47 }, { area: 'outside', outside: true, env: 'outsideNight' }),
+      T(0, 8.5, { p: [-132, 19, -72], l: [-72, 8, -14], fov: 52 }, { p: [-104, 12.5, -44], l: [-70, 8, -14], fov: 44 }, { area: 'outside', outside: true, env: 'outsideNight' }),
       T(8.5, 17.5, { p: [-15.5, 1.72, 0.6], l: [-1, 2.0, -3.5], fov: 68 }, { p: [-5.5, 1.66, -1.4], l: [3.0, 1.7, -5.8], fov: 60 }, { area: 'hall', outside: false, env: 'hall' }),
       T(17.5, 24.2, { p: [0.52, 0.93, -9.42], l: [0.62, 1.7, -7.2], fov: 72 }, { p: [0.55, 0.96, -9.36], l: [0.9, 1.2, -6.2], fov: 68 }),
       T(24.2, 34, { p: [0.55, 0.96, -9.36], l: [0.9, 1.2, -6.2], fov: 68 }, { p: [0.95, 1.84, -8.0], l: [1.5, 1.7, -4.0], fov: 72 }),

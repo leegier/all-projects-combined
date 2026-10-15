@@ -1,6 +1,7 @@
 // Procedural humanoid: jointed capsule rig with a pose-blending animator (walk / idle / sit / lie / pray / mop / talk).
 import * as THREE from 'three';
 import { TEX } from '../proc/textures.js';
+import { buildHead } from './head.js';
 import { damp, lerp, hash01 } from '../util.js';
 
 const texCache = new Map();
@@ -54,9 +55,9 @@ export const LOOKS = {
   inmateA: { skin: 'skinMid', shirt: ['inmate', '#9a5a22'], pants: '#8a5220', scale: 1.0 },
   inmateB: { skin: 'skinDark', shirt: ['inmate', '#a66524'], pants: '#8a5220', scale: 1.04, bald: true },
   inmateC: { skin: 'skinLight', shirt: ['inmate', '#8e5120'], pants: '#7a4719', scale: 0.98, hair: 0x2a2018 },
-  cutter: { skin: 'skinLight', shirt: ['inmate', '#c9c4b4'], pants: '#8a5220', scale: 0.97, hair: 0x15110d, goatee: 0x15110d, slim: true, cig: true },
+  cutter: { skin: 'skinLight', shirt: ['inmate', '#c9c4b4'], pants: '#8a5220', scale: 0.97, hair: 0x15110d, hairStyle: 'slick', goatee: 0x15110d, slim: true, cig: true, iris: '#3f5a6a', stubble: 0.7 },
   tuck: { skin: 'skinDark', shirt: ['inmate', '#d8d6cc'], pants: '#8a5220', scale: 1.08, wide: true, hairnet: true, apron: true },
-  harrington: { skin: 'skinOld', shirt: ['inmate', '#7b7568'], pants: '#6a5438', scale: 0.93, beard: 0xdddad2, hair: 0xd8d6d0, thin: true, glasses: true, stoop: 0.12 },
+  harrington: { skin: 'skinOld', shirt: ['inmate', '#7b7568'], pants: '#6a5438', scale: 0.93, beard: 0xdddad2, hair: 0xd8d6d0, hairStyle: 'sides', thin: true, glasses: true, stoop: 0.12, iris: '#4a6070', stubble: 0.0 },
   maddox: { skin: 'skinLight', shirt: ['inmate', '#9a5a22'], pants: '#8a5220', scale: 1.1, wide: true, tattoo: true, bald: true },
 };
 
@@ -82,13 +83,15 @@ export class Humanoid {
     const s = (L.scale || 1) * (opts.scale || 1);
     const wide = L.wide ? 1.22 : L.slim ? 0.88 : L.thin ? 0.9 : 1;
     this.root = new THREE.Group();
-    this.rig = new THREE.Group(); this.root.add(this.rig);
+    // Engine heading convention: forward = (-sin yaw, -cos yaw) = local -Z, so the rig (modelled facing +Z) is flipped.
+    this.flip = new THREE.Group(); this.flip.rotation.y = Math.PI; this.root.add(this.flip);
+    this.rig = new THREE.Group(); this.flip.add(this.rig);
     this.rig.scale.setScalar(s);
     const skinTex = TEX[L.skin];
     const skin = new THREE.MeshStandardMaterial({ map: skinTex.map, normalMap: skinTex.normalMap, normalScale: new THREE.Vector2(0.4, 0.4), roughness: 0.62, metalness: 0 });
     const tex = shirtTexture(L.shirt[0], L.shirt[1]);
-    const shirt = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.92 });
-    const pants = new THREE.MeshStandardMaterial({ map: pantsTexture(L.pants), roughness: 0.95 });
+    const shirt = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.92, normalMap: TEX.blanket.normalMap, normalScale: new THREE.Vector2(0.55, 0.55) });
+    const pants = new THREE.MeshStandardMaterial({ map: pantsTexture(L.pants), roughness: 0.95, normalMap: TEX.blanket.normalMap, normalScale: new THREE.Vector2(0.5, 0.5) });
     const boots = new THREE.MeshStandardMaterial({ color: L.boots || 0x1a1410, roughness: 0.55 });
     const mats = [skin, shirt, pants, boots];
     const add = (parent, geo, mat, x = 0, y = 0, z = 0) => { const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); m.castShadow = true; m.receiveShadow = false; parent.add(m); return m; };
@@ -97,68 +100,61 @@ export class Humanoid {
     this.hips = J(this.rig, 0, 0.95, 0);
     add(this.hips, new THREE.CapsuleGeometry(0.17 * wide, 0.12, 4, 12), pants, 0, 0.02, 0).scale.set(1.15, 1, 0.82);
     this.spine = J(this.hips, 0, 0.12, 0);
-    const torsoLen = 0.42;
-    const torso = add(this.spine, new THREE.CapsuleGeometry(0.19 * wide, torsoLen, 6, 14), shirt, 0, torsoLen / 2 + 0.06, 0);
-    torso.scale.set(1.12, 1, 0.78);
-    if (L.wide) { torso.scale.set(1.2, 1, 0.9); }
-    if (L.apron) add(this.spine, new THREE.BoxGeometry(0.4, 0.5, 0.04), new THREE.MeshStandardMaterial({ color: 0xe8e4d6, roughness: 0.9 }), 0, 0.36, 0.2);
+    const torsoLen = 0.45;   // spine origin (waist) -> neck base
+    const abd = add(this.spine, new THREE.CapsuleGeometry(0.135 * wide, 0.1, 6, 14), shirt, 0, 0.1, 0); abd.scale.set(1.12, 1, 0.82);
+    const chest = add(this.spine, new THREE.CapsuleGeometry(0.15 * wide, 0.12, 6, 16), shirt, 0, 0.27, 0); chest.scale.set(L.wide ? 1.3 : 1.18, 1, L.wide ? 0.95 : 0.8);
+    const yoke = add(this.spine, new THREE.SphereGeometry(0.17 * wide, 16, 10), shirt, 0, 0.425, -0.005); yoke.scale.set(L.wide ? 1.5 : 1.35, 0.3, 0.76);
+    const torso = chest;
+    if (L.apron) add(this.spine, new THREE.BoxGeometry(0.36, 0.5, 0.04), new THREE.MeshStandardMaterial({ color: 0xe8e4d6, roughness: 0.9 }), 0, 0.22, 0.17);
     if (L.belt) {
-      add(this.hips, new THREE.BoxGeometry(0.4 * wide, 0.06, 0.26), new THREE.MeshStandardMaterial({ color: 0x080808, roughness: 0.5 }), 0, 0.1, 0);
+      add(this.hips, new THREE.BoxGeometry(0.36 * wide, 0.06, 0.24), new THREE.MeshStandardMaterial({ color: 0x080808, roughness: 0.5 }), 0, 0.1, 0);
       add(this.hips, new THREE.BoxGeometry(0.07, 0.14, 0.07), new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.4 }), 0.19, 0.06, 0.06); // radio/cuff pouch
-      add(this.spine, new THREE.BoxGeometry(0.05, 0.1, 0.03), new THREE.MeshStandardMaterial({ color: 0x050505, roughness: 0.4 }), -0.14, 0.62, 0.15);  // shoulder radio
+      add(this.spine, new THREE.BoxGeometry(0.05, 0.1, 0.03), new THREE.MeshStandardMaterial({ color: 0x050505, roughness: 0.4 }), -0.13, 0.4, 0.13);  // shoulder radio
     }
-    this.neck = J(this.spine, 0, torsoLen + 0.16, 0);
-    add(this.neck, new THREE.CylinderGeometry(0.06, 0.07, 0.1, 8), skin, 0, 0.0, 0);
-    this.head = J(this.neck, 0, 0.1, 0);
-    const skull = add(this.head, new THREE.SphereGeometry(0.115, 20, 16), skin, 0, 0.07, 0.0); skull.scale.set(0.92, 1.12, 1.0);
-    add(this.head, new THREE.SphereGeometry(0.085, 12, 10), skin, 0, -0.03, 0.045).scale.set(0.95, 0.9, 0.9); // jaw
-    add(this.head, new THREE.BoxGeometry(0.03, 0.05, 0.035), skin, 0, 0.04, 0.115).rotation.x = 0.3; // nose
-    const eyeW = new THREE.MeshStandardMaterial({ color: 0xd6d0c4, roughness: 0.3 });
-    const eyeP = new THREE.MeshStandardMaterial({ color: 0x120c08, roughness: 0.2 });
-    for (const sx of [-1, 1]) {
-      add(this.head, new THREE.SphereGeometry(0.014, 8, 6), eyeW, sx * 0.04, 0.085, 0.092);
-      add(this.head, new THREE.SphereGeometry(0.008, 6, 5), eyeP, sx * 0.04, 0.085, 0.104);
-      const brow = add(this.head, new THREE.BoxGeometry(0.05, 0.012, 0.02), new THREE.MeshStandardMaterial({ color: L.hair || 0x241a12, roughness: 0.9 }), sx * 0.04, 0.108, 0.098);
-      brow.rotation.z = sx * -0.15;
-      add(this.head, new THREE.SphereGeometry(0.02, 6, 5), skin, sx * 0.108, 0.07, 0).scale.set(0.5, 1, 0.8); // ears
-    }
-    add(this.head, new THREE.BoxGeometry(0.05, 0.008, 0.012), new THREE.MeshStandardMaterial({ color: 0x3a1c1c, roughness: 0.6 }), 0, -0.02, 0.1); // mouth
+    this.neck = J(this.spine, 0, torsoLen, 0);
+    add(this.neck, new THREE.CylinderGeometry(0.052 * wide, 0.066 * wide, 0.11, 14), skin, 0, 0.02, 0);
+    this.head = J(this.neck, 0, 0.055, 0);
+    const SKIN = { skinLight: 0xd3a68b, skinMid: 0xb27f62, skinDark: 0x7b5038, skinOld: 0xc9a28f };
+    const skinCol = new THREE.Color(SKIN[L.skin] || 0xb27f62);
+    const hh = buildHead({
+      skinTex, skinCol, stubble: L.stubble ?? (L.thin ? 0.2 : 0.55), scalpDark: L.bald ? 0.75 : 0,
+      hairColor: L.hair || null, hairStyle: L.hair ? (L.hairStyle || (L.thin ? 'sides' : 'short')) : 'none',
+      beardColor: L.beard || L.goatee || null, beardStyle: L.beard ? 'full' : L.goatee ? 'goatee' : 'none',
+      irisColor: L.iris || '#5b3a24', browColor: L.hair || 0x2a1c12, seed: opts.seed || 3, age: L.thin ? 1 : 0,
+    });
+    hh.group.position.y = 0.115; this.head.add(hh.group);
+    this.headParts = hh;
     if (L.hat) {
       const hm = new THREE.MeshStandardMaterial({ color: L.hat, roughness: 0.85 });
-      const crown = add(this.head, new THREE.CylinderGeometry(0.12, 0.125, 0.07, 18), hm, 0, 0.18, 0);
-      add(this.head, new THREE.BoxGeometry(0.2, 0.012, 0.09), hm, 0, 0.152, 0.13);
-      add(this.head, new THREE.BoxGeometry(0.05, 0.02, 0.005), new THREE.MeshStandardMaterial({ color: 0xc9b16a, metalness: 0.8, roughness: 0.3 }), 0, 0.18, 0.126);
+      const crown = add(this.head, new THREE.CylinderGeometry(0.1, 0.108, 0.07, 22), hm, 0, 0.235, 0.002);
+      add(this.head, new THREE.CylinderGeometry(0.104, 0.104, 0.012, 22), hm, 0, 0.205, 0.002);
+      const visor = add(this.head, new THREE.BoxGeometry(0.17, 0.008, 0.075), hm, 0, 0.205, 0.115); visor.rotation.x = 0.12;
+      add(this.head, new THREE.BoxGeometry(0.04, 0.026, 0.004), new THREE.MeshStandardMaterial({ color: 0xc9b16a, metalness: 0.8, roughness: 0.3 }), 0, 0.237, 0.108);
     } else if (L.hairnet) {
-      add(this.head, new THREE.SphereGeometry(0.12, 14, 10, 0, Math.PI * 2, 0, Math.PI * 0.55), new THREE.MeshStandardMaterial({ color: 0xd9d6cc, roughness: 0.9, transparent: true, opacity: 0.85 }), 0, 0.09, -0.005).scale.set(0.94, 1.12, 1.02);
-    } else if (!L.bald) {
-      const hairCol = L.hair || 0x241a12;
-      add(this.head, new THREE.SphereGeometry(0.118, 14, 10, 0, Math.PI * 2, 0, Math.PI * (L.thin ? 0.38 : 0.5)), new THREE.MeshStandardMaterial({ color: hairCol, roughness: 0.95 }), 0, 0.085, -0.01).scale.set(0.93, 1.12, 1.03);
+      add(this.head, new THREE.SphereGeometry(0.108, 18, 12, 0, Math.PI * 2, 0, Math.PI * 0.55), new THREE.MeshStandardMaterial({ color: 0xd9d6cc, roughness: 0.9, transparent: true, opacity: 0.8 }), 0, 0.125, -0.012).scale.set(0.8, 1.16, 1.02);
     }
-    if (L.beard) {
-      const b = add(this.head, new THREE.SphereGeometry(0.1, 12, 10, 0, Math.PI * 2, Math.PI * 0.5, Math.PI * 0.5), new THREE.MeshStandardMaterial({ color: L.beard, roughness: 1 }), 0, 0.01, 0.03);
-      b.scale.set(0.95, 1.35, 1.05);
-    }
-    if (L.goatee) add(this.head, new THREE.SphereGeometry(0.03, 8, 6), new THREE.MeshStandardMaterial({ color: L.goatee, roughness: 1 }), 0, -0.07, 0.1).scale.set(1, 1.4, 0.8);
     if (L.glasses) {
       const gm = new THREE.MeshStandardMaterial({ color: 0x15130f, roughness: 0.4, metalness: 0.5 });
-      for (const sx of [-1, 1]) { const r = add(this.head, new THREE.TorusGeometry(0.026, 0.004, 6, 14), gm, sx * 0.04, 0.085, 0.112); }
-      add(this.head, new THREE.BoxGeometry(0.03, 0.004, 0.004), gm, 0, 0.09, 0.114);
+      for (const sx of [-1, 1]) { add(this.head, new THREE.TorusGeometry(0.0225, 0.0028, 8, 18), gm, sx * 0.0345, 0.142, 0.099); add(this.head, new THREE.BoxGeometry(0.004, 0.003, 0.09), gm, sx * 0.076, 0.144, 0.056); }
+      add(this.head, new THREE.BoxGeometry(0.018, 0.003, 0.003), gm, 0, 0.147, 0.099);
     }
     if (L.cig) {
-      this.cig = add(this.head, new THREE.CylinderGeometry(0.004, 0.004, 0.07, 6), new THREE.MeshStandardMaterial({ color: 0xe8e4d8 }), 0.03, -0.022, 0.13);
+      this.cig = add(this.head, new THREE.CylinderGeometry(0.0035, 0.0035, 0.07, 8), new THREE.MeshStandardMaterial({ color: 0xe8e4d8 }), 0.012, 0.0745, 0.128);
       this.cig.rotation.x = Math.PI / 2;
-      add(this.head, new THREE.SphereGeometry(0.006, 6, 5), new THREE.MeshStandardMaterial({ color: 0x331100, emissive: 0xff5a10, emissiveIntensity: 3 }), 0.03, -0.022, 0.167);
+      add(this.head, new THREE.SphereGeometry(0.005, 8, 6), new THREE.MeshStandardMaterial({ color: 0x331100, emissive: 0xff5a10, emissiveIntensity: 3 }), 0.012, 0.0745, 0.165);
     }
 
     // arms
     const armMat = L.tattoo ? new THREE.MeshStandardMaterial({ map: tattooTexture(5), roughness: 0.6 }) : skin;
     const mkArm = (side) => {
-      const sh = J(this.spine, side * 0.25 * wide, torsoLen + 0.04, 0);
+      const sh = J(this.spine, side * 0.215 * wide, torsoLen - 0.03, 0);
       const upper = add(sh, new THREE.CapsuleGeometry(0.058 * (L.wide ? 1.2 : 1), 0.26, 4, 10), shirt, 0, -0.17, 0);
       const el = J(sh, 0, -0.34, 0);
       add(el, new THREE.CapsuleGeometry(0.048 * (L.wide ? 1.2 : 1), 0.24, 4, 10), armMat, 0, -0.15, 0);
       const hand = J(el, 0, -0.32, 0);
-      add(hand, new THREE.SphereGeometry(0.052, 10, 8), armMat, 0, 0, 0).scale.set(0.9, 1.15, 0.7);
+      add(hand, new THREE.SphereGeometry(0.05, 14, 10), armMat, 0, -0.02, 0).scale.set(0.9, 1.15, 0.62);
+      for (let f = 0; f < 4; f++) { const fg = add(hand, new THREE.CapsuleGeometry(0.0125, 0.045, 3, 8), armMat, (f - 1.5) * 0.02, -0.085, 0.004); fg.rotation.x = 0.12; }
+      const thb = add(hand, new THREE.CapsuleGeometry(0.0135, 0.04, 3, 8), armMat, -side * 0.045, -0.04, 0.014); thb.rotation.z = side * 0.6;
       return { sh, el, hand };
     };
     this.lArm = mkArm(-1); this.rArm = mkArm(1);

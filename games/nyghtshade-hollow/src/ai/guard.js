@@ -3,6 +3,7 @@
 import * as THREE from 'three';
 import { NPC } from './npc.js';
 import { angleDiff, clamp, dampAngle } from '../util.js';
+import { coneBeam } from '../core/gfx.js';
 
 const _eye = new THREE.Vector3();
 
@@ -135,10 +136,9 @@ export class SecurityCam {
   constructor(game, { head, pos, baseYaw, sweep = 0.95, range = 10, fov = 0.9, area = 'records' }) {
     Object.assign(this, { game, head, pos: pos.clone(), baseYaw, sweep, range, fov, area });
     this.enabled = true; this.detect = 0; this.yaw = baseYaw; this.alarmed = false;
-    // visual cone
-    const cone = new THREE.Mesh(new THREE.ConeGeometry(Math.tan(fov / 2) * range, range, 20, 1, true), new THREE.MeshBasicMaterial({ color: 0xff2a2a, transparent: true, opacity: 0.0, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending }));
-    cone.geometry.translate(0, -range / 2, 0); cone.geometry.rotateX(Math.PI / 2);   // apex at origin, opens along local -z (forward)
-    head.add(cone); this.cone = cone;
+    // visual cone (soft additive beam; brightens + reddens as detection rises)
+    this.cone = coneBeam(range, fov / 2, 0xffd070, 0.0);
+    head.add(this.cone);
   }
   /** Would the sweeping cone cover (x,z) `dt` seconds from now? (used by the playtest bot) */
   covers(x, z, dt = 0) {
@@ -162,8 +162,9 @@ export class SecurityCam {
       if (d < this.range && off < this.fov / 2 && !g.world.blocked(this.pos.x, this.pos.y, this.pos.z, pl.eyePos.x, pl.eyePos.y - 0.2, pl.eyePos.z)) vis = (1 - d / this.range) * 0.6 + 0.4 - pl.crouch * 0.2;
     }
     this.detect = Math.max(0, Math.min(1, this.detect + (vis > 0 ? vis * dt * 0.5 : -dt * 0.5)));
-    this.cone.material.opacity = this.enabled ? 0.045 + this.detect * 0.1 : 0;
-    this.cone.material.color.setHex(this.detect > 0.5 ? 0xff2a2a : 0xffd070);
+    const u = this.cone.material.uniforms;
+    u.intensity.value = this.enabled ? 0.028 + this.detect * 0.16 : 0;
+    u.color.value.setHex(this.detect > 0.45 ? 0xff3a2a : 0xffd070);
     if (this.detect >= 1 && !this.alarmed) { this.alarmed = true; g.cameraAlarm(this); }
     if (this.detect < 0.2) this.alarmed = false;
   }

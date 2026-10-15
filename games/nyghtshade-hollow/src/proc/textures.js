@@ -99,10 +99,10 @@ const GEN = {
    *  ClampToEdge continues the paint above. Variant picks palette. */
   block(size = 1024, variant = 'green') {
     const pal = {
-      green: { low: [0.13, 0.20, 0.19], high: [0.60, 0.58, 0.49], stripe: [0.04, 0.05, 0.05] },
-      grey: { low: [0.22, 0.23, 0.24], high: [0.46, 0.47, 0.46], stripe: [0.08, 0.04, 0.04] },
-      red: { low: [0.24, 0.07, 0.06], high: [0.55, 0.52, 0.45], stripe: [0.05, 0.05, 0.05] },
-      blue: { low: [0.10, 0.15, 0.24], high: [0.58, 0.60, 0.58], stripe: [0.04, 0.04, 0.05] },
+      green: { low: [0.13, 0.20, 0.19], high: [0.50, 0.48, 0.40], stripe: [0.04, 0.05, 0.05] },
+      grey: { low: [0.20, 0.21, 0.22], high: [0.40, 0.41, 0.40], stripe: [0.08, 0.04, 0.04] },
+      red: { low: [0.24, 0.07, 0.06], high: [0.46, 0.43, 0.37], stripe: [0.05, 0.05, 0.05] },
+      blue: { low: [0.10, 0.15, 0.24], high: [0.44, 0.47, 0.46], stripe: [0.04, 0.04, 0.05] },
     }[variant];
     const bw = size / 8, bh = size / 16; // 0.4 x 0.2 m blocks
     return surface(size, (x, y, u, v, o) => {
@@ -154,7 +154,7 @@ const GEN = {
       r *= 1 - damp * 0.45; g *= 1 - damp * 0.4; b *= 1 - damp * 0.3;
       const cr = ridged(u + fbm(u, v, 5, 2, 1) * 0.06, v, 5, 4, 91);
       let h = (mid - 0.5) * 0.5 + (fine - 0.5) * 0.15;
-      if (cr > 0.982) { r *= 0.3; g *= 0.3; b *= 0.3; h -= 1; }
+      if (cr > 0.988) { r *= 0.55; g *= 0.55; b *= 0.55; h -= 0.8; }
       o.r = r; o.g = g; o.b = b; o.h = h; o.rough = 0.88;
     }, { normalStrength: 2.0 });
   },
@@ -168,7 +168,7 @@ const GEN = {
       const id = Math.floor((x + off) / bw) + row * 31;
       const mortar = bx < 5 || by < 5;
       const bv = ihash(id, 4, 1), cv = ihash(id, 8, 2);
-      let r = 0.36 + bv * 0.18, g = 0.14 + bv * 0.07, b = 0.10 + bv * 0.05;
+      let r = 0.31 + bv * 0.14, g = 0.19 + bv * 0.07, b = 0.14 + bv * 0.05;
       if (cv > 0.8) { r *= 0.6; g *= 0.65; b *= 0.7; }
       const fine = speck(x, y, 3), mid = fbm(u, v, 14, 4, 5), big = fbm(u, v, 4, 4, 12);
       const k = 0.85 + (mid - 0.5) * 0.4 + (fine - 0.5) * 0.22;
@@ -215,7 +215,7 @@ const GEN = {
       let h = (brushed - 0.5) * 0.3;
       const scr = fbm(u * 0.4 + v * 30, v * 0.4 - u * 6, 9, 2, 4);
       if (scr > 0.78) { k += 0.1; rough += 0.1; }
-      const rust = smoothstep(0.66, 0.82, fbm(u, v, 9, 5, 33)) * 0.75;
+      const rust = smoothstep(0.72, 0.88, fbm(u, v, 11, 5, 33)) * 0.6;
       let r = k, g = k, b = k * 1.06;
       r = mix(r, 0.36 * (0.7 + fine * 0.5), rust); g = mix(g, 0.16 * (0.7 + fine * 0.5), rust); b = mix(b, 0.07, rust);
       o.r = r; o.g = g; o.b = b; o.h = h - rust * 0.4; o.rough = mix(rough, 0.85, rust); o.metal = mix(0.95, 0.15, rust);

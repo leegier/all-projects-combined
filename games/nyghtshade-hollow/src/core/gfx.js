@@ -20,7 +20,7 @@ export const QUALITY = {
 const GradeShader = {
   uniforms: {
     tDiffuse: { value: null }, time: { value: 0 }, fade: { value: 0 }, vignette: { value: 0.55 }, grain: { value: 0.035 },
-    ca: { value: 0.0016 }, letter: { value: 0 }, eyelid: { value: 0 }, blur: { value: 0 }, damage: { value: 0 }, alarm: { value: 0 },
+    ca: { value: 0.0007 }, letter: { value: 0 }, eyelid: { value: 0 }, blur: { value: 0 }, damage: { value: 0 }, alarm: { value: 0 },
     suspicion: { value: 0 }, lift: { value: new THREE.Vector3(0.0, 0.004, 0.012) }, gain: { value: new THREE.Vector3(1.04, 1.0, 0.97) },
     sat: { value: 0.9 }, contrast: { value: 1.08 }, aspect: { value: 1.7778 }, res: { value: new THREE.Vector2(1280, 720) }, flash: { value: 0 },
   },
@@ -239,6 +239,22 @@ export function lightShaft(a, b, r0, r1, color = 0xbdd6ff, intensity = 0.18) {
   m.quaternion.setFromUnitVectors(new THREE.Vector3(0, -1, 0), dir.clone().normalize());
   m.renderOrder = 4;
   m.frustumCulled = false;
+  return m;
+}
+
+const BeamMat = (color, intensity) => new THREE.ShaderMaterial({
+  transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide, fog: false,
+  uniforms: { color: { value: new THREE.Color(color) }, intensity: { value: intensity } },
+  vertexShader: `varying vec3 vN; varying vec3 vV; varying float vH; void main(){ vec4 mv = modelViewMatrix * vec4(position,1.0); vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz); vH = uv.y; gl_Position = projectionMatrix * mv; }`,
+  fragmentShader: `uniform vec3 color; uniform float intensity; varying vec3 vN; varying vec3 vV; varying float vH;
+    void main(){ float f = abs(dot(normalize(vN), normalize(vV))); float a = pow(f, 1.4) * pow(max(1.0 - vH, 0.0), 1.6) * smoothstep(0.0, 0.12, vH); gl_FragColor = vec4(color * a * intensity, 1.0); }`,
+});
+/** Soft volumetric-looking cone with its apex at the origin, opening toward local -z (security-camera vision cone). */
+export function coneBeam(range, halfAngle, color = 0xffd070, intensity = 0.2) {
+  const g = new THREE.CylinderGeometry(0.02, Math.tan(halfAngle) * range, range, 24, 1, true);
+  const uv = g.attributes.uv; for (let i = 0; i < uv.count; i++) uv.setY(i, 1 - uv.getY(i));
+  g.translate(0, -range / 2, 0); g.rotateX(Math.PI / 2);
+  const m = new THREE.Mesh(g, BeamMat(color, intensity)); m.frustumCulled = false; m.renderOrder = 4;
   return m;
 }
 
