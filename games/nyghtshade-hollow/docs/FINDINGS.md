@@ -35,9 +35,15 @@ Everything below was found by the automated playtest bot, the unit/integration s
 | Records camera cone rendered as a huge opaque wedge | stills | additive `coneBeam` shader |
 | Soft-shadow/foliage cost made frames 2 s+ in the forest | perf probe | chunked + LOD foliage, 1024² capture shadows |
 | Tier of 12 cell doors opened at once → soundtrack clipped (peak +0.5 dBFS) | audio analysis (LUFS/peak/spectrogram) | doors staggered and thinned, limiter on the master, 32 Hz high-pass |
+| Dialogue choice list sat on top of the line being answered, and then the yellow system caption covered choice 1 | video review (contact sheets of the choice screens) | subtitle lifts above the list; the caption and the assertion feed step out of the way while choices are open |
+| HUD stayed on during the baptismal-font cinematic | video review | HUD hidden for that cinematic and restored at its end |
 
 ## Process
 
+* The capture tool can **patch** a finished render: after a UI fix, `--redo "a-b,…" --only-redo` deletes and re-renders only the
+  frames whose simulation time falls in those windows (every worker re-simulates from t=0 and verifies its checkpoints, so
+  the patched frames match their neighbours). A software-GL frame can take minutes when the machine is oversubscribed, so
+  screenshots use a 5-minute timeout with retries instead of aborting the render.
 * Capture determinism is asserted three ways: the integration test (two runs → identical end state), the plan pass
   checkpoints every 20 simulated seconds that **every worker re-verifies**, and the absence of `Math.random` / wall-clock
   reads in simulation code.

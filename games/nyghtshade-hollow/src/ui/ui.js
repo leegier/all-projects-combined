@@ -139,6 +139,8 @@ const CSS = `
 .rec b{font-weight:400;color:#ffd66b}.rec u{text-decoration:none;color:var(--dim)}
 .feed{position:absolute;right:2.2%;bottom:25.5%;width:40vmin;text-align:left;font-size:1.5vmin;letter-spacing:.05em}
 .cap .note{top:6.8%}
+.choosing .caption{bottom:auto;top:13.5%}
+.choosing .feed{bottom:46%}
 .settle,.settle *{transition:none!important;animation:none!important}
 .feed div{margin-top:.45vmin;padding:.45vmin 1.1vmin;background:rgba(4,12,6,.66);border-left:2px solid #5fd07a;color:#bfe9c8;text-shadow:0 0 4px #000}
 .feed div.bad{background:rgba(24,4,4,.7);border-left-color:#e0323d;color:#f0b8b8}
@@ -281,6 +283,7 @@ export class UI {
       c.appendChild(b);
     });
     c.classList.toggle('on', list.length > 0);
+    this.root.classList.toggle('choosing', list.length > 0);   // the yellow caption and the check feed step out of the way of the list
     // keep the line being answered readable: lift the subtitle above the choice list instead of letting them overlap
     this.el('u-sub').style.bottom = list.length ? (7 + list.length * 7.4 + 2.5).toFixed(1) + '%' : '';
     this.el('u-cont').style.display = list.length ? 'none' : 'block';

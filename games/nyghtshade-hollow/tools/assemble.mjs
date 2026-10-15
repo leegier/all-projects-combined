@@ -20,16 +20,18 @@ for (const p of pieces) {
     const seen = new Set();
     for (const l of plan.log) {
       if (!l.caption) continue;
-      const [title] = l.msg.split(': ');
+      const [title, ...rest] = l.msg.split(': ');
       const key = title + ':' + Math.floor(l.t / 20);
       if (title === 'PLAYTEST' || seen.has(key)) continue;
       seen.add(key);
-      chapters.push({ t: outTime(Math.round(l.t * 60)), name: (title.charAt(0) + title.slice(1).toLowerCase()).replace(/\bai\b/i, 'AI') });
+      let what = rest.join(': ').split(/[.;]\s/)[0].replace(/\.$/, '');       // first sentence of the caption says what is being shown
+      if (what.length > 60) what = what.slice(0, what.lastIndexOf(' ', 58)) + '…';
+      chapters.push({ t: outTime(Math.round(l.t * 60)), name: (title.charAt(0) + title.slice(1).toLowerCase()).replace(/\bai\b/i, 'AI') + (what ? ' — ' + what : '') });
     }
   } else chapters.push({ t, name: p.name });
   t += p.dur;
 }
-const clean = []; for (const c of chapters) if (!clean.length || c.t - clean[clean.length - 1].t >= 3) clean.push(c);
+const clean = []; for (const c of chapters) if (!clean.length || c.t - clean[clean.length - 1].t >= 1) clean.push(c);
 let meta = ';FFMETADATA1\ntitle=Nyghtshade Hollow — The Intake — automated playtest\n';
 clean.forEach((c, i) => { const end = i + 1 < clean.length ? clean[i + 1].t : t; meta += `[CHAPTER]\nTIMEBASE=1/1000\nSTART=${Math.round(c.t * 1000)}\nEND=${Math.round(end * 1000)}\ntitle=${c.name}\n`; });
 fs.writeFileSync(path.join(out, 'chapters.ffmeta'), meta);

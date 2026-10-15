@@ -73,7 +73,7 @@ his lantern down the stair and through the tunnel → the clearing → ending.`
 
 ## Graphics & audio
 
-Everything is built at start-up from code; the page is ~0.7 MB minified.
+Everything is built at start-up from code; the page is ~0.8 MB minified.
 
 * **Renderer** — Three.js r170, HalfFloat HDR pipeline with MSAA, ACES tone-mapping, unreal bloom, and a custom
   grade pass (vignette, grain, chromatic aberration, letterbox, eyelid/blur/alarm overlays). First-person arms render
@@ -108,13 +108,15 @@ Everything is built at start-up from code; the page is ~0.7 MB minified.
 
 ## The video
 
-`media/nyghtshade-hollow-playtest.mp4` is a recording of the bot playing the slice — real input, real game, with
-live assertions ticking green on screen. It is produced by a **deterministic capture pipeline**
+`media/` holds the recording of the bot playing the slice (8 min 8 s, real input, real game, live assertions ticking green on
+screen, chapter markers): the 480p `-lite` file, 21 stills and a contact sheet; the 720p master (99.9 MB) is handed over with the
+pull request rather than committed. It is produced by a **deterministic capture pipeline**
 (`tools/capture.mjs`, `tools/make-video.sh`): the simulation is a pure function of the step count, so each browser
 worker re-simulates from t = 0 in a few seconds and renders only its slice of frames; UI timers and CSS animations are
 re-driven by simulation time; the soundtrack is rendered offline from the same simulation and cut/tempo-matched to the
 frame schedule; ffmpeg muxes everything. Stretches where the bot just walks or waits are time-lapsed (badge in the
-top bar). Details in [docs/VIDEO.md](docs/VIDEO.md).
+top bar). Structure: golden path (shim route) → keycard and bribe clips → failure path (camera alarm, chase, arrest) → report
+card. Details in [docs/VIDEO.md](docs/VIDEO.md), media index in [media/README.md](media/README.md).
 
 ## Layout
 

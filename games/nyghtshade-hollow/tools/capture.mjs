@@ -126,7 +126,11 @@ async function worker(id, todo, all, plan, nameFn) {
       for (let j = w0; j < all.findIndex((x) => x.i === f.i); j++) { if (all[j].step < cur) continue; await render(all[j], ps); ps = all[j].step; }
     }
     await render(f, prev ? prev.step : cur);
-    const buf = await page.screenshot({ type: 'jpeg', quality: JPEG_Q });
+    let buf;
+    for (let attempt = 0; ; attempt++) {     // a starved software GL pipeline can take minutes for one frame: long timeout + retry instead of dying
+      try { buf = await page.screenshot({ type: 'jpeg', quality: JPEG_Q, timeout: 300000 }); break; }
+      catch (e) { if (attempt >= 2) throw e; log(`worker ${id}: screenshot retry ${attempt + 1} (${String(e.message).split('\n')[0]})`); }
+    }
     fs.writeFileSync(nameFn(f), buf);
     prev = f; done++;
     if (done % 50 === 0) log(`worker ${id}: ${done}/${todo.length} frames, ${((Date.now() - t0) / done / 1000).toFixed(2)} s/frame, step ${cur}`);
@@ -141,19 +145,20 @@ async function stageFrames(plan) {
   if (!resume) { fs.rmSync(dir, { recursive: true, force: true }); }
   fs.mkdirSync(dir, { recursive: true });
   const all = buildSchedule(plan);
-  fs.writeFileSync(P(PREVIEW > 0 ? 'preview.json' : 'schedule.json'), JSON.stringify(all));
+  // --only-redo: patch pass that may run beside another render of the same directory (leaves schedule.json alone, renders only the redo windows)
+  const onlyRedo = !!arg('only-redo', false);
+  if (!onlyRedo) fs.writeFileSync(P(PREVIEW > 0 ? 'preview.json' : 'schedule.json'), JSON.stringify(all));
   const nameFn = PREVIEW > 0 ? (f) => path.join(dir, `p_${String(Math.round(f.step / 6)).padStart(6, '0')}.jpg`) : (f) => path.join(dir, `f_${String(f.i).padStart(6, '0')}.jpg`);
   // --redo "139-141.6,150-153": delete and re-render the frames inside these windows of simulated seconds (patch pass after a fix)
   const redo = arg('redo', null);
-  if (redo && redo !== true) {
+  const wins = redo && redo !== true ? String(redo).split(',').map((w) => w.split('-').map(Number)) : [];
+  const inWin = (f) => wins.some(([a, b]) => f.step >= a * STEPS_PER_S && f.step <= b * STEPS_PER_S);
+  if (wins.length) {
     let n = 0;
-    for (const w of String(redo).split(',')) {
-      const [a, b] = w.split('-').map(Number);
-      for (const f of all) if (f.step >= a * STEPS_PER_S && f.step <= b * STEPS_PER_S && fs.existsSync(nameFn(f))) { fs.unlinkSync(nameFn(f)); n++; }
-    }
+    for (const f of all) if (inWin(f) && fs.existsSync(nameFn(f))) { fs.unlinkSync(nameFn(f)); n++; }
     log(`redo: removed ${n} frames`);
   }
-  const todo = all.filter((f) => !(resume && fs.existsSync(nameFn(f)) && fs.statSync(nameFn(f)).size > 1000));
+  const todo = all.filter((f) => (onlyRedo ? inWin(f) : !(resume && fs.existsSync(nameFn(f)) && fs.statSync(nameFn(f)).size > 1000)));
   log(`frames: ${all.length} frames (${(all.length / FPS).toFixed(1)} s of video at ${FPS} fps), ${todo.length} to render, ${WORKERS} workers, q=${Q}&${QX}, ${W}x${H}`);
   const chunk = Math.ceil(todo.length / WORKERS);
   const jobs = [];
@@ -303,11 +308,11 @@ function stageEncode(plan) {
   log(`encode: soundtrack make-up gain ${gainDb} dB`);
   sh('ffmpeg', ['-y', '-f', 'concat', '-safe', '0', '-i', list, '-af', `volume=${gainDb}dB,alimiter=limit=0.9:attack=3:release=60:level=disabled`, '-ar', '44100', '-c:a', 'pcm_s16le', wav]);
   // ---- video -------------------------------------------------------------------------------------------------------
-  const crf = String(arg('crf', 22));
+  const crf = String(arg('crf', 27));
   const mp4 = P(arg('name', 'nyghtshade-hollow-playtest.mp4'));
   log(`encode: ${totalFrames} frames (${(totalFrames / FPS).toFixed(1)} s) -> ${mp4}`);
   sh('ffmpeg', ['-y', '-framerate', String(FPS), '-i', path.join(seq, '%06d.jpg'), '-i', wav,
-    '-vf', 'format=yuv420p', '-c:v', 'libx264', '-preset', 'slow', '-crf', crf, '-maxrate', String(arg('maxrate', '6M')), '-bufsize', '12M', '-profile:v', 'high', '-r', String(FPS), '-g', String(FPS * 2), '-movflags', '+faststart',
+    '-vf', 'format=yuv420p', '-c:v', 'libx264', '-preset', 'slow', '-crf', crf, '-maxrate', String(arg('maxrate', '4500k')), '-bufsize', String(arg('bufsize', '9M')), '-profile:v', 'high', '-r', String(FPS), '-g', String(FPS * 2), '-movflags', '+faststart',
     '-c:a', 'aac', '-b:a', '160k', '-ar', '44100', '-ac', '2', '-shortest', mp4]);
   const sz = fs.statSync(mp4).size;
   log(`encode: done ${(sz / 1e6).toFixed(1)} MB`);

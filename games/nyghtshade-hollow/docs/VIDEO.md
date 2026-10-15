@@ -1,9 +1,10 @@
 # The playtest video
 
-`media/nyghtshade-hollow-playtest.mp4` shows the **playtest bot** playing *The Intake* start to finish while the
-assertions it makes appear on screen. 1280×720, 30 fps, H.264 + AAC. Nothing is faked: the video frames are
-screenshots of the real game (WebGL canvas **and** DOM HUD) at chosen simulation steps; the audio is the game's own
-procedural soundtrack rendered from the same simulation.
+The master recording (`nyghtshade-hollow-playtest.mp4`) shows the **playtest bot** playing *The Intake* start to finish while the
+assertions it makes appear on screen: 8 min 8 s, 1280×720, 30 fps, H.264 + AAC, 24 chapter markers. Nothing is faked: the
+video frames are screenshots of the real game (WebGL canvas **and** DOM HUD) at chosen simulation steps; the audio is the game's
+own procedural soundtrack rendered from the same simulation. The master is 99.9 MB, just under GitHub's file limit, so it is not committed — it was handed over in the Claude session; the
+repository carries `media/nyghtshade-hollow-playtest-lite.mp4` (854×480, 32 MB, same chapters), 21 stills and a contact sheet.
 
 ## What you see
 
@@ -15,9 +16,10 @@ procedural soundtrack rendered from the same simulation.
 | the game's own HUD | clock + slot, objective + distance, DC/cred/fear, vitals, minimap with guard cones, detection ring, alert bar, PA ticker |
 
 Structure: title card → **golden path** (`shim` route: intro cinematic, count, survival, dialogue, chow, commissary,
-Cutter, mop job, Records stealth, ledger, journal, chapel, baptismal font, tunnel, clearing, ending) → **failure path**
-interlude (`alarm` route: rush into Records → camera alarm → Pruitt chases → arrest cinematic → fined, an hour later in
-the cell) → report card.
+Cutter, mop job, Records stealth, ledger, journal, chapel, baptismal font, tunnel, clearing, ending) → **alternate routes**
+(two short clips of the other ways into Records: `keycard` — buy it from Cutter, swipe the reader; `bribe` — pay Pruitt to
+look away) → **failure path** (`alarm` route: rush into Records → camera alarm → Pruitt chases → arrest cinematic → fined,
+an hour later in the cell) → report card. The file carries chapter markers (one per system the bot exercises).
 
 ## How it is made
 
@@ -27,7 +29,9 @@ node tools/capture.mjs  ──►  plan      bot runs headless (fast, no renderi
                         ──►  frames    N Chromium workers; each re-simulates to its first frame, renders its slice, screenshots
                         ──►  cards     title / interlude / report cards (DOM, animations driven by virtual time)
                         ──►  encode    image sequence + audio segments (atempo for time-lapse) → libx264 / AAC
-tools/make-video.sh    runs the above for both routes and concatenates the pieces
+tools/make-video.sh         runs the above for the golden path + failure path and concatenates A (title+golden path) · B (failure path) · C (report)
+tools/make-video-extras.sh  renders the keycard / bribe clips (K.mp4, R.mp4: a window of the route + an interlude card)
+tools/assemble.mjs          final concat  A · K · R · B · C  with chapter markers (FFMETADATA) → nyghtshade-hollow-playtest.mp4
 ```
 
 Why this works:
@@ -47,8 +51,8 @@ Why this works:
   ≈ −16 LUFS and a limiter.
 * **Software rendering.** The container has no GPU. Chromium runs under Xvfb with ANGLE → Mesa llvmpipe
   (`NH_GL=llvmpipe`, ~6× faster than SwiftShader). Capture-only trims: 1024² shadow maps (`?sm=1024&sunsm=1024`);
-  everything else is the `high` preset (4× MSAA, bloom, 6 pooled point lights, HDR grade). Cost per frame:
-  ≈ 0.25 s (mess hall) to ≈ 0.7 s (forest) on 4 cores.
+  everything else is the `high` preset (4× MSAA, bloom, 6 pooled point lights, HDR grade) plus half film grain. Cost: ≈ 0.5 s of
+  4-core time per frame in the halls and ≈ 1 s in the forest, so the 14 000 frames of the whole video take about three hours.
 
 ## Reproduce
 
@@ -60,8 +64,15 @@ NH_GL=llvmpipe xvfb-run -a node tools/capture.mjs --out /tmp/nh-video/shim --sta
 python3 tools/montage.py /tmp/nh-video/shim/preview /tmp/nh-video/sheet 3 3 560
 ```
 
+Encode defaults are CRF 27 with a 4.5 Mbit/s cap (`--crf`, `--maxrate`, `--bufsize`) — CRF 22 made the master ≈ 250 MB; the
+forest (grass blades + time-lapse) is the expensive part, the dialogue close-ups cost almost nothing. The lite file is
+`bash tools/make-lite.sh IN.mp4 OUT.mp4` (480p, light denoise, CRF 30).
+
 Useful flags: `--route shim|keycard|bribe|alarm`, `--fps`, `--workers`, `--q`, `--qx "sm=2048&sunsm=2048"`, `--from/--to` (seconds of
 simulated time), `--resume` (skip frames already on disk), `--parts title,frames,outro`, `--crf`.
+Patching after a fix: `--redo "139-144.4,293-295.6"` deletes and re-renders only the frames whose simulation time falls in those
+windows; add `--only-redo` to run it beside another render of the same directory (it leaves `schedule.json` alone). `NH_PORT=8400`
+moves the local servers' base port so two captures can run at once. Then re-run `--stage encode` and `node tools/assemble.mjs OUTDIR`.
 
 ## Visual review log (what the stills review changed)
 
@@ -76,5 +87,7 @@ Each pass rendered a contact sheet every 4 s of the run and looked at it frame b
 * tunnel: Harrington's lantern lit his whole coat white → carried at his hip, 5 cd, small glow
 * ending: grass hid the two men → trodden lawn around the oak; three authored shots (eye-level push-in, low sunlit drift,
   rising pull-back toward the prison in the haze); sun-shaft cones fade to zero at the ground (they showed hard polygon edges)
-* HUD dims during dialogue so the portrait camera + subtitles read cleanly
+* HUD dims during dialogue so the portrait camera + subtitles read cleanly; on choice screens the subtitle lifts above the list
+  and the yellow caption / assertion feed step aside (the list used to cover the line being answered, then the caption covered choice 1)
+* baptismal-font cinematic: HUD hidden while it plays
 * audio: a whole tier of cell doors opened at once and clipped → staggered/thinned + limiter; sub-bass rumble trimmed
