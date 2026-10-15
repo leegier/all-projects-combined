@@ -7,7 +7,7 @@
 import https from 'https';
 import fs from 'fs';
 
-const API_KEY = '8lzxDRwhgUvCp1WeiooJS6fkFmu4xWjjHv7O6BFb';
+const API_KEY = process.env.ITCHIO_API_KEY;
 const USERNAME = 'THE-FORGE-IDE-GAMEDEV';
 
 function apiCall(method, path, body = null) {

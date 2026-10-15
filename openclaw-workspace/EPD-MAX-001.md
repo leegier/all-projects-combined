@@ -343,7 +343,7 @@ This ordering ensures the 1660 Super handles the majority of MAX's workload with
 
 Model router: `http://127.0.0.1:11435` (custom Node.js OpenAI-compatible proxy)
 Ollama direct: `http://127.0.0.1:11434`
-OpenClaw gateway: `http://127.0.0.1:18789` (token: `4503b9af0c6c27ff36bf4ef43dc3748bda660ccfec5aaacb`)
+OpenClaw gateway: `http://127.0.0.1:18789` (token: `REDACTED`)
 
 If the router is down, executor.py and planner.py both have direct-Ollama fallback logic. They will continue working.
 

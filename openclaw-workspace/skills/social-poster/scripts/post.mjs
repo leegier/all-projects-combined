@@ -20,7 +20,7 @@ if (!args.text) {
   process.exit(1);
 }
 
-const API_KEY = 'quack_5c6786fb7ac8f08c638d5db176d60b12b906b78ac63d21cf';
+const API_KEY = process.env.VIBEPOST_API_KEY;
 const url = 'https://vibepost-jpaulgrayson.replit.app/api/quack/post';
 
 const res = await fetch(url, {

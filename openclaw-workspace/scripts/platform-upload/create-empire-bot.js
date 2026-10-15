@@ -6,7 +6,7 @@ import { chromium } from 'playwright';
 import fs from 'fs';
 
 const EMAIL = 'leegier6@gmail.com';
-const PASSWORD = 'Gameover2026!!';
+const PASSWORD = process.env.DISCORD_PASSWORD;
 const AUTH_FILE = 'auth-discord-dev.json';
 
 async function run() {

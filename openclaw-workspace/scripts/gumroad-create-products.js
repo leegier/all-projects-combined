@@ -6,7 +6,7 @@ const { chromium } = require('playwright');
 
 const CREDENTIALS = {
   email: 'leegier6@gmail.com',
-  password: 'Gameover2026!!'
+  password: process.env.GUMROAD_PASSWORD
 };
 
 const PRODUCTS = [

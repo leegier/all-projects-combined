@@ -5,7 +5,7 @@
 const { chromium } = require('playwright');
 
 const FROM_EMAIL = 'maxgier2026@gmail.com';
-const FROM_PASS  = 'Gameover2026!!';
+const FROM_PASS  = process.env.GMAIL_PASSWORD;
 const TO_EMAIL   = 'arigier2026@gmail.com';
 const SUBJECT    = '👻 Haunted America is LIVE — Check it out Ari!';
 const BODY       = `Hey Ari! 👋

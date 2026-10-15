@@ -66,7 +66,7 @@ await b.close();
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const https = require('https');
-const key = '8lzxDRwhgUvCp1WeiooJS6fkFmu4xWjjHv7O6BFb';
+const key = process.env.ITCHIO_API_KEY;
 await new Promise(resolve => {
   https.get({hostname:'itch.io',path:'/api/1/'+key+'/my-games',headers:{'User-Agent':'MAX'}}, res => {
     let d=''; res.on('data',c=>d+=c);

@@ -9,15 +9,15 @@
  *
  * Railway env vars needed:
  *   ANTHROPIC_API_KEY   — from console.anthropic.com
- *   TELEGRAM_BOT_TOKEN  — 8612410913:AAFxCwAs3yUSHKSnhM7IDR3EcE33QWheIjI
+ *   TELEGRAM_BOT_TOKEN  — from @BotFather
  *   TELEGRAM_CHAT_ID    — Lee's chat ID (send /start to the bot to get it)
  */
 
 import Anthropic from '@anthropic-ai/sdk';
 import fetch from 'node-fetch';
 
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || 'sk-ant-oat01-REDACTED';
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8612410913:AAFxCwAs3yUSHKSnhM7IDR3EcE33QWheIjI';
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '';
 const MODEL = 'claude-sonnet-4-6';
 

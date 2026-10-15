@@ -5,7 +5,7 @@ import { chromium } from 'playwright';
 import fs from 'fs';
 
 const USERNAME = 'THE-FORGE-IDE-GAMEDEV';
-const PASSWORD = 'Gameover2026!!';
+const PASSWORD = process.env.ITCHIO_PASSWORD;
 const GAME_ID = '4420990';
 const AUTH_FILE = 'auth-itchio.json';
 

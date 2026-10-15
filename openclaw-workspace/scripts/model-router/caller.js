@@ -3,11 +3,9 @@
 
 import fetch from 'node-fetch';
 
-const OPENROUTER_KEY = process.env.OPENROUTER_API_KEY ||
-  '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';
+const OPENROUTER_KEY = process.env.OPENROUTER_API_KEY;
 
-const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY ||
-  'sk-ant-oat01-REDACTED';
+const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY;
 
 const TIMEOUT_MS = 25000;
 

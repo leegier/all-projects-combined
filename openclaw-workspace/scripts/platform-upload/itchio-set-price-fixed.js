@@ -14,7 +14,7 @@ const args = Object.fromEntries(
 const GAME_ID = args['game-id'] || '4379091';
 const PRICE   = args['price']   || '27';
 const EMAIL   = 'leegier6@gmail.com';
-const PASS    = 'Gameover2026!!';
+const PASS    = process.env.ITCHIO_PASSWORD;
 const LOG     = `Z:/openclaw/workspace/itchio-set-price-${GAME_ID}.log`;
 
 function log(msg) {

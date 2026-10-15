@@ -40,7 +40,7 @@ for (const { id, price, label } of PRICES) {
 
 // Verify all prices
 await new Promise(resolve => {
-  https.get({ hostname: 'itch.io', path: '/api/1/8lzxDRwhgUvCp1WeiooJS6fkFmu4xWjjHv7O6BFb/my-games', headers: { 'User-Agent': 'MAX' } }, res => {
+  https.get({ hostname: 'itch.io', path: `/api/1/${process.env.ITCHIO_API_KEY}/my-games`, headers: { 'User-Agent': 'MAX' } }, res => {
     let d = ''; res.on('data', c => d += c);
     res.on('end', () => {
       console.log('\n=== FINAL PRICES ===');

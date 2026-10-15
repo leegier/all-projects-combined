@@ -6,7 +6,7 @@
 import { chromium } from 'playwright';
 
 const EMAIL = 'leegier6@gmail.com';
-const PASSWORD = 'Gameover2026!!';
+const PASSWORD = process.env.ITCHIO_PASSWORD;
 
 const GAMES_TO_FIX = [
   { id: '4420990', name: 'CLAWED', targetPrice: '10.00' },

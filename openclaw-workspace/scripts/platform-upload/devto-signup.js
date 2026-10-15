@@ -7,7 +7,7 @@ import { chromium } from 'playwright';
 import fs from 'fs';
 
 const EMAIL = 'maxgier2026@gmail.com';
-const PASSWORD = 'Gameover2026!!';
+const PASSWORD = process.env.DEVTO_PASSWORD;
 const AUTH_FILE = 'auth-devto.json';
 
 async function run() {

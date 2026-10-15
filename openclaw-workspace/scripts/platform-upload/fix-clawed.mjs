@@ -14,5 +14,5 @@ await p.waitForTimeout(500);
 console.log('Set to:', await price.inputValue());
 await p.evaluate(() => { document.querySelector('button.save_btn')?.click(); });
 await p.waitForTimeout(3000);
-await new Promise(r => { https.get({hostname:'itch.io',path:'/api/1/8lzxDRwhgUvCp1WeiooJS6fkFmu4xWjjHv7O6BFb/my-games',headers:{'User-Agent':'MAX'}}, res => { let d=''; res.on('data',c=>d+=c); res.on('end',()=>{ JSON.parse(d).games.forEach(g=>console.log(g.title+': $'+(g.min_price/100).toFixed(2))); r(); }); }); });
+await new Promise(r => { https.get({hostname:'itch.io',path:`/api/1/${process.env.ITCHIO_API_KEY}/my-games`,headers:{'User-Agent':'MAX'}}, res => { let d=''; res.on('data',c=>d+=c); res.on('end',()=>{ JSON.parse(d).games.forEach(g=>console.log(g.title+': $'+(g.min_price/100).toFixed(2))); r(); }); }); });
 await b.close();
