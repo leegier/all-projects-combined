@@ -1,0 +1,63 @@
+// Entry point: content advisory (25 s, pre-loads textures/systems) → title → game.
+import { Game } from './game.js';
+import { Bot } from './bot/bot.js';
+
+const q = new URLSearchParams(location.search);
+const canvas = document.getElementById('c');
+const root = document.getElementById('ui');
+const W = +q.get('w') || 1280, H = +q.get('h') || 720;
+canvas.width = W; canvas.height = H;
+const game = new Game({ canvas, uiRoot: root, quality: q.get('q') || 'high', capture: q.has('capture'), width: W, height: H, seed: +q.get('seed') || 1337 });
+window.NH = game;
+const ui = game.ui;
+const DISC = q.has('fast') || q.has('auto') || q.has('bot') || q.has('capture') ? 0.4 : 25;
+let loaded = false, counted = false;
+
+function refreshAccept() {
+  const btn = ui.el('u-accept');
+  btn.disabled = !(loaded && counted);
+  ui.el('u-cnt').textContent = loaded ? (counted ? 'Ready' : 'Content advisory') : 'Preparing prison systems…';
+}
+ui.show('u-disc', true);
+const t0 = performance.now();
+const tick = setInterval(() => {
+  const el = (performance.now() - t0) / 1000;
+  if (el >= DISC) { counted = true; clearInterval(tick); }
+  ui.el('u-cnt').textContent = (loaded ? '' : 'Preparing prison systems… ') + (counted ? '' : Math.max(0, Math.ceil(DISC - el)) + 's');
+  refreshAccept();
+}, 200);
+
+function startAudio() {
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC || game.audio) return;
+  const ctx = new AC();
+  game.initAudio(ctx, () => ctx.currentTime, true);
+  if (ctx.state === 'suspended') ctx.resume();
+}
+
+game.init((p, name) => { ui.el('u-load').style.width = (p * 100).toFixed(0) + '%'; }).then(() => {
+  loaded = true; ui.el('u-load').style.width = '100%'; refreshAccept();
+  game.input.onPointerLockChange = (locked) => { if (!locked && game.mode === 'play' && !game.input.virtual && !ui.panelOpen && !ui.shopOpen && !ui.docOpen) game.pause(true); };
+  game.debug = q.has('debug');
+  if (q.has('manual')) game.manual = true;
+  game.start();
+  if (q.has('bot')) { window.NH_BOT = game.bot = new Bot(game, { route: q.get('bot') || 'shim', annotate: q.has('annotate'), hurry: q.has('hurry') }); }
+  if (q.has('bot') && !q.has('nostart')) { clearInterval(tick); ui.show('u-disc', false); game.toTitle(); game.newGame(); }
+  if (q.has('auto') || q.has('bot') || q.has('capture')) { window.NH_READY = true; }
+}).catch((e) => { console.error(e); ui.el('u-cnt').textContent = 'Error: ' + e.message; window.NH_ERROR = e.stack || String(e); });
+
+ui.el('u-accept').onclick = () => {
+  startAudio();
+  ui.show('u-disc', false);
+  game.toTitle();
+};
+ui.el('u-new').onclick = () => { startAudio(); game.newGame(); game.input.lock(); };
+ui.el('u-cont2').onclick = () => { startAudio(); game.continueGame(); };
+ui.el('u-ctrl').onclick = () => { const h = ui.el('u-helptitle'); h.style.display = h.style.display === 'none' ? 'block' : 'none'; };
+ui.el('u-resume').onclick = () => game.pause(false);
+ui.el('u-save').onclick = () => game.save();
+ui.el('u-quit').onclick = () => { game.pause(false); game.toTitle(); };
+ui.el('u-qual').textContent = 'Quality: ' + (q.get('q') || 'high');
+ui.el('u-qual').onclick = () => { const order = ['low', 'medium', 'high']; const cur = q.get('q') || 'high'; const n = order[(order.indexOf(cur) + 1) % 3]; q.set('q', n); location.search = q.toString(); };
+canvas.addEventListener('click', () => { if (game.input && game.mode === 'play' && !game.input.locked && !game.input.virtual && !ui.panelOpen && !ui.shopOpen) game.input.lock(); });
+document.addEventListener('keydown', (e) => { if (e.code === 'F3') { game.debug = !game.debug; ui.fps(game.debug ? '…' : ''); } });

@@ -1,0 +1,4 @@
+node_modules/
+capture_tmp/
+dist/game.js
+*.log

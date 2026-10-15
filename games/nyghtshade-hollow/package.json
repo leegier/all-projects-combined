@@ -1,0 +1,20 @@
+{
+  "name": "nyghtshade-hollow-the-intake",
+  "version": "0.2.0",
+  "description": "Nyghtshade Hollow — The Intake: playable vertical slice (WebGL / Three.js)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "serve": "node tools/serve.mjs",
+    "test": "node tests/run-tests.mjs",
+    "capture": "node tools/capture.mjs"
+  },
+  "dependencies": {
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "playwright-core": "^1.50.0"
+  }
+}
