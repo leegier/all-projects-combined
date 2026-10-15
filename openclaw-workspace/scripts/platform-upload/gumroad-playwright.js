@@ -12,7 +12,7 @@ import fs from 'fs';
 
 const CREDS = JSON.parse(fs.readFileSync('Z:/openclaw/workspace/credentials.json', 'utf8'));
 const EMAIL = CREDS.platforms.google.email;       // leegier6@gmail.com
-const PASSWORD = CREDS.platforms.google.password;  // Gameover2026!!
+const PASSWORD = CREDS.platforms.google.password;  // REDACTED
 const AUTH_STATE = path.resolve('auth-gumroad.json');
 
 const PRODUCTS = [

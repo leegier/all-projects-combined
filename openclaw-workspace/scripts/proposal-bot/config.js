@@ -4,13 +4,13 @@
 export const CONFIG = {
   // Anthropic — primary LLM for all generation
   anthropic: {
-    apiKey: process.env.ANTHROPIC_API_KEY || 'sk-ant-oat01-REDACTED',
+    apiKey: process.env.ANTHROPIC_API_KEY,
     model: 'claude-sonnet-4-6',
   },
 
   // Telegram — same bot as MAX uses
   telegram: {
-    botToken: process.env.TELEGRAM_BOT_TOKEN || '8612410913:AAFxCwAs3yUSHKSnhM7IDR3EcE33QWheIjI',
+    botToken: process.env.TELEGRAM_BOT_TOKEN,
     // Lee's chat ID — bot will report there. If unknown, set via env var.
     chatId: process.env.TELEGRAM_CHAT_ID || '',
   },

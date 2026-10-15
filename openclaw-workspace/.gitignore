@@ -14,3 +14,7 @@ gpu-drivers/
 *.iso
 *.fbx
 *.blend
+
+# Secrets (never commit)
+products/ebook-ai-side-hustles/gumroad_api_key.txt
+products/ebook-ai-side-hustles/secret.txt

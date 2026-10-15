@@ -8,7 +8,7 @@ const path = require('path');
 const { execSync, exec } = require('child_process');
 
 // ------- CONFIG -------
-const TOKEN = '8511307797:AAFivjQdGTxe8CkOualrFOxd381KsD7jGDU';
+const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const WORKSPACE = 'E:/openclaw/workspace';
 const HEARTBEAT_INTERVAL = 60 * 60 * 1000; // 1 hour
 const WATCHDOG_INTERVAL = 5 * 60 * 1000;   // 5 min

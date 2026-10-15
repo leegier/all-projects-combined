@@ -7,7 +7,7 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-const TOKEN = '8511307797:AAFivjQdGTxe8CkOualrFOxd381KsD7jGDU';
+const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const STATE_FILE = path.join(__dirname, 'telegram-state.json');
 
 function sendAlert(text) {

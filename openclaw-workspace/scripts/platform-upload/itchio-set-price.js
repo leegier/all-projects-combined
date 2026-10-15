@@ -14,7 +14,7 @@ const args = Object.fromEntries(
 
 const GAME_ID = args['game-id'] || '4420990';
 const PRICE = parseFloat(args['price'] || '19');
-const API_KEY = '8lzxDRwhgUvCp1WeiooJS6fkFmu4xWjjHv7O6BFb';
+const API_KEY = process.env.ITCHIO_API_KEY;
 const BLOCKERS_FILE = 'Z:/openclaw/workspace/BLOCKERS.md';
 
 function log(msg) { console.log(`[${new Date().toISOString()}] ${msg}`); }

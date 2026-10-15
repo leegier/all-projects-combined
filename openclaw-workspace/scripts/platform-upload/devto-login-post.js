@@ -12,7 +12,7 @@ async function loginAndGetApiKey(page) {
   await page.goto("https://dev.to/enter", { waitUntil: "domcontentloaded", timeout: 30000 });
   await page.waitForTimeout(2000);
   await page.fill("input[name=\"user[email]\"], #user_email, input[type=\"email\"]", "leegier6@gmail.com");
-  await page.fill("input[name=\"user[password]\"], #user_password, input[type=\"password\"]", "Gameover2026!!");
+  await page.fill("input[name=\"user[password]\"], #user_password, input[type=\"password\"]", process.env.DEVTO_PASSWORD);
   await page.screenshot({ path: "Z:/openclaw/workspace/devto-login-filled.png" });
   await page.click("button[type=\"submit\"], input[type=\"submit\"], button:has-text(\"Log in\"), button:has-text(\"Continue\")");
   await page.waitForTimeout(5000);

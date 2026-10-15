@@ -10,7 +10,7 @@ const client = new Anthropic({
   apiKey: process.env.OPENROUTER_API_KEY || process.env.ANTHROPIC_API_KEY,
   baseURL: process.env.OPENROUTER_API_KEY ? 'https://openrouter.ai/api' : undefined,
 });
-const BOT_TOKEN = 'MTQ4NTM2NzIzMTQyNzkwMzU3OQ.GZ2jEt.ZWsJZnWRpj0gWiEUQsebXzihPEfLa6FZOGTBCw';
+const BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
 
 async function sendDiscord(channelId, message) {
   return new Promise((resolve) => {

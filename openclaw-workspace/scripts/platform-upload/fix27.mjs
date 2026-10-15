@@ -18,6 +18,6 @@ await p.evaluate(() => {
 });
 await p.waitForTimeout(4000);
 const https = await import('https');
-const key = '8lzxDRwhgUvCp1WeiooJS6fkFmu4xWjjHv7O6BFb';
+const key = process.env.ITCHIO_API_KEY;
 await new Promise(r => { https.default.get({hostname:'itch.io',path:'/api/1/'+key+'/my-games',headers:{'User-Agent':'MAX'}}, res => { let d=''; res.on('data',c=>d+=c); res.on('end',()=>{ const g=JSON.parse(d).games; g.forEach(x=>{if(x.id===4379091)console.log('BRAXTON now: \$'+(x.min_price/100).toFixed(2))}); r(); }); }); });
 await b.close();

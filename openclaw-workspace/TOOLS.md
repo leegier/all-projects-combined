@@ -28,7 +28,7 @@ Skills define *how* tools work. This file is for *your* specifics — unique to 
 ## Gateway
 
 - **URL:** http://127.0.0.1:18789
-- **Token:** `4503b9af0c6c27ff36bf4ef43dc3748bda660ccfec5aaacb`
+- **Token:** `REDACTED`
 - **Send Discord message:** `openclaw message send --channel discord --target "1484731361272139838" --message "text"`
 
 ## Unity Projects

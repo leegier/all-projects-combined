@@ -92,12 +92,12 @@ I have full read/write/execute access to every drive. Use whichever drive makes 
 ### Telegram Bot Inventory (2026-03-29)
 | Bot | Token | Agent | Status |
 |-----|-------|-------|--------|
-| @MAX_MAX_MAX_BOT_BOT | 8612410913:AAFx... | main (MAX) | ✅ Live |
-| @The_Nightshade_Hollow_bot | 8510986972:AAEG... | content-writer (INK) | ✅ Live |
-| @newbotclaw_bot | 8674756965:AAHv... | code-reviewer (BUILDER) | ✅ Live |
-| @REMME_MAX_bot | 8777184736:AAHj... | research-assistant (SCOUT) | ✅ Live |
-| @Leegierdevbot | 8640079508:AAHXmMi... | unassigned (was Steve) | ⚪ Available |
-| @THE_NYGHT_SHADE_HOLLOW_bot | 8568590185:AAG6... | unassigned | ⚪ Available |
+| @MAX_MAX_MAX_BOT_BOT | REDACTED | main (MAX) | ✅ Live |
+| @The_Nightshade_Hollow_bot | REDACTED | content-writer (INK) | ✅ Live |
+| @newbotclaw_bot | REDACTED | code-reviewer (BUILDER) | ✅ Live |
+| @REMME_MAX_bot | REDACTED | research-assistant (SCOUT) | ✅ Live |
+| @Leegierdevbot | REDACTED | unassigned (was Steve) | ⚪ Available |
+| @THE_NYGHT_SHADE_HOLLOW_bot | REDACTED | unassigned | ⚪ Available |
 
 ### Messaging Status (2026-03-29)
 - **Telegram BROKEN** — Lee must message `@MAX_MAX_MAX_BOT_BOT` first to register chat ID.
@@ -181,7 +181,7 @@ Modular Brick Houses, Modular Industrial Catwalk Kit Free, Mines and Cave Set, M
 - ClawHub install command: `clawhub install SLUG --workdir Z:/openclaw/workspace --no-input --force`
 - Bundled skills are at `C:\Users\Gierl\AppData\Roaming\npm\node_modules\openclaw\skills\`
 - Workspace skills are at `Z:\openclaw\workspace\skills\` (214 skills as of 2026-03-23)
-- Mission Control token: `4503b9af0c6c27ff36bf4ef43dc3748bda660ccfec5aaacb` (in mc-config.json)
+- Mission Control token: `REDACTED` (in mc-config.json)
 - Kill port conflicts: `powershell -Command "Stop-Process -Id PID -Force"`
 - PNTERTHANG.unitypackage = 8.5 GB asset pack ALREADY imported into BETTERNOW project
 - Bridge Telegram ↔ Discord: relay messages between channels (already in SOUL.md)

@@ -26,7 +26,7 @@
    - Open Chrome → chrome://extensions → Enable "Developer mode"
    - Click "Load unpacked" → select that folder
    - Extension appears in toolbar → click it → enter gateway token
-   - Token is in openclaw.json: `4503b9af0c6c27ff36bf4ef43dc3748bda660ccfec5aaacb`
+   - Token is in openclaw.json: `REDACTED`
 3. Click the extension once on any tab → MAX can now see and control that tab
 
 **What MAX can do after:**
