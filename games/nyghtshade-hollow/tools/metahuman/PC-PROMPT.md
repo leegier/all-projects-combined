@@ -1,51 +1,37 @@
-# Prompt for the Windows PC (Claude Code with Unreal Engine installed)
+# Hand-off for the PC with Unreal Engine: export the MetaHumans
 
-The MetaHumans are on a machine with Unreal Engine; the web game's cloud session cannot move them (Google Drive's connector fails above
-~5 MB per file, the packages are 9 MB – 1.3 GB). So the conversion happens there, and only the small, web-sized results travel — through a
-**private** GitHub repo.
+## What the packages turned out to be (read from your Drive on 2026-10-15)
 
-Open Claude Code in a folder on that PC and paste everything between the lines.
+`drive-pull.mjs` read the table of contents of every package without downloading them. They are **Editable Characters from MetaHuman Creator**, not 3D models:
 
----
+| package | engine that saved it | contents |
+|---|---|---|
+| `mhc_maria` (8.6 MB), `skotukeda5` (430 MB) | Unreal 5.8 | one `MetaHumanCharacter` asset |
+| `mhc_gavin` (160 MB) | 5.7 | the character asset + `MHC_Gavin_ExportedFace` (a face mesh with the rig data) + a strand-groom hair |
+| `mhc_advika` (140 MB), `mhc_hannah` (139 MB) | 5.7 | one `MetaHumanCharacter` asset |
+| `walker` (1.28 GB) | 5.6 | one `MetaHumanCharacter` asset + two source textures |
+| `hair_f_ponytail_messywavy_01` (49 MB) | — | a strand groom (the card meshes it lists are not in the zip) |
 
-**Goal.** Convert my MetaHumans into web-ready GLB files for the browser game *Nyghtshade Hollow* and push them to my **private** GitHub repo
-`leegier/NYGHTSHADE` so the game's cloud session can pull them. Work autonomously, verify each step with the commands given, and report numbers, not impressions.
+Every manifest says `includedLods: 0, lod0VertCount: 0`. A character asset is the *recipe* (face and body parameters, skin / eye / makeup settings, textures); only the MetaHuman Creator plugin inside Unreal Engine builds the head and body meshes from it. That cannot be done in the cloud session, so **one export step has to happen on a PC with Unreal Engine 5.8** (5.8 opens the 5.6 and 5.7 packages too; 5.7 is enough for Gavin, Advika, Hannah and Walker).
 
-**Where things are.**
-- The MetaHuman packages (`*.mhpkg`, from MetaHuman Creator): `mhc_maria`, `mhc_gavin`, `mhc_advika`, `mhc_hannah`, `walker`, `skotukeda5`
-  (custom) and the hair pack `hair_f_ponytail_messywavy_01`. Look in Google Drive for desktop → *Saved from Chrome*, and in Downloads. Ignore `oa_t_shirt.mhpkg` (13 bytes, empty).
-- Unreal Engine 5.x with the MetaHuman support installed: look under `C:\Program Files\Epic Games\`.
-- The game: public repo `leegier/all-projects-combined`, folder `games/nyghtshade-hollow`, branch `claude/prison-game-demo-build-mqhocm`. Clone it (read-only use; **never push to it**), `cd games/nyghtshade-hollow/tools/metahuman && npm install`.
-  Read `tools/metahuman/README.md` and `assets/characters/README.md` there first.
+Epic's licence page says MetaHumans may be used with any engine; check it yourself before shipping.
 
-**What the game needs per character** (details in the README): one GLB with a skinned humanoid using the MetaHuman / UE5 bone names
-(`pelvis, spine_01…05, neck_01/02, head, clavicle_l, upperarm_l, lowerarm_l, hand_l, thigh_l, calf_l, foot_l, ball_l …`), LOD 0 meshes (head, body, clothes, eyes, teeth,
-hair cards if available), textures embedded and baked (base colour, normal, roughness). Body and Face may be on separate skeletons — that is fine, the optimiser merges them.
-The characters should wear what they play (see the `looks` in `assets/characters/manifest.example.json`): if it is easy in Unreal, dress them in navy officers' uniforms for the `guard` looks and in orange jumpsuits for the
-`inmate` looks; if not, export them as they are and say so. If it is unclear which character should play which role, keep the example mapping and note it in your report.
+## Paste this into Claude Code on that PC (an empty folder)
 
-**Do this.**
-1. Find the packages; list them with sizes. They are zip archives: for each one write its table of contents (`python -m zipfile -l <package>` or 7-Zip) to `listings\<name>.txt` — **file names and sizes only, never extract
-   or commit their content** — and say whether any of them contains `.glb`, `.gltf` or `.fbx` files directly. (The cloud session has never been able to open one, so this tells it what a package really is.)
-2. Get each character into Unreal (the way my other project did — MetaHuman Creator in the editor, or importing the package through the MetaHuman plugin; use whatever the installed version supports). If a
-   package cannot be imported with the installed version, say exactly which version/plugin is needed and carry on with the others.
-3. Export each character's skeletal meshes with Unreal's glTF Exporter to `raw\<id>.glb` (LOD 0, materials baked to textures). If you can script it with the editor's Python
-   (`unreal` module), do; otherwise do it through the editor and tell me which clicks you need from me.
-4. For every raw file run `node tools/metahuman/optimize.mjs --inspect raw\<id>.glb` and read the warnings. Then optimise:
-   `node tools/metahuman/optimize.mjs raw\<id>.glb out\<id>.glb --tex 1024 --tris 40000` and the crowd twin `… out\<id>_crowd.glb --tex 256 --tris 6000`.
-   The `--inspect` of each *output* must show `usable: true`, one skeleton, no warnings, and each file ≤ 50 MB. Fix what is wrong (re-export, or tell me).
-5. Put the outputs and a `manifest.json` (start from `assets/characters/manifest.example.json`; keep the ids, and give heights from the real models) into `assets/characters/` of your clone, then check them in the real game:
-   `npm install && npx playwright-core install chromium && npm run build`, then `node tools/look.mjs tools/shots-crowd.json shots` (renders eight stills — count at the cell doors, day room, mess hall, chapel, library, lights out — with a headless
-   browser; set `NH_CHROME` to use another Chrome). Its output must show one `[NH] character …` line per file, `[NH] characters: N/24 NPCs use glTF bodies`, `[NH] crowd: 45 residents …`, and **no warnings**; look at the PNGs (are the faces, hair, uniforms,
-   scale and feet right?) and keep them to show me. To look around yourself: `npm run serve`, open <http://localhost:8080/?fast>, New Game, **Backspace** skips the intro, hold **T** to fast-forward the clock to count (06:00) and chow (07:00).
-6. **Publish privately.** Verify the repo is private (`gh repo view leegier/NYGHTSHADE --json isPrivate` must say `true`; stop otherwise). In a clone of `leegier/NYGHTSHADE`, new branch
-   `metahuman-web-assets`, folder `nyghtshade-hollow/characters/`: copy the optimised `*.glb` and `manifest.json` (**not** the raw GLBs, **not** the `.mhpkg` files — GitHub's LFS allowance is 1 GB).
-   Make sure `*.glb` is tracked by Git LFS (`git lfs install`, check `.gitattributes`, add `git lfs track "*.glb"` if needed). Also copy the small text files from step 1 (`listings\*.txt`) into `nyghtshade-hollow/characters/listings/`. Commit, `git push -u origin metahuman-web-assets`.
-7. Report: branch name, each file with size / triangles / joints (from `--inspect`), the console lines from step 5, any problem and what you did about it.
+> Goal: export my MetaHumans so the browser game *Nyghtshade Hollow* can use them. Clone the **public** repo `leegier/all-projects-combined` (branch `claude/prison-game-demo-build-mqhocm`, read-only: never push to it), read `games/nyghtshade-hollow/tools/metahuman/PC-PROMPT.md` in it, and follow the section **"What the PC session does"**. Work autonomously, check each step, and report numbers, not impressions. Stop and ask me in one short message only if a step needs a decision.
 
-**Rules.** Never push MetaHuman files to a public repo (`all-projects-combined` is public). Don't change sharing on any Google Drive file. Don't delete or overwrite anything in my Drive or repos. If a step
-needs a decision from me, stop at that step and ask in one short message.
----
+## What the PC session does
 
-When it reports back, tell the cloud session: *"pushed `metahuman-web-assets`"* — it pulls the files (`git lfs pull`), copies them into `assets/characters/`,
-runs the character and crowd tests with the real files, and tunes the look mapping and lighting.
+1. **Find Unreal Engine 5.8** (and 5.7) under `C:\Program Files\Epic Games\`, and confirm the **MetaHuman Creator** plugin is available (UE 5.6+ includes it; it needs an Epic account). If Unreal or the plugin is missing, stop and say exactly what to install; do not guess.
+2. **Find the packages**: Google Drive for desktop → the folder with `mhc_maria.mhpkg`, `mhc_gavin.mhpkg`, `mhc_advika.mhpkg`, `mhc_hannah.mhpkg`, `skotukeda5.mhpkg`, `walker.mhpkg` (also try Downloads and *Saved from Chrome*). Ignore `oa_t_shirt.mhpkg` (empty) and the hair pack for now. Never change or delete anything in Drive.
+3. **Import** each package into a new UE 5.8 project with Epic's standard import for `.mhpkg` (Fab library / the MetaHuman plugin; use whatever the installed version documents). Each one appears as a *MetaHuman Character* asset. If one cannot be imported with the installed version, say which and carry on.
+4. **Export** every character with the MetaHuman Creator **export tool → DCC export** (Epic: it writes the head DNA, the body DNA and the skin textures as a zip of `.dna`, `.png` and `.json` files). Use the highest texture resolution the editor offers (if it needs Epic's online texture service, log in). Save each as `export\<name>.zip`. Also save one portrait screenshot per character (`export\<name>_ref.png`, front view, neutral light) so the web render can be compared with Unreal's.
+5. **If the DCC export is not available** in the installed version, export the assembled skeletal meshes (Body, Face, clothing) with Unreal's glTF exporter (LOD 0, materials baked to textures) to `export\<name>.glb` and say that this is what you did.
+6. **Publish privately.** `gh repo view leegier/NYGHTSHADE --json isPrivate` must say `true` (stop otherwise). In a clone of `leegier/NYGHTSHADE`, new branch `metahuman-web-assets`, folder `nyghtshade-hollow/exports/`: the zips / GLBs and reference PNGs (Git LFS for anything over 50 MB: `git lfs install; git lfs track "*.zip" "*.glb"`). Commit and push.
+7. **Report**: branch name, each file with its size, which export route was used per character, anything that failed and what you did about it.
+
+**Rules.** Never push MetaHuman files to a public repo (`all-projects-combined` is public). Do not modify or delete files in Drive or in any repo.
+
+## What happens next (cloud session)
+
+`dna2glb.py` (head and body from the DNA, UE5 joint names, skin weights) → `optimize.mjs` → `assets/characters/manifest.json`; uniform, hair and eye/skin shading in the game; the character and crowd tests with the real files; then the trailer and the 10-minute video are rendered.

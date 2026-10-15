@@ -13,10 +13,11 @@ MetaHumans is in [`tools/metahuman/README.md`](../tools/metahuman/README.md); th
 [`assets/characters/README.md`](../assets/characters/README.md).
 
 > **Status.** The pipeline is built and tested end to end with *stand-in* rigs (mannequins on MetaHuman- and Mixamo-style skeletons).
-> **No real MetaHuman has been loaded yet.** The packages are in Google Drive (9 MB – 1.3 GB each) and the Drive connector of the cloud session fails above ~5 MB, so
-> `tools/metahuman/drive-pull.mjs` reads them through the Drive REST API with a short-lived read-only token (ranged and resumable: it can look inside a package and move single
-> entries or pieces — tools README, section 0). A `.mhpkg` holds Unreal assets, so turning one into a GLB is still a step (Unreal's glTF exporter);
-> `tools/metahuman/PC-PROMPT.md` is the hand-off for a machine with Unreal Engine.
+> **No real MetaHuman has been loaded yet.** The packages in Google Drive were read with `tools/metahuman/drive-pull.mjs` (read-only token): they are **Editable Characters from
+> MetaHuman Creator** (saved by Unreal 5.6 / 5.7 / 5.8; manifests say `includedLods: 0`), i.e. recipes, not meshes — only Unreal Engine with the MetaHuman Creator plugin builds the head
+> and body from them. The one exception is Gavin: his package carries an exported face with the rig data (head only, no body, no textures, strand-groom hair). So one export step
+> (DCC export: head DNA + body DNA + textures) has to run on a PC with Unreal Engine 5.8; `tools/metahuman/PC-PROMPT.md` has the details and a ready prompt, and everything after that
+> (DNA → GLB, uniforms, hair, shading, tests, trailer) happens in the cloud session.
 
 ## glTF characters
 
