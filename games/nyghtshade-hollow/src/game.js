@@ -48,8 +48,9 @@ const ENV = {
 const AREA_LIGHT = { hall: 0.7, eastCorr: 0.8, westCorr: 0.8, canteen: 1.0, intake: 0.85, records: 0.5, library: 0.6, chapel: 0.45, tunnel: 0.15, outside: 0.8 };
 
 export class Game {
-  constructor({ canvas, uiRoot, quality = 'high', capture = false, seed = 1337, width = 1280, height = 720, crowd = true }) {
+  constructor({ canvas, uiRoot, quality = 'high', capture = false, seed = 1337, width = 1280, height = 720, crowd = true, cine = false }) {
     this.crowdOn = crowd; this.crowd = null;
+    this.cineOn = cine; this.directorCam = null; this.cineGrade = null; this.cineEv = 0; this.cineBloom = 1; this.cineEnv = null;      // cinematic render mode (?cine): director camera + post passes, visual only
     this.canvas = canvas; this.uiRoot = uiRoot; this.quality = quality; this.capture = capture; this.seed = seed;
     this.width = width; this.height = height;
     this.events = new Emitter();
@@ -71,7 +72,7 @@ export class Game {
     const t0 = performance.now();
     await loadAllTextures((p, n) => onProgress(p * 0.9, n));
     buildMaterials();
-    const gfx = this.gfx = new Gfx(this.canvas, { quality: this.quality, width: this.width, height: this.height });
+    const gfx = this.gfx = new Gfx(this.canvas, { quality: this.quality, width: this.width, height: this.height, cine: this.cineOn });
     this.scene = gfx.scene;
     this.stage = setupStage(gfx);
     const world = this.world = new World(gfx.scene);
@@ -200,8 +201,10 @@ export class Game {
     scene.background = scene.background || new THREE.Color();
     const out = this.player && this.player.area && this.player.area.name === 'outside';
     scene.background = out ? null : c.bg;
-    this.stage.hemi.color.copy(c.hs); this.stage.hemi.groundColor.copy(c.hg); this.stage.hemi.intensity = c.hi;
-    this.stage.ambient.color.copy(c.am); this.stage.ambient.intensity = c.ai;
+    const cm = this.cineEnv;                                          // director's fill / haze multipliers (cine shots only)
+    this.stage.hemi.color.copy(c.hs); this.stage.hemi.groundColor.copy(c.hg); this.stage.hemi.intensity = c.hi * (cm ? cm.hi : 1);
+    this.stage.ambient.color.copy(c.am); this.stage.ambient.intensity = c.ai * (cm ? cm.ai : 1);
+    if (cm) scene.fog.density = c.fd * cm.fog;
     renderer.toneMappingExposure = c.ex;
     this.gfx.bloom.strength = c.bloom;
   }
@@ -483,7 +486,10 @@ export class Game {
   render(alpha = 1, dt = 1 / 60) {
     const gfx = this.gfx; if (!gfx) return;
     const cam = gfx.camera;
-    if (this.camOverride && (this.mode === 'cine' || this.mode === 'title')) {
+    if (this.directorCam) {
+      const c = this.directorCam;
+      cam.position.copy(c.pos); cam.lookAt(c.look); if (c.roll) cam.rotateZ(c.roll); cam.fov = c.fov; cam.updateProjectionMatrix();
+    } else if (this.camOverride && (this.mode === 'cine' || this.mode === 'title')) {
       const c = this.camOverride;
       cam.position.copy(c.pos); cam.lookAt(c.look); cam.rotateZ(c.roll || 0); cam.fov = c.fov; cam.updateProjectionMatrix();
     } else if (this.mode === 'dialogue' && this.story.dialogueCam) {
@@ -497,6 +503,11 @@ export class Game {
     // bring the sprite glow near tubes in sync with flicker
     gfx.u.grain.value = 0.03 * gfx.q.grain;
     this.applyGradeState();
+    if (this.directorCam && this._envCur) {
+      const c = this._envCur, m = this.cineEnv;
+      gfx.renderer.toneMappingExposure = c.ex * Math.pow(2, this.cineEv); gfx.bloom.strength = c.bloom * this.cineBloom;
+      this.stage.hemi.intensity = c.hi * (m ? m.hi : 1); this.stage.ambient.intensity = c.ai * (m ? m.ai : 1); if (m) this.scene.fog.density = c.fd * m.fog;
+    }
     gfx.render(this.time);
   }
   /** Fixture mesh emissive flicker + candle flames + alarm lamps (pure functions of time → deterministic). */
@@ -534,5 +545,16 @@ export class Game {
     u.blur.value = this.blur || 0;
     u.eyelid.value = this.eyelid || 0;
     u.flash.value = this.flash || 0;
+    if (this.cineOn) {                                              // per-shot grade from the director (cine mode only); the cine-only uniforms fall back to neutral
+      const cg = this.cineGrade || {};
+      if (cg.sat !== undefined) u.sat.value = cg.sat;
+      if (cg.contrast !== undefined) u.contrast.value = cg.contrast; else u.contrast.value = 1.08;
+      if (cg.vignette !== undefined) u.vignette.value = cg.vignette;
+      if (cg.ca !== undefined) u.ca.value = cg.ca; else u.ca.value = 0.0007;
+      if (cg.gain) u.gain.value.set(cg.gain[0], cg.gain[1], cg.gain[2]);
+      if (cg.lift) u.lift.value.set(cg.lift[0], cg.lift[1], cg.lift[2]);
+      if (cg.grain !== undefined) u.grain.value = cg.grain;
+      u.shadowTint.value.set(...(cg.shadowTint || [0, 0, 0])); u.highlightTint.value.set(...(cg.highlightTint || [0, 0, 0])); u.blackLift.value = cg.blackLift || 0; u.dither.value = 1;
+    }
   }
 }

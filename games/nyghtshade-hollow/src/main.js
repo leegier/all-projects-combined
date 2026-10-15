@@ -3,6 +3,7 @@ import { Game } from './game.js';
 import { installCapture } from './capture.js';
 import { Bot } from './bot/bot.js';
 import { characters } from './chars/library.js';
+import { installDirector } from './director.js';
 
 const q = new URLSearchParams(location.search);
 window.NH_CHARS_LIB = characters;
@@ -11,7 +12,8 @@ const canvas = document.getElementById('c');
 const root = document.getElementById('ui');
 const W = +q.get('w') || 1280, H = +q.get('h') || 720;
 canvas.width = W; canvas.height = H;
-const game = new Game({ canvas, uiRoot: root, quality: q.get('q') || 'high', capture: q.has('capture'), width: W, height: H, seed: +q.get('seed') || 1337, crowd: q.get('crowd') !== 'off' });
+{ const wrap = document.getElementById('wrap'); wrap.style.aspectRatio = `${W} / ${H}`; wrap.style.width = `min(100vw, calc(100vh * ${W} / ${H}))`; }     // the frame follows ?w=&h= (2.39:1 scope for trailers)
+const game = new Game({ canvas, uiRoot: root, quality: q.get('q') || 'high', capture: q.has('capture'), width: W, height: H, seed: +q.get('seed') || 1337, crowd: q.get('crowd') !== 'off', cine: q.has('cine') });
 window.NH = game;
 const ui = game.ui;
 const DISC = q.has('fast') || q.has('auto') || q.has('bot') || q.has('capture') ? 0.4 : 25;
@@ -49,6 +51,7 @@ game.init((p, name) => { ui.el('u-load').style.width = (p * 100).toFixed(0) + '%
   game.start();
   if (q.has('bot')) { window.NH_BOT = game.bot = new Bot(game, { route: q.get('bot') || 'shim', annotate: q.has('annotate'), hurry: q.has('hurry') }); }
   if (q.has('capture')) installCapture(game, ui);
+  if (q.has('cine')) installDirector(game);
   if (q.has('bot') && !q.has('nostart') && !q.has('capture')) { clearInterval(tick); ui.show('u-disc', false); game.toTitle(); game.newGame(); }
   if (q.has('auto') || q.has('bot') || q.has('capture')) { window.NH_READY = true; }
 }).catch((e) => { console.error(e); ui.el('u-cnt').textContent = 'Error: ' + e.message; window.NH_ERROR = e.stack || String(e); });

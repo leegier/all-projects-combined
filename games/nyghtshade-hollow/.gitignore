@@ -12,3 +12,8 @@ assets/characters/*.mhpkg
 assets/characters/manifest.json
 assets/characters/_work/
 tests/fixtures/_tmp/
+
+# build artefacts of the Unreal-asset reader and Python caches
+tools/metahuman/ue/**/obj/
+tools/metahuman/ue/**/bin/
+__pycache__/

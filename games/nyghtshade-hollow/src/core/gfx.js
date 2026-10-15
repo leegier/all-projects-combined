@@ -6,6 +6,7 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { DECALS } from '../proc/textures.js';
+import { DepthLinPass, DofPass, MotionBlurPass, StreakPass } from './cinefx.js';
 import { clamp, damp, hash01 } from '../util.js';
 
 export const QUALITY = {
@@ -23,11 +24,12 @@ const GradeShader = {
     ca: { value: 0.0007 }, letter: { value: 0 }, eyelid: { value: 0 }, blur: { value: 0 }, damage: { value: 0 }, alarm: { value: 0 },
     suspicion: { value: 0 }, lift: { value: new THREE.Vector3(0.0, 0.004, 0.012) }, gain: { value: new THREE.Vector3(1.04, 1.0, 0.97) },
     sat: { value: 0.9 }, contrast: { value: 1.08 }, aspect: { value: 1.7778 }, res: { value: new THREE.Vector2(1280, 720) }, flash: { value: 0 },
+    shadowTint: { value: new THREE.Vector3(0, 0, 0) }, highlightTint: { value: new THREE.Vector3(0, 0, 0) }, blackLift: { value: 0 }, dither: { value: 0 },
   },
   vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }`,
   fragmentShader: `
     uniform sampler2D tDiffuse; uniform float time, fade, vignette, grain, ca, letter, eyelid, blur, damage, alarm, suspicion, sat, contrast, aspect, flash;
-    uniform vec3 lift, gain; uniform vec2 res; varying vec2 vUv;
+    uniform vec3 lift, gain, shadowTint, highlightTint; uniform float blackLift, dither; uniform vec2 res; varying vec2 vUv;
     float h(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }
     void main(){
       vec2 c = vUv - 0.5; float r2 = dot(c * vec2(aspect, 1.0), c * vec2(aspect, 1.0));
@@ -48,6 +50,7 @@ const GradeShader = {
       col = mix(vec3(l), col, sat);
       col = (col - 0.5) * contrast + 0.5;
       col = col * gain + lift;
+      { float lt = dot(col, vec3(0.2126, 0.7152, 0.0722)); col += shadowTint * (1.0 - smoothstep(0.0, 0.45, lt)) + highlightTint * smoothstep(0.35, 1.0, lt); col = col * (1.0 - blackLift) + blackLift; }   // split toning + lifted black point (cine shots; zero in the game)
       // vignette
       float v = smoothstep(0.95, 0.15, r2 * (1.0 + vignette)); col *= mix(1.0, v, vignette);
       // grain
@@ -58,6 +61,7 @@ const GradeShader = {
       col = mix(col, col * vec3(1.0, 0.82, 0.82) + vec3(0.25,0.0,0.0) * edge, damage);
       col += vec3(0.9, 0.85, 0.5) * suspicion * edge * 0.25;
       col += vec3(flash);
+      col += (h(vUv * res + fract(time * 1.37) * 57.3) - 0.5) * dither * (1.5 / 255.0);                    // 8-bit dither (cine mode) so dark fog gradients do not band
       // eyelids (0 = open, 1 = closed)
       if (eyelid > 0.001) {
         float lid = eyelid * 0.62 + 0.0;
@@ -84,7 +88,7 @@ class ViewmodelPass extends RenderPass {
 }
 
 export class Gfx {
-  constructor(canvas, { quality = 'high', width = 1280, height = 720 } = {}) {
+  constructor(canvas, { quality = 'high', width = 1280, height = 720, cine = false } = {}) {
     this.q = { ...(QUALITY[quality] || QUALITY.high) };
     // URL overrides (capture/perf experiments): ?msaa=2&sm=1024&pool=5&grain=0.5
     { const sp = new URLSearchParams(typeof location !== 'undefined' ? location.search : ''); if (sp.has('msaa')) this.q.samples = +sp.get('msaa'); if (sp.has('sm')) this.q.shadowMap = +sp.get('sm'); if (sp.has('pool')) this.q.pool = +sp.get('pool'); if (sp.has('bloom')) this.q.bloom = sp.get('bloom') !== '0'; if (sp.has('grain')) this.q.grain = +sp.get('grain'); }
@@ -110,6 +114,7 @@ export class Gfx {
     this.camera.add(this.vmCamera);
 
     const rt = new THREE.WebGLRenderTarget(width * this.q.pixelRatio, height * this.q.pixelRatio, { type: THREE.HalfFloatType, samples: this.q.samples });
+    if (cine) rt.depthTexture = new THREE.DepthTexture(width * this.q.pixelRatio, height * this.q.pixelRatio);     // scene depth for depth of field / motion blur
     this.composer = new EffectComposer(renderer, rt);
     this.composer.setPixelRatio(1);
     this.composer.setSize(width * this.q.pixelRatio, height * this.q.pixelRatio);
@@ -128,6 +133,26 @@ export class Gfx {
     this.composer.addPass(this.grade);
     this.u = this.grade.uniforms;
     this.time = 0;
+    this.cine = null;
+    if (cine) this.initCine();
+  }
+
+  /** Cinematic passes (depth of field, camera motion blur, anamorphic streaks) sit between the scene passes and bloom; every one is off until setCine() asks for it.
+   Order: main, depth, viewmodel, dof, motion blur, streaks, bloom, output, grade. */
+  initCine() {
+    const c = this.composer, cam = this.camera;
+    const depth = new DepthLinPass(cam), dof = new DofPass(depth), mb = new MotionBlurPass(depth, cam), streak = new StreakPass();
+    for (const p of [depth, dof, mb, streak]) p.enabled = false;
+    c.insertPass(depth, 1); c.insertPass(dof, 3); c.insertPass(mb, 4); c.insertPass(streak, 5);       // depth is copied before the viewmodel pass clears the depth buffer
+    this.cine = { depth, dof, mb, streak };
+  }
+  /** c = { dof:{focus,cocK,maxR,boost,taps}, mb:{amount,prev:Camera}, streak:{amount,threshold,len,tint:[r,g,b]} } — anything missing is switched off. */
+  setCine(c = {}) {
+    const k = this.cine; if (!k) return;
+    k.dof.enabled = !!c.dof; k.mb.enabled = !!c.mb && c.mb.amount > 0; k.depth.enabled = k.dof.enabled || k.mb.enabled; k.streak.enabled = !!c.streak && c.streak.amount > 0;
+    if (c.dof) Object.assign(k.dof.p, c.dof);
+    if (k.mb.enabled) { k.mb.amount = c.mb.amount; k.mb.setPrev(c.mb.prev); if (c.mb.samples) k.mb.samples = c.mb.samples; if (c.mb.maxLen) k.mb.maxLen = c.mb.maxLen; }
+    if (k.streak.enabled) { k.streak.amount = c.streak.amount; if (c.streak.threshold !== undefined) k.streak.threshold = c.streak.threshold; k.streak.len = c.streak.len ?? 1; if (c.streak.tint) k.streak.tint.set(c.streak.tint[0], c.streak.tint[1], c.streak.tint[2]); }
   }
 
   resize(w, h) {
