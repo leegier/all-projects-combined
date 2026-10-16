@@ -102,7 +102,7 @@ export function animState(cue, T, f) {
   else if (cue.kind === 'end') o = [line(0, cue.fadeIn), line(0, cue.fadeIn), line(cue.statusDelay ?? 14, 16), T.contact ? line(cue.contactDelay ?? 30, 18) : 0];
   else o = [line(0, cue.fadeIn)];
   const st = { o: o.map((v) => +v.toFixed(3)), scale: +(1 + (DRIFT[cue.kind] || 0) * (t / dur)).toFixed(4) };
-  if (cue.kind === 'lockup') { st.glow = +(1 + 1.7 * Math.exp(-t / 9)).toFixed(3); st.ls = +(0.30 + 0.07 * Math.exp(-t / 16)).toFixed(4); }
+  if (cue.kind === 'lockup') { st.glow = +(1 + 1.7 * Math.exp(-t / 9)).toFixed(3); st.ls = +(0.24 + 0.07 * Math.exp(-t / 16)).toFixed(4); }
   return st;
 }
 /** Visible frames of a cue grouped in runs of identical pictures: [{ start, count, st }] (a still caption is one run for its whole hold). */
@@ -162,7 +162,7 @@ body{font-synthesis:none;-webkit-font-smoothing:antialiased;text-rendering:geome
 .f-corm{font-family:'NHCormorant','Caladea','Liberation Serif',serif}
 .f-osw{font-family:'NHOswald','Inter','Liberation Sans',sans-serif}
 .trk{display:inline-block;letter-spacing:var(--ls);margin-right:calc(-1 * var(--ls));white-space:nowrap}
-.shadow{text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7),0 0 46px rgba(0,0,0,.55)}
+.shadow{text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 18px rgba(0,0,0,.75),0 0 54px rgba(0,0,0,.6)}
 
 /* subtitles: inner monologue (italic) and dialogue (speaker label in the game's red, like the game's own subtitle) in the lower third of the picture */
 .sub{position:absolute;left:50%;bottom:${H - (PIC_Y + PIC_H) + 62}px;width:max-content;max-width:1420px;text-align:center;transform-origin:50% 100%}
@@ -172,33 +172,35 @@ body{font-synthesis:none;-webkit-font-smoothing:antialiased;text-rendering:geome
 .sub.mono .txt{font-style:italic;color:#d9d1c0;font-weight:500}
 
 /* the PA: the game's own ticker (P.A. tag in red, spaced capitals between two hairlines), upper third */
-.pa{position:absolute;left:50%;top:${PIC_Y + 150}px;width:max-content;max-width:1500px;padding:20px 72px;text-align:center;text-transform:uppercase}
+.pa{position:absolute;left:50%;top:${PIC_Y + 150}px;width:max-content;max-width:1800px;padding:20px 72px;text-align:center;text-transform:uppercase}
 .pa:before,.pa:after{content:'';position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(150,140,118,0),rgba(150,140,118,.9) 20%,rgba(150,140,118,.9) 80%,rgba(150,140,118,0))}
 .pa:before{top:0}.pa:after{bottom:0}
 .pa .bgd{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.62) 16%,rgba(0,0,0,.62) 84%,rgba(0,0,0,0));z-index:-1}
-.pa .tag{font:500 30px/1 'NHOswald','Inter',sans-serif;letter-spacing:.3em;color:var(--red2);margin-right:.5em;vertical-align:middle}
+.pa .tag{font:500 27px/1 'NHOswald','Inter',sans-serif;letter-spacing:.3em;color:var(--red2);margin-right:.5em;vertical-align:middle}
 .pa .tag i{display:inline-block;width:0;height:0;border-left:15px solid var(--red2);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:.45em;vertical-align:middle}
-.pa .msg{font:400 40px/1.25 'NHOswald','Inter',sans-serif;letter-spacing:.24em;margin-right:-.24em;color:var(--pa);vertical-align:middle;text-shadow:0 0 14px rgba(0,0,0,.9),0 1px 2px #000}
+.pa .msg{font:400 36px/1.25 'NHOswald','Inter',sans-serif;letter-spacing:.2em;margin-right:-.2em;white-space:nowrap;color:var(--pa);vertical-align:middle;text-shadow:0 0 14px rgba(0,0,0,.9),0 1px 2px #000}
 
 /* cards: a single spaced line of capitals in the centre of the picture */
 .card{position:absolute;left:50%;top:${PIC_Y + PIC_H / 2}px;width:max-content;text-align:center;color:var(--ink)}
-.card .ct{font:400 var(--fs,92px)/1 'NHCinzel','Liberation Serif',serif;text-transform:uppercase}
+.card:before{content:'';position:absolute;left:-240px;right:-240px;top:-150px;bottom:-150px;z-index:-1;background:radial-gradient(closest-side,rgba(0,0,0,.55),rgba(0,0,0,.3) 58%,rgba(0,0,0,0))}
+.card .ct{font:500 var(--fs,92px)/1 'NHCinzel','Liberation Serif',serif;text-transform:uppercase}
 .card .rule{width:96px;height:1px;margin:0 auto;background:linear-gradient(90deg,rgba(236,228,212,0),rgba(236,228,212,.85),rgba(236,228,212,0))}
 .card .rule.a{margin-bottom:34px}.card .rule.b{margin-top:34px}
 
 /* CAUGHT: the game's arrest card (red glow, one hour in the cell) */
 .caught{position:absolute;left:50%;top:${PIC_Y + PIC_H / 2}px;width:max-content;text-align:center}
 .caught .h1{font:700 176px/1 'NHCinzel','Liberation Serif',serif;color:#ece4d4;letter-spacing:.3em;margin-right:-.3em}
-.caught .h2{margin-top:30px;font:300 31px/1 'NHOswald','Inter',sans-serif;letter-spacing:.72em;margin-right:-.72em;color:var(--dim);text-transform:uppercase}
+.caught .h2{margin-top:30px;font:400 31px/1 'NHOswald','Inter',sans-serif;letter-spacing:.72em;margin-right:-.72em;color:#cfc7b6;text-transform:uppercase}
 
 /* title lockup */
 .lock{position:absolute;left:50%;top:${PIC_Y + PIC_H / 2}px;width:max-content;text-align:center;transform-origin:50% 50%}
+.lock:before{content:'';position:absolute;left:-200px;right:-200px;top:-150px;bottom:-130px;z-index:-1;background:radial-gradient(closest-side,rgba(0,0,0,.5),rgba(0,0,0,.28) 60%,rgba(0,0,0,0))}
 .lock .t{font:500 var(--fs,100px)/1 'NHCinzel','Liberation Serif',serif;color:var(--ink);white-space:nowrap}
 .lock .t b{font-weight:inherit;color:var(--red)}
-.lock .s{margin-top:34px;font:300 34px/1 'NHOswald','Inter',sans-serif;letter-spacing:1em;margin-right:-1em;color:#bdb4a2;text-transform:uppercase}
+.lock .s{margin-top:34px;font:300 34px/1 'NHOswald','Inter',sans-serif;letter-spacing:1em;margin-right:-1em;color:#d6cdbb;text-transform:uppercase}
 .lock .r{width:120px;height:1px;margin:38px auto 32px;background:linear-gradient(90deg,rgba(236,228,212,0),rgba(236,228,212,.7),rgba(236,228,212,0))}
-.lock .q{font:italic 500 34px/1 'NHCormorant','Caladea','Liberation Serif',serif;letter-spacing:.06em;color:#bdb4a2}
-.lock .st{margin-top:44px;font:300 28px/1 'NHOswald','Inter',sans-serif;letter-spacing:.6em;margin-right:-.6em;color:#bdb4a2;text-transform:uppercase}
+.lock .q{font:italic 500 36px/1 'NHCormorant','Caladea','Liberation Serif',serif;letter-spacing:.06em;color:#d6cdbb}
+.lock .st{margin-top:44px;font:300 28px/1 'NHOswald','Inter',sans-serif;letter-spacing:.6em;margin-right:-.6em;color:#d6cdbb;text-transform:uppercase}
 .lock .ct{margin-top:34px;font:500 36px/1.2 'NHCormorant','Caladea','Liberation Serif',serif;letter-spacing:.06em;color:#d8d0bf}
 `;
 
@@ -228,17 +230,18 @@ window.build=function(cue,st,T){
     return '<div class="t" style="--fs:'+fs+'px;text-shadow:0 2px 30px rgba(0,0,0,.65)">'+trk(t,ls)+'</div>';
   };
   if(cue.kind==='lockup'){
-    const glow=st.glow||1,ls=st.ls||.3;
-    return '<div class="lock" style="transform:translate(-50%,-50%) scale('+sc+')"><div style="opacity:'+o[0]+'">'+title(cue,ls,100,glow)+'</div><div class="s" style="opacity:'+o[1]+';text-shadow:0 0 14px rgba(0,0,0,.8)">'+esc(cue.subtitle)+'</div><div style="opacity:'+o[2]+'"><div class="r"></div><div class="q" style="text-shadow:0 0 12px rgba(0,0,0,.8)">'+typo(cue.tagline)+'</div></div></div>';
+    const glow=st.glow||1,ls=st.ls||.24;
+    return '<div class="lock" style="transform:translate(-50%,-50%) scale('+sc+')"><div style="opacity:'+o[0]+'">'+title(cue,ls,96,glow)+'</div><div class="s" style="opacity:'+o[1]+';text-shadow:0 0 14px rgba(0,0,0,.8)">'+esc(cue.subtitle)+'</div><div style="opacity:'+o[2]+'"><div class="r"></div><div class="q" style="text-shadow:0 0 12px rgba(0,0,0,.8)">'+typo(cue.tagline)+'</div></div></div>';
   }
   if(cue.kind==='end'){
     const contact=T.contact?'<div class="ct" style="opacity:'+o[3]+'">'+typo(T.contact)+'</div>':'';
-    return '<div class="lock" style="transform:translate(-50%,-50%) scale('+sc+')"><div style="opacity:'+o[0]+'">'+title(cue,.3,64,1)+'</div><div class="s" style="opacity:'+o[1]+';font-size:24px;margin-top:26px">'+esc(cue.subtitle)+'</div><div class="st" style="opacity:'+o[2]+'">'+esc(cue.status)+'</div>'+contact+'</div>';
+    return '<div class="lock" style="transform:translate(-50%,-50%) scale('+sc+')"><div style="opacity:'+o[0]+'">'+title(cue,.24,64,1)+'</div><div class="s" style="opacity:'+o[1]+';font-size:24px;margin-top:26px">'+esc(cue.subtitle)+'</div><div class="st" style="opacity:'+o[2]+'">'+esc(cue.status)+'</div>'+contact+'</div>';
   }
   return '';
 };
 window.draw=async function(cue,st,T,bg){
   const img=document.getElementById('bg');
+  document.body.style.background=bg?'#000':'transparent';
   if(bg){ if(img.dataset.src!==bg){img.dataset.src=bg;await new Promise((r)=>{img.onload=img.onerror=r;img.src=bg;});} img.style.display='block'; } else img.style.display='none';
   root.innerHTML=cue?window.build(cue,st,T):'';
   await document.fonts.ready;
@@ -276,36 +279,37 @@ export async function openTitlePage({ fontsDir, log = console.log, fonts } = {})
 }
 
 // ------------------------------------------------------------------------------------------------------------------------------ rendering
-const hashOf = (T, fonts) => crypto.createHash('sha1').update(JSON.stringify(T.cues)).update(T.contact).update(fs.readFileSync(fileURLToPath(import.meta.url))).update(fonts.signature).digest('hex').slice(0, 16);
+const sha = (...p) => crypto.createHash('sha1').update(p.join('\u0001')).digest('hex').slice(0, 16);
+const pageSig = (fonts) => sha(CSS, PAGE_JS, animState.toString(), cueRuns.toString(), JSON.stringify(DRIFT), fonts.signature);
 
-/** Renders every visible frame of the cues to DIR/<cue id>/<frame>.png (identical frames once) and writes DIR/titles.manifest.json: { fps, frames, hash, runs: [{ cue, start, count, file }] }. */
+/** Renders every visible frame of the cues to DIR/<cue id>/<frame>.png (identical frames once) and writes DIR/titles.manifest.json: { fps, frames, hash, runs: [{ cue, start, count, file }] }.
+ *  Cached per cue (DIR/<cue id>/.hash holds a hash of the cue, the page code and the fonts): only cues that changed are rendered again. */
 export async function renderTitles({ T = loadText(), outDir, fontsDir, only, force = false, log = console.log } = {}) {
   fs.mkdirSync(outDir, { recursive: true });
-  const fonts = loadFonts(fontsDir, log), hash = hashOf(T, fonts), mfile = path.join(outDir, 'titles.manifest.json');
-  const sel = T.cues.filter((c) => !only || only.includes(c.id));
-  if (!force && !only && fs.existsSync(mfile)) {
-    const old = JSON.parse(fs.readFileSync(mfile, 'utf8'));
-    if (old.hash === hash && old.runs.every((r) => fs.existsSync(path.join(outDir, r.file)))) { log(`titles: ${old.runs.length} runs up to date in ${outDir}`); return old; }
-  }
-  const tp = await openTitlePage({ fonts, log }), t0 = Date.now(); let n = 0;
-  const runs = [];
-  try {
-    for (const cue of T.cues) {
-      const list = cueRuns(cue, T), cdir = path.join(outDir, cue.id);
-      if (!sel.includes(cue)) { for (const r of list) runs.push({ cue: cue.id, start: r.start, count: r.count, file: `${cue.id}/${String(r.start).padStart(4, '0')}.png` }); continue; }
-      fs.rmSync(cdir, { recursive: true, force: true }); fs.mkdirSync(cdir, { recursive: true });
-      for (const r of list) {
-        await tp.draw(cue, r.st, T); const file = `${cue.id}/${String(r.start).padStart(4, '0')}.png`;
-        fs.writeFileSync(path.join(outDir, file), await tp.png()); n++;
-        runs.push({ cue: cue.id, start: r.start, count: r.count, file });
+  const fonts = loadFonts(fontsDir, log), sig = pageSig(fonts), mfile = path.join(outDir, 'titles.manifest.json');
+  const plan = T.cues.map((cue) => {
+    const list = cueRuns(cue, T), cdir = path.join(outDir, cue.id), h = sha(JSON.stringify(cue), cue.kind === 'end' ? T.contact : '', sig);
+    const files = list.map((r) => `${cue.id}/${String(r.start).padStart(4, '0')}.png`);
+    const fresh = !force && (!only || !only.includes(cue.id)) && fs.existsSync(path.join(cdir, '.hash')) && fs.readFileSync(path.join(cdir, '.hash'), 'utf8') === h && files.every((f) => fs.existsSync(path.join(outDir, f)));
+    return { cue, list, cdir, h, files, fresh };
+  });
+  const todo = plan.filter((p) => !p.fresh && (!only || only.includes(p.cue.id)));
+  let n = 0; const t0 = Date.now();
+  if (todo.length) {
+    const tp = await openTitlePage({ fonts, log });
+    try {
+      for (const p of todo) {
+        fs.rmSync(p.cdir, { recursive: true, force: true }); fs.mkdirSync(p.cdir, { recursive: true });
+        for (const [i, r] of p.list.entries()) { await tp.draw(p.cue, r.st, T); fs.writeFileSync(path.join(outDir, p.files[i]), await tp.png()); n++; }
+        fs.writeFileSync(path.join(p.cdir, '.hash'), p.h);
+        log(`titles: ${p.cue.id.padEnd(24)} ${String(p.list.length).padStart(3)} pictures for frames ${p.cue.from}-${p.cue.to - 1} (bar ${barBeat(p.cue.from)})`);
       }
-      log(`titles: ${cue.id.padEnd(24)} ${String(list.length).padStart(3)} pictures for frames ${cue.from}-${cue.to - 1} (bar ${barBeat(cue.from)})`);
-    }
-  } finally { await tp.close(); }
-  runs.sort((a, b) => a.start - b.start);
-  const manifest = { version: 1, fps: FPS, frames: TOTAL, size: [W, H], hash, fonts: fonts.real ? 'embedded' : 'system', contact: T.contact || null, runs };
+    } finally { await tp.close(); }
+  }
+  const runs = plan.flatMap((p) => p.list.map((r, i) => ({ cue: p.cue.id, start: r.start, count: r.count, file: p.files[i] }))).sort((a, b) => a.start - b.start);
+  const manifest = { version: 2, fps: FPS, frames: TOTAL, size: [W, H], hash: sha(...plan.map((p) => p.h)), fonts: fonts.real ? 'embedded' : 'system', contact: T.contact || null, runs };
   fs.writeFileSync(mfile, JSON.stringify(manifest, null, 1));
-  log(`titles: ${n} PNGs in ${((Date.now() - t0) / 1000).toFixed(0)} s -> ${mfile}`);
+  log(todo.length ? `titles: ${n} PNGs for ${todo.length} cue(s) in ${((Date.now() - t0) / 1000).toFixed(0)} s -> ${mfile}` : `titles: ${runs.length} runs up to date in ${outDir}`);
   return manifest;
 }
 /** Used by the assembler: validates, then renders or re-uses the PNG runs. */

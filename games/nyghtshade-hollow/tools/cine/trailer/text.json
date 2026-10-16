@@ -21,7 +21,7 @@
 
     { "id": "card-one-morning", "kind": "card", "text": "ONE MORNING.",
       "src": { "file": "README.md", "facts": ["one morning inside"] },
-      "from": 512, "to": 572, "fadeIn": 10, "fadeOut": 12, "note": "A1, bar 9.1: first card on the downbeat where the pulse enters." },
+      "from": 512, "to": 568, "fadeIn": 10, "fadeOut": 12, "note": "A1, bar 9.1: first card on the downbeat where the pulse enters." },
 
     { "id": "card-one-block", "kind": "card", "text": "ONE BLOCK.",
       "src": { "file": "README.md", "facts": ["C-Block"] },
