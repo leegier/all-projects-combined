@@ -1,0 +1,1308 @@
+{
+ "generated": "2026-10-15T13:23:47.562Z",
+ "routes": [
+  {
+   "results": [
+    {
+     "name": "intro cinematic hands over control",
+     "ok": true,
+     "detail": "",
+     "t": 34,
+     "hour": "05:58"
+    },
+    {
+     "name": "player starts in cell C-107",
+     "ok": true,
+     "detail": "",
+     "t": 34,
+     "hour": "05:58"
+    },
+    {
+     "name": "count passed (stood at the bars)",
+     "ok": true,
+     "detail": "",
+     "t": 50.7,
+     "hour": "06:20"
+    },
+    {
+     "name": "cell doors released after count",
+     "ok": true,
+     "detail": "",
+     "t": 55.2,
+     "hour": "06:26"
+    },
+    {
+     "name": "inmates visible in the hall after count",
+     "ok": true,
+     "detail": "",
+     "t": 55.2,
+     "hour": "06:26"
+    },
+    {
+     "name": "picked up cigarettes (inventory)",
+     "ok": true,
+     "detail": "",
+     "t": 56.2,
+     "hour": "06:27"
+    },
+    {
+     "name": "drinking restores thirst",
+     "ok": true,
+     "detail": "",
+     "t": 87.6,
+     "hour": "07:06"
+    },
+    {
+     "name": "sally gate is locked during count/lights-out period",
+     "ok": true,
+     "detail": "",
+     "t": 95.2,
+     "hour": "07:16"
+    },
+    {
+     "name": "PA/slot change to CHOW at 07:00",
+     "ok": true,
+     "detail": "",
+     "t": 95.2,
+     "hour": "07:16"
+    },
+    {
+     "name": "sally gates open during CHOW",
+     "ok": true,
+     "detail": "",
+     "t": 96.3,
+     "hour": "07:18"
+    },
+    {
+     "name": "arrived in the mess hall",
+     "ok": true,
+     "detail": "",
+     "t": 101.8,
+     "hour": "07:25"
+    },
+    {
+     "name": "got a chow tray from Tuck",
+     "ok": true,
+     "detail": "",
+     "t": 107.7,
+     "hour": "07:31"
+    },
+    {
+     "name": "ate chow — hunger restored",
+     "ok": true,
+     "detail": "",
+     "t": 117,
+     "hour": "07:43"
+    },
+    {
+     "name": "commissary UI opens",
+     "ok": true,
+     "detail": "",
+     "t": 123.4,
+     "hour": "07:50"
+    },
+    {
+     "name": "Cutter explained the ledger lead",
+     "ok": true,
+     "detail": "",
+     "t": 149.9,
+     "hour": "07:55"
+    },
+    {
+     "name": "reputation changed by dialogue choice (fear +2)",
+     "ok": true,
+     "detail": "",
+     "t": 149.9,
+     "hour": "07:55"
+    },
+    {
+     "name": "bought the shim (−25 DC)",
+     "ok": true,
+     "detail": "balance 25",
+     "t": 149.9,
+     "hour": "07:55"
+    },
+    {
+     "name": "mop job offered",
+     "ok": true,
+     "detail": "",
+     "t": 149.9,
+     "hour": "07:55"
+    },
+    {
+     "name": "took the mop",
+     "ok": true,
+     "detail": "",
+     "t": 151,
+     "hour": "07:56"
+    },
+    {
+     "name": "mop job complete (+30 DC)",
+     "ok": true,
+     "detail": "balance 55",
+     "t": 170.5,
+     "hour": "08:22"
+    },
+    {
+     "name": "walked into Intake lobby unchallenged (not restricted)",
+     "ok": true,
+     "detail": "",
+     "t": 179.6,
+     "hour": "08:34"
+    },
+    {
+     "name": "shim defeated the reader without raising the alert",
+     "ok": true,
+     "detail": "",
+     "t": 199.1,
+     "hour": "09:00"
+    },
+    {
+     "name": "inside Records (restricted area) without tripping the alarm",
+     "ok": true,
+     "detail": "alert 0",
+     "t": 208.6,
+     "hour": "09:13"
+    },
+    {
+     "name": "copied the ledger page (item in inventory)",
+     "ok": true,
+     "detail": "",
+     "t": 211.9,
+     "hour": "09:18"
+    },
+    {
+     "name": "left Records with no alarm raised",
+     "ok": true,
+     "detail": "",
+     "t": 226.3,
+     "hour": "09:37"
+    },
+    {
+     "name": "document popup shown after leaving Records",
+     "ok": true,
+     "detail": "",
+     "t": 226.3,
+     "hour": "09:37"
+    },
+    {
+     "name": "journal opens",
+     "ok": true,
+     "detail": "",
+     "t": 231,
+     "hour": "09:37"
+    },
+    {
+     "name": "journal closes",
+     "ok": true,
+     "detail": "",
+     "t": 233.1,
+     "hour": "09:37"
+    },
+    {
+     "name": "can sprint (stamina drains)",
+     "ok": true,
+     "detail": "",
+     "t": 245.6,
+     "hour": "09:54"
+    },
+    {
+     "name": "chapel unlocks at 13:00 (routine policy)",
+     "ok": true,
+     "detail": "",
+     "t": 282.8,
+     "hour": "13:00"
+    },
+    {
+     "name": "entered the chapel",
+     "ok": true,
+     "detail": "",
+     "t": 284.1,
+     "hour": "13:01"
+    },
+    {
+     "name": "Harrington accepted the ledger page",
+     "ok": true,
+     "detail": "",
+     "t": 298.9,
+     "hour": "13:08"
+    },
+    {
+     "name": "Street Cred / General Pop standing rose",
+     "ok": true,
+     "detail": "",
+     "t": 298.9,
+     "hour": "13:08"
+    },
+    {
+     "name": "baptismal font lifted — tunnel revealed",
+     "ok": true,
+     "detail": "",
+     "t": 310.4,
+     "hour": "13:23"
+    },
+    {
+     "name": "descended into the tunnel",
+     "ok": true,
+     "detail": "",
+     "t": 326.1,
+     "hour": "13:33"
+    },
+    {
+     "name": "tunnel conversation triggered",
+     "ok": true,
+     "detail": "",
+     "t": 329,
+     "hour": "13:37"
+    },
+    {
+     "name": "tunnel rules scene complete",
+     "ok": true,
+     "detail": "",
+     "t": 338.9,
+     "hour": "13:37"
+    },
+    {
+     "name": "emerged into the forest",
+     "ok": true,
+     "detail": "",
+     "t": 390.9,
+     "hour": "14:42"
+    },
+    {
+     "name": "ending cinematic and end screen reached",
+     "ok": true,
+     "detail": "",
+     "t": 444.4,
+     "hour": "14:42"
+    }
+   ],
+   "log": [
+    "0.0s PLAYTEST: Automated playtest bot — real input layer, fixed 60 Hz simulation",
+    "34.0s PASS intro cinematic hands over control",
+    "34.0s PASS player starts in cell C-107",
+    "34.0s ROUTINE SYSTEM: 11-slot prison clock drives PA, doors and guards. 06:00 — COUNT.",
+    "50.7s PASS count passed (stood at the bars)",
+    "55.2s PASS cell doors released after count",
+    "55.2s PASS inmates visible in the hall after count",
+    "55.2s SURVIVAL + PICKUPS: Health · hunger · thirst · stamina. Cigarettes double as currency.",
+    "56.2s PASS picked up cigarettes (inventory)",
+    "61.0s DIALOGUE: Branching dialogue with voice blips; choices cost DC or shift reputation.",
+    "87.6s PASS drinking restores thirst",
+    "87.6s TIME FLOW: Hold T to fast-forward the routine clock while it is safe.",
+    "95.2s PASS sally gate is locked during count/lights-out period",
+    "95.2s PASS PA/slot change to CHOW at 07:00",
+    "96.3s PASS sally gates open during CHOW",
+    "99.3s GUARD AI: Guards patrol with vision cones. They only react to what you are not allowed to be doing.",
+    "101.8s PASS arrived in the mess hall",
+    "101.8s CHOW + COMMISSARY: Free tray, hunger restores. The commissary sells with DC.",
+    "107.7s PASS got a chow tray from Tuck",
+    "117.0s PASS ate chow — hunger restored",
+    "117.0s ECONOMY: DC scrip: earn from work, spend at the commissary, trade, bribe.",
+    "123.4s PASS commissary UI opens",
+    "124.5s REPUTATION + DIALOGUE: Choices change Street Cred, Fear and faction standing.",
+    "136.9s chose: Skip the small talk. How do I get in?",
+    "139.8s chose: And the kitchen job?",
+    "146.5s chose: Buy a shim and do it quiet. (25 DC)",
+    "149.9s PASS Cutter explained the ledger lead",
+    "149.9s PASS reputation changed by dialogue choice (fear +2)",
+    "149.9s PASS bought the shim (−25 DC) — balance 25",
+    "149.9s WORK DETAIL: Kitchen mop job: four spills, 30 DC and Guard standing.",
+    "149.9s PASS mop job offered",
+    "151.0s PASS took the mop",
+    "170.5s PASS mop job complete (+30 DC) — balance 55",
+    "170.5s STEALTH: Three ways into Records — keycard, shim, or a bribe. Cameras and guards watch.",
+    "179.6s PASS walked into Intake lobby unchallenged (not restricted)",
+    "183.0s STEALTH: Pruitt sweeps his gaze. Wait for him to look away, then work the reader.",
+    "199.1s PASS shim defeated the reader without raising the alert",
+    "199.1s SECURITY CAMERA: The ceiling camera sweeps Records. Crouch, time the sweep, copy the page.",
+    "208.6s PASS inside Records (restricted area) without tripping the alarm — alert 0",
+    "211.9s PASS copied the ledger page (item in inventory)",
+    "226.3s PASS left Records with no alarm raised",
+    "226.3s PASS document popup shown after leaving Records",
+    "229.7s JOURNAL: Objective tracking, inventory, reputation tiers and the daily schedule.",
+    "231.0s PASS journal opens",
+    "233.1s PASS journal closes",
+    "245.6s PASS can sprint (stamina drains)",
+    "274.9s TIME FLOW: The chapel only opens at 13:00 — fast-forward the clock.",
+    "282.8s PASS chapel unlocks at 13:00 (routine policy)",
+    "284.1s PASS entered the chapel",
+    "284.1s THE CHAPEL: Stained glass, candles, pews. Harrington Marlowe — the keeper of the tunnel.",
+    "293.0s chose: Page fourteen. They're moving you.",
+    "298.9s PASS Harrington accepted the ledger page",
+    "298.9s PASS Street Cred / General Pop standing rose",
+    "306.0s THE BAPTISMAL: Hold E to lift the stone font and reveal the hidden stair.",
+    "310.4s PASS baptismal font lifted — tunnel revealed",
+    "318.8s THE TUNNEL: Follow Harrington and his lantern under the wire.",
+    "326.1s PASS descended into the tunnel",
+    "329.0s PASS tunnel conversation triggered",
+    "338.9s PASS tunnel rules scene complete",
+    "390.9s PASS emerged into the forest",
+    "390.9s THE CLEARING: Old oak, a crate, a blanket — four hours of being unowned.",
+    "444.4s PASS ending cinematic and end screen reached",
+    "444.4s DONE — 39/39 checks passed, 0 stuck events"
+   ],
+   "stuck": 0,
+   "finished": true,
+   "simTime": 444.4333333332578,
+   "mode": "end",
+   "dc": 55,
+   "cred": 24,
+   "hour": "14:42",
+   "route": "shim",
+   "arrests": 0,
+   "alert": 0,
+   "via": "shim"
+  },
+  {
+   "results": [
+    {
+     "name": "intro cinematic hands over control",
+     "ok": true,
+     "detail": "",
+     "t": 34,
+     "hour": "05:58"
+    },
+    {
+     "name": "player starts in cell C-107",
+     "ok": true,
+     "detail": "",
+     "t": 34,
+     "hour": "05:58"
+    },
+    {
+     "name": "count passed (stood at the bars)",
+     "ok": true,
+     "detail": "",
+     "t": 50.7,
+     "hour": "06:20"
+    },
+    {
+     "name": "cell doors released after count",
+     "ok": true,
+     "detail": "",
+     "t": 55.2,
+     "hour": "06:26"
+    },
+    {
+     "name": "inmates visible in the hall after count",
+     "ok": true,
+     "detail": "",
+     "t": 55.2,
+     "hour": "06:26"
+    },
+    {
+     "name": "picked up cigarettes (inventory)",
+     "ok": true,
+     "detail": "",
+     "t": 56.2,
+     "hour": "06:27"
+    },
+    {
+     "name": "drinking restores thirst",
+     "ok": true,
+     "detail": "",
+     "t": 87.6,
+     "hour": "07:06"
+    },
+    {
+     "name": "sally gate is locked during count/lights-out period",
+     "ok": true,
+     "detail": "",
+     "t": 95.2,
+     "hour": "07:16"
+    },
+    {
+     "name": "PA/slot change to CHOW at 07:00",
+     "ok": true,
+     "detail": "",
+     "t": 95.2,
+     "hour": "07:16"
+    },
+    {
+     "name": "sally gates open during CHOW",
+     "ok": true,
+     "detail": "",
+     "t": 96.3,
+     "hour": "07:18"
+    },
+    {
+     "name": "arrived in the mess hall",
+     "ok": true,
+     "detail": "",
+     "t": 101.8,
+     "hour": "07:25"
+    },
+    {
+     "name": "got a chow tray from Tuck",
+     "ok": true,
+     "detail": "",
+     "t": 107.7,
+     "hour": "07:31"
+    },
+    {
+     "name": "ate chow — hunger restored",
+     "ok": true,
+     "detail": "",
+     "t": 117,
+     "hour": "07:43"
+    },
+    {
+     "name": "commissary UI opens",
+     "ok": true,
+     "detail": "",
+     "t": 123.4,
+     "hour": "07:50"
+    },
+    {
+     "name": "Cutter explained the ledger lead",
+     "ok": true,
+     "detail": "",
+     "t": 148.7,
+     "hour": "07:55"
+    },
+    {
+     "name": "reputation changed by dialogue choice (fear +2)",
+     "ok": true,
+     "detail": "",
+     "t": 148.7,
+     "hour": "07:55"
+    },
+    {
+     "name": "mop job offered",
+     "ok": true,
+     "detail": "",
+     "t": 148.7,
+     "hour": "07:55"
+    },
+    {
+     "name": "took the mop",
+     "ok": true,
+     "detail": "",
+     "t": 149.8,
+     "hour": "07:56"
+    },
+    {
+     "name": "mop job complete (+30 DC)",
+     "ok": true,
+     "detail": "balance 80",
+     "t": 169.4,
+     "hour": "08:22"
+    },
+    {
+     "name": "bought the keycard (−60 DC)",
+     "ok": true,
+     "detail": "",
+     "t": 175.2,
+     "hour": "08:27"
+    },
+    {
+     "name": "walked into Intake lobby unchallenged (not restricted)",
+     "ok": true,
+     "detail": "",
+     "t": 184.5,
+     "hour": "08:40"
+    },
+    {
+     "name": "keycard opened the Records door",
+     "ok": true,
+     "detail": "",
+     "t": 187.5,
+     "hour": "08:44"
+    },
+    {
+     "name": "inside Records (restricted area) without tripping the alarm",
+     "ok": true,
+     "detail": "alert 0",
+     "t": 193.1,
+     "hour": "08:51"
+    },
+    {
+     "name": "copied the ledger page (item in inventory)",
+     "ok": true,
+     "detail": "",
+     "t": 196.5,
+     "hour": "08:55"
+    },
+    {
+     "name": "left Records with no alarm raised",
+     "ok": true,
+     "detail": "",
+     "t": 210.6,
+     "hour": "09:14"
+    },
+    {
+     "name": "document popup shown after leaving Records",
+     "ok": true,
+     "detail": "",
+     "t": 210.6,
+     "hour": "09:14"
+    },
+    {
+     "name": "journal opens",
+     "ok": true,
+     "detail": "",
+     "t": 215.2,
+     "hour": "09:14"
+    },
+    {
+     "name": "journal closes",
+     "ok": true,
+     "detail": "",
+     "t": 217.4,
+     "hour": "09:15"
+    },
+    {
+     "name": "can sprint (stamina drains)",
+     "ok": true,
+     "detail": "",
+     "t": 229.7,
+     "hour": "09:31"
+    },
+    {
+     "name": "chapel unlocks at 13:00 (routine policy)",
+     "ok": true,
+     "detail": "",
+     "t": 267.2,
+     "hour": "13:00"
+    },
+    {
+     "name": "entered the chapel",
+     "ok": true,
+     "detail": "",
+     "t": 268.6,
+     "hour": "13:01"
+    },
+    {
+     "name": "Harrington accepted the ledger page",
+     "ok": true,
+     "detail": "",
+     "t": 283.3,
+     "hour": "13:08"
+    },
+    {
+     "name": "Street Cred / General Pop standing rose",
+     "ok": true,
+     "detail": "",
+     "t": 283.3,
+     "hour": "13:08"
+    },
+    {
+     "name": "baptismal font lifted — tunnel revealed",
+     "ok": true,
+     "detail": "",
+     "t": 294.8,
+     "hour": "13:23"
+    },
+    {
+     "name": "descended into the tunnel",
+     "ok": true,
+     "detail": "",
+     "t": 310.6,
+     "hour": "13:33"
+    },
+    {
+     "name": "tunnel conversation triggered",
+     "ok": true,
+     "detail": "",
+     "t": 313.5,
+     "hour": "13:37"
+    },
+    {
+     "name": "tunnel rules scene complete",
+     "ok": true,
+     "detail": "",
+     "t": 323.3,
+     "hour": "13:37"
+    },
+    {
+     "name": "emerged into the forest",
+     "ok": true,
+     "detail": "",
+     "t": 375.4,
+     "hour": "14:41"
+    },
+    {
+     "name": "ending cinematic and end screen reached",
+     "ok": true,
+     "detail": "",
+     "t": 428.8,
+     "hour": "14:41"
+    }
+   ],
+   "log": [
+    "0.0s PLAYTEST: Automated playtest bot — real input layer, fixed 60 Hz simulation",
+    "34.0s PASS intro cinematic hands over control",
+    "34.0s PASS player starts in cell C-107",
+    "34.0s ROUTINE SYSTEM: 11-slot prison clock drives PA, doors and guards. 06:00 — COUNT.",
+    "50.7s PASS count passed (stood at the bars)",
+    "55.2s PASS cell doors released after count",
+    "55.2s PASS inmates visible in the hall after count",
+    "55.2s SURVIVAL + PICKUPS: Health · hunger · thirst · stamina. Cigarettes double as currency.",
+    "56.2s PASS picked up cigarettes (inventory)",
+    "61.0s DIALOGUE: Branching dialogue with voice blips; choices cost DC or shift reputation.",
+    "87.6s PASS drinking restores thirst",
+    "87.6s TIME FLOW: Hold T to fast-forward the routine clock while it is safe.",
+    "95.2s PASS sally gate is locked during count/lights-out period",
+    "95.2s PASS PA/slot change to CHOW at 07:00",
+    "96.3s PASS sally gates open during CHOW",
+    "99.3s GUARD AI: Guards patrol with vision cones. They only react to what you are not allowed to be doing.",
+    "101.8s PASS arrived in the mess hall",
+    "101.8s CHOW + COMMISSARY: Free tray, hunger restores. The commissary sells with DC.",
+    "107.7s PASS got a chow tray from Tuck",
+    "117.0s PASS ate chow — hunger restored",
+    "117.0s ECONOMY: DC scrip: earn from work, spend at the commissary, trade, bribe.",
+    "123.4s PASS commissary UI opens",
+    "124.5s REPUTATION + DIALOGUE: Choices change Street Cred, Fear and faction standing.",
+    "136.9s chose: Skip the small talk. How do I get in?",
+    "139.8s chose: And the kitchen job?",
+    "146.5s chose: I'll talk to Pruitt myself.",
+    "148.7s PASS Cutter explained the ledger lead",
+    "148.7s PASS reputation changed by dialogue choice (fear +2)",
+    "148.7s WORK DETAIL: Kitchen mop job: four spills, 30 DC and Guard standing.",
+    "148.7s PASS mop job offered",
+    "149.8s PASS took the mop",
+    "169.4s PASS mop job complete (+30 DC) — balance 80",
+    "174.7s chose: The keycard. (60 DC)",
+    "175.2s PASS bought the keycard (−60 DC)",
+    "175.2s STEALTH: Three ways into Records — keycard, shim, or a bribe. Cameras and guards watch.",
+    "184.5s PASS walked into Intake lobby unchallenged (not restricted)",
+    "187.5s PASS keycard opened the Records door",
+    "187.5s SECURITY CAMERA: The ceiling camera sweeps Records. Crouch, time the sweep, copy the page.",
+    "193.1s PASS inside Records (restricted area) without tripping the alarm — alert 0",
+    "196.5s PASS copied the ledger page (item in inventory)",
+    "210.6s PASS left Records with no alarm raised",
+    "210.6s PASS document popup shown after leaving Records",
+    "214.0s JOURNAL: Objective tracking, inventory, reputation tiers and the daily schedule.",
+    "215.2s PASS journal opens",
+    "217.4s PASS journal closes",
+    "229.7s PASS can sprint (stamina drains)",
+    "258.1s TIME FLOW: The chapel only opens at 13:00 — fast-forward the clock.",
+    "267.2s PASS chapel unlocks at 13:00 (routine policy)",
+    "268.6s PASS entered the chapel",
+    "268.6s THE CHAPEL: Stained glass, candles, pews. Harrington Marlowe — the keeper of the tunnel.",
+    "277.5s chose: Page fourteen. They're moving you.",
+    "283.3s PASS Harrington accepted the ledger page",
+    "283.3s PASS Street Cred / General Pop standing rose",
+    "290.4s THE BAPTISMAL: Hold E to lift the stone font and reveal the hidden stair.",
+    "294.8s PASS baptismal font lifted — tunnel revealed",
+    "303.3s THE TUNNEL: Follow Harrington and his lantern under the wire.",
+    "310.6s PASS descended into the tunnel",
+    "313.5s PASS tunnel conversation triggered",
+    "323.3s PASS tunnel rules scene complete",
+    "375.4s PASS emerged into the forest",
+    "375.4s THE CLEARING: Old oak, a crate, a blanket — four hours of being unowned.",
+    "428.8s PASS ending cinematic and end screen reached",
+    "428.8s DONE — 39/39 checks passed, 0 stuck events"
+   ],
+   "stuck": 0,
+   "finished": true,
+   "simTime": 428.8666666666053,
+   "mode": "end",
+   "dc": 20,
+   "cred": 22,
+   "hour": "14:41",
+   "route": "keycard",
+   "arrests": 0,
+   "alert": 0,
+   "via": "keycard"
+  },
+  {
+   "results": [
+    {
+     "name": "intro cinematic hands over control",
+     "ok": true,
+     "detail": "",
+     "t": 34,
+     "hour": "05:58"
+    },
+    {
+     "name": "player starts in cell C-107",
+     "ok": true,
+     "detail": "",
+     "t": 34,
+     "hour": "05:58"
+    },
+    {
+     "name": "count passed (stood at the bars)",
+     "ok": true,
+     "detail": "",
+     "t": 50.7,
+     "hour": "06:20"
+    },
+    {
+     "name": "cell doors released after count",
+     "ok": true,
+     "detail": "",
+     "t": 55.2,
+     "hour": "06:26"
+    },
+    {
+     "name": "inmates visible in the hall after count",
+     "ok": true,
+     "detail": "",
+     "t": 55.2,
+     "hour": "06:26"
+    },
+    {
+     "name": "picked up cigarettes (inventory)",
+     "ok": true,
+     "detail": "",
+     "t": 56.2,
+     "hour": "06:27"
+    },
+    {
+     "name": "drinking restores thirst",
+     "ok": true,
+     "detail": "",
+     "t": 87.6,
+     "hour": "07:06"
+    },
+    {
+     "name": "sally gate is locked during count/lights-out period",
+     "ok": true,
+     "detail": "",
+     "t": 95.2,
+     "hour": "07:16"
+    },
+    {
+     "name": "PA/slot change to CHOW at 07:00",
+     "ok": true,
+     "detail": "",
+     "t": 95.2,
+     "hour": "07:16"
+    },
+    {
+     "name": "sally gates open during CHOW",
+     "ok": true,
+     "detail": "",
+     "t": 96.3,
+     "hour": "07:18"
+    },
+    {
+     "name": "arrived in the mess hall",
+     "ok": true,
+     "detail": "",
+     "t": 101.8,
+     "hour": "07:25"
+    },
+    {
+     "name": "got a chow tray from Tuck",
+     "ok": true,
+     "detail": "",
+     "t": 107.7,
+     "hour": "07:31"
+    },
+    {
+     "name": "ate chow — hunger restored",
+     "ok": true,
+     "detail": "",
+     "t": 117,
+     "hour": "07:43"
+    },
+    {
+     "name": "commissary UI opens",
+     "ok": true,
+     "detail": "",
+     "t": 123.4,
+     "hour": "07:50"
+    },
+    {
+     "name": "Cutter explained the ledger lead",
+     "ok": true,
+     "detail": "",
+     "t": 148.7,
+     "hour": "07:55"
+    },
+    {
+     "name": "reputation changed by dialogue choice (fear +2)",
+     "ok": true,
+     "detail": "",
+     "t": 148.7,
+     "hour": "07:55"
+    },
+    {
+     "name": "mop job offered",
+     "ok": true,
+     "detail": "",
+     "t": 148.7,
+     "hour": "07:55"
+    },
+    {
+     "name": "took the mop",
+     "ok": true,
+     "detail": "",
+     "t": 149.8,
+     "hour": "07:56"
+    },
+    {
+     "name": "mop job complete (+30 DC)",
+     "ok": true,
+     "detail": "balance 80",
+     "t": 169.4,
+     "hour": "08:22"
+    },
+    {
+     "name": "walked into Intake lobby unchallenged (not restricted)",
+     "ok": true,
+     "detail": "",
+     "t": 178.5,
+     "hour": "08:34"
+    },
+    {
+     "name": "bribed Pruitt (−40 DC, Guards standing up)",
+     "ok": true,
+     "detail": "balance 40",
+     "t": 190.3,
+     "hour": "08:35"
+    },
+    {
+     "name": "Pruitt looks away (distracted)",
+     "ok": true,
+     "detail": "",
+     "t": 190.3,
+     "hour": "08:35"
+    },
+    {
+     "name": "inside Records (restricted area) without tripping the alarm",
+     "ok": true,
+     "detail": "alert 0",
+     "t": 208.6,
+     "hour": "08:59"
+    },
+    {
+     "name": "copied the ledger page (item in inventory)",
+     "ok": true,
+     "detail": "",
+     "t": 211.9,
+     "hour": "09:04"
+    },
+    {
+     "name": "left Records with no alarm raised",
+     "ok": true,
+     "detail": "",
+     "t": 226.3,
+     "hour": "09:23"
+    },
+    {
+     "name": "document popup shown after leaving Records",
+     "ok": true,
+     "detail": "",
+     "t": 226.3,
+     "hour": "09:23"
+    },
+    {
+     "name": "journal opens",
+     "ok": true,
+     "detail": "",
+     "t": 231,
+     "hour": "09:23"
+    },
+    {
+     "name": "journal closes",
+     "ok": true,
+     "detail": "",
+     "t": 233.1,
+     "hour": "09:23"
+    },
+    {
+     "name": "can sprint (stamina drains)",
+     "ok": true,
+     "detail": "",
+     "t": 245.6,
+     "hour": "09:40"
+    },
+    {
+     "name": "chapel unlocks at 13:00 (routine policy)",
+     "ok": true,
+     "detail": "",
+     "t": 283.5,
+     "hour": "13:00"
+    },
+    {
+     "name": "entered the chapel",
+     "ok": true,
+     "detail": "",
+     "t": 284.9,
+     "hour": "13:02"
+    },
+    {
+     "name": "Harrington accepted the ledger page",
+     "ok": true,
+     "detail": "",
+     "t": 299.6,
+     "hour": "13:08"
+    },
+    {
+     "name": "Street Cred / General Pop standing rose",
+     "ok": true,
+     "detail": "",
+     "t": 299.6,
+     "hour": "13:08"
+    },
+    {
+     "name": "baptismal font lifted — tunnel revealed",
+     "ok": true,
+     "detail": "",
+     "t": 311.1,
+     "hour": "13:23"
+    },
+    {
+     "name": "descended into the tunnel",
+     "ok": true,
+     "detail": "",
+     "t": 326.9,
+     "hour": "13:33"
+    },
+    {
+     "name": "tunnel conversation triggered",
+     "ok": true,
+     "detail": "",
+     "t": 329.8,
+     "hour": "13:37"
+    },
+    {
+     "name": "tunnel rules scene complete",
+     "ok": true,
+     "detail": "",
+     "t": 339.7,
+     "hour": "13:37"
+    },
+    {
+     "name": "emerged into the forest",
+     "ok": true,
+     "detail": "",
+     "t": 391.7,
+     "hour": "14:42"
+    },
+    {
+     "name": "ending cinematic and end screen reached",
+     "ok": true,
+     "detail": "",
+     "t": 445.2,
+     "hour": "14:42"
+    }
+   ],
+   "log": [
+    "0.0s PLAYTEST: Automated playtest bot — real input layer, fixed 60 Hz simulation",
+    "34.0s PASS intro cinematic hands over control",
+    "34.0s PASS player starts in cell C-107",
+    "34.0s ROUTINE SYSTEM: 11-slot prison clock drives PA, doors and guards. 06:00 — COUNT.",
+    "50.7s PASS count passed (stood at the bars)",
+    "55.2s PASS cell doors released after count",
+    "55.2s PASS inmates visible in the hall after count",
+    "55.2s SURVIVAL + PICKUPS: Health · hunger · thirst · stamina. Cigarettes double as currency.",
+    "56.2s PASS picked up cigarettes (inventory)",
+    "61.0s DIALOGUE: Branching dialogue with voice blips; choices cost DC or shift reputation.",
+    "87.6s PASS drinking restores thirst",
+    "87.6s TIME FLOW: Hold T to fast-forward the routine clock while it is safe.",
+    "95.2s PASS sally gate is locked during count/lights-out period",
+    "95.2s PASS PA/slot change to CHOW at 07:00",
+    "96.3s PASS sally gates open during CHOW",
+    "99.3s GUARD AI: Guards patrol with vision cones. They only react to what you are not allowed to be doing.",
+    "101.8s PASS arrived in the mess hall",
+    "101.8s CHOW + COMMISSARY: Free tray, hunger restores. The commissary sells with DC.",
+    "107.7s PASS got a chow tray from Tuck",
+    "117.0s PASS ate chow — hunger restored",
+    "117.0s ECONOMY: DC scrip: earn from work, spend at the commissary, trade, bribe.",
+    "123.4s PASS commissary UI opens",
+    "124.5s REPUTATION + DIALOGUE: Choices change Street Cred, Fear and faction standing.",
+    "136.9s chose: Skip the small talk. How do I get in?",
+    "139.8s chose: And the kitchen job?",
+    "146.5s chose: I'll talk to Pruitt myself.",
+    "148.7s PASS Cutter explained the ledger lead",
+    "148.7s PASS reputation changed by dialogue choice (fear +2)",
+    "148.7s WORK DETAIL: Kitchen mop job: four spills, 30 DC and Guard standing.",
+    "148.7s PASS mop job offered",
+    "149.8s PASS took the mop",
+    "169.4s PASS mop job complete (+30 DC) — balance 80",
+    "169.4s STEALTH: Three ways into Records — keycard, shim, or a bribe. Cameras and guards watch.",
+    "178.5s PASS walked into Intake lobby unchallenged (not restricted)",
+    "183.5s chose: I hear Records keeps good books.",
+    "188.6s chose: Pay Pruitt 40 DC.",
+    "190.3s PASS bribed Pruitt (−40 DC, Guards standing up) — balance 40",
+    "190.3s PASS Pruitt looks away (distracted)",
+    "193.0s SECURITY CAMERA: The ceiling camera sweeps Records. Crouch, time the sweep, copy the page.",
+    "208.6s PASS inside Records (restricted area) without tripping the alarm — alert 0",
+    "211.9s PASS copied the ledger page (item in inventory)",
+    "226.3s PASS left Records with no alarm raised",
+    "226.3s PASS document popup shown after leaving Records",
+    "229.7s JOURNAL: Objective tracking, inventory, reputation tiers and the daily schedule.",
+    "231.0s PASS journal opens",
+    "233.1s PASS journal closes",
+    "245.6s PASS can sprint (stamina drains)",
+    "274.9s TIME FLOW: The chapel only opens at 13:00 — fast-forward the clock.",
+    "283.5s PASS chapel unlocks at 13:00 (routine policy)",
+    "284.9s PASS entered the chapel",
+    "284.9s THE CHAPEL: Stained glass, candles, pews. Harrington Marlowe — the keeper of the tunnel.",
+    "293.8s chose: Page fourteen. They're moving you.",
+    "299.6s PASS Harrington accepted the ledger page",
+    "299.6s PASS Street Cred / General Pop standing rose",
+    "306.7s THE BAPTISMAL: Hold E to lift the stone font and reveal the hidden stair.",
+    "311.1s PASS baptismal font lifted — tunnel revealed",
+    "319.6s THE TUNNEL: Follow Harrington and his lantern under the wire.",
+    "326.9s PASS descended into the tunnel",
+    "329.8s PASS tunnel conversation triggered",
+    "339.7s PASS tunnel rules scene complete",
+    "391.7s PASS emerged into the forest",
+    "391.7s THE CLEARING: Old oak, a crate, a blanket — four hours of being unowned.",
+    "445.2s PASS ending cinematic and end screen reached",
+    "445.2s DONE — 39/39 checks passed, 0 stuck events"
+   ],
+   "stuck": 0,
+   "finished": true,
+   "simTime": 445.19999999992376,
+   "mode": "end",
+   "dc": 40,
+   "cred": 21,
+   "hour": "14:42",
+   "route": "bribe",
+   "arrests": 0,
+   "alert": 0,
+   "via": "bribe"
+  },
+  {
+   "results": [
+    {
+     "name": "intro cinematic hands over control",
+     "ok": true,
+     "detail": "",
+     "t": 34,
+     "hour": "05:58"
+    },
+    {
+     "name": "player starts in cell C-107",
+     "ok": true,
+     "detail": "",
+     "t": 34,
+     "hour": "05:58"
+    },
+    {
+     "name": "count passed (stood at the bars)",
+     "ok": true,
+     "detail": "",
+     "t": 50.7,
+     "hour": "06:20"
+    },
+    {
+     "name": "cell doors released after count",
+     "ok": true,
+     "detail": "",
+     "t": 55.2,
+     "hour": "06:26"
+    },
+    {
+     "name": "inmates visible in the hall after count",
+     "ok": true,
+     "detail": "",
+     "t": 55.2,
+     "hour": "06:26"
+    },
+    {
+     "name": "picked up cigarettes (inventory)",
+     "ok": true,
+     "detail": "",
+     "t": 56.2,
+     "hour": "06:27"
+    },
+    {
+     "name": "drinking restores thirst",
+     "ok": true,
+     "detail": "",
+     "t": 87.6,
+     "hour": "07:06"
+    },
+    {
+     "name": "sally gate is locked during count/lights-out period",
+     "ok": true,
+     "detail": "",
+     "t": 95.2,
+     "hour": "07:16"
+    },
+    {
+     "name": "PA/slot change to CHOW at 07:00",
+     "ok": true,
+     "detail": "",
+     "t": 95.2,
+     "hour": "07:16"
+    },
+    {
+     "name": "sally gates open during CHOW",
+     "ok": true,
+     "detail": "",
+     "t": 96.3,
+     "hour": "07:18"
+    },
+    {
+     "name": "arrived in the mess hall",
+     "ok": true,
+     "detail": "",
+     "t": 101.8,
+     "hour": "07:25"
+    },
+    {
+     "name": "got a chow tray from Tuck",
+     "ok": true,
+     "detail": "",
+     "t": 107.7,
+     "hour": "07:31"
+    },
+    {
+     "name": "ate chow — hunger restored",
+     "ok": true,
+     "detail": "",
+     "t": 117,
+     "hour": "07:43"
+    },
+    {
+     "name": "commissary UI opens",
+     "ok": true,
+     "detail": "",
+     "t": 123.4,
+     "hour": "07:50"
+    },
+    {
+     "name": "Cutter explained the ledger lead",
+     "ok": true,
+     "detail": "",
+     "t": 149.9,
+     "hour": "07:55"
+    },
+    {
+     "name": "reputation changed by dialogue choice (fear +2)",
+     "ok": true,
+     "detail": "",
+     "t": 149.9,
+     "hour": "07:55"
+    },
+    {
+     "name": "bought the shim (−25 DC)",
+     "ok": true,
+     "detail": "balance 25",
+     "t": 149.9,
+     "hour": "07:55"
+    },
+    {
+     "name": "mop job offered",
+     "ok": true,
+     "detail": "",
+     "t": 149.9,
+     "hour": "07:55"
+    },
+    {
+     "name": "took the mop",
+     "ok": true,
+     "detail": "",
+     "t": 151,
+     "hour": "07:56"
+    },
+    {
+     "name": "mop job complete (+30 DC)",
+     "ok": true,
+     "detail": "balance 55",
+     "t": 170.5,
+     "hour": "08:22"
+    },
+    {
+     "name": "walked into Intake lobby unchallenged (not restricted)",
+     "ok": true,
+     "detail": "",
+     "t": 179.6,
+     "hour": "08:34"
+    },
+    {
+     "name": "shim defeated the reader without raising the alert",
+     "ok": true,
+     "detail": "",
+     "t": 199.1,
+     "hour": "09:00"
+    },
+    {
+     "name": "security camera spotted the player and tripped the alarm",
+     "ok": true,
+     "detail": "alert 2",
+     "t": 204.2,
+     "hour": "09:07"
+    },
+    {
+     "name": "Pruitt chased the player down and arrested them",
+     "ok": true,
+     "detail": "",
+     "t": 207.9,
+     "hour": "09:12"
+    },
+    {
+     "name": "after the arrest: back in the own cell, fined and an hour later",
+     "ok": true,
+     "detail": "balance 55 -> 40",
+     "t": 215.8,
+     "hour": "10:14"
+    },
+    {
+     "name": "arrest cost guard standing",
+     "ok": true,
+     "detail": "3 -> 0",
+     "t": 215.8,
+     "hour": "10:14"
+    }
+   ],
+   "log": [
+    "0.0s PLAYTEST: Automated playtest bot — real input layer, fixed 60 Hz simulation",
+    "34.0s PASS intro cinematic hands over control",
+    "34.0s PASS player starts in cell C-107",
+    "34.0s ROUTINE SYSTEM: 11-slot prison clock drives PA, doors and guards. 06:00 — COUNT.",
+    "50.7s PASS count passed (stood at the bars)",
+    "55.2s PASS cell doors released after count",
+    "55.2s PASS inmates visible in the hall after count",
+    "55.2s SURVIVAL + PICKUPS: Health · hunger · thirst · stamina. Cigarettes double as currency.",
+    "56.2s PASS picked up cigarettes (inventory)",
+    "61.0s DIALOGUE: Branching dialogue with voice blips; choices cost DC or shift reputation.",
+    "87.6s PASS drinking restores thirst",
+    "87.6s TIME FLOW: Hold T to fast-forward the routine clock while it is safe.",
+    "95.2s PASS sally gate is locked during count/lights-out period",
+    "95.2s PASS PA/slot change to CHOW at 07:00",
+    "96.3s PASS sally gates open during CHOW",
+    "99.3s GUARD AI: Guards patrol with vision cones. They only react to what you are not allowed to be doing.",
+    "101.8s PASS arrived in the mess hall",
+    "101.8s CHOW + COMMISSARY: Free tray, hunger restores. The commissary sells with DC.",
+    "107.7s PASS got a chow tray from Tuck",
+    "117.0s PASS ate chow — hunger restored",
+    "117.0s ECONOMY: DC scrip: earn from work, spend at the commissary, trade, bribe.",
+    "123.4s PASS commissary UI opens",
+    "124.5s REPUTATION + DIALOGUE: Choices change Street Cred, Fear and faction standing.",
+    "136.9s chose: Skip the small talk. How do I get in?",
+    "139.8s chose: And the kitchen job?",
+    "146.5s chose: Buy a shim and do it quiet. (25 DC)",
+    "149.9s PASS Cutter explained the ledger lead",
+    "149.9s PASS reputation changed by dialogue choice (fear +2)",
+    "149.9s PASS bought the shim (−25 DC) — balance 25",
+    "149.9s WORK DETAIL: Kitchen mop job: four spills, 30 DC and Guard standing.",
+    "149.9s PASS mop job offered",
+    "151.0s PASS took the mop",
+    "170.5s PASS mop job complete (+30 DC) — balance 55",
+    "170.5s STEALTH: Three ways into Records — keycard, shim, or a bribe. Cameras and guards watch.",
+    "179.6s PASS walked into Intake lobby unchallenged (not restricted)",
+    "183.0s STEALTH: Pruitt sweeps his gaze. Wait for him to look away, then work the reader.",
+    "199.1s PASS shim defeated the reader without raising the alert",
+    "199.1s SECURITY CAMERA: Rushing in without timing the sweep: the camera spots you and trips the alarm.",
+    "204.2s PASS security camera spotted the player and tripped the alarm — alert 2",
+    "204.2s GUARD AI + ARREST: Pruitt breaks his post, chases the player down and arrests them: fine, standing loss, an hour in the cell.",
+    "207.9s PASS Pruitt chased the player down and arrested them",
+    "215.8s PASS after the arrest: back in the own cell, fined and an hour later — balance 55 -> 40",
+    "215.8s PASS arrest cost guard standing — 3 -> 0",
+    "218.3s DONE — 26/26 checks passed, 0 stuck events"
+   ],
+   "stuck": 0,
+   "finished": true,
+   "simTime": 218.3500000000659,
+   "mode": "play",
+   "dc": 40,
+   "cred": 14,
+   "hour": "10:18",
+   "route": "alarm",
+   "arrests": 1,
+   "alert": 0,
+   "via": "shim"
+  }
+ ]
+}

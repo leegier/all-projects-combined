@@ -1,0 +1,48 @@
+{
+  "note": "STAND-IN test characters (mannequins). Not MetaHumans.",
+  "defaults": {
+    "height": 1.78
+  },
+  "characters": [
+    {
+      "id": "standin-mh-a",
+      "file": "standin-mh-a.glb",
+      "looks": [
+        "inmateA",
+        "inmateB"
+      ],
+      "height": 1.82
+    },
+    {
+      "id": "standin-mh-b",
+      "file": "standin-mh-b.glb",
+      "looks": [
+        "inmateB",
+        "inmateC",
+        "cutter"
+      ],
+      "height": 1.74
+    },
+    {
+      "id": "standin-mx-a",
+      "file": "standin-mx-a.glb",
+      "looks": [
+        "guard",
+        "guardLight"
+      ],
+      "height": 1.86
+    },
+    {
+      "id": "standin-mx-b",
+      "file": "standin-mx-b.glb",
+      "looks": [
+        "tuck",
+        "harrington",
+        "maddox",
+        "inmateA",
+        "inmateC"
+      ],
+      "height": 1.7
+    }
+  ]
+}

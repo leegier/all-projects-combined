@@ -1,0 +1,131 @@
+{
+ "generated": "2026-10-15T20:37:11.317Z",
+ "pass": 31,
+ "fail": 0,
+ "results": [
+  {
+   "name": "every hour of the day maps to a schedule entry",
+   "ok": true
+  },
+  {
+   "name": "slots at canonical hours (06 Count, 07 Chow, 13 Chapel, 22 LightsOut)",
+   "ok": true
+  },
+  {
+   "name": "door/area policy follows the slot",
+   "ok": true
+  },
+  {
+   "name": "slot changes emit slot + pa events (and count at COUNT)",
+   "ok": true
+  },
+  {
+   "name": "clock advances at secondsPerHour and rolls the day over",
+   "ok": true
+  },
+  {
+   "name": "time scale (hold T) accelerates the clock",
+   "ok": true
+  },
+  {
+   "name": "lockdown lifts after its duration",
+   "ok": true
+  },
+  {
+   "name": "serialize/load round trip keeps hour/day and re-evaluates the slot",
+   "ok": true
+  },
+  {
+   "name": "schedule entries do not overlap",
+   "ok": true
+  },
+  {
+   "name": "spend rejects overdrafts and zero, earn tracks totals",
+   "ok": true
+  },
+  {
+   "name": "change events carry balance, delta and reason; log is capped",
+   "ok": true
+  },
+  {
+   "name": "serialize/load round trip",
+   "ok": true
+  },
+  {
+   "name": "tiers follow street cred thresholds",
+   "ok": true
+  },
+  {
+   "name": "values clamp: fear 0..100, standing -100..100",
+   "ok": true
+  },
+  {
+   "name": "ally / enemy thresholds and events",
+   "ok": true
+  },
+  {
+   "name": "every faction has a standing entry; serialize/load round trip",
+   "ok": true
+  },
+  {
+   "name": "hunger and thirst decay with game time; sprinting costs more",
+   "ok": true
+  },
+  {
+   "name": "eat/drink clamp at 100; starving drains health and can kill",
+   "ok": true
+  },
+  {
+   "name": "health regenerates when fed and watered",
+   "ok": true
+  },
+  {
+   "name": "heat maps to levels 0..3 at 25 / 55 / 90 and decays after the hold",
+   "ok": true
+  },
+  {
+   "name": "clear() resets immediately",
+   "ok": true
+  },
+  {
+   "name": "stacking, slot cap and removal",
+   "ok": true
+  },
+  {
+   "name": "stack limit and unique items",
+   "ok": true
+  },
+  {
+   "name": "serialize/load round trip is a deep copy",
+   "ok": true
+  },
+  {
+   "name": "every script has a start node and every next/choice target exists",
+   "ok": true
+  },
+  {
+   "name": "every script node is reachable from its start",
+   "ok": true
+  },
+  {
+   "name": "fx / cond strings used by scripts are handled by Story",
+   "ok": true
+  },
+  {
+   "name": "MetaHuman / UE5 skeleton: every role found, twist / corrective / facial / ik helpers ignored",
+   "ok": true
+  },
+  {
+   "name": "Mixamo skeleton (with and without the colon glTF strips)",
+   "ok": true
+  },
+  {
+   "name": "Rigify deform bones, VRM / Unity humanoid and VRoid names",
+   "ok": true
+  },
+  {
+   "name": "unknown skeletons are reported, not guessed",
+   "ok": true
+  }
+ ]
+}
