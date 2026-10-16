@@ -11,7 +11,7 @@
 // Optional: --text FILE (default trailer/text.json), --work DIR (scratch, default a temp folder; PNG title runs are re-used there), --fonts DIR (see titles.mjs),
 //   --no-titles, --grade none, --grain N (strength, default 1, 0 = off), --fade-in N / --fade-out N (frames, default 24 / 24), --crf N, --preset NAME,
 //   --nice N (default 10: other jobs share the machine), --dry (check and print the plan, do not encode), --print-graph, --keep (keep the scratch folder),
-//   --partial (test lists shorter than the 3200 picture frames: the black end card and the fades follow the list), --lenient (a clip that is more than 2 frames short is held on its last frame instead of aborting).
+//   --window A:B (encode only the master frames A to B-1, e.g. 3008:3328 for the title and the end card; fades and score follow the timeline), --partial (test lists shorter than the 3200 picture frames: the black end card and the fades follow the list), --lenient (a clip that is more than 2 frames short is held on its last frame instead of aborting).
 //
 // What it does, in order: concat of the clips frame-exactly (3200 picture frames: each clip is trimmed to its shot length) -> a final grade (a 3D LUT: gentle S-curve, split tone
 // teal shadows / warm highlights, 3 % less chroma, a lifted black) at 10 bit -> luma-weighted temporal film grain on the picture only -> fade up from black / fade to black -> 128 black
@@ -123,28 +123,30 @@ export function buildGraph(P, fix, o) {
   });
   L.push(`${seq.join('')}concat=n=${seq.length}:v=1:a=0[pic]`);
 
+  const totalFrames = picFrames + END_FRAMES, [wa, wb] = o.window || [0, totalFrames];
   let cur = 'pic';
   const step = (chain, label) => { L.push(`[${cur}]${chain}[${label}]`); cur = label; };
+  if (wa > 0 || wb < picFrames) step(`trim=start_frame=${wa}:end_frame=${Math.min(wb, picFrames)},setpts=N/(24*TB)`, 'win');
   if (o.grade) step(`${CONV_IN},lut3d=file=grade.cube:interp=tetrahedral,${CONV_OUT}`, 'graded');
   else step('format=yuv444p10le', 'graded');
   if (o.grain > 0) {
-    const sd = Math.round(30 * o.grain);   // noise filter strength (uniform noise, 10 bit planes): about 2 % of full range at 1.0 before the blur and the luma weight
+    const sd = Math.round(18 * o.grain);   // noise filter strength (uniform noise on the 10 bit luma plane): about 3 / 255 standard deviation in the mid-tones at 1.0 (measured), less in deep shadows and highlights
     L.push(`color=c=0x808080:s=${PW}x${PH}:r=24,format=yuv444p10le,noise=c0s=${sd}:c0f=t+u:c1s=0:c2s=0,gblur=sigma=0.55:planes=1[gr]`);
     const u = '((A-64)/876)';
     L.push(`[${cur}][gr]blend=c0_expr='A+(B-504)*(0.35+0.65*4*${u}*(1-${u}))':c1_expr=A:c2_expr=A:shortest=1[grained]`); cur = 'grained';
   }
   const fades = [];
-  if (o.fadeIn > 0) fades.push(`fade=t=in:s=0:n=${o.fadeIn}`);
-  if (o.fadeOut > 0) fades.push(`fade=t=out:s=${picFrames - o.fadeOut}:n=${o.fadeOut}`);
+  if (o.fadeIn > 0 && wa === 0) fades.push(`fade=t=in:s=0:n=${o.fadeIn}`);
+  if (o.fadeOut > 0 && wb >= picFrames && picFrames - o.fadeOut >= wa) fades.push(`fade=t=out:s=${picFrames - o.fadeOut - wa}:n=${o.fadeOut}`);
   if (fades.length) step(fades.join(','), 'faded');
-  step(`tpad=stop_mode=add:stop=${END_FRAMES}:color=black,pad=${W}:${H}:0:${PIC_Y}:black,setsar=1`, 'full');
+  step(`${wb > picFrames ? `tpad=stop_mode=add:stop=${Math.min(wb, totalFrames) - picFrames}:color=black,` : ''}pad=${W}:${H}:0:${PIC_Y}:black,setsar=1`, 'full');
   if (o.titles !== undefined) {
     L.push(`[${o.titles}:v]scale=in_range=pc:out_range=tv:out_color_matrix=bt709:flags=accurate_rnd+full_chroma_int,format=yuva444p10le[ttl]`);
     L.push(`[${cur}][ttl]overlay=0:0:format=yuv444p10:alpha=straight:eof_action=pass:repeatlast=0[titled]`); cur = 'titled';
   }
   if (o.preview) step(`crop=${W}:${PH}:0:${PIC_Y},scale=1280:536:flags=lanczos`, 'pv');
   step(`${CONV_FINAL},setsar=1`, 'vout');
-  L.push(`[${o.audio}:a]aresample=48000:resampler=soxr,aformat=channel_layouts=stereo,apad=whole_dur=${audioSec.toFixed(6)},atrim=end=${audioSec.toFixed(6)},asetpts=N/SR/TB,afade=t=in:d=0.02,afade=t=out:st=${(audioSec - 0.05).toFixed(4)}:d=0.05[aout]`);
+  L.push(`[${o.audio}:a]aresample=48000:resampler=soxr,aformat=channel_layouts=stereo,apad=whole_dur=${audioSec.toFixed(6)},atrim=start=${(wa / FPS).toFixed(6)}:end=${(wb / FPS).toFixed(6)},asetpts=N/SR/TB${wa === 0 ? ',afade=t=in:d=0.02' : ''}${wb >= totalFrames ? `,afade=t=out:st=${(audioSec - 0.05 - wa / FPS).toFixed(4)}:d=0.05` : ''}[aout]`);
   return L.join(';\n');
 }
 
@@ -193,7 +195,9 @@ export async function assemble(opts) {
   // work folder
   const work = path.resolve(opts.work || path.join(os.tmpdir(), 'nh-assemble-' + crypto.createHash('sha1').update(out).digest('hex').slice(0, 8)));
   fs.mkdirSync(work, { recursive: true });
-  const o = { grade: opts.grade !== 'none', grain: opts.preview && opts.grain === undefined ? 0 : (opts.grain ?? 1), fadeIn: opts.fadeIn ?? 24, fadeOut: opts.fadeOut ?? 24, preview: !!opts.preview };
+  let window = null;
+  if (opts.window) { const [a, b] = String(opts.window).split(':').map(Number); if (!(a >= 0 && b > a && a < P.total && b <= P.total + END_FRAMES)) throw new Error('--window A:B needs 0 <= A < ' + P.total + ' and A < B <= ' + (P.total + END_FRAMES)); window = [a, b]; }
+  const o = { window, grade: opts.grade !== 'none', grain: opts.preview && opts.grain === undefined ? 0 : (opts.grain ?? 1), fadeIn: opts.fadeIn ?? 24, fadeOut: opts.fadeOut ?? 24, preview: !!opts.preview };
   if (o.grade) makeCube(path.join(work, 'grade.cube'));
 
   // titles
@@ -210,12 +214,12 @@ export async function assemble(opts) {
   const args = ['-hide_banner', '-y', '-loglevel', 'error', '-stats'];
   P.shots.forEach((s) => args.push('-threads', '1', '-i', path.join(clipsDir, s.id + '.mp4')));
   const audioIdx = P.shots.length; args.push('-i', score);
-  let titlesIdx; if (T) { titlesIdx = P.shots.length + 1; args.push('-framerate', '24', '-start_number', '1', '-i', 'tseq/t_%04d.png'); }
+  let titlesIdx; if (T) { titlesIdx = P.shots.length + 1; args.push('-framerate', '24', '-start_number', String((window ? window[0] : 0) + 1), '-i', 'tseq/t_%04d.png'); }
   const graph = buildGraph(P, fix, { ...o, audio: audioIdx, titles: titlesIdx });
   fs.writeFileSync(path.join(work, 'graph.txt'), graph);
   if (opts.printGraph) log(graph);
   const crf = opts.crf ?? (opts.preview ? 23 : 14), preset = opts.preset ?? (opts.preview ? 'veryfast' : 'medium');
-  args.push('-filter_complex_script', 'graph.txt', '-map', '[vout]', '-map', '[aout]', '-frames:v', String(P.total + END_FRAMES), '-r', '24', '-fps_mode', 'cfr');
+  args.push('-filter_complex_script', 'graph.txt', '-map', '[vout]', '-map', '[aout]', '-frames:v', String(window ? window[1] - window[0] : P.total + END_FRAMES), '-r', '24', '-fps_mode', 'cfr');
   args.push('-c:v', 'libx264', '-preset', preset, '-crf', String(crf), '-profile:v', 'high', '-level:v', opts.preview ? '4.0' : '4.1', '-pix_fmt', 'yuv420p', '-g', '48', '-bf', '3');
   if (!opts.preview) args.push('-maxrate', '16M', '-bufsize', '32M', '-tune', o.grain > 0 ? 'grain' : 'film');
   args.push('-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-color_range', 'tv');
@@ -249,7 +253,7 @@ async function main() {
   await assemble({
     clips: arg('clips'), score: arg('score'), out: arg('out'), shots: arg('shots'), preview: has('preview'), text: arg('text'), work: arg('work'), fonts: arg('fonts'),
     noTitles: has('no-titles'), grade: arg('grade'), grain: num('grain'), fadeIn: num('fade-in'), fadeOut: num('fade-out'), crf: num('crf'), preset: arg('preset'), nice: num('nice'),
-    dry: has('dry'), partial: has('partial'), printGraph: has('print-graph'), keep: has('keep'), lenient: has('lenient'),
+    dry: has('dry'), window: arg('window'), partial: has('partial'), printGraph: has('print-graph'), keep: has('keep'), lenient: has('lenient'),
   });
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main().catch((e) => { console.error(e.message || e); process.exit(1); });

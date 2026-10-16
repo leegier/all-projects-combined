@@ -10,7 +10,7 @@ const stageCan = (o = {}) => ({ area: 'canteen', hour: 7.3, humans: 'hide', rele
  * (Engine request filed in the report: fit the text to the canvas in signTexture.)
  */
 const BOARD_FIX = `
-let m = null; g.scene.traverse((o) => { const p = o.isMesh && o.geometry && o.geometry.parameters; if (p && p.width === 1.4 && p.height === 0.9 && o.material && o.material.map) m = o; });
+let m = null; g.scene.traverse((o) => { const p = o.isMesh && o.geometry && o.geometry.parameters; if (p && p.width === 1.4 && p.height === 0.9 && Math.abs(o.position.x - 17.98) < 0.1 && o.material && o.material.map) m = o; });
 if (m) {
   const t = m.material.map, c = t.image, x = c.getContext('2d'), w = c.width, h = c.height;
   x.fillStyle = '#d9d4bd'; x.fillRect(0, 0, w, h);

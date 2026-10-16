@@ -166,7 +166,7 @@ body{font-synthesis:none;-webkit-font-smoothing:antialiased;text-rendering:geome
 
 /* subtitles: inner monologue (italic) and dialogue (speaker label in the game's red, like the game's own subtitle) in the lower third of the picture */
 .sub{position:absolute;left:50%;bottom:${H - (PIC_Y + PIC_H) + 62}px;width:max-content;max-width:1420px;text-align:center;transform-origin:50% 100%}
-.sub:before{content:'';position:absolute;left:-210px;right:-210px;top:-70px;bottom:-46px;z-index:-1;background:radial-gradient(closest-side,rgba(0,0,0,.52),rgba(0,0,0,.30) 55%,rgba(0,0,0,0))}
+.sub:before{content:'';position:absolute;left:-210px;right:-210px;top:-70px;bottom:-46px;z-index:-1;background:radial-gradient(closest-side,rgba(0,0,0,.6),rgba(0,0,0,.36) 55%,rgba(0,0,0,0))}
 .sub .who{font:500 24px/1 'NHOswald','Inter',sans-serif;letter-spacing:.42em;margin-right:-.42em;color:var(--red2);text-transform:uppercase;margin-bottom:14px;text-shadow:0 0 12px rgba(0,0,0,.95),0 1px 2px #000}
 .sub .txt{font:500 58px/1.2 'NHCormorant','Caladea','Liberation Serif',serif;color:var(--ink);letter-spacing:.012em;text-wrap:balance;text-shadow:0 1px 2px rgba(0,0,0,.9),0 0 18px rgba(0,0,0,.75),0 0 50px rgba(0,0,0,.55)}
 .sub.mono .txt{font-style:italic;color:#d9d1c0;font-weight:500}
