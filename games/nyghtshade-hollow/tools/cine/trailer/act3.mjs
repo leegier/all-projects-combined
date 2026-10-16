@@ -68,9 +68,9 @@ export const shots = [
     notes: 'The corner.',
   },
   {
-    id: 'A5a-04-mouth', dur: F(112), stage: { ...TU, area: 'tunnel2', outside: 'gold', player: [-67, -3.2, -24, 0], lights: [lantern([0, 1.3, 3.0])] },
-    walk: { ease: 'smooth', keys: [{ p: [-67.5, -3.2, -24] }, { p: [-74.6, -3.2, -24] }] },
-    cam: cam([{ p: [-67.5, -1.85, -24], l: [-90, -1.3, -24.3], lens: 24 }, { p: [-74.6, -1.8, -24], l: [-90, -1.2, -24.3], lens: 24 }], 'smooth'),
+    id: 'A5a-04-mouth', dur: F(112), stage: { ...TU, area: 'tunnel2', outside: 'gold', player: [-67, -3.2, -24, 0], lights: [lantern([0, 1.3, 3.0]), { type: 'point', p: [-76.9, -1.9, -24], color: '#ffd9a0', intensity: 30, distance: 6, decay: 2 }] },
+    walk: { ease: 'smooth', keys: [{ p: [-67.5, -3.2, -24] }, { p: [-73.8, -3.2, -24] }] },
+    cam: cam([{ p: [-67.5, -1.85, -24], l: [-90, -1.3, -24.3], lens: 24 }, { p: [-73.8, -1.8, -24], l: [-90, -1.2, -24.3], lens: 24 }], 'smooth'),
     fx: { ...look('tunnel'), mb: 1, ev: [{ u: 0, v: 0.9 }, { u: 0.55, v: 0.9 }, { u: 1, v: 1.9 }], flash: [{ u: 0, v: 0 }, { u: 0.75, v: 0 }, { u: 1, v: 0.45 }] },
     notes: 'Last shot of the tunnel: push toward the bright mouth, the light blooms to warm white on the final frames to hand over to the gold of A5b. Text can sit low-left over the dark floor.',
   },
