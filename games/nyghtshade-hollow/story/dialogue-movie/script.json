@@ -1,0 +1,89 @@
+{
+  "title": "Nyghtshade Hollow - Four Hours (dialogue movie cut)",
+  "source": "Nyghtshade_Hollow_Dialogue.pdf (current-canon sourcebook, Oct 2 2026). Lines are verbatim; scenes abridged for a ~5 minute cut.",
+  "cast": {
+    "MADDOX":     {"voice": {"am_fenrir": 0.7, "am_onyx": 0.3}, "speed": 0.9,  "pitch": -1.0, "unreal": "Maddox (MetaHuman Dean)"},
+    "HARRINGTON": {"voice": {"am_michael": 0.6, "am_santa": 0.4}, "speed": 0.82, "pitch": -0.5, "unreal": "Harrington Marlowe"},
+    "ARIANNA":    {"voice": {"af_heart": 1.0}, "speed": 0.95, "pitch": 0, "unreal": "Arianna"},
+    "ALLEN":      {"voice": {"am_puck": 1.0}, "speed": 1.0, "pitch": 0, "unreal": "Allen (phone)"}
+  },
+  "scenes": [
+    {"id": "S1", "title": "Back Under the Baptismal", "place": "chapel, under the baptismal font, night", "lines": [
+      ["ACTION", "Darkness under the baptismal. Voices above fade. The pulpit rotates back.", 4],
+      ["MADDOX", "How many times you done that alone?"],
+      ["HARRINGTON", "Enough."],
+      ["MADDOX", "Where do you even go?"],
+      ["HARRINGTON", "Past the tree line there is a clearing. Old oak, four feet through. Got a crate. A blanket, a couple books, little food."],
+      ["HARRINGTON", "Be nice if tomorrow you came with me. Service ends early. Count is at nine-thirty. That is near four hours."],
+      ["MADDOX", "Four hours. Not five minutes. What do you even do with that?"],
+      ["HARRINGTON", "Sit. Listen. Read. Feel grass through your socks. Hear a car go by where no one is counting you."],
+      ["MADDOX", "That is a dangerous amount of freedom."],
+      ["HARRINGTON", "Because five minutes feels like mercy. Four hours feels like your life is yours again."],
+      ["HARRINGTON", "Maybe nothing. For men like us, maybe that is everything."]
+    ]},
+    {"id": "S2", "title": "Rules for Four Hours", "place": "chapel", "lines": [
+      ["HARRINGTON", "Then we plan it the same way you plan a yard. Boundaries. No crowds. No lights. No open street."],
+      ["MADDOX", "Four hours of pretending I am not a ghost."],
+      ["HARRINGTON", "Four hours of remembering you are not one."],
+      ["HARRINGTON", "You keep your word. You come back. Every time."],
+      ["MADDOX", "I will."]
+    ]},
+    {"id": "S3", "title": "The Call to Allen", "place": "cell, contraband phone", "lines": [
+      ["ACTION", "A cell at night. A contraband phone lights a tattooed hand.", 3],
+      ["ALLEN", "Hey, bro. What is up?"],
+      ["MADDOX", "Justin's bike. I need you to deliver it somewhere."],
+      ["ALLEN", "No way, man. That is the only thing we got left of Justin."],
+      ["MADDOX", "Listen. I need this."],
+      ["ALLEN", "You sound like you are saying goodbye."],
+      ["MADDOX", "No. No goodbyes. Just do this quiet. No questions. No names. Drop it and walk away."],
+      ["ALLEN", "Yeah. Okay. For Justin. For you."],
+      ["MADDOX", "Thank you, brother."]
+    ]},
+    {"id": "S4", "title": "One Last Ride", "place": "outside the tunnel mouth, then the road", "lines": [
+      ["MADDOX", "One last ride, brother. One last ride."],
+      ["HARRINGTON", "I am not riding with you on that death trap."],
+      ["MADDOX", "Yes, you are. One more time. Let the wind go through your hair."],
+      ["HARRINGTON", "I barely have any hair."],
+      ["MADDOX", "Then the wind will have less to fight."],
+      ["ACTION", "The engine wakes. Two men on an empty road beyond the prison.", 4],
+      ["HARRINGTON", "Slow down, you lunatic!"],
+      ["MADDOX", "You said you wanted to feel alive!"],
+      ["HARRINGTON", "I said I wanted air, not judgment day!"]
+    ]},
+    {"id": "S5", "title": "The Underground Home", "place": "tunnel chamber, empty then furnished", "lines": [
+      ["HARRINGTON", "Storage once. Now it is nothing."],
+      ["HARRINGTON", "No."],
+      ["MADDOX", "I did not say anything."],
+      ["HARRINGTON", "You did not have to."],
+      ["ACTION", "Weeks later. Lights, a bed, shelves of books, the motorcycle against the wall.", 3],
+      ["HARRINGTON", "You have ruined my quiet."],
+      ["MADDOX", "You keep coming back though."],
+      ["HARRINGTON", "Somebody has to make sure you do not turn a tunnel into a subdivision."],
+      ["MADDOX", "Home."]
+    ]},
+    {"id": "S6", "title": "Mama's Dinner", "place": "underground home, table for three", "lines": [
+      ["HARRINGTON", "Funny thing about getting old, son. Last night I dreamed about a plate."],
+      ["HARRINGTON", "Steak. Potatoes. Gravy. Mama used to put too much pepper in the gravy. I would give damn near anything to complain about that gravy one more time."],
+      ["ACTION", "A hot pan. Butter hisses. Three plates.", 3],
+      ["ARIANNA", "Let him have a table."],
+      ["HARRINGTON", "What did you do?"],
+      ["MADDOX", "Supper."],
+      ["MADDOX", "That bad?"],
+      ["HARRINGTON", "Too much pepper."],
+      ["HARRINGTON", "No. It is right."],
+      ["HARRINGTON", "I have not had that meal in fifty-three years. I forgot what it tasted like."],
+      ["HARRINGTON", "I thought I was getting too old to carry things. Turns out, I was too old to carry everything."],
+      ["MADDOX", "To Mama."],
+      ["HARRINGTON", "To Mama."],
+      ["HARRINGTON", "You are a good man, son."],
+      ["MADDOX", "Some days I do not feel like one."],
+      ["HARRINGTON", "Good. That is how you know you are still trying."]
+    ]},
+    {"id": "S7", "title": "Sunday", "place": "underground home, low light", "lines": [
+      ["ARIANNA", "I hate Sundays."],
+      ["MADDOX", "Why?"],
+      ["ARIANNA", "Because this place becomes a tunnel again."],
+      ["HARRINGTON", "Then next Friday we make it a home again."]
+    ]}
+  ]
+}
