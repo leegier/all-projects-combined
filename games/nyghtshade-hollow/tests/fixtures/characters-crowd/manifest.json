@@ -1,0 +1,7 @@
+{
+  "note": "Test fixture: two characters, each with a lighter 'crowd' variant (here simply the other skeleton family, so the tests can tell which template was used).",
+  "characters": [
+    { "id": "full-mh", "file": "../characters/standin-mh-a.glb", "crowd": "../characters/standin-mx-b.glb", "looks": ["inmateA", "inmateB", "inmateC", "guard", "guardLight", "cutter", "tuck", "harrington", "maddox"], "height": 1.8 },
+    { "id": "full-mx", "file": "../characters/standin-mx-a.glb", "crowd": "../characters/standin-mh-b.glb", "looks": ["inmateA", "inmateB", "inmateC"], "height": 1.8 }
+  ]
+}

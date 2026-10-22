@@ -1,0 +1,96 @@
+{
+  "_about": "On-screen text cue sheet of the trailer, in frames of the 24 fps timeline (tools/cine/trailer/timeline.mjs: 1 bar = 64 frames, 52 bars = 3328 frames). Read by tools/cine/titles.mjs (renders the typography) and tools/cine/assemble-trailer.mjs (burns it in). Check it with: node tools/cine/titles.mjs --check",
+  "_rules": "No text over the first 48 frames. One text element on screen at a time (the visible windows [from, to) never overlap). Every fade is at least 8 frames. No text in the drop (bar 23, frames 1408-1471) except the CAUGHT card. The title lockup starts on the hit of bar 48 (frame 3008). Every line is a real game line (src points to it and --check verifies the wording against the file) or a card that only restates README facts (src.facts are checked in the README).",
+  "_fields": "from = first visible frame (the fade-in starts there), to = first frame after the fade-out, fadeIn / fadeOut in frames. kind: mono (inner monologue, italic), dialogue (speaker label + line), pa (the prison PA), card (title card), caught (the arrest card), lockup (title plate), end (end card). pos: lower | upper | center (defaults per kind). Times are on the timeline, not on a shot.",
+
+  "contact": "",
+  "_contact_help": "PLACEHOLDER FOR THE OWNER: type the contact line of the end card here, for example an email address or the page where the slice can be played. While this is an empty string the assembler leaves the contact line out of the end card.",
+
+  "cues": [
+    { "id": "mono-wake-1", "kind": "mono", "text": "Same ceiling. Same crack in it. Four thousand and some mornings.",
+      "src": { "file": "src/story/dialogue.js", "ref": "BARKS.wake[0] (also BARK1 in src/story/cinematics.js)" },
+      "from": 60, "to": 180, "fadeIn": 14, "fadeOut": 14, "note": "A0, bar 1.4 to 3.4: the waking line over the ceiling / first light. Nothing in the first 48 frames; nothing in bar 4 so the hit of bar 5 lands clean." },
+
+    { "id": "mono-wake-2", "kind": "mono", "text": "Nine years. They count us twice a day like we might have gone somewhere.",
+      "src": { "file": "src/story/dialogue.js", "ref": "BARKS.wake[1]" },
+      "from": 272, "to": 392, "fadeIn": 14, "fadeOut": 14, "note": "A1, bar 5.2: one beat after the hit, over the first shots of the block." },
+
+    { "id": "pa-count", "kind": "pa", "text": "COUNT TIME. ALL INMATES TO YOUR CELLS. STAND FOR COUNT.",
+      "src": { "file": "src/systems/routine.js", "ref": "SCHEDULE[0].pa (Count)" },
+      "from": 404, "to": 502, "fadeIn": 12, "fadeOut": 12, "note": "A1, bar 7.3: the PA as the game's own ticker (upper third). Fits the ROUTINE board / booth shots." },
+
+    { "id": "card-one-morning", "kind": "card", "text": "ONE MORNING.",
+      "src": { "file": "README.md", "facts": ["one morning inside"] },
+      "from": 512, "to": 568, "fadeIn": 10, "fadeOut": 12, "note": "A1, bar 9.1: first card on the downbeat where the pulse enters." },
+
+    { "id": "card-one-block", "kind": "card", "text": "ONE BLOCK.",
+      "src": { "file": "README.md", "facts": ["C-Block"] },
+      "from": 576, "to": 636, "fadeIn": 10, "fadeOut": 12, "note": "A1, bar 10.1: second card, ends 4 frames before the hit of bar 11." },
+
+    { "id": "cutter-three-ways", "kind": "dialogue", "speaker": "Cutter", "text": "Three ways in. Pick one.",
+      "src": { "file": "src/story/dialogue.js", "ref": "cutter.d1 (second half of the line)" },
+      "from": 672, "to": 744, "fadeIn": 12, "fadeOut": 12, "note": "A2, bar 11.2: Intake / reader shots." },
+
+    { "id": "pruitt-forty-dc", "kind": "dialogue", "speaker": "CO Pruitt", "text": "Forty DC gets you three minutes, a bad memory, and a door that isn't locked.",
+      "src": { "file": "src/story/dialogue.js", "ref": "pruitt.d" },
+      "from": 756, "to": 888, "fadeIn": 14, "fadeOut": 14, "note": "A2, bar 12.4 to 14.6: the price of the door. Records / reader / keycard shots." },
+
+    { "id": "dalton-walk", "kind": "dialogue", "speaker": "CO Dalton", "text": "Walk. Don't run. Running makes me curious.",
+      "src": { "file": "src/story/dialogue.js", "ref": "daltonLine" },
+      "from": 904, "to": 1000, "fadeIn": 12, "fadeOut": 14, "note": "A2, bar 15.2: the calm before the alarm, over the camera cone shots. Gone 24 frames before the alarm hit of bar 17." },
+
+    { "id": "pa-lockdown", "kind": "pa", "text": "EMERGENCY LOCKDOWN. ALL INMATES TO YOUR CELLS IMMEDIATELY.",
+      "src": { "file": "src/systems/routine.js", "ref": "Routine.startLockdown()" },
+      "from": 1040, "to": 1140, "fadeIn": 10, "fadeOut": 12, "note": "A3, bar 17.2: the lockdown PA over the first alarm shots. The rest of the chase is picture only; the last 4 bars before the drop carry no text." },
+
+    { "id": "caught", "kind": "caught", "text": "CAUGHT", "sub": "One hour in the cell",
+      "src": { "file": "src/story/cinematics.js", "ref": "makeArrestCine card (CAUGHT / One hour in the cell)" },
+      "from": 1420, "to": 1468, "fadeIn": 12, "fadeOut": 12, "subDelay": 10, "note": "A3d, bar 23: the only text of the drop, the game's own arrest card; gone 4 frames before the hit of bar 24." },
+
+    { "id": "harrington-forty-years", "kind": "dialogue", "speaker": "Harrington", "text": "Forty years I've counted steps in here, Maddox. Not one of them was mine.",
+      "src": { "file": "src/story/dialogue.js", "ref": "harrington.d" },
+      "from": 1536, "to": 1664, "fadeIn": 14, "fadeOut": 14, "note": "A4, bar 25.1 to 27.1: over the chapel aisle / glass light." },
+
+    { "id": "harrington-stone", "kind": "dialogue", "speaker": "Harrington", "text": "Stone remembers being hurried.",
+      "src": { "file": "src/story/dialogue.js", "ref": "harringtonWait (also the font cinematic in src/story/cinematics.js)" },
+      "from": 1808, "to": 1888, "fadeIn": 12, "fadeOut": 14, "note": "A4, bar 29.2: over the baptismal font lifting." },
+
+    { "id": "harrington-thirty-one", "kind": "dialogue", "speaker": "Harrington", "text": "Thirty-one years since a man went down those steps.",
+      "src": { "file": "src/story/cinematics.js", "ref": "makeFontCine, event at 4.6 s" },
+      "from": 2008, "to": 2112, "fadeIn": 14, "fadeOut": 14, "note": "A5a, bar 32.2: the first shot down the steps." },
+
+    { "id": "card-one-way-out", "kind": "card", "text": "ONE WAY OUT.",
+      "src": { "file": "README.md", "facts": ["tunnel"] },
+      "from": 2256, "to": 2316, "fadeIn": 10, "fadeOut": 12, "note": "A5a, bar 36.1: the light at the far end of the tunnel; 52 frames of picture before the gold of bar 38." },
+
+    { "id": "maddox-ghost", "kind": "dialogue", "speaker": "Maddox", "text": "Four hours of pretending I am not a ghost.",
+      "src": { "file": "src/story/dialogue.js", "ref": "tunnelRules.f" },
+      "from": 2432, "to": 2512, "fadeIn": 12, "fadeOut": 12, "note": "A5b, bar 39.1: first words in the gold forest, after one bar of picture only." },
+
+    { "id": "harrington-not-one", "kind": "dialogue", "speaker": "Harrington", "text": "Four hours of remembering you are not one.",
+      "src": { "file": "src/story/dialogue.js", "ref": "tunnelRules.g" },
+      "from": 2524, "to": 2604, "fadeIn": 12, "fadeOut": 12, "note": "A5b, bar 40.1: the answer." },
+
+    { "id": "card-four-hours", "kind": "card", "text": "FOUR HOURS.", "size": 1.2,
+      "src": { "file": "README.md", "facts": ["four hours of freedom"] },
+      "from": 2696, "to": 2780, "fadeIn": 14, "fadeOut": 14, "note": "A5b, bars 43.2 to 44.3: the card straddles the emotional peak of the score at bar 44 (frame 2752)." },
+
+    { "id": "harrington-car", "kind": "dialogue", "speaker": "Harrington", "text": "Hear a car go by where no one is counting you.",
+      "src": { "file": "src/story/dialogue.js", "ref": "clearing.c (second half of the line)" },
+      "from": 2800, "to": 2896, "fadeIn": 14, "fadeOut": 14, "note": "A5b, bar 45.4 to 46.4: the car of the score passes at bar 46 (frame 2880)." },
+
+    { "id": "harrington-word", "kind": "dialogue", "speaker": "Harrington", "text": "You keep your word. You come back. Every time.",
+      "src": { "file": "src/story/dialogue.js", "ref": "clearing.f" },
+      "from": 2908, "to": 2998, "fadeIn": 14, "fadeOut": 12, "note": "A5b, bar 46.4 to 47.6: the last line, gone 10 frames before the title." },
+
+    { "id": "title-lockup", "kind": "lockup",
+      "title": "NYGHTSHADE HOLLOW", "titleRed": "SHADE", "subtitle": "THE INTAKE", "tagline": "A prison drama. Vertical slice.",
+      "src": { "file": "src/ui/ui.js", "facts": ["HOLLOW", "The Intake"], "taglineFile": "README.md", "taglineFacts": ["vertical slice"] },
+      "from": 3008, "to": 3190, "fadeIn": 12, "fadeOut": 18, "subDelay": 14, "taglineDelay": 30, "note": "AT, bar 48.1: lands ON the hit (frame 3008); the title plate fades to black underneath, the lockup is gone at 3190." },
+
+    { "id": "end-card", "kind": "end",
+      "title": "NYGHTSHADE HOLLOW", "titleRed": "SHADE", "subtitle": "THE INTAKE", "status": "IN DEVELOPMENT",
+      "src": { "file": "src/ui/ui.js", "facts": ["HOLLOW", "The Intake"], "copy": "IN DEVELOPMENT is trailer copy supplied by the brief" },
+      "from": 3216, "to": 3316, "fadeIn": 20, "fadeOut": 20, "statusDelay": 14, "contactDelay": 30, "note": "End card, bars 51-52 (black, no clip). The contact line comes from the top-level \"contact\" field and is skipped while that is empty." }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "nyghtshade-hollow-the-intake",
+  "version": "0.3.0",
+  "description": "Nyghtshade Hollow — The Intake: playable vertical slice (WebGL / Three.js), MetaHuman-ready characters and crowd",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "build:dev": "node tools/build.mjs --no-min",
+    "serve": "node tools/serve.mjs",
+    "test": "node tests/unit.mjs && node tests/run-tests.mjs all && node tests/integration.mjs && node tests/characters.mjs && node tests/crowd.mjs && node tests/metahuman-tools.mjs",
+    "test:unit": "node tests/unit.mjs",
+    "test:bot": "node tests/run-tests.mjs all",
+    "test:integration": "node tests/integration.mjs",
+    "capture": "node tools/capture.mjs",
+    "video": "bash tools/make-video.sh",
+    "look": "node tools/look.mjs",
+    "test:characters": "node tests/characters.mjs",
+    "test:crowd": "node tests/crowd.mjs",
+    "test:tools": "node tests/metahuman-tools.mjs",
+    "test:drive": "node tests/drive-pull.mjs",
+    "standins": "node tools/make-standin.mjs",
+    "report": "node tools/report.mjs"
+  },
+  "dependencies": {
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "playwright-core": "^1.50.0"
+  }
+}
