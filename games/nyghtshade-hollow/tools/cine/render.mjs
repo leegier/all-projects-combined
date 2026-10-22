@@ -73,7 +73,7 @@ async function renderShot(shot, port) {
         const want = picks.indexOf(i);
         const spec = { ...frameSpec(shot, i, n, FPS, defaults), steps: stepsFor(i), noRender: want < 0 };
         await page.evaluate((f) => NH_DIR.frame(f), spec);
-        if (want >= 0) fs.writeFileSync(path.join(scoutDir, `${shot.id}_${'abc'[want]}.png`), await page.screenshot({ type: 'png' }));
+        if (want >= 0) fs.writeFileSync(path.join(scoutDir, `${shot.id}_${'abc'[want]}.png`), await page.screenshot({ type: 'png', timeout: 300000 }));
         if (i > 0 && i >= picks[2]) break;
       }
       log(`scout ${shot.id} ${((Date.now() - t0) / 1000).toFixed(0)}s`);
