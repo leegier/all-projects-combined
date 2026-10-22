@@ -41,10 +41,11 @@ export const shots = [
     notes: 'The font before it lifts.',
   },
   {
-    id: 'A4-06-font-lift', dur: F(96), sim: { bot: 'shim', at: 313.6 }, stage: { area: 'chapel', humans: 'hide' },
-    cam: cam([{ p: [-57.5, 0.7, -2.8], l: [-55, 0.7, -5.75], lens: 28 }, { p: [-57.0, 0.9, -3.2], l: [-54.2, 0.2, -5.75], lens: 28 }]),
-    fx: { ...look('warm') },
-    notes: 'The stone slides and the stair is revealed.',
+    id: 'A4-06-font-lift', dur: F(96), sim: { bot: 'shim', at: 313.4 },
+    stage: { area: 'chapel', humans: 'hide', lights: [{ type: 'point', p: [-55, -1.4, -6.8], color: '#ffa550', intensity: 10, distance: 5, decay: 1.6 }] },
+    cam: cam([{ p: [-57.8, 0.75, -2.6], l: [-55, 0.9, -5.75], lens: 28 }, { p: [-57.2, 1.5, -3.0], l: [-54.6, -1.0, -7.2], lens: 28 }], 'smooth'),
+    fx: { ...look('warm'), mb: 1 },
+    notes: 'The hero beat: the stone font slides aside and the stair is revealed in the floor. Text line sits upper-right over the wall. Hands over to A5a by going down the same stair.',
   },
 
   // ---------------------------------------------------------------- A5a tunnel (384)
@@ -68,10 +69,10 @@ export const shots = [
     notes: 'The corner.',
   },
   {
-    id: 'A5a-04-mouth', dur: F(112), stage: { ...TU, area: 'tunnel2', outside: 'gold', player: [-67, -3.2, -24, 0], lights: [lantern([0, 1.3, 3.0]), { type: 'point', p: [-76.9, -1.9, -24], color: '#ffd9a0', intensity: 30, distance: 6, decay: 2 }] },
-    walk: { ease: 'smooth', keys: [{ p: [-67.5, -3.2, -24] }, { p: [-73.8, -3.2, -24] }] },
-    cam: cam([{ p: [-67.5, -1.85, -24], l: [-90, -1.3, -24.3], lens: 24 }, { p: [-73.8, -1.8, -24], l: [-90, -1.2, -24.3], lens: 24 }], 'smooth'),
-    fx: { ...look('tunnel'), mb: 1, ev: [{ u: 0, v: 0.9 }, { u: 0.55, v: 0.9 }, { u: 1, v: 1.9 }], flash: [{ u: 0, v: 0 }, { u: 0.75, v: 0 }, { u: 1, v: 0.45 }] },
+    id: 'A5a-04-mouth', dur: F(112), stage: { ...TU, area: 'tunnel2', outside: 'gold', player: [-67, -3.2, -24, 0], lights: [lantern([0, 1.3, 3.0]), { type: 'point', p: [-76.9, -1.9, -24], color: '#ffd9a0', intensity: 20, distance: 6, decay: 2 }] },
+    walk: { ease: 'smooth', keys: [{ p: [-67.5, -3.2, -24] }, { p: [-73.4, -3.2, -24] }] },
+    cam: cam([{ p: [-67.5, -1.85, -24], l: [-90, -1.3, -24.3], lens: 24 }, { p: [-73.4, -1.8, -24], l: [-90, -1.2, -24.3], lens: 24 }], 'smooth'),
+    fx: { ...look('tunnel'), mb: 1, ev: [{ u: 0, v: 0.9 }, { u: 0.55, v: 0.9 }, { u: 1, v: 1.9 }], flash: [{ u: 0, v: 0 }, { u: 0.7, v: 0 }, { u: 1, v: 0.85 }] },
     notes: 'Last shot of the tunnel: push toward the bright mouth, the light blooms to warm white on the final frames to hand over to the gold of A5b. Text can sit low-left over the dark floor.',
   },
 ];
