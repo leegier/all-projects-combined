@@ -359,7 +359,7 @@ export class Game {
   step(dt) {
     this.time += dt; this.simTime += dt;
     const inp = this.input.snapshot();
-    if (!this.input.virtual && this.mode === 'play' && this.input.locked) { const [dx, dy] = this.input.takeLook(); this.player.addLook(dx, dy); }
+    if (!this.input.virtual && this.mode === 'play' && (this.input.locked || this.input.touch)) { const [dx, dy] = this.input.takeLook(); this.player.addLook(dx, dy); }
     const mode = this.mode;
     this.updateFade(dt);
     if (mode === 'boot' || mode === 'ready') return;

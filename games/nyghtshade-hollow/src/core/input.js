@@ -13,6 +13,7 @@ export class Input {
     this.keys = new Set();
     this.mouseBtn = false;
     this.dx = 0; this.dy = 0;
+    this.stick = [0, 0]; this.touch = false;   // touch layer (src/core/touch.js): analog stick axes and a flag that stands in for pointer lock
     this.virtual = null; // { move:[x,y], sprint, crouch, interact, ... } set by the bot
     this.prev = {};
     this.locked = false;
@@ -32,6 +33,8 @@ export class Input {
     document.addEventListener('mousemove', (e) => { if (this.locked) { this.dx += e.movementX; this.dy += e.movementY; } });
     document.addEventListener('pointerlockchange', () => { this.locked = document.pointerLockElement === el; this.onPointerLockChange(this.locked); });
   }
+  /** Press / release a key from an on-screen button (edge-detected like a real key). */
+  holdKey(code, on) { if (on) { if (!this.keys.has(code)) this._edge.add(code); this.keys.add(code); } else this.keys.delete(code); }
   lock() { try { const p = this.el.requestPointerLock(); if (p && p.catch) p.catch(() => {}); } catch (e) { /* headless */ } }
   unlock() { try { document.exitPointerLock(); } catch (e) { /* ignore */ } }
   _down(action) { return MAP[action].some((c) => this.keys.has(c)); }
@@ -49,6 +52,7 @@ export class Input {
     } else {
       s.mx = (this._down('right') ? 1 : 0) - (this._down('left') ? 1 : 0);
       s.my = (this._down('forward') ? 1 : 0) - (this._down('back') ? 1 : 0);
+      if (this.touch) { s.mx = Math.max(-1, Math.min(1, s.mx + this.stick[0])); s.my = Math.max(-1, Math.min(1, s.my + this.stick[1])); }
       for (const k of Object.keys(MAP)) if (!['forward', 'back', 'left', 'right'].includes(k)) s[k] = this._down(k);
       s.advance = s.advance || this._edge.has('Mouse0');
     }
