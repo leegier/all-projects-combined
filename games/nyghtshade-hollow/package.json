@@ -8,7 +8,7 @@
     "build": "node tools/build.mjs",
     "build:dev": "node tools/build.mjs --no-min",
     "serve": "node tools/serve.mjs",
-    "test": "node tests/unit.mjs && node tests/run-tests.mjs all && node tests/integration.mjs && node tests/characters.mjs && node tests/crowd.mjs && node tests/metahuman-tools.mjs",
+    "test": "node tests/unit.mjs && node tests/run-tests.mjs all && node tests/integration.mjs && node tests/input.mjs && node tests/characters.mjs && node tests/crowd.mjs && node tests/metahuman-tools.mjs",
     "test:unit": "node tests/unit.mjs",
     "test:bot": "node tests/run-tests.mjs all",
     "test:integration": "node tests/integration.mjs",
@@ -20,7 +20,8 @@
     "test:tools": "node tests/metahuman-tools.mjs",
     "test:drive": "node tests/drive-pull.mjs",
     "standins": "node tools/make-standin.mjs",
-    "report": "node tools/report.mjs"
+    "report": "node tools/report.mjs",
+    "test:input": "node tests/input.mjs"
   },
   "dependencies": {
     "three": "0.170.0"

@@ -13,7 +13,7 @@ export class Input {
     this.keys = new Set();
     this.mouseBtn = false;
     this.dx = 0; this.dy = 0;
-    this.stick = [0, 0]; this.touch = false;   // touch layer (src/core/touch.js): analog stick axes and a flag that stands in for pointer lock
+    this._rel = new Set(); this.stick = [0, 0]; this.touch = false;   // touch layer (src/core/touch.js): analog stick axes and a flag that stands in for pointer lock
     this.virtual = null; // { move:[x,y], sprint, crouch, interact, ... } set by the bot
     this.prev = {};
     this.locked = false;
@@ -35,6 +35,8 @@ export class Input {
   }
   /** Press / release a key from an on-screen button (edge-detected like a real key). */
   holdKey(code, on) { if (on) { if (!this.keys.has(code)) this._edge.add(code); this.keys.add(code); } else this.keys.delete(code); }
+  /** A short tap from an on-screen button: stays down until the next simulation step has seen it (a slow phone may render less often than a tap lasts). */
+  tapKey(code) { if (!this.keys.has(code)) this._edge.add(code); this.keys.add(code); this._rel.add(code); }
   lock() { try { const p = this.el.requestPointerLock(); if (p && p.catch) p.catch(() => {}); } catch (e) { /* headless */ } }
   unlock() { try { document.exitPointerLock(); } catch (e) { /* ignore */ } }
   _down(action) { return MAP[action].some((c) => this.keys.has(c)); }
@@ -65,6 +67,8 @@ export class Input {
     }
     if (!v) { for (const k of Object.keys(MAP)) if (this._pressedEdge(k) && k !== 'forward') out.pressed[k] = out.pressed[k] || (!!s[k]); }
     this._edge.clear();
+    for (const c of this._rel) this.keys.delete(c);
+    this._rel.clear();
     return out;
   }
 }

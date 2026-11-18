@@ -41,7 +41,7 @@ export function installTouch(game, host) {
     return b;
   };
   const hold = (code) => ({ down: () => input.holdKey(code, true), up: () => input.holdKey(code, false) });
-  const tap = (code) => ({ down: () => { input.holdKey(code, true); setTimeout(() => input.holdKey(code, false), 90); } });
+  const tap = (code) => ({ down: () => input.tapKey(code) });
   const toggle = (code) => { let on = false; return { down: (b) => { on = !on; b.classList.toggle('on', on); input.holdKey(code, on); } }; };
 
   // right-hand cluster
