@@ -1,0 +1,213 @@
+[
+ {
+  "name": "crowd-01-count-doors",
+  "pos": [
+   0,
+   0,
+   2
+  ],
+  "yaw": 0,
+  "hour": 6.3,
+  "released": false,
+  "cam": {
+   "p": [
+    9.0,
+    1.6,
+    -2.4
+   ],
+   "l": [
+    13.5,
+    1.45,
+    -6.3
+   ],
+   "fov": 58
+  },
+  "area": "hall",
+  "env": "hall",
+  "letter": true
+ },
+ {
+  "name": "crowd-02-count-both-rows",
+  "pos": [
+   -8,
+   0,
+   -2
+  ],
+  "yaw": 0,
+  "hour": 6.3,
+  "released": false,
+  "cam": {
+   "p": [
+    -10.5,
+    1.7,
+    -3.6
+   ],
+   "l": [
+    3.0,
+    2.2,
+    6.0
+   ],
+   "fov": 62
+  },
+  "area": "hall",
+  "env": "hall",
+  "letter": true
+ },
+ {
+  "name": "crowd-03-day-room",
+  "pos": [
+   -12,
+   0,
+   0
+  ],
+  "yaw": 0,
+  "hour": 18.5,
+  "cam": {
+   "p": [
+    -15.6,
+    2.0,
+    0.4
+   ],
+   "l": [
+    -6.5,
+    1.0,
+    1.6
+   ],
+   "fov": 60
+  },
+  "area": "hall",
+  "env": "hall",
+  "letter": true
+ },
+ {
+  "name": "crowd-04-mess-hall",
+  "pos": [
+   30,
+   0,
+   -4
+  ],
+  "yaw": 0,
+  "hour": 7.4,
+  "cam": {
+   "p": [
+    25.6,
+    1.9,
+    -4.2
+   ],
+   "l": [
+    33,
+    1.0,
+    -10.5
+   ],
+   "fov": 62
+  },
+  "area": "canteen",
+  "env": "canteen",
+  "letter": true
+ },
+ {
+  "name": "crowd-05-serving-line",
+  "pos": [
+   30,
+   0,
+   -4
+  ],
+  "yaw": 0,
+  "hour": 7.4,
+  "cam": {
+   "p": [
+    32.5,
+    1.8,
+    -8.5
+   ],
+   "l": [
+    28.5,
+    1.2,
+    -13.2
+   ],
+   "fov": 60
+  },
+  "area": "canteen",
+  "env": "canteen",
+  "letter": true
+ },
+ {
+  "name": "crowd-06-chapel",
+  "pos": [
+   -52,
+   0,
+   0
+  ],
+  "yaw": 0,
+  "hour": 13.6,
+  "cam": {
+   "p": [
+    -52.2,
+    2.2,
+    0.2
+   ],
+   "l": [
+    -62.5,
+    0.9,
+    3.8
+   ],
+   "fov": 62
+  },
+  "area": "chapel",
+  "env": "chapel",
+  "letter": true
+ },
+ {
+  "name": "crowd-07-library",
+  "pos": [
+   -33,
+   0,
+   -3
+  ],
+  "yaw": 0,
+  "hour": 13.6,
+  "cam": {
+   "p": [
+    -37.2,
+    1.8,
+    -3.6
+   ],
+   "l": [
+    -31,
+    0.9,
+    -6.2
+   ],
+   "fov": 62
+  },
+  "area": "library",
+  "env": "library",
+  "letter": true
+ },
+ {
+  "name": "crowd-08-lights-out",
+  "pos": [
+   0,
+   0,
+   3
+  ],
+  "yaw": 0,
+  "hour": 23.0,
+  "released": false,
+  "cam": {
+   "p": [
+    -4.0,
+    1.7,
+    -4.4
+   ],
+   "l": [
+    -7.0,
+    0.7,
+    -8.6
+   ],
+   "fov": 55
+  },
+  "area": "hall",
+  "env": "hall",
+  "letter": true
+ }
+]

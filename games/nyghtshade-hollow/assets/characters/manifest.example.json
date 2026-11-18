@@ -1,0 +1,12 @@
+{
+  "note": "Copy to manifest.json and edit. `file` = the web-sized GLB made by tools/metahuman/optimize.mjs; `crowd` (optional) = a much lighter export of the same character for the background crowd; `looks` = which roles of the game this character may play (see assets/characters/README.md); `height` = metres.",
+  "defaults": { "height": 1.78 },
+  "characters": [
+    { "id": "gavin",      "file": "gavin.glb",      "crowd": "gavin_crowd.glb",      "looks": ["inmateA", "inmateC", "guard"],            "height": 1.84 },
+    { "id": "walker",     "file": "walker.glb",     "crowd": "walker_crowd.glb",     "looks": ["cutter", "maddox", "inmateA"],            "height": 1.86 },
+    { "id": "skotukeda5", "file": "skotukeda5.glb", "crowd": "skotukeda5_crowd.glb", "looks": ["tuck", "harrington", "inmateB"],          "height": 1.80 },
+    { "id": "advika",     "file": "advika.glb",     "crowd": "advika_crowd.glb",     "looks": ["guardLight", "inmateB"],                  "height": 1.70 },
+    { "id": "hannah",     "file": "hannah.glb",     "crowd": "hannah_crowd.glb",     "looks": ["inmateC", "inmateB"],                     "height": 1.68 },
+    { "id": "maria",      "file": "maria.glb",      "crowd": "maria_crowd.glb",      "looks": ["inmateB", "inmateC"],                     "height": 1.66 }
+  ]
+}

@@ -1,0 +1,14 @@
+# build output and anything read from / written by the tests
+bin/
+mhue/bin/
+mhue/obj/
+samples/
+work/
+out/
+*.mhpkg
+*.uasset
+*.uexp
+*.ubulk
+*.pak
+*.utoc
+*.ucas

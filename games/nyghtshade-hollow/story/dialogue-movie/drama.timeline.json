@@ -1,0 +1,496 @@
+[
+ {
+  "scene": "S1",
+  "action": "Darkness under the baptismal. Voices above fade. The pulpit rotates back.",
+  "start": 1.5,
+  "end": 5.5
+ },
+ {
+  "scene": "S1",
+  "speaker": "MADDOX",
+  "text": "How many times you done that alone?",
+  "file": "lines/S1_01_maddox.wav",
+  "start": 5.5,
+  "end": 7.39
+ },
+ {
+  "scene": "S1",
+  "speaker": "HARRINGTON",
+  "text": "Enough.",
+  "file": "lines/S1_02_harrington.wav",
+  "start": 7.94,
+  "end": 8.9
+ },
+ {
+  "scene": "S1",
+  "speaker": "MADDOX",
+  "text": "Where do you even go?",
+  "file": "lines/S1_03_maddox.wav",
+  "start": 9.45,
+  "end": 10.69
+ },
+ {
+  "scene": "S1",
+  "speaker": "HARRINGTON",
+  "text": "Past the tree line there is a clearing. Old oak, four feet through. Got a crate. A blanket, a couple books, little food.",
+  "file": "lines/S1_04_harrington.wav",
+  "start": 11.24,
+  "end": 20.44
+ },
+ {
+  "scene": "S1",
+  "speaker": "HARRINGTON",
+  "text": "Be nice if tomorrow you came with me. Service ends early. Count is at nine-thirty. That is near four hours.",
+  "file": "lines/S1_05_harrington.wav",
+  "start": 21.24,
+  "end": 29.87
+ },
+ {
+  "scene": "S1",
+  "speaker": "MADDOX",
+  "text": "Four hours. Not five minutes. What do you even do with that?",
+  "file": "lines/S1_06_maddox.wav",
+  "start": 30.67,
+  "end": 34.24
+ },
+ {
+  "scene": "S1",
+  "speaker": "HARRINGTON",
+  "text": "Sit. Listen. Read. Feel grass through your socks. Hear a car go by where no one is counting you.",
+  "file": "lines/S1_07_harrington.wav",
+  "start": 34.79,
+  "end": 42.66
+ },
+ {
+  "scene": "S1",
+  "speaker": "MADDOX",
+  "text": "That is a dangerous amount of freedom.",
+  "file": "lines/S1_08_maddox.wav",
+  "start": 43.46,
+  "end": 45.56
+ },
+ {
+  "scene": "S1",
+  "speaker": "HARRINGTON",
+  "text": "Because five minutes feels like mercy. Four hours feels like your life is yours again.",
+  "file": "lines/S1_09_harrington.wav",
+  "start": 46.11,
+  "end": 53.26
+ },
+ {
+  "scene": "S1",
+  "speaker": "HARRINGTON",
+  "text": "Maybe nothing. For men like us, maybe that is everything.",
+  "file": "lines/S1_10_harrington.wav",
+  "start": 54.06,
+  "end": 58.52
+ },
+ {
+  "scene": "S2",
+  "speaker": "HARRINGTON",
+  "text": "Then we plan it the same way you plan a yard. Boundaries. No crowds. No lights. No open street.",
+  "file": "lines/S2_01_harrington.wav",
+  "start": 62.57,
+  "end": 70.61
+ },
+ {
+  "scene": "S2",
+  "speaker": "MADDOX",
+  "text": "Four hours of pretending I am not a ghost.",
+  "file": "lines/S2_02_maddox.wav",
+  "start": 71.41,
+  "end": 74.08
+ },
+ {
+  "scene": "S2",
+  "speaker": "HARRINGTON",
+  "text": "Four hours of remembering you are not one.",
+  "file": "lines/S2_03_harrington.wav",
+  "start": 74.63,
+  "end": 78.05
+ },
+ {
+  "scene": "S2",
+  "speaker": "HARRINGTON",
+  "text": "You keep your word. You come back. Every time.",
+  "file": "lines/S2_04_harrington.wav",
+  "start": 78.6,
+  "end": 82.08
+ },
+ {
+  "scene": "S2",
+  "speaker": "MADDOX",
+  "text": "I will.",
+  "file": "lines/S2_05_maddox.wav",
+  "start": 82.63,
+  "end": 83.32
+ },
+ {
+  "scene": "S3",
+  "action": "A cell at night. A contraband phone lights a tattooed hand.",
+  "start": 87.37,
+  "end": 90.37
+ },
+ {
+  "scene": "S3",
+  "speaker": "ALLEN",
+  "text": "Hey, bro. What is up?",
+  "file": "lines/S3_01_allen.wav",
+  "start": 90.37,
+  "end": 91.59
+ },
+ {
+  "scene": "S3",
+  "speaker": "MADDOX",
+  "text": "Justin's bike. I need you to deliver it somewhere.",
+  "file": "lines/S3_02_maddox.wav",
+  "start": 92.14,
+  "end": 95.19
+ },
+ {
+  "scene": "S3",
+  "speaker": "ALLEN",
+  "text": "No way, man. That is the only thing we got left of Justin.",
+  "file": "lines/S3_03_allen.wav",
+  "start": 95.74,
+  "end": 99.18
+ },
+ {
+  "scene": "S3",
+  "speaker": "MADDOX",
+  "text": "Listen. I need this.",
+  "file": "lines/S3_04_maddox.wav",
+  "start": 99.73,
+  "end": 101.06
+ },
+ {
+  "scene": "S3",
+  "speaker": "ALLEN",
+  "text": "You sound like you are saying goodbye.",
+  "file": "lines/S3_05_allen.wav",
+  "start": 101.61,
+  "end": 103.51
+ },
+ {
+  "scene": "S3",
+  "speaker": "MADDOX",
+  "text": "No. No goodbyes. Just do this quiet. No questions. No names. Drop it and walk away.",
+  "file": "lines/S3_06_maddox.wav",
+  "start": 104.06,
+  "end": 109.82
+ },
+ {
+  "scene": "S3",
+  "speaker": "ALLEN",
+  "text": "Yeah. Okay. For Justin. For you.",
+  "file": "lines/S3_07_allen.wav",
+  "start": 110.62,
+  "end": 112.52
+ },
+ {
+  "scene": "S3",
+  "speaker": "MADDOX",
+  "text": "Thank you, brother.",
+  "file": "lines/S3_08_maddox.wav",
+  "start": 113.07,
+  "end": 114.15
+ },
+ {
+  "scene": "S4",
+  "speaker": "MADDOX",
+  "text": "One last ride, brother. One last ride.",
+  "file": "lines/S4_01_maddox.wav",
+  "start": 118.2,
+  "end": 120.78
+ },
+ {
+  "scene": "S4",
+  "speaker": "HARRINGTON",
+  "text": "I am not riding with you on that death trap.",
+  "file": "lines/S4_02_harrington.wav",
+  "start": 121.13,
+  "end": 124.12
+ },
+ {
+  "scene": "S4",
+  "speaker": "MADDOX",
+  "text": "Yes, you are. One more time. Let the wind go through your hair.",
+  "file": "lines/S4_03_maddox.wav",
+  "start": 124.47,
+  "end": 128.29
+ },
+ {
+  "scene": "S4",
+  "speaker": "HARRINGTON",
+  "text": "I barely have any hair.",
+  "file": "lines/S4_04_harrington.wav",
+  "start": 128.89,
+  "end": 130.79
+ },
+ {
+  "scene": "S4",
+  "speaker": "MADDOX",
+  "text": "Then the wind will have less to fight.",
+  "file": "lines/S4_05_maddox.wav",
+  "start": 131.14,
+  "end": 133.07
+ },
+ {
+  "scene": "S4",
+  "action": "The engine wakes. Two men on an empty road beyond the prison.",
+  "start": 133.42,
+  "end": 137.42
+ },
+ {
+  "scene": "S4",
+  "speaker": "HARRINGTON",
+  "text": "Slow down, you lunatic!",
+  "file": "lines/S4_06_harrington.wav",
+  "start": 137.42,
+  "end": 139.44
+ },
+ {
+  "scene": "S4",
+  "speaker": "MADDOX",
+  "text": "You said you wanted to feel alive!",
+  "file": "lines/S4_07_maddox.wav",
+  "start": 139.79,
+  "end": 141.74
+ },
+ {
+  "scene": "S4",
+  "speaker": "HARRINGTON",
+  "text": "I said I wanted air, not judgment day!",
+  "file": "lines/S4_08_harrington.wav",
+  "start": 142.09,
+  "end": 145.34
+ },
+ {
+  "scene": "S5",
+  "speaker": "HARRINGTON",
+  "text": "Storage once. Now it is nothing.",
+  "file": "lines/S5_01_harrington.wav",
+  "start": 149.19,
+  "end": 152.23
+ },
+ {
+  "scene": "S5",
+  "speaker": "HARRINGTON",
+  "text": "No.",
+  "file": "lines/S5_02_harrington.wav",
+  "start": 152.78,
+  "end": 153.7
+ },
+ {
+  "scene": "S5",
+  "speaker": "MADDOX",
+  "text": "I did not say anything.",
+  "file": "lines/S5_03_maddox.wav",
+  "start": 154.25,
+  "end": 155.72
+ },
+ {
+  "scene": "S5",
+  "speaker": "HARRINGTON",
+  "text": "You did not have to.",
+  "file": "lines/S5_04_harrington.wav",
+  "start": 156.27,
+  "end": 158.0
+ },
+ {
+  "scene": "S5",
+  "action": "Weeks later. Lights, a bed, shelves of books, the motorcycle against the wall.",
+  "start": 158.55,
+  "end": 161.55
+ },
+ {
+  "scene": "S5",
+  "speaker": "HARRINGTON",
+  "text": "You have ruined my quiet.",
+  "file": "lines/S5_05_harrington.wav",
+  "start": 161.55,
+  "end": 163.48
+ },
+ {
+  "scene": "S5",
+  "speaker": "MADDOX",
+  "text": "You keep coming back though.",
+  "file": "lines/S5_06_maddox.wav",
+  "start": 164.03,
+  "end": 165.57
+ },
+ {
+  "scene": "S5",
+  "speaker": "HARRINGTON",
+  "text": "Somebody has to make sure you do not turn a tunnel into a subdivision.",
+  "file": "lines/S5_07_harrington.wav",
+  "start": 166.12,
+  "end": 170.92
+ },
+ {
+  "scene": "S5",
+  "speaker": "MADDOX",
+  "text": "Home.",
+  "file": "lines/S5_08_maddox.wav",
+  "start": 171.72,
+  "end": 172.42
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "Funny thing about getting old, son. Last night I dreamed about a plate.",
+  "file": "lines/S6_01_harrington.wav",
+  "start": 176.47,
+  "end": 181.87
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "Steak. Potatoes. Gravy. Mama used to put too much pepper in the gravy. I would give damn near anything to complain about that gravy one more time.",
+  "file": "lines/S6_02_harrington.wav",
+  "start": 182.67,
+  "end": 194.47
+ },
+ {
+  "scene": "S6",
+  "action": "A hot pan. Butter hisses. Three plates.",
+  "start": 195.27,
+  "end": 198.27
+ },
+ {
+  "scene": "S6",
+  "speaker": "ARIANNA",
+  "text": "Let him have a table.",
+  "file": "lines/S6_03_arianna.wav",
+  "start": 198.27,
+  "end": 199.59
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "What did you do?",
+  "file": "lines/S6_04_harrington.wav",
+  "start": 200.14,
+  "end": 201.52
+ },
+ {
+  "scene": "S6",
+  "speaker": "MADDOX",
+  "text": "Supper.",
+  "file": "lines/S6_05_maddox.wav",
+  "start": 202.07,
+  "end": 202.82
+ },
+ {
+  "scene": "S6",
+  "speaker": "MADDOX",
+  "text": "That bad?",
+  "file": "lines/S6_06_maddox.wav",
+  "start": 203.37,
+  "end": 204.25
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "Too much pepper.",
+  "file": "lines/S6_07_harrington.wav",
+  "start": 204.8,
+  "end": 206.23
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "No. It is right.",
+  "file": "lines/S6_08_harrington.wav",
+  "start": 206.78,
+  "end": 208.36
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "I have not had that meal in fifty-three years. I forgot what it tasted like.",
+  "file": "lines/S6_09_harrington.wav",
+  "start": 208.91,
+  "end": 214.9
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "I thought I was getting too old to carry things. Turns out, I was too old to carry everything.",
+  "file": "lines/S6_10_harrington.wav",
+  "start": 215.7,
+  "end": 222.36
+ },
+ {
+  "scene": "S6",
+  "speaker": "MADDOX",
+  "text": "To Mama.",
+  "file": "lines/S6_11_maddox.wav",
+  "start": 223.16,
+  "end": 223.98
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "To Mama.",
+  "file": "lines/S6_12_harrington.wav",
+  "start": 224.53,
+  "end": 225.61
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "You are a good man, son.",
+  "file": "lines/S6_13_harrington.wav",
+  "start": 226.16,
+  "end": 228.0
+ },
+ {
+  "scene": "S6",
+  "speaker": "MADDOX",
+  "text": "Some days I do not feel like one.",
+  "file": "lines/S6_14_maddox.wav",
+  "start": 228.55,
+  "end": 230.7
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "Good. That is how you know you are still trying.",
+  "file": "lines/S6_15_harrington.wav",
+  "start": 231.25,
+  "end": 234.3
+ },
+ {
+  "scene": "S7",
+  "speaker": "ARIANNA",
+  "text": "I hate Sundays.",
+  "file": "lines/S7_01_arianna.wav",
+  "start": 238.35,
+  "end": 239.58
+ },
+ {
+  "scene": "S7",
+  "speaker": "MADDOX",
+  "text": "Why?",
+  "file": "lines/S7_02_maddox.wav",
+  "start": 240.13,
+  "end": 240.8
+ },
+ {
+  "scene": "S7",
+  "speaker": "ARIANNA",
+  "text": "Because this place becomes a tunnel again.",
+  "file": "lines/S7_03_arianna.wav",
+  "start": 241.34,
+  "end": 243.54
+ },
+ {
+  "scene": "S7",
+  "speaker": "HARRINGTON",
+  "text": "Then next Friday we make it a home again.",
+  "file": "lines/S7_04_harrington.wav",
+  "start": 244.09,
+  "end": 247.31
+ }
+]

@@ -1,0 +1,8 @@
+{
+  "note": "Test fixture: one valid character, one missing file, one corrupt file. The game must use the good one and report the other two.",
+  "characters": [
+    { "id": "good", "file": "../characters/standin-mh-a.glb", "looks": ["*"], "height": 1.8 },
+    { "id": "missing", "file": "nope.glb", "looks": ["*"] },
+    { "id": "corrupt", "file": "corrupt.glb", "looks": ["*"] }
+  ]
+}

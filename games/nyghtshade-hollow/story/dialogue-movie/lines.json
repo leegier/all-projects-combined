@@ -1,0 +1,524 @@
+[
+ {
+  "scene": "S1",
+  "speaker": "MADDOX",
+  "text": "How many times you done that alone?",
+  "file": "lines/S1_01_maddox.wav",
+  "duration": 1.889,
+  "heard": "how many times you done that alone",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S1",
+  "speaker": "HARRINGTON",
+  "text": "Enough.",
+  "file": "lines/S1_02_harrington.wav",
+  "duration": 0.96,
+  "heard": "enough",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S1",
+  "speaker": "MADDOX",
+  "text": "Where do you even go?",
+  "file": "lines/S1_03_maddox.wav",
+  "duration": 1.246,
+  "heard": "would you even golf",
+  "wordRecall": 0.4
+ },
+ {
+  "scene": "S1",
+  "speaker": "HARRINGTON",
+  "text": "Past the tree line there is a clearing. Old oak, four feet through. Got a crate. A blanket, a couple books, little food.",
+  "file": "lines/S1_04_harrington.wav",
+  "duration": 9.195,
+  "heard": "past the tree line there is a clearing old old four feet through gonna create a blanket a couple books little food",
+  "wordRecall": 0.87
+ },
+ {
+  "scene": "S1",
+  "speaker": "HARRINGTON",
+  "text": "Be nice if tomorrow you came with me. Service ends early. Count is at nine-thirty. That is near four hours.",
+  "file": "lines/S1_05_harrington.wav",
+  "duration": 8.633,
+  "heard": "be nice if tomorrow you came with me service and so early count is at nine thirty that is near for our wars",
+  "wordRecall": 0.86
+ },
+ {
+  "scene": "S1",
+  "speaker": "MADDOX",
+  "text": "Four hours. Not five minutes. What do you even do with that?",
+  "file": "lines/S1_06_maddox.wav",
+  "duration": 3.563,
+  "heard": "four hours not five minutes would you even do with that",
+  "wordRecall": 0.92
+ },
+ {
+  "scene": "S1",
+  "speaker": "HARRINGTON",
+  "text": "Sit. Listen. Read. Feel grass through your socks. Hear a car go by where no one is counting you.",
+  "file": "lines/S1_07_harrington.wav",
+  "duration": 7.872,
+  "heard": "said listen read feel grass through your socks your car go by where no one is counting you",
+  "wordRecall": 0.84
+ },
+ {
+  "scene": "S1",
+  "speaker": "MADDOX",
+  "text": "That is a dangerous amount of freedom.",
+  "file": "lines/S1_08_maddox.wav",
+  "duration": 2.107,
+  "heard": "that is a dangerous amount of freedom",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S1",
+  "speaker": "HARRINGTON",
+  "text": "Because five minutes feels like mercy. Four hours feels like your life is yours again.",
+  "file": "lines/S1_09_harrington.wav",
+  "duration": 7.147,
+  "heard": "because five minutes feels like mercy for hours feels like your life is yours again",
+  "wordRecall": 0.93
+ },
+ {
+  "scene": "S1",
+  "speaker": "HARRINGTON",
+  "text": "Maybe nothing. For men like us, maybe that is everything.",
+  "file": "lines/S1_10_harrington.wav",
+  "duration": 4.459,
+  "heard": "maybe nothing for men like us maybe that is everything",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S2",
+  "speaker": "HARRINGTON",
+  "text": "Then we plan it the same way you plan a yard. Boundaries. No crowds. No lights. No open street.",
+  "file": "lines/S2_01_harrington.wav",
+  "duration": 8.043,
+  "heard": "then we play him at the same way you plan a yard boundaries no crowds no lights no open street",
+  "wordRecall": 0.95
+ },
+ {
+  "scene": "S2",
+  "speaker": "MADDOX",
+  "text": "Four hours of pretending I am not a ghost.",
+  "file": "lines/S2_02_maddox.wav",
+  "duration": 2.667,
+  "heard": "four hours of pretending i am not a ghost",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S2",
+  "speaker": "HARRINGTON",
+  "text": "Four hours of remembering you are not one.",
+  "file": "lines/S2_03_harrington.wav",
+  "duration": 3.422,
+  "heard": "for our wars of remembering you are not won",
+  "wordRecall": 0.62
+ },
+ {
+  "scene": "S2",
+  "speaker": "HARRINGTON",
+  "text": "You keep your word. You come back. Every time.",
+  "file": "lines/S2_04_harrington.wav",
+  "duration": 3.477,
+  "heard": "you keep your word you come back every time",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S2",
+  "speaker": "MADDOX",
+  "text": "I will.",
+  "file": "lines/S2_05_maddox.wav",
+  "duration": 0.697,
+  "heard": "i will",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S3",
+  "speaker": "ALLEN",
+  "text": "Hey, bro. What is up?",
+  "file": "lines/S3_01_allen.wav",
+  "duration": 1.216,
+  "heard": "hey bro what is up",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S3",
+  "speaker": "MADDOX",
+  "text": "Justin's bike. I need you to deliver it somewhere.",
+  "file": "lines/S3_02_maddox.wav",
+  "duration": 3.051,
+  "heard": "justin's bike i need you to deliver it somewhere",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S3",
+  "speaker": "ALLEN",
+  "text": "No way, man. That is the only thing we got left of Justin.",
+  "file": "lines/S3_03_allen.wav",
+  "duration": 3.435,
+  "heard": "no way man that is the only thing we got left of justin",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S3",
+  "speaker": "MADDOX",
+  "text": "Listen. I need this.",
+  "file": "lines/S3_04_maddox.wav",
+  "duration": 1.331,
+  "heard": "listen i need this",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S3",
+  "speaker": "ALLEN",
+  "text": "You sound like you are saying goodbye.",
+  "file": "lines/S3_05_allen.wav",
+  "duration": 1.899,
+  "heard": "you sell like you're saying goodbye",
+  "wordRecall": 0.71
+ },
+ {
+  "scene": "S3",
+  "speaker": "MADDOX",
+  "text": "No. No goodbyes. Just do this quiet. No questions. No names. Drop it and walk away.",
+  "file": "lines/S3_06_maddox.wav",
+  "duration": 5.767,
+  "heard": "no no goodbyes just to this quiet no questions no names drop him walk away",
+  "wordRecall": 0.81
+ },
+ {
+  "scene": "S3",
+  "speaker": "ALLEN",
+  "text": "Yeah. Okay. For Justin. For you.",
+  "file": "lines/S3_07_allen.wav",
+  "duration": 1.899,
+  "heard": "yeah ok for justin for you",
+  "wordRecall": 0.83
+ },
+ {
+  "scene": "S3",
+  "speaker": "MADDOX",
+  "text": "Thank you, brother.",
+  "file": "lines/S3_08_maddox.wav",
+  "duration": 1.075,
+  "heard": "thank you brother",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S4",
+  "speaker": "MADDOX",
+  "text": "One last ride, brother. One last ride.",
+  "file": "lines/S4_01_maddox.wav",
+  "duration": 2.581,
+  "heard": "one last try a brother one last ride",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S4",
+  "speaker": "HARRINGTON",
+  "text": "I am not riding with you on that death trap.",
+  "file": "lines/S4_02_harrington.wav",
+  "duration": 2.996,
+  "heard": "i am not riding with you on that death trap",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S4",
+  "speaker": "MADDOX",
+  "text": "Yes, you are. One more time. Let the wind go through your hair.",
+  "file": "lines/S4_03_maddox.wav",
+  "duration": 3.819,
+  "heard": "yes you are one more time let the wind go through your hair",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S4",
+  "speaker": "HARRINGTON",
+  "text": "I barely have any hair.",
+  "file": "lines/S4_04_harrington.wav",
+  "duration": 1.899,
+  "heard": "i barely have and hater",
+  "wordRecall": 0.6
+ },
+ {
+  "scene": "S4",
+  "speaker": "MADDOX",
+  "text": "Then the wind will have less to fight.",
+  "file": "lines/S4_05_maddox.wav",
+  "duration": 1.927,
+  "heard": "then the wind will have less to fight",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S4",
+  "speaker": "HARRINGTON",
+  "text": "Slow down, you lunatic!",
+  "file": "lines/S4_06_harrington.wav",
+  "duration": 2.027,
+  "heard": "slow down you lunatic",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S4",
+  "speaker": "MADDOX",
+  "text": "You said you wanted to feel alive!",
+  "file": "lines/S4_07_maddox.wav",
+  "duration": 1.941,
+  "heard": "you said you wanted to feel alive",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S4",
+  "speaker": "HARRINGTON",
+  "text": "I said I wanted air, not judgment day!",
+  "file": "lines/S4_08_harrington.wav",
+  "duration": 3.251,
+  "heard": "i said i wanted a year not judgment day",
+  "wordRecall": 0.88
+ },
+ {
+  "scene": "S5",
+  "speaker": "HARRINGTON",
+  "text": "Storage once. Now it is nothing.",
+  "file": "lines/S5_01_harrington.wav",
+  "duration": 3.043,
+  "heard": "storage wants now which is nothing",
+  "wordRecall": 0.67
+ },
+ {
+  "scene": "S5",
+  "speaker": "HARRINGTON",
+  "text": "No.",
+  "file": "lines/S5_02_harrington.wav",
+  "duration": 0.917,
+  "heard": "no",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S5",
+  "speaker": "MADDOX",
+  "text": "I did not say anything.",
+  "file": "lines/S5_03_maddox.wav",
+  "duration": 1.472,
+  "heard": "i did not say anything",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S5",
+  "speaker": "HARRINGTON",
+  "text": "You did not have to.",
+  "file": "lines/S5_04_harrington.wav",
+  "duration": 1.728,
+  "heard": "you did not have to",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S5",
+  "speaker": "HARRINGTON",
+  "text": "You have ruined my quiet.",
+  "file": "lines/S5_05_harrington.wav",
+  "duration": 1.927,
+  "heard": "you have ruined my quiet",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S5",
+  "speaker": "MADDOX",
+  "text": "You keep coming back though.",
+  "file": "lines/S5_06_maddox.wav",
+  "duration": 1.548,
+  "heard": "you keep coming back though",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S5",
+  "speaker": "HARRINGTON",
+  "text": "Somebody has to make sure you do not turn a tunnel into a subdivision.",
+  "file": "lines/S5_07_harrington.wav",
+  "duration": 4.793,
+  "heard": "somebody has to make sure you do not turn up on all into a subdivision",
+  "wordRecall": 0.93
+ },
+ {
+  "scene": "S5",
+  "speaker": "MADDOX",
+  "text": "Home.",
+  "file": "lines/S5_08_maddox.wav",
+  "duration": 0.704,
+  "heard": "home it",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "Funny thing about getting old, son. Last night I dreamed about a plate.",
+  "file": "lines/S6_01_harrington.wav",
+  "duration": 5.397,
+  "heard": "funny thing about getting old song last night i dreamed about a plate",
+  "wordRecall": 0.92
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "Steak. Potatoes. Gravy. Mama used to put too much pepper in the gravy. I would give damn near anything to complain about that gravy one more time.",
+  "file": "lines/S6_02_harrington.wav",
+  "duration": 11.797,
+  "heard": "steak potatoes gravy mama used to put too much pepper in the gravy i would give a damn near anything to complain about that gravy one more time",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S6",
+  "speaker": "ARIANNA",
+  "text": "Let him have a table.",
+  "file": "lines/S6_03_arianna.wav",
+  "duration": 1.323,
+  "heard": "let him have a table",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "What did you do?",
+  "file": "lines/S6_04_harrington.wav",
+  "duration": 1.387,
+  "heard": "what did you do",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S6",
+  "speaker": "MADDOX",
+  "text": "Supper.",
+  "file": "lines/S6_05_maddox.wav",
+  "duration": 0.747,
+  "heard": "sober",
+  "wordRecall": 0.0
+ },
+ {
+  "scene": "S6",
+  "speaker": "MADDOX",
+  "text": "That bad?",
+  "file": "lines/S6_06_maddox.wav",
+  "duration": 0.875,
+  "heard": "that bed",
+  "wordRecall": 0.5
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "Too much pepper.",
+  "file": "lines/S6_07_harrington.wav",
+  "duration": 1.429,
+  "heard": "too much pepper",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "No. It is right.",
+  "file": "lines/S6_08_harrington.wav",
+  "duration": 1.587,
+  "heard": "no it is right",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "I have not had that meal in fifty-three years. I forgot what it tasted like.",
+  "file": "lines/S6_09_harrington.wav",
+  "duration": 5.985,
+  "heard": "i have not had that meal when fifty three years i forgot what it tasted like",
+  "wordRecall": 0.94
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "I thought I was getting too old to carry things. Turns out, I was too old to carry everything.",
+  "file": "lines/S6_10_harrington.wav",
+  "duration": 6.666,
+  "heard": "i thought i was getting too old to carry things turns out i was too old to carry everything",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S6",
+  "speaker": "MADDOX",
+  "text": "To Mama.",
+  "file": "lines/S6_11_maddox.wav",
+  "duration": 0.82,
+  "heard": "tu mama",
+  "wordRecall": 0.5
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "To Mama.",
+  "file": "lines/S6_12_harrington.wav",
+  "duration": 1.076,
+  "heard": "tu mama",
+  "wordRecall": 0.5
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "You are a good man, son.",
+  "file": "lines/S6_13_harrington.wav",
+  "duration": 1.842,
+  "heard": "you are a good man som",
+  "wordRecall": 0.83
+ },
+ {
+  "scene": "S6",
+  "speaker": "MADDOX",
+  "text": "Some days I do not feel like one.",
+  "file": "lines/S6_14_maddox.wav",
+  "duration": 2.144,
+  "heard": "some days i do not feel like one",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S6",
+  "speaker": "HARRINGTON",
+  "text": "Good. That is how you know you are still trying.",
+  "file": "lines/S6_15_harrington.wav",
+  "duration": 3.051,
+  "heard": "good that is how you know you were still trying",
+  "wordRecall": 0.9
+ },
+ {
+  "scene": "S7",
+  "speaker": "ARIANNA",
+  "text": "I hate Sundays.",
+  "file": "lines/S7_01_arianna.wav",
+  "duration": 1.237,
+  "heard": "i hate sundays",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S7",
+  "speaker": "MADDOX",
+  "text": "Why?",
+  "file": "lines/S7_02_maddox.wav",
+  "duration": 0.661,
+  "heard": "why",
+  "wordRecall": 1.0
+ },
+ {
+  "scene": "S7",
+  "speaker": "ARIANNA",
+  "text": "Because this place becomes a tunnel again.",
+  "file": "lines/S7_03_arianna.wav",
+  "duration": 2.197,
+  "heard": "because this place becomes a title again",
+  "wordRecall": 0.86
+ },
+ {
+  "scene": "S7",
+  "speaker": "HARRINGTON",
+  "text": "Then next Friday we make it a home again.",
+  "file": "lines/S7_04_harrington.wav",
+  "duration": 3.221,
+  "heard": "then next friday we make it home again",
+  "wordRecall": 0.89
+ }
+]

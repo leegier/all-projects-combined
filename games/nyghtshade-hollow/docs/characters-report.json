@@ -1,0 +1,287 @@
+{
+ "generated": "2026-10-15T13:28:37.861Z",
+ "pass": 56,
+ "fail": 0,
+ "results": [
+  {
+   "name": "library: all four stand-in files load, none fail",
+   "ok": true,
+   "detail": "{\"status\":\"ready\",\"ids\":[\"standin-mh-a\",\"standin-mh-b\",\"standin-mx-a\",\"standin-mx-b\"],\"failed\":[],\"tpl\":[{\"id\":\"standin-mx-a\",\"rig\":\"mixamo\",\"usable\":true,\"missing\":[],\"tris\":8318,\"bones\":25},{\"id\":\"standin-mh-a\",\"rig\":\"metahuman\",\"usable\":true,\"missing\":[],\"tris\":8318,\"bones\":46},{\"id\":\"standin-mh-b\",\"rig\":\"metahuman\",\"usable\":true,\"missing\":[],\"tris\":8318,\"bones\":46},{\"id\":\"standin-mx-b\",\"rig\":\"mixamo\",\"usable\":true,\"missing\":[],\"tris\":8318,\"bones\":25}]}"
+  },
+  {
+   "name": "library: MetaHuman- and Mixamo-style skeletons recognised and usable",
+   "ok": true,
+   "detail": "[{\"id\":\"standin-mx-a\",\"rig\":\"mixamo\",\"usable\":true,\"missing\":[],\"tris\":8318,\"bones\":25},{\"id\":\"standin-mh-a\",\"rig\":\"metahuman\",\"usable\":true,\"missing\":[],\"tris\":8318,\"bones\":46},{\"id\":\"standin-mh-b\",\"rig\":\"metahuman\",\"usable\":true,\"missing\":[],\"tris\":8318,\"bones\":46},{\"id\":\"standin-mx-b\",\"rig\":\"mixamo\",\"usable\":true,\"missing\":[],\"tris\":8318,\"bones\":25}]"
+  },
+  {
+   "name": "NPCs: every cast member got a glTF body",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "NPCs: guards use the files listed for the guard looks",
+   "ok": true,
+   "detail": "[{\"id\":\"reyes\",\"look\":\"guard\",\"gltf\":true,\"file\":\"standin-mx-a\"},{\"id\":\"dalton\",\"look\":\"guardLight\",\"gltf\":true,\"file\":\"standin-mx-a\"},{\"id\":\"pruitt\",\"look\":\"guard\",\"gltf\":true,\"file\":\"standin-mx-a\"}]"
+  },
+  {
+   "name": "NPCs: a look listed for several files spreads over them (deterministically)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "[standin-mh-a] stands on the floor, head at the requested height (0.002..1.74 m for 1.74)",
+   "ok": true,
+   "detail": "{\"minY\":0.0015155152517430312,\"maxY\":1.737637986622338,\"bad\":0}"
+  },
+  {
+   "name": "[standin-mh-a] upright (head above hips above floor) and no NaN vertices",
+   "ok": true,
+   "detail": "hip 0.9037880816031659 head 1.5520193443595423 bad 0"
+  },
+  {
+   "name": "[standin-mh-a] faces engine forward (-Z): toes point to -Z",
+   "ok": true,
+   "detail": "toe-foot z -0.13657675169571196"
+  },
+  {
+   "name": "[standin-mh-a] A-/T-pose arms re-hung: wrist 0.54 m below shoulder, 0.03 m out",
+   "ok": true,
+   "detail": "{\"drop\":0.5397970400471399,\"side\":0.025228646529173726}"
+  },
+  {
+   "name": "[standin-mh-a] sit: pelvis drops 0.3-0.7 m and the knee points forward",
+   "ok": true,
+   "detail": "{\"minY\":-0.03931908150320698,\"maxY\":1.2622699145886789,\"bad\":0,\"hipY\":0.42837562677436375,\"kneeFwd\":-0.4159136398788306,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mh-a] pray: kneels (pelvis 0.50 m, under a third of the height)",
+   "ok": true,
+   "detail": "{\"minY\":0.027348256005862548,\"maxY\":1.2935377912961592,\"bad\":0,\"hipY\":0.5044416195290247,\"kneeFwd\":-0.10305794954724429,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mh-a] lie: body horizontal (height span < 0.6 m)",
+   "ok": true,
+   "detail": "{\"minY\":0.07831978835892958,\"maxY\":0.41313660104011884,\"bad\":0,\"hipY\":0.19943966996178442,\"kneeFwd\":-0.41556879731878793,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mh-a] every pose finite, back to standing after idle",
+   "ok": true,
+   "detail": "{\"minY\":0.0015155152517430312,\"maxY\":1.737700469418927,\"bad\":0,\"hipY\":0.9037880816031659,\"kneeFwd\":-0.020914104434038214,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mh-a] walking: feet stay on the floor (lowest point -0.025..0.023, mean -0.006)",
+   "ok": true,
+   "detail": "{\"lo\":-0.02513899348609185,\"hi\":0.022550516011016326,\"mean\":-0.0058028219266801125,\"bad\":0,\"speed\":1.3999999999471482}"
+  },
+  {
+   "name": "[standin-mh-a] LOD: lashes/teeth hide when far and come back near",
+   "ok": true,
+   "detail": "{\"detail\":2,\"hiddenBefore\":0,\"hiddenFar\":2,\"hiddenNear\":0}"
+  },
+  {
+   "name": "[standin-mh-b] stands on the floor, head at the requested height (0.002..1.78 m for 1.78)",
+   "ok": true,
+   "detail": "{\"minY\":0.0015198721097356947,\"maxY\":1.7785588906111816,\"bad\":0}"
+  },
+  {
+   "name": "[standin-mh-b] upright (head above hips above floor) and no NaN vertices",
+   "ok": true,
+   "detail": "hip 0.9199566080418209 head 1.589627529899092 bad 0"
+  },
+  {
+   "name": "[standin-mh-b] faces engine forward (-Z): toes point to -Z",
+   "ok": true,
+   "detail": "toe-foot z -0.13899588328316004"
+  },
+  {
+   "name": "[standin-mh-b] A-/T-pose arms re-hung: wrist 0.55 m below shoulder, 0.03 m out",
+   "ok": true,
+   "detail": "{\"drop\":0.5494246848662361,\"side\":0.025678616480894506}"
+  },
+  {
+   "name": "[standin-mh-b] sit: pelvis drops 0.3-0.7 m and the knee points forward",
+   "ok": true,
+   "detail": "{\"minY\":-0.04018370193606133,\"maxY\":1.2946226972254669,\"bad\":0,\"hipY\":0.4360639178920154,\"kneeFwd\":-0.4233358267042363,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mh-b] pray: kneels (pelvis 0.51 m, under a third of the height)",
+   "ok": true,
+   "detail": "{\"minY\":0.02781018991458534,\"maxY\":1.3270749049688262,\"bad\":0,\"hipY\":0.5134867482977167,\"kneeFwd\":-0.10476102651511722,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mh-b] lie: body horizontal (height span < 0.6 m)",
+   "ok": true,
+   "detail": "{\"minY\":0.07169566176903897,\"maxY\":0.4165868269957672,\"bad\":0,\"hipY\":0.19938069720258428,\"kneeFwd\":-0.42298772830297976,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mh-b] every pose finite, back to standing after idle",
+   "ok": true,
+   "detail": "{\"minY\":0.0015198721097356947,\"maxY\":1.7785818169216452,\"bad\":0,\"hipY\":0.9199566080418209,\"kneeFwd\":-0.021147928714053285,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mh-b] walking: feet stay on the floor (lowest point -0.026..0.023, mean -0.006)",
+   "ok": true,
+   "detail": "{\"lo\":-0.025605200854008556,\"hi\":0.02311320776564443,\"mean\":-0.005881943653025265,\"bad\":0,\"speed\":1.3999999999471482}"
+  },
+  {
+   "name": "[standin-mh-b] LOD: lashes/teeth hide when far and come back near",
+   "ok": true,
+   "detail": "{\"detail\":2,\"hiddenBefore\":0,\"hiddenFar\":2,\"hiddenNear\":0}"
+  },
+  {
+   "name": "[standin-mx-a] stands on the floor, head at the requested height (0.002..1.90 m for 1.90)",
+   "ok": true,
+   "detail": "{\"minY\":0.0016581519566435006,\"maxY\":1.9011803853420914,\"bad\":0}"
+  },
+  {
+   "name": "[standin-mx-a] upright (head above hips above floor) and no NaN vertices",
+   "ok": true,
+   "detail": "hip 0.9888504944658897 head 1.6980917630988774 bad 0"
+  },
+  {
+   "name": "[standin-mx-a] faces engine forward (-Z): toes point to -Z",
+   "ok": true,
+   "detail": "toe-foot z -0.14943103519344508"
+  },
+  {
+   "name": "[standin-mx-a] A-/T-pose arms re-hung: wrist 0.59 m below shoulder, 0.03 m out",
+   "ok": true,
+   "detail": "{\"drop\":0.5906014712395178,\"side\":0.027603107560964346}"
+  },
+  {
+   "name": "[standin-mx-a] sit: pelvis drops 0.3-0.7 m and the knee points forward",
+   "ok": true,
+   "detail": "{\"minY\":-0.04302620222845807,\"maxY\":1.3810652849484994,\"bad\":0,\"hipY\":0.4686868339339704,\"kneeFwd\":-0.45505845604408723,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mx-a] pray: kneels (pelvis 0.55 m, under a third of the height)",
+   "ok": true,
+   "detail": "{\"minY\":0.02968507761116102,\"maxY\":1.41527696145229,\"bad\":0,\"hipY\":0.5519130195994407,\"kneeFwd\":-0.11275752201274564,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mx-a] lie: body horizontal (height span < 0.6 m)",
+   "ok": true,
+   "detail": "{\"minY\":0.04162817060244417,\"maxY\":0.4313142820438449,\"bad\":0,\"hipY\":0.19750470714885782,\"kneeFwd\":-0.4546811577112,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mx-a] every pose finite, back to standing after idle",
+   "ok": true,
+   "detail": "{\"minY\":0.0016581519566435006,\"maxY\":1.9012487490859007,\"bad\":0,\"hipY\":0.9888504944658897,\"kneeFwd\":-0.02288249088457607,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mx-a] walking: feet stay on the floor (lowest point -0.028..0.025, mean -0.006)",
+   "ok": true,
+   "detail": "{\"lo\":-0.027505012064793114,\"hi\":0.024647774345067524,\"mean\":-0.006421978598331265,\"bad\":0,\"speed\":1.3999999999471482}"
+  },
+  {
+   "name": "[standin-mx-a] LOD: lashes/teeth hide when far and come back near",
+   "ok": true,
+   "detail": "{\"detail\":2,\"hiddenBefore\":0,\"hiddenFar\":2,\"hiddenNear\":0}"
+  },
+  {
+   "name": "[standin-mx-b] stands on the floor, head at the requested height (0.002..1.74 m for 1.74)",
+   "ok": true,
+   "detail": "{\"minY\":0.0015155152517430312,\"maxY\":1.737637986622338,\"bad\":0}"
+  },
+  {
+   "name": "[standin-mx-b] upright (head above hips above floor) and no NaN vertices",
+   "ok": true,
+   "detail": "hip 0.9037880816031659 head 1.5520193443595423 bad 0"
+  },
+  {
+   "name": "[standin-mx-b] faces engine forward (-Z): toes point to -Z",
+   "ok": true,
+   "detail": "toe-foot z -0.13657675169571196"
+  },
+  {
+   "name": "[standin-mx-b] A-/T-pose arms re-hung: wrist 0.54 m below shoulder, 0.03 m out",
+   "ok": true,
+   "detail": "{\"drop\":0.5397970400471399,\"side\":0.025228646529173726}"
+  },
+  {
+   "name": "[standin-mx-b] sit: pelvis drops 0.3-0.7 m and the knee points forward",
+   "ok": true,
+   "detail": "{\"minY\":-0.03931908150320698,\"maxY\":1.2622699145886789,\"bad\":0,\"hipY\":0.42837562677436375,\"kneeFwd\":-0.4159136398788306,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mx-b] pray: kneels (pelvis 0.50 m, under a third of the height)",
+   "ok": true,
+   "detail": "{\"minY\":0.027348256005862548,\"maxY\":1.2935377912961592,\"bad\":0,\"hipY\":0.5044416195290247,\"kneeFwd\":-0.10305794954724429,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mx-b] lie: body horizontal (height span < 0.6 m)",
+   "ok": true,
+   "detail": "{\"minY\":0.07831978835892958,\"maxY\":0.41313660104011884,\"bad\":0,\"hipY\":0.19943966996178442,\"kneeFwd\":-0.41556879731878793,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mx-b] every pose finite, back to standing after idle",
+   "ok": true,
+   "detail": "{\"minY\":0.0015155152517430312,\"maxY\":1.737700469418927,\"bad\":0,\"hipY\":0.9037880816031659,\"kneeFwd\":-0.020914104434038214,\"hipRotOK\":true}"
+  },
+  {
+   "name": "[standin-mx-b] walking: feet stay on the floor (lowest point -0.025..0.023, mean -0.006)",
+   "ok": true,
+   "detail": "{\"lo\":-0.02513899348609185,\"hi\":0.022550516011016326,\"mean\":-0.0058028219266801125,\"bad\":0,\"speed\":1.3999999999471482}"
+  },
+  {
+   "name": "[standin-mx-b] LOD: lashes/teeth hide when far and come back near",
+   "ok": true,
+   "detail": "{\"detail\":2,\"hiddenBefore\":0,\"hiddenFar\":2,\"hiddenNear\":0}"
+  },
+  {
+   "name": "fallback ?chars=off: game boots (status none)",
+   "ok": true,
+   "detail": "{\"status\":\"none\",\"ids\":[],\"failed\":[],\"gltf\":0,\"all\":24,\"ready\":true}"
+  },
+  {
+   "name": "fallback ?chars=off: everyone keeps the procedural body",
+   "ok": true,
+   "detail": "{\"status\":\"none\",\"ids\":[],\"failed\":[],\"gltf\":0,\"all\":24,\"ready\":true}"
+  },
+  {
+   "name": "fallback no manifest at the location: game boots (status none)",
+   "ok": true,
+   "detail": "{\"status\":\"none\",\"ids\":[],\"failed\":[],\"gltf\":0,\"all\":24,\"ready\":true}"
+  },
+  {
+   "name": "fallback no manifest at the location: everyone keeps the procedural body",
+   "ok": true,
+   "detail": "{\"status\":\"none\",\"ids\":[],\"failed\":[],\"gltf\":0,\"all\":24,\"ready\":true}"
+  },
+  {
+   "name": "fallback broken manifest (one good file, a missing one, a corrupt one): game boots (status ready)",
+   "ok": true,
+   "detail": "{\"status\":\"ready\",\"ids\":[\"good\"],\"failed\":[\"missing\",\"corrupt\"],\"gltf\":24,\"all\":24,\"ready\":true}"
+  },
+  {
+   "name": "fallback broken manifest (one good file, a missing one, a corrupt one): the good file is used, the bad ones are reported",
+   "ok": true,
+   "detail": "{\"status\":\"ready\",\"ids\":[\"good\"],\"failed\":[\"missing\",\"corrupt\"],\"gltf\":24,\"all\":24,\"ready\":true}"
+  },
+  {
+   "name": "crowd + library: manifest \"crowd\" files are loaded as light variants and used for the crowd (not for NPCs)",
+   "ok": true,
+   "detail": "{\"ids\":[\"full-mh\",\"full-mx\",\"full-mh#crowd\",\"full-mx#crowd\"],\"fullBones\":25,\"lightBones\":46,\"bakes\":12,\"gltfBakes\":12,\"specsUsed\":[\"full-mh\",\"full-mx\"],\"bones\":{\"mh\":46,\"crowdMh\":25},\"residentsShared\":47,\"placed\":41,\"tris\":99384}"
+  },
+  {
+   "name": "crowd + library: residents share baked bodies (a handful of bakes instead of one per person and pose)",
+   "ok": true,
+   "detail": "{\"ids\":[\"full-mh\",\"full-mx\",\"full-mh#crowd\",\"full-mx#crowd\"],\"fullBones\":25,\"lightBones\":46,\"bakes\":12,\"gltfBakes\":12,\"specsUsed\":[\"full-mh\",\"full-mx\"],\"bones\":{\"mh\":46,\"crowdMh\":25},\"residentsShared\":47,\"placed\":41,\"tris\":99384}"
+  },
+  {
+   "name": "crowd + library: everyone is still placed for the current state",
+   "ok": true,
+   "detail": "{\"ids\":[\"full-mh\",\"full-mx\",\"full-mh#crowd\",\"full-mx#crowd\"],\"fullBones\":25,\"lightBones\":46,\"bakes\":12,\"gltfBakes\":12,\"specsUsed\":[\"full-mh\",\"full-mx\"],\"bones\":{\"mh\":46,\"crowdMh\":25},\"residentsShared\":47,\"placed\":41,\"tris\":99384}"
+  },
+  {
+   "name": "embedded build: manifest, characters and their crowd variants live inside the one HTML file and are used without any network fetch",
+   "ok": true,
+   "detail": "{\"r\":{\"status\":\"ready\",\"ids\":[\"full-mx\",\"full-mh\",\"full-mh#crowd\",\"full-mx#crowd\"],\"gltf\":24,\"all\":24},\"log\":\"built src/main.js 1654 KB, 4 character file(s) embedded (1.2 MB)\"}"
+  },
+  {
+   "name": "determinism: bot route ends in the identical state with procedural and with glTF bodies",
+   "ok": true,
+   "detail": "\n   off {\"t\":444.433,\"dc\":55,\"cred\":24,\"fear\":22,\"hour\":14.7001,\"x\":-98,\"z\":-29,\"results\":39,\"failed\":0,\"stats\":{\"arrests\":0,\"dcEarned\":30},\"gltf\":false}\n   on  {\"t\":444.433,\"dc\":55,\"cred\":24,\"fear\":22,\"hour\":14.7001,\"x\":-98,\"z\":-29,\"results\":39,\"failed\":0,\"stats\":{\"arrests\":0,\"dcEarned\":30},\"gltf\":true}"
+  }
+ ]
+}

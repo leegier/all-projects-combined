@@ -1,0 +1,59 @@
+Name,Scene,Speaker,Text,AudioFile,StartSeconds,EndSeconds
+L001,S1,MADDOX,How many times you done that alone?,S1_01_maddox.wav,5.5,7.39
+L002,S1,HARRINGTON,Enough.,S1_02_harrington.wav,7.94,8.9
+L003,S1,MADDOX,Where do you even go?,S1_03_maddox.wav,9.45,10.69
+L004,S1,HARRINGTON,"Past the tree line there is a clearing. Old oak, four feet through. Got a crate. A blanket, a couple books, little food.",S1_04_harrington.wav,11.24,20.44
+L005,S1,HARRINGTON,Be nice if tomorrow you came with me. Service ends early. Count is at nine-thirty. That is near four hours.,S1_05_harrington.wav,21.24,29.87
+L006,S1,MADDOX,Four hours. Not five minutes. What do you even do with that?,S1_06_maddox.wav,30.67,34.24
+L007,S1,HARRINGTON,Sit. Listen. Read. Feel grass through your socks. Hear a car go by where no one is counting you.,S1_07_harrington.wav,34.79,42.66
+L008,S1,MADDOX,That is a dangerous amount of freedom.,S1_08_maddox.wav,43.46,45.56
+L009,S1,HARRINGTON,Because five minutes feels like mercy. Four hours feels like your life is yours again.,S1_09_harrington.wav,46.11,53.26
+L010,S1,HARRINGTON,"Maybe nothing. For men like us, maybe that is everything.",S1_10_harrington.wav,54.06,58.52
+L011,S2,HARRINGTON,Then we plan it the same way you plan a yard. Boundaries. No crowds. No lights. No open street.,S2_01_harrington.wav,62.57,70.61
+L012,S2,MADDOX,Four hours of pretending I am not a ghost.,S2_02_maddox.wav,71.41,74.08
+L013,S2,HARRINGTON,Four hours of remembering you are not one.,S2_03_harrington.wav,74.63,78.05
+L014,S2,HARRINGTON,You keep your word. You come back. Every time.,S2_04_harrington.wav,78.6,82.08
+L015,S2,MADDOX,I will.,S2_05_maddox.wav,82.63,83.32
+L016,S3,ALLEN,"Hey, bro. What is up?",S3_01_allen.wav,90.37,91.59
+L017,S3,MADDOX,Justin's bike. I need you to deliver it somewhere.,S3_02_maddox.wav,92.14,95.19
+L018,S3,ALLEN,"No way, man. That is the only thing we got left of Justin.",S3_03_allen.wav,95.74,99.18
+L019,S3,MADDOX,Listen. I need this.,S3_04_maddox.wav,99.73,101.06
+L020,S3,ALLEN,You sound like you are saying goodbye.,S3_05_allen.wav,101.61,103.51
+L021,S3,MADDOX,No. No goodbyes. Just do this quiet. No questions. No names. Drop it and walk away.,S3_06_maddox.wav,104.06,109.82
+L022,S3,ALLEN,Yeah. Okay. For Justin. For you.,S3_07_allen.wav,110.62,112.52
+L023,S3,MADDOX,"Thank you, brother.",S3_08_maddox.wav,113.07,114.15
+L024,S4,MADDOX,"One last ride, brother. One last ride.",S4_01_maddox.wav,118.2,120.78
+L025,S4,HARRINGTON,I am not riding with you on that death trap.,S4_02_harrington.wav,121.13,124.12
+L026,S4,MADDOX,"Yes, you are. One more time. Let the wind go through your hair.",S4_03_maddox.wav,124.47,128.29
+L027,S4,HARRINGTON,I barely have any hair.,S4_04_harrington.wav,128.89,130.79
+L028,S4,MADDOX,Then the wind will have less to fight.,S4_05_maddox.wav,131.14,133.07
+L029,S4,HARRINGTON,"Slow down, you lunatic!",S4_06_harrington.wav,137.42,139.44
+L030,S4,MADDOX,You said you wanted to feel alive!,S4_07_maddox.wav,139.79,141.74
+L031,S4,HARRINGTON,"I said I wanted air, not judgment day!",S4_08_harrington.wav,142.09,145.34
+L032,S5,HARRINGTON,Storage once. Now it is nothing.,S5_01_harrington.wav,149.19,152.23
+L033,S5,HARRINGTON,No.,S5_02_harrington.wav,152.78,153.7
+L034,S5,MADDOX,I did not say anything.,S5_03_maddox.wav,154.25,155.72
+L035,S5,HARRINGTON,You did not have to.,S5_04_harrington.wav,156.27,158.0
+L036,S5,HARRINGTON,You have ruined my quiet.,S5_05_harrington.wav,161.55,163.48
+L037,S5,MADDOX,You keep coming back though.,S5_06_maddox.wav,164.03,165.57
+L038,S5,HARRINGTON,Somebody has to make sure you do not turn a tunnel into a subdivision.,S5_07_harrington.wav,166.12,170.92
+L039,S5,MADDOX,Home.,S5_08_maddox.wav,171.72,172.42
+L040,S6,HARRINGTON,"Funny thing about getting old, son. Last night I dreamed about a plate.",S6_01_harrington.wav,176.47,181.87
+L041,S6,HARRINGTON,Steak. Potatoes. Gravy. Mama used to put too much pepper in the gravy. I would give damn near anything to complain about that gravy one more time.,S6_02_harrington.wav,182.67,194.47
+L042,S6,ARIANNA,Let him have a table.,S6_03_arianna.wav,198.27,199.59
+L043,S6,HARRINGTON,What did you do?,S6_04_harrington.wav,200.14,201.52
+L044,S6,MADDOX,Supper.,S6_05_maddox.wav,202.07,202.82
+L045,S6,MADDOX,That bad?,S6_06_maddox.wav,203.37,204.25
+L046,S6,HARRINGTON,Too much pepper.,S6_07_harrington.wav,204.8,206.23
+L047,S6,HARRINGTON,No. It is right.,S6_08_harrington.wav,206.78,208.36
+L048,S6,HARRINGTON,I have not had that meal in fifty-three years. I forgot what it tasted like.,S6_09_harrington.wav,208.91,214.9
+L049,S6,HARRINGTON,"I thought I was getting too old to carry things. Turns out, I was too old to carry everything.",S6_10_harrington.wav,215.7,222.36
+L050,S6,MADDOX,To Mama.,S6_11_maddox.wav,223.16,223.98
+L051,S6,HARRINGTON,To Mama.,S6_12_harrington.wav,224.53,225.61
+L052,S6,HARRINGTON,"You are a good man, son.",S6_13_harrington.wav,226.16,228.0
+L053,S6,MADDOX,Some days I do not feel like one.,S6_14_maddox.wav,228.55,230.7
+L054,S6,HARRINGTON,Good. That is how you know you are still trying.,S6_15_harrington.wav,231.25,234.3
+L055,S7,ARIANNA,I hate Sundays.,S7_01_arianna.wav,238.35,239.58
+L056,S7,MADDOX,Why?,S7_02_maddox.wav,240.13,240.8
+L057,S7,ARIANNA,Because this place becomes a tunnel again.,S7_03_arianna.wav,241.34,243.54
+L058,S7,HARRINGTON,Then next Friday we make it a home again.,S7_04_harrington.wav,244.09,247.31
